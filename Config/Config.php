@@ -18,6 +18,9 @@ if (ENVIRONMENT == 'development') {
 } else {
 }
 $url_actual = "https://" . $_SERVER['HTTP_HOST'] . "/";
+//recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
+$url_actual = str_replace("tony", "new", $url_actual);
+
 $mysqli = new mysqli(HOST, USER, PASSWORD, DB);
 $mysqli->set_charset(CHARSET);
 if ($mysqli->connect_errno) {
