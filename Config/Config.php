@@ -68,6 +68,17 @@ const LAAR_ENDPOINT_AUTH = "https://api.laarcourier.com:9727/authenticate";
 const LAAR_ENDPOINT = "https://api.laarcourier.com:9727/guias/contado";
 const LLAR_ENDPOINT_CANCEL = 'https://api.laarcourier.com:9727/guias/anular/';
 
+$id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual'";
+$result = $mysqli->query($id_plataforma);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $id_plataforma = $row['idplataforma'];
+    }
+} else {
+    echo "0 results";
+}
+
+
 ///obtener matriz 
 
 define("COLOR_FONDO", $color_fondo);
@@ -84,3 +95,4 @@ define("LOGIN_IMAGE", $login_image);
 define("COLOR_BOTON_LOGIN", $color_boton_login);
 define("COLOR_HOVER_LOGIN", $color_hover_login);
 define("COLOR_FAVORITO", $color_favorito);
+define("ID_PLATAFORMA", $id_plataforma);
