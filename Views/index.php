@@ -64,109 +64,15 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <?php
-    /* $activar_destacados = get_row('perfil', 'activar_destacados', 'id_perfil', 1); */
-    if ($activar_destacados == 1) { ?>
-        <div class="degraded-line"></div>
-        <div class="container mt-4">
-            <h1 class="text-center">Destacados</h1>
-            <br>
-            <!-- Productos -->
-            <div class="owl-carousel owl-theme mb-5">
-                <?php
-                $sql = "SELECT * FROM productos WHERE destacado=1";
-                $query = mysqli_query($conexion, $sql);
-                while ($row = mysqli_fetch_array($query)) {
-                    $id_producto          = $row['id_producto'];
-                    $nombre_producto      = $row['nombre_producto'];
-                    $precio_especial      = $row['valor3_producto'];
-                    $precio_normal        = $row['valor4_producto'];
-                    $image_path           = $row['image_path'];
-                ?>
-                    <div class="item">
-                        <div class="card h-100" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                            <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -120px">
-                                <a href="producto_1.php?id=<?php echo $id_producto ?>">
-                                    <img src="<?php
-                                                $subcadena = "http";
-                                                if (strpos(strtolower($image_path), strtolower($subcadena)) === 0) {
-                                                    echo $image_path;
-                                                } else {
-                                                    echo "sysadmin/" . str_replace("../..", "", $image_path);
-                                                }
-                                                ?>" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 55%; height: 55%; margin-top: 10px;">
-                                </a>
-                            </div>
-                            <div class="card-body d-flex flex-column">
-                                <p class="card-text flex-grow-1">
-                                    <a href="producto_1.php?id=<?php echo $id_producto ?>" class="text-decoration-none text-dark">
-                                        <strong><?php echo $nombre_producto ?></strong>
-                                    </a>
-                                </p>
-                                <div class="product-footer mb-2">
-                                    <div class="d-flex flex-row">
-                                        <div>
-                                            <span class="text-primary fs-5 pe-2">
-                                                <strong><?php /* echo get_row('perfil', 'moneda', 'id_perfil', 1) . number_format($precio_especial, 2); */ ?></strong>
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <?php if ($precio_normal > 0) { ?>
-                                                <span class="text-muted text-decoration-line-through fs-5 pe-2">
-                                                    <strong><?php /* echo get_row('perfil', 'moneda', 'id_perfil', 1) . number_format($precio_normal, 2);  */ ?></strong>
-                                                </span>
-                                            <?php } ?>
-                                        </div>
-                                        <?php if ($precio_normal > 0) { ?>
-                                            <div class="px-2 bg-primary text-white rounded">
-                                                <span class="fs-6"><i class="bx bxs-purchase-tag"></i>
-                                                    <strong>AHORRA UN <?php echo number_format(100 - ($precio_especial * 100 / $precio_normal)); ?>%</strong>
-                                                </span>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                                <a class="btn btn-primary mt-2" href="producto_1.php?id=<?php echo $id_producto ?>" style="height: 40px; font-size: 16px">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                <?php
-                }
-                ?>
-            </div>
-            <script>
-                $(document).ready(function() {
-                    $(".owl-carousel").owlCarousel({
-                        loop: false,
-                        margin: 10,
-                        responsive: {
-                            0: {
-                                items: 1
-                            },
-                            576: {
-                                items: 2
-                            },
-                            768: {
-                                items: 2
-                            },
-                            992: {
-                                items: 3
-                            },
-                            1200: {
-                                items: 4
-                            }
-                        },
-                        nav: true,
-                        navText: [
-                            '<i class="fas fa-chevron-left"></i>',
-                            '<i class="fas fa-chevron-right"></i>'
-                        ]
-                    });
-                });
-            </script>
-            <!-- Fin Productos -->
+    <div class="container mt-4">
+        <h1 class="text-center">Destacados</h1>
+        <br>
+        <!-- Productos -->
+        <div class="owl-carousel owl-theme mb-5" id="productos-carousel">
+            <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
-    <?php } ?>
+        <!-- Fin Productos -->
+    </div>
 
     <!-- fin destacados -->
 
@@ -384,10 +290,11 @@
     <div class="text-center p-4 derechos-autor">© 2024 IMPORSUIT S.A. | Todos los derechos reservados.
     </div>
     <!-- Fin footer -->
-    </main>
+</main>
 
 <script>
     $(document).ready(function() {
+        /* Categorias */
         let formDataCategoria = new FormData();
         formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
 
@@ -399,7 +306,7 @@
             processData: false,
             success: function(response) {
                 let categorias = JSON.parse(response); // Asegúrate de que la respuesta sea un objeto JSON
-                
+
                 // Verifica si la respuesta es un array o un objeto
                 if (!Array.isArray(categorias)) {
                     categorias = Object.values(categorias);
@@ -448,6 +355,88 @@
                 console.error("Error al consumir la API:", error);
             }
         });
+        /* Fin Categorias */
+        /* Destacados */
+        // Cargar productos destacados
+        let formDataDestacados = new FormData();
+        formDataDestacados.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/destacadostienda',
+            method: 'POST',
+            data: formDataDestacados,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                let productos = JSON.parse(response);
+
+                productos.forEach(producto => {
+                    let imagePath = producto.image_path.startsWith('http') ? producto.image_path : `sysadmin/${producto.image_path.replace("../..", "")}`;
+                    let productoHtml = `
+                        <div class="item">
+                            <div class="card h-100" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -120px">
+                                    <a href="producto_1.php?id=${producto.id_producto}">
+                                        <img src="${imagePath}" class="card-img-top mx-auto d-block" alt="${producto.nombre_producto}" style="object-fit: cover; width: 55%; height: 55%; margin-top: 10px;">
+                                    </a>
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <p class="card-text flex-grow-1">
+                                        <a href="producto_1.php?id=${producto.id_producto}" class="text-decoration-none text-dark">
+                                            <strong>${producto.nombre_producto}</strong>
+                                        </a>
+                                    </p>
+                                    <div class="product-footer mb-2">
+                                        <div class="d-flex flex-row">
+                                            <div>
+                                                <span class="text-primary fs-5 pe-2">
+                                                    <strong>${producto.precio_especial}</strong>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                ${producto.precio_normal > 0 ? `<span class="text-muted text-decoration-line-through fs-5 pe-2"><strong>${producto.precio_normal}</strong></span>` : ''}
+                                            </div>
+                                            ${producto.precio_normal > 0 ? `<div class="px-2 bg-primary text-white rounded"><span class="fs-6"><i class="bx bxs-purchase-tag"></i><strong>AHORRA UN ${Math.round(100 - (producto.precio_especial * 100 / producto.precio_normal))}%</strong></span></div>` : ''}
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-primary mt-2" href="producto_1.php?id=${producto.id_producto}" style="height: 40px; font-size: 16px">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    $('#productos-carousel').append(productoHtml);
+                });
+
+                $('#productos-carousel').owlCarousel({
+                    loop: false,
+                    margin: 10,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 3
+                        },
+                        1200: {
+                            items: 4
+                        }
+                    },
+                    nav: true,
+                    navText: [
+                        '<i class="fas fa-chevron-left"></i>',
+                        '<i class="fas fa-chevron-right"></i>'
+                    ]
+                });
+            },
+            error: function(error) {
+                console.error("Error al consumir la API de productos destacados:", error);
+            }
+        });
+        /* Fin Destacados */
     });
 </script>
 
