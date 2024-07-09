@@ -322,8 +322,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: <?php echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1') ?> !important;
-        opacity: <?php echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') ?> !important;
+        background-color: <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */?> !important;
+        opacity: <?php /* echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') */ ?> !important;
     }
 
     .carousel-caption {
@@ -353,7 +353,7 @@
     }
 
     .card-body_icon i {
-        color: <?php echo get_row('perfil', 'color_botones', 'id_perfil', '1') ?> !important;
+        color: <?php /* echo get_row('perfil', 'color_botones', 'id_perfil', '1') */ ?> !important;
         margin-bottom: 15px !important;
     }
 

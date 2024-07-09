@@ -1,3 +1,5 @@
+<?php include 'Views/templates/css/header_style.php'; ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,14 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
-    <link rel="stylesheet" href="css/estilo.css">
+    <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand d-lg-none ms-auto" href="#">
-                <img src="assets/imagenes/logo_imporsuit.png" alt="IMPORT SHOP">
+                <img src="/img/logo_imporsuit.png" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,7 +37,7 @@
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="#">
-                    <img src="assets/imagenes/logo_imporsuit.png" alt="IMPORT SHOP">
+                    <img src="/img/logo_imporsuit.png" alt="IMPORT SHOP">
                 </a>
                 <form class="d-flex ms-auto">
                     <input class="form-control search-box" type="search" placeholder="Buscar" aria-label="Buscar">

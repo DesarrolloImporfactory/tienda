@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'Views/templates/header.php'; ?>
 
 <!-- scripts carusel owl -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -18,21 +18,21 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="assets/imagenes/banner_definitiva1.png" class="d-block w-100" alt="...">
+                <img src="/img/banner_definitiva1.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Título 1</h5>
                     <p>Descripción 1</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/imagenes/banner_definitiva2.png" class="d-block w-100" alt="...">
+                <img src="/img/banner_definitiva2.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Título 2</h5>
                     <p>Descripción 2</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/imagenes/banner_definitiva1.png" class="d-block w-100" alt="...">
+                <img src="/img/banner_definitiva1.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Título 3</h5>
                     <p>Descripción 3</p>
@@ -64,7 +64,6 @@
         <div class="caja mb-5">
             <div class="row">
                 <?php
-                include './auditoria.php';
                 $sql = "SELECT * FROM lineas WHERE tipo='1' AND online=1";
                 $query = mysqli_query($conexion, $sql);
                 while ($row = mysqli_fetch_array($query)) {
@@ -306,22 +305,24 @@
     <!-- FOOTER -->
     <!-- Botón flotante para WhatsApp -->
     <?php
-    function formatPhoneNumber($number)
-    {
-        // Eliminar caracteres no numéricos excepto el signo +
-        $number = preg_replace('/[^\d+]/', '', $number);
+    if (!function_exists('formatPhoneNumber')) {
+        function formatPhoneNumber($number)
+        {
+            // Eliminar caracteres no numéricos excepto el signo +
+            $number = preg_replace('/[^\d+]/', '', $number);
 
-        // Verificar si el número ya tiene el código de país +593
-        if (!preg_match('/^\+593/', $number)) {
-            // Si el número comienza con 0, quitarlo
-            if (strpos($number, '0') === 0) {
-                $number = substr($number, 1);
+            // Verificar si el número ya tiene el código de país +593
+            if (!preg_match('/^\+593/', $number)) {
+                // Si el número comienza con 0, quitarlo
+                if (strpos($number, '0') === 0) {
+                    $number = substr($number, 1);
+                }
+                // Agregar el código de país +593 al inicio del número
+                $number = '+593' . $number;
             }
-            // Agregar el código de país +593 al inicio del número
-            $number = '+593' . $number;
-        }
 
-        return $number;
+            return $number;
+        }
     }
 
     // Usar la función formatPhoneNumber para imprimir el número formateado
@@ -411,8 +412,50 @@
     </div>
     <!-- Fin footer -->
 </main>
+<script>
+    function getSubdomainFromCurrentUrl() {
+        // Obtener la URL actual desde la barra de direcciones
+        const url = window.location.href;
+
+        // Crear un objeto URL
+        const parsedUrl = new URL(url);
+
+        // Obtener el hostname
+        const hostname = parsedUrl.hostname;
+
+        // Separar el hostname por puntos
+        const parts = hostname.split('.');
+
+        // Tomar la primera parte del hostname
+        const subdomain = parts[0];
+
+        return subdomain;
+    }
+
+    // Llamar a la función y obtener el subdominio
+    const subdomain = getSubdomainFromCurrentUrl();
+
+    $(document).ready(function() {
+        let formDataSubdominio = new FormData();
+        formDataSubdominio.append("url", subdomain);
+
+        $.ajax({
+            url: SERVERURL + "Tienda/obtener_idPlataforma",
+            type: "POST", 
+            data: formDataSubdominio,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            },
+        });
+    });
+</script>
 <!-- librerias para el carrusel-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <!-- Fin librerias para el carrusel-->
-<?php include 'includes/footer.php'; ?>
+<?php include 'Views/templates/footer.php'; ?>
