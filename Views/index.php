@@ -326,12 +326,12 @@
     }
 
     // Usar la función formatPhoneNumber para imprimir el número formateado
-    $telefono = get_row('perfil', 'telefono', 'id_perfil', 1);
+    /* $telefono = get_row('perfil', 'telefono', 'id_perfil', 1); */
     $telefonoFormateado = formatPhoneNumber($telefono);
     ?>
 
     <?php
-    $ws_flotante = get_row('perfil', 'whatsapp_flotante', 'id_perfil', 1);
+    /* $ws_flotante = get_row('perfil', 'whatsapp_flotante', 'id_perfil', 1); */
     if ($ws_flotante == 1) { ?>
         <a href="https://wa.me/<?php echo $telefonoFormateado ?>" class="whatsapp-float" target="_blank"><i class="bx bxl-whatsapp-square ws_flotante"></i></a>
     <?php } ?>

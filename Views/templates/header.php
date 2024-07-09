@@ -1,5 +1,9 @@
 <?php include 'Views/templates/css/header_style.php'; ?>
-
+<script>
+            const SERVERURL = "<?php echo SERVERURL ?>";
+            const MARCA = "<?php echo MARCA?>";
+            const CARGO = <?php echo $_SESSION['cargo']; ?>
+        </script>
 <!DOCTYPE html>
 <html lang="es">
 
