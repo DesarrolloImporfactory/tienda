@@ -1,14 +1,6 @@
 <?php include 'Views/templates/header.php'; ?>
 
-<!-- scripts carusel owl -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<!-- Fin scripts carusel owl -->
 <main style="background-color: #f9f9f9;">
-
     <!-- Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -49,6 +41,7 @@
         </button>
     </div>
     <!-- fin slider -->
+
     <!-- animacion -->
     <div class="marquee-container">
         <div class="marquee">
@@ -57,37 +50,17 @@
         </div>
     </div>
     <!-- fin animacion -->
+
     <!-- categorias -->
     <div class="container mt-4">
-        <h1 class="text-center">Categorías</h1>
+        <h1 style="text-align: center">Categorías</h1>
         <br>
-        <div class="caja mb-5">
-            <div class="row">
-                <?php
-                $sql = "SELECT * FROM lineas WHERE tipo='1' AND online=1";
-                $query = mysqli_query($conexion, $sql);
-                while ($row = mysqli_fetch_array($query)) {
-                    $id_linea = $row['id_linea'];
-                    $nombre_linea = $row['nombre_linea'];
-                    $image_path = $row['imagen'];
-                    //$image_path = 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
-                ?>
-                    <div class="col-12 col-md-6 col-lg-4 mb-4">
-                        <div class="category-container d-flex flex-column align-items-center">
-                            <a href="categoria_1.php?id_cat=<?php echo $id_linea ?>" class="category-link">
-                                <div class="category-image rounded-circle" style="background-image: url('sysadmin/<?php echo str_replace("../..", "", $image_path); ?>'); width: 150px; height: 150px; background-size: cover;"></div>
-                            </a>
-                            <a class="btn category-button btn-primary mt-2" href="categoria_1.php?id_cat=<?php echo $id_linea ?>" role="button">
-                                <?php echo $nombre_linea; ?>
-                            </a>
-                        </div>
-                    </div>
-                <?php } ?>
+        <div class="caja" style="margin-bottom: 50px;">
+            <div class="owl-carousel owl-theme" id="categories-container">
+                <!-- Aquí se insertarán las categorías dinámicamente -->
             </div>
         </div>
-
     </div>
-
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
@@ -411,51 +384,71 @@
     <div class="text-center p-4 derechos-autor">© 2024 IMPORSUIT S.A. | Todos los derechos reservados.
     </div>
     <!-- Fin footer -->
-</main>
+    </main>
+
 <script>
-    function getSubdomainFromCurrentUrl() {
-        // Obtener la URL actual desde la barra de direcciones
-        const url = window.location.href;
-
-        // Crear un objeto URL
-        const parsedUrl = new URL(url);
-
-        // Obtener el hostname
-        const hostname = parsedUrl.hostname;
-
-        // Separar el hostname por puntos
-        const parts = hostname.split('.');
-
-        // Tomar la primera parte del hostname
-        const subdomain = parts[0];
-
-        return subdomain;
-    }
-
-    // Llamar a la función y obtener el subdominio
-    const subdomain = getSubdomainFromCurrentUrl();
-
     $(document).ready(function() {
-        let formDataSubdominio = new FormData();
-        formDataSubdominio.append("url", subdomain);
+        let formDataCategoria = new FormData();
+        formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + "Tienda/obtener_idPlataforma",
-            type: "POST", 
-            data: formDataSubdominio,
-            processData: false, // No procesar los datos
-            contentType: false, // No establecer ningún tipo de contenido
+            url: SERVERURL + 'Tienda/categoriastienda',
+            method: 'POST',
+            data: formDataCategoria,
+            contentType: false,
+            processData: false,
             success: function(response) {
-                console.log(response);
+                let categorias = JSON.parse(response); // Asegúrate de que la respuesta sea un objeto JSON
+                
+                // Verifica si la respuesta es un array o un objeto
+                if (!Array.isArray(categorias)) {
+                    categorias = Object.values(categorias);
+                }
+
+                categorias.forEach(categoria => {
+                    let imagePath = categoria.imagen ? categoria.imagen : 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
+                    let categoriaHtml = `
+                        <div class="item">
+                            <div class="category-container d-flex flex-column align-items-center">
+                                <a href="categoria_1.php?id_cat=${categoria.id_linea}" class="category-link">
+                                    <div class="category-image rounded-circle" style="background-image: url('sysadmin/${imagePath}');"></div>
+                                </a>
+                                <a class="btn category-button boton texto_boton" style="border-radius: 0.5rem;" href="categoria_1.php?id_cat=${categoria.id_linea}" role="button">
+                                    ${categoria.nombre_linea}
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    $('#categories-container').append(categoriaHtml);
+                });
+
+                $('#categories-container').owlCarousel({
+                    loop: false,
+                    margin: 10,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 3
+                        }
+                    },
+                    nav: true,
+                    navText: [
+                        '<i class="fas fa-chevron-left"></i>',
+                        '<i class="fas fa-chevron-right"></i>'
+                    ]
+                });
             },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-            },
+            error: function(error) {
+                console.error("Error al consumir la API:", error);
+            }
         });
     });
 </script>
-<!-- librerias para el carrusel-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<!-- Fin librerias para el carrusel-->
+
 <?php include 'Views/templates/footer.php'; ?>
