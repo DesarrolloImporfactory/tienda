@@ -84,6 +84,26 @@
     </div>
     <!-- Fin Iconos -->
 
+    <!-- animacion -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <p class="marquee-content">- PRUEBA -</p>
+            <p class="marquee-content">- PRUEBA -</p>
+        </div>
+    </div>
+    <!-- fin animacion -->
+
+    <!-- Testimonios -->
+    <div class="container mt-4 testimonios">
+        <h1 style="text-align: center">Testimonios</h1>
+        <br>
+        <div class="caja" style="margin-bottom: 50px;">
+            <div class="owl-carousel owl-theme" id="testimonios-carousel">
+                <!-- Los testimonios se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+    <!-- Fin Testimonios -->
 
 </main>
 
@@ -289,7 +309,7 @@
                     console.error('Error al parsear la respuesta:', e);
                     return;
                 }
-                
+
                 if (iconos && Array.isArray(iconos)) {
                     var $iconosContainer = $("#iconos-container");
 
@@ -331,6 +351,83 @@
             }
         });
         /* Fin Iconos */
+        /* Testimonios */
+        // Inicializar el carrusel vacío
+        $("#testimonios-carousel").owlCarousel({
+            loop: false,
+            margin: 10,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                },
+                992: {
+                    items: 3
+                }
+            },
+            nav: true,
+            navText: [
+                '<i class="fas fa-chevron-left"></i>',
+                '<i class="fas fa-chevron-right"></i>'
+            ]
+        });
+
+        // Cargar testimonios mediante AJAX
+        let formDataTestimonio = new FormData();
+        formDataTestimonio.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/testimoniostienda',
+            method: 'POST',
+            data: formDataIconos,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                console.log(response); // Para depurar la respuesta
+                try {
+                    var testimonios = JSON.parse(response);
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
+                
+                if (testimonios && Array.isArray(testimonios)) {
+                    var $carousel = $("#testimonios-carousel");
+
+                    testimonios.forEach(function(testimonio) {
+                        var id_testimonio = testimonio.id_testimonio;
+                        var nombre_testimonio = testimonio.nombre || '';
+                        var texto_testimonio = testimonio.testimonio || '';
+                        var image_path = testimonio.imagen || 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
+
+                        var testimonioItem = `
+                            <div class="item d-flex flex-column">
+                                <div class="testimonios-container">
+                                    <div class="testimonios-image rounded-circle" style="background-image: url('${image_path.startsWith('http') ? image_path : 'sysadmin/' + image_path.replace('../..', '')}');">
+                                    </div>
+                                    <p class="card-text"><strong>${nombre_testimonio}</strong></p>
+                                    <p class="card-text testimonio-text">${texto_testimonio}</p>
+                                </div>
+                            </div>
+                        `;
+
+                        // Agregar el testimonio al carrusel
+                        $carousel.trigger('add.owl.carousel', [$(testimonioItem)]);
+                    });
+
+                    // Refrescar el carrusel
+                    $carousel.trigger('refresh.owl.carousel');
+                } else {
+                    console.error('La respuesta no contiene testimonios válidos.');
+                }
+            },
+            error: function(error) {
+                console.log('Error al cargar los testimonios:', error);
+            }
+        });
+        /* Fin Testimonios*/
     });
 
     function number_format(number, decimals = 2) {
