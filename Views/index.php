@@ -92,6 +92,7 @@
             data: formDataSlider,
             contentType: false,
             processData: false,
+            dataType: "json",
             success: function(data) {
                 
                 let indicators = '';
