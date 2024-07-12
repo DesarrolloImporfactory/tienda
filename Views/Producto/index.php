@@ -92,6 +92,7 @@ $id_producto = $_GET['id'];
       data: formData,
       processData: false, // No procesar los datos
       contentType: false, // No establecer ningún tipo de contenido
+      dataType: "json",
       success: function(response) {
         console.log('Respuesta de la API:', response); // Depuración de la respuesta
         if (response.length > 0) {
