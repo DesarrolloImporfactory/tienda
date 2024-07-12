@@ -130,7 +130,7 @@
         /* Categorias */
         let formDataCategoria = new FormData();
         formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
-
+        
         $.ajax({
             url: SERVERURL + 'Tienda/categoriastienda',
             method: 'POST',
