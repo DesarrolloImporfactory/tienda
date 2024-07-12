@@ -2,13 +2,11 @@
 <?php include 'Views/Categoria/css/categoria_style.php'; ?>
 
 <main>
-
     <!-- area de categorias -->
     <div class="container-fluid mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
         <div class="content_left_right">
-
             <!-- Modal -->
             <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
@@ -126,10 +124,9 @@
             </div>
         </div>
     </div>
-
     <!-- Fin area de categorias -->
-
 </main>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Inicializa los sliders
@@ -175,12 +172,12 @@
         // Form submit handlers
         document.getElementById('form-rango-precios-left').addEventListener('submit', function(event) {
             event.preventDefault();
-            filtrarProductos('left');
+            actualizarProductos();
         });
 
         document.getElementById('form-rango-precios-modal').addEventListener('submit', function(event) {
             event.preventDefault();
-            filtrarProductos('modal');
+            actualizarProductos();
         });
 
         document.getElementById('ordenarForm').addEventListener('submit', function(event) {
@@ -209,14 +206,14 @@
                     let categoriasHtml = '';
                     categorias.forEach(categoria => {
                         let categoryHtml = `
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading-${categoria.id_linea}">
-                                        <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria?id_cat=${categoria.id_linea}'">
-                                            ${categoria.nombre_linea}
-                                        </button>
-                                    </h2>
-                                </div>
-                            `;
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading-${categoria.id_linea}">
+                                    <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria?id_cat=${categoria.id_linea}'">
+                                        ${categoria.nombre_linea}
+                                    </button>
+                                </h2>
+                            </div>
+                        `;
                         categoriasHtml += categoryHtml;
                     });
 
@@ -266,22 +263,8 @@
         }
 
         // Función para filtrar productos
-        function filtrarProductos(context) {
-            var valorMin = document.getElementById(`inputValorMinimo-${context}`).value;
-            var valorMax = document.getElementById(`inputValorMaximo-${context}`).value;
-
-            fetch('categoria', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `valorMinimo=${valorMin}&valorMaximo=${valorMax}`
-                })
-                .then(response => response.text())
-                .then(data => {
-                    document.querySelector('.right-column').innerHTML = data;
-                })
-                .catch(error => console.error('Error:', error));
+        function filtrarProductos() {
+            actualizarProductos();
         }
 
         // Función para actualizar los productos
@@ -303,66 +286,61 @@
             formData.append('ordenar_por', ordenarPor);
 
             fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    mostrarProductos(data);
-                })
-                .catch(error => console.error('Error:', error));
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                mostrarProductos(data);
+            })
+            .catch(error => console.error('Error:', error));
         }
 
-        function obtenerURLImagen(imagePath, serverURL) {
-            // Verificar si el imagePath no es null
+        // Función para obtener URL de la imagen
+        function obtenerURLImagen(imagePath) {
             if (imagePath) {
-                // Verificar si el imagePath ya es una URL completa
                 if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-                    // Si ya es una URL completa, retornar solo el imagePath
                     return imagePath;
                 } else {
-                    // Si no es una URL completa, agregar el serverURL al inicio
-                    return `${serverURL}${imagePath}`;
+                    return `${SERVERURL}${imagePath}`;
                 }
             } else {
-                // Manejar el caso cuando imagePath es null
                 console.error("imagePath es null o undefined");
-                return null; // o un valor por defecto si prefieres
+                return null;
             }
         }
 
         // Función para mostrar productos
         function mostrarProductos(productos) {
-            let image_path = "";
             const productosContainer = document.getElementById('productosContainer');
             productosContainer.innerHTML = '';
 
             productos.forEach(producto => {
-                var precioEspecial = parseFloat(producto.pvp_tienda);
-                var precioNormal = parseFloat(producto.pref_tienda);
+                const precioEspecial = parseFloat(producto.pvp_tienda);
+                const precioNormal = parseFloat(producto.pref_tienda);
 
-                image_path = obtenerURLImagen(producto.imagen_principal_tienda)
+                const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
                 const productoHtml = `
-                        <div class="col-6 col-md-4 col-lg-3 mb-3">
-                            <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                                <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
-                                    <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
-                                        <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
-                                    </div>
-                                </a>
-                                <div class="card-body d-flex flex-column">
-                                    <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
-                                        <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
-                                    </a>
-                                    <div class="product-footer mb-2">
-                                        <span class="text-muted">${precioNormal.toFixed(2)}</span>
-                                        <span class="text-price">$ ${precioEspecial.toFixed(2)}</span>
-                                    </div>
-                                    <a class="btn btn-primary mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                            <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
+                                <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
+                                    <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
                                 </div>
+                            </a>
+                            <div class="card-body d-flex flex-column">
+                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
+                                </a>
+                                <div class="product-footer mb-2">
+                                    <span class="text-muted">${precioNormal.toFixed(2)}</span>
+                                    <span class="text-price">$${precioEspecial.toFixed(2)}</span>
+                                </div>
+                                <a class="btn btn-primary mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                             </div>
                         </div>
-                    `;
+                    </div>
+                `;
                 productosContainer.innerHTML += productoHtml;
             });
         }
