@@ -93,9 +93,11 @@ $id_producto = $_GET['id'];
       processData: false, // No procesar los datos
       contentType: false, // No establecer ningún tipo de contenido
       success: function(response) {
+        console.log('Respuesta de la API:', response); // Depuración de la respuesta
         if (response.length > 0) {
           var producto = response[0]; // Asumimos que el primer producto es el deseado
-          $("#nombre-producto").text(producto.nombre_producto_tienda);
+          console.log('Producto:', producto); // Depuración del producto
+          $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
 
           // Ocultamos el precio normal y el contenedor de ahorro ya que no se utilizan en el ejemplo proporcionado
