@@ -95,7 +95,7 @@ $id_producto = $_GET['id'];
       success: function(response) {
         if (response.length > 0) {
           var producto = response[0]; // Asumimos que el primer producto es el deseado
-          $('#nombre-producto').text(producto.nombre_producto_tienda);
+          $("#nombre-producto").text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
 
           // Ocultamos el precio normal y el contenedor de ahorro ya que no se utilizan en el ejemplo proporcionado
