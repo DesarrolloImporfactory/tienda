@@ -94,7 +94,7 @@ $id_producto = $_GET['id'];
       contentType: false, // No establecer ningún tipo de contenido
       dataType: "json",
       success: function(response) {
-        console.log('Respuesta de la API:', response); // Depuración de la respuesta
+        
         if (response.length > 0) {
           
           var producto = response[0]; // Asumimos que el primer producto es el deseado
