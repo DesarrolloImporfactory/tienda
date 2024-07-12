@@ -1,4 +1,5 @@
 <?php include 'Views/templates/header.php'; ?>
+<?php include 'Views/Categoria/css/categoria_style.php'; ?>
 
 <main>
 
