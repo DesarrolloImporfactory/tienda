@@ -6,6 +6,11 @@ class Utils extends Controller
         parent::__construct();
     }
 
+    public function index()
+    {
+        echo "Hola";
+    }
+
     public function actualizar()
     {
         $this->model->actualizar();
