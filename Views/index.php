@@ -98,7 +98,7 @@
                 let inner = '';
                 $.each(data, function(index, banner) {
                     console.log(banner.fondo_banner);
-                    
+
                     image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
@@ -220,7 +220,6 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                console.log(response); // Agregar esto para depurar la respuesta
                 try {
                     var productos = JSON.parse(response);
                 } catch (e) {
@@ -329,7 +328,6 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                console.log(response); // Para depurar la respuesta
                 try {
                     var iconos = JSON.parse(response);
                 } catch (e) {
@@ -412,7 +410,6 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                console.log(response); // Para depurar la respuesta
                 try {
                     var testimonios = JSON.parse(response);
                 } catch (e) {
