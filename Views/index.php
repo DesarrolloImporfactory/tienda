@@ -97,15 +97,22 @@
                 
                 let indicators = '';
                 let inner = '';
+                let alineacion = "";
                 $.each(data, function(index, banner) {
-                    console.log(banner.fondo_banner);
 
                     image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
+                    if (banner.alineacion == 1){
+                        alineacion = "text-align-last: left;"
+                    } else if (banner.alineacion == 2){
+                        alineacion = "text-align-last: center;"
+                    } else if (banner.alineacion == 3){
+                        alineacion = "text-align-last: right;"
+                    }
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}">
                               <img src="${image_path}" class="d-block w-100" alt="...">
-                              <div class="carousel-caption d-none d-md-block">
+                              <div class="carousel-caption d-none d-md-block" style="">
                                   <h5>${banner.titulo}</h5>
                                   <p>${banner.texto_banner}</p>
                               </div>
