@@ -93,6 +93,7 @@
             contentType: false,
             processData: false,
             success: function(data) {
+                console.log(banner.fondo_banner);
                 let indicators = '';
                 let inner = '';
                 $.each(data, function(index, banner) {
