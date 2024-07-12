@@ -85,6 +85,7 @@ $id_producto = $_GET['id'];
     let formData = new FormData();
     formData.append("id_plataforma", ID_PLATAFORMA);
     formData.append("id_producto_tienda", id_producto);
+
     $.ajax({
       url: SERVERURL + 'Tienda/obtener_productos_tienda',
       method: 'POST',
@@ -92,57 +93,65 @@ $id_producto = $_GET['id'];
       processData: false, // No procesar los datos
       contentType: false, // No establecer ningún tipo de contenido
       success: function(response) {
-        var producto = response.producto;
-        $('#nombre-producto').text(producto.nombre);
-        $('#precio-especial').text('$' + producto.precio_especial.toFixed(2));
-        if (producto.precio_normal > 0) {
-          $('#precio-normal').text('$' + producto.precio_normal.toFixed(2));
-          $('#precio-normal-container').show();
-          var ahorro = 100 - (producto.precio_especial * 100 / producto.precio_normal);
-          $('#ahorra').text('AHORRA UN ' + Math.round(ahorro) + '%');
-          $('#ahorra-container').show();
-        }
+        if (response.length > 0) {
+          var producto = response[0]; // Asumimos que el primer producto es el deseado
+          $('#nombre-producto').text(producto.nombre_producto_tienda);
+          $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
 
-        // Manejo de imágenes
-        var mainImageSrc = producto.imagen_principal;
-        var subcadena = "http";
-        if (!mainImageSrc.toLowerCase().startsWith(subcadena)) {
-          mainImageSrc = 'sysadmin/' + mainImageSrc.replace("../..", "");
-        }
-        $('#main-image').attr('src', mainImageSrc);
+          // Ocultamos el precio normal y el contenedor de ahorro ya que no se utilizan en el ejemplo proporcionado
+          $('#precio-normal-container').hide();
+          $('#ahorra-container').hide();
 
-        // Miniaturas
-        var thumbnailsHtml = '';
-        producto.imagenes.forEach(function(imagen, index) {
-          var imagePath = imagen.url;
-          if (!imagePath.toLowerCase().startsWith(subcadena)) {
-            imagePath = 'sysadmin/' + imagePath.replace("../..", "");
+          // Manejo de imágenes
+          var mainImageSrc = producto.imagen_principal;
+          var subcadena = "http";
+          if (!mainImageSrc.toLowerCase().startsWith(subcadena)) {
+            mainImageSrc = 'sysadmin/' + mainImageSrc.replace("../..", "");
           }
-          thumbnailsHtml += `
-              <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
-                <img src="${imagePath}" class="img-thumbnail">
-              </a>
-            `;
-        });
-        $('#list-tab').html(thumbnailsHtml);
+          $('#main-image').attr('src', mainImageSrc);
 
-        // Eventos para las miniaturas
-        $('#list-tab a').on('click', function(e) {
-          e.preventDefault();
-          var targetImage = $(this).find('img').attr('src');
-          $('#main-image').attr('src', targetImage);
-        });
+          // Miniaturas
+          var thumbnailsHtml = '';
+          // Suponemos que `producto.imagenes` es un array de URLs de imágenes
+          if (producto.imagenes && producto.imagenes.length > 0) {
+            producto.imagenes.forEach(function(imagen, index) {
+              var imagePath = imagen.url;
+              if (!imagePath.toLowerCase().startsWith(subcadena)) {
+                imagePath = 'sysadmin/' + imagePath.replace("../..", "");
+              }
+              thumbnailsHtml += `
+                  <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
+                    <img src="${imagePath}" class="img-thumbnail">
+                  </a>
+                `;
+            });
+            $('#list-tab').html(thumbnailsHtml);
 
-        // Modal para la imagen principal
-        $('#main-image').on('click', function() {
-          var modalImageSrc = $(this).attr('src');
-          $('#imagenEnModal').attr('src', modalImageSrc);
-        });
+            // Eventos para las miniaturas
+            $('#list-tab a').on('click', function(e) {
+              e.preventDefault();
+              var targetImage = $(this).find('img').attr('src');
+              $('#main-image').attr('src', targetImage);
+            });
+          }
 
-        // Botón de comprar
-        $('#comprar-ahora').on('click', function() {
-          agregar_tmp(id_producto, producto.precio_especial);
-        });
+          // Modal para la imagen principal
+          $('#main-image').on('click', function() {
+            var modalImageSrc = $(this).attr('src');
+            $('#imagenEnModal').attr('src', modalImageSrc);
+          });
+
+          // Botón de comprar
+          $('#comprar-ahora').on('click', function() {
+            agregar_tmp(id_producto, parseFloat(producto.pvp_tienda));
+          });
+        } else {
+          console.error('No se encontraron productos.');
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error('Error al obtener los datos:', error);
+        console.log(xhr.responseText);
       }
     });
 
