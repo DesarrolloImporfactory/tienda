@@ -57,44 +57,10 @@ $id_producto = $_GET['id'];
       </div>
     </div>
     <!-- Inicio de Iconos-->
-    <div class="iconos_producto col-md-12" style="padding-bottom: 75px;">
-      <?php
-      include './auditoria.php';
-      $sql = "SELECT * FROM caracteristicas_tienda WHERE accion=1 or accion=2 or accion=3";
-      $query = mysqli_query($conexion, $sql);
-      while ($row = mysqli_fetch_array($query)) {
-        $texto = $row['texto'];
-        $icon_text = $row['icon_text'];
-        $enlace_icon = $row['enlace_icon'];
-        $subtexto_icon = $row['subtexto_icon'];
-
-        if ($enlace_icon == '') {
-          $enlace_icon = '';
-        } else {
-          $enlace_icon = 'href="' . $enlace_icon . '" target="_blank" style="text-decoration: none; color: inherit;"';
-        }
-        //$image_path = 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
-      ?>
-        <div class="col-md-4" style="padding-bottom: 20px;">
-          <a <?php echo $enlace_icon ?>>
-            <div class="card card_icon text-center">
-              <div class="card-body card-body_icon d-flex flex-column">
-                <div>
-                  <i class="fas <?php echo $icon_text ?> fa-2x"></i> <!-- Cambia el icono según corresponda -->
-                </div>
-                <div>
-                  <h5 class="card-title card-title_icon"><?php echo $texto ?></h5>
-                  <p class="card-text card-text_icon"><?php echo $subtexto_icon ?></p>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      <?php
-      }
-      ?>
+    <div id="iconos-container" class="iconos_producto col-md-12" style="padding-bottom: 75px;">
+      <!-- Los iconos se cargarán aquí mediante AJAX -->
     </div>
-    <!-- Fin Iconos -->
+    <!-- Fin Iconos-->
   </div>
 
   <!-- Modal -->
@@ -215,6 +181,68 @@ $id_producto = $_GET['id'];
     console.log("La imagen se cargó correctamente.");
     image.classList.add("cargada-correctamente");
   }
+
+  /* Iconos */
+  // Cargar iconos mediante AJAX
+  let formDataIconos = new FormData();
+  formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+
+  $.ajax({
+    url: SERVERURL + 'Tienda/iconostienda', // Actualiza esta URL según tu configuración
+    method: 'POST',
+    data: formDataIconos,
+    contentType: false,
+    processData: false,
+    success: function(response) {
+      console.log(response); // Para depurar la respuesta
+      try {
+        var iconos = JSON.parse(response);
+      } catch (e) {
+        console.error('Error al parsear la respuesta:', e);
+        return;
+      }
+
+      if (iconos && Array.isArray(iconos)) {
+        var $iconosContainer = $("#iconos-container");
+
+        iconos.forEach(function(icono) {
+          var texto = icono.texto || '';
+          var icon_text = icono.icon_text || '';
+          var enlace_icon = icono.enlace_icon || '';
+          var subtexto_icon = icono.subtexto_icon || '';
+
+          var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
+
+          var iconoItem = `
+              <div class="col-md-4 icon_responsive" style="padding-bottom: 20px;">
+                <a ${enlaceHTML}>
+                  <div class="card card_icon text-center">
+                    <div class="card-body card-body_icon d-flex flex-column">
+                      <div>
+                        <i class="fas ${icon_text} fa-2x"></i> <!-- Cambia el icono según corresponda -->
+                      </div>
+                      <div>
+                        <h5 class="card-title card-title_icon">${texto}</h5>
+                        <p class="card-text card-text_icon">${subtexto_icon}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            `;
+
+          // Agregar el icono al contenedor
+          $iconosContainer.append(iconoItem);
+        });
+      } else {
+        console.error('La respuesta no contiene iconos válidos.');
+      }
+    },
+    error: function(error) {
+      console.log('Error al cargar los iconos:', error);
+    }
+  });
+  /* Fin Iconos */
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
