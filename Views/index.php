@@ -150,10 +150,10 @@
                     let categoriaHtml = `
                         <div class="item">
                             <div class="category-container d-flex flex-column align-items-center">
-                                <a href="categoria_1.php?id_cat=${categoria.id_linea}" class="category-link">
+                                <a href="categoria?id_cat=${categoria.id_linea}" class="category-link">
                                     <div class="category-image rounded-circle" style="background-image: url('sysadmin/${imagePath}');"></div>
                                 </a>
-                                <a class="btn category-button boton texto_boton" style="border-radius: 0.5rem;" href="categoria_1.php?id_cat=${categoria.id_linea}" role="button">
+                                <a class="btn category-button boton texto_boton" style="border-radius: 0.5rem;" href="categoria?id_cat=${categoria.id_linea}" role="button">
                                     ${categoria.nombre_linea}
                                 </a>
                             </div>
@@ -253,13 +253,13 @@
                                 <div class="grid-container">
                                     <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                         <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -120px">
-                                            <a href="${SERVERURL}producto_1.php?id=${producto.id_producto_tienda}">
+                                            <a href="${SERVERURL}producto?id=${producto.id_producto_tienda}">
                                                 <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 55%; height: 55%; margin-top: 10px;">
                                             </a>
                                         </div>
                                         <div class="card-body d-flex flex-column">
                                             <p class="card-text flex-grow-1">
-                                                <a href="${SERVERURL}producto_1.php?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                                <a href="${SERVERURL}producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
                                                     <strong>${producto.nombre_producto_tienda}</strong>
                                                 </a>
                                             </p>
@@ -284,7 +284,7 @@
                                                     ` : ''}
                                                 </div>
                                             </div>
-                                            <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${SERVERURL}producto_1.php?id=${producto.id_producto_tienda}">Comprar</a>
+                                            <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${SERVERURL}producto?id=${producto.id_producto_tienda}">Comprar</a>
                                         </div>
                                     </div>
                                 </div>

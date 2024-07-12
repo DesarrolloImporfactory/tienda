@@ -211,7 +211,7 @@
                         let categoryHtml = `
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-${categoria.id_linea}">
-                                        <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria_1.php?id_cat=${categoria.id_linea}'">
+                                        <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria?id_cat=${categoria.id_linea}'">
                                             ${categoria.nombre_linea}
                                         </button>
                                     </h2>
@@ -270,7 +270,7 @@
             var valorMin = document.getElementById(`inputValorMinimo-${context}`).value;
             var valorMax = document.getElementById(`inputValorMaximo-${context}`).value;
 
-            fetch('categoria_1.php', {
+            fetch('categoria', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -340,18 +340,18 @@
             productos.forEach(producto => {
                 var precioEspecial = parseFloat(producto.pvp_tienda);
                 var precioNormal = parseFloat(producto.pref_tienda);
-                
+
                 image_path = obtenerURLImagen(producto.imagen_principal_tienda)
                 const productoHtml = `
                         <div class="col-6 col-md-4 col-lg-3 mb-3">
                             <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                                <a href="producto_1.php?id=${producto.id_producto_tienda}" class="category-link">
+                                <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
                                     <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
                                         <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
                                     </div>
                                 </a>
                                 <div class="card-body d-flex flex-column">
-                                    <a href="producto_1.php?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                    <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
                                         <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
                                     </a>
                                     <div class="product-footer mb-2">
