@@ -101,14 +101,16 @@
 
     /* Fin header */
 
-    /* footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    bottom: 0;
-    width: 100%;
-} */
+    /* FOOTER TEMPORAL */
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        bottom: 0;
+        width: 100%;
+    }
+    /* FIN FOOTER TEMPORAL */
 
     /* Seccion de css añadido del anteiror sistema */
     .caja {
