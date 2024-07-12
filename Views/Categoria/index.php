@@ -6,9 +6,6 @@
     <div class="container-fluid mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
-        <?php
-        $categorias_acordion = mysqli_query($conexion, "SELECT * FROM lineas");
-        ?>
         <div class="content_left_right">
 
             <!-- Modal -->
@@ -25,30 +22,18 @@
                             <!-- Aquí incluyes el contenido de tu left-column -->
                             <div class="filtro_productos caja px-3">
                                 <!-- Acordeón -->
-                                <div class="accordion" id="accordionCategorias">
+                                <div class="accordion" id="accordionCategoriasModal">
                                     <!-- Este es el acordeón padre para la categoría principal -->
                                     <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingCategorias">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategorias" aria-expanded="true" aria-controls="collapseCategorias">
+                                        <h2 class="accordion-header" id="headingCategoriasModal">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategoriasModal" aria-expanded="true" aria-controls="collapseCategoriasModal">
                                                 <strong>Categorías</strong>
                                             </button>
                                         </h2>
-                                        <div id="collapseCategorias" class="accordion-collapse collapse show" aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
+                                        <div id="collapseCategoriasModal" class="accordion-collapse collapse show" aria-labelledby="headingCategoriasModal" data-bs-parent="#accordionCategoriasModal">
                                             <div class="accordion-body">
                                                 <!-- Aquí comienza el acordeón anidado para las subcategorías -->
-                                                <div class="accordion" id="accordionSubcategorias">
-                                                    <?php while ($categoria_acordion = mysqli_fetch_assoc($categorias_acordion)) : ?>
-                                                        <div class="accordion-item">
-                                                            <h2 class="accordion-header" id="heading-<?php echo htmlspecialchars($categoria_acordion['nombre_linea']); ?>">
-                                                                <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria_1.php?id_cat=<?php echo urlencode($categoria_acordion['id_linea']); ?>'">
-                                                                    <?php echo htmlspecialchars($categoria_acordion['nombre_linea']); ?>
-                                                                </button>
-                                                            </h2>
-                                                        </div>
-                                                    <?php endwhile;
-                                                    // Reiniciar el puntero al principio del conjunto de resultados
-                                                    mysqli_data_seek($categorias_acordion, 0); ?>
-                                                </div>
+                                                <div class="accordion" id="accordionSubcategoriasModal"></div>
                                                 <!-- Fin del acordeón anidado para las subcategorías -->
                                             </div>
                                         </div>
@@ -68,26 +53,6 @@
                                     </form>
                                 </div>
 
-                                <script>
-                                    document.getElementById('btn-filtrar').addEventListener('click', function() {
-                                        var valorMin = document.getElementById('valorMinimo').textContent;
-                                        var valorMax = document.getElementById('valorMaximo').textContent;
-
-                                        fetch('categoria_1.php', {
-                                                method: 'POST',
-                                                headers: {
-                                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                                },
-                                                body: `valorMinimo=${valorMin}&valorMaximo=${valorMax}`
-                                            })
-                                            .then(response => response.text())
-                                            .then(data => {
-                                                // Suponiendo que la respuesta sea un fragmento de HTML con los productos filtrados
-                                                document.querySelector('.right-column').innerHTML = data;
-                                            })
-                                            .catch(error => console.error('Error:', error));
-                                    });
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -109,17 +74,7 @@
                             <div id="collapseCategorias" class="accordion-collapse collapse show" aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
                                 <div class="accordion-body">
                                     <!-- Aquí comienza el acordeón anidado para las subcategorías -->
-                                    <div class="accordion" id="accordionSubcategorias">
-                                        <?php while ($categoria_acordion = mysqli_fetch_assoc($categorias_acordion)) : ?>
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="heading-<?php echo htmlspecialchars($categoria_acordion['nombre_linea']); ?>">
-                                                    <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria_1.php?id_cat=<?php echo urlencode($categoria_acordion['id_linea']); ?>'">
-                                                        <?php echo htmlspecialchars($categoria_acordion['nombre_linea']); ?>
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                        <?php endwhile; ?>
-                                    </div>
+                                    <div class="accordion" id="accordionSubcategorias"></div>
                                     <!-- Fin del acordeón anidado para las subcategorías -->
                                 </div>
                             </div>
@@ -138,27 +93,6 @@
                             <button type="submit" class="btn-filter">Filtrar</button>
                         </form>
                     </div>
-
-                    <script>
-                        document.getElementById('btn-filtrar').addEventListener('click', function() {
-                            var valorMin = document.getElementById('valorMinimo').textContent;
-                            var valorMax = document.getElementById('valorMaximo').textContent;
-
-                            fetch('categoria_1.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded',
-                                    },
-                                    body: `valorMinimo=${valorMin}&valorMaximo=${valorMax}`
-                                })
-                                .then(response => response.text())
-                                .then(data => {
-                                    // Suponiendo que la respuesta sea un fragmento de HTML con los productos filtrados
-                                    document.querySelector('.right-column').innerHTML = data;
-                                })
-                                .catch(error => console.error('Error:', error));
-                        });
-                    </script>
                 </div>
             </div>
 
@@ -279,5 +213,155 @@
     <!-- Fin area de categorias -->
 
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa los sliders
+        initSlider('slider-rango-precios-left', 'valorMinimo-left', 'valorMaximo-left', 'inputValorMinimo-left', 'inputValorMaximo-left');
+        initSlider('slider-rango-precios-modal', 'valorMinimo-modal', 'valorMaximo-modal', 'inputValorMinimo-modal', 'inputValorMaximo-modal');
+
+        // Obtén las instancias de noUiSlider para cada slider
+        const sliderLeft = document.getElementById('slider-rango-precios-left').noUiSlider;
+        const sliderModal = document.getElementById('slider-rango-precios-modal').noUiSlider;
+
+        // Función para sincronizar los sliders
+        function sincronizarSliders(sourceSlider, targetSlider) {
+            sourceSlider.on('update', function(values) {
+                // Verifica si los valores son diferentes para evitar la actualización innecesaria
+                const targetValues = targetSlider.get().map(v => parseFloat(v));
+                if (values[0] != targetValues[0] || values[1] != targetValues[1]) {
+                    targetSlider.set(values);
+                }
+            });
+        }
+
+        // Sincroniza los sliders entre sí
+        sincronizarSliders(sliderLeft, sliderModal);
+        sincronizarSliders(sliderModal, sliderLeft);
+
+        // Carga las categorías dinámicamente
+        cargarCategorias();
+
+        // Evento scroll para navbar
+        window.onscroll = function() {
+            var nav = document.getElementById('navbarId');
+            var logo = document.getElementById("navbarLogo");
+            logo.style.maxHeight = "60px";
+            logo.style.maxWidth = "60px";
+            if (window.pageYOffset > 100) {
+                nav.style.height = "70px";
+            } else {
+                nav.style.height = "100px";
+                logo.style.maxHeight = "100px";
+                logo.style.maxWidth = "100px";
+            }
+        };
+
+        // Form submit handlers
+        document.getElementById('form-rango-precios-left').addEventListener('submit', function(event) {
+            event.preventDefault();
+            filtrarProductos('left');
+        });
+
+        document.getElementById('form-rango-precios-modal').addEventListener('submit', function(event) {
+            event.preventDefault();
+            filtrarProductos('modal');
+        });
+    });
+
+    function cargarCategorias() {
+        let formDataCategoria = new FormData();
+        formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/categoriastienda',
+            method: 'POST',
+            data: formDataCategoria,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                let categorias = JSON.parse(response);
+
+                if (!Array.isArray(categorias)) {
+                    categorias = Object.values(categorias);
+                }
+
+                let categoriasHtml = '';
+                categorias.forEach(categoria => {
+                    let categoryHtml = `
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-${categoria.id_linea}">
+                                <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria_1.php?id_cat=${categoria.id_linea}'">
+                                    ${categoria.nombre_linea}
+                                </button>
+                            </h2>
+                        </div>
+                    `;
+                    categoriasHtml += categoryHtml;
+                });
+
+                $('#accordionSubcategorias').html(categoriasHtml);
+                $('#accordionSubcategoriasModal').html(categoriasHtml);
+            },
+            error: function(error) {
+                console.error("Error al consumir la API:", error);
+            }
+        });
+    }
+
+    // Función para inicializar un slider
+    function initSlider(sliderId, valorMinimoId, valorMaximoId, inputValorMinimoId, inputValorMaximoId, onSliderUpdateCallback) {
+        var slider = document.getElementById(sliderId);
+        noUiSlider.create(slider, {
+            start: [parseInt(localStorage.getItem(inputValorMinimoId) || 0), parseInt(localStorage.getItem(inputValorMaximoId) || 3000)],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 3000
+            }
+        });
+
+        slider.noUiSlider.on('update', function(values, handle) {
+            var value = values[handle];
+            var valorMinimo = document.getElementById(valorMinimoId);
+            var valorMaximo = document.getElementById(valorMaximoId);
+            var inputValorMinimo = document.getElementById(inputValorMinimoId);
+            var inputValorMaximo = document.getElementById(inputValorMaximoId);
+
+            if (handle) {
+                valorMaximo.textContent = Math.round(value);
+                inputValorMaximo.value = Math.round(value);
+                localStorage.setItem(inputValorMaximoId, Math.round(value));
+            } else {
+                valorMinimo.textContent = Math.round(value);
+                inputValorMinimo.value = Math.round(value);
+                localStorage.setItem(inputValorMinimoId, Math.round(value));
+            }
+
+            // Ejecutar el callback después de actualizar el slider
+            if (onSliderUpdateCallback) {
+                onSliderUpdateCallback(values[0], values[1]);
+            }
+        });
+    }
+
+    // Función para filtrar productos
+    function filtrarProductos(context) {
+        var valorMin = document.getElementById(`inputValorMinimo-${context}`).value;
+        var valorMax = document.getElementById(`inputValorMaximo-${context}`).value;
+
+        fetch('categoria_1.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `valorMinimo=${valorMin}&valorMaximo=${valorMax}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.right-column').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 
 <?php include 'Views/templates/footer.php'; ?>
