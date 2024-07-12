@@ -106,10 +106,8 @@ $id_producto = $_GET['id'];
 
           // Manejo de imágenes
           var mainImageSrc = producto.imagen_principal;
-          var subcadena = "http";
-          if (!mainImageSrc.toLowerCase().startsWith(subcadena)) {
-            mainImageSrc = 'sysadmin/' + mainImageSrc.replace("../..", "");
-          }
+          mainImageSrc = obtenerURLImagen(mainImageSrc);
+          
           $('#main-image').attr('src', mainImageSrc);
 
           // Miniaturas
