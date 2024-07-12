@@ -1,390 +1,220 @@
-<style>
-    #main-image {
-      /* Añade una sombra o borde si es necesario */
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      border-radius: 1rem;
-      /* Ejemplo de sombra */
-    }
+<?php include 'Views/templates/header.php'; ?>
+<?php include 'Views/templates/css/producto_style.php'; ?>
+<?php
 
-    .iconos_producto {
-      display: flex;
-      flex-direction: row;
-    }
+$id_producto = $_GET['id'];
 
-    @media (max-width: 480px) {
-      .iconos_producto {
-        flex-direction: column;
-      }
-    }
+?>
 
-    .list-group-item {
-      background-color: transparent;
-      /* Esto hará que el fondo sea transparente */
-      border: none;
-      /* Esto elimina el borde si lo hay */
-    }
-
-    .list-group-item img {
-      opacity: 0.6;
-      /* Esto hará que las miniaturas no seleccionadas sean un poco transparentes */
-    }
-
-    .list-group-item.active img {
-      opacity: 1;
-      /* Esto hará que la miniatura seleccionada sea completamente opaca */
-      border: 2px solid grey;
-      /* Esto añadirá un borde gris alrededor de la miniatura seleccionada */
-    }
-
-    .list-group-item {
-      background-color: white !important;
-      /* Esto hará que el fondo sea transparente */
-      border-color: white !important;
-      /* Esto elimina el borde si lo hay */
-    }
-
-    #list-tab .list-group-item img.img-thumbnail {
-      width: 150px;
-      /* El ancho deseado para las miniaturas */
-      height: 65px;
-      /* Para mantener la proporción de aspecto */
-    }
-
-    /* Estilos para miniaturas */
-    .list-group-item img.img-thumbnail {
-      width: 100px;
-      /* Ancho que desees para las miniaturas */
-      height: 100px;
-      /* Altura que desees para las miniaturas */
-      object-fit: cover;
-      /* cover recortará la imagen para ajustarla al tamaño */
-    }
-
-    /* Estilos para imagen principal */
-    #main-image {
-      width: 500px;
-      /* Ancho que desees para la imagen principal */
-      height: 500px;
-      /* Altura que desees para la imagen principal */
-      object-fit: cover;
-      /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
-    }
-
-
-    @media (max-width: 768px) {
-
-      /* Estilos para imagen principal */
-      #main-image {
-        width: 300px;
-        /* Ancho que desees para la imagen principal */
-        height: 300px;
-        /* Altura que desees para la imagen principal */
-        object-fit: cover;
-        /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
-      }
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-    }
-
-    .left-column {
-      width: 50%;
-      padding: 20px;
-      padding-top: 60px;
-      position: -webkit-sticky;
-      /* Para compatibilidad con Safari */
-      position: sticky;
-      top: 0;
-      /* Ajusta esto a la altura de cualquier cabecera o menú que tengas */
-      height: 100%;
-      /* O la altura que quieras que tenga */
-    }
-
-    .right-column {
-      width: 50%;
-      padding: 20px;
-      padding-top: 60px;
-    }
-
-    .product-image {
-      max-width: 100%;
-    }
-
-    .product-price {
-      font-size: 28px;
-      color: #333;
-    }
-
-    .product-title {
-      font-size: 24px;
-    }
-
-    .color-options {
-      list-style: none;
-      padding: 0;
-    }
-
-    .color-option {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      margin-right: 10px;
-    }
-
-    .color-option input[type="radio"] {
-      display: none;
-    }
-
-    .color-option label {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 1px solid #ccc;
-      cursor: pointer;
-    }
-
-    .color-option input[type="radio"]:checked+label {
-      border: 2px solid blue;
-    }
-
-    .iframe-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      /* Aspect ratio 16:9 */
-      height: 0;
-    }
-
-    .iframe-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .button {
-      background-color: red;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-
-    @keyframes jump {
-      0% {
-        transform: translateY(0);
-        /* Sin desplazamiento vertical */
-      }
-
-      50% {
-        transform: translateY(-5px);
-        /* Desplazamiento hacia arriba */
-      }
-
-      100% {
-        transform: translateY(0);
-        /* Volver a la posición original */
-      }
-    }
-
-    /* Aplicar la animación al botón */
-    .jump-button {
-      animation: jump 3s ease infinite;
-      /* Animación llamada 'jump' que dura 3 segundos y se repite infinitamente */
-    }
-
-    .content_left_right {
-      display: flex;
-    }
-
-    .ahorra {
-      font-size: 20px;
-    }
-
-    /* Añade más estilos según sea necesario */
-
-    /* Para dispositivos con un ancho de 768px o menos */
-    .precios_producto {
-      display: flex;
-      flex-direction: row;
-    }
-
-    @media (max-width: 768px) {
-      .content_left_right {
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        margin: 0 auto;
-      }
-
-      .left-column,
-      .right-column {
-        width: 100% !important;
-        padding: 10px !important;
-      }
-
-      .precios_producto {
-        flex-direction: column;
-      }
-
-      .ahorra {
-        font-size: 15px;
-      }
-
-      .container {
-        flex-direction: column;
-      }
-
-      #navbarLogo {
-        height: 60px;
-        width: 60px;
-      }
-
-      .container {
-        align-items: flex-end !important;
-      }
-
-      .navbar-brand_1 {
-        top: 0;
-        padding-left: 20px;
-      }
-
-      .left-column {
-        position: static !important;
-        /* Para compatibilidad con Safari */
-      }
-
-      .list-group {
-        flex-direction: row !important;
-        padding-top: 10px;
-      }
-
-      /* Otros ajustes responsivos */
-    }
-
-    /* Para dispositivos con un ancho de 480px o menos */
-    @media (max-width: 480px) {
-      .navbar-brand img {
-        height: 50px;
-        width: 50px;
-      }
-
-      /* Ajustes adicionales para dispositivos más pequeños */
-    }
-  </style>
-
-<main>
-<!-- FOOTER -->
-    <!-- Botón flotante para WhatsApp -->
-    <?php
-    function formatPhoneNumber($number)
-    {
-        // Eliminar caracteres no numéricos excepto el signo +
-        $number = preg_replace('/[^\d+]/', '', $number);
-
-        // Verificar si el número ya tiene el código de país +593
-        if (!preg_match('/^\+593/', $number)) {
-            // Si el número comienza con 0, quitarlo
-            if (strpos($number, '0') === 0) {
-                $number = substr($number, 1);
-            }
-            // Agregar el código de país +593 al inicio del número
-            $number = '+593' . $number;
-        }
-
-        return $number;
-    }
-
-    // Usar la función formatPhoneNumber para imprimir el número formateado
-    $telefono = get_row('perfil', 'telefono', 'id_perfil', 1);
-    $telefonoFormateado = formatPhoneNumber($telefono);
-    ?>
-
-    <?php
-    $ws_flotante = get_row('perfil', 'whatsapp_flotante', 'id_perfil', 1);
-    if ($ws_flotante == 1) { ?>
-        <a href="https://wa.me/<?php echo $telefonoFormateado ?>" class="whatsapp-float" target="_blank"><i class="bx bxl-whatsapp-square ws_flotante"></i></a>
-    <?php } ?>
-
-    <footer class="footer-contenedor">
-        <?php
-        $sql   = "SELECT * FROM  perfil  where id_perfil=1";
-        $query = mysqli_query($conexion, $sql);
-        while ($row = mysqli_fetch_array($query)) {
-            $nombre_empresa       = $row['nombre_empresa'];
-            $giro_empresa       = $row['giro_empresa'];
-            $telefono       = $row['telefono'];
-            $email       = $row['email'];
-            $logo_url       = $row['logo_url'];
-            $facebook       = $row['facebook'];
-            $instagram       = $row['instagram'];
-            $tiktok       = $row['tiktok'];
-
-        ?>
-            <div class="footer-contenido div-alineado-izquierda">
-                <h4>Acerca de <?php echo $nombre_empresa ?></h4>
-                <img id="navbarLogo" src="sysadmin/<?php echo str_replace("../..", "", $logo_url)
-                                                    ?>">
-                <span class="descripcion">
-                    <?php echo $giro_empresa ?>
-                </span>
+<main style="background-color: #f9f9f9;">
+  <div class="container flex-column" style="align-items: center !important;">
+    <div class="content_left_right">
+      <div class="left-column">
+        <div class="slider_producto">
+          <div class="d-flex flex-column" style="width: 100%;">
+            <!-- Indicadores del carrusel para las miniaturas -->
+            <div class="list-group" id="list-tab" role="tablist">
+              <!-- Imágenes dinámicas aquí -->
             </div>
-            <div class="footer-contenido">
-                <h5>Legal</h5>
-                <ul class="lista_legal">
-                    <?php
-                    $sql   = "SELECT * FROM  politicas_empresa";
-                    $query = mysqli_query($conexion, $sql);
-                    while ($row = mysqli_fetch_array($query)) {
-                        $nombre_politica       = $row['nombre'];
-                        $id_politica       = $row['id_politica'];
-                    ?>
-                        <li><a style="text-decoration: none; color:#5a5a5a" href="<?php echo $protocol ?>://<?php echo $domain ?>/politicas.php?id=<?php echo $id_politica ?>" target="_blank"><?php echo $nombre_politica; ?></a></li>
-                    <?php } ?>
-                </ul>
+          </div>
+          <div class="col-lg-10" style="max-width: 600px !important;">
+            <!-- Área principal de visualización de imagen -->
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
+                <img id="main-image" src="" class="img-fluid" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
+              </div>
             </div>
-            <div class="footer-contenido">
-                <h5>Siguenos</h5>
-                <div class="redes">
-                    <?php if ($facebook  !== "") { ?>
-                        <a class="icon-redes" href="<?php echo $facebook ?>">
-                            <img src="https://img.icons8.com/color/48/000000/facebook.png" alt="facebook">
-                        </a>
-                    <?php } ?>
-                    <?php if ($instagram  !== "") { ?>
-                        <a class="icon-redes" href="<?php echo $instagram ?>">
-                            <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="instagram">
-                        </a>
-                    <?php } ?>
-                    <?php if ($tiktok  !== "") { ?>
-                        <a class="icon-redes" href="<?php echo $tiktok ?>">
-                            <img src="https://img.icons8.com/color/48/000000/tiktok.png" alt="tiktok">
-                        </a>
-                    <?php } ?>
-                </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="caja px-5" style="width:100%;">
+          <div class="product-title" id="nombre-producto"></div>
+          <br>
+          <div class="precios_producto">
+            <div>
+              <span style="font-size: 20px; color:#4461ed; padding-right: 10px;">
+                <strong id="precio-especial"></strong>
+              </span>
             </div>
-            <div class="footer-contenido">
-                <h5>
-                    Información de contacto
-                </h5>
-                <span class="descripcion">
-                    <span class="icons">
-                        <i class='bx bxl-whatsapp ws'></i> <?php echo $telefono ?>
-                    </span>
-                    <span class="icons">
-                        <i class='bx bx-mail-send send'></i><?php echo $email ?>
-                    </span>
-                </span>
+            <div id="precio-normal-container" style="display:none;">
+              <span class="tachado" style="font-size: 20px; padding-right: 10px;">
+                <strong id="precio-normal"></strong>
+              </span>
             </div>
-        <?php } ?>
-    </footer>
-    <div class="text-center p-4 derechos-autor">© 2024 IMPORSUIT S.A. | Todos los derechos reservados.
+            <div id="ahorra-container" class="px-2" style="background-color: #4464ec; color:white; border-radius: 0.3rem; display:none;">
+              <span class="ahorra"><i class="bx bxs-purchase-tag"></i>
+                <strong id="ahorra"></strong>
+              </span>
+            </div>
+          </div>
+          <a style="height: 50px; font-size: 26px; width: 100%; border-radius: 15px" class="jump-button btn btn-primary texto_boton" href="#" id="comprar-ahora">
+            <span style="margin-top: 10px">COMPRAR AHORA </span>
+          </a>
+          <br><br>
+        </div>
+      </div>
     </div>
-    <!-- Fin footer -->
+    <!-- Inicio de Iconos-->
+    <div class="iconos_producto col-md-12" style="padding-bottom: 75px;">
+      <?php
+      include './auditoria.php';
+      $sql = "SELECT * FROM caracteristicas_tienda WHERE accion=1 or accion=2 or accion=3";
+      $query = mysqli_query($conexion, $sql);
+      while ($row = mysqli_fetch_array($query)) {
+        $texto = $row['texto'];
+        $icon_text = $row['icon_text'];
+        $enlace_icon = $row['enlace_icon'];
+        $subtexto_icon = $row['subtexto_icon'];
+
+        if ($enlace_icon == '') {
+          $enlace_icon = '';
+        } else {
+          $enlace_icon = 'href="' . $enlace_icon . '" target="_blank" style="text-decoration: none; color: inherit;"';
+        }
+        //$image_path = 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
+      ?>
+        <div class="col-md-4" style="padding-bottom: 20px;">
+          <a <?php echo $enlace_icon ?>>
+            <div class="card card_icon text-center">
+              <div class="card-body card-body_icon d-flex flex-column">
+                <div>
+                  <i class="fas <?php echo $icon_text ?> fa-2x"></i> <!-- Cambia el icono según corresponda -->
+                </div>
+                <div>
+                  <h5 class="card-title card-title_icon"><?php echo $texto ?></h5>
+                  <p class="card-text card-text_icon"><?php echo $subtexto_icon ?></p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <?php
+      }
+      ?>
+    </div>
+    <!-- Fin Iconos -->
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imagenModalLabel">Visualización de Imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="" id="imagenEnModal" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
-<?php include 'includes/footer.php'; ?>
+<script>
+  $(document).ready(function() {
+    var id_producto = '<?php echo $_GET['id']; ?>';
+
+    $.ajax({
+      url: SERVERURL + 'Tienda/obtenerobtener_productos_tienda',
+      method: 'GET',
+      data: {
+        id: id_producto
+      },
+      success: function(response) {
+        var producto = response.producto;
+        $('#nombre-producto').text(producto.nombre);
+        $('#precio-especial').text('$' + producto.precio_especial.toFixed(2));
+        if (producto.precio_normal > 0) {
+          $('#precio-normal').text('$' + producto.precio_normal.toFixed(2));
+          $('#precio-normal-container').show();
+          var ahorro = 100 - (producto.precio_especial * 100 / producto.precio_normal);
+          $('#ahorra').text('AHORRA UN ' + Math.round(ahorro) + '%');
+          $('#ahorra-container').show();
+        }
+
+        // Manejo de imágenes
+        var mainImageSrc = producto.imagen_principal;
+        var subcadena = "http";
+        if (!mainImageSrc.toLowerCase().startsWith(subcadena)) {
+          mainImageSrc = 'sysadmin/' + mainImageSrc.replace("../..", "");
+        }
+        $('#main-image').attr('src', mainImageSrc);
+
+        // Miniaturas
+        var thumbnailsHtml = '';
+        producto.imagenes.forEach(function(imagen, index) {
+          var imagePath = imagen.url;
+          if (!imagePath.toLowerCase().startsWith(subcadena)) {
+            imagePath = 'sysadmin/' + imagePath.replace("../..", "");
+          }
+          thumbnailsHtml += `
+              <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
+                <img src="${imagePath}" class="img-thumbnail">
+              </a>
+            `;
+        });
+        $('#list-tab').html(thumbnailsHtml);
+
+        // Eventos para las miniaturas
+        $('#list-tab a').on('click', function(e) {
+          e.preventDefault();
+          var targetImage = $(this).find('img').attr('src');
+          $('#main-image').attr('src', targetImage);
+        });
+
+        // Modal para la imagen principal
+        $('#main-image').on('click', function() {
+          var modalImageSrc = $(this).attr('src');
+          $('#imagenEnModal').attr('src', modalImageSrc);
+        });
+
+        // Botón de comprar
+        $('#comprar-ahora').on('click', function() {
+          agregar_tmp(id_producto, producto.precio_especial);
+        });
+      }
+    });
+
+    // Manejo del navbar y logo al hacer scroll
+    window.onscroll = function() {
+      var nav = document.getElementById('navbarId');
+      var logo = document.getElementById("navbarLogo");
+      logo.style.maxHeight = "60px";
+      logo.style.maxWidth = "60px";
+      if (window.pageYOffset > 100) {
+        nav.style.height = "70px";
+      } else {
+        nav.style.height = "100px";
+        logo.style.maxHeight = "100px";
+        logo.style.maxWidth = "100px";
+      }
+    };
+
+    // Evento para mostrar el modal de imagen
+    $('#imagenModal').on('show.bs.modal', function(event) {
+      var imageSrc = $('#main-image').attr('src');
+      $('#imagenEnModal').attr('src', imageSrc);
+    });
+  });
+
+  function agregar_tmp(id_producto, precio) {
+    // Lógica para agregar al carrito
+  }
+
+  // Función llamada si la imagen no puede cargarse
+  function imagenError(image) {
+    console.log("La imagen no pudo cargarse.");
+    image.src = 'ruta/a/tu/imagen/por/defecto.jpg';
+  }
+
+  // Función llamada cuando la imagen se ha cargado correctamente
+  function imagenCargada(image) {
+    console.log("La imagen se cargó correctamente.");
+    image.classList.add("cargada-correctamente");
+  }
+</script>
+
+<?php include 'Views/templates/footer.php'; ?>
