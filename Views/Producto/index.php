@@ -96,8 +96,9 @@ $id_producto = $_GET['id'];
       success: function(response) {
         console.log('Respuesta de la API:', response); // Depuración de la respuesta
         if (response.length > 0) {
+          console.log('Producto:', response.nombre_producto_tienda);
           var producto = response[0]; // Asumimos que el primer producto es el deseado
-          console.log('Producto:', producto); // Depuración del producto
+          console.log('Producto:', producto.nombre_producto_tienda);
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
 
