@@ -132,83 +132,83 @@
 </main>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-            // Inicializa los sliders
-            initSlider('slider-rango-precios-left', 'valorMinimo-left', 'valorMaximo-left', 'inputValorMinimo-left', 'inputValorMaximo-left', actualizarProductos);
-            initSlider('slider-rango-precios-modal', 'valorMinimo-modal', 'valorMaximo-modal', 'inputValorMinimo-modal', 'inputValorMaximo-modal', actualizarProductos);
+        // Inicializa los sliders
+        initSlider('slider-rango-precios-left', 'valorMinimo-left', 'valorMaximo-left', 'inputValorMinimo-left', 'inputValorMaximo-left', actualizarProductos);
+        initSlider('slider-rango-precios-modal', 'valorMinimo-modal', 'valorMaximo-modal', 'inputValorMinimo-modal', 'inputValorMaximo-modal', actualizarProductos);
 
-            // Obtén las instancias de noUiSlider para cada slider
-            const sliderLeft = document.getElementById('slider-rango-precios-left').noUiSlider;
-            const sliderModal = document.getElementById('slider-rango-precios-modal').noUiSlider;
+        // Obtén las instancias de noUiSlider para cada slider
+        const sliderLeft = document.getElementById('slider-rango-precios-left').noUiSlider;
+        const sliderModal = document.getElementById('slider-rango-precios-modal').noUiSlider;
 
-            // Función para sincronizar los sliders
-            function sincronizarSliders(sourceSlider, targetSlider) {
-                sourceSlider.on('update', function(values) {
-                    const targetValues = targetSlider.get().map(v => parseFloat(v));
-                    if (values[0] != targetValues[0] || values[1] != targetValues[1]) {
-                        targetSlider.set(values);
-                    }
-                });
-            }
-
-            // Sincroniza los sliders entre sí
-            sincronizarSliders(sliderLeft, sliderModal);
-            sincronizarSliders(sliderModal, sliderLeft);
-
-            // Carga las categorías dinámicamente
-            cargarCategorias();
-
-            // Evento scroll para navbar
-            window.onscroll = function() {
-                var nav = document.getElementById('navbarId');
-                var logo = document.getElementById("navbarLogo");
-                logo.style.maxHeight = "60px";
-                logo.style.maxWidth = "60px";
-                if (window.pageYOffset > 100) {
-                    nav.style.height = "70px";
-                } else {
-                    nav.style.height = "100px";
-                    logo.style.maxHeight = "100px";
-                    logo.style.maxWidth = "100px";
+        // Función para sincronizar los sliders
+        function sincronizarSliders(sourceSlider, targetSlider) {
+            sourceSlider.on('update', function(values) {
+                const targetValues = targetSlider.get().map(v => parseFloat(v));
+                if (values[0] != targetValues[0] || values[1] != targetValues[1]) {
+                    targetSlider.set(values);
                 }
-            };
-
-            // Form submit handlers
-            document.getElementById('form-rango-precios-left').addEventListener('submit', function(event) {
-                event.preventDefault();
-                filtrarProductos('left');
             });
+        }
 
-            document.getElementById('form-rango-precios-modal').addEventListener('submit', function(event) {
-                event.preventDefault();
-                filtrarProductos('modal');
-            });
+        // Sincroniza los sliders entre sí
+        sincronizarSliders(sliderLeft, sliderModal);
+        sincronizarSliders(sliderModal, sliderLeft);
 
-            document.getElementById('ordenarForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                actualizarProductos();
-            });
+        // Carga las categorías dinámicamente
+        cargarCategorias();
 
-            // Función para cargar categorías dinámicamente
-            function cargarCategorias() {
-                let formDataCategoria = new FormData();
-                formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
+        // Evento scroll para navbar
+        window.onscroll = function() {
+            var nav = document.getElementById('navbarId');
+            var logo = document.getElementById("navbarLogo");
+            logo.style.maxHeight = "60px";
+            logo.style.maxWidth = "60px";
+            if (window.pageYOffset > 100) {
+                nav.style.height = "70px";
+            } else {
+                nav.style.height = "100px";
+                logo.style.maxHeight = "100px";
+                logo.style.maxWidth = "100px";
+            }
+        };
 
-                $.ajax({
-                    url: SERVERURL + 'Tienda/categoriastienda',
-                    method: 'POST',
-                    data: formDataCategoria,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        let categorias = JSON.parse(response);
+        // Form submit handlers
+        document.getElementById('form-rango-precios-left').addEventListener('submit', function(event) {
+            event.preventDefault();
+            filtrarProductos('left');
+        });
 
-                        if (!Array.isArray(categorias)) {
-                            categorias = Object.values(categorias);
-                        }
+        document.getElementById('form-rango-precios-modal').addEventListener('submit', function(event) {
+            event.preventDefault();
+            filtrarProductos('modal');
+        });
 
-                        let categoriasHtml = '';
-                        categorias.forEach(categoria => {
-                            let categoryHtml = `
+        document.getElementById('ordenarForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            actualizarProductos();
+        });
+
+        // Función para cargar categorías dinámicamente
+        function cargarCategorias() {
+            let formDataCategoria = new FormData();
+            formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
+
+            $.ajax({
+                url: SERVERURL + 'Tienda/categoriastienda',
+                method: 'POST',
+                data: formDataCategoria,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    let categorias = JSON.parse(response);
+
+                    if (!Array.isArray(categorias)) {
+                        categorias = Object.values(categorias);
+                    }
+
+                    let categoriasHtml = '';
+                    categorias.forEach(categoria => {
+                        let categoryHtml = `
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading-${categoria.id_linea}">
                                         <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria_1.php?id_cat=${categoria.id_linea}'">
@@ -217,60 +217,60 @@
                                     </h2>
                                 </div>
                             `;
-                            categoriasHtml += categoryHtml;
-                        });
+                        categoriasHtml += categoryHtml;
+                    });
 
-                        $('#accordionSubcategorias').html(categoriasHtml);
-                        $('#accordionSubcategoriasModal').html(categoriasHtml);
-                    },
-                    error: function(error) {
-                        console.error("Error al consumir la API:", error);
-                    }
-                });
-            }
+                    $('#accordionSubcategorias').html(categoriasHtml);
+                    $('#accordionSubcategoriasModal').html(categoriasHtml);
+                },
+                error: function(error) {
+                    console.error("Error al consumir la API:", error);
+                }
+            });
+        }
 
-            // Función para inicializar un slider
-            function initSlider(sliderId, valorMinimoId, valorMaximoId, inputValorMinimoId, inputValorMaximoId, onSliderUpdateCallback) {
-                var slider = document.getElementById(sliderId);
-                noUiSlider.create(slider, {
-                    start: [parseInt(localStorage.getItem(inputValorMinimoId) || 0), parseInt(localStorage.getItem(inputValorMaximoId) || 3000)],
-                    connect: true,
-                    range: {
-                        'min': 0,
-                        'max': 3000
-                    }
-                });
+        // Función para inicializar un slider
+        function initSlider(sliderId, valorMinimoId, valorMaximoId, inputValorMinimoId, inputValorMaximoId, onSliderUpdateCallback) {
+            var slider = document.getElementById(sliderId);
+            noUiSlider.create(slider, {
+                start: [parseInt(localStorage.getItem(inputValorMinimoId) || 0), parseInt(localStorage.getItem(inputValorMaximoId) || 3000)],
+                connect: true,
+                range: {
+                    'min': 0,
+                    'max': 3000
+                }
+            });
 
-                slider.noUiSlider.on('update', function(values, handle) {
-                    var value = values[handle];
-                    var valorMinimo = document.getElementById(valorMinimoId);
-                    var valorMaximo = document.getElementById(valorMaximoId);
-                    var inputValorMinimo = document.getElementById(inputValorMinimoId);
-                    var inputValorMaximo = document.getElementById(inputValorMaximoId);
+            slider.noUiSlider.on('update', function(values, handle) {
+                var value = values[handle];
+                var valorMinimo = document.getElementById(valorMinimoId);
+                var valorMaximo = document.getElementById(valorMaximoId);
+                var inputValorMinimo = document.getElementById(inputValorMinimoId);
+                var inputValorMaximo = document.getElementById(inputValorMaximoId);
 
-                    if (handle) {
-                        valorMaximo.textContent = Math.round(value);
-                        inputValorMaximo.value = Math.round(value);
-                        localStorage.setItem(inputValorMaximoId, Math.round(value));
-                    } else {
-                        valorMinimo.textContent = Math.round(value);
-                        inputValorMinimo.value = Math.round(value);
-                        localStorage.setItem(inputValorMinimoId, Math.round(value));
-                    }
+                if (handle) {
+                    valorMaximo.textContent = Math.round(value);
+                    inputValorMaximo.value = Math.round(value);
+                    localStorage.setItem(inputValorMaximoId, Math.round(value));
+                } else {
+                    valorMinimo.textContent = Math.round(value);
+                    inputValorMinimo.value = Math.round(value);
+                    localStorage.setItem(inputValorMinimoId, Math.round(value));
+                }
 
-                    // Ejecutar el callback después de actualizar el slider
-                    if (onSliderUpdateCallback) {
-                        onSliderUpdateCallback(values[0], values[1]);
-                    }
-                });
-            }
+                // Ejecutar el callback después de actualizar el slider
+                if (onSliderUpdateCallback) {
+                    onSliderUpdateCallback(values[0], values[1]);
+                }
+            });
+        }
 
-            // Función para filtrar productos
-            function filtrarProductos(context) {
-                var valorMin = document.getElementById(`inputValorMinimo-${context}`).value;
-                var valorMax = document.getElementById(`inputValorMaximo-${context}`).value;
+        // Función para filtrar productos
+        function filtrarProductos(context) {
+            var valorMin = document.getElementById(`inputValorMinimo-${context}`).value;
+            var valorMax = document.getElementById(`inputValorMaximo-${context}`).value;
 
-                fetch('categoria_1.php', {
+            fetch('categoria_1.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -282,27 +282,27 @@
                     document.querySelector('.right-column').innerHTML = data;
                 })
                 .catch(error => console.error('Error:', error));
-            }
+        }
 
-            // Función para actualizar los productos
-            function actualizarProductos() {
-                const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
-                const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
-                const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-                const idCategoria = new URLSearchParams(window.location.search).get('id_cat');
-                const idPlataforma = ID_PLATAFORMA;
+        // Función para actualizar los productos
+        function actualizarProductos() {
+            const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
+            const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
+            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+            const idCategoria = new URLSearchParams(window.location.search).get('id_cat');
+            const idPlataforma = ID_PLATAFORMA;
 
-                document.getElementById('hiddenValorMinimo').value = valorMinimo;
-                document.getElementById('hiddenValorMaximo').value = valorMaximo;
+            document.getElementById('hiddenValorMinimo').value = valorMinimo;
+            document.getElementById('hiddenValorMaximo').value = valorMaximo;
 
-                const formData = new FormData();
-                formData.append('id_plataforma', idPlataforma);
-                formData.append('id_categoria', idCategoria);
-                formData.append('precio_minimo', valorMinimo);
-                formData.append('precio_maximo', valorMaximo);
-                formData.append('ordenar_por', ordenarPor);
+            const formData = new FormData();
+            formData.append('id_plataforma', idPlataforma);
+            formData.append('id_categoria', idCategoria);
+            formData.append('precio_minimo', valorMinimo);
+            formData.append('precio_maximo', valorMaximo);
+            formData.append('ordenar_por', ordenarPor);
 
-                fetch(SERVERURL+'Tienda/obtener_productos_tienda_filtro', {
+            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
                     method: 'POST',
                     body: formData
                 })
@@ -311,40 +311,61 @@
                     mostrarProductos(data);
                 })
                 .catch(error => console.error('Error:', error));
+        }
+
+        function obtenerURLImagen(imagePath, serverURL) {
+            // Verificar si el imagePath no es null
+            if (imagePath) {
+                // Verificar si el imagePath ya es una URL completa
+                if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                    // Si ya es una URL completa, retornar solo el imagePath
+                    return imagePath;
+                } else {
+                    // Si no es una URL completa, agregar el serverURL al inicio
+                    return `${serverURL}${imagePath}`;
+                }
+            } else {
+                // Manejar el caso cuando imagePath es null
+                console.error("imagePath es null o undefined");
+                return null; // o un valor por defecto si prefieres
             }
+        }
 
-            // Función para mostrar productos
-            function mostrarProductos(productos) {
-                const productosContainer = document.getElementById('productosContainer');
-                productosContainer.innerHTML = '';
+        // Función para mostrar productos
+        function mostrarProductos(productos) {
+            let image_path = "";
+            const productosContainer = document.getElementById('productosContainer');
+            productosContainer.innerHTML = '';
 
-                productos.forEach(producto => {
-                    const productoHtml = `
+            productos.forEach(producto => {
+                var precioEspecial = parseFloat(producto.pvp_tienda);
+                var precioNormal = parseFloat(producto.pref_tienda);
+                image_path = obtenerURLImagen(producto.imagen_principal)
+                const productoHtml = `
                         <div class="col-6 col-md-4 col-lg-3 mb-3">
                             <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                                <a href="producto_1.php?id=${producto.id_producto}" class="category-link">
+                                <a href="producto_1.php?id=${producto.id_producto_tienda}" class="category-link">
                                     <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
-                                        <img src="${producto.image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto}" style="object-fit: cover; width: 80%; height: 80%;">
-                                        ${producto.url_a1 ? `<img src="${producto.url_a1}" class="card-img-top hover-img" alt="Imagen Secundaria del Producto" style="object-fit: cover; width: 80%; height: 80%;">` : ''}
+                                        <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
                                     </div>
                                 </a>
                                 <div class="card-body d-flex flex-column">
-                                    <a href="producto_1.php?id=${producto.id_producto}" style="text-decoration: none; color:black;">
-                                        <h6 class="card-title titulo_producto">${producto.nombre_producto}</h6>
+                                    <a href="producto_1.php?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                        <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
                                     </a>
                                     <div class="product-footer mb-2">
-                                        <span class="text-muted">${producto.precio_normal > 0 ? get_row('perfil', 'moneda', 'id_perfil', 1) + producto.precio_normal : ''}</span>
-                                        <span class="text-price">${get_row('perfil', 'moneda', 'id_perfil', 1) + number_format(producto.precio_especial, 2)}</span>
+                                        <span class="text-muted">${number_format(precioNormal)}</span>
+                                        <span class="text-price">$ ${number_format(precioEspecial)}</span>
                                     </div>
-                                    <a class="btn btn-primary mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto}, ${producto.precio_especial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
+                                    <a class="btn btn-primary mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                                 </div>
                             </div>
                         </div>
                     `;
-                    productosContainer.innerHTML += productoHtml;
-                });
-            }
-        });
+                productosContainer.innerHTML += productoHtml;
+            });
+        }
+    });
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
