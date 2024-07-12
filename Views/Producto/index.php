@@ -107,7 +107,7 @@ $id_producto = $_GET['id'];
           $('#ahorra-container').hide();
 
           // Manejo de imágenes
-          var mainImageSrc = producto.imagen_principal;
+          var mainImageSrc = producto.imagen_principal_tienda;
           mainImageSrc = obtenerURLImagen(mainImageSrc);
           
           $('#main-image').attr('src', mainImageSrc);
@@ -117,7 +117,7 @@ $id_producto = $_GET['id'];
           // Suponemos que `producto.imagenes` es un array de URLs de imágenes
           if (producto.imagenes && producto.imagenes.length > 0) {
             producto.imagenes.forEach(function(imagen, index) {
-              var imagePath = imagen.imagen_principal_tienda;
+              var imagePath = imagen.url;
               imagePath = obtenerURLImagen(imagePath, SERVERURL);
               thumbnailsHtml += `
                   <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
