@@ -322,7 +322,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */?> !important;
+        background-color: <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */ ?> !important;
         opacity: <?php /* echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') */ ?> !important;
     }
 
@@ -534,4 +534,14 @@
     }
 
     /* fin footer del anterior sistema */
+
+    /* css faltante */
+    .tachado {
+        text-decoration: line-through;
+    }
+
+    /* .texto_boton {
+    color: <?php /* echo get_row('perfil', 'texto_boton', 'id_perfil', '1') */ ?> !important;
+  } */
+    /* fin css faltante */
 </style>
