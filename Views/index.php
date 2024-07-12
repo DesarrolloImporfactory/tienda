@@ -223,8 +223,8 @@
                     var $carousel = $("#productos-carousel");
                     let image_path = "";
                     productos.forEach(function(producto) {
-                        var precioEspecial = producto.pvp_tienda;
-                        var precioNormal = producto.pref_tienda;
+                        var precioEspecial = parseFloat(producto.pvp_tienda);
+                        var precioNormal = parseFloat(producto.pref_tienda);
 
                         var ahorro = 0;
                         if (precioNormal > 0) {
