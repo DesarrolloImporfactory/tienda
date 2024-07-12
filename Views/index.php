@@ -96,13 +96,14 @@
                 let indicators = '';
                 let inner = '';
                 $.each(data, function(index, banner) {
+                    image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}">
-                              <img src="${banner.img}" class="d-block w-100" alt="...">
+                              <img src="${image_path}" class="d-block w-100" alt="...">
                               <div class="carousel-caption d-none d-md-block">
-                                  <h5>${banner.title}</h5>
-                                  <p>${banner.description}</p>
+                                  <h5>${banner.titulo}</h5>
+                                  <p>${banner.texto_banner}</p>
                               </div>
                           </div>`;
                 });
