@@ -82,9 +82,9 @@ $id_producto = $_GET['id'];
 <script>
   $(document).ready(function() {
     var id_producto = '<?php echo $_GET['id']; ?>';
-    let formDataIconos = new FormData();
-    formDataIconos.append("id_plataforma", ID_PLATAFORMA);
-    formDataIconos.append("id_producto_tienda", id_producto);
+    let formData = new FormData();
+    formData.append("id_plataforma", ID_PLATAFORMA);
+    formData.append("id_producto_tienda", id_producto);
     $.ajax({
       url: SERVERURL + 'Tienda/obtener_productos_tienda',
       method: 'POST',
