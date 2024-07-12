@@ -13,9 +13,9 @@ class Productos extends Controller
         $this->views->render($this, "index");
     }
 
-    public function productos()
+    public function producto()
     {
-        $this->views->render($this, "productos");
+        $this->views->render($this, "producto");
     }
 
     public function categorias()
