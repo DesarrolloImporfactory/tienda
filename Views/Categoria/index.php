@@ -97,7 +97,7 @@
 
             <div class="right-column">
                 <div class="caja_categorias">
-                    <form id="ordenarForm" method="post">
+                    <!-- <form id="ordenarForm" method="post">
                         <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
                             <div class="custom-select">
                                 <div class="custom-select-trigger">Ordenar por</div>
@@ -107,10 +107,10 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Campos ocultos para mantener los valores de rango de precios -->
+                        
                         <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
                         <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
-                    </form>
+                    </form> -->
                     <!-- Botón que se muestra solo en pantallas pequeñas -->
                     <div class="d-lg-none filtro-flotante">
                         <button type="button" class="btn_filtro btn" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
