@@ -272,7 +272,7 @@
             const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
             const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
             const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            const idCategoria = new URLSearchParams(window.location.search).get('id_cat');
+            let idCategoria = new URLSearchParams(window.location.search).get('id_cat');
             if (idCategoria == null){
                 idCategoria = "";
             }
