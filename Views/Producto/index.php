@@ -84,7 +84,7 @@ $id_producto = $_GET['id'];
     var id_producto = '<?php echo $_GET['id']; ?>';
     let formDataIconos = new FormData();
     formDataIconos.append("id_plataforma", ID_PLATAFORMA);
-    formDataIconos.append("id", id_producto);
+    formDataIconos.append("id_producto_tienda", id_producto);
     $.ajax({
       url: SERVERURL + 'Tienda/obtenerobtener_productos_tienda',
       method: 'POST',
