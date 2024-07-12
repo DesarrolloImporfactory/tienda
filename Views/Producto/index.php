@@ -1,5 +1,5 @@
 <?php include 'Views/templates/header.php'; ?>
-<?php include 'Views/templates/css/producto_style.php'; ?>
+<?php include 'Views/Producto/css/producto_style.php'; ?>
 <?php
 
 $id_producto = $_GET['id'];
