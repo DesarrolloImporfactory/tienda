@@ -3,34 +3,8 @@
 <main style="background-color: #f9f9f9;">
     <!-- Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/img/banner_definitiva1.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Título 1</h5>
-                    <p>Descripción 1</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/banner_definitiva2.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Título 2</h5>
-                    <p>Descripción 2</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/img/banner_definitiva1.png" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Título 3</h5>
-                    <p>Descripción 3</p>
-                </div>
-            </div>
-        </div>
+        <div class="carousel-indicators"></div>
+        <div class="carousel-inner"></div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -109,6 +83,37 @@
 
 <script>
     $(document).ready(function() {
+        /* Slider */
+        let formDataSlider = new FormData();
+        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+        $.ajax({
+            url: SERVERURL+'Tienda/bannertienda',
+            method: 'POST',
+            data: formDataSlider,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                let indicators = '';
+                let inner = '';
+                $.each(data, function(index, banner) {
+                    const isActive = index === 0 ? 'active' : '';
+                    indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
+                    inner += `<div class="carousel-item ${isActive}">
+                              <img src="${banner.img}" class="d-block w-100" alt="...">
+                              <div class="carousel-caption d-none d-md-block">
+                                  <h5>${banner.title}</h5>
+                                  <p>${banner.description}</p>
+                              </div>
+                          </div>`;
+                });
+                $('.carousel-indicators').html(indicators);
+                $('.carousel-inner').html(inner);
+            },
+            error: function(error) {
+                console.error('Error fetching banner data', error);
+            }
+        });
+        /* Fin Slider */
         /* Categorias */
         let formDataCategoria = new FormData();
         formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
