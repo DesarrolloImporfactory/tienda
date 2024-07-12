@@ -118,9 +118,7 @@ $id_producto = $_GET['id'];
           if (producto.imagenes && producto.imagenes.length > 0) {
             producto.imagenes.forEach(function(imagen, index) {
               var imagePath = imagen.url;
-              if (!imagePath.toLowerCase().startsWith(subcadena)) {
-                imagePath = 'sysadmin/' + imagePath.replace("../..", "");
-              }
+              imagePath = obtenerURLImagen(imagePath, SERVERURL);
               thumbnailsHtml += `
                   <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
                     <img src="${imagePath}" class="img-thumbnail">
@@ -195,6 +193,24 @@ $id_producto = $_GET['id'];
     image.classList.add("cargada-correctamente");
   }
 
+
+  function obtenerURLImagen(imagePath, serverURL) {
+    // Verificar si el imagePath no es null
+    if (imagePath) {
+      // Verificar si el imagePath ya es una URL completa
+      if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+        // Si ya es una URL completa, retornar solo el imagePath
+        return imagePath;
+      } else {
+        // Si no es una URL completa, agregar el serverURL al inicio
+        return `${serverURL}${imagePath}`;
+      }
+    } else {
+      // Manejar el caso cuando imagePath es null
+      console.error("imagePath es null o undefined");
+      return null; // o un valor por defecto si prefieres
+    }
+  }
   /* Iconos */
   // Cargar iconos mediante AJAX
   let formDataIconos = new FormData();
