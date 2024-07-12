@@ -247,7 +247,7 @@
                         if (precioNormal > 0) {
                             ahorro = 100 - (precioEspecial * 100 / precioNormal);
                         }
-                        image_path = obtenerURLImagen(producto.imagen_principal, SERVERURL);
+                        image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
                         var productItem = `
                             <div class="item">
                                 <div class="grid-container">
