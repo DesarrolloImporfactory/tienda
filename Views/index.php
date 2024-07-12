@@ -221,29 +221,29 @@
 
                 if (productos && Array.isArray(productos)) {
                     var $carousel = $("#productos-carousel");
-
+                    let image_path = "";
                     productos.forEach(function(producto) {
-                        var precioEspecial = producto.valor3_producto;
-                        var precioNormal = producto.valor4_producto;
+                        var precioEspecial = producto.pvp_tienda;
+                        var precioNormal = producto.pref_tienda;
 
                         var ahorro = 0;
                         if (precioNormal > 0) {
                             ahorro = 100 - (precioEspecial * 100 / precioNormal);
                         }
-
+                        image_path = obtenerURLImagen(producto.imagen_principal, SERVERURL);
                         var productItem = `
                             <div class="item">
                                 <div class="grid-container">
                                     <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                         <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -120px">
-                                            <a href="producto_1.php?id=${producto.id_producto}">
-                                                <img src="${producto.image_path.startsWith('http') ? producto.image_path : 'sysadmin/' + producto.image_path.replace('../..', '')}" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 55%; height: 55%; margin-top: 10px;">
+                                            <a href="${SERVERURL}producto_1.php?id=${producto.id_producto_tienda}">
+                                                <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 55%; height: 55%; margin-top: 10px;">
                                             </a>
                                         </div>
                                         <div class="card-body d-flex flex-column">
                                             <p class="card-text flex-grow-1">
-                                                <a href="producto_1.php?id=${producto.id_producto}" style="text-decoration: none; color:black;">
-                                                    <strong>${producto.nombre_producto}</strong>
+                                                <a href="${SERVERURL}producto_1.php?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                                    <strong>${producto.nombre_producto_tienda}</strong>
                                                 </a>
                                             </p>
                                             <div class="product-footer mb-2">
@@ -267,7 +267,7 @@
                                                     ` : ''}
                                                 </div>
                                             </div>
-                                            <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto_1.php?id=${producto.id_producto}">Comprar</a>
+                                            <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${SERVERURL}producto_1.php?id=${producto.id_producto_tienda}">Comprar</a>
                                         </div>
                                     </div>
                                 </div>
@@ -288,6 +288,24 @@
                 console.log('Error al cargar los productos destacados:', error);
             }
         });
+
+        function obtenerURLImagen(imagePath, serverURL) {
+            // Verificar si el imagePath no es null
+            if (imagePath) {
+                // Verificar si el imagePath ya es una URL completa
+                if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                    // Si ya es una URL completa, retornar solo el imagePath
+                    return imagePath;
+                } else {
+                    // Si no es una URL completa, agregar el serverURL al inicio
+                    return `${serverURL}${imagePath}`;
+                }
+            } else {
+                // Manejar el caso cuando imagePath es null
+                console.error("imagePath es null o undefined");
+                return null; // o un valor por defecto si prefieres
+            }
+        }
         /* Fin Destacados */
 
         /* Iconos */
@@ -392,7 +410,7 @@
                     console.error('Error al parsear la respuesta:', e);
                     return;
                 }
-                
+
                 if (testimonios && Array.isArray(testimonios)) {
                     var $carousel = $("#testimonios-carousel");
 
