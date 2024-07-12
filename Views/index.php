@@ -93,10 +93,12 @@
             contentType: false,
             processData: false,
             success: function(data) {
-                console.log(banner.fondo_banner);
+                
                 let indicators = '';
                 let inner = '';
                 $.each(data, function(index, banner) {
+                    console.log(banner.fondo_banner);
+                    
                     image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
