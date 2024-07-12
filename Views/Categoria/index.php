@@ -354,8 +354,8 @@
                                         <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
                                     </a>
                                     <div class="product-footer mb-2">
-                                        <span class="text-muted">${number_format(precioNormal)}</span>
-                                        <span class="text-price">$ ${number_format(precioEspecial)}</span>
+                                        <span class="text-muted">${precioNormal.toFixed(2)}</span>
+                                        <span class="text-price">$ ${precioEspecial.toFixed(2)}</span>
                                     </div>
                                     <a class="btn btn-primary mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                                 </div>
