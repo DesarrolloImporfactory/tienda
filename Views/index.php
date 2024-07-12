@@ -115,6 +115,7 @@
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                   <h5>${banner.titulo}</h5>
                                   <p>${banner.texto_banner}</p>
+                                  <button class="btn btn-success" href="${banner.enlace_boton}">${banner.texto_boton}</button>
                               </div>
                           </div>`;
                 });
