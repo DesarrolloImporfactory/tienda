@@ -340,8 +340,8 @@
             productos.forEach(producto => {
                 var precioEspecial = parseFloat(producto.pvp_tienda);
                 var precioNormal = parseFloat(producto.pref_tienda);
-                console.log(producto.imagen_principal);
-                image_path = obtenerURLImagen(producto.imagen_principal)
+                
+                image_path = obtenerURLImagen(producto.imagen_principal_tienda)
                 const productoHtml = `
                         <div class="col-6 col-md-4 col-lg-3 mb-3">
                             <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
