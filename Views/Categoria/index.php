@@ -302,7 +302,7 @@
                 formData.append('precio_maximo', valorMaximo);
                 formData.append('ordenar_por', ordenarPor);
 
-                fetch('URL_A_TU_API', {
+                fetch(SERVERURL+'Tienda/obtener_productos_tienda_filtro', {
                     method: 'POST',
                     body: formData
                 })
