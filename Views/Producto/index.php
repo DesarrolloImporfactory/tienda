@@ -86,7 +86,7 @@ $id_producto = $_GET['id'];
     formDataIconos.append("id_plataforma", ID_PLATAFORMA);
     formDataIconos.append("id_producto_tienda", id_producto);
     $.ajax({
-      url: SERVERURL + 'Tienda/obtenerobtener_productos_tienda',
+      url: SERVERURL + 'Tienda/obtener_productos_tienda',
       method: 'POST',
       data: formData,
       processData: false, // No procesar los datos
