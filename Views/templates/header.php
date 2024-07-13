@@ -26,12 +26,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 
     <script>
-        let LOGO_TIENDA = response[0].logo_url;
-        let COLOR_BACKGROUND = response[0].color;
-        let COLOR_BOTONES = response[0].color_botones;
-        let COLOR_TEXTO_BOTON = response[0].texto_boton;
-        let TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
-        let COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
+        let LOGO_TIENDA = "";
+        let COLOR_BACKGROUND = "";
+        let COLOR_BOTONES = "";
+        let COLOR_TEXTO_BOTON = "";
+        let TEXTO_BTN_SLIEDER = "";
+        let COLOR_TEXTO_CABECERA = "";
         $(document).ready(function() {
             let formData = new FormData();
             formData.append("id_plataforma", ID_PLATAFORMA);
