@@ -42,7 +42,7 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Proyecto PHP</title>
+    <title>Tienda</title>
     <link rel="icon" href="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -74,7 +74,7 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
                         <a class="nav-link" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Catálogo</a>
+                        <a class="nav-link" href="categoria?id_cat=${categoria.id_linea}">Catálogo</a>
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="#">
