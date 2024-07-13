@@ -1,7 +1,7 @@
 <style>
     /* header */
     .navbar-custom {
-        background-color: <?php echo COLOR_BACKGROUND ?>;
+        background-color: <?php echo COLOR_BACKGROUND; ?>;
         /* Ajusta el color según sea necesario */
     }
 
@@ -54,7 +54,7 @@
 
     .marquee-container {
         overflow: hidden;
-        background-color: #FF3B30;
+        background-color: <?php echo COLOR_BACKGROUND;?>;
         color: white;
         width: 100%;
         height: 40px;
