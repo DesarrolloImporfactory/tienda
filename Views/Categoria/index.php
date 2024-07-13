@@ -267,8 +267,11 @@
             const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
             const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
             const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            const idPlataforma = ID_PLATAFORMA;
+            let idPlataforma = ID_PLATAFORMA;
 
+            if (location.search == null) {
+                idPlataforma = " ";
+            }
             const formData = new FormData();
             formData.append('id_plataforma', idPlataforma);
             formData.append('id_categoria', idCategoria);
@@ -277,14 +280,14 @@
             formData.append('ordenar_por', ordenarPor);
 
             fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                mostrarProductos(data);
-            })
-            .catch(error => console.error('Error:', error));
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    mostrarProductos(data);
+                })
+                .catch(error => console.error('Error:', error));
         }
 
         // Función para actualizar los productos
@@ -308,14 +311,14 @@
             formData.append('ordenar_por', ordenarPor);
 
             fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                mostrarProductos(data);
-            })
-            .catch(error => console.error('Error:', error));
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    mostrarProductos(data);
+                })
+                .catch(error => console.error('Error:', error));
         }
 
         // Función para obtener URL de la imagen
