@@ -78,7 +78,7 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="#">
-                    <img src="" id="imagen_logo" alt="IMPORT SHOP">
+                    <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" id="imagen_logo" alt="IMPORT SHOP">
                 </a>
                 <form class="d-flex ms-auto">
                     <input class="form-control search-box" type="search" placeholder="Buscar" aria-label="Buscar">
