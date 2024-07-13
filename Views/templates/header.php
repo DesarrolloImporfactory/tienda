@@ -63,7 +63,7 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand d-lg-none ms-auto" href="#">
-                <img src="/img/logo_imporsuit.png" alt="IMPORT SHOP">
+                <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
