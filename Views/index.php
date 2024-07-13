@@ -146,7 +146,7 @@
                 }
 
                 categorias.forEach(categoria => {
-                    let imagePath = obtenerURLImagen(categoria.imagen);
+                    let imagePath = obtenerURLImagen(categoria.imagen,SERVERURL);
                     let categoriaHtml = `
                         <div class="item">
                             <div class="category-container d-flex flex-column align-items-center">
