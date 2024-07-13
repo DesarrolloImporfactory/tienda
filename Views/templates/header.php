@@ -24,6 +24,8 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 
+    <?php include 'Views/templates/css/header_style.php'; ?>
+    
     <script>
         let LOGO_TIENDA = "";
         let COLOR_BACKGROUND = "";
@@ -53,8 +55,6 @@
             });
         });
     </script>
-
-    <?php include 'Views/templates/css/header_style.php'; ?>
 </head>
 
 <body>
