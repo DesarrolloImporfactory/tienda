@@ -89,7 +89,6 @@
                             <p>Valor máximo: $<span id="valorMaximo-left">0</span></p>
                             <input type="hidden" id="inputValorMinimo-left" name="valorMinimo" value="0">
                             <input type="hidden" id="inputValorMaximo-left" name="valorMaximo" value="0">
-                            <button type="submit" class="btn-filter">Filtrar</button>
                         </form>
                     </div>
                 </div>
