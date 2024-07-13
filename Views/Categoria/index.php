@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!-- Campos ocultos para mantener los valores de rango de precios -->
                         <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
                         <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
                     </form>
@@ -272,10 +272,7 @@
             const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
             const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
             const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            let idCategoria = new URLSearchParams(window.location.search).get('id_cat');
-            if (idCategoria == null){
-                idCategoria = "";
-            }
+            const idCategoria = new URLSearchParams(window.location.search).get('id_cat');
             const idPlataforma = ID_PLATAFORMA;
 
             document.getElementById('hiddenValorMinimo').value = valorMinimo;
@@ -288,15 +285,24 @@
             formData.append('precio_maximo', valorMaximo);
             formData.append('ordenar_por', ordenarPor);
 
+            console.log('Datos enviados a la API:', {
+                id_plataforma: idPlataforma,
+                id_categoria: idCategoria,
+                precio_minimo: valorMinimo,
+                precio_maximo: valorMaximo,
+                ordenar_por: ordenarPor
+            });
+
             fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                mostrarProductos(data);
-            })
-            .catch(error => console.error('Error:', error));
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Datos recibidos de la API:', data);
+                    mostrarProductos(data);
+                })
+                .catch(error => console.error('Error:', error));
         }
 
         // Función para obtener URL de la imagen
@@ -317,6 +323,11 @@
         function mostrarProductos(productos) {
             const productosContainer = document.getElementById('productosContainer');
             productosContainer.innerHTML = '';
+
+            if (!Array.isArray(productos)) {
+                console.error('Productos no es un array:', productos);
+                return;
+            }
 
             productos.forEach(producto => {
                 const precioEspecial = parseFloat(producto.pvp_tienda);
