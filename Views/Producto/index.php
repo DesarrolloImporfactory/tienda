@@ -181,7 +181,7 @@ $id_producto = $_GET['id'];
   function agregar_tmp(id_producto, precio, id_inventario) {
     $("#id_productoTmp").val(id_producto);
     $("#precio_productoTmp").val(precio);
-    $("#precio_productoTmp").val(id_inventario);
+    $("#id_inventario").val(id_inventario);
 
     $("#boton_compraModal").modal("show");
   }
