@@ -25,40 +25,39 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 
-    <script>
-        let LOGO_TIENDA = "";
-        let COLOR_BACKGROUND = "";
-        let COLOR_BOTONES = "";
-        let COLOR_TEXTO_BOTON = "";
-        let TEXTO_BTN_SLIEDER = "";
-        let COLOR_TEXTO_CABECERA = "";
-        $(document).ready(function() {
-            let formData = new FormData();
-            formData.append("id_plataforma", ID_PLATAFORMA);
-            // Realiza la solicitud AJAX para obtener la lista de bodegas
-            $.ajax({
-                url: SERVERURL + "Tienda/obtener_informacion_tienda",
-                type: "POST",
-                data: formData,
-                processData: false, // No procesar los datos
-                contentType: false, // No establecer ningún tipo de contenido
-                dataType: "json",
-                success: function(response) {
-                    LOGO_TIENDA = response[0].logo_url;
-                    COLOR_BACKGROUND = response[0].color;
-                    COLOR_BOTONES = response[0].color_botones;
-                    COLOR_TEXTO_BOTON = response[0].texto_boton;
-                    TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
-                    COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
+    <?php
+   
 
-                    $("#imagen_logo").attr("src", SERVERURL+LOGO_TIENDA).show();
-                },
-                error: function(error) {
-                    console.error("Error al obtener la lista de bodegas:", error);
-                },
-            });
-        });
-    </script>
+    // Inicializa cURL
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_informacion_tienda');
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['id_plataforma' => ID_PLATAFORMA]));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Ejecuta la solicitud y obtiene la respuesta
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    // Verifica si se obtuvo una respuesta
+    if ($response === false) {
+        die('Error al obtener la información de la tienda.');
+    }
+
+    // Decodifica la respuesta JSON
+    $data = json_decode($response, true);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        die('Error al decodificar la respuesta JSON: ' . json_last_error_msg());
+    }
+
+    // Define las constantes
+    define('LOGO_TIENDA', $data[0]['logo_url']);
+    define('COLOR_BACKGROUND', $data[0]['color']);
+    define('COLOR_BOTONES', $data[0]['color_botones']);
+    define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
+    define('TEXTO_BTN_SLIEDER', $data[0]['texto_btn_slider']);
+    define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
+    ?>
 
 </head>
 
@@ -66,7 +65,7 @@
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
             <a class="navbar-brand d-lg-none ms-auto" href="#">
-                <img src="/img/logo_imporsuit.png" alt="IMPORT SHOP">
+                <img src="<?php echo SERVERURL + LOGO_TIENDA?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -81,7 +80,7 @@
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="#">
-                    <img src="" id = "imagen_logo" alt="IMPORT SHOP">
+                    <img src="" id="imagen_logo" alt="IMPORT SHOP">
                 </a>
                 <form class="d-flex ms-auto">
                     <input class="form-control search-box" type="search" placeholder="Buscar" aria-label="Buscar">
