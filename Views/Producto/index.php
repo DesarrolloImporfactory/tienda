@@ -144,7 +144,7 @@ $id_producto = $_GET['id'];
 
           // Botón de comprar
           $('#comprar-ahora').on('click', function() {
-            agregar_tmp(id_producto, parseFloat(producto.pvp_tienda));
+            agregar_tmp(id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
           });
         } else {
           console.error('No se encontraron productos.');
@@ -178,9 +178,10 @@ $id_producto = $_GET['id'];
     });
   });
 
-  function agregar_tmp(id_producto, precio) {
+  function agregar_tmp(id_producto, precio, id_inventario) {
     $("#id_productoTmp").val(id_producto);
     $("#precio_productoTmp").val(precio);
+    $("#precio_productoTmp").val(id_inventario);
 
     $("#boton_compraModal").modal("show");
   }

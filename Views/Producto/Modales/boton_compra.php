@@ -59,6 +59,7 @@
                 <form id="boton_compra">
                     <input type="hidden" id="id_productoTmp" name="id_productoTmp">
                     <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
+                    <input type="hidden" id="id_inventario" name="id_inventario">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Nombre y Apellido</label>
@@ -124,6 +125,7 @@
 
         let formData = new FormData();
         formData.append("id_plataforma", ID_PLATAFORMA);
+        formData.append("id_inventario", id_inventario);
         formData.append("id_producto", $('#id_productoTmp').val());
         formData.append("precio_producto", $('#precio_productoTmp').val());
         formData.append("nombre", $('#nombre').val());
