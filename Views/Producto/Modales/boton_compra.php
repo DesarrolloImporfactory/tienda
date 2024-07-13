@@ -125,7 +125,7 @@
 
         let formData = new FormData();
         formData.append("id_plataforma", ID_PLATAFORMA);
-        formData.append("id_inventario", id_inventario);
+        formData.append("id_inventario", $('#id_inventario').val());
         formData.append("id_producto", $('#id_productoTmp').val());
         formData.append("precio_producto", $('#precio_productoTmp').val());
         formData.append("nombre", $('#nombre').val());
