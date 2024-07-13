@@ -1,7 +1,8 @@
+<?php include 'Views/templates/css/header_style.php'; ?>
 <script>
     const SERVERURL = "<?php echo SERVERURL ?>";
-    const MARCA = "<?php echo MARCA ?>";
-    const ID_PLATAFORMA = "<?php echo ID_PLATAFORMA ?>";
+    const MARCA = "<?php echo MARCA?>";
+    const ID_PLATAFORMA = "<?php echo ID_PLATAFORMA?>";
 </script>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,43 +24,7 @@
     <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-
-    <script>
-        let LOGO_TIENDA = "";
-        let COLOR_BACKGROUND = "";
-        let COLOR_BOTONES = "";
-        let COLOR_TEXTO_BOTON = "";
-        let TEXTO_BTN_SLIEDER = "";
-        let COLOR_TEXTO_CABECERA = "";
-        $(document).ready(function() {
-            let formData = new FormData();
-            formData.append("id_plataforma", ID_PLATAFORMA);
-            // Realiza la solicitud AJAX para obtener la lista de bodegas
-            $.ajax({
-                url: SERVERURL + "Tienda/obtener_informacion_tienda",
-                type: "POST",
-                data: formData,
-                processData: false, // No procesar los datos
-                contentType: false, // No establecer ningún tipo de contenido
-                dataType: "json",
-                success: function(response) {
-                    LOGO_TIENDA = response[0].logo_url;
-                    COLOR_BACKGROUND = response[0].color;
-                    COLOR_BOTONES = response[0].color_botones;
-                    COLOR_TEXTO_BOTON = response[0].texto_boton;
-                    TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
-                    COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
-
-                    
-                },
-                error: function(error) {
-                    console.error("Error al obtener la lista de bodegas:", error);
-                },
-            });
-        });
-    </script>
-
-    <?php include 'Views/templates/css/header_style.php'; ?>
+    
 </head>
 
 <body>
