@@ -277,6 +277,24 @@ $id_producto = $_GET['id'];
   });
   /* Fin Iconos */
   // Función para cargar provincias
+  $(document).ready(function() {
+    // Inicializar Select2 en los selects
+    $("#provincia").select2({
+      placeholder: "Selecciona una opción",
+      allowClear: true,
+    });
+
+    $("#ciudad").select2({
+      placeholder: "Selecciona una opción",
+      allowClear: true,
+    });
+
+    cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
+
+    // Llamar a cargarCiudades cuando se seleccione una provincia
+    $("#provincia").on("change", cargarCiudades);
+  });
+
   function cargarProvincias() {
     $.ajax({
       url: "" + SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
@@ -302,23 +320,6 @@ $id_producto = $_GET['id'];
     });
   }
 
-  $(document).ready(function() {
-    // Inicializar Select2 en los selects
-    $("#provincia").select2({
-      placeholder: "Selecciona una opción",
-      allowClear: true,
-    });
-
-    $("#ciudad").select2({
-      placeholder: "Selecciona una opción",
-      allowClear: true,
-    });
-
-    cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
-  });
-
-  // Llamar a cargarCiudades cuando se seleccione una provincia
-  $("#provincia").on("change", cargarCiudades);
   // Función para cargar ciudades según la provincia seleccionada
   function cargarCiudades() {
     let provinciaId = $("#provincia").val();
