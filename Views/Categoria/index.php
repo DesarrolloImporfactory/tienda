@@ -208,7 +208,7 @@
                         let categoryHtml = `
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading-${categoria.id_linea}">
-                                    <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="filtrarPorCategoria(${categoria.id_linea})">
+                                    <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="window.location.href='categoria?id_cat=${categoria.id_linea}'">
                                         ${categoria.nombre_linea}
                                     </button>
                                 </h2>
@@ -262,29 +262,9 @@
             });
         }
 
-        // Función para filtrar productos por categoría
-        function filtrarPorCategoria(idCategoria) {
-            const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
-            const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
-            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            const idPlataforma = ID_PLATAFORMA;
-
-            const formData = new FormData();
-            formData.append('id_plataforma', idPlataforma);
-            formData.append('id_categoria', idCategoria);
-            formData.append('precio_minimo', valorMinimo);
-            formData.append('precio_maximo', valorMaximo);
-            formData.append('ordenar_por', ordenarPor);
-
-            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                mostrarProductos(data);
-            })
-            .catch(error => console.error('Error:', error));
+        // Función para filtrar productos
+        function filtrarProductos() {
+            actualizarProductos();
         }
 
         // Función para actualizar los productos
@@ -305,15 +285,24 @@
             formData.append('precio_maximo', valorMaximo);
             formData.append('ordenar_por', ordenarPor);
 
+            console.log('Datos enviados a la API:', {
+                id_plataforma: idPlataforma,
+                id_categoria: idCategoria,
+                precio_minimo: valorMinimo,
+                precio_maximo: valorMaximo,
+                ordenar_por: ordenarPor
+            });
+
             fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                mostrarProductos(data);
-            })
-            .catch(error => console.error('Error:', error));
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Datos recibidos de la API:', data);
+                    mostrarProductos(data);
+                })
+                .catch(error => console.error('Error:', error));
         }
 
         // Función para obtener URL de la imagen
