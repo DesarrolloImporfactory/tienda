@@ -36,6 +36,26 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
     const MARCA = "<?php echo MARCA ?>";
     const ID_PLATAFORMA = "<?php echo ID_PLATAFORMA ?>";
 </script>
+
+<?php
+function obtenerPrimeraSeccion($url) {
+    // Obtener los componentes de la URL
+    $parsed_url = parse_url($url);
+
+    // Construir la primera sección de la URL
+    $primera_seccion = $parsed_url['scheme'] . '://' . $parsed_url['host'];
+
+    return $primera_seccion;
+}
+
+// URL de ejemplo
+$url = "https://tony.imporsuitpro.com/categoria";
+
+// Obtener la primera sección de la URL
+$primera_seccion = obtenerPrimeraSeccion($url);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -62,7 +82,7 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand d-lg-none ms-auto" href="#">
+            <a class="navbar-brand d-lg-none ms-auto" href="<?php echo $primera_seccion; ?>">
                 <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,13 +91,13 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav" style="font-size: 20px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Inicio</a>
+                        <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="categoria">Catálogo</a>
                     </li>
                 </ul>
-                <a class="navbar-brand d-none d-lg-block mx-auto" href="">
+                <a class="navbar-brand d-none d-lg-block mx-auto" href="<?php echo $primera_seccion; ?>">
                     <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" id="imagen_logo" alt="IMPORT SHOP">
                 </a>
                 <form class="d-flex ms-auto">
