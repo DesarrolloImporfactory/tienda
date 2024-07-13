@@ -1,7 +1,7 @@
 <style>
     /* header */
     .navbar-custom {
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color: #FF3B30;
         /* Ajusta el color según sea necesario */
     }
 
