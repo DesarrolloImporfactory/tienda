@@ -113,7 +113,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" form="boton_compra">Solicitar</button>
+                <button type="submit" class="btn btn-primary" form="boton_compra">COMPLETA TU COMPRA</button>
             </div>
         </div>
     </div>
