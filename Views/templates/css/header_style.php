@@ -544,8 +544,8 @@
     }
 
     .texto_boton {
-        color: <?php echo COLOR_BOTONES; ?> !important;
-        background-color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
+        color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
+        background-color: <?php echo COLOR_BOTONES; ?> !important;
     }
 
     .color_icono {
