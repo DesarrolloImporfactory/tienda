@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-md-6">
                             <label for="ciudad" class="form-label">Ciudad</label>
-                            <select id="ciudad" class="form-select">
+                            <select id="ciudad" class="form-select" disabled>
                                 <option selected>Selecciona una opción</option>
                                 <!-- Agregar opciones aquí -->
                             </select>
