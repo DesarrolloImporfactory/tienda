@@ -123,16 +123,20 @@
         event.preventDefault(); // Evitar el envío normal del formulario
 
         let formData = new FormData();
-        formData.append("valor", $('#monto').val());
-        if ($('#cuenta').val() == "") {
-            formData.append("id_cuenta", $('#formadePago').val());
-        } else {
-            formData.append("id_cuenta", $('#cuenta').val());
-        }
-        formData.append("otro", $('#otroId').val());
+        formData.append("id_plataforma", ID_PLATAFORMA);
+        formData.append("id_producto", $('#id_productoTmp').val());
+        formData.append("precio_producto", $('#precio_productoTmp').val());
+        formData.append("nombre", $('#nombre').val());
+        formData.append("telefono", $('#telefono').val());
+        formData.append("provincia", $('#provincia').val());
+        formData.append("ciudad", $('#ciudad').val());
+        formData.append("calle_principal", $('#calle_principal').val());
+        formData.append("calle_secundaria", $('#calle_secundaria').val());
+        formData.append("referencia", $('#referencia').val());
+        formData.append("observacion", $('#observacion').val());
 
         $.ajax({
-            url: SERVERURL + 'wallet/solicitarPago',
+            url: SERVERURL + 'Tienda/guardar_pedido',
             method: 'POST',
             data: formData,
             processData: false, // No procesar los datos
