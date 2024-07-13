@@ -368,7 +368,7 @@
                                     <span class="text-muted">${precioNormal.toFixed(2)}</span>
                                     <span class="text-price">$${precioEspecial.toFixed(2)}</span>
                                 </div>
-                                <a class="btn btn-primary mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
+                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                             </div>
                         </div>
                     </div>
