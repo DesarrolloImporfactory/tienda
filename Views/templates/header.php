@@ -51,9 +51,7 @@
                     TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
                     COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
 
-                    // Cambiar el estilo CSS dinámicamente
-                    $('.noUi-connect').css('background-color', COLOR_BACKGROUND);
-                    $('.texto_boton').css('color', COLOR_TEXTO_BOTON);
+                    $("#imagen_logo").attr("src", SERVERURL+LOGO_TIENDA).show();
                 },
                 error: function(error) {
                     console.error("Error al obtener la lista de bodegas:", error);
@@ -83,7 +81,7 @@
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="#">
-                    <img src="/img/logo_imporsuit.png" alt="IMPORT SHOP">
+                    <img src="" id = "imagen_logo" alt="IMPORT SHOP">
                 </a>
                 <form class="d-flex ms-auto">
                     <input class="form-control search-box" type="search" placeholder="Buscar" aria-label="Buscar">
