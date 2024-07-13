@@ -1,8 +1,7 @@
-<?php include 'Views/templates/css/header_style.php'; ?>
 <script>
     const SERVERURL = "<?php echo SERVERURL ?>";
-    const MARCA = "<?php echo MARCA?>";
-    const ID_PLATAFORMA = "<?php echo ID_PLATAFORMA?>";
+    const MARCA = "<?php echo MARCA ?>";
+    const ID_PLATAFORMA = "<?php echo ID_PLATAFORMA ?>";
 </script>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,6 +23,25 @@
     <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Realiza la solicitud AJAX para obtener la lista de bodegas
+            $.ajax({
+                url: SERVERURL + "Tienda/obtener_informacion_tienda",
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    
+                },
+                error: function(error) {
+                    console.error("Error al obtener la lista de bodegas:", error);
+                },
+            });
+        });
+    </script>
+
+    <?php include 'Views/templates/css/header_style.php'; ?>
 </head>
 
 <body>
