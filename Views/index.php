@@ -146,12 +146,12 @@
                 }
 
                 categorias.forEach(categoria => {
-                    let imagePath = categoria.imagen ? categoria.imagen : 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
+                    let imagePath = obtenerURLImagen(categoria.imagen);
                     let categoriaHtml = `
                         <div class="item">
                             <div class="category-container d-flex flex-column align-items-center">
                                 <a href="categoria?id_cat=${categoria.id_linea}" class="category-link">
-                                    <div class="category-image rounded-circle" style="background-image: url('sysadmin/${imagePath}');"></div>
+                                    <div class="category-image rounded-circle" style="background-image: url('${imagePath}');"></div>
                                 </a>
                                 <a class="btn category-button boton texto_boton" style="border-radius: 0.5rem;" href="categoria?id_cat=${categoria.id_linea}" role="button">
                                     ${categoria.nombre_linea}
