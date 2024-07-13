@@ -38,7 +38,11 @@
                 dataType: "json",
                 success: function(response) {
                     const LOGO_TIENDA = response[0].logo_url;
-                    console.log(LOGO_TIENDA);
+                    const COLOR_BACKGROUND = response[0].color;
+                    const COLOR_BOTONES = response[0].color_botones;
+                    const COLOR_TEXTO_BOTON = response[0].texto_boton;
+                    const TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
+                    const COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
                 },
                 error: function(error) {
                     console.error("Error al obtener la lista de bodegas:", error);
