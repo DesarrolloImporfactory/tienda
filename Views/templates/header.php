@@ -25,14 +25,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 
     <?php include 'Views/templates/css/header_style.php'; ?>
-    
+
     <script>
-        let LOGO_TIENDA = "";
-        let COLOR_BACKGROUND = "";
-        let COLOR_BOTONES = "";
-        let COLOR_TEXTO_BOTON = "";
-        let TEXTO_BTN_SLIEDER = "";
-        let COLOR_TEXTO_CABECERA = "";
+        
         $(document).ready(function() {
             let formData = new FormData();
             formData.append("id_plataforma", ID_PLATAFORMA);
