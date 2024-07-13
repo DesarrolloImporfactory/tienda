@@ -94,11 +94,11 @@ $id_producto = $_GET['id'];
       contentType: false, // No establecer ningún tipo de contenido
       dataType: "json",
       success: function(response) {
-        
+
         if (response.length > 0) {
-          
+
           var producto = response[0]; // Asumimos que el primer producto es el deseado
-    
+
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
 
@@ -109,7 +109,7 @@ $id_producto = $_GET['id'];
           // Manejo de imágenes
           var mainImageSrc = producto.imagen_principal_tienda;
           mainImageSrc = obtenerURLImagen(mainImageSrc);
-          
+
           $('#main-image').attr('src', mainImageSrc);
 
           // Miniaturas
@@ -178,7 +178,10 @@ $id_producto = $_GET['id'];
   });
 
   function agregar_tmp(id_producto, precio) {
-    // Lógica para agregar al carrito
+    $("#id_productoTmp").val(id_producto);
+    $("#precio_productoTmp").val(precio);
+
+    $("#boton_compraModal").modal("show");
   }
 
   // Función llamada si la imagen no puede cargarse

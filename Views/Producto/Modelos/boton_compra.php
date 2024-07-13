@@ -57,8 +57,8 @@
             </div>
             <div class="modal-body">
                 <form id="boton_compra">
-                    <input type="hidden" id="id_producto" name="id_producto">
-                    <input type="hidden" id="precio_producto" name="precio_producto">
+                    <input type="hidden" id="id_productoTmp" name="id_productoTmp">
+                    <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="nombre" class="form-label">Nombre y Apellido</label>
@@ -112,7 +112,6 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="submit" class="btn btn-primary" form="boton_compra">Solicitar</button>
             </div>
         </div>
