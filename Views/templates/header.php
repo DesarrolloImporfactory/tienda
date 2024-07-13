@@ -1,3 +1,35 @@
+<?php
+// Inicializa cURL
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_informacion_tienda');
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['id_plataforma' => ID_PLATAFORMA]));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Ejecuta la solicitud y obtiene la respuesta
+$response = curl_exec($ch);
+curl_close($ch);
+
+// Verifica si se obtuvo una respuesta
+if ($response === false) {
+    die('Error al obtener la información de la tienda.');
+}
+
+// Decodifica la respuesta JSON
+$data = json_decode($response, true);
+if (json_last_error() !== JSON_ERROR_NONE) {
+    die('Error al decodificar la respuesta JSON: ' . json_last_error_msg());
+}
+
+// Define las constantes
+define('LOGO_TIENDA', $data[0]['logo_url']);
+define('COLOR_BACKGROUND', $data[0]['color']);
+define('COLOR_BOTONES', $data[0]['color_botones']);
+define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
+define('TEXTO_BTN_SLIEDER', $data[0]['texto_btn_slider']);
+define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
+?>
+
 <?php include 'Views/templates/css/header_style.php'; ?>
 <script>
     const SERVERURL = "<?php echo SERVERURL ?>";
@@ -24,42 +56,6 @@
     <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
-
-    <?php
-   
-
-    // Inicializa cURL
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_informacion_tienda');
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['id_plataforma' => ID_PLATAFORMA]));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    // Ejecuta la solicitud y obtiene la respuesta
-    $response = curl_exec($ch);
-    curl_close($ch);
-
-    // Verifica si se obtuvo una respuesta
-    if ($response === false) {
-        die('Error al obtener la información de la tienda.');
-    }
-
-    // Decodifica la respuesta JSON
-    $data = json_decode($response, true);
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        die('Error al decodificar la respuesta JSON: ' . json_last_error_msg());
-    }
-
-    // Define las constantes
-    define('LOGO_TIENDA', $data[0]['logo_url']);
-    define('COLOR_BACKGROUND', $data[0]['color']);
-    define('COLOR_BOTONES', $data[0]['color_botones']);
-    define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
-    define('TEXTO_BTN_SLIEDER', $data[0]['texto_btn_slider']);
-    define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
-
-    echo LOGO_TIENDA;
-    ?>
 
 </head>
 
