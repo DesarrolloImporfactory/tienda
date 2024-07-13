@@ -271,6 +271,8 @@
 
             if (location.search == null) {
                 idPlataforma = " ";
+            } else {
+                idPlataforma = location.search.split('=')[1];
             }
             const formData = new FormData();
             formData.append('id_plataforma', idPlataforma);
