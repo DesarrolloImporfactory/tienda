@@ -19,8 +19,8 @@
     <!-- animacion -->
     <div class="marquee-container">
         <div class="marquee">
-            <p class="marquee-content">- PRUEBA -</p>
-            <p class="marquee-content">- PRUEBA -</p>
+            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
+            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
         </div>
     </div>
     <!-- fin animacion -->
@@ -61,8 +61,8 @@
     <!-- animacion -->
     <div class="marquee-container">
         <div class="marquee">
-            <p class="marquee-content">- PRUEBA -</p>
-            <p class="marquee-content">- PRUEBA -</p>
+            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
+            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
         </div>
     </div>
     <!-- fin animacion -->
