@@ -26,13 +26,17 @@
 
     <script>
         $(document).ready(function() {
+            let formData = new FormData();
+            formData.append("id_plataforma", ID_PLATAFORMA);
             // Realiza la solicitud AJAX para obtener la lista de bodegas
             $.ajax({
                 url: SERVERURL + "Tienda/obtener_informacion_tienda",
-                type: "GET",
-                dataType: "json",
+                type: "POST",
+                data: formData,
+                processData: false, // No procesar los datos
+                contentType: false, // No establecer ningún tipo de contenido
                 success: function(response) {
-                    
+
                 },
                 error: function(error) {
                     console.error("Error al obtener la lista de bodegas:", error);
