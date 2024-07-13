@@ -32,29 +32,28 @@
         let COLOR_TEXTO_BOTON = response[0].texto_boton;
         let TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
         let COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
-        $(document).ready(function() {
-            let formDataInfoTienda = new FormDataInfoTienda();
-            formDataInfoTienda.append("id_plataforma", ID_PLATAFORMA);
-            // Realiza la solicitud AJAX para obtener la lista de bodegas
-            $.ajax({
-                url: SERVERURL + "Tienda/obtener_informacion_tienda",
-                type: "POST",
-                data: formDataInfoTienda,
-                processData: false, // No procesar los datos
-                contentType: false, // No establecer ningún tipo de contenido
-                dataType: "json",
-                success: function(response) {
-                    LOGO_TIENDA = response[0].logo_url;
-                    COLOR_BACKGROUND = response[0].color;
-                    COLOR_BOTONES = response[0].color_botones;
-                    COLOR_TEXTO_BOTON = response[0].texto_boton;
-                    TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
-                    COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
-                },
-                error: function(error) {
-                    console.error("Error al obtener la lista de bodegas:", error);
-                },
-            });
+
+        let formDataInfoTienda = new FormDataInfoTienda();
+        formDataInfoTienda.append("id_plataforma", ID_PLATAFORMA);
+        // Realiza la solicitud AJAX para obtener la lista de bodegas
+        $.ajax({
+            url: SERVERURL + "Tienda/obtener_informacion_tienda",
+            type: "POST",
+            data: formDataInfoTienda,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+                LOGO_TIENDA = response[0].logo_url;
+                COLOR_BACKGROUND = response[0].color;
+                COLOR_BOTONES = response[0].color_botones;
+                COLOR_TEXTO_BOTON = response[0].texto_boton;
+                TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
+                COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
+            },
+            error: function(error) {
+                console.error("Error al obtener la lista de bodegas:", error);
+            },
         });
     </script>
 
