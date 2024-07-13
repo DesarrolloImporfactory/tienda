@@ -57,6 +57,8 @@
     define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
     define('TEXTO_BTN_SLIEDER', $data[0]['texto_btn_slider']);
     define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
+
+    echo LOGO_TIENDA;
     ?>
 
 </head>
