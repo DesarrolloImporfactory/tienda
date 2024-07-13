@@ -160,7 +160,6 @@
                         showConfirmButton: false,
                         timer: 2000
                     }).then(() => {
-                        cargar_saldoWallet();
                         $('#boton_compraModal').modal('hide');
                     });
                 }
