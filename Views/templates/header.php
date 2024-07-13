@@ -38,12 +38,15 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
 </script>
 
 <?php
-function obtenerPrimeraSeccion($url) {
-    // Obtener los componentes de la URL
-    $parsed_url = parse_url($url);
+function obtenerPrimeraSeccion() {
+    // Obtener el esquema (http o https)
+    $esquema = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https' : 'http';
+    
+    // Obtener el host (dominio)
+    $host = $_SERVER['HTTP_HOST'];
 
     // Construir la primera sección de la URL
-    $primera_seccion = $parsed_url['scheme'] . '://' . $parsed_url['host'];
+    $primera_seccion = $esquema . '://' . $host;
 
     return $primera_seccion;
 }
