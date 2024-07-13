@@ -543,7 +543,8 @@
     }
 
     .texto_boton {
-    color: green !important;
+    color: <?php echo COLOR_BOTONES; ?> !important;
+    background-color: <?php echo COLOR_TEXTO_BOTON; ?>!important;
   }
     /* fin css faltante */
 </style>
