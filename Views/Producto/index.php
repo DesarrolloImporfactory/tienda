@@ -276,28 +276,20 @@ $id_producto = $_GET['id'];
     }
   });
   /* Fin Iconos */
-  // Función para cargar provincias
+
+
+  //cargar select ciudades y provincias
   $(document).ready(function() {
-    // Inicializar Select2 en los selects
-    $("#provincia").select2({
-      placeholder: "Selecciona una opción",
-      allowClear: true,
-    });
-
-    $("#ciudad").select2({
-      placeholder: "Selecciona una opción",
-      allowClear: true,
-    });
-
     cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
     // Llamar a cargarCiudades cuando se seleccione una provincia
     $("#provincia").on("change", cargarCiudades);
   });
 
+  // Función para cargar provincias
   function cargarProvincias() {
     $.ajax({
-      url: "" + SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
+      url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
       method: "GET",
       success: function(response) {
         let provincias = JSON.parse(response);
@@ -310,9 +302,6 @@ $id_producto = $_GET['id'];
             `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
           );
         });
-
-        // Refrescar Select2 para que muestre las nuevas opciones
-        provinciaSelect.trigger("change.select2");
       },
       error: function(error) {
         console.log("Error al cargar provincias:", error);
@@ -339,9 +328,6 @@ $id_producto = $_GET['id'];
             );
           });
 
-          // Refrescar Select2 para que muestre las nuevas opciones
-          ciudadSelect.trigger("change.select2");
-
           ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
         },
         error: function(error) {
@@ -352,8 +338,7 @@ $id_producto = $_GET['id'];
       $("#ciudad")
         .empty()
         .append('<option value="">Ciudad *</option>')
-        .prop("disabled", true)
-        .trigger("change.select2"); // Refrescar Select2 para mostrar el estado deshabilitado
+        .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
     }
   }
 </script>
