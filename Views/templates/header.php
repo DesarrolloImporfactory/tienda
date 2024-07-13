@@ -71,13 +71,13 @@ define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav" style="font-size: 20px;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="categoria?id_cat=${categoria">Catálogo</a>
                     </li>
                 </ul>
-                <a class="navbar-brand d-none d-lg-block mx-auto" href="#">
+                <a class="navbar-brand d-none d-lg-block mx-auto" href="">
                     <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" id="imagen_logo" alt="IMPORT SHOP">
                 </a>
                 <form class="d-flex ms-auto">
