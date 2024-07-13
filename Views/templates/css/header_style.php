@@ -542,8 +542,8 @@
         text-decoration: line-through;
     }
 
-    .texto_boton {
+    /* .texto_boton {
     color: <?php /* echo get_row('perfil', 'texto_boton', 'id_perfil', '1') */ ?> !important;
-  }
+  } */
     /* fin css faltante */
 </style>
