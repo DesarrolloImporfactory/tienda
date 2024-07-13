@@ -74,14 +74,14 @@
                             <label for="provincia" class="form-label">Provincia</label>
                             <select id="provincia" class="form-select">
                                 <option selected>Selecciona una opción</option>
-                                <!-- Agregar opciones aquí -->
+                                <!-- Las opciones se llenarán dinámicamente -->
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label for="ciudad" class="form-label">Ciudad</label>
-                            <select id="ciudad" class="form-select">
+                            <select id="ciudad" class="form-select" disabled>
                                 <option selected>Selecciona una opción</option>
-                                <!-- Agregar opciones aquí -->
+                                <!-- Las opciones se llenarán dinámicamente -->
                             </select>
                         </div>
                     </div>
