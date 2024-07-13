@@ -1,9 +1,5 @@
 <?php include 'Views/templates/header.php'; ?>
 <?php include 'Views/Categoria/css/categoria_style.php'; ?>
-<script>
-    // Cambiar el estilo CSS dinámicamente
-    $('.noUi-connect').css('background-color', COLOR_BACKGROUND);
-</script>
 
 <main>
     <!-- area de categorias -->
