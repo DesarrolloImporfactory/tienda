@@ -54,7 +54,7 @@
 
     .marquee-container {
         overflow: hidden;
-        background-color: <?php echo COLOR_BACKGROUND;?>;
+        background-color: <?php echo COLOR_BACKGROUND; ?>;
         color: white;
         width: 100%;
         height: 40px;
@@ -110,6 +110,7 @@
         bottom: 0;
         width: 100%;
     }
+
     /* FIN FOOTER TEMPORAL */
 
     /* Seccion de css añadido del anteiror sistema */
@@ -543,8 +544,13 @@
     }
 
     .texto_boton {
-    color: <?php echo COLOR_BOTONES; ?> !important;
-    background-color: <?php echo COLOR_TEXTO_BOTON; ?>!important;
-  }
+        color: <?php echo COLOR_BOTONES; ?> !important;
+        background-color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
+    }
+
+    .color_icono {
+        color: <?php echo COLOR_BOTONES; ?> !important;
+    }
+
     /* fin css faltante */
 </style>
