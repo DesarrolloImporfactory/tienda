@@ -184,7 +184,15 @@
                 url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
                 method: "GET",
                 success: function(response) {
-                    let provincias = JSON.parse(response);
+                    console.log("Respuesta de provincias:", response); // Para depuración
+                    let provincias;
+                    try {
+                        provincias = JSON.parse(response);
+                    } catch (e) {
+                        console.error("Error al parsear JSON de provincias:", e);
+                        return;
+                    }
+
                     let provinciaSelect = $("#provincia");
                     provinciaSelect.empty();
                     provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
@@ -212,7 +220,15 @@
                     url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
                     method: "GET",
                     success: function(response) {
-                        let ciudades = JSON.parse(response);
+                        console.log("Respuesta de ciudades:", response); // Para depuración
+                        let ciudades;
+                        try {
+                            ciudades = JSON.parse(response);
+                        } catch (e) {
+                            console.error("Error al parsear JSON de ciudades:", e);
+                            return;
+                        }
+
                         let ciudadSelect = $("#ciudad");
                         ciudadSelect.empty();
                         ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
