@@ -10,8 +10,8 @@
     }
 
     .navbar-custom .navbar-brand img {
-        height: 80px;
-        width: 80px;
+        height: 60px;
+        width: 60px;
     }
 
     .search-box {
