@@ -18,4 +18,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </body>
 
+
+<script>
+    let LOGO_TIENDA = response[0].logo_url;
+    let COLOR_BACKGROUND = response[0].color;
+    let COLOR_BOTONES = response[0].color_botones;
+    let COLOR_TEXTO_BOTON = response[0].texto_boton;
+    let TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
+    let COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
+    $(document).ready(function() {
+        let formData = new FormData();
+        formData.append("id_plataforma", ID_PLATAFORMA);
+        // Realiza la solicitud AJAX para obtener la lista de bodegas
+        $.ajax({
+            url: SERVERURL + "Tienda/obtener_informacion_tienda",
+            type: "POST",
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+                LOGO_TIENDA = response[0].logo_url;
+                COLOR_BACKGROUND = response[0].color;
+                COLOR_BOTONES = response[0].color_botones;
+                COLOR_TEXTO_BOTON = response[0].texto_boton;
+                TEXTO_BTN_SLIEDER = response[0].texto_btn_slider;
+                COLOR_TEXTO_CABECERA = response[0].texto_cabecera;
+
+                $("#imagen_logo").attr("src", SERVERURL + LOGO_TIENDA).show();
+            },
+            error: function(error) {
+                console.error("Error al obtener la lista de bodegas:", error);
+            },
+        });
+    });
+</script>
+
 </html>
