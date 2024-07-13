@@ -543,7 +543,7 @@
     }
 
     .texto_boton {
-    color: <?php /* echo get_row('perfil', 'texto_boton', 'id_perfil', '1') */ ?> !important;
+    color: green !important;
   }
     /* fin css faltante */
 </style>
