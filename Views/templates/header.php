@@ -35,6 +35,7 @@
                 data: formData,
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
+                dataType: "json",
                 success: function(response) {
                     const LOGO_TIENDA = response[0].logo_url;
                     console.log(LOGO_TIENDA);
