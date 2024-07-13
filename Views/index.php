@@ -112,7 +112,7 @@
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}">
                               <img src="${image_path}" class="d-block w-100" alt="...">
-                              <div class="carousel-caption d-none d-md-block" style="${alineacion}">
+                              <div class="carousel-caption d-md-block" style="${alineacion}">
                                   <h5>${banner.titulo}</h5>
                                   <p>${banner.texto_banner}</p>
                                   <button class="btn btn-success" href="${banner.enlace_boton}">${banner.texto_boton}</button>
