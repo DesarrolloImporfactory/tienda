@@ -153,7 +153,7 @@
 
     /* Conexión entre las manijas */
     .noUi-connect {
-        background-color: <?php /* echo get_row('perfil', 'color', 'id_perfil', '1') */ ?>;
+        background-color: <?php echo COLOR_BACKGROUND; ?>;
         /* Tu color de elección para la barra activa */
     }
 
