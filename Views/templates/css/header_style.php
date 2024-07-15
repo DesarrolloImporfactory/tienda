@@ -45,8 +45,16 @@
         height: 452px !important;
     }
 
+    .carousel-inner {
+        height: 452px !important;
+    }
+
     @media (max-width: 768px) {
         .carousel-item {
+            height: 200px !important;
+        }
+
+        .carousel-inner {
             height: 200px !important;
         }
     }
