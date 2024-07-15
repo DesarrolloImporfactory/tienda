@@ -49,6 +49,13 @@
         height: 452px !important;
     }
 
+    .carousel-item img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        /* Ajusta la imagen sin distorsionarla */
+    }
+
     @media (max-width: 768px) {
         .carousel-item {
             height: 200px !important;
@@ -57,13 +64,10 @@
         .carousel-inner {
             height: 200px !important;
         }
-    }
 
-    .carousel-item img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        /* Ajusta la imagen sin distorsionarla */
+        .carousel-item img {
+        object-fit: fill;
+    }
     }
 
     .marquee-container {
