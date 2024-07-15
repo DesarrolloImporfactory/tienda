@@ -42,7 +42,13 @@
 
     /* slider */
     .carousel-item {
-        height: 50vh;
+        height: 452px;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-item {
+            height: 200px;
+        }
     }
 
     .carousel-item img {
@@ -547,10 +553,6 @@
         color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
         background-color: <?php echo COLOR_BOTONES; ?> !important;
     }
-
-    /* .color_icono {
-        color: <?php echo COLOR_BOTONES; ?> !important;
-    } */
 
     /* fin css faltante */
 </style>
