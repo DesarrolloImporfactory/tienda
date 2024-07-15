@@ -356,7 +356,7 @@
     }
 
     .card-body_icon i {
-        color: <?php /* echo get_row('perfil', 'color_botones', 'id_perfil', '1') */ ?> !important;
+        color: <?php echo COLOR_BOTONES; ?> !important;
         margin-bottom: 15px !important;
     }
 
@@ -548,9 +548,9 @@
         background-color: <?php echo COLOR_BOTONES; ?> !important;
     }
 
-    .color_icono {
+    /* .color_icono {
         color: <?php echo COLOR_BOTONES; ?> !important;
-    }
+    } */
 
     /* fin css faltante */
 </style>
