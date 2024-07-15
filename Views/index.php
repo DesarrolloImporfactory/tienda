@@ -360,7 +360,7 @@
                                 <a ${enlaceHTML}>
                                     <div class="card card_icon text-center">
                                         <div class="card-body card-body_icon d-flex flex-row">
-                                            <div style="margin-right: 20px;" class="color_icono">
+                                            <div style="margin-right: 20px;">
                                                 <i class="fas ${icon_text} fa-2x"></i> <!-- Cambia el icono según corresponda -->
                                             </div>
                                             <div>
