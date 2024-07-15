@@ -42,12 +42,12 @@
 
     /* slider */
     .carousel-item {
-        height: 452px;
+        height: 452px !important;
     }
 
     @media (max-width: 768px) {
         .carousel-item {
-            height: 200px;
+            height: 200px !important;
         }
     }
 
