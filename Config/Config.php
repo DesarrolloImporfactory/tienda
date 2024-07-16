@@ -22,7 +22,7 @@ $url_actual = "https://" . $_SERVER['HTTP_HOST'] . "/";
 $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
 
 //recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
-$url_actual = str_replace($nombre_actual, "new", $url_actual);
+$url_actual = str_replace($nombre_actual, "new.", $url_actual);
 
 $mysqli = new mysqli(HOST, USER, PASSWORD, DB);
 $mysqli->set_charset(CHARSET);
