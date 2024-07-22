@@ -276,11 +276,6 @@
             const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
             let idPlataforma = ID_PLATAFORMA;
 
-            if (location.search == null) {
-                idPlataforma = " ";
-            } else {
-                idPlataforma = location.search.split('=')[1];
-            }
             const formData = new FormData();
             formData.append('id_plataforma', idPlataforma);
             formData.append('id_categoria', idCategoria);
@@ -292,7 +287,12 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     mostrarProductos(data);
                 })
@@ -323,7 +323,12 @@
                     method: 'POST',
                     body: formData
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     mostrarProductos(data);
                 })
