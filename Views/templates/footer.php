@@ -9,9 +9,9 @@
                 <div class="col-md-3">
                     <h5>Síguenos</h5>
                     <p>
-                        <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br>
-                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
-                        <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+                        <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a><br>
+                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
+                        <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
                     </p>
                 </div>
                 <div class="col-md-3">
