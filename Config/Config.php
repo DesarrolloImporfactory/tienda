@@ -26,6 +26,7 @@ $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
 
 $url_actual = str_replace($nombre_actual, "new.", $url_actual);
 
+
 $mysqli = new mysqli(HOST, USER, PASSWORD, DB);
 $mysqli->set_charset(CHARSET);
 if ($mysqli->connect_errno) {
