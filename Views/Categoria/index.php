@@ -158,6 +158,90 @@
             .catch(error => console.error('Error:', error));
     }
 
+    // Función para mostrar todos los productos
+    function verTodasCategorias() {
+        const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
+        const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
+        const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+        const idPlataforma = ID_PLATAFORMA;
+
+        const formData = new FormData();
+        formData.append('id_plataforma', idPlataforma);
+        formData.append('id_categoria', "");
+        formData.append('precio_minimo', valorMinimo);
+        formData.append('precio_maximo', valorMaximo);
+        formData.append('ordenar_por', ordenarPor);
+
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                mostrarProductos(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Función para mostrar productos
+    function mostrarProductos(productos) {
+        const productosContainer = document.getElementById('productosContainer');
+        productosContainer.innerHTML = '';
+
+        if (!Array.isArray(productos)) {
+            console.error('Productos no es un array:', productos);
+            return;
+        }
+
+        productos.forEach(producto => {
+            const precioEspecial = parseFloat(producto.pvp_tienda);
+            const precioNormal = parseFloat(producto.pref_tienda);
+
+            const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
+            const productoHtml = `
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                            <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
+                                <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
+                                    <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
+                                </div>
+                            </a>
+                            <div class="card-body d-flex flex-column">
+                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
+                                </a>
+                                <div class="product-footer mb-2">
+                                    <span class="text-muted">${precioNormal.toFixed(2)}</span>
+                                    <span class="text-price">$${precioEspecial.toFixed(2)}</span>
+                                </div>
+                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            productosContainer.innerHTML += productoHtml;
+        });
+    }
+
+    // Función para obtener URL de la imagen
+    function obtenerURLImagen(imagePath) {
+        if (imagePath) {
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                return imagePath;
+            } else {
+                return `${SERVERURL}${imagePath}`;
+            }
+        } else {
+            console.error("imagePath es null o undefined");
+            return null;
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         // Inicializa los sliders
         initSlider('slider-rango-precios-left', 'valorMinimo-left', 'valorMaximo-left', 'inputValorMinimo-left', 'inputValorMaximo-left', actualizarProductos);
@@ -254,6 +338,16 @@
                         categoriasHtml += categoryHtml;
                     });
 
+                    categoriasHtml += `
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-ver-todas">
+                                <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="verTodasCategorias()">
+                                    Ver todas
+                                </button>
+                            </h2>
+                        </div>
+                    `;
+
                     $('#accordionSubcategorias').html(categoriasHtml);
                     $('#accordionSubcategoriasModal').html(categoriasHtml);
                 },
@@ -333,60 +427,6 @@
                     mostrarProductos(data);
                 })
                 .catch(error => console.error('Error:', error));
-        }
-
-        // Función para obtener URL de la imagen
-        function obtenerURLImagen(imagePath) {
-            if (imagePath) {
-                if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-                    return imagePath;
-                } else {
-                    return `${SERVERURL}${imagePath}`;
-                }
-            } else {
-                console.error("imagePath es null o undefined");
-                return null;
-            }
-        }
-
-        // Función para mostrar productos
-        function mostrarProductos(productos) {
-            const productosContainer = document.getElementById('productosContainer');
-            productosContainer.innerHTML = '';
-
-            if (!Array.isArray(productos)) {
-                console.error('Productos no es un array:', productos);
-                return;
-            }
-
-            productos.forEach(producto => {
-                const precioEspecial = parseFloat(producto.pvp_tienda);
-                const precioNormal = parseFloat(producto.pref_tienda);
-
-                const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
-                const productoHtml = `
-                    <div class="col-6 col-md-4 col-lg-3 mb-3">
-                        <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                            <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
-                                <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
-                                    <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
-                                </div>
-                            </a>
-                            <div class="card-body d-flex flex-column">
-                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
-                                    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
-                                </a>
-                                <div class="product-footer mb-2">
-                                    <span class="text-muted">${precioNormal.toFixed(2)}</span>
-                                    <span class="text-price">$${precioEspecial.toFixed(2)}</span>
-                                </div>
-                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                productosContainer.innerHTML += productoHtml;
-            });
         }
     });
 </script>
