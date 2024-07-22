@@ -154,6 +154,13 @@
         // Carga las categorías dinámicamente
         cargarCategorias();
 
+        // Verifica si hay un ID de categoría en la URL y actualiza los productos si lo hay
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('id_cat')) {
+            const idCategoria = urlParams.get('id_cat');
+            filtrarPorCategoria(idCategoria);
+        }
+
         // Evento scroll para navbar
         window.onscroll = function() {
             var nav = document.getElementById('navbarId');
