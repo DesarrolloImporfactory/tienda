@@ -269,72 +269,6 @@
             });
         }
 
-        // Función para filtrar productos por categoría
-        function filtrarPorCategoria(idCategoria) {
-            const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
-            const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
-            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            let idPlataforma = ID_PLATAFORMA;
-
-            const formData = new FormData();
-            formData.append('id_plataforma', idPlataforma);
-            formData.append('id_categoria', idCategoria);
-            formData.append('precio_minimo', valorMinimo);
-            formData.append('precio_maximo', valorMaximo);
-            formData.append('ordenar_por', ordenarPor);
-
-            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    mostrarProductos(data);
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Función para actualizar los productos
-        function actualizarProductos() {
-            const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
-            const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
-            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            const urlParams = new URLSearchParams(window.location.search);
-            const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
-
-            const idPlataforma = ID_PLATAFORMA;
-
-            document.getElementById('hiddenValorMinimo').value = valorMinimo;
-            document.getElementById('hiddenValorMaximo').value = valorMaximo;
-
-            const formData = new FormData();
-            formData.append('id_plataforma', idPlataforma);
-            formData.append('id_categoria', idCategoria);
-            formData.append('precio_minimo', valorMinimo);
-            formData.append('precio_maximo', valorMaximo);
-            formData.append('ordenar_por', ordenarPor);
-
-            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    mostrarProductos(data);
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
         // Función para obtener URL de la imagen
         function obtenerURLImagen(imagePath) {
             if (imagePath) {
@@ -389,7 +323,72 @@
             });
         }
     });
-    
+
+    // Función para filtrar productos por categoría
+    function filtrarPorCategoria(idCategoria) {
+        const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
+        const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
+        const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+        let idPlataforma = ID_PLATAFORMA;
+
+        const formData = new FormData();
+        formData.append('id_plataforma', idPlataforma);
+        formData.append('id_categoria', idCategoria);
+        formData.append('precio_minimo', valorMinimo);
+        formData.append('precio_maximo', valorMaximo);
+        formData.append('ordenar_por', ordenarPor);
+
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                mostrarProductos(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Función para actualizar los productos
+    function actualizarProductos() {
+        const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
+        const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
+        const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+        const urlParams = new URLSearchParams(window.location.search);
+        const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
+
+        const idPlataforma = ID_PLATAFORMA;
+
+        document.getElementById('hiddenValorMinimo').value = valorMinimo;
+        document.getElementById('hiddenValorMaximo').value = valorMaximo;
+
+        const formData = new FormData();
+        formData.append('id_plataforma', idPlataforma);
+        formData.append('id_categoria', idCategoria);
+        formData.append('precio_minimo', valorMinimo);
+        formData.append('precio_maximo', valorMaximo);
+        formData.append('ordenar_por', ordenarPor);
+
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                mostrarProductos(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
