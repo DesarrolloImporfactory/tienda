@@ -3,12 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <h5>Acerca de IMPORSUIT</h5>
-                    <p>IMPORTADORA</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Legal</h5>
-                    <p><a href="#">POLÍTICA DE PRIVACIDAD</a></p>
+                    <h5>Acerca de <?php echo MARCA; ?></h5>
+                    <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
                 </div>
                 <div class="col-md-3">
                     <h5>Síguenos</h5>
