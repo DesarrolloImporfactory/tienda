@@ -66,8 +66,8 @@
         }
 
         .carousel-item img {
-        object-fit: fill;
-    }
+            object-fit: fill;
+        }
     }
 
     .marquee-container {
@@ -120,13 +120,25 @@
     /* Fin header */
 
     /* FOOTER TEMPORAL */
-    footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
+    .footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        color: #6c757d;
+    }
+
+    .footer .copyright {
+        background-color: #343a40;
+        color: #ffffff;
         padding: 10px 0;
-        bottom: 0;
-        width: 100%;
+    }
+
+    .footer a {
+        color: #6c757d;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
     }
 
     /* FIN FOOTER TEMPORAL */

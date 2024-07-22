@@ -1,5 +1,34 @@
 <footer>
-    <p>&copy; 2024 © IMPORSUIT</p>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Acerca de IMPORSUIT</h5>
+                    <p>IMPORTADORA</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Legal</h5>
+                    <p><a href="#">POLÍTICA DE PRIVACIDAD</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Síguenos</h5>
+                    <p>
+                        <a href="#"><i class="fab fa-facebook"></i> Facebook</a><br>
+                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a><br>
+                        <a href="#"><i class="fab fa-tiktok"></i> TikTok</a>
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Información de contacto</h5>
+                    <p><i class="fab fa-whatsapp"></i> +593981702066</p>
+                    <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer copyright text-center">
+        <p>&copy; 2024 IMPORSUIT S.A. | Todos los derechos reservados.</p>
+    </div>
 </footer>
 <!-- librerias adiconale -->
 
