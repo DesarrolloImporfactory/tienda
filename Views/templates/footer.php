@@ -7,6 +7,9 @@
                     <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
                 </div>
                 <div class="col-md-3">
+                    
+                </div>
+                <div class="col-md-3">
                     <h5>Síguenos</h5>
                     <p>
                         <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a><br>
