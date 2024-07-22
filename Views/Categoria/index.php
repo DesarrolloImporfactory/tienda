@@ -2,7 +2,7 @@
 <?php include 'Views/Categoria/css/categoria_style.php'; ?>
 
 <main>
-    <!-- area de categorias -->
+    <!-- área de categorías -->
     <div class="container-fluid mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
@@ -124,7 +124,7 @@
             </div>
         </div>
     </div>
-    <!-- Fin area de categorias -->
+    <!-- Fin área de categorías -->
 </main>
 
 <script>
