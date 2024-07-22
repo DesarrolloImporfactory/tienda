@@ -433,12 +433,12 @@
                         var id_testimonio = testimonio.id_testimonio;
                         var nombre_testimonio = testimonio.nombre || '';
                         var texto_testimonio = testimonio.testimonio || '';
-                        var image_path = testimonio.imagen || 'https://cdn.icon-icons.com/icons2/2633/PNG/512/office_gallery_image_picture_icon_159182.png';
+                        var image_path = obtenerURLImagen(testimonio.imagen,SERVERURL)
 
                         var testimonioItem = `
                             <div class="item d-flex flex-column">
                                 <div class="testimonios-container">
-                                    <div class="testimonios-image rounded-circle" style="background-image: url('${image_path.startsWith('http') ? image_path : 'sysadmin/' + image_path.replace('../..', '')}');">
+                                    <div class="testimonios-image rounded-circle" style="background-image: url('${image_path}');">
                                     </div>
                                     <p class="card-text"><strong>${nombre_testimonio}</strong></p>
                                     <p class="card-text testimonio-text">${texto_testimonio}</p>
