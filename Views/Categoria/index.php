@@ -389,6 +389,7 @@
             });
         }
     });
+    
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
