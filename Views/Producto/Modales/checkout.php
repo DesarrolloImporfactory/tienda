@@ -453,7 +453,6 @@
         }
     }
 
-
     function handleLoadingError(jqXHR, textStatus, errorThrown) {
         console.error('Error loading JSON:', textStatus, errorThrown);
     }
