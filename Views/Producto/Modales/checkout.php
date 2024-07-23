@@ -457,39 +457,4 @@
     function handleLoadingError(jqXHR, textStatus, errorThrown) {
         console.error('Error loading JSON:', textStatus, errorThrown);
     }
-
-    //Provincias y Ciudades
-    function cargar_provincia_pedido() {
-        var id_provincia = $('#provinica option:selected').text();
-        $.ajax({
-            url: "ajax/cargar_ciudad_pedido_checkout.php",
-            type: "POST",
-            data: {
-                provinica: id_provincia,
-            },
-            dataType: 'text',
-            success: function(data) {
-                $('#div_ciudad').html(data);
-                actualizarSelect();
-            }
-        });
-    }
-
-    function actualizarSelect() {
-        $('#ciudad_entrega').select2('destroy');
-        $('#ciudad_entrega').select2({
-            placeholder: "Selecciona una opción",
-            allowClear: true
-        });
-    }
-
-    function seleccionarProvincia() {
-        var id_provincia = $('#ciudad_entrega').val();
-        let recaudo = $('#cod').val();
-    }
-
-    $("#ciudad_entrega").select2({
-        placeholder: "Selecciona una opción",
-        allowClear: true,
-    });
 </script>
