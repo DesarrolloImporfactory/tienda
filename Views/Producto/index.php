@@ -1,6 +1,6 @@
 <?php include 'Views/templates/header.php'; ?>
 <?php include 'Views/Producto/css/producto_style.php'; ?>
-<?php require_once './Views/Producto/Modales/boton_compra.php'; ?>
+
 <?php require_once './Views/Producto/Modales/checkout.php'; ?>
 <?php
 
