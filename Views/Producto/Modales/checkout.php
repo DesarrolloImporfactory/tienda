@@ -202,154 +202,129 @@
 </style>
 
 
-<div id="checkoutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div id="checkoutModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <div id="tituloFormularioPreview">
                     <h4 id="texto_tituloPreview">PAGA AL RECIBIR EN CASA!</h4>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="post" action="gracias.php" id="formulario">
                     <div id="gracias" class="modal-content">
                         <div id="previewContainer" class="p-3">
-
-
                             <div id="resultados" class="modal-body" style="padding: 5px">
-
                             </div>
 
                             <div id="tarifasEnvioPreview">
                                 <hr />
                                 <p id="titulo_tarifaPreview" style="font-weight:bold;">Método de envío</p>
                                 <div class="caja_transparente d-flex flex-row">
-                                    <!-- <input type="radio" name="metodoEnvio" checked> -->
                                     <label for="envioGratisPreview"> Envío gratis</label>
                                     <label id="gratisPreview" style="width: 60%; text-align: end; font-weight:bold;">Gratis</label>
                                 </div>
                                 <hr />
                             </div>
 
-
                             <!--  código de descuento -->
                             <div class="discount-code-container" id="codigosDescuentoPreview">
-
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control" placeholder="Código de descuento" id="etiqueta_descuentoPreview" aria-label="Código de descuento">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-dark" id="textoBtn_aplicarPreview" type="button">Aplicar</button>
-                                    </div>
+                                    <button class="btn btn-dark" id="textoBtn_aplicarPreview" type="button">Aplicar</button>
                                 </div>
-
-
                                 <div class="applied-discount">
                                     <span class="discount-tag">4SALE $4.00</span>
                                 </div>
                             </div>
                             <!--  código de descuento -->
+
                             <!-- Nombre y apellidos -->
-                            <div class="form-group" id="nombresApellidosPreview" style="position: relative; padding-top: 5px;">
+                            <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
-                                    </div>
+                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                     <input type="hidden" class="form-control" id="session" name="session" value="<?php echo $session_id; ?>">
                                     <input type="hidden" class="form-control" id="cliente" name="cliente" value="1">
                                 </div>
                             </div>
                             <!-- Fin Nombre y apellidos -->
-                            <!-- Telefono -->
-                            <div class="form-group" id="telefonoPreview" style="position: relative; padding-top: 3px;">
+
+                            <!-- Teléfono -->
+                            <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono</label>
                                 <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call'></i></span>
-                                    </div>
+                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview" name="txt_telefonoPreview" placeholder="Teléfono">
                                 </div>
                             </div>
-                            <!-- Fin Telefono -->
-                            <!-- calle_principal -->
-                            <div class="form-group" id="calle_principalPreview" style="position: relative; padding-top: 3px;">
+                            <!-- Fin Teléfono -->
+
+                            <!-- Calle Principal -->
+                            <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal</label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="txt_calle_principalPreview" name="txt_calle_principalPreview" placeholder="">
-                                </div>
+                                <input type="text" class="form-control" id="txt_calle_principalPreview" name="txt_calle_principalPreview" placeholder="">
                             </div>
-                            <!-- Fin calle_principal -->
-                            <!-- calle_secundaria -->
-                            <div class="form-group" id="calle_secundariaPreview" style="position: relative; padding-top: 3px;">
+                            <!-- Fin Calle Principal -->
+
+                            <!-- Calle Secundaria -->
+                            <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria</label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="txt_calle_secundariaPreview" name="txt_calle_secundariaPreview" placeholder="">
-                                </div>
+                                <input type="text" class="form-control" id="txt_calle_secundariaPreview" name="txt_calle_secundariaPreview" placeholder="">
                             </div>
-                            <!-- Fin calle_secundaria -->
-                            <!-- barrio_referencia -->
-                            <div class="form-group" id="barrio_referenciaPreview" style="position: relative; padding-top: 3px;">
+                            <!-- Fin Calle Secundaria -->
+
+                            <!-- Barrio o Referencia -->
+                            <div class="form-group mb-3" id="barrio_referenciaPreview">
                                 <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o Referencia</label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="txt_barrio_referenciaPreview" name="txt_barrio_referenciaPreview" placeholder="">
-                                </div>
+                                <input type="text" class="form-control" id="txt_barrio_referenciaPreview" name="txt_barrio_referenciaPreview" placeholder="">
                             </div>
-                            <!-- Fin barrio_referencia -->
-                            <!-- provincia -->
-                            <div class="form-group" id="provinciaPreview" style="position: relative; padding-top: 3px;">
+                            <!-- Fin Barrio o Referencia -->
+
+                            <!-- Provincia -->
+                            <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <div class="">
-                                    <select class="datos form-control " onchange="cargar_provincia_pedido()" id="provinica" name="provinica">
-                                        <option value="">Provincia *</option>
-                                        
+                                <select class="form-control" onchange="cargar_provincia_pedido()" id="provinica" name="provinica">
+                                    <option value="">Provincia *</option>
+                                </select>
+                            </div>
+                            <!-- Fin Provincia -->
+
+                            <!-- Ciudad -->
+                            <div class="form-group mb-3" id="ciudadPreview">
+                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
+                                <div id="div_ciudad" onclick="verify()">
+                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega" onchange="seleccionarProvincia()" disabled>
+                                        <option value="">Ciudad *</option>
                                     </select>
                                 </div>
                             </div>
-                            <!-- Fin provincia -->
-                            <!-- ciudad -->
-                            <div class="form-group" id="ciudadPreview" style="position: relative; padding-top: 3px;">
-                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
-                                <div>
-                                    <div id="div_ciudad" onclick="verify()">
-                                        <select class="datos form-control" id="ciudad_entrega" name="ciudad_entrega" onchange="seleccionarProvincia()" disabled>
-                                            <option value="">Ciudad *</option>
-                                    
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Fin ciudad -->
-                            <!-- comentario -->
-                            <div class="form-group" id="comentarioPreview" style="position: relative; padding-top: 3px;">
-                                <label class="sub_titulos" id="titulo_comentarioPreview">Barrio o Referencia</label>
-                                <div class="">
-                                    <input type="text" class="form-control" id="txt_comentarioPreview" name="txt_comentarioPreview" placeholder="">
-                                </div>
-                            </div>
-                            <!-- Fin comentario -->
+                            <!-- Fin Ciudad -->
 
+                            <!-- Comentario -->
+                            <div class="form-group mb-3" id="comentarioPreview">
+                                <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
+                                <input type="text" class="form-control" id="txt_comentarioPreview" name="txt_comentarioPreview" placeholder="">
+                            </div>
+                            <!-- Fin Comentario -->
                         </div>
+
                         <div class="modal-footer">
-                            <!-- Boton Comprar -->
-                            <div id="btn_comprarPreview" style="padding-top: 20px;">
-
-                                <div class="input-group mb-3 d-flex justify-content-center">
-
-                                    <button class="btn_comprar btn-dark" id="textoBtn_comprarPreview" type="submit">COMPRAR AHORA</button>
-
-                                </div>
-
+                            <!-- Botón Comprar -->
+                            <div id="btn_comprarPreview" class="d-flex justify-content-center">
+                                <button class="btn btn-dark" id="textoBtn_comprarPreview" type="submit">COMPRAR AHORA</button>
                             </div>
-                            <!-- Fin Boton Comprar -->
+                            <!-- Fin Botón Comprar -->
                         </div>
                     </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-</div><!-- /.modal -->
+</div>
+
 
 <script>
     // Funcion para que consuma los datos de checkout.json y los utilice
