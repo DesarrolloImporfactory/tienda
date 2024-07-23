@@ -102,7 +102,7 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                         <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="categoria">Catálogo</a>
+                        <a class="nav-link" href="categoria">Catálogo2</a>
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="<?php echo $primera_seccion; ?>">
