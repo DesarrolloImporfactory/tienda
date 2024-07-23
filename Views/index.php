@@ -115,7 +115,7 @@
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                   <h5>${banner.titulo}</h5>
                                   <p>${banner.texto_banner}</p>
-                                  <a class="btn texto_boton" href="${banner.enlace_boton}">${banner.texto_boton}</a>
+                                  <a class="btn texto_boton" href="${banner.enlace_boton}" target="_blank">${banner.texto_boton}</a>
                               </div>
                           </div>`;
                 });
