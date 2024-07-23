@@ -57,6 +57,24 @@ function obtenerPrimeraSeccion()
     return $primera_seccion;
 }
 
+function formatPhoneNumber($number)
+      {
+         // Eliminar caracteres no numéricos excepto el signo +
+         $number = preg_replace('/[^\d+]/', '', $number);
+
+         // Verificar si el número ya tiene el código de país +593
+         if (!preg_match('/^\+593/', $number)) {
+            // Si el número comienza con 0, quitarlo
+            if (strpos($number, '0') === 0) {
+               $number = substr($number, 1);
+            }
+            // Agregar el código de país +593 al inicio del número
+            $number = '+593' . $number;
+         }
+
+         return $number;
+      }
+
 // URL de ejemplo
 $url = "https://tony.imporsuitpro.com/categoria";
 

@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-3">
                     <h5>Información de contacto</h5>
-                    <p><i class="fab fa-whatsapp"></i> +593981702066</p>
+                    <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>
