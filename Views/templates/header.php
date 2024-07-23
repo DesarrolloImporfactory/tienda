@@ -43,10 +43,11 @@ define('TELEFONO', $data[0]['whatsapp']);
 </script>
 
 <?php
-function obtenerPrimeraSeccion() {
+function obtenerPrimeraSeccion()
+{
     // Obtener el esquema (http o https)
     $esquema = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https' : 'http';
-    
+
     // Obtener el host (dominio)
     $host = $_SERVER['HTTP_HOST'];
 
@@ -102,7 +103,7 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                         <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="categoria">Catálogo2</a>
+                        <a class="nav-link" href="categoria">Catálogo 2 2 2 2 22</a>
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="<?php echo $primera_seccion; ?>">
