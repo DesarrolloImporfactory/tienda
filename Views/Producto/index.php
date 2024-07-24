@@ -109,22 +109,20 @@ $id_producto = $_GET['id'];
           return;
         }
 
-        // Decodificar entidades HTML usando un contenedor temporal
-        let decodedHTML = $('<div/>').html(data.data).text();
+        // Decodificar entidades HTML
+        let decodedHTML = $('<textarea/>').html(data.data).text();
         console.log("HTML decodificado:", decodedHTML);
 
-        // Crear un contenedor temporal para manipular el HTML decodificado
-        let tempDiv = document.createElement("div");
-        tempDiv.innerHTML = decodedHTML;
+        // Crear un contenedor temporal en el DOM para manipular el HTML decodificado
+        let tempContainer = $('<div>').html(decodedHTML);
 
-        // Comprobar si el body está presente en la respuesta
-        let body = tempDiv.querySelector("body");
-        if (body) {
-          let bodyContent = body.innerHTML;
+        // Extraer el contenido del body de la respuesta
+        let bodyContent = tempContainer.find('body').html();
+        if (bodyContent) {
           console.log("Contenido del body:", bodyContent);
 
           // Insertar el contenido del body en el div con id="landing"
-          document.getElementById("landing").innerHTML = bodyContent;
+          $('#landing').html(bodyContent);
         } else {
           console.error("No se encontró la etiqueta <body> en la respuesta.");
         }
