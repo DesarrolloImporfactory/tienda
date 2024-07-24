@@ -26,6 +26,7 @@ $id_producto = $_GET['id'];
                 <img id="main-image" src="" class="img-fluid" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
               </div>
             </div>
+            
           </div>
         </div>
       </div>
