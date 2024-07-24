@@ -480,8 +480,9 @@
             data: formData,
             processData: false, // No procesar los datos
             contentType: false, // No establecer ningún tipo de contenido
-            dataType: "json",
             success: function(response) {
+                response = JSON.parse(response);
+                console.log(response.status);
                 if (response.status == 400) {
                     Swal.fire({
                         icon: 'error',
