@@ -220,17 +220,15 @@ $id_producto = $_GET['id'];
         console.log("HTML decodificado:", decodedHTML);
 
         // Crear un contenedor temporal para manipular el HTML decodificado
-        let tempDiv = document.createElement("div");
-        tempDiv.innerHTML = decodedHTML;
+        let tempDiv = $('<div>').html(decodedHTML);
 
-        // Comprobar si el body está presente en la respuesta
-        let body = tempDiv.querySelector("body");
-        if (body) {
-          let bodyContent = body.innerHTML;
+        // Extraer el contenido del body de la respuesta
+        let bodyContent = tempDiv.find('body').html();
+        if (bodyContent) {
           console.log("Contenido del body:", bodyContent);
 
           // Insertar el contenido del body en el div con id="landing"
-          document.getElementById("landing").innerHTML = bodyContent;
+          $('#landing').html(bodyContent);
         } else {
           console.error("No se encontró la etiqueta <body> en la respuesta.");
         }
