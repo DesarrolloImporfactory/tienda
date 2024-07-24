@@ -92,7 +92,7 @@ $id_producto = $_GET['id'];
     formData.append("id_plataforma", ID_PLATAFORMA);
     formData.append("id_producto_tienda", id_producto);
 
-    var id_productoPrincipal="";
+    var id_productoPrincipal = "";
 
     $.ajax({
       url: SERVERURL + 'Tienda/obtener_productos_tienda',
@@ -203,12 +203,15 @@ $id_producto = $_GET['id'];
       processData: false,
       contentType: false,
       success: function(response) {
-        // Crear un contenedor temporal para manipular el HTML de la respuesta
-        let tempDiv = document.createElement("div");
-        tempDiv.innerHTML = response;
+        console.log("Respuesta de la API:", response);
 
-        // Extraer el contenido del body de la respuesta
-        let bodyContent = tempDiv.querySelector("body").innerHTML;
+        // Decodificar la entidad HTML
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(response.data, 'text/html');
+
+        // Extraer el contenido del body de la respuesta decodificada
+        let bodyContent = doc.body.innerHTML;
+        console.log("Contenido del body:", bodyContent);
 
         // Insertar el contenido del body en el div con id="landing"
         document.getElementById("landing").innerHTML = bodyContent;
