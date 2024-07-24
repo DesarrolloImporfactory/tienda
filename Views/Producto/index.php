@@ -1,7 +1,7 @@
 <?php include 'Views/templates/header.php'; ?>
 <?php include 'Views/Producto/css/producto_style.php'; ?>
-<?php require_once './Views/Producto/Modales/boton_compra.php'; ?>
-<?php /* require_once './Views/Producto/Modales/checkout.php'; */ ?>
+<?php /* require_once './Views/Producto/Modales/boton_compra.php'; */ ?>
+<?php require_once './Views/Producto/Modales/checkout.php'; ?>
 <?php
 
 $id_producto = $_GET['id'];
@@ -184,8 +184,8 @@ $id_producto = $_GET['id'];
     $("#precio_productoTmp").val(precio);
     $("#id_inventario").val(id_inventario);
 
-    $("#boton_compraModal").modal("show");
-    /* $("#checkoutModal").modal("show"); */
+    /* $("#boton_compraModal").modal("show"); */
+    $("#checkoutModal").modal("show");
   }
 
   // Función llamada si la imagen no puede cargarse
