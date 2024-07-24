@@ -288,8 +288,8 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <select class="form-control" id="provincia" name="provincia">
-                                    <option selected>Provincia *</option>
+                                <select class="form-control" id="provinica" name="provinica">
+                                    <option value="">Provincia *</option>
                                 </select>
                             </div>
                             <!-- Fin Provincia -->
@@ -297,10 +297,11 @@
                             <!-- Ciudad -->
                             <div class="form-group mb-3" id="ciudadPreview">
                                 <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
-                                <select id="ciudad" class="form-select">
-                                    <option selected>Ciudad *</option>
-                                    <!-- Agregar opciones aquí -->
-                                </select>
+                                <div id="div_ciudad">
+                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
+                                        <option value="">Ciudad *</option>
+                                    </select>
+                                </div>
                             </div>
                             <!-- Fin Ciudad -->
 
