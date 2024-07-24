@@ -288,7 +288,7 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <select class="form-control" id="provinica" name="provinica">
+                                <select class="form-control" id="provincia" name="provincia">
                                     <option selected>Provincia *</option>
                                 </select>
                             </div>
