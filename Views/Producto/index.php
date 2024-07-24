@@ -107,9 +107,6 @@ $id_producto = $_GET['id'];
 
           var producto = response[0]; // Asumimos que el primer producto es el deseado
 
-          id_productoPrincipal = producto.id_producto;
-          cargarLanding(id_productoPrincipal);
-
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
 
@@ -156,6 +153,9 @@ $id_producto = $_GET['id'];
           $('#comprar-ahora').on('click', function() {
             agregar_tmp(id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
           });
+
+          id_productoPrincipal = producto.id_producto;
+          cargarLanding(id_productoPrincipal);
         } else {
           console.error('No se encontraron productos.');
         }
