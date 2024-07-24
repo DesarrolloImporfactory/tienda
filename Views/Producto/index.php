@@ -50,6 +50,9 @@ $id_producto = $_GET['id'];
                 <strong id="ahorra"></strong>
               </span>
             </div>
+            <div id="landing">
+
+            </div>
           </div>
           <a style="height: 50px; font-size: 26px; width: 100%; border-radius: 15px" class="jump-button btn btn-primary texto_boton" href="#" id="comprar-ahora">
             <span style="margin-top: 10px">COMPRAR AHORA </span>
@@ -110,7 +113,7 @@ $id_producto = $_GET['id'];
 
           // Manejo de imágenes
           var mainImageSrc = producto.imagen_principal_tienda;
-          mainImageSrc = obtenerURLImagen(mainImageSrc,SERVERURL);
+          mainImageSrc = obtenerURLImagen(mainImageSrc, SERVERURL);
 
           $('#main-image').attr('src', mainImageSrc);
 
@@ -177,7 +180,38 @@ $id_producto = $_GET['id'];
       var imageSrc = $('#main-image').attr('src');
       $('#imagenEnModal').attr('src', imageSrc);
     });
+
+    /* Carga de landing */
+    cargarlandig(id_producto);
+    /* Fin carga de landing */
   });
+
+  function cargarLanding(id) {
+    let formData = new FormData();
+    formData.append("id_producto", id);
+
+    $.ajax({
+      url: "https://imagenes.imporsuitpro.com/obtenerLanding",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        // Crear un contenedor temporal para manipular el HTML de la respuesta
+        let tempDiv = document.createElement("div");
+        tempDiv.innerHTML = response;
+
+        // Extraer el contenido del body de la respuesta
+        let bodyContent = tempDiv.querySelector("body").innerHTML;
+
+        // Insertar el contenido del body en el div con id="landing"
+        document.getElementById("landing").innerHTML = bodyContent;
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+      },
+    });
+  }
 
   function agregar_tmp(id_producto, precio, id_inventario) {
     $("#id_productoTmp").val(id_producto);
@@ -344,6 +378,7 @@ $id_producto = $_GET['id'];
         .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
     }
   }
+  /* Fin cargar provincia y ciudad*/
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
