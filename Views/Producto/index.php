@@ -86,6 +86,55 @@ $id_producto = $_GET['id'];
 </main>
 
 <script>
+  function cargarLanding(id) {
+    let formData = new FormData();
+    formData.append("id_producto", id);
+
+    $.ajax({
+      url: "https://imagenes.imporsuitpro.com/obtenerLanding",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        console.log("Respuesta de la API:", response);
+
+        // Decodificar la respuesta JSON
+        let data;
+        try {
+          data = JSON.parse(response);
+          console.log("HTML codificado:", data.data);
+        } catch (e) {
+          console.error("Error al decodificar JSON:", e);
+          return;
+        }
+
+        // Decodificar entidades HTML usando un contenedor temporal
+        let decodedHTML = $('<div/>').html(data.data).text();
+        console.log("HTML decodificado:", decodedHTML);
+
+        // Crear un contenedor temporal para manipular el HTML decodificado
+        let tempDiv = document.createElement("div");
+        tempDiv.innerHTML = decodedHTML;
+
+        // Comprobar si el body está presente en la respuesta
+        let body = tempDiv.querySelector("body");
+        if (body) {
+          let bodyContent = body.innerHTML;
+          console.log("Contenido del body:", bodyContent);
+
+          // Insertar el contenido del body en el div con id="landing"
+          document.getElementById("landing").innerHTML = bodyContent;
+        } else {
+          console.error("No se encontró la etiqueta <body> en la respuesta.");
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+      },
+    });
+  }
+
   $(document).ready(function() {
     var id_producto = '<?php echo $_GET['id']; ?>';
     let formData = new FormData();
@@ -191,53 +240,6 @@ $id_producto = $_GET['id'];
     /* cargarLanding(id_productoPrincipal); */
     /* Fin carga de landing */
   });
-
-  function cargarLanding(id) {
-    let formData = new FormData();
-    formData.append("id_producto", id);
-
-    $.ajax({
-      url: "https://imagenes.imporsuitpro.com/obtenerLanding",
-      type: "POST",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function(response) {
-        console.log("Respuesta de la API:", response);
-
-        // Decodificar la respuesta JSON
-        let data;
-        try {
-          data = JSON.parse(response);
-          console.log("HTML codificado:", data.data);
-        } catch (e) {
-          console.error("Error al decodificar JSON:", e);
-          return;
-        }
-
-        // Decodificar entidades HTML
-        let decodedHTML = $('<textarea/>').html(data.data).text();
-        console.log("HTML decodificado:", decodedHTML);
-
-        // Crear un contenedor temporal para manipular el HTML decodificado
-        let tempDiv = $('<div>').html(decodedHTML);
-
-        // Extraer el contenido del body de la respuesta
-        let bodyContent = tempDiv.find('body').html();
-        if (bodyContent) {
-          console.log("Contenido del body:", bodyContent);
-
-          // Insertar el contenido del body en el div con id="landing"
-          $('#landing').html(bodyContent);
-        } else {
-          console.error("No se encontró la etiqueta <body> en la respuesta.");
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        alert(errorThrown);
-      },
-    });
-  }
 
   function agregar_tmp(id_producto, precio, id_inventario) {
     $("#id_productoTmp").val(id_producto);
