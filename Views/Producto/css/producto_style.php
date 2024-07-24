@@ -68,6 +68,7 @@
     /* Altura que desees para la imagen principal */
     object-fit: cover;
     /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
+    cursor: pointer;
   }
 
 
