@@ -213,6 +213,9 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="post" action="gracias.php" id="formulario">
+                    <input type="hidden" id="id_productoTmp" name="id_productoTmp">
+                    <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
+                    <input type="hidden" id="id_inventario" name="id_inventario">
                     <div id="gracias" class="modal-content">
                         <div id="previewContainer" class="p-3">
                             <div id="resultados" class="modal-body" style="padding: 5px">
@@ -285,8 +288,8 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <select class="form-control" onchange="cargar_provincia_pedido()" id="provinica" name="provinica">
-                                    <option value="">Provincia *</option>
+                                <select class="form-control" id="provinica" name="provinica">
+                                    <option selected>Provincia *</option>
                                 </select>
                             </div>
                             <!-- Fin Provincia -->
@@ -294,11 +297,10 @@
                             <!-- Ciudad -->
                             <div class="form-group mb-3" id="ciudadPreview">
                                 <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
-                                <div id="div_ciudad" onclick="verify()">
-                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega" onchange="seleccionarProvincia()" disabled>
-                                        <option value="">Ciudad *</option>
-                                    </select>
-                                </div>
+                                <select id="ciudad" class="form-select">
+                                    <option selected>Ciudad *</option>
+                                    <!-- Agregar opciones aquí -->
+                                </select>
                             </div>
                             <!-- Fin Ciudad -->
 
