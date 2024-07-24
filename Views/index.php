@@ -259,7 +259,7 @@
                                         </div>
                                         <div class="card-body d-flex flex-column">
                                             <p class="card-text flex-grow-1">
-                                                <a href="${SERVERURL}producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
                                                     <strong>${producto.nombre_producto_tienda}</strong>
                                                 </a>
                                             </p>
@@ -284,7 +284,7 @@
                                                     ` : ''}
                                                 </div>
                                             </div>
-                                            <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${SERVERURL}producto?id=${producto.id_producto_tienda}">Comprar</a>
+                                            <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
                                         </div>
                                     </div>
                                 </div>
