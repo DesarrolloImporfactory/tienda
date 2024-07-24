@@ -281,88 +281,69 @@ $id_producto = $_GET['id'];
   /* Fin Iconos */
 
 
+  //cargar select ciudades y provincias
   $(document).ready(function() {
-  // Deshabilitar el select de ciudades inicialmente
-  $('#ciudad_entrega').prop('disabled', true);
+    cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
-  cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
-
-  // Llamar a cargarCiudades cuando se seleccione una provincia
-  $("#provinica").on("change", cargarCiudades);
-});
-
-// Función para cargar provincias
-function cargarProvincias() {
-  $.ajax({
-    url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
-    method: "GET",
-    success: function(response) {
-      let provincias = JSON.parse(response);
-      let provinciaSelect = $("#provinica");
-      provinciaSelect.empty();
-      provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
-
-      provincias.forEach(function(provincia) {
-        provinciaSelect.append(
-          `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
-        );
-      });
-
-      // Inicializar select2 después de cargar las opciones
-      provinciaSelect.select2({
-        placeholder: 'Provincia *',
-        width: 'resolve'
-      });
-    },
-    error: function(error) {
-      console.log("Error al cargar provincias:", error);
-    },
+    // Llamar a cargarCiudades cuando se seleccione una provincia
+    $("#provinica").on("change", cargarCiudades);
   });
-}
 
-// Función para cargar ciudades según la provincia seleccionada
-function cargarCiudades() {
-  let provinciaId = $("#provinica").val();
-  let ciudadSelect = $("#ciudad_entrega");
-
-  if (provinciaId) {
+  // Función para cargar provincias
+  function cargarProvincias() {
     $.ajax({
-      url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
+      url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
       method: "GET",
       success: function(response) {
-        let ciudades = JSON.parse(response);
-        ciudadSelect.empty();
-        ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+        let provincias = JSON.parse(response);
+        let provinciaSelect = $("#provinica");
+        provinciaSelect.empty();
+        provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
 
-        ciudades.forEach(function(ciudad) {
-          ciudadSelect.append(
-            `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
+        provincias.forEach(function(provincia) {
+          provinciaSelect.append(
+            `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
           );
-        });
-
-        ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
-
-        // Inicializar select2 después de cargar las opciones
-        ciudadSelect.select2({
-          placeholder: 'Ciudad *',
-          width: 'resolve'
         });
       },
       error: function(error) {
-        console.log("Error al cargar ciudades:", error);
+        console.log("Error al cargar provincias:", error);
       },
     });
-  } else {
-    ciudadSelect.empty().append('<option value="">Ciudad *</option>').prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
-
-    // Refrescar select2
-    ciudadSelect.select2({
-      placeholder: 'Ciudad *',
-      width: 'resolve'
-    });
   }
-}
 
+  // Función para cargar ciudades según la provincia seleccionada
+  function cargarCiudades() {
+    let provinciaId = $("#provinica").val();
+    if (provinciaId) {
+      $.ajax({
+        url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
+        method: "GET",
+        success: function(response) {
+          let ciudades = JSON.parse(response);
+          let ciudadSelect = $("#ciudad_entrega");
+          ciudadSelect.empty();
+          ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+
+          ciudades.forEach(function(ciudad) {
+            ciudadSelect.append(
+              `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
+            );
+          });
+
+          ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
+        },
+        error: function(error) {
+          console.log("Error al cargar ciudades:", error);
+        },
+      });
+    } else {
+      $("#ciudad_entrega")
+        .empty()
+        .append('<option value="">Ciudad *</option>')
+        .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
+    }
+  }
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
