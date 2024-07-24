@@ -314,7 +314,7 @@
 
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
-                            <div id="btn_comprarPreview" class="d-flex justify-content-center">
+                            <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
                                 <button class="btn btn-dark" id="textoBtn_comprarPreview" type="submit" onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
@@ -465,14 +465,14 @@
         formData.append("id_inventario", $('#id_inventario').val());
         formData.append("id_producto", $('#id_productoTmp').val());
         formData.append("precio_producto", $('#precio_productoTmp').val());
-        formData.append("nombre", $('#nombre').val());
-        formData.append("telefono", $('#telefono').val());
-        formData.append("provincia", $('#provincia').val());
-        formData.append("ciudad", $('#ciudad').val());
-        formData.append("calle_principal", $('#calle_principal').val());
-        formData.append("calle_secundaria", $('#calle_secundaria').val());
-        formData.append("referencia", $('#referencia').val());
-        formData.append("observacion", $('#observacion').val());
+        formData.append("nombre", $('#txt_nombresApellidosPreview').val());
+        formData.append("telefono", $('#txt_telefonoPreview').val());
+        formData.append("provincia", $('#provinica').val());
+        formData.append("ciudad", $('#ciudad_entrega').val());
+        formData.append("calle_principal", $('#txt_calle_principalPreview').val());
+        formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
+        formData.append("referencia", $('#txt_barrio_referenciaPreview').val());
+        formData.append("observacion", $('#txt_comentarioPreview').val());
 
         $.ajax({
             url: SERVERURL + 'Tienda/guardar_pedido',
