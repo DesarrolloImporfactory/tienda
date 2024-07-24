@@ -102,15 +102,12 @@ $id_producto = $_GET['id'];
           var decodedHTML = decodeEntities(response.data);
           console.log("HTML decodificado:", decodedHTML);
 
-          // Crear un contenedor temporal en el DOM para manipular el HTML decodificado
-          var tempDiv = document.createElement("div");
-          tempDiv.innerHTML = decodedHTML;
-
-          // Imprimir el contenido completo del contenedor temporal
-          console.log("Contenido de tempDiv:", tempDiv.innerHTML);
+          // Crear un documento temporal para manipular el HTML decodificado
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(decodedHTML, 'text/html');
 
           // Comprobar si el body está presente en la respuesta
-          var body = tempDiv.querySelector("body");
+          var body = doc.body;
           if (body) {
             var bodyContent = body.innerHTML;
             console.log("Contenido del body:", bodyContent);
