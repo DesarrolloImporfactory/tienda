@@ -90,47 +90,47 @@ $id_producto = $_GET['id'];
     let formData = new FormData();
     formData.append("id_producto", id);
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://imagenes.imporsuitpro.com/obtenerLanding", true);
-    xhr.onload = function() {
-      if (xhr.status === 200) {
+    $.ajax({
+      url: "https://imagenes.imporsuitpro.com/obtenerLanding",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function(response) {
+        console.log("Respuesta de la API:", response);
+
+        // Decodificar la respuesta JSON
+        let data;
         try {
-          var response = JSON.parse(xhr.responseText);
-          console.log("Respuesta de la API:", response);
-
-          // Decodificar entidades HTML
-          var decodedHTML = decodeEntities(response.data);
-          console.log("HTML decodificado:", decodedHTML);
-
-          // Crear un contenedor temporal en el DOM para manipular el HTML decodificado
-          var tempDiv = document.createElement("div");
-          tempDiv.innerHTML = decodedHTML;
-
-          // Comprobar si el body está presente en la respuesta
-          var body = tempDiv.querySelector("body");
-          if (body) {
-            var bodyContent = body.innerHTML;
-            console.log("Contenido del body:", bodyContent);
-
-            // Insertar el contenido del body en el div con id="landing"
-            document.getElementById("landing").innerHTML = bodyContent;
-          } else {
-            console.error("No se encontró la etiqueta <body> en la respuesta.");
-          }
+          data = JSON.parse(response);
+          console.log("HTML codificado:", data.data);
         } catch (e) {
           console.error("Error al decodificar JSON:", e);
+          return;
         }
-      } else {
-        console.error("Error en la solicitud AJAX.");
-      }
-    };
-    xhr.send(formData);
-  }
 
-  function decodeEntities(encodedString) {
-    var textArea = document.createElement('textarea');
-    textArea.innerHTML = encodedString;
-    return textArea.value;
+        // Decodificar entidades HTML
+        let decodedHTML = $('<textarea/>').html(data.data).text();
+        console.log("HTML decodificado:", decodedHTML);
+
+        // Crear un contenedor temporal en el DOM para manipular el HTML decodificado
+        let tempContainer = $('<div>').html(decodedHTML);
+
+        // Extraer el contenido del body de la respuesta
+        let bodyContent = tempContainer.find('body').html();
+        if (bodyContent) {
+          console.log("Contenido del body:", bodyContent);
+
+          // Insertar el contenido del body en el div con id="landing"
+          $('#landing').html(bodyContent);
+        } else {
+          console.error("No se encontró la etiqueta <body> en la respuesta.");
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+      },
+    });
   }
 
   $(document).ready(function() {
