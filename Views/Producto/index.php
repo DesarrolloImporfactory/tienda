@@ -106,6 +106,9 @@ $id_producto = $_GET['id'];
           var tempDiv = document.createElement("div");
           tempDiv.innerHTML = decodedHTML;
 
+          // Imprimir el contenido completo del contenedor temporal
+          console.log("Contenido de tempDiv:", tempDiv.innerHTML);
+
           // Comprobar si el body está presente en la respuesta
           var body = tempDiv.querySelector("body");
           if (body) {
