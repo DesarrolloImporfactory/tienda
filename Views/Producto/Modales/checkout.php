@@ -212,7 +212,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" method="post" action="gracias.php" id="formulario">
+                <form class="form-horizontal" id="formulario">
                     <input type="hidden" id="id_productoTmp" name="id_productoTmp">
                     <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
                     <input type="hidden" id="id_inventario" name="id_inventario">
