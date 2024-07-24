@@ -246,7 +246,6 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
-                                    <input type="hidden" class="form-control" id="session" name="session" value="<?php echo $session_id; ?>">
                                     <input type="hidden" class="form-control" id="cliente" name="cliente" value="1">
                                 </div>
                             </div>
