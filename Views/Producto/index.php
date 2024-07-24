@@ -108,6 +108,7 @@ $id_producto = $_GET['id'];
           var producto = response[0]; // Asumimos que el primer producto es el deseado
 
           id_productoPrincipal = producto.id_producto;
+          cargarLanding(id_productoPrincipal);
 
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
@@ -187,7 +188,7 @@ $id_producto = $_GET['id'];
     });
 
     /* Carga de landing */
-    cargarLanding(id_productoPrincipal);
+    /* cargarLanding(id_productoPrincipal); */
     /* Fin carga de landing */
   });
 
