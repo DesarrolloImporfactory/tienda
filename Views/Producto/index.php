@@ -51,10 +51,10 @@ $id_producto = $_GET['id'];
                 <strong id="ahorra"></strong>
               </span>
             </div>
-            <div id="landing">
+          </div>
+          <div id="landing" style="padding: 20px;">
 
             </div>
-          </div>
           <a style="height: 50px; font-size: 26px; width: 100%; border-radius: 15px" class="jump-button btn btn-primary texto_boton" href="#" id="comprar-ahora">
             <span style="margin-top: 10px">COMPRAR AHORA </span>
           </a>
