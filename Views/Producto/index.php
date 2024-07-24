@@ -338,7 +338,7 @@ $id_producto = $_GET['id'];
         },
       });
     } else {
-      $("#ciudad")
+      $("#ciudad_entrega")
         .empty()
         .append('<option value="">Ciudad *</option>')
         .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
