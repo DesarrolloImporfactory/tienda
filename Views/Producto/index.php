@@ -286,7 +286,7 @@ $id_producto = $_GET['id'];
     cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
     // Llamar a cargarCiudades cuando se seleccione una provincia
-    $("#provincia").on("change", cargarCiudades);
+    $("#provinica").on("change", cargarCiudades);
   });
 
   // Función para cargar provincias
@@ -296,7 +296,7 @@ $id_producto = $_GET['id'];
       method: "GET",
       success: function(response) {
         let provincias = JSON.parse(response);
-        let provinciaSelect = $("#provincia");
+        let provinciaSelect = $("#provinica");
         provinciaSelect.empty();
         provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
 
@@ -314,14 +314,14 @@ $id_producto = $_GET['id'];
 
   // Función para cargar ciudades según la provincia seleccionada
   function cargarCiudades() {
-    let provinciaId = $("#provincia").val();
+    let provinciaId = $("#provinica").val();
     if (provinciaId) {
       $.ajax({
         url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
         method: "GET",
         success: function(response) {
           let ciudades = JSON.parse(response);
-          let ciudadSelect = $("#ciudad");
+          let ciudadSelect = $("#ciudad_entrega");
           ciudadSelect.empty();
           ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
 
