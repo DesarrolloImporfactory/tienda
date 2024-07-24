@@ -182,7 +182,7 @@ $id_producto = $_GET['id'];
     });
 
     /* Carga de landing */
-    cargarlandig(id_producto);
+    cargarLanding(id_producto);
     /* Fin carga de landing */
   });
 
