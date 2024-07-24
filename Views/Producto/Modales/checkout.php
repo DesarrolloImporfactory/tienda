@@ -482,24 +482,19 @@
             contentType: false, // No establecer ningún tipo de contenido
             success: function(response) {
                 response = JSON.parse(response);
-                console.log(response.status);
                 if (response.status == 400) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: "Error",
-                        text: response.message
-                    });
+                    toastr.error(
+                        "NO SE REALIZO LA PETICION  CORRECTAMENTE",
+                        "NOTIFICACIÓN", {
+                            positionClass: "toast-bottom-center"
+                        }
+                    );
                 } else if (response.status == 200) {
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: "Exito",
-                        text: response.message,
-                        showConfirmButton: false,
-                        timer: 2000
-                    }).then(() => {
-                        $('#checkoutModal').modal('hide');
+                    toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
+                        positionClass: "toast-bottom-center",
                     });
+
+                    $('#checkoutModal').modal('hide');
                 }
             },
             error: function(error) {
