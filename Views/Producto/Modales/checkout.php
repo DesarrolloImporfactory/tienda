@@ -249,7 +249,6 @@
                                 <div class="input-group">
                                     <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
-                                    <input type="hidden" class="form-control" id="cliente" name="cliente" value="1">
                                 </div>
                             </div>
                             <!-- Fin Nombre y apellidos -->
@@ -316,7 +315,7 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center">
-                                <button class="btn btn-dark" id="textoBtn_comprarPreview" type="submit">COMPRAR AHORA</button>
+                                <button class="btn btn-dark" id="textoBtn_comprarPreview" type="submit" onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>
@@ -458,4 +457,55 @@
     function handleLoadingError(jqXHR, textStatus, errorThrown) {
         console.error('Error loading JSON:', textStatus, errorThrown);
     }
+
+    /* boton de comprar */
+    function realizar_pedido() {
+        let formData = new FormData();
+        formData.append("id_plataforma", ID_PLATAFORMA);
+        formData.append("id_inventario", $('#id_inventario').val());
+        formData.append("id_producto", $('#id_productoTmp').val());
+        formData.append("precio_producto", $('#precio_productoTmp').val());
+        formData.append("nombre", $('#nombre').val());
+        formData.append("telefono", $('#telefono').val());
+        formData.append("provincia", $('#provincia').val());
+        formData.append("ciudad", $('#ciudad').val());
+        formData.append("calle_principal", $('#calle_principal').val());
+        formData.append("calle_secundaria", $('#calle_secundaria').val());
+        formData.append("referencia", $('#referencia').val());
+        formData.append("observacion", $('#observacion').val());
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/guardar_pedido',
+            method: 'POST',
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            success: function(response) {
+                response = JSON.parse(response);
+                if (response.status == 400) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: "Error",
+                        text: response.message
+                    });
+                } else if (response.status == 200) {
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Exito",
+                        text: response.message,
+                        showConfirmButton: false,
+                        timer: 2000
+                    }).then(() => {
+                        $('#boton_compraModal').modal('hide');
+                    });
+                }
+            },
+            error: function(error) {
+                console.error('Error al solicitar el pago:', error);
+                alert('Hubo un error al solicitar el pago.');
+            }
+        });
+    }
+    /* Fin boton de comprar */
 </script>
