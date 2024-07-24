@@ -26,7 +26,7 @@ $id_producto = $_GET['id'];
                 <img id="main-image" src="" class="img-fluid" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
               </div>
             </div>
-            
+
           </div>
         </div>
       </div>
@@ -92,6 +92,8 @@ $id_producto = $_GET['id'];
     formData.append("id_plataforma", ID_PLATAFORMA);
     formData.append("id_producto_tienda", id_producto);
 
+    var id_productoPrincipal="";
+
     $.ajax({
       url: SERVERURL + 'Tienda/obtener_productos_tienda',
       method: 'POST',
@@ -104,6 +106,8 @@ $id_producto = $_GET['id'];
         if (response.length > 0) {
 
           var producto = response[0]; // Asumimos que el primer producto es el deseado
+
+          id_productoPrincipal = producto.id_producto;
 
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
@@ -183,7 +187,7 @@ $id_producto = $_GET['id'];
     });
 
     /* Carga de landing */
-    cargarLanding(id_producto);
+    cargarLanding(id_productoPrincipal);
     /* Fin carga de landing */
   });
 
