@@ -288,7 +288,7 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <select class="form-control" id="provincia" name="provincia">
+                                <select class="form-control" id="provincia" name="provinica">
                                     <option value="">Provincia *</option>
                                 </select>
                             </div>
@@ -298,7 +298,7 @@
                             <div class="form-group mb-3" id="ciudadPreview">
                                 <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
                                 <div id="div_ciudad">
-                                    <select class="form-control" id="ciudad" name="ciudad">
+                                    <select class="form-control" id="ciudad" name="ciudad_entrega">
                                         <option value="">Ciudad *</option>
                                     </select>
                                 </div>
@@ -357,13 +357,16 @@
         const field = $('#' + key);
         const previewField = $('#' + key + 'Preview');
 
+        // Aplicar valor al campo y disparar evento change para asegurar cualquier lógica de UI
         updateFieldValue(field, value);
 
+        // Específico para animaciones y colores
         if (key === 'animacionBtn_comprar') {
             const btnPreview = $('#textoBtn_comprarPreview');
             btnPreview.removeClass('bounce shake pulse');
             btnPreview.addClass(value);
         } else if (key.startsWith('color')) {
+            // Asegurarse de que se actualice el color directamente en la vista previa adecuadamente
             applyColor(key, value, previewField);
         } else if (key.includes('txt_')) {
             previewField.attr('placeholder', value);
