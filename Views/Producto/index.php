@@ -205,12 +205,13 @@ $id_producto = $_GET['id'];
       success: function(response) {
         console.log("Respuesta de la API:", response);
 
-        // Decodificar la entidad HTML
-        let decodedHTML = $("<div>").html(response.data).text();
+        // Decodificar la respuesta JSON
+        let data = JSON.parse(response);
+        console.log("HTML decodificado:", data.data);
 
         // Crear un contenedor temporal para manipular el HTML decodificado
         let tempDiv = document.createElement("div");
-        tempDiv.innerHTML = decodedHTML;
+        tempDiv.innerHTML = data.data;
 
         // Comprobar si el body está presente en la respuesta
         let body = tempDiv.querySelector("body");
