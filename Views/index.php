@@ -277,7 +277,7 @@
                                 </span>
                             </div>
                             <div class="px-2" style="background-color: #4464ec; color:white; border-radius: 0.3rem; max-width: 70%;">
-                                <span style="font-size: 15px;"><i class="bx bxs-purchase-tag"></i>
+                                <span class="ahorro"><i class="bx bxs-purchase-tag"></i>
                                     <strong>AHORRA UN ${number_format(ahorro)}%</strong>
                                 </span>
                             </div>

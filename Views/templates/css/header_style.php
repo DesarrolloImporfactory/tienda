@@ -573,6 +573,16 @@
         text-decoration: line-through;
     }
 
+    .ahorro {
+        font-size: 10px;
+    }
+
+    @media (max-width: 768px) {
+        .ahorro {
+            font-size: 15px;
+        }
+    }
+
     .texto_boton {
         color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
         background-color: <?php echo COLOR_BOTONES; ?> !important;
