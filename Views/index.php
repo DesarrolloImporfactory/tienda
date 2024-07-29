@@ -480,9 +480,9 @@
 
                     ofertas.forEach(oferta => {
                         if (oferta.posicion == 1){
-                            contentArriba += `<p class="marquee-contentArriba">- ${oferta.texto} -</p>`;
+                            contentArriba += `<p class="marquee-contentArriba"> ${oferta.texto} </p>`;
                         }else if (oferta.posicion == 2){
-                            contentAbajo += `<p class="marquee-contentAbajo">- ${oferta.texto} -</p>`;
+                            contentAbajo += `<p class="marquee-contentAbajo"> ${oferta.texto} </p>`;
                         }
                     });
 
