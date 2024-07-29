@@ -83,7 +83,7 @@
     .marqueeArriba {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimationArriba 20s linear infinite;
+        animation: marqueeAnimationArriba 25s linear infinite;
     }
 
     .marquee-contentArriba {
@@ -91,6 +91,8 @@
         width: 100%;
         text-align: center;
         padding-right: 100% !important;
+        opacity: 1;
+        animation: fadeAnimationArriba 25s linear infinite;
     }
 
     @keyframes marqueeAnimationArriba {
@@ -98,8 +100,25 @@
             transform: translateX(100%);
         }
 
+        50% {
+            transform: translateX(0%);
+        }
+
         100% {
             transform: translateX(-100%);
+        }
+    }
+
+    @keyframes fadeAnimationArriba {
+
+        0%,
+        50% {
+            opacity: 1;
+        }
+
+        90%,
+        100% {
+            opacity: 0;
         }
     }
 
@@ -117,7 +136,7 @@
     .marqueeAbajo {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimationAbajo 20s linear infinite;
+        animation: marqueeAnimationAbajo 25s linear infinite;
     }
 
     .marquee-contentAbajo {
@@ -125,6 +144,8 @@
         width: 100%;
         text-align: center;
         padding-right: 100% !important;
+        opacity: 1;
+        animation: fadeAnimationAbajo 25s linear infinite;
     }
 
     @keyframes marqueeAnimationAbajo {
@@ -132,11 +153,30 @@
             transform: translateX(100%);
         }
 
+        50% {
+            transform: translateX(0%);
+        }
+
         100% {
             transform: translateX(-100%);
         }
     }
+
+    @keyframes fadeAnimationAbajo {
+
+        0%,
+        50% {
+            opacity: 1;
+        }
+
+        90%,
+        100% {
+            opacity: 0;
+        }
+    }
+
     /* Fin abajo */
+
 
     /* fin slider */
     .seccion {
