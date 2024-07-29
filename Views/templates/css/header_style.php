@@ -83,7 +83,7 @@
     .marqueeArriba {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimationArriba 20s linear infinite;
+        animation: marqueeAnimationArriba 25s linear infinite;
     }
 
     .marquee-contentArriba {
@@ -96,6 +96,10 @@
     @keyframes marqueeAnimationArriba {
         0% {
             transform: translateX(100%);
+        }
+
+        90% {
+            transform: translateX(-100%);
         }
 
         100% {
@@ -117,7 +121,7 @@
     .marqueeAbajo {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimationAbajo 20s linear infinite;
+        animation: marqueeAnimationAbajo 25s linear infinite;
     }
 
     .marquee-contentAbajo {
@@ -132,11 +136,17 @@
             transform: translateX(100%);
         }
 
+        90% {
+            transform: translateX(-100%);
+        }
+
         100% {
             transform: translateX(-100%);
         }
     }
+
     /* Fin abajo */
+
 
     /* fin slider */
     .seccion {
