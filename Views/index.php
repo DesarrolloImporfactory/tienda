@@ -471,17 +471,25 @@
             contentType: false,
             processData: false,
             success: function(response) {
+                console.log('Respuesta de la API:', response); // Añade esta línea
+
                 // Suponiendo que la respuesta es un array de strings
                 const ofertas = response.ofertas;
-                let content = '';
+                console.log('Ofertas:', ofertas); // Añade esta línea
 
-                // Crea el contenido para la animación
-                ofertas.forEach(oferta => {
-                    content += `<p class="marquee-content">- ${oferta} -</p>`;
-                });
+                if (Array.isArray(ofertas)) {
+                    let content = '';
 
-                // Duplica el contenido para el efecto de ciclo continuo
-                $('.marquee').html(content + content);
+                    // Crea el contenido para la animación
+                    ofertas.forEach(oferta => {
+                        content += `<p class="marquee-content">- ${oferta} -</p>`;
+                    });
+
+                    // Duplica el contenido para el efecto de ciclo continuo
+                    $('.marquee').html(content + content);
+                } else {
+                    console.error('La propiedad ofertas no es un array:', ofertas);
+                }
             },
             error: function(error) {
                 console.error('Error al obtener las ofertas:', error);
