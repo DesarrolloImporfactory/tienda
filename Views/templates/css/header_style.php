@@ -76,26 +76,21 @@
         color: white;
         width: 100%;
         height: 40px;
-        /* Ajusta la altura según tus necesidades */
         position: relative;
     }
 
     .marquee {
         display: flex;
         width: 200%;
-        /* El doble del ancho del contenedor para el efecto de ciclo continuo */
         animation: marqueeAnimation 15s linear infinite;
-        /* Ajusta la duración según sea necesario */
     }
 
     .marquee-content {
         flex: 0 0 50%;
-        /* Cada elemento ocupa la mitad del ancho del contenedor */
         display: inline-block;
         margin: 0;
         padding: 0;
         text-align: center;
-        /* Centra el texto dentro de cada mitad */
     }
 
     @keyframes marqueeAnimation {

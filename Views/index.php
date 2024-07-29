@@ -19,8 +19,7 @@
     <!-- animacion -->
     <div class="marquee-container">
         <div class="marquee">
-            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
-            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
+            <!-- Los contenidos se llenarán aquí -->
         </div>
     </div>
     <!-- fin animacion -->
@@ -61,8 +60,7 @@
     <!-- animacion -->
     <div class="marquee-container">
         <div class="marquee">
-            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
-            <p class="marquee-content">- LAS MEJORES OFERTAS -</p>
+            <!-- Los contenidos se llenarán aquí -->
         </div>
     </div>
     <!-- fin animacion -->
@@ -87,25 +85,25 @@
         let formDataSlider = new FormData();
         formDataSlider.append("id_plataforma", ID_PLATAFORMA);
         $.ajax({
-            url: SERVERURL+'Tienda/bannertienda',
+            url: SERVERURL + 'Tienda/bannertienda',
             method: 'POST',
             data: formDataSlider,
             contentType: false,
             processData: false,
             dataType: "json",
             success: function(data) {
-                
+
                 let indicators = '';
                 let inner = '';
                 let alineacion = "";
                 $.each(data, function(index, banner) {
 
                     image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
-                    if (banner.alineacion == 1){
+                    if (banner.alineacion == 1) {
                         alineacion = "text-align-last: left;"
-                    } else if (banner.alineacion == 2){
+                    } else if (banner.alineacion == 2) {
                         alineacion = "text-align-last: center;"
-                    } else if (banner.alineacion == 3){
+                    } else if (banner.alineacion == 3) {
                         alineacion = "text-align-last: right;"
                     }
                     const isActive = index === 0 ? 'active' : '';
@@ -130,7 +128,7 @@
         /* Categorias */
         let formDataCategoria = new FormData();
         formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
-        
+
         $.ajax({
             url: SERVERURL + 'Tienda/categoriastienda',
             method: 'POST',
@@ -146,7 +144,7 @@
                 }
 
                 categorias.forEach(categoria => {
-                    let imagePath = obtenerURLImagen(categoria.imagen,SERVERURL);
+                    let imagePath = obtenerURLImagen(categoria.imagen, SERVERURL);
                     let categoriaHtml = `
                         <div class="item">
                             <div class="category-container d-flex flex-column align-items-center">
@@ -433,7 +431,7 @@
                         var id_testimonio = testimonio.id_testimonio;
                         var nombre_testimonio = testimonio.nombre || '';
                         var texto_testimonio = testimonio.testimonio || '';
-                        var image_path = obtenerURLImagen(testimonio.imagen,SERVERURL)
+                        var image_path = obtenerURLImagen(testimonio.imagen, SERVERURL)
 
                         var testimonioItem = `
                             <div class="item d-flex flex-column">
@@ -461,6 +459,35 @@
             }
         });
         /* Fin Testimonios*/
+        /* Horizontal */
+        let formDataHorizontal = new FormData();
+        formDataHorizontal.append("id_plataforma", ID_PLATAFORMA);
+
+        // Realiza la llamada AJAX
+        $.ajax({
+            url: SERVERURL + 'Tienda/obtener_horizontalTienda',
+            method: 'POST',
+            data: formDataHorizontal,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Suponiendo que la respuesta es un array de strings
+                const ofertas = response.ofertas;
+                let content = '';
+
+                // Crea el contenido para la animación
+                ofertas.forEach(oferta => {
+                    content += `<p class="marquee-content">- ${oferta} -</p>`;
+                });
+
+                // Duplica el contenido para el efecto de ciclo continuo
+                $('.marquee').html(content + content);
+            },
+            error: function(error) {
+                console.error('Error al obtener las ofertas:', error);
+            }
+        });
+        /* Fin Horizontal */
     });
 
     function number_format(number, decimals = 2) {
