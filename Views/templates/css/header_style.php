@@ -77,6 +77,7 @@
         width: 100%;
         height: 40px;
         position: relative;
+        padding-right: 50%;
     }
 
     .marquee {
