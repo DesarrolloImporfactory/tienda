@@ -83,14 +83,14 @@
     .marqueeArriba {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimationArriba 15s linear infinite;
+        animation: marqueeAnimationArriba 20s linear infinite;
     }
 
     .marquee-contentArriba {
         display: inline-block;
         width: 100%;
         text-align: center;
-        padding-right: 50% !important;
+        padding-right: 100% !important;
     }
 
     @keyframes marqueeAnimationArriba {
@@ -117,14 +117,14 @@
     .marqueeAbajo {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimationAbajo 15s linear infinite;
+        animation: marqueeAnimationAbajo 20s linear infinite;
     }
 
     .marquee-contentAbajo {
         display: inline-block;
         width: 100%;
         text-align: center;
-        padding-right: 50% !important;
+        padding-right: 100% !important;
     }
 
     @keyframes marqueeAnimationAbajo {
