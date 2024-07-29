@@ -81,36 +81,23 @@
 
     .marquee {
         display: flex;
-        flex-direction: column;
-        /* Cambiamos la dirección del flujo */
-        position: absolute;
-        width: 100%;
-        height: 100%;
         white-space: nowrap;
         animation: marqueeAnimation 15s linear infinite;
     }
 
     .marquee-content {
-        display: block;
+        display: inline-block;
         width: 100%;
         text-align: center;
     }
 
     @keyframes marqueeAnimation {
         0% {
-            transform: translateY(100%);
-        }
-
-        10% {
-            transform: translateY(0);
-        }
-
-        90% {
-            transform: translateY(0);
+            transform: translateX(100%);
         }
 
         100% {
-            transform: translateY(-100%);
+            transform: translateX(-100%);
         }
     }
 
