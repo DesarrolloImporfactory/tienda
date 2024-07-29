@@ -470,24 +470,18 @@
             data: formDataHorizontal,
             contentType: false,
             processData: false,
-            dataType:"json",
+            dataType: "json",
             success: function(response) {
-                console.log('Respuesta de la API:', response);
-
-                // La respuesta es un array de objetos
                 const ofertas = response;
-                console.log('Ofertas:', ofertas);
 
                 if (Array.isArray(ofertas)) {
                     let content = '';
 
-                    // Crea el contenido para la animación
                     ofertas.forEach(oferta => {
                         content += `<p class="marquee-content">- ${oferta.texto} -</p>`;
                     });
 
-                    // Duplica el contenido para el efecto de ciclo continuo
-                    $('.marquee').html(content + content);
+                    $('.marquee').html(content);
                 } else {
                     console.error('La respuesta no es un array:', ofertas);
                 }
