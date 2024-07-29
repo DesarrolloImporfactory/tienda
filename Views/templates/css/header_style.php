@@ -78,7 +78,6 @@
         width: 100%;
         height: 40px;
         position: relative;
-        padding-right: 50%;
     }
 
     .marqueeArriba {
@@ -91,6 +90,7 @@
         display: inline-block;
         width: 100%;
         text-align: center;
+        padding-right: 50% !important;
     }
 
     @keyframes marqueeAnimationArriba {
@@ -112,7 +112,6 @@
         width: 100%;
         height: 40px;
         position: relative;
-        padding-right: 50%;
     }
 
     .marqueeAbajo {
@@ -125,6 +124,7 @@
         display: inline-block;
         width: 100%;
         text-align: center;
+        padding-right: 50% !important;
     }
 
     @keyframes marqueeAnimationAbajo {
