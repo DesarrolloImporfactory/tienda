@@ -147,7 +147,6 @@
 
     /* Fin abajo */
 
-
     /* fin slider */
     .seccion {
         padding-top: 50px;
