@@ -17,8 +17,8 @@
     <!-- fin slider -->
 
     <!-- animacion -->
-    <div class="marquee-container">
-        <div class="marquee">
+    <div class="marquee-containerArriba">
+        <div class="marqueeArriba">
             <!-- Los contenidos se llenarán aquí -->
         </div>
     </div>
@@ -58,8 +58,8 @@
     <!-- Fin Iconos -->
 
     <!-- animacion -->
-    <div class="marquee-container">
-        <div class="marquee">
+    <div class="marquee-containerAbajo">
+        <div class="marqueeAbajo">
             <!-- Los contenidos se llenarán aquí -->
         </div>
     </div>
@@ -475,13 +475,19 @@
                 const ofertas = response;
 
                 if (Array.isArray(ofertas)) {
-                    let content = '';
+                    let contentArriba = '';
+                    let contentAbajo = '';
 
                     ofertas.forEach(oferta => {
-                        content += `<p class="marquee-content">- ${oferta.texto} -</p>`;
+                        if (oferta.posicion == 1){
+                            contentArriba += `<p class="marquee-contentArriba">- ${oferta.texto} -</p>`;
+                        }else if (oferta.posicion == 2){
+                            contentAbajo += `<p class="marquee-contentAbajo">- ${oferta.texto} -</p>`;
+                        }
                     });
 
-                    $('.marquee').html(content);
+                    $('.marqueeArriba').html(contentArriba);
+                    $('.marqueeAbajo').html(contentAbajo);
                 } else {
                     console.error('La respuesta no es un array:', ofertas);
                 }

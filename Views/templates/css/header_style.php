@@ -70,7 +70,8 @@
         }
     }
 
-    .marquee-container {
+    /* Arriba */
+    .marquee-containerArriba {
         overflow: hidden;
         background-color: <?php echo COLOR_BACKGROUND; ?>;
         color: white;
@@ -80,19 +81,19 @@
         padding-right: 50%;
     }
 
-    .marquee {
+    .marqueeArriba {
         display: flex;
         white-space: nowrap;
-        animation: marqueeAnimation 15s linear infinite;
+        animation: marqueeAnimationArriba 15s linear infinite;
     }
 
-    .marquee-content {
+    .marquee-contentArriba {
         display: inline-block;
         width: 100%;
         text-align: center;
     }
 
-    @keyframes marqueeAnimation {
+    @keyframes marqueeAnimationArriba {
         0% {
             transform: translateX(100%);
         }
@@ -101,6 +102,41 @@
             transform: translateX(-100%);
         }
     }
+
+    /* fin arriba */
+    /* Abajo */
+    .marquee-containerAbajo {
+        overflow: hidden;
+        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        color: white;
+        width: 100%;
+        height: 40px;
+        position: relative;
+        padding-right: 50%;
+    }
+
+    .marqueeAbajo {
+        display: flex;
+        white-space: nowrap;
+        animation: marqueeAnimationAbajo 15s linear infinite;
+    }
+
+    .marquee-contentAbajo {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    @keyframes marqueeAnimationAbajo {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    /* Fin abajo */
 
     /* fin slider */
     .seccion {
