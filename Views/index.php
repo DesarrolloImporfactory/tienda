@@ -470,6 +470,7 @@
             data: formDataHorizontal,
             contentType: false,
             processData: false,
+            dataType:"json",
             success: function(response) {
                 console.log('Respuesta de la API:', response);
 
