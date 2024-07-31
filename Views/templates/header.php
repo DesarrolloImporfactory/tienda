@@ -114,6 +114,7 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                 data: formData_pixel,
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
+                dataType: "json",
                 success: function(response) {
                     // Supongamos que la respuesta es un JSON con los scripts de los píxeles
                     // Asegúrate de ajustar esto según la estructura de tu respuesta
