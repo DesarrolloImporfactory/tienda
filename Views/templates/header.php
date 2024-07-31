@@ -107,7 +107,8 @@ $primera_seccion = obtenerPrimeraSeccion($url);
     <script>
         $(document).ready(function() {
             let formData_pixel = new FormData();
-            formData_pixel.append("id_plataforma", ID_PLATAFORMA); // Añadir el SKU al FormData
+            formData_pixel.append("id_plataforma", ID_PLATAFORMA); // Añadir el ID de la plataforma al FormData
+
             $.ajax({
                 url: SERVERURL + "tienda/obtenerPixeles",
                 type: "POST", // Cambiar a POST para enviar FormData
@@ -116,18 +117,31 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
                 success: function(response) {
-                    console.log("respueta: "+response);
-                    // Supongamos que la respuesta es un JSON con los scripts de los píxeles
-                    // Asegúrate de ajustar esto según la estructura de tu respuesta
-                    if (response && response.pixel) {
-                        response.pixel.forEach(function(scriptContent) {
-                            var script = document.createElement("script");
-                            script.type = "text/javascript";
-                            script.text = scriptContent;
-                            document.head.appendChild(script);
+                    console.log("respuesta: ", response);
+                    // Supongamos que la respuesta es un array de objetos
+                    if (response && Array.isArray(response)) {
+                        response.forEach(function(pixelData) {
+                            if (pixelData.pixel) {
+                                var script = document.createElement("script");
+                                script.type = "text/javascript";
+                                script.text = pixelData.pixel;
+                                document.head.appendChild(script);
+
+                                // Si el script incluye contenido de <noscript>, insertarlo también
+                                if (pixelData.pixel.includes("<noscript>")) {
+                                    var noscriptContent = pixelData.pixel.match(/<noscript>([\s\S]*?)<\/noscript>/);
+                                    if (noscriptContent && noscriptContent[1]) {
+                                        var noscript = document.createElement("noscript");
+                                        noscript.innerHTML = noscriptContent[1];
+                                        document.body.appendChild(noscript);
+                                    }
+                                }
+                            } else {
+                                console.error("El objeto no contiene el campo 'pixel'.", pixelData);
+                            }
                         });
                     } else {
-                        console.error("La respuesta no contiene los scripts esperados.");
+                        console.error("La respuesta no es el array esperado.");
                     }
                 },
                 error: function(xhr, status, error) {
@@ -136,6 +150,7 @@ $primera_seccion = obtenerPrimeraSeccion($url);
             });
         });
     </script>
+
 
 
 </head>
