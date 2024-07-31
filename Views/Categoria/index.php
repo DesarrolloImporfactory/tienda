@@ -219,7 +219,7 @@
                                     <span class="text-muted">${precioNormal.toFixed(2)}</span>
                                     <span class="text-price">$${precioEspecial.toFixed(2)}</span>
                                 </div>
-                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
+                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial}, ${producto.id_inventario})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                             </div>
                         </div>
                     </div>
@@ -427,6 +427,15 @@
                     mostrarProductos(data);
                 })
                 .catch(error => console.error('Error:', error));
+        }
+
+        function agregar_tmp(id_producto, precio, id_inventario) {
+            $("#id_productoTmp").val(id_producto);
+            $("#precio_productoTmp").val(precio);
+            $("#id_inventario").val(id_inventario);
+
+            /* $("#boton_compraModal").modal("show"); */
+            $("#checkoutModal").modal("show");
         }
     });
 </script>
