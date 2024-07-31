@@ -116,6 +116,7 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
                 success: function(response) {
+                    console.log("respueta: "+response);
                     // Supongamos que la respuesta es un JSON con los scripts de los píxeles
                     // Asegúrate de ajustar esto según la estructura de tu respuesta
                     if (response && response.pixel) {
