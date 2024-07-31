@@ -429,16 +429,16 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
-
-        function agregar_tmp(id_producto, precio, id_inventario) {
-            $("#id_productoTmp").val(id_producto);
-            $("#precio_productoTmp").val(precio);
-            $("#id_inventario").val(id_inventario);
-
-            /* $("#boton_compraModal").modal("show"); */
-            $("#checkoutModal").modal("show");
-        }
     });
+
+    function agregar_tmp(id_producto, precio, id_inventario) {
+        $("#id_productoTmp").val(id_producto);
+        $("#precio_productoTmp").val(precio);
+        $("#id_inventario").val(id_inventario);
+
+        /* $("#boton_compraModal").modal("show"); */
+        $("#checkoutModal").modal("show");
+    }
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
