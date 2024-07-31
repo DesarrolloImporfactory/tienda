@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <h5>Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
+                    <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
                     <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" width="40px" height="40px">
                 </div>
                 <div class="col-md-3">
-                    
+
                 </div>
                 <div class="col-md-3">
                     <h5>Síguenos</h5>
