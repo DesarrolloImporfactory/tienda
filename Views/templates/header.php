@@ -122,19 +122,29 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                     if (response && Array.isArray(response)) {
                         response.forEach(function(pixelData) {
                             if (pixelData.pixel) {
-                                var script = document.createElement("script");
-                                script.type = "text/javascript";
-                                script.text = pixelData.pixel;
-                                document.head.appendChild(script);
+                                // Crear un div temporal para insertar el contenido del script
+                                var tempDiv = document.createElement("div");
+                                tempDiv.innerHTML = pixelData.pixel;
 
-                                // Si el script incluye contenido de <noscript>, insertarlo también
-                                if (pixelData.pixel.includes("<noscript>")) {
-                                    var noscriptContent = pixelData.pixel.match(/<noscript>([\s\S]*?)<\/noscript>/);
-                                    if (noscriptContent && noscriptContent[1]) {
-                                        var noscript = document.createElement("noscript");
-                                        noscript.innerHTML = noscriptContent[1];
-                                        document.body.appendChild(noscript);
+                                // Insertar todos los elementos <script> del div temporal al <head>
+                                var scripts = tempDiv.getElementsByTagName("script");
+                                for (var i = 0; i < scripts.length; i++) {
+                                    var script = document.createElement("script");
+                                    script.type = "text/javascript";
+                                    if (scripts[i].src) {
+                                        script.src = scripts[i].src;
+                                    } else {
+                                        script.innerHTML = scripts[i].innerHTML;
                                     }
+                                    document.head.appendChild(script);
+                                }
+
+                                // Insertar todos los elementos <noscript> del div temporal al <body>
+                                var noscripts = tempDiv.getElementsByTagName("noscript");
+                                for (var j = 0; j < noscripts.length; j++) {
+                                    var noscript = document.createElement("noscript");
+                                    noscript.innerHTML = noscripts[j].innerHTML;
+                                    document.body.appendChild(noscript);
                                 }
                             } else {
                                 console.error("El objeto no contiene el campo 'pixel'.", pixelData);
