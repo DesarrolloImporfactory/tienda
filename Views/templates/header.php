@@ -22,7 +22,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 
 // Define las constantes
-define('NOMBRETIENDA', $data[0]['nombre_tienda']);
+define('NOMBRE_TIENDA', $data[0]['nombre_tienda']);
 define('FAVICON', $data[0]['favicon']);
 define('LOGO_TIENDA', $data[0]['logo_url']);
 define('COLOR_BACKGROUND', $data[0]['color']);
