@@ -264,13 +264,13 @@
                     <div class="product-footer mb-2">
                         <div class="d-flex flex-row">
                             <div>
-                                <span style="font-size: 15px; color:#4461ed; padding-right: 10px;">
+                                <span style="font-size: 12px; color:#4461ed; padding-right: 10px;">
                                     <strong>$ ${number_format(precioEspecial, 2)}</strong>
                                 </span>
                             </div>
                             ${precioNormal > 0 ? `
                             <div>
-                                <span class="tachado" style="font-size: 15px; padding-right: 10px;">
+                                <span class="tachado" style="font-size: 12px; padding-right: 10px;">
                                     <strong>$ ${number_format(precioNormal, 2)}</strong>
                                 </span>
                             </div>
