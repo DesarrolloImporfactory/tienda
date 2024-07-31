@@ -58,22 +58,22 @@ function obtenerPrimeraSeccion()
 }
 
 function formatPhoneNumber($number)
-      {
-         // Eliminar caracteres no numéricos excepto el signo +
-         $number = preg_replace('/[^\d+]/', '', $number);
+{
+    // Eliminar caracteres no numéricos excepto el signo +
+    $number = preg_replace('/[^\d+]/', '', $number);
 
-         // Verificar si el número ya tiene el código de país +593
-         if (!preg_match('/^\+593/', $number)) {
-            // Si el número comienza con 0, quitarlo
-            if (strpos($number, '0') === 0) {
-               $number = substr($number, 1);
-            }
-            // Agregar el código de país +593 al inicio del número
-            $number = '+593' . $number;
-         }
+    // Verificar si el número ya tiene el código de país +593
+    if (!preg_match('/^\+593/', $number)) {
+        // Si el número comienza con 0, quitarlo
+        if (strpos($number, '0') === 0) {
+            $number = substr($number, 1);
+        }
+        // Agregar el código de país +593 al inicio del número
+        $number = '+593' . $number;
+    }
 
-         return $number;
-      }
+    return $number;
+}
 
 // URL de ejemplo
 $url = "https://tony.imporsuitpro.com/categoria";
@@ -104,6 +104,37 @@ $primera_seccion = obtenerPrimeraSeccion($url);
     <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            let formData_pixel = new FormData();
+            formData_pixel.append("id_plataforma", ID_PLATAFORMA); // Añadir el SKU al FormData
+            $.ajax({
+                url: SERVERURL + "tienda/obtenerPixeles",
+                type: "POST", // Cambiar a POST para enviar FormData
+                data: formData_pixel,
+                processData: false, // No procesar los datos
+                contentType: false, // No establecer ningún tipo de contenido
+                success: function(response) {
+                    // Supongamos que la respuesta es un JSON con los scripts de los píxeles
+                    // Asegúrate de ajustar esto según la estructura de tu respuesta
+                    if (response && response.scripts) {
+                        response.scripts.forEach(function(scriptContent) {
+                            var script = document.createElement("script");
+                            script.type = "text/javascript";
+                            script.text = scriptContent;
+                            document.head.appendChild(script);
+                        });
+                    } else {
+                        console.error("La respuesta no contiene los scripts esperados.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error al obtener los píxeles:", error);
+                }
+            });
+        });
+    </script>
+
 
 </head>
 
