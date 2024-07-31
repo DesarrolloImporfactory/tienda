@@ -1,5 +1,6 @@
 <?php include 'Views/templates/header.php'; ?>
 <?php include 'Views/Categoria/css/categoria_style.php'; ?>
+<?php require_once './Views/Producto/Modales/checkout.php'; ?>
 
 <main>
     <!-- área de categorías -->
