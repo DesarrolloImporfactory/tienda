@@ -117,8 +117,8 @@ $primera_seccion = obtenerPrimeraSeccion($url);
                 success: function(response) {
                     // Supongamos que la respuesta es un JSON con los scripts de los píxeles
                     // Asegúrate de ajustar esto según la estructura de tu respuesta
-                    if (response && response.scripts) {
-                        response.scripts.forEach(function(scriptContent) {
+                    if (response && response.pixel) {
+                        response.pixel.forEach(function(scriptContent) {
                             var script = document.createElement("script");
                             script.type = "text/javascript";
                             script.text = scriptContent;
