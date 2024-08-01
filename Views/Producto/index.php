@@ -54,7 +54,7 @@ $id_producto = $_GET['id'];
           </div>
           <div id="landing" style="padding: 20px;">
 
-            </div>
+          </div>
           <a style="height: 50px; font-size: 26px; width: 100%; border-radius: 15px" class="jump-button btn btn-primary texto_boton" href="#" id="comprar-ahora">
             <span style="margin-top: 10px">COMPRAR AHORA </span>
           </a>
@@ -154,12 +154,22 @@ $id_producto = $_GET['id'];
 
           var producto = response[0]; // Asumimos que el primer producto es el deseado
 
+          var precioEspecial = parseFloat(producto.pvp_tienda);
+          var precioNormal = parseFloat(producto.pref_tienda);
+
+          var ahorro = 0;
+          if (precioNormal > 0) {
+            ahorro = 100 - (precioEspecial * 100 / precioNormal);
+          }
           $('#nombre-producto').text(producto.nombre_producto_tienda);
-          $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
+          $('#precio-especial').text('$' + parseFloat(precioEspecial).toFixed(2));
+          $('#precio-normal').text('$' + parseFloat(precioNormal).toFixed(2));
+          $('#ahorra').text('$' + parseFloat(ahorro).toFixed(2));
 
           // Ocultamos el precio normal y el contenedor de ahorro ya que no se utilizan en el ejemplo proporcionado
-          $('#precio-normal-container').hide();
-          $('#ahorra-container').hide();
+          if (ahorro == 0) {
+            $('#ahorra-container').hide();
+          }
 
           // Manejo de imágenes
           var mainImageSrc = producto.imagen_principal_tienda;
