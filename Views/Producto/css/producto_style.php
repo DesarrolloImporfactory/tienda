@@ -516,4 +516,12 @@
   }
 
   /* fin checkout */
+
+  #landing img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    /* Opcional: centra la imagen horizontalmente */
+  }
 </style>
