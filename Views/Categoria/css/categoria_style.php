@@ -21,7 +21,6 @@
     }
 
     .text-price {
-        color: red;
         font-weight: bold;
     }
 
