@@ -88,7 +88,7 @@ $id_producto = $_GET['id'];
 <script>
   function cargarLanding(id) {
     let formData = new FormData();
-    formData.append("id_producto", id);
+    formData.append("id_producto_tienda", id);
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://imagenes.imporsuitpro.com/obtenerLandingTienda", true);
