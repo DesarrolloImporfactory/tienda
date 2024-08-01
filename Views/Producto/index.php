@@ -91,7 +91,7 @@ $id_producto = $_GET['id'];
     formData.append("id_producto", id);
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "https://imagenes.imporsuitpro.com/obtenerLanding", true);
+    xhr.open("POST", "https://imagenes.imporsuitpro.com/obtenerLandingTienda", true);
     xhr.onload = function() {
       if (xhr.status === 200) {
         try {
@@ -202,7 +202,7 @@ $id_producto = $_GET['id'];
           });
 
           id_productoPrincipal = producto.id_producto;
-          cargarLanding(id_productoPrincipal);
+          cargarLanding(id_producto);
         } else {
           console.error('No se encontraron productos.');
         }
