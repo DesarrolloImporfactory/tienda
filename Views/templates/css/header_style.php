@@ -136,6 +136,7 @@
             transform: translateX(-100%);
         }
     }
+
     /* Fin abajo */
 
     /* fin slider */
@@ -409,6 +410,11 @@
 
     .text-dark {
         color: #343a40 !important;
+    }
+    
+    .texto_precio {
+        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
+        ;
     }
 
     .card-title {

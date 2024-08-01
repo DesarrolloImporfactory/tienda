@@ -251,7 +251,7 @@
                         <div class="grid-container">
                         <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                         <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -50px">
-                        <a href="${SERVERURL}producto?id=${producto.id_producto_tienda}">
+                        <a href="producto?id=${producto.id_producto_tienda}">
                         <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 70%; height: 70%; margin-top: 10px;">
                         </a>
                         </div>
@@ -264,7 +264,7 @@
                     <div class="product-footer mb-2">
                         <div class="d-flex flex-row">
                             <div>
-                                <span style="font-size: 12px; color:#4461ed; padding-right: 10px;">
+                                <span style="font-size: 12px; padding-right: 10px;" class="texto_precio">
                                     <strong>$ ${number_format(precioEspecial, 2)}</strong>
                                 </span>
                             </div>
@@ -479,9 +479,9 @@
                     let contentAbajo = '';
 
                     ofertas.forEach(oferta => {
-                        if (oferta.posicion == 1){
+                        if (oferta.posicion == 1) {
                             contentArriba += `<p class="marquee-contentArriba"> ${oferta.texto} </p>`;
-                        }else if (oferta.posicion == 2){
+                        } else if (oferta.posicion == 2) {
                             contentAbajo += `<p class="marquee-contentAbajo"> ${oferta.texto} </p>`;
                         }
                     });

@@ -37,7 +37,7 @@ $id_producto = $_GET['id'];
           <br>
           <div class="precios_producto">
             <div>
-              <span style="font-size: 20px; color:#4461ed; padding-right: 10px;">
+              <span style="font-size: 20px; padding-right: 10px;" class="texto_precio">
                 <strong id="precio-especial"></strong>
               </span>
             </div>

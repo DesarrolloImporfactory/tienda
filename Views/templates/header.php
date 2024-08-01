@@ -30,6 +30,7 @@ define('COLOR_BOTONES', $data[0]['color_botones']);
 define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
 define('TEXTO_BTN_SLIEDER', $data[0]['texto_btn_slider']);
 define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
+define('COLOR_TEXTO_PRECIO', $data[0]['texto_precio']);
 define('FACEBOOK', $data[0]['facebook']);
 define('INSTRAGRAM', $data[0]['instagram']);
 define('TIKTOK', $data[0]['tiktok']);
