@@ -518,10 +518,19 @@
   /* fin checkout */
 
   #landing img {
+    width: 100%;
+    /* La imagen ocupará el 100% del ancho del contenedor */
     max-width: 100%;
+    /* No excederá el ancho del contenedor */
     height: auto;
+    /* Mantiene la relación de aspecto original */
     display: block;
+    /* Elimina el espacio blanco adicional */
     margin: 0 auto;
-    /* Opcional: centra la imagen horizontalmente */
+    /* Centra la imagen si es más pequeña que el contenedor */
+    object-fit: cover;
+    /* Ajusta la imagen para cubrir el contenedor, manteniendo el aspecto */
+    border-radius: 8px;
+    /* Opcional: bordes redondeados para mejorar la estética */
   }
 </style>
