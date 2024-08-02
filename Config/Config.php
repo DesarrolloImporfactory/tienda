@@ -20,6 +20,7 @@ if (ENVIRONMENT == 'development') {
 $Ur = $_SERVER['HTTP_HOST'];
 $url_actual = "https://" . $_SERVER['HTTP_HOST'] . "/";
 $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
+$nombre_actual = str_replace(".com", "", $nombre_actual);
 
 //recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
 
