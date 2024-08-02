@@ -94,6 +94,7 @@ $url_actual = "https://" . $recuperado . "imporsuitpro.com";
 // Consultar la plataforma
 $id_plataforma = "";
 $sql = "SELECT * FROM plataformas WHERE url_imporsuit = '$url_actual'";
+echo $sql;
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
