@@ -411,7 +411,7 @@
     .text-dark {
         color: #343a40 !important;
     }
-    
+
     .texto_precio {
         color: <?php echo COLOR_TEXTO_PRECIO; ?>;
         ;
@@ -425,6 +425,49 @@
         color: <?php echo COLOR_BOTONES; ?> !important;
         margin-bottom: 15px !important;
     }
+
+    /* Botón flotante para WhatsApp */
+    .whatsapp-float {
+        position: fixed;
+        /* Posición fija en la pantalla */
+        width: auto;
+        /* Ancho automático */
+        bottom: 40px;
+        /* Distancia desde el fondo de la pantalla */
+        right: 40px;
+        /* Distancia desde el lado derecho de la pantalla */
+        background-color: transparent;
+        /* Color del texto */
+        padding: -5px;
+        /* Relleno interno del botón */
+        border-radius: 5px;
+        /* Bordes redondeados */
+        text-decoration: none;
+        /* Sin subrayado del texto */
+        z-index: 100;
+        /* Asegura que el botón esté sobre otros elementos */
+    }
+
+    .whatsapp-float:hover {
+        background-color: #128C7E;
+        /* Color al pasar el ratón */
+    }
+
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            /* Distancia desde el fondo para dispositivos móviles */
+            right: 20px;
+            /* Distancia desde el lado derecho para dispositivos móviles */
+        }
+    }
+
+    .ws_flotante {
+        color: #24d366;
+        font-size: 4em;
+    }
+
+    /* Fin Botón flotante para WhatsApp */
 
     /* Fin seccion de css añadido del anteiror sistema */
 

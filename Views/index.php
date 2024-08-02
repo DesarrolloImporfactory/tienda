@@ -77,6 +77,10 @@
     </div>
     <!-- Fin Testimonios -->
 
+    <!-- boton whatsapp -->
+    <a href="https://wa.me/<?php echo $telefonoFormateado ?>" class="whatsapp-float" target="_blank"><i class="bx bxl-whatsapp-square ws_flotante"></i></a>
+    <!-- Fin boton whatsapp-->
+
 </main>
 
 <script>
