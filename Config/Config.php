@@ -19,11 +19,7 @@ if (ENVIRONMENT == 'development') {
 }
 $Ur = $_SERVER['HTTP_HOST'];
 $url_actual = "https://" . $_SERVER['HTTP_HOST'] . "/";
-
-
 $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
-
-$nombre_actual = str_replace(".com", "", $nombre_actual);
 
 //recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
 
@@ -88,7 +84,6 @@ $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
 
 $id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual'";
-echo $id_plataforma;
 $result = $mysqli->query($id_plataforma);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
