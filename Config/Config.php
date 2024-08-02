@@ -24,6 +24,23 @@ if (ENVIRONMENT == 'development') {
 $Ur = $_SERVER['HTTP_HOST'];
 $url_actual = "https://" . $Ur . "/";
 
+// Definir las posibles terminaciones de dominio
+$terminaciones = ['.com', '.us', '.net', '.org', '.co', '.biz', '.info'];
+
+// Función para eliminar la terminación del dominio
+function eliminarTerminacion($dominio, $terminaciones)
+{
+    foreach ($terminaciones as $terminacion) {
+        if (strpos($dominio, $terminacion) !== false) {
+            return str_replace($terminacion, '', $dominio);
+        }
+    }
+    return $dominio;
+}
+
+// Limpiar el dominio de la URL actual
+$nombre_actual = eliminarTerminacion($Ur, $terminaciones);
+
 // Verificar si el dominio contiene "imporsuitpro.com"
 if (strpos($Ur, 'imporsuitpro.com') === false) {
     // Si no contiene el dominio, agregarlo
@@ -32,8 +49,6 @@ if (strpos($Ur, 'imporsuitpro.com') === false) {
 }
 
 // Modificar el subdominio a "new"
-$nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
-$nombre_actual = str_replace(".com", "", $nombre_actual);
 $url_actual = str_replace($nombre_actual, "new.", $url_actual);
 
 // Conexión a la base de datos
@@ -87,14 +102,13 @@ const LLAR_ENDPOINT_CANCEL = 'https://api.laarcourier.com:9727/guias/anular/';
 
 // Determinar el host antiguo y nuevo
 $hostAntiguo = $_SERVER['HTTP_HOST'];
-$hostNuevo = str_replace("imporsuitpro.com", "", $hostAntiguo);
+$hostNuevo = eliminarTerminacion($hostAntiguo, $terminaciones);
 $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
 
 // Consultar la plataforma
 $id_plataforma = "";
 $sql = "SELECT * FROM plataformas WHERE url_imporsuit = '$url_actual'";
-echo $sql;
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
