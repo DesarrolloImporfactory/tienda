@@ -47,7 +47,7 @@ $id_producto = $_GET['id'];
               </span>
             </div>
             <div id="ahorra-container" class="px-2" style="background-color: #4464ec; color:white !important; border-radius: 0.3rem;">
-              <span class="ahorra"><i class="bx bxs-purchase-tag"></i>
+              <span class="ahorra"><i class="bx bxs-purchase-tag" style="color: white;"></i>
                 <strong id="ahorra"></strong>
               </span>
             </div>
@@ -325,7 +325,7 @@ $id_producto = $_GET['id'];
                   <div class="card card_icon text-center">
                     <div class="card-body card-body_icon d-flex flex-column">
                       <div>
-                        <i class="fas ${icon_text} fa-2x"></i> <!-- Cambia el icono según corresponda -->
+                        <i class="fa ${icon_text} fa-2x"></i> <!-- Cambia el icono según corresponda -->
                       </div>
                       <div>
                         <h5 class="card-title card-title_icon">${texto}</h5>
