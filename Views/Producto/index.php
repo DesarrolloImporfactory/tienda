@@ -164,7 +164,7 @@ $id_producto = $_GET['id'];
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(precioEspecial).toFixed(2));
           $('#precio-normal').text('$' + parseFloat(precioNormal).toFixed(2));
-          $('#ahorra').text('$' + parseFloat(ahorro).toFixed(2));
+          $('#ahorra').text('%' + parseFloat(ahorro).toFixed(2));
 
           // Ocultamos el precio normal y el contenedor de ahorro ya que no se utilizan en el ejemplo proporcionado
           if (ahorro == 0) {
