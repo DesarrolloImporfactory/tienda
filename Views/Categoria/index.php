@@ -204,6 +204,10 @@
             const precioNormal = parseFloat(producto.pref_tienda);
 
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
+            let texto_precioNormal=``;
+            if (precioNormal != 0){
+                texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
+            }
             const productoHtml = `
                     <div class="col-6 col-md-4 col-lg-3 mb-3">
                         <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
@@ -217,7 +221,7 @@
                                     <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
                                 </a>
                                 <div class="product-footer mb-2">
-                                    <span class="text-muted">${precioNormal.toFixed(2)}</span>
+                                    ${texto_precioNormal}
                                     <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
                                 </div>
                                 <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial}, ${producto.id_inventario})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
