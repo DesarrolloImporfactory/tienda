@@ -205,7 +205,7 @@
 
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
             let texto_precioNormal=``;
-            if (precioNormal != 0){
+            if (precioNormal > 0){
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
             }
             const productoHtml = `
