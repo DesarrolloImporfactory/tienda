@@ -122,6 +122,9 @@
                 <div class="row" id="productosContainer" style="padding-top: 15px;">
                     <!-- Productos filtrados se mostrarán aquí -->
                 </div>
+                <div class="text-center">
+                    <button id="btnVerMas" class="mt-3" onclick="verMasProductos()">Ver Más</button>
+                </div>
             </div>
         </div>
     </div>
@@ -130,6 +133,10 @@
 
 <script>
     // Define la función filtrarPorCategoria globalmente
+    let productosTotales = []; // Almacena todos los productos
+    let productosMostrados = 0; // Contador de productos mostrados
+    const productosPorPagina = 30; // Número de productos a mostrar por carga
+
     function filtrarPorCategoria(idCategoria) {
         const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
         const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
@@ -154,58 +161,32 @@
                 return response.json();
             })
             .then(data => {
-                mostrarProductos(data);
-            })
-            .catch(error => console.error('Error:', error));
-    }
-
-    // Función para mostrar todos los productos
-    function verTodasCategorias() {
-        const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
-        const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
-        const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-        const idPlataforma = ID_PLATAFORMA;
-
-        const formData = new FormData();
-        formData.append('id_plataforma', idPlataforma);
-        formData.append('id_categoria', "");
-        formData.append('precio_minimo', valorMinimo);
-        formData.append('precio_maximo', valorMaximo);
-        formData.append('ordenar_por', ordenarPor);
-
-        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                mostrarProductos(data);
+                productosTotales = data; // Guarda todos los productos
+                productosMostrados = 0; // Reinicia el contador
+                mostrarProductos(); // Llama a la función para mostrar productos
             })
             .catch(error => console.error('Error:', error));
     }
 
     // Función para mostrar productos
-    function mostrarProductos(productos) {
+    function mostrarProductos() {
         const productosContainer = document.getElementById('productosContainer');
-        productosContainer.innerHTML = '';
 
-        if (!Array.isArray(productos)) {
-            console.error('Productos no es un array:', productos);
+        if (!Array.isArray(productosTotales)) {
+            console.error('Productos no es un array:', productosTotales);
             return;
         }
 
-        productos.forEach(producto => {
+        const nuevosProductos = productosTotales.slice(productosMostrados, productosMostrados + productosPorPagina);
+        productosMostrados += nuevosProductos.length;
+
+        nuevosProductos.forEach(producto => {
             const precioEspecial = parseFloat(producto.pvp_tienda);
             const precioNormal = parseFloat(producto.pref_tienda);
 
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
-            let texto_precioNormal=``;
-            if (precioNormal > 0){
+            let texto_precioNormal = ``;
+            if (precioNormal > 0) {
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
             }
             const productoHtml = `
@@ -231,6 +212,19 @@
                 `;
             productosContainer.innerHTML += productoHtml;
         });
+
+        // Mostrar el botón de "Ver Más" si hay más productos para mostrar
+        const btnVerMas = document.getElementById('btnVerMas');
+        if (productosMostrados >= productosTotales.length) {
+            btnVerMas.style.display = 'none'; // Oculta el botón si no hay más productos
+        } else {
+            btnVerMas.style.display = 'block'; // Muestra el botón si hay más productos
+        }
+    }
+
+    // Función para ver más productos
+    function verMasProductos() {
+        mostrarProductos(); // Muestra más productos al hacer clic
     }
 
     // Función para obtener URL de la imagen
@@ -429,7 +423,9 @@
                     return response.json();
                 })
                 .then(data => {
-                    mostrarProductos(data);
+                    productosTotales = data; // Guarda todos los productos
+                    productosMostrados = 0; // Reinicia el contador
+                    mostrarProductos(); // Llama a la función para mostrar productos
                 })
                 .catch(error => console.error('Error:', error));
         }
@@ -445,69 +441,70 @@
     }
 
     //cargar select ciudades y provincias
-  $(document).ready(function() {
-    cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
+    $(document).ready(function() {
+        cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
-    // Llamar a cargarCiudades cuando se seleccione una provincia
-    $("#provinica").on("change", cargarCiudades);
-  });
-
-  // Función para cargar provincias
-  function cargarProvincias() {
-    $.ajax({
-      url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
-      method: "GET",
-      success: function(response) {
-        let provincias = JSON.parse(response);
-        let provinciaSelect = $("#provinica");
-        provinciaSelect.empty();
-        provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
-
-        provincias.forEach(function(provincia) {
-          provinciaSelect.append(
-            `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
-          );
-        });
-      },
-      error: function(error) {
-        console.log("Error al cargar provincias:", error);
-      },
+        // Llamar a cargarCiudades cuando se seleccione una provincia
+        $("#provinica").on("change", cargarCiudades);
     });
-  }
 
-  // Función para cargar ciudades según la provincia seleccionada
-  function cargarCiudades() {
-    let provinciaId = $("#provinica").val();
-    if (provinciaId) {
-      $.ajax({
-        url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
-        method: "GET",
-        success: function(response) {
-          let ciudades = JSON.parse(response);
-          let ciudadSelect = $("#ciudad_entrega");
-          ciudadSelect.empty();
-          ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+    // Función para cargar provincias
+    function cargarProvincias() {
+        $.ajax({
+            url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
+            method: "GET",
+            success: function(response) {
+                let provincias = JSON.parse(response);
+                let provinciaSelect = $("#provinica");
+                provinciaSelect.empty();
+                provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
 
-          ciudades.forEach(function(ciudad) {
-            ciudadSelect.append(
-              `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
-            );
-          });
-
-          ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
-        },
-        error: function(error) {
-          console.log("Error al cargar ciudades:", error);
-        },
-      });
-    } else {
-      $("#ciudad_entrega")
-        .empty()
-        .append('<option value="">Ciudad *</option>')
-        .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
+                provincias.forEach(function(provincia) {
+                    provinciaSelect.append(
+                        `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
+                    );
+                });
+            },
+            error: function(error) {
+                console.log("Error al cargar provincias:", error);
+            },
+        });
     }
-  }
-  /* Fin cargar provincia y ciudad*/
+
+    // Función para cargar ciudades según la provincia seleccionada
+    function cargarCiudades() {
+        let provinciaId = $("#provinica").val();
+        if (provinciaId) {
+            $.ajax({
+                url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
+                method: "GET",
+                success: function(response) {
+                    let ciudades = JSON.parse(response);
+                    let ciudadSelect = $("#ciudad_entrega");
+                    ciudadSelect.empty();
+                    ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+
+                    ciudades.forEach(function(ciudad) {
+                        ciudadSelect.append(
+                            `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
+                        );
+                    });
+
+                    ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
+                },
+                error: function(error) {
+                    console.log("Error al cargar ciudades:", error);
+                },
+            });
+        } else {
+            $("#ciudad_entrega")
+                .empty()
+                .append('<option value="">Ciudad *</option>')
+                .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
+        }
+    }
+    /* Fin cargar provincia y ciudad*/
 </script>
+
 
 <?php include 'Views/templates/footer.php'; ?>
