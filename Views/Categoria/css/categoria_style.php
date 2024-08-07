@@ -277,4 +277,40 @@
     }
 
     /* Fin estilo imagen doble de producto*/
+
+    /* boton ver mas */
+    #btnVerMas {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        color: #007bff;
+        border: 1px solid #007bff;
+        background-color: transparent;
+    }
+
+    #btnVerMas:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 300%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 0.75s ease;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    #btnVerMas:hover {
+        color: #fff;
+        background-color: #007bff;
+    }
+
+    #btnVerMas:hover:before {
+        width: 300%;
+    }
+
+    /* Fin boton ver mas */
 </style>
