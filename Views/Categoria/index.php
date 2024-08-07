@@ -99,6 +99,15 @@
             <div class="right-column">
                 <div class="caja_categorias">
                     <form id="ordenarForm" method="post">
+                        <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
+                            <div class="custom-select">
+                                <div class="custom-select-trigger">Ordenar por</div>
+                                <div class="custom-options">
+                                    <button type="submit" class="option" name="ordenar_por" value="Mayor precio">Mayor precio</button>
+                                    <button type="submit" class="option" name="ordenar_por" value="Menor precio">Menor precio</button>
+                                </div>
+                            </div>
+                        </div> -->
                         <!-- Campos ocultos para mantener los valores de rango de precios -->
                         <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
                         <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
@@ -113,10 +122,6 @@
                 <div class="row" id="productosContainer" style="padding-top: 15px;">
                     <!-- Productos filtrados se mostrarán aquí -->
                 </div>
-                <!-- Botón "Ver más" -->
-                <div id="verMasContainer" class="text-center mt-4">
-                    <button id="btnVerMas" class="btn btn-outline-primary">Ver más</button>
-                </div>
             </div>
         </div>
     </div>
@@ -124,11 +129,6 @@
 </main>
 
 <script>
-    // Variables para controlar el desplazamiento y la carga progresiva
-    let currentOffset = 0; // Desplazamiento actual
-    const limit = 30; // Número de productos por carga
-    let allProducts = []; // Array para almacenar todos los productos cargados
-
     // Define la función filtrarPorCategoria globalmente
     function filtrarPorCategoria(idCategoria) {
         const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
@@ -154,9 +154,7 @@
                 return response.json();
             })
             .then(data => {
-                allProducts = data; // Guarda todos los productos recibidos
-                currentOffset = 0; // Reinicia el desplazamiento
-                mostrarProductos(true); // Muestra el primer lote de productos
+                mostrarProductos(data);
             })
             .catch(error => console.error('Error:', error));
     }
@@ -186,67 +184,53 @@
                 return response.json();
             })
             .then(data => {
-                allProducts = data; // Guarda todos los productos recibidos
-                currentOffset = 0; // Reinicia el desplazamiento
-                mostrarProductos(true); // Muestra el primer lote de productos
+                mostrarProductos(data);
             })
             .catch(error => console.error('Error:', error));
     }
 
     // Función para mostrar productos
-    function mostrarProductos(limpiar) {
+    function mostrarProductos(productos) {
         const productosContainer = document.getElementById('productosContainer');
+        productosContainer.innerHTML = '';
 
-        // Limpiar el contenedor si se indica
-        if (limpiar) {
-            productosContainer.innerHTML = '';
+        if (!Array.isArray(productos)) {
+            console.error('Productos no es un array:', productos);
+            return;
         }
-
-        // Obtiene el siguiente lote de productos
-        const productos = allProducts.slice(currentOffset, currentOffset + limit);
 
         productos.forEach(producto => {
             const precioEspecial = parseFloat(producto.pvp_tienda);
             const precioNormal = parseFloat(producto.pref_tienda);
 
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
-            let texto_precioNormal = '';
-            if (precioNormal > 0) {
+            let texto_precioNormal=``;
+            if (precioNormal > 0){
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
             }
             const productoHtml = `
-                <div class="col-6 col-md-4 col-lg-3 mb-3">
-                    <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                        <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
-                            <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
-                                <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
-                            </div>
-                        </a>
-                        <div class="card-body d-flex flex-column">
-                            <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
-                                <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
+                    <div class="col-6 col-md-4 col-lg-3 mb-3">
+                        <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                            <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
+                                <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
+                                    <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}" style="object-fit: cover; width: 80%; height: 80%;">
+                                </div>
                             </a>
-                            <div class="product-footer mb-2">
-                                ${texto_precioNormal}
-                                <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
+                            <div class="card-body d-flex flex-column">
+                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
+                                </a>
+                                <div class="product-footer mb-2">
+                                    ${texto_precioNormal}
+                                    <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
+                                </div>
+                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial}, ${producto.id_inventario})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                             </div>
-                            <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial}, ${producto.id_inventario})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
                         </div>
                     </div>
-                </div>
-            `;
+                `;
             productosContainer.innerHTML += productoHtml;
         });
-
-        // Actualiza el desplazamiento
-        currentOffset += limit;
-
-        // Mostrar u ocultar el botón "Ver más" según los productos disponibles
-        if (currentOffset >= allProducts.length) {
-            document.getElementById('verMasContainer').style.display = 'none';
-        } else {
-            document.getElementById('verMasContainer').style.display = 'block';
-        }
     }
 
     // Función para obtener URL de la imagen
@@ -271,6 +255,16 @@
         // Obtén las instancias de noUiSlider para cada slider
         const sliderLeft = document.getElementById('slider-rango-precios-left').noUiSlider;
         const sliderModal = document.getElementById('slider-rango-precios-modal').noUiSlider;
+
+        // Función para sincronizar los sliders
+        function sincronizarSliders(sourceSlider, targetSlider) {
+            sourceSlider.on('update', function(values) {
+                const targetValues = targetSlider.get().map(v => parseFloat(v));
+                if (values[0] != targetValues[0] || values[1] != targetValues[1]) {
+                    targetSlider.set(values);
+                }
+            });
+        }
 
         // Sincroniza los sliders entre sí
         sincronizarSliders(sliderLeft, sliderModal);
@@ -317,136 +311,129 @@
             actualizarProductos();
         });
 
-        // Inicializa el evento para el botón "Ver más"
-        document.getElementById('btnVerMas').addEventListener('click', function() {
-            mostrarProductos(false); // Muestra más productos al hacer clic en "Ver más"
-        });
-    });
+        // Función para cargar categorías dinámicamente
+        function cargarCategorias() {
+            let formDataCategoria = new FormData();
+            formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
 
-    // Función para cargar categorías dinámicamente
-    function cargarCategorias() {
-        let formDataCategoria = new FormData();
-        formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
+            $.ajax({
+                url: SERVERURL + 'Tienda/categoriastienda',
+                method: 'POST',
+                data: formDataCategoria,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    let categorias = JSON.parse(response);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/categoriastienda',
-            method: 'POST',
-            data: formDataCategoria,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                let categorias = JSON.parse(response);
+                    if (!Array.isArray(categorias)) {
+                        categorias = Object.values(categorias);
+                    }
 
-                if (!Array.isArray(categorias)) {
-                    categorias = Object.values(categorias);
-                }
+                    let categoriasHtml = '';
+                    categorias.forEach(categoria => {
+                        let categoryHtml = `
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading-${categoria.id_linea}">
+                                    <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="filtrarPorCategoria(${categoria.id_linea})">
+                                        ${categoria.nombre_linea}
+                                    </button>
+                                </h2>
+                            </div>
+                        `;
+                        categoriasHtml += categoryHtml;
+                    });
 
-                let categoriasHtml = '';
-                categorias.forEach(categoria => {
-                    let categoryHtml = `
+                    categoriasHtml += `
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading-${categoria.id_linea}">
-                                <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="filtrarPorCategoria(${categoria.id_linea})">
-                                    ${categoria.nombre_linea}
+                            <h2 class="accordion-header" id="heading-ver-todas">
+                                <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="verTodasCategorias()">
+                                    Ver todas
                                 </button>
                             </h2>
                         </div>
                     `;
-                    categoriasHtml += categoryHtml;
-                });
 
-                categoriasHtml += `
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading-ver-todas">
-                            <button class="accordion-button collapsed" type="button" style="font-size: 12px;" onclick="verTodasCategorias()">
-                                Ver todas
-                            </button>
-                        </h2>
-                    </div>
-                `;
-
-                $('#accordionSubcategorias').html(categoriasHtml);
-                $('#accordionSubcategoriasModal').html(categoriasHtml);
-            },
-            error: function(error) {
-                console.error("Error al consumir la API:", error);
-            }
-        });
-    }
-
-    // Función para inicializar un slider
-    function initSlider(sliderId, valorMinimoId, valorMaximoId, inputValorMinimoId, inputValorMaximoId, onSliderUpdateCallback) {
-        var slider = document.getElementById(sliderId);
-        noUiSlider.create(slider, {
-            start: [parseInt(localStorage.getItem(inputValorMinimoId) || 0), parseInt(localStorage.getItem(inputValorMaximoId) || 3000)],
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 3000
-            }
-        });
-
-        slider.noUiSlider.on('update', function(values, handle) {
-            var value = values[handle];
-            var valorMinimo = document.getElementById(valorMinimoId);
-            var valorMaximo = document.getElementById(valorMaximoId);
-            var inputValorMinimo = document.getElementById(inputValorMinimoId);
-            var inputValorMaximo = document.getElementById(inputValorMaximoId);
-
-            if (handle) {
-                valorMaximo.textContent = Math.round(value);
-                inputValorMaximo.value = Math.round(value);
-                localStorage.setItem(inputValorMaximoId, Math.round(value));
-            } else {
-                valorMinimo.textContent = Math.round(value);
-                inputValorMinimo.value = Math.round(value);
-                localStorage.setItem(inputValorMinimoId, Math.round(value));
-            }
-
-            // Ejecutar el callback después de actualizar el slider
-            if (onSliderUpdateCallback) {
-                onSliderUpdateCallback();
-            }
-        });
-    }
-
-    // Función para actualizar los productos
-    function actualizarProductos() {
-        const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
-        const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
-        const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-        const urlParams = new URLSearchParams(window.location.search);
-        const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
-
-        const idPlataforma = ID_PLATAFORMA;
-
-        document.getElementById('hiddenValorMinimo').value = valorMinimo;
-        document.getElementById('hiddenValorMaximo').value = valorMaximo;
-
-        const formData = new FormData();
-        formData.append('id_plataforma', idPlataforma);
-        formData.append('id_categoria', idCategoria);
-        formData.append('precio_minimo', valorMinimo);
-        formData.append('precio_maximo', valorMaximo);
-        formData.append('ordenar_por', ordenarPor);
-
-        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    $('#accordionSubcategorias').html(categoriasHtml);
+                    $('#accordionSubcategoriasModal').html(categoriasHtml);
+                },
+                error: function(error) {
+                    console.error("Error al consumir la API:", error);
                 }
-                return response.json();
-            })
-            .then(data => {
-                allProducts = data; // Guarda todos los productos recibidos
-                currentOffset = 0; // Reinicia el desplazamiento
-                mostrarProductos(true); // Muestra el primer lote de productos
-            })
-            .catch(error => console.error('Error:', error));
-    }
+            });
+        }
+
+        // Función para inicializar un slider
+        function initSlider(sliderId, valorMinimoId, valorMaximoId, inputValorMinimoId, inputValorMaximoId, onSliderUpdateCallback) {
+            var slider = document.getElementById(sliderId);
+            noUiSlider.create(slider, {
+                start: [parseInt(localStorage.getItem(inputValorMinimoId) || 0), parseInt(localStorage.getItem(inputValorMaximoId) || 3000)],
+                connect: true,
+                range: {
+                    'min': 0,
+                    'max': 3000
+                }
+            });
+
+            slider.noUiSlider.on('update', function(values, handle) {
+                var value = values[handle];
+                var valorMinimo = document.getElementById(valorMinimoId);
+                var valorMaximo = document.getElementById(valorMaximoId);
+                var inputValorMinimo = document.getElementById(inputValorMinimoId);
+                var inputValorMaximo = document.getElementById(inputValorMaximoId);
+
+                if (handle) {
+                    valorMaximo.textContent = Math.round(value);
+                    inputValorMaximo.value = Math.round(value);
+                    localStorage.setItem(inputValorMaximoId, Math.round(value));
+                } else {
+                    valorMinimo.textContent = Math.round(value);
+                    inputValorMinimo.value = Math.round(value);
+                    localStorage.setItem(inputValorMinimoId, Math.round(value));
+                }
+
+                // Ejecutar el callback después de actualizar el slider
+                if (onSliderUpdateCallback) {
+                    onSliderUpdateCallback(values[0], values[1]);
+                }
+            });
+        }
+
+        // Función para actualizar los productos
+        function actualizarProductos() {
+            const valorMinimo = document.getElementById('inputValorMinimo-left').value || document.getElementById('inputValorMinimo-modal').value;
+            const valorMaximo = document.getElementById('inputValorMaximo-left').value || document.getElementById('inputValorMaximo-modal').value;
+            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+            const urlParams = new URLSearchParams(window.location.search);
+            const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
+
+            const idPlataforma = ID_PLATAFORMA;
+
+            document.getElementById('hiddenValorMinimo').value = valorMinimo;
+            document.getElementById('hiddenValorMaximo').value = valorMaximo;
+
+            const formData = new FormData();
+            formData.append('id_plataforma', idPlataforma);
+            formData.append('id_categoria', idCategoria);
+            formData.append('precio_minimo', valorMinimo);
+            formData.append('precio_maximo', valorMaximo);
+            formData.append('ordenar_por', ordenarPor);
+
+            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    mostrarProductos(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    });
 
     function agregar_tmp(id_producto, precio, id_inventario) {
         $("#id_productoTmp").val(id_producto);
@@ -458,69 +445,69 @@
     }
 
     //cargar select ciudades y provincias
-    $(document).ready(function() {
-        cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
+  $(document).ready(function() {
+    cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
-        // Llamar a cargarCiudades cuando se seleccione una provincia
-        $("#provinica").on("change", cargarCiudades);
-    });
+    // Llamar a cargarCiudades cuando se seleccione una provincia
+    $("#provinica").on("change", cargarCiudades);
+  });
 
-    // Función para cargar provincias
-    function cargarProvincias() {
-        $.ajax({
-            url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
-            method: "GET",
-            success: function(response) {
-                let provincias = JSON.parse(response);
-                let provinciaSelect = $("#provinica");
-                provinciaSelect.empty();
-                provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
+  // Función para cargar provincias
+  function cargarProvincias() {
+    $.ajax({
+      url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
+      method: "GET",
+      success: function(response) {
+        let provincias = JSON.parse(response);
+        let provinciaSelect = $("#provinica");
+        provinciaSelect.empty();
+        provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
 
-                provincias.forEach(function(provincia) {
-                    provinciaSelect.append(
-                        `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
-                    );
-                });
-            },
-            error: function(error) {
-                console.log("Error al cargar provincias:", error);
-            },
+        provincias.forEach(function(provincia) {
+          provinciaSelect.append(
+            `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
+          );
         });
+      },
+      error: function(error) {
+        console.log("Error al cargar provincias:", error);
+      },
+    });
+  }
+
+  // Función para cargar ciudades según la provincia seleccionada
+  function cargarCiudades() {
+    let provinciaId = $("#provinica").val();
+    if (provinciaId) {
+      $.ajax({
+        url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
+        method: "GET",
+        success: function(response) {
+          let ciudades = JSON.parse(response);
+          let ciudadSelect = $("#ciudad_entrega");
+          ciudadSelect.empty();
+          ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+
+          ciudades.forEach(function(ciudad) {
+            ciudadSelect.append(
+              `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
+            );
+          });
+
+          ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
+        },
+        error: function(error) {
+          console.log("Error al cargar ciudades:", error);
+        },
+      });
+    } else {
+      $("#ciudad_entrega")
+        .empty()
+        .append('<option value="">Ciudad *</option>')
+        .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
     }
-
-    // Función para cargar ciudades según la provincia seleccionada
-    function cargarCiudades() {
-        let provinciaId = $("#provinica").val();
-        if (provinciaId) {
-            $.ajax({
-                url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
-                method: "GET",
-                success: function(response) {
-                    let ciudades = JSON.parse(response);
-                    let ciudadSelect = $("#ciudad_entrega");
-                    ciudadSelect.empty();
-                    ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
-
-                    ciudades.forEach(function(ciudad) {
-                        ciudadSelect.append(
-                            `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
-                        );
-                    });
-
-                    ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
-                },
-                error: function(error) {
-                    console.log("Error al cargar ciudades:", error);
-                },
-            });
-        } else {
-            $("#ciudad_entrega")
-                .empty()
-                .append('<option value="">Ciudad *</option>')
-                .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
-        }
-    }
-    /* Fin cargar provincia y ciudad*/
+  }
+  /* Fin cargar provincia y ciudad*/
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>
