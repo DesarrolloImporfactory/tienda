@@ -1,11 +1,9 @@
 <footer>
     <p>&copy; 2024 Mi Proyecto en PHP</p>
 </footer>
-<!-- librerias adiconale -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!-- No repetir la carga de jQuery -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet">
-
 
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -17,26 +15,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://kit.fontawesome.com/0022adc953.js" crossorigin="anonymous"></script>
-<!-- Fin de librerias adicionales -->
 
-<script src="js/script.js"></script>
-<!-- librerias de filtro fecha -->
 <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/min/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 
-<script>
-        // Ensure that the subNavbar is linked to the correct toggle button
-        document.addEventListener('DOMContentLoaded', function () {
-            const navbarToggler = document.querySelector('.navbar-toggler');
-            const subNavbar = document.getElementById('subNavbar');
 
-            navbarToggler.addEventListener('click', function () {
-                subNavbar.classList.toggle('show');
-            });
+<script>
+    // Ensure that the subNavbar is linked to the correct toggle button
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const subNavbar = document.getElementById('subNavbar');
+
+        navbarToggler.addEventListener('click', function() {
+            subNavbar.classList.toggle('show');
         });
-    </script>
+    });
+</script>
 </body>
 
 </html>
