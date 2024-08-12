@@ -19,13 +19,13 @@ class Home extends Controller
         $id_plataforma = ID_PLATAFORMA;
         $home = $this->model->plantilla($id_plataforma);
 
-        print_r($home);
+        $plantilla = $home[0]['plantilla'];
 
         // Condicional dependiendo del resultado
-        if ($home == 1) {
+        if ($plantilla == 1) {
             // Renderizar la vista normalmente si hay productos
             $this->views->render($this, "index");
-        } else if ($home == 2) {
+        } else if ($plantilla == 2) {
             // Renderizar la vista normalmente si hay productos
             $this->views->render($this, "index2");
         }
