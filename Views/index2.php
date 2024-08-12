@@ -7,7 +7,9 @@ include 'includes/header.php';
 <main style="background-color: #f9f9f9;">
     <!-- Slider -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade custom-carousel" data-bs-ride="carousel">
-        <div class="carousel-inner"></div>
+        <div class="carousel-inner">
+            <!-- Los items dinámicos serán agregados aquí -->
+        </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -152,7 +154,6 @@ include 'includes/header.php';
 
 <script>
     $(document).ready(function() {
-        /* Slider */
         let formDataSlider = new FormData();
         formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
@@ -165,24 +166,23 @@ include 'includes/header.php';
             dataType: "json",
             success: function(data) {
                 let inner = '';
-                let alineacion = "";
-
                 $.each(data, function(index, banner) {
                     let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
 
+                    let alineacion = "";
                     if (banner.alineacion == 1) {
-                        alineacion = "text-align-last: left;";
+                        alineacion = "text-align-left";
                     } else if (banner.alineacion == 2) {
-                        alineacion = "text-align-last: center;";
+                        alineacion = "text-align-center";
                     } else if (banner.alineacion == 3) {
-                        alineacion = "text-align-last: right;";
+                        alineacion = "text-align-right";
                     }
 
                     const isActive = index === 0 ? 'active' : '';
 
                     inner += `<div class="carousel-item ${isActive}">
                               <img src="${image_path}" class="d-block w-100" alt="...">
-                              <div class="carousel-caption d-none d-md-block" style="${alineacion}">
+                              <div class="carousel-caption d-none d-md-block ${alineacion}">
                                   <div class="tag">${banner.titulo}</div>
                                   <h1>${banner.titulo}</h1>
                                   <p>${banner.texto_banner}</p>
@@ -197,7 +197,6 @@ include 'includes/header.php';
                 console.error('Error fetching banner data', error);
             }
         });
-        /* Fin Slider */
     });
 </script>
 
