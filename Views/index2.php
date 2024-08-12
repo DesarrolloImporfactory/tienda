@@ -1,14 +1,36 @@
 <?php include 'Views/templates/header2.php'; ?>
 
 
-<?php
-include 'includes/header.php';
-?>
 <main style="background-color: #f9f9f9;">
-    <!-- Slider -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade custom-carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <!-- Los items dinámicos serán agregados aquí -->
+            <div class="carousel-item active">
+                <img src="https://static.wixstatic.com/media/c837a6_9c1280daaeb0481abc58e6e236efdf59~mv2.png/v1/fill/w_980,h_565,al_br,q_90,usm_0.66_1.00_0.01,enc_auto/c837a6_9c1280daaeb0481abc58e6e236efdf59~mv2.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="tag">Mejores precios</div>
+                    <h1>Súper precios en tus artículos favoritos</h1>
+                    <p>Gana más por tu dinero</p>
+                    <button class="btn btn-primary">Comprar ahora</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.wixstatic.com/media/c837a6_f58829a26e594ca3aa72383e19cf39b9~mv2.png/v1/fill/w_980,h_565,al_r,q_90,usm_0.66_1.00_0.01,enc_auto/c837a6_f58829a26e594ca3aa72383e19cf39b9~mv2.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="tag">Grandes descuentos</div>
+                    <h1>No te pierdas nuestras ofertas exclusivas</h1>
+                    <p>Obtén más por menos</p>
+                    <button class="btn btn-primary">Comprar ahora</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.wixstatic.com/media/c837a6_9c1280daaeb0481abc58e6e236efdf59~mv2.png/v1/fill/w_980,h_565,al_br,q_90,usm_0.66_1.00_0.01,enc_auto/c837a6_9c1280daaeb0481abc58e6e236efdf59~mv2.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <div class="tag">Nuevas llegadas</div>
+                    <h1>Explora los últimos productos de tecnología</h1>
+                    <p>Descubre lo más reciente</p>
+                    <button class="btn btn-primary">Comprar ahora</button>
+                </div>
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -19,7 +41,6 @@ include 'includes/header.php';
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <!-- Fin Slider -->
     <!-- Seccion de ofertas y promociones -->
     <div class="seccion">
         <div class="flex_seccionOfertas">
@@ -151,53 +172,9 @@ include 'includes/header.php';
     <!-- Fin Sección Ahorra -->
 
 </main>
+<?php
+include 'includes/footer.php';
+?>
 
-<script>
-    $(document).ready(function() {
-        let formDataSlider = new FormData();
-        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
-
-        $.ajax({
-            url: SERVERURL + 'Tienda/bannertienda',
-            method: 'POST',
-            data: formDataSlider,
-            contentType: false,
-            processData: false,
-            dataType: "json",
-            success: function(data) {
-                let inner = '';
-                $.each(data, function(index, banner) {
-                    let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
-
-                    let alineacion = "";
-                    if (banner.alineacion == 1) {
-                        alineacion = "text-align-left";
-                    } else if (banner.alineacion == 2) {
-                        alineacion = "text-align-center";
-                    } else if (banner.alineacion == 3) {
-                        alineacion = "text-align-right";
-                    }
-
-                    const isActive = index === 0 ? 'active' : '';
-
-                    inner += `<div class="carousel-item ${isActive}">
-                              <img src="${image_path}" class="d-block w-100" alt="...">
-                              <div class="carousel-caption d-none d-md-block ${alineacion}">
-                                  <div class="tag">${banner.titulo}</div>
-                                  <h1>${banner.titulo}</h1>
-                                  <p>${banner.texto_banner}</p>
-                                  <a class="btn btn-primary" href="${banner.enlace_boton}" target="_blank">${banner.texto_boton}</a>
-                              </div>
-                          </div>`;
-                });
-
-                $('.carousel-inner').html(inner);
-            },
-            error: function(error) {
-                console.error('Error fetching banner data', error);
-            }
-        });
-    });
-</script>
 
 <?php include 'Views/templates/footer2.php'; ?>
