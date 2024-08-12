@@ -19,6 +19,8 @@ class Home extends Controller
         $id_plataforma = ID_PLATAFORMA;
         $home = $this->model->plantilla($id_plataforma);
 
+        echo $home;
+
         // Condicional dependiendo del resultado
         if ($home == 1) {
             // Renderizar la vista normalmente si hay productos
