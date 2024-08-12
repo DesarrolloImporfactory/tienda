@@ -149,6 +149,25 @@
 
 <script>
     $(document).ready(function() {
+        function obtenerURLImagen(imagePath, serverURL) {
+            // Verificar si el imagePath no es null
+            if (imagePath) {
+                // Verificar si el imagePath ya es una URL completa
+                if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                    // Si ya es una URL completa, retornar solo el imagePath
+                    return imagePath;
+                } else {
+                    // Si no es una URL completa, agregar el serverURL al inicio
+                    return `${serverURL}${imagePath}`;
+                }
+            } else {
+                // Manejar el caso cuando imagePath es null
+                console.error("imagePath es null o undefined");
+                return null; // o un valor por defecto si prefieres
+            }
+        }
+
+        /* Slider */
         let formDataSlider = new FormData();
         formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
@@ -191,6 +210,7 @@
                 console.error('Error fetching banner data', error);
             }
         });
+        /* Fin Slider */
     });
 </script>
 
