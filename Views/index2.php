@@ -52,73 +52,16 @@
         </div>
     </div>
     <!-- fin seccion iconos -->
+    <!-- Productos Destacados -->
     <div class="mas_vendidos">
         <div class="caja">
-            <h2>Más vendidos</h2>
-            <div class="flex_mas_vendidos">
-                <div class="mas_vendidos-card">
-                    <div class="mas_vendidos-tag">OFERTA</div>
-                    <div class="mas_vendidos-image-wrapper">
-                        <img src="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" class="mas_vendidos-image" alt="Product 1">
-                    </div>
-                    <div class="mas_vendidos-info">
-                        <p>Fitboot fitness con seguimiento del ritmo cardíaco</p>
-                        <p class="mas_vendidos-price"><span class="mas_vendidos-old-price">$999.00</span> $984.00</p>
-                    </div>
-                </div>
-                <div class="mas_vendidos-card">
-                    <div class="mas_vendidos-tag">OFERTA</div>
-                    <div class="mas_vendidos-image-wrapper">
-                        <img src="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" class="mas_vendidos-image" alt="Product 2">
-                    </div>
-                    <div class="mas_vendidos-info">
-                        <p>JP Laptop para juegos de 15,6" de 256GB</p>
-                        <p class="mas_vendidos-price"><span class="mas_vendidos-old-price">$999.00</span> $984.00</p>
-                    </div>
-                </div>
-                <div class="mas_vendidos-card">
-                    <div class="mas_vendidos-tag">OFERTA</div>
-                    <div class="mas_vendidos-image-wrapper">
-                        <img src="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" class="mas_vendidos-image" alt="Product 3">
-                    </div>
-                    <div class="mas_vendidos-info">
-                        <p>HKI Tech drone cuadricóptero con cámara y mando 360</p>
-                        <p class="mas_vendidos-price">$999.00</p>
-                    </div>
-                </div>
-                <div class="mas_vendidos-card">
-                    <div class="mas_vendidos-tag">OFERTA</div>
-                    <div class="mas_vendidos-image-wrapper">
-                        <img src="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" class="mas_vendidos-image" alt="Product 4">
-                    </div>
-                    <div class="mas_vendidos-info">
-                        <p>Smartphone Z Pixel Max 128GB desbloqueado</p>
-                        <p class="mas_vendidos-price"><span class="mas_vendidos-old-price">$999.00</span> $984.00</p>
-                    </div>
-                </div>
-                <div class="mas_vendidos-card">
-                    <div class="mas_vendidos-tag">OFERTA</div>
-                    <div class="mas_vendidos-image-wrapper">
-                        <img src="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" class="mas_vendidos-image" alt="Product 5">
-                    </div>
-                    <div class="mas_vendidos-info">
-                        <p>Audífonos inalámbricos con cancelación del ruido</p>
-                        <p class="mas_vendidos-price"><span class="mas_vendidos-old-price">$999.00</span> $984.00</p>
-                    </div>
-                </div>
-                <div class="mas_vendidos-card">
-                    <div class="mas_vendidos-tag">OFERTA</div>
-                    <div class="mas_vendidos-image-wrapper">
-                        <img src="https://marketing4ecommerce.net/wp-content/uploads/2024/02/imagen-generada-con-nightcafe-e1708680739301.jpg" class="mas_vendidos-image" alt="Product 6">
-                    </div>
-                    <div class="mas_vendidos-info">
-                        <p>Gafas de realidad virtual Safay GEN 2 de 256 GB con mandos táctiles</p>
-                        <p class="mas_vendidos-price">$999.00</p>
-                    </div>
-                </div>
+            <h2>Productos destacados</h2>
+            <div class="flex_mas_vendidos" id="productos-destacados">
+                <!-- Los productos serán insertados aquí dinámicamente -->
             </div>
         </div>
     </div>
+    <!-- Fin Productos destacados -->
     <!-- Sección Ahorra -->
     <div class="ahorro-section">
         <div class="ahorro-image">
@@ -252,7 +195,77 @@
             }
         });
         /* Fin iconos */
+        /* Productos Destacados */
+        // Cargar productos destacados mediante AJAX
+        let formDataProductos = new FormData();
+        formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/destacadostienda',
+            method: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                try {
+                    var productos = JSON.parse(response);
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
+
+                if (productos && Array.isArray(productos)) {
+                    var $productosContainer = $("#productos-destacados");
+
+                    productos.forEach(function(producto) {
+                        var precioEspecial = parseFloat(producto.pvp_tienda);
+                        var precioNormal = parseFloat(producto.pref_tienda);
+                        var ahorro = 0;
+
+                        if (precioNormal > 0) {
+                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
+                        }
+
+                        var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
+
+                        // HTML para cada producto destacado
+                        var productItem = `
+                        <div class="mas_vendidos-card">
+                            <div class="mas_vendidos-tag">OFERTA</div>
+                            <div class="mas_vendidos-image-wrapper">
+                                <a href="producto?id=${producto.id_producto_tienda}">
+                                    <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                </a>
+                            </div>
+                            <div class="mas_vendidos-info">
+                                <p>${producto.nombre_producto_tienda}</p>
+                                <p class="mas_vendidos-price">
+                                    ${precioNormal > 0 ? `
+                                        <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
+                                    ` : ''}
+                                    $${number_format(precioEspecial, 2)}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+
+                        // Agregar el producto al contenedor
+                        $productosContainer.append(productItem);
+                    });
+                } else {
+                    console.error('La respuesta no contiene productos válidos.');
+                }
+            },
+            error: function(error) {
+                console.log('Error al cargar los productos destacados:', error);
+            }
+        });
+        /* Fin productos destacados */
     });
+
+    function number_format(number, decimals = 2) {
+        return number.toFixed(decimals);
+    }
 </script>
 
 <?php include 'Views/templates/footer2.php'; ?>
