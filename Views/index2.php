@@ -228,12 +228,15 @@
                     iconos.forEach(function(icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
+                        var enlace_icon = icono.enlace_icon || '#';
 
-                        // Aquí está el HTML para el nuevo diseño
+                        // Aquí está el HTML para el nuevo diseño con el formato correcto
                         var iconoItem = `
                         <div class="d-flex flex-row">
-                            <i class='${icon_text} menu-icon'></i>
-                            <span>${texto}</span>
+                            <a href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;">
+                                <i class="fa ${icon_text} fa-2x menu-icon"></i>
+                                <span>${texto}</span>
+                            </a>
                         </div>
                     `;
 
