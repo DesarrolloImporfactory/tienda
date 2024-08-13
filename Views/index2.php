@@ -54,10 +54,24 @@
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
     <div class="mas_vendidos">
-        <div class="caja">
-            <h2>Productos destacados</h2>
-            <div class="flex_mas_vendidos" id="productos-destacados">
-                <!-- Los productos serán insertados aquí dinámicamente -->
+        <h2>Más Vendidos</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- Cada tarjeta debe estar envuelta en una clase swiper-slide -->
+                <div class="swiper-slide">
+                    <div class="mas_vendidos-card">
+                        <span class="mas_vendidos-tag">Oferta</span>
+                        <div class="mas_vendidos-image-wrapper">
+                            <img src="tu-imagen.jpg" alt="Producto" class="mas_vendidos-image" />
+                        </div>
+                        <div class="mas_vendidos-info">
+                            <p>Nombre del Producto</p>
+                            <p class="mas_vendidos-price">$20.00</p>
+                            <p class="mas_vendidos-old-price">$30.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repite para cada tarjeta -->
             </div>
         </div>
     </div>
@@ -196,6 +210,19 @@
         });
         /* Fin iconos */
         /* Productos Destacados */
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3, // Número de tarjetas visibles por vez
+            spaceBetween: 20, // Espacio entre las tarjetas
+            loop: true, // Hacer que el carrusel sea infinito
+            breakpoints: {
+                768: {
+                    slidesPerView: 2, // 2 tarjetas visibles en pantallas medianas
+                },
+                576: {
+                    slidesPerView: 1, // 1 tarjeta visible en pantallas pequeñas
+                }
+            }
+        });
         // Cargar productos destacados mediante AJAX
         let formDataProductos = new FormData();
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
