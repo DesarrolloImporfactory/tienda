@@ -299,6 +299,7 @@
 
     .flex_mas_vendidos {
         display: flex;
+        flex-wrap: wrap;
         gap: 20px;
         justify-content: center;
         padding-left: 30px;
@@ -307,6 +308,7 @@
 
     .mas_vendidos-card {
         position: relative;
+        flex: 1 1 150px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -317,10 +319,6 @@
         text-align: center;
         transition: transform 0.3s ease;
         overflow: hidden;
-        width: 300px;
-        /* Tamaño fijo */
-        height: 400px;
-        /* Altura fija */
     }
 
     .mas_vendidos-card:hover .mas_vendidos-image {
@@ -346,8 +344,8 @@
     }
 
     .mas_vendidos-image {
-        width: 100%;
-        height: 200px;
+        width: 300px;
+        height: 300px;
         object-fit: cover;
         margin-bottom: 10px;
         transition: transform 0.3s ease;
@@ -375,24 +373,25 @@
 
     /* Responsivo */
     @media (max-width: 768px) {
-        .swiper-container {
-            width: 100%;
+        .flex_mas_vendidos {
+            flex-direction: column;
+            align-items: center;
         }
 
         .mas_vendidos-card {
-            width: 250px;
-            height: 350px;
+            flex: 1 1 auto;
+            width: 80%;
         }
     }
 
     @media (max-width: 576px) {
         .mas_vendidos-card {
-            width: 200px;
-            height: 300px;
+            width: 100%;
         }
 
         .mas_vendidos-image {
-            height: 150px;
+            width: 200px;
+            height: 200px;
         }
 
         .mas_vendidos-price {
@@ -403,7 +402,6 @@
             font-size: 0.75rem;
         }
     }
-
 
     /* Fin seccion mas vendidos */
 
