@@ -56,8 +56,22 @@
     <div class="mas_vendidos">
         <h2>Más Vendidos</h2>
         <div class="swiper-container">
-            <div class="swiper-wrapper" id="productos-destacados">
-                <!-- Aquí se agregarán las tarjetas mediante AJAX -->
+            <div class="swiper-wrapper">
+                <!-- Cada tarjeta debe estar envuelta en una clase swiper-slide -->
+                <div class="swiper-slide">
+                    <div class="mas_vendidos-card">
+                        <span class="mas_vendidos-tag">Oferta</span>
+                        <div class="mas_vendidos-image-wrapper">
+                            <img src="tu-imagen.jpg" alt="Producto" class="mas_vendidos-image" />
+                        </div>
+                        <div class="mas_vendidos-info">
+                            <p>Nombre del Producto</p>
+                            <p class="mas_vendidos-price">$20.00</p>
+                            <p class="mas_vendidos-old-price">$30.00</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Repite para cada tarjeta -->
             </div>
         </div>
     </div>
@@ -196,7 +210,7 @@
         });
         /* Fin iconos */
         /* Productos Destacados */
-        // Primero cargamos los productos destacados mediante AJAX
+        // Cargar productos destacados mediante AJAX
         let formDataProductos = new FormData();
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
@@ -230,44 +244,27 @@
 
                         // HTML para cada producto destacado
                         var productItem = `
-                <div class="swiper-slide"> <!-- Asegúrate de que cada card esté envuelta en un swiper-slide -->
-                    <div class="mas_vendidos-card">
-                        <div class="mas_vendidos-tag">OFERTA</div>
-                        <div class="mas_vendidos-image-wrapper">
-                            <a href="producto?id=${producto.id_producto_tienda}">
-                                <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
-                            </a>
+                        <div class="mas_vendidos-card">
+                            <div class="mas_vendidos-tag">OFERTA</div>
+                            <div class="mas_vendidos-image-wrapper">
+                                <a href="producto?id=${producto.id_producto_tienda}">
+                                    <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                </a>
+                            </div>
+                            <div class="mas_vendidos-info">
+                                <p>${producto.nombre_producto_tienda}</p>
+                                <p class="mas_vendidos-price">
+                                    ${precioNormal > 0 ? `
+                                        <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
+                                    ` : ''}
+                                    $${number_format(precioEspecial, 2)}
+                                </p>
+                            </div>
                         </div>
-                        <div class="mas_vendidos-info">
-                            <p>${producto.nombre_producto_tienda}</p>
-                            <p class="mas_vendidos-price">
-                                ${precioNormal > 0 ? `
-                                    <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
-                                ` : ''}
-                                $${number_format(precioEspecial, 2)}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            `;
+                    `;
 
-                        // Agregar el producto al contenedor de Swiper
+                        // Agregar el producto al contenedor
                         $productosContainer.append(productItem);
-                    });
-
-                    // Una vez que los productos se han agregado, inicializa Swiper
-                    var swiper = new Swiper('.swiper-container', {
-                        slidesPerView: 3, // Número de tarjetas visibles por vez
-                        spaceBetween: 20, // Espacio entre las tarjetas
-                        loop: true, // Hacer que el carrusel sea infinito
-                        breakpoints: {
-                            768: {
-                                slidesPerView: 2, // 2 tarjetas visibles en pantallas medianas
-                            },
-                            576: {
-                                slidesPerView: 1, // 1 tarjeta visible en pantallas pequeñas
-                            }
-                        }
                     });
                 } else {
                     console.error('La respuesta no contiene productos válidos.');
