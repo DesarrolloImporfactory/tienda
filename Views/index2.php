@@ -19,52 +19,39 @@
     <div class="seccion">
         <div class="flex_seccionOfertas">
             <div class="promotion-card">
-                <img src="<?php echo SERVERURL."".IMAGEN_OFERTA1; ?>" class="promotion-image" alt="Smartphone">
+                <img src="<?php echo SERVERURL . "" . IMAGEN_OFERTA1; ?>" class="promotion-image" alt="Smartphone">
                 <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA1; ?>;">
                     <h2><?php echo TITULO_OFERTA1; ?></h2>
                     <h1><?php echo OFERTA1; ?></h1>
                     <p><?php echo DESCRIPCION_OFERTA1; ?></p>
                     <a href="<?php echo ENLACE_OFERTA1; ?>" target="_blank">
-                    <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
+                        <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
                     </a>
                 </div>
             </div>
             <div class="promotion-card">
-                <img src="<?php echo SERVERURL."".IMAGEN_OFERTA2; ?>" class="promotion-image" alt="Headphones">
-                <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA2; ?>";>
+                <img src="<?php echo SERVERURL . "" . IMAGEN_OFERTA2; ?>" class="promotion-image" alt="Headphones">
+                <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA2; ?>" ;>
                     <h2><?php echo TITULO_OFERTA2; ?></h2>
                     <h1><?php echo OFERTA2; ?></h1>
                     <p><?php echo DESCRIPCION_OFERTA2; ?></p>
                     <a href="<?php echo ENLACE_OFERTA2; ?>" target="_blank">
-                    <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
+                        <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Fin Seccion ofertas y promociones -->
+    <!-- seccion iconos -->
     <div class="seccion">
         <div class="caja">
-            <div class="seccion_iconos">
-                <div class="d-flex flex-row">
-                    <i class='bx bx-timer menu-icon'></i>
-                    <span>Disponible para ti 24/7 </span>
-                </div>
-                <div class="d-flex flex-row">
-                    <i class='bx bx-money-withdraw menu-icon'></i>
-                    <span>Precios bajos garantizados</span>
-                </div>
-                <div class="d-flex flex-row">
-                    <i class="fa-solid fa-headset menu-icon"></i>
-                    <span>Atención al cliente</span>
-                </div>
-                <div class="d-flex flex-row">
-                    <i class='bx bxs-lock menu-icon'></i>
-                    <span>Pago Contra Entrega </span>
-                </div>
+            <div class="seccion_iconos" id="iconos-container">
+                <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
         </div>
     </div>
+    <!-- fin seccion iconos -->
     <div class="mas_vendidos">
         <div class="caja">
             <h2>Más vendidos</h2>
@@ -216,6 +203,52 @@
             }
         });
         /* Fin Slider */
+        /* iconos */
+        // Cargar iconos mediante AJAX
+        let formDataIconos = new FormData();
+        formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/iconostienda',
+            method: 'POST',
+            data: formDataIconos,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                try {
+                    var iconos = JSON.parse(response);
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
+
+                if (iconos && Array.isArray(iconos)) {
+                    var $iconosContainer = $("#iconos-container");
+
+                    iconos.forEach(function(icono) {
+                        var texto = icono.texto || '';
+                        var icon_text = icono.icon_text || '';
+
+                        // Aquí está el HTML para el nuevo diseño
+                        var iconoItem = `
+                        <div class="d-flex flex-row">
+                            <i class='${icon_text} menu-icon'></i>
+                            <span>${texto}</span>
+                        </div>
+                    `;
+
+                        // Agregar el icono al contenedor
+                        $iconosContainer.append(iconoItem);
+                    });
+                } else {
+                    console.error('La respuesta no contiene iconos válidos.');
+                }
+            },
+            error: function(error) {
+                console.log('Error al cargar los iconos:', error);
+            }
+        });
+        /* Fin iconos */
     });
 </script>
 
