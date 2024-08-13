@@ -1,5 +1,5 @@
 <?php
-// Inicializa cURL
+// Inicializa cURL para la primera API
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_informacion_tienda');
 curl_setopt($ch, CURLOPT_POST, 1);
@@ -21,7 +21,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     die('Error al decodificar la respuesta JSON: ' . json_last_error_msg());
 }
 
-// Define las constantes
+// Define las constantes basadas en la respuesta de la primera API
 define('NOMBRE_TIENDA', $data[0]['nombre_tienda']);
 define('FAVICON', $data[0]['favicon']);
 define('LOGO_TIENDA', $data[0]['logo_url']);
@@ -29,6 +29,53 @@ define('FACEBOOK', $data[0]['facebook']);
 define('INSTRAGRAM', $data[0]['instagram']);
 define('TIKTOK', $data[0]['tiktok']);
 define('TELEFONO', $data[0]['whatsapp']);
+
+// Inicializa cURL consulta de api plantilla2
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_ofertas_plantilla2'); // Cambia esta URL según la API que necesites
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['id_plataforma' => ID_PLATAFORMA])); // Cambia los parámetros según lo necesario
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Ejecuta la solicitud y obtiene la respuesta
+$response2 = curl_exec($ch);
+curl_close($ch);
+
+// Verifica si se obtuvo una respuesta
+if ($response2 === false) {
+    die('Error al obtener la información adicional.');
+}
+
+// Decodifica la respuesta JSON
+$data2 = json_decode($response2, true);
+if (json_last_error() !== JSON_ERROR_NONE) {
+    die('Error al decodificar la respuesta JSON: ' . json_last_error_msg());
+}
+
+// Define la constante adicional basada en la respuesta de la segunda API
+define('COLOR_BACKGROUND', $data[0]['color']);
+define('COLOR_BOTONES', $data[0]['color_botones']);
+define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
+define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
+define('COLOR_TEXTO_PRECIO', $data[0]['texto_precio']);
+
+/* constantes seccion ofertas */
+define('TITULO_OFERTA1', $data[0]['titulo_oferta1']);
+define('OFERTA1', $data[0]['oferta1']);
+define('DESCRIPCION_OFERTA1', $data[0]['descripcion_oferta1']);
+define('TEXTO_BTN_OFERTA1', $data[0]['texto_btn_oferta1']);
+define('ENLACE_OFERTA1', $data[0]['enlace_oferta1']);
+define('COLOR_BTN_OFERTA1', $data[0]['color_btn_oferta1']);
+define('IMAGEN_OFERTA1', $data[0]['imagen_oferta1']);
+define('TITULO_OFERTA2', $data[0]['titulo_oferta2']);
+define('OFERTA2', $data[0]['oferta2']);
+define('DESCRIPCION_OFERTA2', $data[0]['descripcion_oferta2']);
+define('TEXTO_BTN_OFERTA2', $data[0]['texto_btn_oferta2']);
+define('ENLACE_OFERTA2', $data[0]['enlace_oferta2']);
+define('COLOR_BTN_OFERTA2', $data[0]['color_btn_oferta2']);
+define('IMAGEN_OFERTA2', $data[0]['imagen_oferta2']);
+/* fin contrantes seccion ofertas */
+
 ?>
 
 <?php include 'Views/templates/css/header2_style.php'; ?>

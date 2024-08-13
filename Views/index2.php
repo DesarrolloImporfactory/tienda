@@ -21,23 +21,28 @@
             <div class="promotion-card">
                 <img src="assets/imagenes/telefono_rojo.webp" class="promotion-image" alt="Smartphone">
                 <div class="promotion-content">
-                    <h2>Ofertas de temporada</h2>
-                    <h1>Hasta 30% menos</h1>
-                    <p>En Smartphones seleccionados</p>
-                    <button class="btn btn-light">Tienda</button>
+                    <h2><?php echo TITULO_OFERTA1; ?></h2>
+                    <h1><?php echo OFERTA1; ?></h1>
+                    <p><?php echo DESCRIPCION_OFERTA1; ?></p>
+                    <a href="<?php echo ENLACE_OFERTA1; ?>" target="_blank">
+                    <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
+                    </a>
                 </div>
             </div>
             <div class="promotion-card">
                 <img src="assets/imagenes/audifonos_morados.webp" class="promotion-image" alt="Headphones">
                 <div class="promotion-content">
-                    <h2>Recién llegados</h2>
-                    <h1>Lleva tu sonido donde quieras</h1>
-                    <p>Mejores marcas de audífonos</p>
-                    <button class="btn btn-light">Comprar</button>
+                    <h2><?php echo TITULO_OFERTA2; ?></h2>
+                    <h1><?php echo OFERTA2; ?></h1>
+                    <p><?php echo DESCRIPCION_OFERTA2; ?></p>
+                    <a href="<?php echo ENLACE_OFERTA2; ?>" target="_blank">
+                    <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Fin Seccion ofertas y promociones -->
     <div class="seccion">
         <div class="caja">
             <div class="seccion_iconos">
