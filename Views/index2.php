@@ -54,24 +54,10 @@
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
     <div class="mas_vendidos">
-        <h2>Más Vendidos</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <!-- Cada tarjeta debe estar envuelta en una clase swiper-slide -->
-                <div class="swiper-slide">
-                    <div class="mas_vendidos-card">
-                        <span class="mas_vendidos-tag">Oferta</span>
-                        <div class="mas_vendidos-image-wrapper">
-                            <img src="tu-imagen.jpg" alt="Producto" class="mas_vendidos-image" />
-                        </div>
-                        <div class="mas_vendidos-info">
-                            <p>Nombre del Producto</p>
-                            <p class="mas_vendidos-price">$20.00</p>
-                            <p class="mas_vendidos-old-price">$30.00</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Repite para cada tarjeta -->
+        <div class="caja">
+            <h2>Productos destacados</h2>
+            <div class="flex_mas_vendidos" id="productos-destacados">
+                <!-- Los productos serán insertados aquí dinámicamente -->
             </div>
         </div>
     </div>
