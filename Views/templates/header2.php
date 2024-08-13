@@ -53,27 +53,27 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 
 // Define la constante adicional basada en la respuesta de la segunda API
-define('COLOR_BACKGROUND', $data[0]['color']);
-define('COLOR_BOTONES', $data[0]['color_botones']);
-define('COLOR_TEXTO_BOTON', $data[0]['texto_boton']);
-define('COLOR_TEXTO_CABECERA', $data[0]['texto_cabecera']);
-define('COLOR_TEXTO_PRECIO', $data[0]['texto_precio']);
+define('COLOR_BACKGROUND', $data2[0]['color']);
+define('COLOR_BOTONES', $data2[0]['color_botones']);
+define('COLOR_TEXTO_BOTON', $data2[0]['texto_boton']);
+define('COLOR_TEXTO_CABECERA', $data2[0]['texto_cabecera']);
+define('COLOR_TEXTO_PRECIO', $data2[0]['texto_precio']);
 
 /* constantes seccion ofertas */
-define('TITULO_OFERTA1', $data[0]['titulo_oferta1']);
-define('OFERTA1', $data[0]['oferta1']);
-define('DESCRIPCION_OFERTA1', $data[0]['descripcion_oferta1']);
-define('TEXTO_BTN_OFERTA1', $data[0]['texto_btn_oferta1']);
-define('ENLACE_OFERTA1', $data[0]['enlace_oferta1']);
-define('COLOR_BTN_OFERTA1', $data[0]['color_btn_oferta1']);
-define('IMAGEN_OFERTA1', $data[0]['imagen_oferta1']);
-define('TITULO_OFERTA2', $data[0]['titulo_oferta2']);
-define('OFERTA2', $data[0]['oferta2']);
-define('DESCRIPCION_OFERTA2', $data[0]['descripcion_oferta2']);
-define('TEXTO_BTN_OFERTA2', $data[0]['texto_btn_oferta2']);
-define('ENLACE_OFERTA2', $data[0]['enlace_oferta2']);
-define('COLOR_BTN_OFERTA2', $data[0]['color_btn_oferta2']);
-define('IMAGEN_OFERTA2', $data[0]['imagen_oferta2']);
+define('TITULO_OFERTA1', $data2[0]['titulo_oferta1']);
+define('OFERTA1', $data2[0]['oferta1']);
+define('DESCRIPCION_OFERTA1', $data2[0]['descripcion_oferta1']);
+define('TEXTO_BTN_OFERTA1', $data2[0]['texto_btn_oferta1']);
+define('ENLACE_OFERTA1', $data2[0]['enlace_oferta1']);
+define('COLOR_BTN_OFERTA1', $data2[0]['color_btn_oferta1']);
+define('IMAGEN_OFERTA1', $data2[0]['imagen_oferta1']);
+define('TITULO_OFERTA2', $data2[0]['titulo_oferta2']);
+define('OFERTA2', $data2[0]['oferta2']);
+define('DESCRIPCION_OFERTA2', $data2[0]['descripcion_oferta2']);
+define('TEXTO_BTN_OFERTA2', $data2[0]['texto_btn_oferta2']);
+define('ENLACE_OFERTA2', $data2[0]['enlace_oferta2']);
+define('COLOR_BTN_OFERTA2', $data2[0]['color_btn_oferta2']);
+define('IMAGEN_OFERTA2', $data2[0]['imagen_oferta2']);
 /* fin contrantes seccion ofertas */
 
 ?>
