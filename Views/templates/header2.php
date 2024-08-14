@@ -197,9 +197,6 @@ $primera_seccion = obtenerPrimeraSeccion();
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-light">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#subNavbar" aria-controls="subNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="subNavbar">
                     <ul class="navbar-nav justify-content-center flex-lg-row flex-column w-100" id="categories-menu">
                         <!-- Categorías dinámicas se cargarán aquí -->
