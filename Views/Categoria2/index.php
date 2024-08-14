@@ -3,7 +3,7 @@
 <?php require_once './Views/Producto/Modales/checkout.php'; ?>
 
 <main>
-    <div class="container my-5 custom-container">
+    <div class="container my-5 custom-container" style="margin: 0; padding:0;">
         <div class="row">
             <!-- Barra lateral de filtros -->
             <div class="col-md-3 custom-filter-section">
