@@ -54,7 +54,7 @@
 
     /* Sub-Navigation */
     .sub-nav {
-        background-color: #d8d7d7 !important;
+        background-color: <?php echo COLOR_CABECERA; ?> !important;
         padding: 0.5rem 1rem;
     }
 
@@ -75,7 +75,7 @@
 
     .sub-nav .nav-link:hover {
         color: <?php echo COLOR_HOVER_CABECERA; ?>;
-        background-color: #f0f0f0;
+        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
         border-radius: 5px;
     }
 
