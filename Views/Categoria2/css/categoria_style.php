@@ -134,8 +134,8 @@
         }
 
         .custom-container {
-            margin: 10px;
-            padding: 10px;
+            margin: 0;
+            padding: 0;
         }
 
         .custom-sort-dropdown {
