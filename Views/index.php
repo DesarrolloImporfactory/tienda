@@ -115,9 +115,9 @@
                     inner += `<div class="carousel-item ${isActive}">
                               <img src="${image_path}" class="d-block w-100" alt="...">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                                  <h5>${banner.titulo}</h5>
-                                  <p>${banner.texto_banner}</p>
-                                  <a class="btn texto_boton" href="${banner.enlace_boton}" target="_blank">${banner.texto_boton}</a>
+                                  <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
+                                  <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
+                                  <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner}; background-color:${banner.color_btn_banner};" target="_blank">${banner.texto_boton}</a>
                               </div>
                           </div>`;
                 });
