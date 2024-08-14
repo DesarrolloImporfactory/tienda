@@ -74,7 +74,7 @@
             categorias.forEach(categoria => {
                 categoriasHtml += `
                 <li class="nav-item">
-                    <a class="nav-link" href="categoria?id_cat=${categoria.id_linea}">${categoria.nombre_linea}</a>
+                    <a class="nav-link" href="categoria2?id_cat=${categoria.id_linea}">${categoria.nombre_linea}</a>
                 </li>
             `;
             });
