@@ -26,13 +26,13 @@
         color: <?php echo COLOR_HOVER_CABECERA;?>;
     }
 
-    .btn-outline-primary {
+    .btn-outline-primary-custom {
         border-radius: 0 20px 20px 0;
         border-color: <?php echo COLOR_TEXTO_CABECERA;?>;
         color: <?php echo COLOR_TEXTO_CABECERA;?>;
     }
 
-    .btn-outline-primary:hover {
+    .btn-outline-primary-custom:hover {
         background-color: <?php echo COLOR_TEXTO_CABECERA;?>;
         color: <?php echo COLOR_HOVER_CABECERA;?>;
     }
@@ -95,7 +95,7 @@
             margin-right: 0;
         }
 
-        .btn-outline-primary {
+        .btn-outline-primary-custom {
             width: 100%;
             margin-top: 0.5rem;
         }

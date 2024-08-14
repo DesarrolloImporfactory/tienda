@@ -184,7 +184,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <form class="d-flex me-auto">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                        <button class="btn btn-outline-primary-custom" type="submit">Buscar</button>
                     </form>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -195,7 +195,7 @@ $primera_seccion = obtenerPrimeraSeccion();
             </div>
         </nav>
         <!-- Sub-Nav -->
-        <div class="navbar navbar-expand-lg sub-nav bg-light">
+        <div class="navbar navbar-expand-lg sub-nav bg-custom">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="subNavbar">
                     <ul class="navbar-nav justify-content-center flex-lg-row flex-column w-100" id="categories-menu">
