@@ -197,35 +197,12 @@ $primera_seccion = obtenerPrimeraSeccion();
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-light">
             <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#subNavbar" aria-controls="subNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="subNavbar">
-                    <ul class="navbar-nav justify-content-center flex-lg-row flex-column w-100">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Comprar todo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Computadoras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tabletas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Drones y cámaras</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Audio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Celulares</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">T.V. y cine en casa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Tecnología portátil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Oferta</a>
-                        </li>
+                    <ul class="navbar-nav justify-content-center flex-lg-row flex-column w-100" id="categories-menu">
+                        <!-- Categorías dinámicas se cargarán aquí -->
                     </ul>
                 </div>
             </div>

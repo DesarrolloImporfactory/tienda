@@ -51,7 +51,69 @@
 
 
 <script>
-    // Ensure that the subNavbar is linked to the correct toggle button
+    // Cargar categorías y construir el menú de navegación
+    let formDataCategoria = new FormData();
+    formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
+
+    $.ajax({
+        url: SERVERURL + 'Tienda/categoriastienda',
+        method: 'POST',
+        data: formDataCategoria,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            let categorias = JSON.parse(response);
+
+            // Verifica si la respuesta es un array o un objeto
+            if (!Array.isArray(categorias)) {
+                categorias = Object.values(categorias);
+            }
+
+            let categoriasHtml = '';
+
+            categorias.forEach(categoria => {
+                categoriasHtml += `
+                <li class="nav-item">
+                    <a class="nav-link" href="categoria?id_cat=${categoria.id_linea}">${categoria.nombre_linea}</a>
+                </li>
+            `;
+            });
+
+            // Agrega el HTML generado al menú de navegación
+            $('#categories-menu').html(categoriasHtml);
+
+            // Inicializar OwlCarousel para pantallas grandes
+            if (window.innerWidth >= 992) {
+                $('#categories-menu').addClass('owl-carousel');
+                $('#categories-menu').owlCarousel({
+                    loop: false,
+                    margin: 10,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 5 // Muestra 5 ítems en pantallas grandes
+                        }
+                    },
+                    nav: true,
+                    navText: [
+                        '<i class="fas fa-chevron-left"></i>',
+                        '<i class="fas fa-chevron-right"></i>'
+                    ]
+                });
+            } else {
+                $('#categories-menu').removeClass('owl-carousel');
+            }
+        },
+        error: function(error) {
+            console.error("Error al consumir la API:", error);
+        }
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         const navbarToggler = document.querySelector('.navbar-toggler');
         const subNavbar = document.getElementById('subNavbar');

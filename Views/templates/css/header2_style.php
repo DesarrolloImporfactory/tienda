@@ -44,13 +44,10 @@
 
     .sub-nav .navbar-nav {
         flex-direction: row;
-        /* Default to row on larger screens */
         justify-content: center;
         flex-wrap: nowrap;
         overflow-x: auto;
-        /* Allows scrolling if content overflows */
         white-space: nowrap;
-        /* Prevents text wrapping */
     }
 
     .sub-nav .nav-link {
@@ -66,10 +63,20 @@
         border-radius: 5px;
     }
 
-    /* Responsive Styles */
-    @media (max-width: 992px) {
+    /* Estilos específicos para OwlCarousel en pantallas grandes */
+    @media (min-width: 992px) {
+        .owl-carousel .nav-item {
+            width: auto !important;
+        }
 
-        /* Adjust breakpoint to lg */
+        .sub-nav .navbar-nav {
+            flex-wrap: nowrap;
+            /* Sin wrap para que OwlCarousel funcione bien */
+        }
+    }
+
+    /* Responsive Styles para pantallas pequeñas */
+    @media (max-width: 992px) {
         .navbar-brand {
             font-size: 20px;
         }
@@ -85,23 +92,19 @@
 
         .sub-nav .navbar-nav {
             flex-direction: column;
-            /* Change to column on smaller screens */
             align-items: flex-start;
-            /* Align items to the start */
             overflow-x: visible;
-            /* No need for horizontal scrolling on small screens */
         }
 
         .sub-nav .nav-link {
             margin-right: 0;
             width: 100%;
-            /* Full width for better touch target */
             font-size: 1rem;
             padding: 0.5rem 0.75rem;
-            /* More padding for touch devices */
             text-align: left;
         }
     }
+
 
     .custom-carousel {
         height: 60vh;
