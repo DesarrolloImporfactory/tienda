@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="footer copyright text-center">
-        <p>&copy; Lanza tu tienda online con 'IMPORSUIT S.A.' y alcanza nuevos mercados. | Todos los derechos reservados.</p>
+        <p>&copy; 2024 Construye tu tienda online con IMPORSUIT S.A.| Todos los derechos reservados.</p>
     </div>
 </footer>
 <!-- No repetir la carga de jQuery -->
