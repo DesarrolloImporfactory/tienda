@@ -53,6 +53,41 @@
     let productosMostrados = 0; // Contador de productos mostrados
     const productosPorPagina = 30; // Número de productos a mostrar por carga
 
+    function actualizarProductos() {
+        const valorMinimo = document.getElementById('valorMinimo-range').textContent || 0;
+        const valorMaximo = document.getElementById('valorMaximo-range').textContent || 3000;
+        const ordenarPor = document.getElementById('sortOptions').value;
+        const urlParams = new URLSearchParams(window.location.search);
+        const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
+
+        const idPlataforma = ID_PLATAFORMA;
+
+        const formData = new FormData();
+        formData.append('id_plataforma', idPlataforma);
+        formData.append('id_categoria', idCategoria);
+        formData.append('precio_minimo', valorMinimo);
+        formData.append('precio_maximo', valorMaximo);
+        formData.append('ordenar_por', ordenarPor);
+
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                productosTotales = data; // Guarda todos los productos
+                productosMostrados = 0; // Reinicia el contador
+                document.getElementById('productosContainer').innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos productos
+                mostrarProductos(); // Llama a la función para mostrar productos
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         // Inicializa el rango de precios
         initPriceRange();
@@ -81,14 +116,11 @@
         const valorMaximo = document.getElementById('valorMaximo-range');
 
         priceRange.addEventListener('input', function() {
-            const value = this.value;
-            valorMinimo.textContent = value;
-            valorMaximo.textContent = this.max;
+            valorMinimo.textContent = this.value;
             actualizarProductos();
         });
     }
 
-    // Cargar categorías dinámicamente
     function cargarCategorias() {
         let formDataCategoria = new FormData();
         formDataCategoria.append("id_plataforma", ID_PLATAFORMA);
@@ -116,10 +148,9 @@
         });
     }
 
-    // Filtrar por categoría y cargar productos
     function filtrarPorCategoria(idCategoria) {
-        const valorMinimo = document.getElementById('valorMinimo-range').textContent;
-        const valorMaximo = document.getElementById('valorMaximo-range').textContent;
+        const valorMinimo = document.getElementById('valorMinimo-range').textContent || 0;
+        const valorMaximo = document.getElementById('valorMaximo-range').textContent || 3000;
         const ordenarPor = document.getElementById('sortOptions').value;
         const idPlataforma = ID_PLATAFORMA;
 
@@ -148,7 +179,6 @@
         filtrarPorCategoria(""); // Pasa una cadena vacía para ver todas las categorías
     }
 
-    // Mostrar productos
     function mostrarProductos() {
         const productosContainer = document.getElementById('productosContainer');
 
