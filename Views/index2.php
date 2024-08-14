@@ -233,7 +233,7 @@
                         <div class="mas_vendidos-card">
                             <div class="mas_vendidos-tag">OFERTA</div>
                             <div class="mas_vendidos-image-wrapper">
-                                <a href="producto?id=${producto.id_producto_tienda}">
+                                <a href="producto2?id=${producto.id_producto_tienda}">
                                     <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
                                 </a>
                             </div>
