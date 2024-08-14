@@ -53,11 +53,11 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 }
 
 // Define la constante adicional basada en la respuesta de la segunda API
-define('COLOR_BACKGROUND', $data2[0]['color']);
-define('COLOR_BOTONES', $data2[0]['color_botones']);
-define('COLOR_TEXTO_BOTON', $data2[0]['texto_boton']);
-define('COLOR_TEXTO_CABECERA', $data2[0]['texto_cabecera']);
-define('COLOR_TEXTO_PRECIO', $data2[0]['texto_precio']);
+define('COLOR_CABECERA', $data2[0]['color_cabecera']);
+define('COLOR_TEXTO_CABECERA', $data2[0]['color_texto_cabecera']);
+define('COLOR_HOVER_CABECERA', $data2[0]['color_hover_cabecera']);
+define('COLOR_TEXTO_PRECIO', $data2[0]['color_texto_precio']);
+
 
 /* constantes seccion ofertas */
 define('TITULO_OFERTA1', $data2[0]['titulo_oferta1']);
@@ -177,7 +177,7 @@ $primera_seccion = obtenerPrimeraSeccion();
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?php echo $primera_seccion; ?>"><?php echo NOMBRE_TIENDA; ?></a>
+                <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA;?>;"><?php echo NOMBRE_TIENDA; ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
