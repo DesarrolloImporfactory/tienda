@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="footer copyright text-center">
-        <p>&copy; 2024 IMPORSUIT S.A. | Todos los derechos reservados.</p>
+        <p>&copy; Lanza tu tienda online con 'IMPORSUIT S.A.' y alcanza nuevos mercados. | Todos los derechos reservados.</p>
     </div>
 </footer>
 <!-- librerias adiconale -->
