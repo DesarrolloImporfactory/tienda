@@ -97,7 +97,7 @@
             margin-right: 0;
         }
 
-        .btn-outline-primary {
+        .custom-btn-outline-primary {
             width: 100%;
             margin-top: 0.5rem;
         }
