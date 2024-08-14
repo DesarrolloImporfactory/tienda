@@ -188,7 +188,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                     </form>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class='bx bx-cart-download menu-icon'></i> <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA;?>;colo:<?php echo COLOR_TEXTO_CABECERA;?>;">0</span></a>
+                            <a class="nav-link" href="#"><i class='bx bx-cart-download menu-icon'></i> <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA;?> !important; color:<?php echo COLOR_TEXTO_CABECERA;?> !important;">0</span></a>
                         </li>
                     </ul>
                 </div>
