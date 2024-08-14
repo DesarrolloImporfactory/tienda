@@ -155,6 +155,21 @@
         border-color: #563d7c;
     }
 
+    @media (max-width: 768px) {
+        .custom-carousel {
+            height: 200px;
+            /* Ajusta esto a 30vh o 40vh según prefieras */
+        }
+
+        .custom-carousel .carousel-inner {
+            height: 200px;
+        }
+
+        .custom-carousel .carousel-item img {
+            height: 200px;
+        }
+    }
+
     .menu-icon {
         font-size: 30px;
         padding-right: 5px;
