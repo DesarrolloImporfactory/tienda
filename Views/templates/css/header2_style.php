@@ -1,11 +1,11 @@
 <style>
     /* Navbar Styles */
     .navbar-nav .nav-link {
-        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        color: <?php echo COLOR_TEXTO_CABECERA;?>;
     }
 
     .navbar-nav .nav-link:hover {
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
+        color: <?php echo COLOR_HOVER_CABECERA;?>;
     }
 
     .form-control {
@@ -13,30 +13,28 @@
     }
 
     .bg-custom {
-        background-color: <?php echo COLOR_CABECERA; ?> !important;
+        background-color: <?php echo COLOR_CABECERA;?> !important;
     }
 
-    .boton_buscar {
-        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        border-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    .boton_buscar{
+        color: <?php echo COLOR_TEXTO_CABECERA;?> !important;
+        border-color: <?php echo COLOR_TEXTO_CABECERA;?> !important;
     }
 
     .boton_buscar:hover {
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
+        background-color: <?php echo COLOR_TEXTO_CABECERA;?>;
+        color: <?php echo COLOR_HOVER_CABECERA;?>;
     }
 
-    .custom-btn-outline-primary {
+    .btn-outline-primary {
         border-radius: 0 20px 20px 0;
-        border-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-        background-color: transparent;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        border-color: <?php echo COLOR_TEXTO_CABECERA;?>;
+        color: <?php echo COLOR_TEXTO_CABECERA;?>;
     }
 
-    .custom-btn-outline-primary:hover {
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
+    .btn-outline-primary:hover {
+        background-color: <?php echo COLOR_TEXTO_CABECERA;?>;
+        color: <?php echo COLOR_HOVER_CABECERA;?>;
     }
 
     .navbar-brand {
@@ -64,13 +62,13 @@
 
     .sub-nav .nav-link {
         margin-right: 1rem;
-        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        color: <?php echo COLOR_TEXTO_CABECERA;?>;
         padding: 0.5rem 1rem;
         text-align: center;
     }
 
     .sub-nav .nav-link:hover {
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
+        color: <?php echo COLOR_HOVER_CABECERA;?>;
         background-color: #f0f0f0;
         border-radius: 5px;
     }
@@ -97,7 +95,7 @@
             margin-right: 0;
         }
 
-        .custom-btn-outline-primary {
+        .btn-outline-primary {
             width: 100%;
             margin-top: 0.5rem;
         }

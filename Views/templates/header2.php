@@ -184,7 +184,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <form class="d-flex me-auto">
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn custom-btn-outline-primary" type="submit">Buscar</button>
+                        <button class="btn btn-outline-primary" type="submit">Buscar</button>
                     </form>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
