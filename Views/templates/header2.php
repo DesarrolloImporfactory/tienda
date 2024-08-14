@@ -175,7 +175,7 @@ $primera_seccion = obtenerPrimeraSeccion();
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA;?>;"><?php echo NOMBRE_TIENDA; ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">

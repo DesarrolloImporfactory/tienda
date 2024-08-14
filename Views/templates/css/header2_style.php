@@ -12,8 +12,7 @@
         border-radius: 20px 0 0 20px;
     }
 
-    .bg-light {
-        opacity: 0;
+    .bg-custom {
         background-color: <?php echo COLOR_CABECERA;?> !important;
     }
 
