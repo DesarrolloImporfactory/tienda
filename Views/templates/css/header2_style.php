@@ -28,8 +28,8 @@
 
     .buscar {
         border-radius: 0 20px 20px 0;
-        border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?>;
-        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
         background-color: transparent;
         padding: 0.375rem 0.75rem;
         font-size: 1rem;
@@ -39,8 +39,8 @@
     }
 
     .buscar:hover {
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
+        background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+        color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
     }
 
     .navbar-brand {
