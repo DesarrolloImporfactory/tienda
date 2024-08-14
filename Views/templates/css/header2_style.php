@@ -13,6 +13,7 @@
     }
 
     .bg-light {
+        opacity: 0;
         background-color: <?php echo COLOR_CABECERA;?> !important;
     }
 
