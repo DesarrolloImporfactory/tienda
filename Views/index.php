@@ -117,7 +117,7 @@
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                   <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
                                   <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
-                                  <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner}; background-color:${banner.color_btn_banner};" target="_blank">${banner.texto_boton}</a>
+                                  <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
                               </div>
                           </div>`;
                 });
