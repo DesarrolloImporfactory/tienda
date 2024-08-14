@@ -80,6 +80,19 @@ define('COLOR_TEXTOBTN_OFERTA2', $data2[0]['color_textoBtn_oferta2']);
 define('IMAGEN_OFERTA2', $data2[0]['imagen_oferta2']);
 /* fin contrantes seccion ofertas */
 
+/* promocion */
+define('TITULO_PROMOCION', $data2[0]['titulo_promocion']);
+define('PRECIO_PROMOCION', $data2[0]['precio_promocion']);
+define('DESCRIPCION_PROMOCION', $data2[0]['descripcion_promocion']);
+define('TEXTO_BTN_PROMOCION', $data2[0]['texto_btn_promocion']);
+define('ENLACE_BTN_PROMOCION', $data2[0]['enlace_btn_promocion']);
+define('COLOR_BTN_PROMOCION', $data2[0]['color_btn_promocion']);
+define('COLOR_FONDO_PROMOCION', $data2[0]['color_fondo_promocion']);
+define('COLOR_LETRA_PROMOCION', $data2[0]['color_letra_promocion']);
+define('COLOR_LETRABTN_PROMOCION', $data2[0]['color_letraBtn_promocion']);
+define('IMAGEN_PROMOCION', $data2[0]['imagen_promocion']);
+/* fin promocion */
+
 ?>
 
 <?php include 'Views/templates/css/header2_style.php'; ?>

@@ -65,16 +65,17 @@
     <!-- Sección Ahorra -->
     <div class="ahorro-section">
         <div class="ahorro-image">
-            <img src="https://static.wixstatic.com/media/c837a6_42dd66a436e846648736f4bc9546bf14~mv2.png/v1/fill/w_1825,h_600,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/c837a6_42dd66a436e846648736f4bc9546bf14~mv2.png" alt="Producto">
+            <img src="<?php echo SERVERURL."".IMAGEN_PROMOCION; ?>" alt="Producto">
             <!-- <div class="circle-badge">Mejor precio</div> -->
         </div>
-        <div class="ahorro-content">
-            <div class="text-content  d-flex flex-column">
-                <h2>Ahorra hasta</h2>
-                <h1>$150</h1>
-                <p>en laptops y tabletas seleccionadas</p>
-                <small>Aplican los términos y condiciones</small>
-                <button class="tienda-btn">Tienda</button>
+        <div class="ahorro-content" style="background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;">
+            <div class="text-content  d-flex flex-column" style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;">
+                <h2><?php echo TITULO_PROMOCION; ?></h2>
+                <h1>$<?php echo PRECIO_PROMOCION; ?></h1>
+                <p><?php echo DESCRIPCION_PROMOCION; ?></p>
+                <a href="<?php echo ENLACE_BTN_PROMOCION; ?>" target="_blank">
+                    <button class="tienda-btn" style="background-color: <?php echo COLOR_BTN_PROMOCION; ?>; color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;"><?php echo TEXTO_BTN_PROMOCION; ?></button>
+                </a>
             </div>
         </div>
     </div>
@@ -131,7 +132,6 @@
                     inner += `<div class="carousel-item ${isActive}">
                                 <img src="${image_path}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                                    <div class="tag">${banner.subtitulo}</div>
                                     <h1>${banner.titulo}</h1>
                                     <p>${banner.texto_banner}</p>
                                     <a class="btn btn-primary" href="${banner.enlace_boton}" target="_blank">${banner.texto_boton}</a>
