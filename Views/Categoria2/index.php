@@ -198,6 +198,7 @@
             let texto_precioNormal = precioNormal > 0 ? `<p class="custom-price discounted">$${precioNormal.toFixed(2)}</p>` : '';
             const productoHtml = `
                 <div class="col-md-4 mb-4">
+                <a href="producto2?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
                     <div class="card custom-product-card">
                         <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                         <div class="custom-card-body">
@@ -208,6 +209,7 @@
                             </div>
                         </div>
                     </div>
+                </a>
                 </div>
             `;
             productosContainer.innerHTML += productoHtml;
