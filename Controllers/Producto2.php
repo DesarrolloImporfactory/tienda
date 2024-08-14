@@ -1,6 +1,6 @@
 <?php
 
-class Producto extends Controller
+class Producto2 extends Controller
 {
 
     public function __construct()
@@ -13,14 +13,14 @@ class Producto extends Controller
         $this->views->render($this, "index");
     }
 
-    public function producto()
+    public function producto2()
     {
-        $this->views->render($this, "producto");
+        $this->views->render($this, "producto2");
     }
 
-    public function categorias()
+    public function categorias2()
     {
-        $this->views->render($this, "categorias");
+        $this->views->render($this, "categorias2");
     }
 
     public function listar()
