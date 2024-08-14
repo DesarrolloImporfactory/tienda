@@ -248,7 +248,6 @@
     @media (max-width: 768px) {
         .flex_seccionOfertas {
             flex-direction: column;
-            align-items: center;
         }
 
         .promotion-card {
