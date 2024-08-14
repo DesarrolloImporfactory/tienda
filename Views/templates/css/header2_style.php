@@ -546,13 +546,27 @@
 
     /* fin seccion ahorra 1 */
 
-    footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-        /* position: fixed; */
-        bottom: 0;
-        width: 100%;
+    /* FOOTER TEMPORAL */
+    .footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        color: #6c757d;
     }
+
+    .footer .copyright {
+        background-color: #343a40;
+        color: #ffffff;
+        padding: 10px 0;
+    }
+
+    .footer a {
+        color: #6c757d;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+    /* FIN FOOTER TEMPORAL */
 </style>
