@@ -401,7 +401,7 @@
 
     .mas_vendidos-old-price {
         text-decoration: line-through;
-        color: #888;
+        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
     }
 
     /* Responsivo */
