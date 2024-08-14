@@ -23,6 +23,16 @@ class Producto extends Controller
         $this->views->render($this, "categorias");
     }
 
+    public function producto2()
+    {
+        $this->views->render($this, "producto2");
+    }
+
+    public function categorias2()
+    {
+        $this->views->render($this, "categorias2");
+    }
+
     public function listar()
     {
 
