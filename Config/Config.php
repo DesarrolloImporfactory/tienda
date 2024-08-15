@@ -17,15 +17,20 @@ if (ENVIRONMENT == 'development') {
     define("SERVERURL", "http://localhost/imporsutipro/");
 } else {
 }
+
 $Ur = $_SERVER['HTTP_HOST'];
-$url_actual = "https://" . $_SERVER['HTTP_HOST'] . "/";
+
+
+
+$url_actual = "https://" . $_SERVER['HTTP_HOST'] . '/';
 $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
+if(str_contains($Ur, "comprapor")) $url_actual =  str_replace("comprapor.com", "imporsuitpro.com", $url_actual);
+if(str_contains($Ur, "comprapor")) $nombre_actual = str_replace("comprapor.com", "", $nombre_actual); 
 
 //recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
 
 
 $url_actual = str_replace($nombre_actual, "new.", $url_actual);
-
 
 $mysqli = new mysqli(HOST, USER, PASSWORD, DB);
 $mysqli->set_charset(CHARSET);
@@ -80,6 +85,8 @@ const LLAR_ENDPOINT_CANCEL = 'https://api.laarcourier.com:9727/guias/anular/';
 $hostAntiguo = $_SERVER['HTTP_HOST'];
 $hostNuevo = str_replace("imporsuitpro.com", "", $hostAntiguo);
 
+if(str_contains($hostNuevo, "comprapor.com")) $hostNuevo = str_replace("comprapor.com", "", $hostNuevo);
+
 $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
 
@@ -93,6 +100,7 @@ if ($result->num_rows > 0) {
     echo "0 resultss";
 }
 $mysqli->close();
+ 
 
 
 ///obtener matriz 
