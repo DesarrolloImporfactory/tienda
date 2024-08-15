@@ -80,9 +80,39 @@
 
     .custom-price.discounted {
         text-decoration: line-through;
-        color: <?php echo COLOR_TEXTO_PRECIO ; ?>;
+        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
         font-size: 0.9rem;
         margin-right: 5px;
+    }
+
+    .range-slider {
+        width: 100%;
+        height: 8px;
+        background: #ddd;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    /* Para navegadores WebKit (Chrome, Safari) */
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background-color: #007bff;
+        /* Cambia este color al que desees */
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    /* Para navegadores Firefox */
+    .range-slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: #007bff;
+        /* Cambia este color al que desees */
+        border-radius: 50%;
+        cursor: pointer;
     }
 
     .custom-badge-offer {
