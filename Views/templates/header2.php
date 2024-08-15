@@ -1,4 +1,10 @@
 <?php
+// Oculta los errores en producción
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL); // Cambiar a 0 para desactivar la visualización de errores por completo
+
+
 // Inicializa cURL para la primera API
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_informacion_tienda');
