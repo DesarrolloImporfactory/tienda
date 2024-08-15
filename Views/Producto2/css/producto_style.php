@@ -44,7 +44,7 @@
     color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
     background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;;
     padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    font-size: 21px;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
