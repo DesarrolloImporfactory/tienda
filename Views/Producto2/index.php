@@ -24,7 +24,7 @@ $id_producto = $_GET['id'];
         <p class="text-muted" id="sku-producto">SKU: 004</p>
         <h3 id="precio-especial">$999.00</h3>
         <div id="precio-normal-container">
-          <span class="tachado" style="font-size: 20px; padding-right: 10px;">
+          <span class="mas_vendidos-old-price" style="font-size: 20px; padding-right: 10px;">
             <strong id="precio-normal"></strong>
           </span>
         </div>
