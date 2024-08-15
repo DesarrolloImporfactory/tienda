@@ -29,7 +29,7 @@ $id_producto = $_GET['id'];
               <strong id="precio-normal"></strong>
             </span>
           </div>
-          <div id="ahorra-container" class="px-2" style="background-color: #4464ec; color:white !important; border-radius: 0.3rem; width: 20%;">
+          <div id="ahorra-container" class="p-2" style="background-color: #4464ec; color:white !important; border-radius: 0.3rem; width: 20%;">
             <span class="ahorra"><i class="bx bxs-purchase-tag" style="color: white;"></i>
               <strong id="ahorra"></strong>
             </span>
