@@ -38,4 +38,21 @@
   .thumbnail-container img.active-thumb {
     border: 2px solid #000;
   }
+
+  .btnAgregar_carrito {
+    border-radius: 0 20px 20px 0;
+    border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    background-color: transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btnAgregar_carrito:hover {
+    background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
+  }
 </style>

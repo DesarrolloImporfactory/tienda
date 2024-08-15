@@ -37,7 +37,7 @@ $id_producto = $_GET['id'];
           <label for="quantity" class="form-label">Cantidad</label>
           <input type="number" class="form-control" id="quantity" value="1" min="1">
         </div>
-        <button class="btn btn-primary btn-lg mb-3" id="agregar-al-carrito">Agregar al carrito</button>
+        <button class="btn btnAgregar_carrito btn-lg mb-3" id="agregar-al-carrito">Agregar al carrito</button>
         <button class="btn btn-dark btn-lg mb-3" id="comprar-ahora">Realizar compra</button>
         <div>
           <h5>Información del producto</h5>
