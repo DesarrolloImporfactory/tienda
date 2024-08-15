@@ -54,6 +54,9 @@
     let productosMostrados = 0; // Contador de productos mostrados
     const productosPorPagina = 30; // Número de productos a mostrar por carga
 
+    const urlParams_global = new URLSearchParams(window.location.search);
+    let idCategoria_global = urlParams_global.has('id_cat') ? urlParams_global.get('id_cat') : '';
+
     function actualizarProductos() {
         const valorMinimo = document.getElementById('valorMinimo-range').textContent || 0;
         const valorMaximo = document.getElementById('valorMaximo-range').textContent || 3000;
@@ -66,6 +69,39 @@
         const formData = new FormData();
         formData.append('id_plataforma', idPlataforma);
         formData.append('id_categoria', idCategoria);
+        formData.append('precio_minimo', valorMinimo);
+        formData.append('precio_maximo', valorMaximo);
+        formData.append('ordenar_por', ordenarPor);
+
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                productosTotales = data; // Guarda todos los productos
+                productosMostrados = 0; // Reinicia el contador
+                document.getElementById('productosContainer').innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos productos
+                mostrarProductos(); // Llama a la función para mostrar productos
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function actualizarProductos_rangoPrecio() {
+        const valorMinimo = document.getElementById('valorMinimo-range').textContent || 0;
+        const valorMaximo = document.getElementById('valorMaximo-range').textContent || 3000;
+        const ordenarPor = document.getElementById('sortOptions').value;
+
+        const idPlataforma = ID_PLATAFORMA;
+
+        const formData = new FormData();
+        formData.append('id_plataforma', idPlataforma);
+        formData.append('id_categoria', idCategoria_global);
         formData.append('precio_minimo', valorMinimo);
         formData.append('precio_maximo', valorMaximo);
         formData.append('ordenar_por', ordenarPor);
@@ -107,7 +143,7 @@
 
         // Manejo de cambios en la selección de ordenamiento
         document.getElementById('sortOptions').addEventListener('change', function() {
-            actualizarProductos();
+            actualizarProductos_rangoPrecio();
         });
     });
 
@@ -118,7 +154,7 @@
 
         priceRange.addEventListener('input', function() {
             valorMinimo.textContent = this.value;
-            actualizarProductos();
+            actualizarProductos_rangoPrecio();
         });
     }
 
