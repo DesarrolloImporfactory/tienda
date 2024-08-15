@@ -9,25 +9,15 @@
     }
 
     .form-control {
-        border-radius: 20px 0 0 20px;
+        border-radius: 20px 0 0 20px !important;
     }
 
     .bg-custom {
         background-color: <?php echo COLOR_CABECERA; ?> !important;
     }
 
-    .boton_buscar {
-        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        border-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-    }
-
-    .boton_buscar:hover {
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
-    }
-
     .buscar {
-        border-radius: 0 20px 20px 0;
+        border-radius: 0 20px 20px 0 !important;
         border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
         color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
         background-color: transparent;

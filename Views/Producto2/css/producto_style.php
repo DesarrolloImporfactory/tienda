@@ -40,7 +40,6 @@
   }
 
   .btnAgregar_carrito {
-    border-radius: 0 20px 20px 0;
     border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
     color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
     background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;;
