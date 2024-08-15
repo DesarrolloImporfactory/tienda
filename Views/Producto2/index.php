@@ -41,9 +41,8 @@ $id_producto = $_GET['id'];
         </div>
         <button class="btn btnAgregar_carrito btn-lg mb-3" id="agregar-al-carrito">Agregar al carrito</button>
         <button class="btn btn-dark btn-lg mb-3" id="comprar-ahora">Realizar compra</button>
-        <div>
-          <h5>Información del producto</h5>
-          <p id="landing">Detalle del producto. Lugar ideal para agregar más información sobre tu producto como su tamaño, material, cuidados y estilo.</p>
+        <div id="landing" style="padding: 20px;">
+
         </div>
       </div>
     </div>
@@ -67,7 +66,44 @@ $id_producto = $_GET['id'];
 
 <script>
   function cargarLanding(id) {
-    // Mismo código que ya tenías para cargar el contenido en la sección de información del producto
+    let formData = new FormData();
+    formData.append("id_producto_tienda", id);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://imagenes.imporsuitpro.com/obtenerLandingTienda", true);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        try {
+          var response = JSON.parse(xhr.responseText);
+          console.log("Respuesta de la API:", response);
+
+          // Decodificar entidades HTML
+          var decodedHTML = decodeEntities(response.data);
+          console.log("HTML decodificado:", decodedHTML);
+
+          // Crear un documento temporal para manipular el HTML decodificado
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(decodedHTML, 'text/html');
+
+          // Comprobar si el body está presente en la respuesta
+          var body = doc.body;
+          if (body) {
+            var bodyContent = body.innerHTML;
+            console.log("Contenido del body:", bodyContent);
+
+            // Insertar el contenido del body en el div con id="landing"
+            document.getElementById("landing").innerHTML = bodyContent;
+          } else {
+            console.error("No se encontró la etiqueta <body> en la respuesta.");
+          }
+        } catch (e) {
+          console.error("Error al decodificar JSON:", e);
+        }
+      } else {
+        console.error("Error en la solicitud AJAX.");
+      }
+    };
+    xhr.send(formData);
   }
 
   function changeImage(imageURL) {
