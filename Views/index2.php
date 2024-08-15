@@ -228,10 +228,16 @@
 
                         var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
+                        let oferta="";
+                        
+                        if(precioNormal > 0){
+                            oferta= `<div class="mas_vendidos-tag">OFERTA</div>`;
+                        }
+
                         // HTML para cada producto destacado
                         var productItem = `
                         <div class="mas_vendidos-card">
-                            <div class="mas_vendidos-tag">OFERTA</div>
+                            ${oferta}
                             <div class="mas_vendidos-image-wrapper">
                                 <a href="producto2?id=${producto.id_producto_tienda}">
                                     <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
