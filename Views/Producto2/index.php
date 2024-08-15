@@ -22,20 +22,22 @@ $id_producto = $_GET['id'];
       <div class="col-md-6">
         <h2 id="nombre-producto">Nombre del producto</h2>
         <p class="text-muted" id="sku-producto">SKU: 004</p>
-        <h3 id="precio-especial">$999.00</h3>
-        <div id="precio-normal-container">
-          <span class="mas_vendidos-old-price" style="font-size: 20px; padding-right: 10px;">
-            <strong id="precio-normal"></strong>
-          </span>
-        </div>
-        <div id="ahorra-container" class="px-2" style="background-color: #4464ec; color:white !important; border-radius: 0.3rem;">
-          <span class="ahorra"><i class="bx bxs-purchase-tag" style="color: white;"></i>
-            <strong id="ahorra"></strong>
-          </span>
+        <div class="d-flex flex-row gap-3">
+          <h3 id="precio-especial">$999.00</h3>
+          <div id="precio-normal-container">
+            <span class="mas_vendidos-old-price" style="font-size: 20px; padding-right: 10px;">
+              <strong id="precio-normal"></strong>
+            </span>
+          </div>
+          <div id="ahorra-container" class="px-2" style="background-color: #4464ec; color:white !important; border-radius: 0.3rem; width: 20%;">
+            <span class="ahorra"><i class="bx bxs-purchase-tag" style="color: white;"></i>
+              <strong id="ahorra"></strong>
+            </span>
+          </div>
         </div>
         <div class="mb-3">
           <label for="quantity" class="form-label">Cantidad</label>
-          <input type="number" class="form-control" id="quantity" value="1" min="1">
+          <input type="number" class="form-control" style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
         </div>
         <button class="btn btnAgregar_carrito btn-lg mb-3" id="agregar-al-carrito">Agregar al carrito</button>
         <button class="btn btn-dark btn-lg mb-3" id="comprar-ahora">Realizar compra</button>
