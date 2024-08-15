@@ -106,6 +106,12 @@ $id_producto = $_GET['id'];
     xhr.send(formData);
   }
 
+  function decodeEntities(encodedString) {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = encodedString;
+    return textArea.value;
+  }
+
   function changeImage(imageURL) {
     // Cambia la imagen principal al hacer clic en una miniatura
     const mainImage = document.getElementById('mainProductImage');
