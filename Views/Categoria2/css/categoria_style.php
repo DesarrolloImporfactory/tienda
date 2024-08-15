@@ -73,14 +73,14 @@
     }
 
     .custom-price {
-        color: #007bff;
+        color: #000000;
         font-size: 1rem;
         font-weight: bold;
     }
 
     .custom-price.discounted {
         text-decoration: line-through;
-        color: #777;
+        color: <?php echo COLOR_TEXTO_PRECIO ; ?>;
         font-size: 0.9rem;
         margin-right: 5px;
     }
