@@ -99,7 +99,7 @@
             appearance: none;
             width: 20px;
             height: 20px;
-            background-color: #ff5733; /* Cambia este color al que desees */
+            background-color: <?php echo COLOR_CABECERA; ?>; /* Cambia este color al que desees */
             border-radius: 50%;
             cursor: pointer;
         }
@@ -108,7 +108,7 @@
         .range-slider::-moz-range-thumb {
             width: 20px;
             height: 20px;
-            background-color: #ff5733; /* Cambia este color al que desees */
+            background-color: <?php echo COLOR_CABECERA; ?>; /* Cambia este color al que desees */
             border-radius: 50%;
             cursor: pointer;
         }
@@ -117,7 +117,7 @@
         .range-slider::-ms-thumb {
             width: 20px;
             height: 20px;
-            background-color: #ff5733; /* Cambia este color al que desees */
+            background-color: <?php echo COLOR_CABECERA; ?>; /* Cambia este color al que desees */
             border-radius: 50%;
             cursor: pointer;
         }
