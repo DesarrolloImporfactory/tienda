@@ -12,7 +12,7 @@ $id_producto = $_GET['id'];
       <div class="col-md-6">
         <!-- Main Image -->
         <div class="main-image-container mb-3">
-          <img id="mainProductImage" src="" class="img-fluid main-product-image" alt="Main Product Image" data-bs-toggle="modal" data-bs-target="#imagenModal">
+          <img id="mainProductImage" src="" class="img-fluid main-product-image" alt="Main Product Image" onclick="abrir_modalImagen(this.value)">
         </div>
         <!-- Thumbnails -->
         <div class="thumbnail-container d-flex justify-content-center" id="thumbnailsContainer">
@@ -65,6 +65,12 @@ $id_producto = $_GET['id'];
 </main>
 
 <script>
+  function abrir_modalImagen(url) {
+    $("#imagenEnModal").attr("src", "new.imporsuitpro.com"+url).show();
+
+    $("#imagen_categoriaModal").modal("show");
+  }
+
   function cargarLanding(id) {
     let formData = new FormData();
     formData.append("id_producto_tienda", id);
