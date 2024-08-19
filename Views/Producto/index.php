@@ -160,6 +160,9 @@ $id_producto = $_GET['id'];
           var ahorro = 0;
           if (precioNormal > 0) {
             ahorro = 100 - (precioEspecial * 100 / precioNormal);
+          } else {
+            $('#precio-normal-container').hide();
+            $('#ahorra-container').hide();
           }
           $('#nombre-producto').text(producto.nombre_producto_tienda);
           $('#precio-especial').text('$' + parseFloat(precioEspecial).toFixed(2));
