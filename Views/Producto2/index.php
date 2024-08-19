@@ -1,11 +1,3 @@
-<?php include 'Views/templates/header2.php'; ?>
-<?php include 'Views/Producto2/css/producto_style.php'; ?>
-<?php require_once './Views/Producto/Modales/checkout.php'; ?>
-
-<?php
-$id_producto = $_GET['id'];
-?>
-
 <main style="background-color: #f9f9f9;">
   <div class="container mt-5">
     <div class="row">
@@ -41,9 +33,7 @@ $id_producto = $_GET['id'];
         </div>
         <button class="btn btnAgregar_carrito btn-lg mb-3" id="agregar-al-carrito">Agregar al carrito</button>
         <button class="btn btn-dark btn-lg mb-3" id="comprar-ahora">Realizar compra</button>
-        <div id="landing" style="padding: 20px;">
-
-        </div>
+        <div id="landing" style="padding: 20px;"></div>
       </div>
     </div>
   </div>
@@ -57,7 +47,7 @@ $id_producto = $_GET['id'];
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <img src="" id="imagenEnModal" class="img-fluid">
+          <img src="" id="imagenEnModal" class="img-fluid" alt="Imagen en modal">
         </div>
       </div>
     </div>
@@ -66,9 +56,11 @@ $id_producto = $_GET['id'];
 
 <script>
   function abrir_modalImagen(url) {
-    $("#imagenEnModal").attr("src", "new.imporsuitpro.com" + url).show();
+    // Ajustar la URL correcta en la imagen dentro del modal
+    $('#imagenEnModal').attr('src', url);
 
-    $("#imagenModal").modal("show");
+    // Abrir el modal
+    $('#imagenModal').modal('show');
   }
 
   function cargarLanding(id) {
@@ -81,23 +73,14 @@ $id_producto = $_GET['id'];
       if (xhr.status === 200) {
         try {
           var response = JSON.parse(xhr.responseText);
-          console.log("Respuesta de la API:", response);
-
-          // Decodificar entidades HTML
           var decodedHTML = decodeEntities(response.data);
-          console.log("HTML decodificado:", decodedHTML);
 
-          // Crear un documento temporal para manipular el HTML decodificado
           var parser = new DOMParser();
           var doc = parser.parseFromString(decodedHTML, 'text/html');
-
-          // Comprobar si el body está presente en la respuesta
           var body = doc.body;
+
           if (body) {
             var bodyContent = body.innerHTML;
-            console.log("Contenido del body:", bodyContent);
-
-            // Insertar el contenido del body en el div con id="landing"
             document.getElementById("landing").innerHTML = bodyContent;
           } else {
             console.error("No se encontró la etiqueta <body> en la respuesta.");
@@ -150,8 +133,9 @@ $id_producto = $_GET['id'];
           var producto = response[0]; // Asumimos que el primer producto es el deseado
 
           $('#nombre-producto').text(producto.nombre_producto_tienda);
-          $('#sku-producto').text('SKU: ' + producto.sku); // Suponiendo que el SKU esté disponible
+          $('#sku-producto').text('SKU: ' + producto.sku);
           $('#precio-especial').text('$' + parseFloat(producto.pvp_tienda).toFixed(2));
+
           if (producto.pref_tienda > 0) {
             $('#precio-normal').text('$' + parseFloat(producto.pref_tienda).toFixed(2));
             var ahorro = 100 - (parseFloat(producto.pvp_tienda) * 100 / parseFloat(producto.pref_tienda));
@@ -182,11 +166,6 @@ $id_producto = $_GET['id'];
 
           // Agregamos las miniaturas iniciales al contenedor
           $('#thumbnailsContainer').html(thumbnailsHtml);
-
-          // Función para cambiar la imagen principal al hacer clic en una miniatura
-          window.changeImage = function(imageSrc) {
-            $('#mainProductImage').attr('src', imageSrc);
-          };
 
           // Solicitud adicional para cargar imágenes adicionales
           $.ajax({
@@ -236,8 +215,6 @@ $id_producto = $_GET['id'];
         console.log(xhr.responseText);
       }
     });
-
-    // Manejo del navbar y logo al hacer scroll (si es necesario)
   });
 
   function agregar_tmp(id_producto, precio, id_inventario) {
@@ -260,5 +237,3 @@ $id_producto = $_GET['id'];
     }
   }
 </script>
-
-<?php include 'Views/templates/footer2.php'; ?>
