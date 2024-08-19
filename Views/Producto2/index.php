@@ -170,7 +170,7 @@ $id_producto = $_GET['id'];
                 <img src="${mainImageSrc}" class="img-thumbnail thumb-image mx-2" onclick="changeImage('${mainImageSrc}')" alt="Main Thumbnail">
             `;
 
-          // Thumbnails adicionales
+          // Thumbnails iniciales del producto
           if (producto.imagenes && producto.imagenes.length > 0) {
             producto.imagenes.forEach(function(imagen, index) {
               var imagePath = obtenerURLImagen(imagen.url, SERVERURL);
@@ -180,7 +180,7 @@ $id_producto = $_GET['id'];
             });
           }
 
-          // Agregamos las miniaturas al contenedor
+          // Agregamos las miniaturas iniciales al contenedor
           $('#thumbnailsContainer').html(thumbnailsHtml);
 
           // Función para cambiar la imagen principal al hacer clic en una miniatura
@@ -188,12 +188,45 @@ $id_producto = $_GET['id'];
             $('#mainProductImage').attr('src', imageSrc);
           };
 
-          // Eventos para la compra
-          $('#comprar-ahora').on('click', function() {
-            agregar_tmp(id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
+          // Solicitud adicional para cargar imágenes adicionales
+          $.ajax({
+            url: SERVERURL + 'Tienda/listar_imagenAdicional_productosTienda',
+            method: 'POST',
+            data: {
+              id_producto: producto.id_producto
+            }, // Asegúrate de pasar el ID correcto del producto
+            dataType: "json",
+            success: function(imagenesAdicionales) {
+              if (imagenesAdicionales && imagenesAdicionales.length > 0) {
+                imagenesAdicionales.forEach(function(imagen, index) {
+                  var imagePath = obtenerURLImagen(imagen.url, SERVERURL);
+                  thumbnailsHtml += `
+                                <img src="${imagePath}" class="img-thumbnail thumb-image mx-2" onclick="changeImage('${imagePath}')" alt="Additional Thumbnail ${index + 1}">
+                            `;
+                });
+
+                // Añadimos las miniaturas adicionales al contenedor
+                $('#thumbnailsContainer').html(thumbnailsHtml);
+
+                // Reasignamos los eventos de click para todas las miniaturas, incluyendo las adicionales
+                $('#thumbnailsContainer img').on('click', function() {
+                  var targetImage = $(this).attr('src');
+                  $('#mainProductImage').attr('src', targetImage);
+                });
+              }
+            },
+            error: function(xhr, status, error) {
+              console.error('Error al obtener las imágenes adicionales:', error);
+              console.log(xhr.responseText);
+            }
           });
 
-          cargarLanding(id_producto);
+          // Eventos para la compra
+          $('#comprar-ahora').on('click', function() {
+            agregar_tmp(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
+          });
+
+          cargarLanding(producto.id_producto);
         } else {
           console.error('No se encontraron productos.');
         }
