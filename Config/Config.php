@@ -5,6 +5,8 @@ const PASSWORD = "imporsuit_system";
 const DB = "imporsuitpro_new";
 const CHARSET = "utf8";
 
+echo "XD";
+
 if ($_SERVER['HTTP_HOST'] == 'localhost') {
     define('ENVIRONMENT', 'development');
 } else {
@@ -24,8 +26,8 @@ $Ur = $_SERVER['HTTP_HOST'];
 
 $url_actual = "https://" . $_SERVER['HTTP_HOST'] . '/';
 $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
-if(str_contains($Ur, "comprapor")) $url_actual =  str_replace("comprapor.com", "imporsuitpro.com", $url_actual);
-if(str_contains($Ur, "comprapor")) $nombre_actual = str_replace("comprapor.com", "", $nombre_actual); 
+if (str_contains($Ur, "comprapor")) $url_actual =  str_replace("comprapor.com", "imporsuitpro.com", $url_actual);
+if (str_contains($Ur, "comprapor")) $nombre_actual = str_replace("comprapor.com", "", $nombre_actual);
 
 //recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
 
@@ -85,7 +87,7 @@ const LLAR_ENDPOINT_CANCEL = 'https://api.laarcourier.com:9727/guias/anular/';
 $hostAntiguo = $_SERVER['HTTP_HOST'];
 $hostNuevo = str_replace("imporsuitpro.com", "", $hostAntiguo);
 
-if(str_contains($hostNuevo, "comprapor.com")) $hostNuevo = str_replace("comprapor.com", "", $hostNuevo);
+if (str_contains($hostNuevo, "comprapor.com")) $hostNuevo = str_replace("comprapor.com", "", $hostNuevo);
 
 $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
@@ -100,7 +102,7 @@ if ($result->num_rows > 0) {
     echo "0 resultss";
 }
 $mysqli->close();
- 
+
 
 
 ///obtener matriz 
