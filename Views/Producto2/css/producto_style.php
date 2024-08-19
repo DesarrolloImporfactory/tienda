@@ -42,7 +42,8 @@
   .btnAgregar_carrito {
     border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
     color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
-    background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;;
+    background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    ;
     padding: 0.375rem 0.75rem;
     font-size: 21px !important;
     text-align: center;
@@ -53,5 +54,18 @@
   .btnAgregar_carrito:hover {
     background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
     color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+  }
+
+  .slider_producto {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+  }
+
+  @media (max-width: 768px) {
+    .slider_producto {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
   }
 </style>
