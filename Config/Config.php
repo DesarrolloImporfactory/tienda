@@ -5,7 +5,7 @@ const PASSWORD = "imporsuit_system";
 const DB = "imporsuitpro_new";
 const CHARSET = "utf8";
 
-echo "XD";
+
 
 if ($_SERVER['HTTP_HOST'] == 'localhost') {
     define('ENVIRONMENT', 'development');
