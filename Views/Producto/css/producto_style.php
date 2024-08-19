@@ -533,4 +533,17 @@
     border-radius: 8px;
     /* Opcional: bordes redondeados para mejorar la estética */
   }
+
+  .slider_producto {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+  }
+
+  @media (max-width: 768px) {
+    .slider_producto {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
 </style>

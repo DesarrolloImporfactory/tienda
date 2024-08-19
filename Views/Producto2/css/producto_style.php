@@ -55,17 +55,4 @@
     background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
     color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
   }
-
-  .slider_producto {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-  }
-
-  @media (max-width: 768px) {
-    .slider_producto {
-      flex-direction: column-reverse;
-      align-items: center;
-    }
-  }
 </style>
