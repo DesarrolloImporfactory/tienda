@@ -208,6 +208,8 @@ $id_producto = $_GET['id'];
             url: SERVERURL + 'Tienda/listar_imagenAdicional_productosTienda',
             method: 'POST',
             data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
             success: function(imagenesAdicionales) {
               if (imagenesAdicionales && imagenesAdicionales.length > 0) {
