@@ -207,9 +207,7 @@ $id_producto = $_GET['id'];
           $.ajax({
             url: SERVERURL + 'Tienda/listar_imagenAdicional_productosTienda',
             method: 'POST',
-            data: {
-              id_producto: producto.id_producto
-            },
+            data: formData,
             dataType: "json",
             success: function(imagenesAdicionales) {
               if (imagenesAdicionales && imagenesAdicionales.length > 0) {
