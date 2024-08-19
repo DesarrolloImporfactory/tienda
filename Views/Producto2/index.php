@@ -66,7 +66,7 @@ $id_producto = $_GET['id'];
 
 <script>
   function abrir_modalImagen(url) {
-    $("#imagenEnModal").attr("src", "new.imporsuitpro.com" + url).show();
+    $("#imagenEnModal").attr("src",url).show();
 
     $("#imagenModal").modal("show");
   }
