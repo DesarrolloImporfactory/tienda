@@ -188,10 +188,10 @@ $id_producto = $_GET['id'];
               var imagePath = imagen.url;
               imagePath = obtenerURLImagen(imagePath, SERVERURL);
               thumbnailsHtml += `
-                  <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
-                    <img src="${imagePath}" class="img-thumbnail">
-                  </a>
-                `;
+                        <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index+1}-list" data-bs-toggle="list" href="#list-image${index+1}" role="tab" aria-controls="image${index+1}">
+                            <img src="${imagePath}" class="img-thumbnail">
+                        </a>
+                    `;
             });
             $('#list-tab').html(thumbnailsHtml);
 
@@ -202,6 +202,42 @@ $id_producto = $_GET['id'];
               $('#main-image').attr('src', targetImage);
             });
           }
+
+          // Solicitud adicional para cargar imágenes adicionales
+          $.ajax({
+            url: SERVERURL + 'Tienda/listar_imagenAdicional_productosTienda',
+            method: 'POST',
+            data: {
+              id_producto: producto.id_producto
+            },
+            dataType: "json",
+            success: function(imagenesAdicionales) {
+              if (imagenesAdicionales && imagenesAdicionales.length > 0) {
+                imagenesAdicionales.forEach(function(imagen, index) {
+                  var imagePath = imagen.url;
+                  imagePath = obtenerURLImagen(imagePath, SERVERURL);
+                  thumbnailsHtml += `
+                                <a class="list-group-item list-group-item-action" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image-extra${index+1}-list" data-bs-toggle="list" href="#list-image-extra${index+1}" role="tab" aria-controls="image-extra${index+1}">
+                                    <img src="${imagePath}" class="img-thumbnail">
+                                </a>
+                            `;
+                });
+                // Añadimos las miniaturas adicionales al contenedor
+                $('#list-tab').append(thumbnailsHtml);
+
+                // Reasignamos los eventos de click para las nuevas miniaturas
+                $('#list-tab a').on('click', function(e) {
+                  e.preventDefault();
+                  var targetImage = $(this).find('img').attr('src');
+                  $('#main-image').attr('src', targetImage);
+                });
+              }
+            },
+            error: function(xhr, status, error) {
+              console.error('Error al obtener las imágenes adicionales:', error);
+              console.log(xhr.responseText);
+            }
+          });
 
           // Modal para la imagen principal
           $('#main-image').on('click', function() {
@@ -225,6 +261,7 @@ $id_producto = $_GET['id'];
         console.log(xhr.responseText);
       }
     });
+
 
     // Manejo del navbar y logo al hacer scroll
     window.onscroll = function() {
