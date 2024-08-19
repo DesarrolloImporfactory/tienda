@@ -161,20 +161,32 @@ $id_producto = $_GET['id'];
             $('#ahorra-container').hide();
           }
 
+          // Configurar la imagen principal
           var mainImageSrc = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
           $('#mainProductImage').attr('src', mainImageSrc);
 
-          // Thumbnails
-          var thumbnailsHtml = '';
+          // Miniaturas - comenzamos con la imagen principal como primera miniatura
+          var thumbnailsHtml = `
+                <img src="${mainImageSrc}" class="img-thumbnail thumb-image mx-2" onclick="changeImage('${mainImageSrc}')" alt="Main Thumbnail">
+            `;
+
+          // Thumbnails adicionales
           if (producto.imagenes && producto.imagenes.length > 0) {
             producto.imagenes.forEach(function(imagen, index) {
               var imagePath = obtenerURLImagen(imagen.url, SERVERURL);
               thumbnailsHtml += `
-                                <img src="${imagePath}" class="img-thumbnail thumb-image mx-2" onclick="changeImage('${imagePath}')" alt="Thumbnail ${index + 1}">
-                            `;
+                        <img src="${imagePath}" class="img-thumbnail thumb-image mx-2" onclick="changeImage('${imagePath}')" alt="Thumbnail ${index + 1}">
+                    `;
             });
-            $('#thumbnailsContainer').html(thumbnailsHtml);
           }
+
+          // Agregamos las miniaturas al contenedor
+          $('#thumbnailsContainer').html(thumbnailsHtml);
+
+          // Función para cambiar la imagen principal al hacer clic en una miniatura
+          window.changeImage = function(imageSrc) {
+            $('#mainProductImage').attr('src', imageSrc);
+          };
 
           // Eventos para la compra
           $('#comprar-ahora').on('click', function() {
