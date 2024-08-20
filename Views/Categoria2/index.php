@@ -4,7 +4,7 @@
 
 <main>
     <div class="container my-5 custom-container">
-        <div class="row">
+        <div class="row" style="margin-right: 0 !important; margin-left: 0 !important;">
             <!-- Barra lateral de filtros -->
             <div class="col-md-3 custom-filter-section">
                 <h5>Filtrar por</h5>
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row" id="productosContainer" style="margin-right: 0 !important; margin-left: 0 !important;">
+                <div class="row" id="productosContainer">
                     <!-- Productos dinámicos aquí -->
                 </div>
                 <div class="text-center">
