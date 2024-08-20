@@ -38,7 +38,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="row" id="productosContainer">
+                <div class="row" id="productosContainer" style="margin-right: 0 !important; margin-left: 0 !important;">
                     <!-- Productos dinámicos aquí -->
                 </div>
                 <div class="text-center">
