@@ -80,54 +80,57 @@
 
     .custom-price.discounted {
         text-decoration: line-through;
-        color: <?php echo COLOR_TEXTO_PRECIO ; ?>;
+        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
         font-size: 0.9rem;
         margin-right: 5px;
     }
-    
+
     .range-slider {
-            width: 100%;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 5px;
-            outline: none;
-        }
+        width: 100%;
+        height: 8px;
+        background: #e9ecef;
+        border-radius: 5px;
+        outline: none;
+    }
 
-        /* Para navegadores WebKit (Chrome, Safari, Opera) */
-        .range-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background-color: <?php echo COLOR_CABECERA; ?>; /* Cambia este color al que desees */
-            border-radius: 50%;
-            cursor: pointer;
-        }
+    /* Para navegadores WebKit (Chrome, Safari, Opera) */
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background-color: <?php echo COLOR_CABECERA; ?>;
+        /* Cambia este color al que desees */
+        border-radius: 50%;
+        cursor: pointer;
+    }
 
-        /* Para navegadores Firefox */
-        .range-slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background-color: <?php echo COLOR_CABECERA; ?>; /* Cambia este color al que desees */
-            border-radius: 50%;
-            cursor: pointer;
-        }
+    /* Para navegadores Firefox */
+    .range-slider::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: <?php echo COLOR_CABECERA; ?>;
+        /* Cambia este color al que desees */
+        border-radius: 50%;
+        cursor: pointer;
+    }
 
-        /* Para navegadores Microsoft Edge e IE */
-        .range-slider::-ms-thumb {
-            width: 20px;
-            height: 20px;
-            background-color: <?php echo COLOR_CABECERA; ?>; /* Cambia este color al que desees */
-            border-radius: 50%;
-            cursor: pointer;
-        }
+    /* Para navegadores Microsoft Edge e IE */
+    .range-slider::-ms-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: <?php echo COLOR_CABECERA; ?>;
+        /* Cambia este color al que desees */
+        border-radius: 50%;
+        cursor: pointer;
+    }
 
-        /* Ocultar la pista en IE */
-        .range-slider::-ms-track {
-            background: transparent;
-            border-color: transparent;
-            color: transparent;
-        }
+    /* Ocultar la pista en IE */
+    .range-slider::-ms-track {
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
 
     .custom-badge-offer {
         background-color: #e74c3c;
@@ -187,4 +190,40 @@
             margin-top: 10px;
         }
     }
+
+    /* boton ver mas */
+    #btnVerMas {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        color: #007bff;
+        border: 1px solid #007bff;
+        background-color: transparent;
+    }
+
+    #btnVerMas:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 300%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: all 0.75s ease;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    #btnVerMas:hover {
+        color: #fff;
+        background-color: #007bff;
+    }
+
+    #btnVerMas:hover:before {
+        width: 300%;
+    }
+
+    /* Fin boton ver mas */
 </style>
