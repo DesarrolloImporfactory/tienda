@@ -257,7 +257,6 @@ $id_producto = $_GET['id'];
     formData.append("id_producto", id_producto);
     formData.append("precio", precio);
     formData.append("id_inventario", id_inventario);
-    formData.append("sku", sku);
     formData.append("cantidad", $('#cantidad_producto').val());
     formData.append("id_plataforma", ID_PLATAFORMA);
 
