@@ -122,7 +122,14 @@
     }
 
     .custom-carousel .carousel-item img {
-        height: 60vh;
+        height: 100%;
+        /* Ocupa el 100% de la altura del contenedor */
+        width: 100%;
+        /* Ocupa el 100% del ancho del contenedor */
+        object-fit: cover;
+        /* Mantiene la proporción de la imagen sin distorsión */
+        object-position: center;
+        /* Centra la imagen dentro del contenedor */
     }
 
     .carousel-caption {
@@ -164,6 +171,7 @@
         border-color: #563d7c;
     }
 
+    /* Adaptación para pantallas pequeñas */
     @media (max-width: 768px) {
         .custom-carousel {
             height: 200px;
@@ -175,9 +183,13 @@
         }
 
         .custom-carousel .carousel-item img {
-            height: 200px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
         }
     }
+
 
     .menu-icon {
         font-size: 30px;
