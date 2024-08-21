@@ -112,61 +112,72 @@
     }
 
 
-    /* Estilos para pantallas grandes */
-.custom-carousel {
-    height: 60vh;
-    /* Ajusta esto a 30vh o 40vh según prefieras */
-}
-
-.custom-carousel .carousel-inner {
-    height: 60vh;
-}
-
-.custom-carousel .carousel-item img {
-    height: 100%; /* Ocupa el 100% de la altura del contenedor */
-    width: 100%;  /* Ocupa el 100% del ancho del contenedor */
-    object-fit: cover; /* Mantiene la proporción de la imagen sin distorsión */
-    object-position: center; /* Centra la imagen dentro del contenedor */
-}
-
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 768px) {
     .custom-carousel {
-        height: 40vh; /* Ajustamos a una altura más pequeña para móviles */
+        height: 60vh;
+        /* Ajusta esto a 30vh o 40vh según prefieras */
     }
 
     .custom-carousel .carousel-inner {
-        height: 40vh; /* Ajustamos la altura de los contenedores */
+        height: 60vh;
     }
 
     .custom-carousel .carousel-item img {
-        height: auto;  /* Permitimos que la altura se ajuste automáticamente */
-        width: 100%;   /* La imagen ocupará todo el ancho */
-        object-fit: contain; /* La imagen se adaptará al contenedor sin recortes */
-        object-position: center; /* Centra la imagen dentro del contenedor */
+        height: 60vh;
     }
 
     .carousel-caption {
-        bottom: 10%; /* Ajusta la posición del texto en móviles */
-        left: 5%;    /* Margen izquierdo reducido */
-        right: 5%;   /* Margen derecho reducido */
-        text-align: center; /* Centramos el texto en móviles */
+        text-align: left;
+        left: 10%;
+        right: 50%;
+        bottom: 20%;
+    }
+
+    .carousel-caption .tag {
+        background-color: #e74c3c;
+        color: white;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 1rem;
     }
 
     .carousel-caption h1 {
-        font-size: 1.5rem; /* Ajustamos el tamaño de la fuente para pantallas pequeñas */
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #000;
     }
 
     .carousel-caption p {
-        font-size: 1rem; /* Ajustamos el tamaño de la fuente para pantallas pequeñas */
+        font-size: 1.25rem;
+        color: #000;
     }
 
     .carousel-caption .btn-primary {
-        font-size: 1rem; /* Ajustamos el tamaño del botón para móviles */
-        padding: 0.5rem 1rem; /* Ajustamos el padding del botón */
+        background-color: #6f42c1;
+        border-color: #6f42c1;
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
     }
-}
 
+    .carousel-caption .btn-primary:hover {
+        background-color: #563d7c;
+        border-color: #563d7c;
+    }
+
+    @media (max-width: 768px) {
+        .custom-carousel {
+            height: 200px;
+            /* Ajusta esto a 30vh o 40vh según prefieras */
+        }
+
+        .custom-carousel .carousel-inner {
+            height: 200px;
+        }
+
+        .custom-carousel .carousel-item img {
+            height: 200px;
+        }
+    }
 
     .menu-icon {
         font-size: 30px;
