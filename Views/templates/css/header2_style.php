@@ -132,11 +132,11 @@
 /* Adaptación para pantallas pequeñas */
 @media (max-width: 768px) {
     .custom-carousel {
-        height: 40vh; /* Ajustamos a una altura más pequeña para móviles */
+        height: 20vh; /* Ajustamos a una altura más pequeña para móviles */
     }
 
     .custom-carousel .carousel-inner {
-        height: 40vh; /* Ajustamos la altura de los contenedores */
+        height: 20vh; /* Ajustamos la altura de los contenedores */
     }
 
     .custom-carousel .carousel-item img {
