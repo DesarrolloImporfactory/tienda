@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 // Oculta los errores en producción
 ini_set('display_errors', 0);
