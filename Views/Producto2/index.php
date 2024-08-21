@@ -253,7 +253,7 @@ $id_producto = $_GET['id'];
   }
 
   function agregar_carrito(id_producto, precio, id_inventario) {
-    session_id = <?php echo session_id();?>
+    session_id = "<?php echo session_id();?>";
     let formData = new FormData();
     formData.append("id_producto", id_producto);
     formData.append("precio", precio);
