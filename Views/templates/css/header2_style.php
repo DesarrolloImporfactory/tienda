@@ -136,20 +136,20 @@
     /* Adaptación para pantallas pequeñas */
     @media (max-width: 768px) {
         .custom-carousel {
-            height: auto;
-            width: auto;
+            height: auto !important;
+            width: auto !important;
             /* Permite que la altura sea automática según el contenido */
         }
 
         .custom-carousel .carousel-inner {
-            height: auto;
-            width: auto;
+            height: auto !important;
+            width: auto !important;
             /* La altura del carrusel se ajusta automáticamente al contenido */
         }
 
         .custom-carousel .carousel-item img {
-            height: auto;
-            width: auto;
+            height: auto !important;
+            width: auto !important;
             /* La imagen se ajusta automáticamente en altura */
             width: 100%;
             /* La imagen ocupa todo el ancho */
