@@ -260,15 +260,27 @@ $id_producto = $_GET['id'];
     formData.append("sku", sku);
     formData.append("cantidad", $('#cantidad_producto').val());
     formData.append("id_plataforma", ID_PLATAFORMA);
-    
+
     $.ajax({
       url: SERVERURL + "Tienda/agregar_carrito",
       type: "POST",
       data: formData,
       processData: false, // No procesar los datos
       contentType: false, // No establecer ningún tipo de contenido
+      dataType: "json",
       success: function(response) {
-
+        if (response.status == 500) {
+          toastr.error(
+            "NO SE AGREGRO CORRECTAMENTE",
+            "NOTIFICACIÓN", {
+              positionClass: "toast-bottom-center"
+            }
+          );
+        } else if (response.status == 200) {
+          toastr.success("PRODUCTO AGREGADO CORRECTAMENTE", "NOTIFICACIÓN", {
+            positionClass: "toast-bottom-center",
+          });
+        }
       },
       error: function(jqXHR, textStatus, errorThrown) {
         alert(errorThrown);
