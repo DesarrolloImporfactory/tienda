@@ -37,7 +37,7 @@ $id_producto = $_GET['id'];
         </div>
         <div class="mb-3">
           <label for="quantity" class="form-label">Cantidad</label>
-          <input type="number" class="form-control" style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
+          <input type="number" id="cantidad_producto" class="form-control" style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
         </div>
         <button class="btn btnAgregar_carrito btn-lg mb-3" id="agregar-al-carrito">Agregar al carrito</button>
         <button class="btn btn-dark btn-lg mb-3" id="comprar-ahora">Realizar compra</button>
@@ -66,7 +66,7 @@ $id_producto = $_GET['id'];
 
 <script>
   function abrir_modalImagen(url) {
-    $("#imagenEnModal").attr("src",url).show();
+    $("#imagenEnModal").attr("src", url).show();
 
     $("#imagenModal").modal("show");
   }
@@ -226,6 +226,11 @@ $id_producto = $_GET['id'];
             agregar_tmp(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
           });
 
+          // Eventos para la compra
+          $('#agregar-al-carrito').on('click', function() {
+            agregar_carrito(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
+          });
+
           cargarLanding(producto.id_producto);
         } else {
           console.error('No se encontraron productos.');
@@ -245,6 +250,31 @@ $id_producto = $_GET['id'];
     $("#precio_productoTmp").val(precio);
     $("#id_inventario").val(id_inventario);
     $("#checkoutModal").modal("show");
+  }
+
+  function agregar_carrito(id_producto, precio, id_inventario) {
+    let formData = new FormData();
+    formData.append("id_producto", id_producto);
+    formData.append("precio", precio);
+    formData.append("id_inventario", id_inventario);
+    formData.append("sku", sku);
+    formData.append("cantidad", $('#cantidad_producto').val());
+    formData.append("id_plataforma", ID_PLATAFORMA);
+    
+    $.ajax({
+      url: SERVERURL + "Tienda/agregar_carrito",
+      type: "POST",
+      data: formData,
+      processData: false, // No procesar los datos
+      contentType: false, // No establecer ningún tipo de contenido
+      success: function(response) {
+
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+      },
+    });
+
   }
 
   function obtenerURLImagen(imagePath, serverURL) {
