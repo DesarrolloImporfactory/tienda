@@ -456,6 +456,13 @@
         color: <?php echo COLOR_TEXTO_PRECIO; ?>;
     }
 
+    hr {
+        height: 3px;
+        border-top: 3px solid #333;
+        margin: 30px 0;
+        border-radius: 5px;
+    }
+
     /* Responsivo */
     @media (max-width: 768px) {
         .flex_mas_vendidos {
