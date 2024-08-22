@@ -125,7 +125,7 @@
     });
 
     // Abrir el panel del carrito cuando se haga clic en el icono
-    $('#cartDropdown').on('click', function(event) {
+    $('#cartDropdown, .floating-button').on('click', function(event) {
         event.preventDefault();
 
         // Mostrar el panel del carrito y el overlay
