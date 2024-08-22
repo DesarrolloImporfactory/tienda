@@ -147,24 +147,36 @@
             success: function(data) {
                 if (data.length > 0) {
                     let cartHTML = '';
+                    let total = 0; // Variable para almacenar el total
+
                     data.forEach(function(product) {
                         let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
+                        let precioProducto = parseFloat(product.precio_tmp).toFixed(2);
+                        let cantidadProducto = parseInt(product.cantidad_tmp);
+                        let subtotal = precioProducto * cantidadProducto;
+
+                        total += subtotal; // Sumar al total
+
                         cartHTML += `
-                        <div class="cart-product" data-product-id="${product.id_tmp}">
-                            <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
-                            <button class="eliminar_producto_carrito custom-delete-button"><i class='bx bx-x' style="color:white;"></i></button>
-                            <p><strong>${product.nombre_producto}</strong></p>
-                            <p>${parseFloat(product.precio_tmp).toFixed(2)}</p>
-                            <div class="d-flex flex-row gap-3">
-                                <p>Cantidad: <span class="product-quantity">${product.cantidad_tmp}</span></p>
-                                <div class="quantity-controls">
-                                    <button class="btn btn-sm btn-primary increase-quantity">+</button>
-                                    <button class="btn btn-sm btn-secondary decrease-quantity">-</button>
-                                </div>
+                    <div class="cart-product" data-product-id="${product.id_tmp}">
+                        <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
+                        <button class="eliminar_producto_carrito custom-delete-button"><i class='bx bx-x' style="color:white;"></i></button>
+                        <p><strong>${product.nombre_producto}</strong></p>
+                        <p>${precioProducto}</p>
+                        <div class="d-flex flex-row gap-3">
+                            <p>Cantidad: <span class="product-quantity">${cantidadProducto}</span></p>
+                            <div class="quantity-controls">
+                                <button class="btn btn-sm btn-primary increase-quantity">+</button>
+                                <button class="btn btn-sm btn-secondary decrease-quantity">-</button>
                             </div>
-                            <hr>
-                        </div>`;
+                        </div>
+                        <hr>
+                    </div>`;
                     });
+
+                    cartHTML += `<hr><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
+                    cartHTML += `<button id="realizarCompraBtn" class="btn btn-success">Realizar compra</button>`;
+
                     $('#cartContent').html(cartHTML);
                 } else {
                     $('#cartContent').html('<p>No hay productos en el carrito.</p>');
@@ -174,6 +186,12 @@
                 $('#cartContent').html('<p>Error al cargar el carrito.</p>');
             }
         });
+    });
+
+    // Función para realizar la compra
+    $(document).on('click', '#realizarCompraBtn', function() {
+        alert('Compra realizada con éxito. Aquí puedes agregar la lógica de redirección o envío a tu API.');
+        // Aquí puedes agregar la lógica para enviar los datos del carrito al backend y procesar la compra
     });
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
@@ -209,6 +227,8 @@
             success: function(response) {
                 if (response.status == 200) {
                     quantityElement.text(newQuantity);
+                    // Recargar el carrito para actualizar el total
+                    $('#cartDropdown').trigger('click');
                 } else {
                     alert('Error al actualizar la cantidad');
                 }
@@ -218,7 +238,6 @@
             }
         });
     });
-
 
     $(document).on('click', '.eliminar_producto_carrito', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
@@ -238,7 +257,8 @@
                 if (response.status == 200) {
                     // Eliminar el producto del DOM tras una eliminación exitosa
                     productElement.remove();
-
+                    // Recargar el carrito para actualizar el total
+                    $('#cartDropdown').trigger('click');
                 } else {
                     alert('Error al eliminar el producto.');
                 }
@@ -248,7 +268,6 @@
             }
         });
     });
-
 
     $(document).on('click', '.decrease-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
@@ -273,6 +292,8 @@
                 success: function(response) {
                     if (response.status == 200) {
                         quantityElement.text(newQuantity);
+                        // Recargar el carrito para actualizar el total
+                        $('#cartDropdown').trigger('click');
                     } else {
                         alert('Error al actualizar la cantidad');
                     }
@@ -285,7 +306,6 @@
             alert('La cantidad no puede ser menor que 1');
         }
     });
-
 
     function obtenerURLImagen(imagePath, serverURL) {
         // Verificar si el imagePath no es null
