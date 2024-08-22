@@ -192,7 +192,7 @@
 
     // Función para realizar la compra
     $(document).on('click', '#realizarCompra_carritoBtn', function() {
-        $("#realizarCompra_carritoBtn").modal("show");
+        $("#checkout_carritoModal").modal("show");
     });
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
