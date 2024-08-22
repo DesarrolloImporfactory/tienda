@@ -132,10 +132,18 @@
         $('#cartSidebar').addClass('open');
         $('#cartOverlay').addClass('show');
 
+        session_id = "<?php echo session_id(); ?>";
+        let formData = new FormData();
+        formData.append("session_id", session_id); // Añadir el SKU al FormData
+
         // Cargar los productos del carrito vía AJAX
         $.ajax({
-            url: SERVERURL+'Tienda/buscar_carrito', // Cambia esta URL a tu API real
-            method: 'GET',
+            url: SERVERURL + 'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+            method: 'POST',
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
             success: function(data) {
                 if (data.length > 0) {
                     let cartHTML = '';
@@ -176,13 +184,13 @@
     // Aumentar o disminuir la cantidad de productos (similar al código anterior)
     $(document).on('click', '.increase-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
-        
+
         $.ajax({
             url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
             method: 'POST',
-            data: { 
-                id_producto: productId, 
-                accion: 'incrementar' 
+            data: {
+                id_producto: productId,
+                accion: 'incrementar'
             },
             success: function(response) {
                 if (response.success) {
@@ -199,13 +207,13 @@
 
     $(document).on('click', '.decrease-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
-        
+
         $.ajax({
             url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
             method: 'POST',
-            data: { 
-                id_producto: productId, 
-                accion: 'disminuir' 
+            data: {
+                id_producto: productId,
+                accion: 'disminuir'
             },
             success: function(response) {
                 if (response.success) {
