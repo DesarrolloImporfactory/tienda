@@ -375,6 +375,13 @@
         display: block;
     }
 
+    @media (max-width: 768px) {
+        .cart-sidebar {
+            width: 100%;
+            /* El panel ocupará toda la pantalla en móviles */
+        }
+    }
+
     .floating-button {
         position: fixed;
         right: 20px;
