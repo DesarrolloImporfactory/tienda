@@ -134,7 +134,7 @@
 
         // Cargar los productos del carrito vía AJAX
         $.ajax({
-            url: 'https://tuapi.com/carrito', // Cambia esta URL a tu API real
+            url: SERVERURL+'Tienda/buscar_carrito', // Cambia esta URL a tu API real
             method: 'GET',
             success: function(data) {
                 if (data.length > 0) {
