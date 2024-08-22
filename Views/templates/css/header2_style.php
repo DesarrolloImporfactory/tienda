@@ -311,43 +311,34 @@
     }
 
     /* CSS para carrito de compras */
-    /* El panel del carrito deslizante desde la derecha */
+    /* El panel del carrito deslizante */
     .cart-sidebar {
         height: 100%;
         width: 0;
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         background-color: #fff;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
         overflow-x: hidden;
-        transition: width 0.5s ease;
+        transition: 0.5s;
         z-index: 1001;
-        padding-top: 20px;
-        /* Ajustado para dar espacio suficiente */
-        padding-bottom: 20px;
-        /* Ajustado para que los elementos internos no toquen los bordes */
-        box-sizing: border-box;
-        /* Asegura que el padding no afecte el tamaño del panel */
-    }
-
-    /* Encabezado del panel deslizante */
-    .cart-sidebar-header {
-        padding: 15px 20px;
-        background-color: #f5f5f5;
-        border-bottom: 1px solid #ddd;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        padding-top: 60px;
     }
 
     /* Contenido del carrito dentro del panel */
     .cart-sidebar-content {
         padding: 20px;
-        overflow-y: auto;
-        /* Permite hacer scroll si el contenido excede el tamaño del panel */
-        height: calc(100% - 70px);
-        /* Asegura que el contenido no se sobreponga al encabezado */
+    }
+
+    /* Encabezado del panel deslizante con botón de cerrar */
+    .cart-sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
     }
 
     /* Botón de cerrar el panel */
@@ -355,8 +346,6 @@
         background: none;
         border: none;
         font-size: 30px;
-        line-height: 1;
-        color: #333;
         cursor: pointer;
     }
 
@@ -382,19 +371,10 @@
         display: block;
     }
 
-    /* Ajustes específicos para dispositivos móviles */
-    @media (max-width: 768px) {
-        .cart-sidebar {
-            width: 100%;
-            /* El panel ocupará toda la pantalla en móviles */
-        }
+    #boton_carrito_pc {
+        display: block;
     }
 
-    /* #boton_carrito_pc {
-        display: block;
-    } */
-
-    /* Botón flotante del carrito en dispositivos móviles */
     .floating-button {
         position: fixed;
         right: 20px;
@@ -409,7 +389,6 @@
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
         display: none;
-        /* Se muestra solo en dispositivos móviles */
     }
 
     .floating-button:hover {
