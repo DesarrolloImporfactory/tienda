@@ -202,7 +202,7 @@
 </style>
 
 
-<div id="checkout_carritoModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="checkoutModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -494,7 +494,7 @@
                         positionClass: "toast-bottom-center",
                     });
 
-                    $('#checkout_carritoModal').modal('hide');
+                    $('#checkoutModal').modal('hide');
                 }
             },
             error: function(error) {
