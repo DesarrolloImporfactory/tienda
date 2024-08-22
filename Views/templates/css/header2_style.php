@@ -463,6 +463,45 @@
         border-radius: 5px;
     }
 
+    .custom-delete-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #dc3545;
+        /* Color de fondo similar a btn-danger */
+        border: none;
+        /* Elimina el borde */
+        color: #fff;
+        /* Color del texto */
+        padding: 6px 12px;
+        /* Espaciado interno similar a btn-sm */
+        font-size: 14px;
+        /* Tamaño de fuente similar a btn-sm */
+        border-radius: 4px;
+        /* Borde redondeado */
+        cursor: pointer;
+        /* Cursor de pointer al pasar el mouse */
+        transition: background-color 0.3s ease;
+        /* Transición suave para el color de fondo */
+    }
+
+    .custom-delete-button i {
+        font-size: 16px;
+        /* Ajustar el tamaño del icono */
+    }
+
+    /* Efectos al pasar el ratón */
+    .custom-delete-button:hover {
+        background-color: #c82333;
+        /* Color más oscuro al hacer hover, como btn-danger hover */
+    }
+
+    /* Efectos cuando se hace clic */
+    .custom-delete-button:active {
+        background-color: #bd2130;
+        /* Color cuando se presiona el botón */
+    }
+
     /* Responsivo */
     @media (max-width: 768px) {
         .flex_mas_vendidos {
