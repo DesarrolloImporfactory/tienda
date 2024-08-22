@@ -123,6 +123,41 @@
             subNavbar.classList.toggle('show');
         });
     });
+
+    $('#cartDropdown').on('click', function(event) {
+        event.preventDefault();
+
+        // Alternar la visibilidad del carrito
+        $('#cartItems').toggle();
+
+        // Cargar los productos del carrito vía AJAX
+        $.ajax({
+            url: SERVERURL+'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+            method: 'GET',
+            success: function(data) {
+                if (data.length > 0) {
+                    let cartHTML = '';
+                    data.forEach(function(product) {
+                        cartHTML += `
+                        <div class="cart-product" data-product-id="${product.id}">
+                            <p>${product.nombre}</p>
+                            <p>Cantidad: <span class="product-quantity">${product.cantidad}</span></p>
+                            <div class="quantity-controls">
+                                <button class="btn btn-sm btn-primary increase-quantity">+</button>
+                                <button class="btn btn-sm btn-secondary decrease-quantity">-</button>
+                            </div>
+                        </div>`;
+                    });
+                    $('#cartContent').html(cartHTML);
+                } else {
+                    $('#cartContent').html('<p>No hay productos en el carrito.</p>');
+                }
+            },
+            error: function() {
+                $('#cartContent').html('<p>Error al cargar el carrito.</p>');
+            }
+        });
+    });
 </script>
 </body>
 
