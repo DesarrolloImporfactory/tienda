@@ -152,7 +152,8 @@
                         cartHTML += `
                         <div class="cart-product" data-product-id="${product.id_tmp}">
                             <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
-                            <p>${product.nombre_producto}</p>
+                            <p><strong>${product.nombre_producto}</strong></p>
+                            <p>${product.precio_tmp}</p>
                             <div class="d-flex flex-row gap-3">
                                 <p>Cantidad: <span class="product-quantity">${product.cantidad_tmp}</span></p>
                                 <div class="quantity-controls">
