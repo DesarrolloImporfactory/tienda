@@ -2,7 +2,7 @@
 
 use FontLib\EOT\Header;
 
-session_start();
+/* session_start(); */
 
 class Home extends Controller
 {
