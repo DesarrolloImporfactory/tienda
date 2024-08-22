@@ -150,10 +150,10 @@
                     data.forEach(function(product) {
                         let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
                         cartHTML += `
-                        <div class="cart-product" data-product-id="${product.id_tmp}" style= "padding-bottom:10px;">
+                        <div class="cart-product" data-product-id="${product.id_tmp}">
                             <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
                             <p>${product.nombre_producto}</p>
-                            <div class="d-flex flex-row">
+                            <div class="d-flex flex-row gap-3">
                                 <p>Cantidad: <span class="product-quantity">${product.cantidad_tmp}</span></p>
                                 <div class="quantity-controls">
                                     <button class="btn btn-sm btn-primary increase-quantity">+</button>
