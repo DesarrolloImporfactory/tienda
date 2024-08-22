@@ -151,6 +151,7 @@
                         let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
                         cartHTML += `
                         <div class="cart-product" data-product-id="${product.id_tmp}">
+                            <button class="btn btn-sm btn-danger eliminar_producto_carrito"><i class='bx bx-x'></i></button>
                             <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
                             <p><strong>${product.nombre_producto}</strong></p>
                             <p>${parseFloat(product.precio_tmp).toFixed(2)}</p>
@@ -218,6 +219,39 @@
         });
     });
 
+
+    $(document).on('click', '.eliminar_producto_carrito', function() {
+        let productId = $(this).closest('.cart-product').data('product-id');
+        let productElement = $(this).closest('.cart-product'); // Referencia al contenedor del producto en el DOM
+
+        let formData = new FormData();
+        formData.append("id_tmp", productId);
+
+        $.ajax({
+            url: 'https://new.imporsuitpro.com/Tienda/eliminar_carrito', // URL de la API para eliminar el producto del carrito
+            method: 'POST',
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+                if (response.status == 200) {
+                    // Eliminar el producto del DOM tras una eliminación exitosa
+                    productElement.remove();
+
+                    // Opcional: Mostrar un mensaje de éxito al usuario
+                    alert('Producto eliminado del carrito.');
+                } else {
+                    alert('Error al eliminar el producto.');
+                }
+            },
+            error: function() {
+                alert('Error al eliminar el producto.');
+            }
+        });
+    });
+
+
     $(document).on('click', '.decrease-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
         let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
@@ -253,6 +287,7 @@
             alert('La cantidad no puede ser menor que 1');
         }
     });
+
 
     function obtenerURLImagen(imagePath, serverURL) {
         // Verificar si el imagePath no es null
