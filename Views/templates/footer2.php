@@ -210,15 +210,17 @@
                 let subtotal = 0;
 
                 data.forEach(function(product) {
-                    const productPrice = parseFloat(product.precio) * parseInt(product.cantidad);
+                    const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
                     subtotal += productPrice;
+
+                    let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
 
                     cartHTML += `
             <div class="productos_carrito-item">
-                <img src="${product.imagen ? product.imagen : 'placeholder.png'}" alt="${product.nombre}" />
+                <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
                 <div class="productos_carrito-info">
-                    <a href="#">${product.nombre}</a>
-                    <p>${product.cantidad} x $${product.precio.toFixed(2)}</p>
+                    <a href="#">${product.nombre_producto}</a>
+                    <p>${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)}</p>
                 </div>
                 <div class="productos_carrito-precio">
                     <span>$${productPrice.toFixed(2)}</span>
