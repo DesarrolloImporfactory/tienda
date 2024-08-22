@@ -87,7 +87,7 @@
             font-size: 20px;
         }
 
-        .form-control {
+        #buscar_input {
             margin-right: 0;
         }
 
