@@ -188,7 +188,7 @@ $primera_seccion = obtenerPrimeraSeccion();
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA; ?>;"><?php echo NOMBRE_TIENDA; ?></a>
-                <button class="navbar-toggler" id="menuToggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
@@ -197,7 +197,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <button class="btn buscar" type="submit">Buscar</button>
                     </form>
                     <!-- Icono del carrito en el header -->
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="boton_carrito_pc">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
@@ -223,9 +223,6 @@ $primera_seccion = obtenerPrimeraSeccion();
                 </div>
             </div>
         </nav>
-        <button class="floating-button">
-            <i class="fas fa-shopping-cart"></i>
-        </button>
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-custom">
             <div class="container-fluid">
