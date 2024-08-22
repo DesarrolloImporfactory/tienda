@@ -223,7 +223,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 </div>
             </div>
         </nav>
-        <button class="floating-button" id="cartDropdown">
+        <button class="floating-button">
             <i class="fas fa-shopping-cart"></i>
         </button>
         <!-- Sub-Nav -->
