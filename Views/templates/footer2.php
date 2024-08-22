@@ -177,7 +177,7 @@
                     });
 
                     cartHTML += `<hr><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
-                    cartHTML += `<button id="realizarCompraBtn" class="btn btn-success">Realizar compra</button>`;
+                    cartHTML += `<button id="realizarCompra_carritoBtn" class="btn btn-success">Realizar compra</button>`;
 
                     $('#cartContent').html(cartHTML);
                 } else {
@@ -191,9 +191,8 @@
     });
 
     // Función para realizar la compra
-    $(document).on('click', '#realizarCompraBtn', function() {
-        alert('Compra realizada con éxito. Aquí puedes agregar la lógica de redirección o envío a tu API.');
-        // Aquí puedes agregar la lógica para enviar los datos del carrito al backend y procesar la compra
+    $(document).on('click', '#realizarCompra_carritoBtn', function() {
+        $("#realizarCompra_carritoBtn").modal("show");
     });
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar

@@ -183,6 +183,8 @@ $primera_seccion = obtenerPrimeraSeccion();
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 
+<?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
