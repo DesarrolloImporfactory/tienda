@@ -206,10 +206,6 @@ $primera_seccion = obtenerPrimeraSeccion();
                         </li>
                     </ul>
 
-                    <button class="floating-button">
-                        <i class="fas fa-shopping-cart"></i>
-                    </button>
-
                     <!-- Panel deslizante para mostrar el carrito -->
                     <div id="cartSidebar" class="cart-sidebar">
                         <div class="cart-sidebar-header">
@@ -227,6 +223,9 @@ $primera_seccion = obtenerPrimeraSeccion();
                 </div>
             </div>
         </nav>
+        <button class="floating-button">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-custom">
             <div class="container-fluid">
