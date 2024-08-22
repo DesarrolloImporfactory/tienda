@@ -225,7 +225,7 @@
                 <div class="productos_carrito-precio">
                     <span>$${productPrice.toFixed(2)}</span>
                 </div>
-                <button class="btn btn-danger btn-sm productos_carrito-remove" data-product-id="${product.id}">
+                <button class="btn btn-danger btn-sm productos_carrito-remove" data-product-id="${product.id_tmp}">
                     <i class="fas fa-times"></i>
                 </button>
             </div>`;
