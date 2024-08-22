@@ -196,20 +196,29 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                         <button class="btn buscar" type="submit">Buscar</button>
                     </form>
+                    <!-- Icono del carrito en el header -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                             <a class="nav-link" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
                                 <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;">0</span>
                             </a>
-                            <div id="cartItems" class="dropdown-menu p-3" style="display: none; width: 300px;">
-                                <!-- Aquí se cargarán los productos del carrito mediante AJAX -->
-                                <div id="cartContent">
-                                    <p>No hay productos en el carrito.</p>
-                                </div>
-                            </div>
                         </li>
                     </ul>
+
+                    <!-- Panel deslizante para mostrar el carrito -->
+                    <div id="cartSidebar" class="cart-sidebar">
+                        <div class="cart-sidebar-header">
+                            <h3>Tu Carrito</h3>
+                            <button id="closeCart" class="close-btn">&times;</button>
+                        </div>
+                        <div id="cartContent" class="cart-sidebar-content">
+                            <p>No hay productos en el carrito.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fondo oscuro cuando el panel está abierto -->
+                    <div id="cartOverlay" class="cart-overlay"></div>
 
                 </div>
             </div>

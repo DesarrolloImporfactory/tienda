@@ -124,15 +124,17 @@
         });
     });
 
+    // Abrir el panel del carrito cuando se haga clic en el icono
     $('#cartDropdown').on('click', function(event) {
         event.preventDefault();
 
-        // Alternar la visibilidad del carrito
-        $('#cartItems').toggle();
+        // Mostrar el panel del carrito y el overlay
+        $('#cartSidebar').addClass('open');
+        $('#cartOverlay').addClass('show');
 
         // Cargar los productos del carrito vía AJAX
         $.ajax({
-            url: SERVERURL+'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+            url: 'https://tuapi.com/carrito', // Cambia esta URL a tu API real
             method: 'GET',
             success: function(data) {
                 if (data.length > 0) {
@@ -155,6 +157,69 @@
             },
             error: function() {
                 $('#cartContent').html('<p>Error al cargar el carrito.</p>');
+            }
+        });
+    });
+
+    // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
+    $('#closeCart').on('click', function() {
+        $('#cartSidebar').removeClass('open');
+        $('#cartOverlay').removeClass('show');
+    });
+
+    // Cerrar el panel del carrito cuando se haga clic fuera del mismo (en el overlay)
+    $('#cartOverlay').on('click', function() {
+        $('#cartSidebar').removeClass('open');
+        $('#cartOverlay').removeClass('show');
+    });
+
+    // Aumentar o disminuir la cantidad de productos (similar al código anterior)
+    $(document).on('click', '.increase-quantity', function() {
+        let productId = $(this).closest('.cart-product').data('product-id');
+
+        $.ajax({
+            url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
+            method: 'POST',
+            data: {
+                id_producto: productId,
+                accion: 'incrementar'
+            },
+            success: function(response) {
+                if (response.success) {
+                    let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
+                    let currentQuantity = parseInt(quantityElement.text());
+                    quantityElement.text(currentQuantity + 1);
+                }
+            },
+            error: function() {
+                alert('Error al actualizar la cantidad');
+            }
+        });
+    });
+
+    $(document).on('click', '.decrease-quantity', function() {
+        let productId = $(this).closest('.cart-product').data('product-id');
+
+        $.ajax({
+            url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
+            method: 'POST',
+            data: {
+                id_producto: productId,
+                accion: 'disminuir'
+            },
+            success: function(response) {
+                if (response.success) {
+                    let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
+                    let currentQuantity = parseInt(quantityElement.text());
+                    if (currentQuantity > 1) {
+                        quantityElement.text(currentQuantity - 1);
+                    } else {
+                        $(`.cart-product[data-product-id="${productId}"]`).remove();
+                    }
+                }
+            },
+            error: function() {
+                alert('Error al actualizar la cantidad');
             }
         });
     });

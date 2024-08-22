@@ -310,6 +310,68 @@
         justify-content: center;
     }
 
+    /* CSS para carrito de compras */
+    /* El panel del carrito deslizante */
+    .cart-sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        overflow-x: hidden;
+        transition: 0.5s;
+        z-index: 1001;
+        padding-top: 60px;
+    }
+
+    /* Contenido del carrito dentro del panel */
+    .cart-sidebar-content {
+        padding: 20px;
+    }
+
+    /* Encabezado del panel deslizante con botón de cerrar */
+    .cart-sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Botón de cerrar el panel */
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    /* Fondo oscuro cuando el panel está abierto */
+    .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: none;
+    }
+
+    /* Mostrar el panel y el overlay */
+    .cart-sidebar.open {
+        width: 300px;
+        /* Puedes ajustar el ancho según lo necesites */
+    }
+
+    .cart-overlay.show {
+        display: block;
+    }
+
+    /* Fin CSS para carrito de compras */
     /* seccion mas vendidos */
     .mas_vendidos {
         padding: 20px;
