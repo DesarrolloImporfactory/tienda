@@ -148,10 +148,12 @@
                 if (data.length > 0) {
                     let cartHTML = '';
                     data.forEach(function(product) {
+                        let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
                         cartHTML += `
-                        <div class="cart-product" data-product-id="${product.id}">
-                            <p>${product.nombre}</p>
-                            <p>Cantidad: <span class="product-quantity">${product.cantidad}</span></p>
+                        <div class="cart-product" data-product-id="${product.id_tmp}">
+                            <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
+                            <p>${product.nombre_producto}</p>
+                            <p>Cantidad: <span class="product-quantity">${product.cantidad_tmp}</span></p>
                             <div class="quantity-controls">
                                 <button class="btn btn-sm btn-primary increase-quantity">+</button>
                                 <button class="btn btn-sm btn-secondary decrease-quantity">-</button>
@@ -231,6 +233,24 @@
             }
         });
     });
+
+    function obtenerURLImagen(imagePath, serverURL) {
+        // Verificar si el imagePath no es null
+        if (imagePath) {
+            // Verificar si el imagePath ya es una URL completa
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                // Si ya es una URL completa, retornar solo el imagePath
+                return imagePath;
+            } else {
+                // Si no es una URL completa, agregar el serverURL al inicio
+                return `${serverURL}${imagePath}`;
+            }
+        } else {
+            // Manejar el caso cuando imagePath es null
+            console.error("imagePath es null o undefined");
+            return null; // o un valor por defecto si prefieres
+        }
+    }
 </script>
 </body>
 
