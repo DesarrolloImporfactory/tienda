@@ -125,11 +125,30 @@
     });
 
     $(document).ready(function() {
-        // Abrir el panel del carrito cuando se haga clic en el icono del carrito o el botón flotante
-        $('#cartDropdown, .floating-button').on('click', function(event) {
+        // Abrir el panel del carrito cuando se haga clic en el icono del carrito en el header (pantallas grandes)
+        $('#cartDropdownHeader').on('click', function(event) {
             event.preventDefault();
+            abrirCarrito();
+        });
 
-            // Mostrar el panel del carrito y el overlay
+        // Abrir el panel del carrito cuando se haga clic en el botón flotante (pantallas móviles)
+        $('#cartDropdownMobile').on('click', function(event) {
+            event.preventDefault();
+            abrirCarrito();
+        });
+
+        // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
+        $('#closeCart').on('click', function() {
+            cerrarCarrito();
+        });
+
+        // Cerrar el panel del carrito cuando se haga clic fuera del mismo (en el overlay)
+        $('#cartOverlay').on('click', function() {
+            cerrarCarrito();
+        });
+
+        // Función para abrir el carrito
+        function abrirCarrito() {
             $('#cartSidebar').addClass('open');
             $('#cartOverlay').addClass('show');
 
@@ -160,19 +179,13 @@
                     $('#cartContent').html('<p>Error al cargar el carrito.</p>');
                 }
             });
-        });
+        }
 
-        // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
-        $('#closeCart').on('click', function() {
+        // Función para cerrar el carrito
+        function cerrarCarrito() {
             $('#cartSidebar').removeClass('open');
             $('#cartOverlay').removeClass('show');
-        });
-
-        // Cerrar el panel del carrito cuando se haga clic fuera del mismo (en el overlay)
-        $('#cartOverlay').on('click', function() {
-            $('#cartSidebar').removeClass('open');
-            $('#cartOverlay').removeClass('show');
-        });
+        }
 
         // Aumentar la cantidad de productos
         $(document).on('click', '.increase-quantity', function() {

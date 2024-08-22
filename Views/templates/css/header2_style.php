@@ -430,7 +430,6 @@
         }
     }
 
-
     /* Fin CSS para carrito de compras */
     /* seccion mas vendidos */
     .mas_vendidos {
