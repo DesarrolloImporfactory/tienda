@@ -8,7 +8,7 @@
         color: <?php echo COLOR_HOVER_CABECERA; ?>;
     }
 
-    .form-control {
+    #buscar_input {
         border-radius: 20px 0 0 20px !important;
     }
 

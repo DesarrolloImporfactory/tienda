@@ -195,7 +195,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <form class="d-flex me-auto">
-                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                        <input class="form-control me-2" id="buscar_input" type="search" placeholder="Buscar..." aria-label="Search">
                         <button class="btn buscar" type="submit">Buscar</button>
                     </form>
                     <!-- Icono del carrito en el header -->
