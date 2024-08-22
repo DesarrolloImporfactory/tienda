@@ -192,8 +192,66 @@
 
     // Función para realizar la compra
     $(document).on('click', '#realizarCompra_carritoBtn', function() {
+
+        session_id = "<?php echo session_id(); ?>";
+        let formData = new FormData();
+        formData.append("session_id", session_id);
+
+        // Cargar los productos del carrito vía AJAX
+        $.ajax({
+            url: SERVERURL + 'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(data) {
+                let cartHTML = '';
+                let subtotal = 0;
+
+                data.forEach(function(product) {
+                    const productPrice = parseFloat(product.precio) * parseInt(product.cantidad);
+                    subtotal += productPrice;
+
+                    cartHTML += `
+            <div class="productos_carrito-item">
+                <img src="${product.imagen ? product.imagen : 'placeholder.png'}" alt="${product.nombre}" />
+                <div class="productos_carrito-info">
+                    <a href="#">${product.nombre}</a>
+                    <p>${product.cantidad} x $${product.precio.toFixed(2)}</p>
+                </div>
+                <div class="productos_carrito-precio">
+                    <span>$${productPrice.toFixed(2)}</span>
+                </div>
+                <button class="btn btn-danger btn-sm productos_carrito-remove" data-product-id="${product.id}">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>`;
+                });
+
+                $('#productos_carritoContainer').html(cartHTML);
+                $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+                $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+
+        // Mostrar el modal del carrito
         $("#checkout_carritoModal").modal("show");
     });
+
+    // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
+    $(document).on('click', '#closeCart', function() {
+        cerrarCarrito();
+    });
+
+    function cerrarCarrito() {
+        $('#cartSidebar').removeClass('open');
+        $('#cartOverlay').removeClass('show');
+    }
+
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
     $('#closeCart').on('click', function() {

@@ -212,6 +212,20 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div id="productos_carritoContainer">
+                    <!-- Aquí se llenará el contenido dinámico con AJAX -->
+                </div>
+                <div class="resumen_carrito mt-4">
+                    <div class="d-flex justify-content-between">
+                        <span>Subtotal</span>
+                        <span id="productos_carritoSubtotal">$0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <strong>Total</strong>
+                        <strong id="productos_carritoTotal">$0.00</strong>
+                    </div>
+                </div>
+                
                 <form class="form-horizontal" id="formulario">
                     <input type="hidden" id="id_productoTmp" name="id_productoTmp">
                     <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
