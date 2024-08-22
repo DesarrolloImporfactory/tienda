@@ -151,8 +151,8 @@
                         let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
                         cartHTML += `
                         <div class="cart-product" data-product-id="${product.id_tmp}">
-                            <button class="btn btn-sm btn-danger eliminar_producto_carrito"><i class='bx bx-x'></i></button>
                             <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
+                            <button class="btn btn-sm btn-danger eliminar_producto_carrito"><i class='bx bx-x'></i></button>
                             <p><strong>${product.nombre_producto}</strong></p>
                             <p>${parseFloat(product.precio_tmp).toFixed(2)}</p>
                             <div class="d-flex flex-row gap-3">
