@@ -311,42 +311,21 @@
     }
 
     /* CSS para carrito de compras */
-    /* El panel del carrito deslizante */
+    /* El panel del carrito deslizante desde la derecha */
     .cart-sidebar {
         height: 100%;
         width: 0;
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
+        /* Cambiado de left a right */
         background-color: #fff;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+        /* Sombra ajustada para el lado derecho */
         overflow-x: hidden;
         transition: 0.5s;
         z-index: 1001;
         padding-top: 60px;
-    }
-
-    /* Contenido del carrito dentro del panel */
-    .cart-sidebar-content {
-        padding: 20px;
-    }
-
-    /* Encabezado del panel deslizante con botón de cerrar */
-    .cart-sidebar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #f5f5f5;
-        border-bottom: 1px solid #ddd;
-    }
-
-    /* Botón de cerrar el panel */
-    .close-btn {
-        background: none;
-        border: none;
-        font-size: 30px;
-        cursor: pointer;
     }
 
     /* Fondo oscuro cuando el panel está abierto */
@@ -370,6 +349,7 @@
     .cart-overlay.show {
         display: block;
     }
+
 
     #boton_carrito_pc {
         display: block;
