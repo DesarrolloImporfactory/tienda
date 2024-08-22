@@ -239,8 +239,6 @@
                     // Eliminar el producto del DOM tras una eliminación exitosa
                     productElement.remove();
 
-                    // Opcional: Mostrar un mensaje de éxito al usuario
-                    alert('Producto eliminado del carrito.');
                 } else {
                     alert('Error al eliminar el producto.');
                 }
