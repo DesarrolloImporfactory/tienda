@@ -199,7 +199,7 @@
         formData.append("cantidad_nueva", newQuantity);
 
         $.ajax({
-            url: SERVERURL + 'Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
+            url: 'https://new.imporsuitpro.com/Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
             method: 'POST',
             data: formData,
             processData: false, // No procesar los datos
@@ -231,7 +231,7 @@
             formData.append("cantidad_nueva", newQuantity);
 
             $.ajax({
-                url: SERVERURL + 'Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
+                url: 'https://new.imporsuitpro.com/Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
                 method: 'POST',
                 data: formData,
                 processData: false, // No procesar los datos
