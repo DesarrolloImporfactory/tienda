@@ -463,6 +463,15 @@
         border-radius: 5px;
     }
 
+    .hr_vertical {
+    width: 1px; /* Grosor de la línea */
+    background-color: black; /* Color de la línea */
+    height: 10px; /* Altura inicial, puedes editarla */
+    margin: 0 10px; /* Margen opcional alrededor de la línea */
+    display: inline-block; /* Para asegurarse de que actúe como un bloque en línea */
+}
+
+
     .custom-delete-button {
         display: inline-flex;
         align-items: center;

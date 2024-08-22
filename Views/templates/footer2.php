@@ -162,12 +162,14 @@
                         <img src="${enlace_imagen}" class="icon-button" alt="imagen" width="50px">
                         <button class="eliminar_producto_carrito custom-delete-button"><i class='bx bx-x' style="color:white;"></i></button>
                         <p><strong>${product.nombre_producto}</strong></p>
-                        <p>${precioProducto}</p>
                         <div class="d-flex flex-row gap-3">
-                            <p>Cantidad: <span class="product-quantity">${cantidadProducto}</span></p>
+                            <p>Cantidad: </p>
                             <div class="quantity-controls">
-                                <button class="btn btn-sm btn-primary increase-quantity">+</button>
                                 <button class="btn btn-sm btn-secondary decrease-quantity">-</button>
+                                <span class="product-quantity">${cantidadProducto}</span>
+                                <button class="btn btn-sm btn-primary increase-quantity">+</button>
+                                <div class="hr_vertical"></div>
+                                <p>${precioProducto}</p>
                             </div>
                         </div>
                         <hr>
