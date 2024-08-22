@@ -166,7 +166,7 @@
                             <p>Cantidad: </p>
                             <div class="quantity-controls d-flex flex-row gap-3">
                                 <button class="btn btn-sm btn-secondary decrease-quantity" style="width:35px;">-</button>
-                                <span class="product-quantity">${cantidadProducto}</span>
+                                <span class="product-quantity" style="align-content: center;">${cantidadProducto}</span>
                                 <button class="btn btn-sm btn-primary increase-quantity" style="width:35px;">+</button>
                                 <div class="hr_vertical"></div>
                                 <p>${precioProducto}</p>
