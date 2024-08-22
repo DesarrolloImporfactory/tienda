@@ -197,7 +197,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <button class="btn buscar" type="submit">Buscar</button>
                     </form>
                     <!-- Icono del carrito en el header -->
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="boton_carrito_pc">
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
@@ -205,6 +205,10 @@ $primera_seccion = obtenerPrimeraSeccion();
                             </a>
                         </li>
                     </ul>
+
+                    <button class="floating-button">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
 
                     <!-- Panel deslizante para mostrar el carrito -->
                     <div id="cartSidebar" class="cart-sidebar">

@@ -371,6 +371,44 @@
         display: block;
     }
 
+    #boton_carrito_pc {
+        display: block;
+    }
+
+    .floating-button {
+        position: fixed;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        display: none;
+    }
+
+    .floating-button:hover {
+        background-color: #218838;
+    }
+
+    .floating-button i {
+        font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .floating-button {
+            display: block;
+        }
+
+        #boton_carrito_pc {
+            display: none;
+        }
+    }
+
     /* Fin CSS para carrito de compras */
     /* seccion mas vendidos */
     .mas_vendidos {
