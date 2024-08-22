@@ -215,6 +215,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <div id="cartContent" class="cart-sidebar-content">
                             <p>No hay productos en el carrito.</p>
                         </div>
+                        <button class="btn btn-dark btn-lg mb-3" id="comprar-ahora">Realizar compra</button>
                     </div>
 
                     <!-- Fondo oscuro cuando el panel está abierto -->
