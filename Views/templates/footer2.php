@@ -124,23 +124,24 @@
         });
     });
 
-    // Abrir el panel del carrito cuando se haga clic en el icono
+    // Detectar clic en el ícono del carrito
     $('#cartDropdown').on('click', function(event) {
         event.preventDefault();
 
-        // Mostrar el panel del carrito y el overlay
-        $('#cartSidebar').addClass('open');
-        $('#cartOverlay').addClass('show');
+        // Si el menú de navegación no está abierto, entonces abrir el carrito
+        if (!$('#mainNavbar').hasClass('show')) {
+            $('#cartSidebar').addClass('open');
+            $('#cartOverlay').addClass('show');
 
-        // Cargar los productos del carrito vía AJAX
-        $.ajax({
-            url: 'https://tuapi.com/carrito', // Cambia esta URL a tu API real
-            method: 'GET',
-            success: function(data) {
-                if (data.length > 0) {
-                    let cartHTML = '';
-                    data.forEach(function(product) {
-                        cartHTML += `
+            // Cargar los productos del carrito vía AJAX
+            $.ajax({
+                url: 'https://tuapi.com/carrito', // Cambia esta URL a tu API real
+                method: 'GET',
+                success: function(data) {
+                    if (data.length > 0) {
+                        let cartHTML = '';
+                        data.forEach(function(product) {
+                            cartHTML += `
                         <div class="cart-product" data-product-id="${product.id}">
                             <p>${product.nombre}</p>
                             <p>Cantidad: <span class="product-quantity">${product.cantidad}</span></p>
@@ -149,16 +150,17 @@
                                 <button class="btn btn-sm btn-secondary decrease-quantity">-</button>
                             </div>
                         </div>`;
-                    });
-                    $('#cartContent').html(cartHTML);
-                } else {
-                    $('#cartContent').html('<p>No hay productos en el carrito.</p>');
+                        });
+                        $('#cartContent').html(cartHTML);
+                    } else {
+                        $('#cartContent').html('<p>No hay productos en el carrito.</p>');
+                    }
+                },
+                error: function() {
+                    $('#cartContent').html('<p>Error al cargar el carrito.</p>');
                 }
-            },
-            error: function() {
-                $('#cartContent').html('<p>Error al cargar el carrito.</p>');
-            }
-        });
+            });
+        }
     });
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
@@ -173,12 +175,12 @@
         $('#cartOverlay').removeClass('show');
     });
 
-    // Aumentar o disminuir la cantidad de productos (similar al código anterior)
+    // Aumentar o disminuir la cantidad de productos
     $(document).on('click', '.increase-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
 
         $.ajax({
-            url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
+            url: 'https://tuapi.com/carrito/update',
             method: 'POST',
             data: {
                 id_producto: productId,
@@ -201,7 +203,7 @@
         let productId = $(this).closest('.cart-product').data('product-id');
 
         $.ajax({
-            url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
+            url: 'https://tuapi.com/carrito/update',
             method: 'POST',
             data: {
                 id_producto: productId,
