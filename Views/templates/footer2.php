@@ -187,22 +187,28 @@
         $('#cartOverlay').removeClass('show');
     });
 
-    // Aumentar o disminuir la cantidad de productos (similar al código anterior)
+    // Aumentar o disminuir la cantidad de productos
     $(document).on('click', '.increase-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
+        let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
+        let currentQuantity = parseInt(quantityElement.text());
+        let newQuantity = currentQuantity + 1;
+
+        let formData = new FormData();
+        formData.append("id_tmp", productId);
+        formData.append("cantidad_nueva", newQuantity);
 
         $.ajax({
-            url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
+            url: SERVERURL + 'Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
             method: 'POST',
-            data: {
-                id_producto: productId,
-                accion: 'incrementar'
-            },
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
             success: function(response) {
                 if (response.success) {
-                    let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
-                    let currentQuantity = parseInt(quantityElement.text());
-                    quantityElement.text(currentQuantity + 1);
+                    quantityElement.text(newQuantity);
+                } else {
+                    alert('Error al actualizar la cantidad');
                 }
             },
             error: function() {
@@ -213,29 +219,37 @@
 
     $(document).on('click', '.decrease-quantity', function() {
         let productId = $(this).closest('.cart-product').data('product-id');
+        let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
+        let currentQuantity = parseInt(quantityElement.text());
 
-        $.ajax({
-            url: 'https://tuapi.com/carrito/update', // URL de la API para actualizar la cantidad
-            method: 'POST',
-            data: {
-                id_producto: productId,
-                accion: 'disminuir'
-            },
-            success: function(response) {
-                if (response.success) {
-                    let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
-                    let currentQuantity = parseInt(quantityElement.text());
-                    if (currentQuantity > 1) {
-                        quantityElement.text(currentQuantity - 1);
+        // Asegurarnos de que la cantidad no sea menor que 1
+        if (currentQuantity > 1) {
+            let newQuantity = currentQuantity - 1;
+
+            let formData = new FormData();
+            formData.append("id_tmp", productId);
+            formData.append("cantidad_nueva", newQuantity);
+
+            $.ajax({
+                url: SERVERURL + 'Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
+                method: 'POST',
+                data: formData,
+                processData: false, // No procesar los datos
+                contentType: false, // No establecer ningún tipo de contenido
+                success: function(response) {
+                    if (response.success) {
+                        quantityElement.text(newQuantity);
                     } else {
-                        $(`.cart-product[data-product-id="${productId}"]`).remove();
+                        alert('Error al actualizar la cantidad');
                     }
+                },
+                error: function() {
+                    alert('Error al actualizar la cantidad');
                 }
-            },
-            error: function() {
-                alert('Error al actualizar la cantidad');
-            }
-        });
+            });
+        } else {
+            alert('La cantidad no puede ser menor que 1');
+        }
     });
 
     function obtenerURLImagen(imagePath, serverURL) {
