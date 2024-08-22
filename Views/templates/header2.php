@@ -187,9 +187,7 @@ $primera_seccion = obtenerPrimeraSeccion();
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
             <div class="container-fluid">
-                <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA; ?>;">
-                    <?php echo NOMBRE_TIENDA; ?>
-                </a>
+                <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA; ?>;"><?php echo NOMBRE_TIENDA; ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -198,38 +196,36 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
                         <button class="btn buscar" type="submit">Buscar</button>
                     </form>
-                    <!-- Icono del carrito en el header para pantallas grandes -->
+                    <!-- Icono del carrito en el header -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="boton_carrito_pc">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="cartDropdownHeader" role="button">
+                            <a class="nav-link" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
                                 <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;">0</span>
                             </a>
                         </li>
                     </ul>
+
+                    <!-- Panel deslizante para mostrar el carrito -->
+                    <div id="cartSidebar" class="cart-sidebar">
+                        <div class="cart-sidebar-header">
+                            <h3>Tu Carrito</h3>
+                            <button id="closeCart" class="close-btn">&times;</button>
+                        </div>
+                        <div id="cartContent" class="cart-sidebar-content">
+                            <p>No hay productos en el carrito.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fondo oscuro cuando el panel está abierto -->
+                    <div id="cartOverlay" class="cart-overlay"></div>
+
                 </div>
             </div>
         </nav>
-
-        <!-- Panel deslizante para mostrar el carrito -->
-        <div id="cartSidebar" class="cart-sidebar">
-            <div class="cart-sidebar-header">
-                <h3>Tu Carrito</h3>
-                <button id="closeCart" class="close-btn">&times;</button>
-            </div>
-            <div id="cartContent" class="cart-sidebar-content">
-                <p>No hay productos en el carrito.</p>
-            </div>
-        </div>
-
-        <!-- Fondo oscuro cuando el panel está abierto -->
-        <div id="cartOverlay" class="cart-overlay"></div>
-
-        <!-- Botón flotante del carrito en dispositivos móviles -->
-        <button class="floating-button" id="cartDropdownMobile">
+        <button class="floating-button">
             <i class="fas fa-shopping-cart"></i>
         </button>
-
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-custom">
             <div class="container-fluid">
