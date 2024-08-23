@@ -247,34 +247,33 @@ $id_producto = $_GET['id'];
 
   function agregar_tmp(id_producto, precio, id_inventario) {
     // Función para realizar la compra
-    $(document).on('click', '#realizarCompra_carritoBtn', function() {
-      limpiar_carrito();
+    limpiar_carrito();
 
-      agregar_carrito(id_producto,precio,id_inventario);
+    agregar_carrito(id_producto, precio, id_inventario);
 
-      session_id = "<?php echo session_id(); ?>";
-      let formData = new FormData();
-      formData.append("session_id", session_id);
+    session_id = "<?php echo session_id(); ?>";
+    let formData = new FormData();
+    formData.append("session_id", session_id);
 
-      // Cargar los productos del carrito vía AJAX
-      $.ajax({
-        url: SERVERURL + 'Tienda/buscar_carrito', // Cambia esta URL a tu API real
-        method: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        dataType: "json",
-        success: function(data) {
-          let cartHTML = '';
-          let subtotal = 0;
+    // Cargar los productos del carrito vía AJAX
+    $.ajax({
+      url: SERVERURL + 'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+      method: 'POST',
+      data: formData,
+      processData: false,
+      contentType: false,
+      dataType: "json",
+      success: function(data) {
+        let cartHTML = '';
+        let subtotal = 0;
 
-          data.forEach(function(product) {
-            const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
-            subtotal += productPrice;
+        data.forEach(function(product) {
+          const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
+          subtotal += productPrice;
 
-            let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
+          let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
 
-            cartHTML += `
+          cartHTML += `
             <div class="productos_carrito-item">
             <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
             <div class="productos_carrito-info">
@@ -288,24 +287,23 @@ $id_producto = $_GET['id'];
                 <i class="fas fa-times"></i>
             </button>
             </div>`;
-          });
+        });
 
-          $('#productos_carritoContainer').html(cartHTML);
-          $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
-          $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+        $('#productos_carritoContainer').html(cartHTML);
+        $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+        $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
 
 
-          $("#id_productoTmp_carrito").val(data[0].id_producto);
-          $("#total_carrito").val(subtotal.toFixed(2));
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          alert(errorThrown);
-        }
-      });
-
-      // Mostrar el modal del carrito
-      $("#checkout_carritoModal").modal("show");
+        $("#id_productoTmp_carrito").val(data[0].id_producto);
+        $("#total_carrito").val(subtotal.toFixed(2));
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(errorThrown);
+      }
     });
+
+    // Mostrar el modal del carrito
+    $("#checkout_carritoModal").modal("show");
   }
 
   function agregar_carrito(id_producto, precio, id_inventario) {
