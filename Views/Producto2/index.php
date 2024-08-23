@@ -250,7 +250,7 @@ $id_producto = $_GET['id'];
     $(document).on('click', '#realizarCompra_carritoBtn', function() {
       limpiar_carrito();
 
-      agregar_carrito();
+      agregar_carrito(id_producto,precio,id_inventario);
 
       session_id = "<?php echo session_id(); ?>";
       let formData = new FormData();
