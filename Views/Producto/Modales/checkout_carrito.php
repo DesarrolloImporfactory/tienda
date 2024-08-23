@@ -225,7 +225,7 @@
                         <strong id="productos_carritoTotal">$0.00</strong>
                     </div>
                 </div>
-                
+
                 <form class="form-horizontal" id="formulario">
                     <input type="hidden" id="id_productoTmp" name="id_productoTmp">
                     <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
@@ -489,7 +489,7 @@
         formData.append("observacion", $('#txt_comentarioPreview').val());
 
         $.ajax({
-            url: SERVERURL + 'Tienda/guardar_pedido',
+            url: SERVERURL + 'Tienda/guardar_pedido_carrito',
             method: 'POST',
             data: formData,
             processData: false, // No procesar los datos
