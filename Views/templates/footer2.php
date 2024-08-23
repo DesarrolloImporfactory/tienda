@@ -387,57 +387,121 @@
     });
 
     // Función para manejar la eliminación de productos dentro del modal del carrito
-$(document).on('click', '.productos_checkout_remove', function() {
-    let productId = $(this).data('product-id'); // Obtener el id del producto a eliminar
-    let productElement = $(this).closest('.productos_carrito-item'); // Referencia al contenedor del producto en el DOM
+    $(document).on('click', '.productos_checkout_remove', function() {
+        let productId = $(this).data('product-id'); // Obtener el id del producto a eliminar
+        let productElement = $(this).closest('.productos_carrito-item'); // Referencia al contenedor del producto en el DOM
 
-    let formData = new FormData();
-    formData.append("id_tmp", productId);
+        let formData = new FormData();
+        formData.append("id_tmp", productId);
 
-    $.ajax({
-        url: 'https://new.imporsuitpro.com/Tienda/eliminar_carrito', // URL de la API para eliminar el producto del carrito
-        method: 'POST',
-        data: formData,
-        processData: false, // No procesar los datos
-        contentType: false, // No establecer ningún tipo de contenido
-        dataType: "json",
-        success: function(response) {
-            if (response.status == 200) {
-                // Eliminar el producto del DOM tras una eliminación exitosa
-                productElement.remove();
+        $.ajax({
+            url: 'https://new.imporsuitpro.com/Tienda/eliminar_carrito', // URL de la API para eliminar el producto del carrito
+            method: 'POST',
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+                if (response.status == 200) {
+                    // Eliminar el producto del DOM tras una eliminación exitosa
+                    productElement.remove();
 
-                // Recalcular el subtotal y total después de la eliminación
-                recalcularTotales();
+                    // Recalcular el subtotal y total después de la eliminación
+                    recalcularTotales();
 
-                // Recargar el carrito para actualizar el total
-                $('#cartDropdown').trigger('click');
+                    // Recargar el carrito para actualizar el total
+                    $('#cartDropdown').trigger('click');
 
-            } else {
+                } else {
+                    alert('Error al eliminar el producto.');
+                }
+            },
+            error: function() {
                 alert('Error al eliminar el producto.');
             }
-        },
-        error: function() {
-            alert('Error al eliminar el producto.');
+        });
+    });
+
+    // Función para recalcular el subtotal y el total
+    function recalcularTotales() {
+        let subtotal = 0;
+
+        // Recorre todos los productos restantes y recalcula el subtotal
+        $('.productos_carrito-item').each(function() {
+            let priceText = $(this).find('.productos_carrito-precio span').text().replace('$', '');
+            let productPrice = parseFloat(priceText);
+            subtotal += productPrice;
+        });
+
+        // Actualizar los valores de subtotal y total en el modal
+        $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+        $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+    }
+
+    //cargar select ciudades y provincias
+    $(document).ready(function() {
+        cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
+
+        // Llamar a cargarCiudades cuando se seleccione una provincia
+        $("#provinica").on("change", cargarCiudades);
+    });
+
+    // Función para cargar provincias
+    function cargarProvincias() {
+        $.ajax({
+            url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
+            method: "GET",
+            success: function(response) {
+                let provincias = JSON.parse(response);
+                let provinciaSelect = $("#provinica");
+                provinciaSelect.empty();
+                provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
+
+                provincias.forEach(function(provincia) {
+                    provinciaSelect.append(
+                        `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
+                    );
+                });
+            },
+            error: function(error) {
+                console.log("Error al cargar provincias:", error);
+            },
+        });
+    }
+
+    // Función para cargar ciudades según la provincia seleccionada
+    function cargarCiudades() {
+        let provinciaId = $("#provinica").val();
+        if (provinciaId) {
+            $.ajax({
+                url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
+                method: "GET",
+                success: function(response) {
+                    let ciudades = JSON.parse(response);
+                    let ciudadSelect = $("#ciudad_entrega");
+                    ciudadSelect.empty();
+                    ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+
+                    ciudades.forEach(function(ciudad) {
+                        ciudadSelect.append(
+                            `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
+                        );
+                    });
+
+                    ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
+                },
+                error: function(error) {
+                    console.log("Error al cargar ciudades:", error);
+                },
+            });
+        } else {
+            $("#ciudad_entrega")
+                .empty()
+                .append('<option value="">Ciudad *</option>')
+                .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
         }
-    });
-});
-
-// Función para recalcular el subtotal y el total
-function recalcularTotales() {
-    let subtotal = 0;
-
-    // Recorre todos los productos restantes y recalcula el subtotal
-    $('.productos_carrito-item').each(function() {
-        let priceText = $(this).find('.productos_carrito-precio span').text().replace('$', '');
-        let productPrice = parseFloat(priceText);
-        subtotal += productPrice;
-    });
-
-    // Actualizar los valores de subtotal y total en el modal
-    $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
-    $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
-}
-
+    }
+    /* Fin cargar provincia y ciudad*/
 </script>
 </body>
 
