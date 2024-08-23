@@ -227,9 +227,9 @@
                 </div>
 
                 <form class="form-horizontal" id="formulario">
-                    <input type="hidden" id="id_productoTmp" name="id_productoTmp">
-                    <input type="hidden" id="precio_productoTmp" name="precio_productoTmp">
-                    <input type="hidden" id="id_inventario" name="id_inventario">
+                    <input type="hidden" id="id_productoTmp_carrito" name="id_productoTmp_carrito">
+                    <input type="hidden" id="total_carrito" name="total_carrito">
+
                     <div id="gracias" class="modal-content">
                         <div id="previewContainer" class="p-3">
                             <div id="resultados" class="modal-body" style="padding: 5px">
@@ -478,9 +478,8 @@
 
         let formData = new FormData();
         formData.append("id_plataforma", ID_PLATAFORMA);
-        formData.append("id_inventario", $('#id_inventario').val());
-        formData.append("id_producto", $('#id_productoTmp').val());
-        formData.append("precio_producto", $('#precio_productoTmp').val());
+        formData.append("id_producto", $('#id_productoTmp_carrito').val());
+        formData.append("total", $('#total_carrito').val());
         formData.append("nombre", $('#txt_nombresApellidosPreview').val());
         formData.append("telefono", $('#txt_telefonoPreview').val());
         formData.append("provincia", $('#provinica').val());
