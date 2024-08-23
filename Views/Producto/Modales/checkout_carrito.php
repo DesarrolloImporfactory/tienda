@@ -511,9 +511,8 @@
                     });
 
                     /* cerrar carrito */
-                    $('#cartSidebar').removeClass('open');
-                    $('#cartOverlay').removeClass('show');
-                    
+                    cerrarCarrito();
+
                     /* cerrar modal */
                     $('#checkout_carritoModal').modal('hide');
                 }
