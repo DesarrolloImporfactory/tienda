@@ -307,7 +307,7 @@ $id_producto = $_GET['id'];
       $("#checkout_carritoModal").modal("show");
     } catch (error) {
       console.error("Error:", error);
-      alert("Ocurrió un error al agregar el producto al carrito.");
+      
     }
   }
 
