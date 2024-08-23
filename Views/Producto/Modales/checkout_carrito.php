@@ -510,6 +510,11 @@
                         positionClass: "toast-bottom-center",
                     });
 
+                    /* cerrar carrito */
+                    $('#cartSidebar').removeClass('open');
+                    $('#cartOverlay').removeClass('show');
+                    
+                    /* cerrar modal */
                     $('#checkout_carritoModal').modal('hide');
                 }
             },
