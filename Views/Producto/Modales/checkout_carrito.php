@@ -474,6 +474,8 @@
 
     /* boton de comprar */
     function realizar_pedido() {
+        session_id = "<?php echo session_id(); ?>";
+
         let formData = new FormData();
         formData.append("id_plataforma", ID_PLATAFORMA);
         formData.append("id_inventario", $('#id_inventario').val());
@@ -487,6 +489,7 @@
         formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
         formData.append("referencia", $('#txt_barrio_referenciaPreview').val());
         formData.append("observacion", $('#txt_comentarioPreview').val());
+        formData.append("tmp", session_id);
 
         $.ajax({
             url: SERVERURL + 'Tienda/guardar_pedido_carrito',
