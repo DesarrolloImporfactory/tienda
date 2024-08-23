@@ -512,6 +512,8 @@
 
                     /* cerrar carrito */
                     cerrarCarrito();
+                    // Recargar el carrito para actualizar el total
+                    $('#cartDropdown').trigger('click');
 
                     /* cerrar modal */
                     $('#checkout_carritoModal').modal('hide');
