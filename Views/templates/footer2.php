@@ -443,26 +443,28 @@
     }
 
     function limpiar_carrito() {
-        session_id = "<?php echo session_id(); ?>";
-        let formData = new FormData();
-        formData.append("session_id", session_id);
+        return new Promise((resolve, reject) => {
+            session_id = "<?php echo session_id(); ?>";
+            let formData = new FormData();
+            formData.append("session_id", session_id);
 
-        // Cargar los productos del carrito vía AJAX
-        $.ajax({
-            url: SERVERURL + 'Tienda/limpiar_carrito', // Cambia esta URL a tu API real
-            method: 'POST',
-            data: formData,
-            processData: false, // No procesar los datos
-            contentType: false, // No establecer ningún tipo de contenido
-            dataType: "json",
-            success: function(data) {
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-            },
+            $.ajax({
+                url: SERVERURL + 'Tienda/limpiar_carrito',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    // Resuelve la promesa cuando la limpieza del carrito se completa
+                    resolve(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Rechaza la promesa en caso de error
+                    reject(errorThrown);
+                },
+            });
         });
-
     }
 
     //cargar select ciudades y provincias

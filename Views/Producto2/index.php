@@ -259,7 +259,7 @@ $id_producto = $_GET['id'];
 
       // Cargar los productos del carrito vía AJAX
       $.ajax({
-        url: SERVERURL + 'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+        url: SERVERURL + 'Tienda/buscar_carrito',
         method: 'POST',
         data: formData,
         processData: false,
@@ -312,43 +312,49 @@ $id_producto = $_GET['id'];
   }
 
 
+
   function agregar_carrito(id_producto, precio, id_inventario) {
-    session_id = "<?php echo session_id(); ?>";
-    let formData = new FormData();
-    formData.append("id_producto", id_producto);
-    formData.append("precio", precio);
-    formData.append("id_inventario", id_inventario);
-    formData.append("session_id", session_id);
-    formData.append("cantidad", $('#cantidad_producto').val());
-    formData.append("id_plataforma", ID_PLATAFORMA);
+    return new Promise((resolve, reject) => {
+      session_id = "<?php echo session_id(); ?>";
+      let formData = new FormData();
+      formData.append("id_producto", id_producto);
+      formData.append("precio", precio);
+      formData.append("id_inventario", id_inventario);
+      formData.append("session_id", session_id);
+      formData.append("cantidad", $('#cantidad_producto').val());
+      formData.append("id_plataforma", ID_PLATAFORMA);
 
-    $.ajax({
-      url: SERVERURL + "Tienda/agregar_carrito",
-      type: "POST",
-      data: formData,
-      processData: false, // No procesar los datos
-      contentType: false, // No establecer ningún tipo de contenido
-      dataType: "json",
-      success: function(response) {
-        if (response.status == 500) {
-          toastr.error(
-            "NO SE AGREGRO CORRECTAMENTE",
-            "NOTIFICACIÓN", {
-              positionClass: "toast-bottom-center"
-            }
-          );
-        } else if (response.status == 200) {
-          toastr.success("PRODUCTO AGREGADO CORRECTAMENTE", "NOTIFICACIÓN", {
-            positionClass: "toast-bottom-center",
-          });
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        alert(errorThrown);
-      },
+      $.ajax({
+        url: SERVERURL + "Tienda/agregar_carrito",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function(response) {
+          if (response.status == 500) {
+            toastr.error(
+              "NO SE AGREGÓ CORRECTAMENTE",
+              "NOTIFICACIÓN", {
+                positionClass: "toast-bottom-center"
+              }
+            );
+            reject("Error al agregar al carrito"); // Rechaza en caso de error lógico
+          } else if (response.status == 200) {
+            toastr.success("PRODUCTO AGREGADO CORRECTAMENTE", "NOTIFICACIÓN", {
+              positionClass: "toast-bottom-center",
+            });
+            resolve(response); // Resuelve la promesa cuando se agrega correctamente
+          }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          // Rechaza la promesa en caso de error de red o servidor
+          reject(errorThrown);
+        },
+      });
     });
-
   }
+
 
   function obtenerURLImagen(imagePath, serverURL) {
     if (imagePath) {
