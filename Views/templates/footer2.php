@@ -134,7 +134,7 @@
 
         session_id = "<?php echo session_id(); ?>";
         let formData = new FormData();
-        formData.append("session_id", session_id); // Añadir el SKU al FormData
+        formData.append("session_id", session_id);
 
         // Cargar los productos del carrito vía AJAX
         $.ajax({
@@ -358,7 +358,7 @@
                     let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
 
                     cartHTML += `
-    <div class="productos_carrito-item">
+        <div class="productos_carrito-item">
         <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
         <div class="productos_carrito-info">
             <a href="#">${product.nombre_producto}</a>
@@ -370,7 +370,7 @@
         <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
             <i class="fas fa-times"></i>
         </button>
-    </div>`;
+        </div>`;
                 });
 
                 $('#productos_carritoContainer').html(cartHTML);
@@ -440,6 +440,29 @@
         // Actualizar los valores de subtotal y total en el modal
         $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
         $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+    }
+
+    function limpiar_carrito() {
+        session_id = "<?php echo session_id(); ?>";
+        let formData = new FormData();
+        formData.append("session_id", session_id);
+
+        // Cargar los productos del carrito vía AJAX
+        $.ajax({
+            url: SERVERURL + 'Tienda/limpiar_carrito', // Cambia esta URL a tu API real
+            method: 'POST',
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(data) {
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            },
+        });
+
     }
 
     //cargar select ciudades y provincias

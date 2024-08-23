@@ -246,14 +246,70 @@ $id_producto = $_GET['id'];
   });
 
   function agregar_tmp(id_producto, precio, id_inventario) {
-    $("#id_productoTmp").val(id_producto);
-    $("#precio_productoTmp").val(precio);
-    $("#id_inventario").val(id_inventario);
-    $("#checkoutModal").modal("show");
+    // Función para realizar la compra
+    $(document).on('click', '#realizarCompra_carritoBtn', function() {
+      limpiar_carrito();
+
+      agregar_carrito();
+
+      session_id = "<?php echo session_id(); ?>";
+      let formData = new FormData();
+      formData.append("session_id", session_id);
+
+      // Cargar los productos del carrito vía AJAX
+      $.ajax({
+        url: SERVERURL + 'Tienda/buscar_carrito', // Cambia esta URL a tu API real
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function(data) {
+          let cartHTML = '';
+          let subtotal = 0;
+
+          data.forEach(function(product) {
+            const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
+            subtotal += productPrice;
+
+            let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
+
+            cartHTML += `
+            <div class="productos_carrito-item">
+            <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
+            <div class="productos_carrito-info">
+                <a href="#">${product.nombre_producto}</a>
+                <p>${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)}</p>
+            </div>
+            <div class="productos_carrito-precio">
+                <span>$${productPrice.toFixed(2)}</span>
+            </div>
+            <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
+                <i class="fas fa-times"></i>
+            </button>
+            </div>`;
+          });
+
+          $('#productos_carritoContainer').html(cartHTML);
+          $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+          $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+
+
+          $("#id_productoTmp_carrito").val(data[0].id_producto);
+          $("#total_carrito").val(subtotal.toFixed(2));
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert(errorThrown);
+        }
+      });
+
+      // Mostrar el modal del carrito
+      $("#checkout_carritoModal").modal("show");
+    });
   }
 
   function agregar_carrito(id_producto, precio, id_inventario) {
-    session_id = "<?php echo session_id();?>";
+    session_id = "<?php echo session_id(); ?>";
     let formData = new FormData();
     formData.append("id_producto", id_producto);
     formData.append("precio", precio);
