@@ -1,6 +1,6 @@
 <?php include 'Views/templates/header2.php'; ?>
 <?php include 'Views/Producto2/css/producto_style.php'; ?>
-<?php require_once './Views/Producto/Modales/checkout.php'; ?>
+
 
 <?php
 $id_producto = $_GET['id'];
