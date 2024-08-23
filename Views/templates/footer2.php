@@ -409,6 +409,9 @@ $(document).on('click', '.productos_checkout_remove', function() {
                 // Recalcular el subtotal y total después de la eliminación
                 recalcularTotales();
 
+                // Recargar el carrito para actualizar el total
+                $('#cartDropdown').trigger('click');
+
             } else {
                 alert('Error al eliminar el producto.');
             }
