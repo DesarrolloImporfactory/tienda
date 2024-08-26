@@ -444,10 +444,10 @@ $id_producto = $_GET['id'];
   function actualizarCantidadProducto(productId, newQuantity) {
     /* actualizarPrecioProducto */
     const precioUnitario = parseFloat($(`#detalle_precio_${productId}`).data('precio-unitario'));
-    const nuevoPrecioTotal = (precioUnitario * nuevaCantidad).toFixed(2);
+    const nuevoPrecioTotal = (precioUnitario * newQuantity).toFixed(2);
 
     // Actualizar el texto de la línea del precio
-    $(`#detalle_precio_${productId}`).text(`${nuevaCantidad} x $${precioUnitario.toFixed(2)} = $${nuevoPrecioTotal}`);
+    $(`#detalle_precio_${productId}`).text(`${newQuantity} x $${precioUnitario.toFixed(2)} = $${nuevoPrecioTotal}`);
 
     /* Fin actualizarPrecioProducto */
 
