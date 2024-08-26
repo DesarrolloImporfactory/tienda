@@ -300,11 +300,10 @@ $id_producto = $_GET['id'];
 
   async function agregar_tmp(id_producto, precio, id_inventario) {
     try {
-
       // Esperar a que se complete agregar_carrito()
       await agregar_carrito(id_producto, precio, id_inventario);
 
-      session_id = "<?php echo session_id(); ?>";
+      let session_id = "<?php echo session_id(); ?>";
       let formData = new FormData();
       formData.append("session_id", session_id);
 
@@ -327,28 +326,28 @@ $id_producto = $_GET['id'];
             let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
 
             cartHTML += `
-              <div class="productos_carrito-item">
-                <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
-                <div class="productos_carrito-info">
-                  <a href="#">${product.nombre_producto}</a>
-                  <p>
-                    <button class="btn btn-sm btn-outline-secondary cantidad_decremento" data-product-id="${product.id_tmp}">
-                      -
-                    </button>
-                    <span class="cantidad_producto" data-product-id="${product.id_tmp}">${product.cantidad_tmp}</span>
-                    <button class="btn btn-sm btn-outline-secondary cantidad_incremento" data-product-id="${product.id_tmp}">
-                      +
-                    </button>
-                  </p>
-                  <p id="detalle_precio_${product.id_tmp}">${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)} = $${(product.cantidad_tmp * parseFloat(product.precio_tmp)).toFixed(2)}</p>
-                </div>
-                <div class="productos_carrito-precio">
-                  <span>$${productPrice.toFixed(2)}</span>
-                </div>
-                <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>`;
+            <div class="productos_carrito-item">
+              <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
+              <div class="productos_carrito-info">
+                <a href="#">${product.nombre_producto}</a>
+                <p>
+                  <button class="btn btn-sm btn-outline-secondary cantidad_decremento" data-product-id="${product.id_tmp}">
+                    -
+                  </button>
+                  <span class="cantidad_producto" data-product-id="${product.id_tmp}">${product.cantidad_tmp}</span>
+                  <button class="btn btn-sm btn-outline-secondary cantidad_incremento" data-product-id="${product.id_tmp}">
+                    +
+                  </button>
+                </p>
+                <p id="detalle_precio_${product.id_tmp}" data-precio-unitario="${parseFloat(product.precio_tmp)}">${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)} = $${productPrice.toFixed(2)}</p>
+              </div>
+              <div class="productos_carrito-precio">
+                <span>$${productPrice.toFixed(2)}</span>
+              </div>
+              <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>`;
           });
 
           $('#productos_carritoContainer').html(cartHTML);
@@ -367,7 +366,6 @@ $id_producto = $_GET['id'];
       $("#checkout_carritoModal").modal("show");
     } catch (error) {
       console.error("Error:", error);
-
     }
   }
 
@@ -422,7 +420,7 @@ $id_producto = $_GET['id'];
     let nuevaCantidad = cantidadActual + 1;
     cantidadSpan.text(nuevaCantidad);
 
-    // Llamar a la función de incrementar cantidad con el nuevo valor
+    // Actualizar el precio y el subtotal
     actualizarCantidadProducto(productId, nuevaCantidad);
   });
 
@@ -436,21 +434,25 @@ $id_producto = $_GET['id'];
       let nuevaCantidad = cantidadActual - 1;
       cantidadSpan.text(nuevaCantidad);
 
-      // Llamar a la función de decrementar cantidad con el nuevo valor
+      // Actualizar el precio y el subtotal
       actualizarCantidadProducto(productId, nuevaCantidad);
     }
   });
 
   function actualizarCantidadProducto(productId, newQuantity) {
-    /* actualizarPrecioProducto */
+    // Obtener el precio unitario del producto
     const precioUnitario = parseFloat($(`#detalle_precio_${productId}`).data('precio-unitario'));
+
+    // Calcular el nuevo precio total para este producto
     const nuevoPrecioTotal = (precioUnitario * newQuantity).toFixed(2);
 
-    // Actualizar el texto de la línea del precio
+    // Actualizar el texto de la línea de detalle del precio
     $(`#detalle_precio_${productId}`).text(`${newQuantity} x $${precioUnitario.toFixed(2)} = $${nuevoPrecioTotal}`);
 
-    /* Fin actualizarPrecioProducto */
+    // Actualizar el subtotal y el total
+    actualizarSubtotalYTotal();
 
+    // Realizar la actualización en el backend
     let formData = new FormData();
     formData.append("id_tmp", productId);
     formData.append("cantidad_nueva", newQuantity);
@@ -459,16 +461,39 @@ $id_producto = $_GET['id'];
       url: 'https://new.imporsuitpro.com/Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
       method: 'POST',
       data: formData,
-      processData: false, // No procesar los datos
-      contentType: false, // No establecer ningún tipo de contenido
+      processData: false,
+      contentType: false,
       dataType: "json",
       success: function(response) {
-        
+        if (response.status !== 200) {
+          alert('Error al actualizar la cantidad');
+        }
       },
       error: function() {
         alert('Error al actualizar la cantidad');
       }
     });
+  }
+
+  function actualizarSubtotalYTotal() {
+    let subtotal = 0;
+
+    // Recorrer cada línea de productos en el carrito
+    $('.productos_carrito-item').each(function() {
+      const productId = $(this).find('.cantidad_producto').data('product-id');
+      const cantidad = parseInt($(this).find('.cantidad_producto').text());
+      const precioUnitario = parseFloat($(`#detalle_precio_${productId}`).data('precio-unitario'));
+
+      // Sumar el precio total del producto al subtotal
+      subtotal += precioUnitario * cantidad;
+    });
+
+    // Actualizar el subtotal y el total en el DOM
+    $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+    $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+
+    // También puedes actualizar el campo oculto total_carrito si es necesario
+    $("#total_carrito").val(subtotal.toFixed(2));
   }
 
   // Función llamada si la imagen no puede cargarse
