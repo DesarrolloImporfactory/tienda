@@ -1,6 +1,6 @@
 <?php include 'Views/templates/header.php'; ?>
 <?php include 'Views/Categoria/css/categoria_style.php'; ?>
-<?php require_once './Views/Producto/Modales/checkout.php'; ?>
+<?php /* require_once './Views/Producto/Modales/checkout.php'; */ ?>
 
 <main>
     <!-- área de categorías -->
@@ -358,7 +358,7 @@
                                     ${texto_precioNormal}
                                     <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
                                 </div>
-                                <a class="btn texto_boton mt-auto" href="#" onclick="agregar_tmp(${producto.id_producto_tienda}, ${precioEspecial}, ${producto.id_inventario})" data-bs-toggle="modal" data-bs-target="#exampleModal">Comprar</a>
+                                <a class="btn texto_boton mt-auto" href="#" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
                             </div>
                         </div>
                     </div>
