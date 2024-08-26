@@ -52,12 +52,16 @@ $id_producto = $_GET['id'];
               </span>
             </div>
           </div>
-          <div id="landing" style="padding: 20px;">
-
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Cantidad</label>
+            <input type="number" id="cantidad_producto" class="form-control" style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
           </div>
           <a style="height: 50px; font-size: 26px; width: 100%; border-radius: 15px" class="jump-button btn btn-primary texto_boton" href="#" id="comprar-ahora">
             <span style="margin-top: 10px">COMPRAR AHORA </span>
           </a>
+          <div id="landing" style="padding: 20px;">
+
+          </div>
           <br><br>
         </div>
       </div>
