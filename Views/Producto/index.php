@@ -252,7 +252,7 @@ $id_producto = $_GET['id'];
 
           // Botón de comprar
           $('#comprar-ahora').on('click', function() {
-            agregar_tmp(id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
+            agregar_tmp(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
           });
 
           id_productoPrincipal = producto.id_producto;
