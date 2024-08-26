@@ -358,7 +358,7 @@
                                     ${texto_precioNormal}
                                     <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
                                 </div>
-                                <a class="btn texto_boton mt-auto" href="#" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
+                                <a class="btn texto_boton mt-auto" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
                             </div>
                         </div>
                     </div>
