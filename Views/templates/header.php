@@ -166,6 +166,8 @@ $primera_seccion = obtenerPrimeraSeccion();
 
 </head>
 
+<?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
