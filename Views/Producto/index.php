@@ -327,19 +327,28 @@ $id_producto = $_GET['id'];
             let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
 
             cartHTML += `
-                        <div class="productos_carrito-item">
-                        <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
-                        <div class="productos_carrito-info">
-                            <a href="#">${product.nombre_producto}</a>
-                            <p>${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)}</p>
-                        </div>
-                        <div class="productos_carrito-precio">
-                            <span>$${productPrice.toFixed(2)}</span>
-                        </div>
-                        <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
-                            <i class="fas fa-times"></i>
-                        </button>
-                        </div>`;
+                <div class="productos_carrito-item">
+                  <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
+                  <div class="productos_carrito-info">
+                    <a href="#">${product.nombre_producto}</a>
+                    <p>
+                      <button class="btn btn-sm btn-outline-secondary cantidad_decremento" data-product-id="${product.id_tmp}">
+                        -
+                      </button>
+                      <span class="cantidad_producto" data-product-id="${product.id_tmp}">${product.cantidad_tmp}</span>
+                      <button class="btn btn-sm btn-outline-secondary cantidad_incremento" data-product-id="${product.id_tmp}">
+                        +
+                      </button>
+                    </p>
+                    <p>${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)}</p>
+                  </div>
+                  <div class="productos_carrito-precio">
+                    <span>$${productPrice.toFixed(2)}</span>
+                  </div>
+                  <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>`;
           });
 
           $('#productos_carritoContainer').html(cartHTML);
@@ -401,6 +410,61 @@ $id_producto = $_GET['id'];
           reject(errorThrown);
         },
       });
+    });
+  }
+
+  $(document).on('click', '.cantidad_incremento', function() {
+    const productId = $(this).data('product-id');
+    const cantidadSpan = $(this).siblings('.cantidad_producto');
+    let cantidadActual = parseInt(cantidadSpan.text());
+
+    // Incrementar la cantidad
+    let nuevaCantidad = cantidadActual + 1;
+    cantidadSpan.text(nuevaCantidad);
+
+    // Llamar a la función de incrementar cantidad con el nuevo valor
+    actualizarCantidadProducto(productId, nuevaCantidad);
+  });
+
+  $(document).on('click', '.cantidad_decremento', function() {
+    const productId = $(this).data('product-id');
+    const cantidadSpan = $(this).siblings('.cantidad_producto');
+    let cantidadActual = parseInt(cantidadSpan.text());
+
+    // Decrementar la cantidad si es mayor que 1
+    if (cantidadActual > 1) {
+      let nuevaCantidad = cantidadActual - 1;
+      cantidadSpan.text(nuevaCantidad);
+
+      // Llamar a la función de decrementar cantidad con el nuevo valor
+      actualizarCantidadProducto(productId, nuevaCantidad);
+    }
+  });
+
+  function actualizarCantidadProducto(productId, newQuantity) {
+    let formData = new FormData();
+    formData.append("id_tmp", productId);
+    formData.append("cantidad_nueva", newQuantity);
+
+    $.ajax({
+      url: 'https://new.imporsuitpro.com/Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
+      method: 'POST',
+      data: formData,
+      processData: false, // No procesar los datos
+      contentType: false, // No establecer ningún tipo de contenido
+      dataType: "json",
+      success: function(response) {
+        if (response.status == 200) {
+          quantityElement.text(newQuantity);
+          // Recargar el carrito para actualizar el total
+          $('#cartDropdown').trigger('click');
+        } else {
+          alert('Error al actualizar la cantidad');
+        }
+      },
+      error: function() {
+        alert('Error al actualizar la cantidad');
+      }
     });
   }
 
