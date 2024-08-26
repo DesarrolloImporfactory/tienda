@@ -463,13 +463,7 @@ $id_producto = $_GET['id'];
       contentType: false, // No establecer ningún tipo de contenido
       dataType: "json",
       success: function(response) {
-        if (response.status == 200) {
-          quantityElement.text(newQuantity);
-          // Recargar el carrito para actualizar el total
-          $('#cartDropdown').trigger('click');
-        } else {
-          alert('Error al actualizar la cantidad');
-        }
+        
       },
       error: function() {
         alert('Error al actualizar la cantidad');
