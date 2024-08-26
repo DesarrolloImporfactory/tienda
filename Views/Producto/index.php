@@ -431,11 +431,10 @@ $id_producto = $_GET['id'];
           productElement.remove();
 
           // Recalcular el subtotal y total después de la eliminación
-          recalcularTotales();
+          actualizarSubtotalYTotal(); // Aquí utilizamos la función existente
 
           // Recargar el carrito para actualizar el total
           $('#cartDropdown').trigger('click');
-
         } else {
           alert('Error al eliminar el producto.');
         }
@@ -446,21 +445,6 @@ $id_producto = $_GET['id'];
     });
   });
 
-  // Función para recalcular el subtotal y el total
-  function recalcularTotales() {
-    let subtotal = 0;
-
-    // Recorre todos los productos restantes y recalcula el subtotal
-    $('.productos_carrito-item').each(function() {
-      let priceText = $(this).find('.productos_carrito-precio span').text().replace('$', '');
-      let productPrice = parseFloat(priceText);
-      subtotal += productPrice;
-    });
-
-    // Actualizar los valores de subtotal y total en el modal
-    $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
-    $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
-  }
 
   $(document).on('click', '.cantidad_incremento', function() {
     const productId = $(this).data('product-id');
