@@ -688,6 +688,10 @@ $id_producto = $_GET['id'];
     }
   }
   /* Fin cargar provincia y ciudad*/
+
+  function cerrarCarrito(){
+    
+  }
 </script>
 
 <?php include 'Views/templates/footer.php'; ?>

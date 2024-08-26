@@ -44,6 +44,33 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<script>
+    function limpiar_carrito() {
+        return new Promise((resolve, reject) => {
+            session_id = "<?php echo session_id(); ?>";
+            let formData = new FormData();
+            formData.append("session_id", session_id);
+
+            $.ajax({
+                url: SERVERURL + 'Tienda/limpiar_carrito',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    // Resuelve la promesa cuando la limpieza del carrito se completa
+                    resolve(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Rechaza la promesa en caso de error
+                    reject(errorThrown);
+                },
+            });
+        });
+    }
+</script>
 </body>
 
 </html>
