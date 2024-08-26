@@ -412,39 +412,55 @@ $id_producto = $_GET['id'];
   }
 
   $(document).on('click', '.productos_checkout_remove', function() {
-        let productId = $(this).data('product-id'); // Obtener el id del producto a eliminar
-        let productElement = $(this).closest('.productos_carrito-item'); // Referencia al contenedor del producto en el DOM
+    let productId = $(this).data('product-id'); // Obtener el id del producto a eliminar
+    let productElement = $(this).closest('.productos_carrito-item'); // Referencia al contenedor del producto en el DOM
 
-        let formData = new FormData();
-        formData.append("id_tmp", productId);
+    let formData = new FormData();
+    formData.append("id_tmp", productId);
 
-        $.ajax({
-            url: 'https://new.imporsuitpro.com/Tienda/eliminar_carrito', // URL de la API para eliminar el producto del carrito
-            method: 'POST',
-            data: formData,
-            processData: false, // No procesar los datos
-            contentType: false, // No establecer ningún tipo de contenido
-            dataType: "json",
-            success: function(response) {
-                if (response.status == 200) {
-                    // Eliminar el producto del DOM tras una eliminación exitosa
-                    productElement.remove();
+    $.ajax({
+      url: 'https://new.imporsuitpro.com/Tienda/eliminar_carrito', // URL de la API para eliminar el producto del carrito
+      method: 'POST',
+      data: formData,
+      processData: false, // No procesar los datos
+      contentType: false, // No establecer ningún tipo de contenido
+      dataType: "json",
+      success: function(response) {
+        if (response.status == 200) {
+          // Eliminar el producto del DOM tras una eliminación exitosa
+          productElement.remove();
 
-                    // Recalcular el subtotal y total después de la eliminación
-                    recalcularTotales();
+          // Recalcular el subtotal y total después de la eliminación
+          recalcularTotales();
 
-                    // Recargar el carrito para actualizar el total
-                    $('#cartDropdown').trigger('click');
+          // Recargar el carrito para actualizar el total
+          $('#cartDropdown').trigger('click');
 
-                } else {
-                    alert('Error al eliminar el producto.');
-                }
-            },
-            error: function() {
-                alert('Error al eliminar el producto.');
-            }
-        });
+        } else {
+          alert('Error al eliminar el producto.');
+        }
+      },
+      error: function() {
+        alert('Error al eliminar el producto.');
+      }
     });
+  });
+
+  // Función para recalcular el subtotal y el total
+  function recalcularTotales() {
+    let subtotal = 0;
+
+    // Recorre todos los productos restantes y recalcula el subtotal
+    $('.productos_carrito-item').each(function() {
+      let priceText = $(this).find('.productos_carrito-precio span').text().replace('$', '');
+      let productPrice = parseFloat(priceText);
+      subtotal += productPrice;
+    });
+
+    // Actualizar los valores de subtotal y total en el modal
+    $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+    $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+  }
 
   $(document).on('click', '.cantidad_incremento', function() {
     const productId = $(this).data('product-id');
