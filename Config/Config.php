@@ -40,42 +40,11 @@ if ($mysqli->connect_errno) {
     echo "Error al conectarse con la base de datos";
     exit;
 }
-$matriz = [];
-
-$sql = "SELECT * FROM matriz where url_matriz = '$url_actual'";
-$result = $mysqli->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $matriz = $row;
-    }
-} else {
-    echo "0 results";
-}
 
 
-$id_matriz = $matriz['idmatriz'];
-$color_fondo = $matriz['color_fondo_login'];
-define("MATRIZ", $id_matriz);
-$url_matriz = $matriz['url_matriz'];
-if (ENVIRONMENT == "production") {
-    define("SERVERURL", $url_matriz);
-}
 
-//echo MATRIZ;
 
-$logo = $matriz['logo'];
-$marca = $matriz['marca'];
-$prefijo = $matriz['prefijo'];
 
-$color_letras = $matriz['color_letras'];
-$color_hover = $matriz['color_hover'];
-$color_letra_hover = $matriz['color_letra_hover'];
-$banner_inicio = $matriz['banner_inicio'];
-$dominio = $matriz['dominio'];
-$login_image = $matriz['login_image'];
-$color_boton_login  = $matriz['color_boton_login'];
-$color_hover_login = $matriz['color_hover_login'];
-$color_favorito = $matriz['color_favorito'];
 
 const LAAR_USER = "import.uio.api";
 const LAAR_PASSWORD = "Imp@rt*23";
@@ -97,28 +66,33 @@ $result = $mysqli->query($id_plataforma);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $id_plataforma = $row['id_plataforma'];
+        
+        $id_matriz = $row['id_matriz'];
     }
 } else {
     echo "0 resultss";
 }
+
+
+$url_matriz = "SELECT * FROM matriz where idmatriz = '$id_matriz'";
+$result = $mysqli->query($url_matriz);
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $url_matriz = $row['url_matriz'];
+         $marca = $row['marca'];
+        //echo $url_matriz;
+       // $id_matriz = $row['id_matriz'];
+    }
+} else {
+    echo "0 resultss";
+}
+
 $mysqli->close();
 
 
 
-///obtener matriz 
 
-define("COLOR_FONDO", $color_fondo);
-define("IMAGEN_LOGO", $logo);
-define("MARCA", $marca);
-define("PREFIJOS", $prefijo);
-
-define("COLOR_LETRAS", $color_letras);
-define("COLOR_HOVER", $color_hover);
-define("COLOR_LETRA_HOVER", $color_letra_hover);
-define("BANNER_INICIO", $banner_inicio);
-define("DOMINIO", $dominio);
-define("LOGIN_IMAGE", $login_image);
-define("COLOR_BOTON_LOGIN", $color_boton_login);
-define("COLOR_HOVER_LOGIN", $color_hover_login);
-define("COLOR_FAVORITO", $color_favorito);
 define("ID_PLATAFORMA", $id_plataforma);
+define("SERVERURL", $url_matriz);
+define("MARCA", $marca);
+
