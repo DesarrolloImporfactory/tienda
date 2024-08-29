@@ -212,17 +212,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="productos_carritoContainer">
-                    <!-- Aquí se llenará el contenido dinámico con AJAX -->
-                </div>
-                <div class="resumen_carrito mt-4">
-                    <div class="d-flex justify-content-between">
-                        <span>Subtotal</span>
-                        <span id="productos_carritoSubtotal">$0.00</span>
+                <div class="custom-card-body">
+                    <div id="productos_carritoContainer">
+                        <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <strong>Total</strong>
-                        <strong id="productos_carritoTotal">$0.00</strong>
+                    <div class="custom-card-footer">
+                        <div class="custom-summary">
+                            <div>Subtotal</div>
+                            <div><span id="productos_carritoSubtotal"></span></div>
+                        </div>
+                        <div class="custom-summary">
+                            <div>Envío</div>
+                            <div class="free-shipping">Gratis</div>
+                        </div>
+                        <div class="custom-total">
+                            <div>Total</div>
+                            <div class="total-price"><span id="productos_carritoTotal"></span></div>
+                        </div>
                     </div>
                 </div>
 
