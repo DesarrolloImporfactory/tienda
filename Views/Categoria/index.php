@@ -337,7 +337,7 @@
             const precioEspecial = parseFloat(producto.pvp_tienda);
             const precioNormal = parseFloat(producto.pref_tienda);
 
-            const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
+            const image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
             let texto_precioNormal = ``;
             if (precioNormal > 0) {
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
@@ -381,16 +381,21 @@
     }
 
     // Función para obtener URL de la imagen
-    function obtenerURLImagen(imagePath) {
+    function obtenerURLImagen(imagePath, serverURL) {
+        // Verificar si el imagePath no es null
         if (imagePath) {
+            // Verificar si el imagePath ya es una URL completa
             if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                // Si ya es una URL completa, retornar solo el imagePath
                 return imagePath;
             } else {
-                return `${SERVERURL}${imagePath}`;
+                // Si no es una URL completa, agregar el serverURL al inicio
+                return `${serverURL}${imagePath}`;
             }
         } else {
+            // Manejar el caso cuando imagePath es null
             console.error("imagePath es null o undefined");
-            return null;
+            return null; // o un valor por defecto si prefieres
         }
     }
 
