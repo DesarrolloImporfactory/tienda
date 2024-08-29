@@ -201,6 +201,7 @@
             const precioNormal = parseFloat(producto.pref_tienda);
 
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
+            console.log("SERVERURL: "+SERVERURL);
             let texto_precioNormal = precioNormal > 0 ? `<p class="custom-price discounted">$${precioNormal.toFixed(2)}</p>` : '';
             const productoHtml = `
                 <div class="col-md-4 mb-4">
