@@ -338,7 +338,6 @@
             const precioNormal = parseFloat(producto.pref_tienda);
 
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda);
-            console.log("SERVERURL: "+SERVERURL);
             let texto_precioNormal = ``;
             if (precioNormal > 0) {
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
