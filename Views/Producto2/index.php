@@ -293,6 +293,7 @@ $id_producto = $_GET['id'];
                     let totalPvp = 0;
                     let precio_total = 0;
                     let valor_combo = combo.valor;
+                    let estado_combo = combo.estado_combo;
 
                     $.ajax({
                       url: SERVERURL + "Tienda/obtener_detalle_combo_id",
@@ -321,7 +322,7 @@ $id_producto = $_GET['id'];
                     });
                     /* Fin detalle combo */
 
-                    if (combo.estado_combo == 1) {
+                    if (estado_combo == 1) {
                       ahorro = `<span class="custom-discount" id="ahorro_preview" style="display: none;">Ahorra ${valor_combo}%</span>`;
                     }
                     comboHTML += `
