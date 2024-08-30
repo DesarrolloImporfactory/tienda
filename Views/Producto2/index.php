@@ -282,7 +282,7 @@ $id_producto = $_GET['id'];
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
                 success: function(response) {
-                  let ahorro = "";
+                  let comboHTML = '';
 
                   response.forEach(function(combo) {
                     /* detalle combo */
@@ -303,7 +303,6 @@ $id_producto = $_GET['id'];
                       contentType: false, // No establecer ningún tipo de contenido
                       dataType: "json",
                       success: function(response2) {
-
                         // Iterar sobre cada elemento en la respuesta
                         response2.forEach(function(detalle_combo) {
                           // Sumar el pvp de cada elemento al acumulador
@@ -315,37 +314,41 @@ $id_producto = $_GET['id'];
                         } else if (estado_combo == 2) {
                           precio_total = totalPvp - valor_combo;
                         }
+
+                        // Ahora que precio_total y totalPvp han sido calculados, actualizamos el HTML
+                        let ahorro = "";
+                        if (estado_combo == 1) {
+                          ahorro = `<span class="custom-discount" id="ahorro_preview" style="display: none;">Ahorra ${valor_combo}%</span>`;
+                        }
+
+                        comboHTML += `
+                          <div class="custom-product">
+                              <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
+                              <div class="custom-product-info">
+                                <span id="nombre_combo_preview">${combo.nombre}</span>
+                                ${ahorro}
+                              </div>
+                              <div class="custom-product-price">
+                                <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
+                                <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
+                              </div>
+                          </div>`;
+
+                        // Actualizamos el contenedor con el contenido generado
+                        $('#combos_carritoContainer').html(comboHTML);
                       },
                       error: function(jqXHR, textStatus, errorThrown) {
                         alert(errorThrown);
                       },
                     });
                     /* Fin detalle combo */
-
-                    if (estado_combo == 1) {
-                      ahorro = `<span class="custom-discount" id="ahorro_preview" style="display: none;">Ahorra ${valor_combo}%</span>`;
-                    }
-                    comboHTML += `
-                        <div class="custom-product">
-                            <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
-                            <div class="custom-product-info">
-                              <span id="nombre_combo_preview">${combo.nombre}</span>
-                              ${ahorro}
-                            </div>
-                            <div class="custom-product-price">
-                              <span class="old-price" id="precio_normal_preview">$${totalPvp}</span>
-                              <span class="new-price" id="precio_especial_preview">$${precio_total}</span>
-                            </div>
-                        </div>`;
-
-                    $('#combos_carritoContainer').html(comboHTML);
-
                   });
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                   alert(errorThrown);
                 },
               });
+
 
             }
 
