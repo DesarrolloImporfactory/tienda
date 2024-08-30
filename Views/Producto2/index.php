@@ -287,7 +287,7 @@ $id_producto = $_GET['id'];
                   response.forEach(function(combo) {
                     /* detalle combo */
                     let formData_detalle = new FormData();
-                    formData_detalle.append("id_combo", combo.id_combo);
+                    formData_detalle.append("id_combo", combo.id);
 
                     // Inicializar el acumulador
                     let totalPvp = 0;
