@@ -558,16 +558,20 @@
     /* Fin boton de comprar */
 
     $(document).ready(function() {
-        $('#combos_carritoContainer').on('click', function() {
-            // Alternar la clase 'selected' al contenedor
-            $(this).toggleClass('selected');
+        // Escuchar clics en los combos
+        $('#combos_carritoContainer').on('click', '.selectable-combo', function() {
+            // Remover la clase 'selected' de todos los combos
+            $('.selectable-combo').removeClass('selected');
 
-            // Cambiar el valor del input hidden en función de si está seleccionado o no
-            if ($(this).hasClass('selected')) {
-                $('#combo_selected').val(1);
-            } else {
-                $('#combo_selected').val(0);
-            }
+            // Agregar la clase 'selected' al combo que se hizo clic
+            $(this).addClass('selected');
+
+            // Obtener el id_combo del atributo data-id-combo
+            let idCombo = $(this).data('id-combo');
+
+            // Actualizar los valores de los inputs hidden
+            $('#combo_selected').val(1); // Se seleccionó un combo
+            $('#combo_id').val(idCombo); // Asignar el id del combo seleccionado
         });
     });
 </script>
