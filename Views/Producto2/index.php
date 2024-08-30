@@ -294,6 +294,7 @@ $id_producto = $_GET['id'];
                     let precio_total = 0;
                     let valor_combo = combo.valor;
                     let estado_combo = combo.estado_combo;
+                    let ahorro = "";
 
                     $.ajax({
                       url: SERVERURL + "Tienda/obtener_detalle_combo_id",
@@ -311,15 +312,11 @@ $id_producto = $_GET['id'];
 
                         if (estado_combo == 1) {
                           precio_total = totalPvp * (1 - valor_combo / 100);
+                          ahorro = `<span class="custom-discount" id="ahorro_preview" style="display: none;">Ahorra ${valor_combo}%</span>`;
                         } else if (estado_combo == 2) {
                           precio_total = totalPvp - valor_combo;
                         }
 
-                        // Ahora que precio_total y totalPvp han sido calculados, actualizamos el HTML
-                        let ahorro = "";
-                        if (estado_combo == 1) {
-                          ahorro = `<span class="custom-discount" id="ahorro_preview" style="display: none;">Ahorra ${valor_combo}%</span>`;
-                        }
 
                         comboHTML += `
                           <div class="custom-product">
