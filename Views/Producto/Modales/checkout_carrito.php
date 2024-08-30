@@ -201,6 +201,7 @@
     }
 
     .selectable-combo {
+        border-radius: 0.6rem;
         border: 2px solid grey;
         /* Borde inicial */
         padding: 10px;
