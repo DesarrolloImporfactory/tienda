@@ -345,8 +345,6 @@ $id_producto = $_GET['id'];
                   alert(errorThrown);
                 },
               });
-
-
             }
 
             const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);

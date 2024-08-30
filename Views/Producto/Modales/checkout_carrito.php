@@ -199,6 +199,22 @@
             transform: scale(1);
         }
     }
+
+    .selectable-combo {
+        border: 2px solid grey;
+        /* Borde inicial */
+        padding: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        /* Transición para suavizar el cambio */
+    }
+
+    .selectable-combo.selected {
+        border-color: blue;
+        /* Cambiar el borde a azul cuando esté seleccionado */
+        background-color: #e0f7ff;
+        /* Fondo azul claro cuando esté seleccionado */
+    }
 </style>
 
 
@@ -212,7 +228,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="combos_carritoContainer">
+                <div id="combos_carritoContainer" class="selectable-combo">
                     <!-- Aquí se llenará el contenido dinámico con AJAX -->
                 </div>
                 <div class="custom-card-body">
@@ -238,6 +254,7 @@
                 <form class="form-horizontal" id="formulario">
                     <input type="hidden" id="id_productoTmp_carrito" name="id_productoTmp_carrito">
                     <input type="hidden" id="total_carrito" name="total_carrito">
+                    <input type="hidden" id="combo_selected" name="combo_selected" value="0">
 
                     <div id="gracias" class="modal-content">
                         <div id="previewContainer" class="p-3">
@@ -537,4 +554,18 @@
         });
     }
     /* Fin boton de comprar */
+
+    $(document).ready(function() {
+        $('#combos_carritoContainer').on('click', function() {
+            // Alternar la clase 'selected' al contenedor
+            $(this).toggleClass('selected');
+
+            // Cambiar el valor del input hidden en función de si está seleccionado o no
+            if ($(this).hasClass('selected')) {
+                $('#combo_selected').val(1);
+            } else {
+                $('#combo_selected').val(0);
+            }
+        });
+    });
 </script>
