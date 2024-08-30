@@ -301,10 +301,10 @@ $id_producto = $_GET['id'];
                       processData: false, // No procesar los datos
                       contentType: false, // No establecer ningún tipo de contenido
                       dataType: "json",
-                      success: function(response) {
+                      success: function(response2) {
 
                         // Iterar sobre cada elemento en la respuesta
-                        response.forEach(function(detalle_combo) {
+                        response2.forEach(function(detalle_combo) {
                           // Sumar el pvp de cada elemento al acumulador
                           totalPvp += parseFloat(detalle_combo.pvp); // Asegúrate de convertir a número
                         });
