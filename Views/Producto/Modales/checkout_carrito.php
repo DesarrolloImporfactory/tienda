@@ -213,6 +213,9 @@
             </div>
             <div class="modal-body">
                 <div class="custom-card-body">
+                <div id="combos_carritoContainer">
+                        <!-- Aquí se llenará el contenido dinámico con AJAX -->
+                    </div>
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>

@@ -267,9 +267,87 @@ $id_producto = $_GET['id'];
         dataType: "json",
         success: function(data) {
           let cartHTML = '';
+          let comboHTML = '';
           let subtotal = 0;
 
           data.forEach(function(product) {
+            if (data.length === 1) {
+              let formData_combo = new FormData();
+              formData_combo.append("id_producto", product.id_producto);
+              $.ajax({
+                url: SERVERURL + "Tienda/obtener_combo_id",
+                type: "POST",
+                data: formData_combo,
+                processData: false, // No procesar los datos
+                contentType: false, // No establecer ningún tipo de contenido
+                dataType: "json",
+                success: function(response) {
+                  let ahorro = "";
+
+                  response.forEach(function(combo) {
+                    /* detalle combo */
+                    let formData_detalle = new FormData();
+                    formData_detalle.append("id_combo", combo.id_combo);
+
+                    // Inicializar el acumulador
+                    let totalPvp = 0;
+                    let precio_total = 0;
+                    let valor_combo = combo.valor;
+
+                    $.ajax({
+                      url: SERVERURL + "Productos/obtener_detalle_combo_id",
+                      type: "POST",
+                      data: formData_detalle,
+                      processData: false, // No procesar los datos
+                      contentType: false, // No establecer ningún tipo de contenido
+                      dataType: "json",
+                      success: function(response) {
+
+                        // Iterar sobre cada elemento en la respuesta
+                        response.forEach(function(detalle_combo) {
+                          // Sumar el pvp de cada elemento al acumulador
+                          totalPvp += parseFloat(detalle_combo.pvp); // Asegúrate de convertir a número
+                        });
+
+                        if (estado_combo == 1) {
+                          precio_total = totalPvp * (1 - valor_combo / 100);
+                        } else if (estado_combo == 2) {
+                          precio_total = totalPvp - valor_combo;
+                        }
+                      },
+                      error: function(jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                      },
+                    });
+                    /* Fin detalle combo */
+
+                    if (combo.estado_combo == 1) {
+                      ahorro = `<span class="custom-discount" id="ahorro_preview" style="display: none;">Ahorra ${valor_combo}%</span>`;
+                    }
+                    comboHTML += `
+                        <div class="custom-product">
+                            <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
+                            <div class="custom-product-info">
+                              <span id="nombre_combo_preview">${combo.nombre}</span>
+                              ${ahorro}
+                            </div>
+                            <div class="custom-product-price">
+                              <span class="old-price" id="precio_normal_preview">$${totalPvp}</span>
+                              <span class="new-price" id="precio_especial_preview">$${precio_total}</span>
+                            </div>
+                        </div>`;
+
+                    $('#combos_carritoContainer').html(comboHTML);
+
+                  });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  alert(errorThrown);
+                },
+              });
+
+            }
+
             const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
             subtotal += productPrice;
 
@@ -307,7 +385,7 @@ $id_producto = $_GET['id'];
       $("#checkout_carritoModal").modal("show");
     } catch (error) {
       console.error("Error:", error);
-      
+
     }
   }
 
