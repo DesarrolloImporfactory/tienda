@@ -295,7 +295,7 @@ $id_producto = $_GET['id'];
                     let valor_combo = combo.valor;
 
                     $.ajax({
-                      url: SERVERURL + "Productos/obtener_detalle_combo_id",
+                      url: SERVERURL + "Tienda/obtener_detalle_combo_id",
                       type: "POST",
                       data: formData_detalle,
                       processData: false, // No procesar los datos
