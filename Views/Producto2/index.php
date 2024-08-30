@@ -307,7 +307,7 @@ $id_producto = $_GET['id'];
                         // Iterar sobre cada elemento en la respuesta
                         response2.forEach(function(detalle_combo) {
                           // Sumar el pvp de cada elemento al acumulador
-                          totalPvp += parseFloat(detalle_combo.pvp); // Asegúrate de convertir a número
+                          totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
                         });
 
                         if (estado_combo == 1) {
