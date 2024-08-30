@@ -212,10 +212,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="custom-card-body">
                 <div id="combos_carritoContainer">
-                        <!-- Aquí se llenará el contenido dinámico con AJAX -->
-                    </div>
+                    <!-- Aquí se llenará el contenido dinámico con AJAX -->
+                </div>
+                <div class="custom-card-body">
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>
