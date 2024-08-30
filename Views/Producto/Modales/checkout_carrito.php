@@ -505,6 +505,8 @@
         session_id = "<?php echo session_id(); ?>";
 
         let formData = new FormData();
+        formData.append("combo_selected", $('#combo_selected').val());
+        formData.append("combo_id", $('#combo_id').val());
         formData.append("id_plataforma", ID_PLATAFORMA);
         formData.append("id_producto", $('#id_productoTmp_carrito').val());
         formData.append("total", $('#total_carrito').val());
