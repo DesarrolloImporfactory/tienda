@@ -319,7 +319,7 @@ $id_producto = $_GET['id'];
                         
 
                         comboHTML += `
-                          <div class="custom-product">
+                          <div class="custom-product selectable-combo">
                               <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
                               <div class="custom-product-info">
                                 <span id="nombre_combo_preview">${combo.nombre}</span>

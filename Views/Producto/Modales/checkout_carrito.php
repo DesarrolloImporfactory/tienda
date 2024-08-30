@@ -229,7 +229,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div id="combos_carritoContainer" class="selectable-combo">
+                <div id="combos_carritoContainer">
                     <!-- Aquí se llenará el contenido dinámico con AJAX -->
                 </div>
                 <div class="custom-card-body">
@@ -256,6 +256,7 @@
                     <input type="hidden" id="id_productoTmp_carrito" name="id_productoTmp_carrito">
                     <input type="hidden" id="total_carrito" name="total_carrito">
                     <input type="hidden" id="combo_selected" name="combo_selected" value="0">
+                    <input type="hidden" id="combo_id" name="combo_id">
 
                     <div id="gracias" class="modal-content">
                         <div id="previewContainer" class="p-3">
