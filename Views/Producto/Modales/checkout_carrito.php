@@ -560,18 +560,26 @@
     $(document).ready(function() {
         // Escuchar clics en los combos
         $('#combos_carritoContainer').on('click', '.selectable-combo', function() {
-            // Remover la clase 'selected' de todos los combos
-            $('.selectable-combo').removeClass('selected');
+            // Verificar si el combo ya está seleccionado
+            if ($(this).hasClass('selected')) {
+                // Si está seleccionado, deseleccionarlo
+                $(this).removeClass('selected');
+                $('#combo_selected').val(0); // Marcar que no hay combo seleccionado
+                $('#combo_id').val(''); // Limpiar el id del combo
+            } else {
+                // Si no está seleccionado, deseleccionar otros combos
+                $('.selectable-combo').removeClass('selected');
 
-            // Agregar la clase 'selected' al combo que se hizo clic
-            $(this).addClass('selected');
+                // Seleccionar este combo
+                $(this).addClass('selected');
 
-            // Obtener el id_combo del atributo data-id-combo
-            let idCombo = $(this).data('id-combo');
+                // Obtener el id_combo del atributo data-id-combo
+                let idCombo = $(this).data('id-combo');
 
-            // Actualizar los valores de los inputs hidden
-            $('#combo_selected').val(1); // Se seleccionó un combo
-            $('#combo_id').val(idCombo); // Asignar el id del combo seleccionado
+                // Actualizar los valores de los inputs hidden
+                $('#combo_selected').val(1); // Marcar que hay un combo seleccionado
+                $('#combo_id').val(idCombo); // Asignar el id del combo seleccionado
+            }
         });
     });
 </script>
