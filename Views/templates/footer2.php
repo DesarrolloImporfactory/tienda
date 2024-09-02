@@ -332,6 +332,36 @@
         }
     }
 
+    function llenarCantidad_carrito() {
+        session_id = "<?php echo session_id(); ?>";
+        let formData = new FormData();
+        formData.append("session_id", session_id);
+
+        // Cargar los productos del carrito vía AJAX
+        $.ajax({
+            url: SERVERURL + 'Tienda/buscar_carrito',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(data) {
+                let cantidad = 0;
+
+                data.forEach((datos, index) => {
+                    cantidad += 1;
+                });
+
+                $("#cantidad_carrito").text(cantidad);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en la solicitud AJAX:", error);
+                alert("Hubo un problema al obtener la información de la categoría");
+            },
+        });
+
+    }
+
     // Función para realizar la compra
     $(document).on('click', '#realizarCompra_carritoBtn', function() {
 
@@ -473,6 +503,8 @@
 
         // Llamar a cargarCiudades cuando se seleccione una provincia
         $("#provinica").on("change", cargarCiudades);
+
+        llenarCantidad_carrito();
     });
 
     // Función para cargar provincias

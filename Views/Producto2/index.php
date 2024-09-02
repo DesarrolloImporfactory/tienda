@@ -418,6 +418,9 @@ $id_producto = $_GET['id'];
             );
             reject("Error al agregar al carrito"); // Rechaza en caso de error lógico
           } else if (response.status == 200) {
+            
+            llenarCantidad_carrito();
+
             toastr.success("PRODUCTO AGREGADO CORRECTAMENTE", "NOTIFICACIÓN", {
               positionClass: "toast-bottom-center",
             });

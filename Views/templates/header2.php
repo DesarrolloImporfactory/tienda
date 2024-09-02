@@ -203,7 +203,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
-                                <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;">0</span>
+                                <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA;?> !important;" id="cantidad_carrito">0</span>
                             </a>
                         </li>
                     </ul>
