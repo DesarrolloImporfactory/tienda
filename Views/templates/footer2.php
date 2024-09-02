@@ -379,9 +379,86 @@
             dataType: "json",
             success: function(data) {
                 let cartHTML = '';
+                let comboHTML = '';
                 let subtotal = 0;
 
                 data.forEach(function(product) {
+                    if (data.length === 1) {
+                        let formData_combo = new FormData();
+                        formData_combo.append("id_producto", product.id_producto);
+                        $.ajax({
+                            url: SERVERURL + "Tienda/obtener_combo_id",
+                            type: "POST",
+                            data: formData_combo,
+                            processData: false, // No procesar los datos
+                            contentType: false, // No establecer ningún tipo de contenido
+                            dataType: "json",
+                            success: function(response) {
+                                let comboHTML = '';
+
+                                response.forEach(function(combo) {
+                                    /* detalle combo */
+                                    let formData_detalle = new FormData();
+                                    formData_detalle.append("id_combo", combo.id);
+
+                                    // Inicializar el acumulador
+                                    let totalPvp = 0;
+                                    let precio_total = 0;
+                                    let valor_combo = combo.valor;
+                                    let estado_combo = combo.estado_combo;
+                                    let ahorro = "";
+
+                                    $.ajax({
+                                        url: SERVERURL + "Tienda/obtener_detalle_combo_id",
+                                        type: "POST",
+                                        data: formData_detalle,
+                                        processData: false, // No procesar los datos
+                                        contentType: false, // No establecer ningún tipo de contenido
+                                        dataType: "json",
+                                        success: function(response2) {
+                                            // Iterar sobre cada elemento en la respuesta
+                                            response2.forEach(function(detalle_combo) {
+                                                // Sumar el pvp de cada elemento al acumulador
+                                                totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
+                                            });
+
+                                            if (estado_combo == 1) {
+                                                precio_total = totalPvp * (1 - valor_combo / 100);
+                                                ahorro = `<span class="custom-discount" id="ahorro_preview">Ahorra ${valor_combo}%</span>`;
+                                            } else if (estado_combo == 2) {
+                                                precio_total = totalPvp - valor_combo;
+                                            }
+
+
+                                            comboHTML += `
+                            <div class="custom-product selectable-combo" data-id-combo="${combo.id}">
+                              <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
+                              <div class="custom-product-info">
+                                <span id="nombre_combo_preview">${combo.nombre}</span>
+                                ${ahorro}
+                              </div>
+                              <div class="custom-product-price">
+                                <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
+                                <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
+                              </div>
+                            </div>`;
+
+                                            // Actualizamos el contenedor con el contenido generado
+                                            $('#combos_carritoContainer').html(comboHTML);
+                                        },
+                                        error: function(jqXHR, textStatus, errorThrown) {
+                                            alert(errorThrown);
+                                        },
+                                    });
+                                    /* Fin detalle combo */
+                                });
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                alert(errorThrown);
+                            },
+                        });
+                    }
+
                     const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
                     subtotal += productPrice;
 
