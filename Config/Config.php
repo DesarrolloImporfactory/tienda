@@ -60,7 +60,7 @@ if (str_contains($hostNuevo, "comprapor.com")) $hostNuevo = str_replace("comprap
 
 $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
-
+if(str_contains($hostAntiguo, "comprapor.com")) $url_actual = str_replace("imporsuitpro.com", "comprapor.com", $url_actual);
 $id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual' or dominio = '$hostAntiguo'";
 $result = $mysqli->query($id_plataforma);
 if ($result->num_rows > 0) {
