@@ -675,23 +675,35 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        /* Cambia la fuente */
+        font-weight: 400;
+        /* Fuente estándar */
     }
 
     .productos_carrito-item img {
         width: 50px;
         height: 50px;
         object-fit: cover;
+        border-radius: 5px;
+        /* Para agregar un toque más moderno */
     }
 
     .productos_carrito-item .productos_carrito-info {
         flex: 1;
         margin-left: 15px;
+        font-size: 14px;
+        /* Ajuste del tamaño de fuente */
+        font-weight: 600;
+        /* Aumentar el grosor de la fuente */
     }
 
     .productos_carrito-item .productos_carrito-info a {
         font-size: 14px;
         color: #007bff;
         text-decoration: none;
+        font-weight: bold;
+        /* Aumentar el grosor de los enlaces */
     }
 
     .productos_carrito-item .productos_carrito-info a:hover {
@@ -700,13 +712,22 @@
 
     .productos_carrito-item .productos_carrito-precio {
         margin-right: 10px;
+        font-size: 14px;
+        /* Ajuste del tamaño de la fuente */
+        font-weight: 700;
+        /* Aumentar el grosor de la fuente para el precio */
+        color: #000;
+        /* Color negro más fuerte para el precio */
     }
 
     .resumen_carrito {
         border-top: 1px solid #ddd;
         padding-top: 15px;
         font-size: 16px;
+        font-weight: bold;
+        /* Texto más grueso para el resumen del carrito */
     }
+
 
     /* fin carrito checkout */
 
