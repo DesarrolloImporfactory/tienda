@@ -592,7 +592,7 @@
                 formData_combo.append("id_combo", idCombo);
 
                 $.ajax({
-                    url: SERVERURL + "Tienda/obtener_combo_id",
+                    url: SERVERURL + "Tienda/obtener_combo_idCombo",
                     type: "POST",
                     data: formData_combo,
                     processData: false, // No procesar los datos
