@@ -245,6 +245,10 @@
                             <div>Envío</div>
                             <!-- <div class="free-shipping">Gratis</div> -->
                         </div>
+                        <div class="custom-summary" id="descuento_carrito" style="display: none;">
+                            <div>Descuento</div>
+                            <div><span id="productos_carritoSubtotal"></span></div>
+                        </div>
                         <div class="custom-total">
                             <div>Total</div>
                             <div class="total-price"><span id="productos_carritoTotal"></span></div>
@@ -568,6 +572,7 @@
                 $(this).removeClass('selected');
                 $('#combo_selected').val(0); // Marcar que no hay combo seleccionado
                 $('#combo_id').val(''); // Limpiar el id del combo
+                $("#descuento_Carrito").hide();
             } else {
                 // Si no está seleccionado, deseleccionar otros combos
                 $('.selectable-combo').removeClass('selected');
@@ -581,6 +586,76 @@
                 // Actualizar los valores de los inputs hidden
                 $('#combo_selected').val(1); // Marcar que hay un combo seleccionado
                 $('#combo_id').val(idCombo); // Asignar el id del combo seleccionado
+
+                /* combo */
+                let formData_combo = new FormData();
+                formData_combo.append("id_combo", idCombo);
+
+                $.ajax({
+                    url: SERVERURL + "Tienda/obtener_combo_id",
+                    type: "POST",
+                    data: formData_combo,
+                    processData: false, // No procesar los datos
+                    contentType: false, // No establecer ningún tipo de contenido
+                    dataType: "json",
+                    success: function(response) {
+
+                        /* detalle combo */
+                        let formData_detalle = new FormData();
+                        formData_detalle.append("id_combo", idCombo);
+
+                        // Inicializar el acumulador
+                        let totalPvp = 0;
+                        let precio_total = 0;
+                        let valor_combo = response[0].valor;
+                        let estado_combo = response[0].estado_combo;
+                        let ahorro = "";
+
+                        $.ajax({
+                            url: SERVERURL + "Tienda/obtener_detalle_combo_id",
+                            type: "POST",
+                            data: formData_detalle,
+                            processData: false, // No procesar los datos
+                            contentType: false, // No establecer ningún tipo de contenido
+                            dataType: "json",
+                            success: function(response2) {
+                                // Iterar sobre cada elemento en la respuesta
+                                response2.forEach(function(detalle_combo) {
+                                    // Sumar el pvp de cada elemento al acumulador
+                                    totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
+                                });
+
+                                if (estado_combo == 1) {
+                                    precio_total = totalPvp * (1 - valor_combo / 100);
+                                    ahorro = `<span class="custom-discount" id="ahorro_preview">${valor_combo}% OFF</span>`;
+                                } else if (estado_combo == 2) {
+                                    precio_total = totalPvp - valor_combo;
+                                }
+
+                                $('#productos_carritoSubtotal').text(`$${totalPvp.toFixed(2)}`);
+                                $('#productos_carritoTotal').text(`$${precio_total.toFixed(2)}`);
+
+                                if (estado_combo == 1) {
+                                    $('#productos_carritoDescuento').text(`-${valor_combo.toFixed(2)}%`);
+
+                                } else if (estado_combo == 2) {
+                                    $('#productos_carritoDescuento').text(`-$${valor_combo.toFixed(2)}`);
+                                }
+
+                                $("#descuento_carrito").show();
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                alert(errorThrown);
+                            },
+                        });
+                        /* Fin detalle combo */
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    },
+                });
+
+                /* Fin combo */
             }
         });
     });
