@@ -92,7 +92,9 @@
     }
 
     .input-group-text {
-        background: transparent;
+        /* background: transparent; */
+        background: #d1d1d1;
+        color: black !important;
         padding-right: 0;
         /* Remover el espacio a la derecha del ícono si es necesario */
     }
@@ -295,7 +297,7 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
+                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user' style="color: black; margin-right: 10px;"></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
                             </div>
@@ -305,7 +307,7 @@
                             <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call'></i></span>
+                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call' style="color: black; margin-right: 10px;"></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview" name="txt_telefonoPreview" placeholder="Teléfono">
                                 </div>
                             </div>
@@ -576,9 +578,9 @@
                 $('#combo_id').val(''); // Limpiar el id del combo
                 $("#descuento_carrito").hide();
 
-                $('#productos_carritoSubtotal').text("$"+$('#total_principal').val());
-                $('#productos_carritoTotal').text("$"+$('#total_principal').val());
-                
+                $('#productos_carritoSubtotal').text("$" + $('#total_principal').val());
+                $('#productos_carritoTotal').text("$" + $('#total_principal').val());
+
             } else {
                 // Si no está seleccionado, deseleccionar otros combos
                 $('.selectable-combo').removeClass('selected');
