@@ -574,7 +574,7 @@
                 $(this).removeClass('selected');
                 $('#combo_selected').val(0); // Marcar que no hay combo seleccionado
                 $('#combo_id').val(''); // Limpiar el id del combo
-                $("#descuento_Carrito").hide();
+                $("#descuento_carrito").hide();
 
                 $('#productos_carritoSubtotal').text("$"+$('#total_principal').val());
                 $('#productos_carritoTotal').text("$"+$('#total_principal').val());
