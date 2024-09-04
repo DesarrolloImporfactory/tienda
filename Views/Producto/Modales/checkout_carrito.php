@@ -642,10 +642,10 @@
                                 $('#productos_carritoTotal').text(`$${precio_total.toFixed(2)}`);
 
                                 if (estado_combo == 1) {
-                                    $('#productos_carritoDescuento').text(`-${valor_combo.toFixed(2)}%`);
+                                    $('#productos_carritoDescuento').text(`-${valor_combo}%`);
 
                                 } else if (estado_combo == 2) {
-                                    $('#productos_carritoDescuento').text(`-$${valor_combo.toFixed(2)}`);
+                                    $('#productos_carritoDescuento').text(`-$${valor_combo}`);
                                 }
 
                                 $("#descuento_carrito").show();
