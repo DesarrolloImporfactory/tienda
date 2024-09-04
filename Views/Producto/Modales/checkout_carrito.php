@@ -575,6 +575,10 @@
                 $('#combo_selected').val(0); // Marcar que no hay combo seleccionado
                 $('#combo_id').val(''); // Limpiar el id del combo
                 $("#descuento_Carrito").hide();
+
+                $('#productos_carritoSubtotal').text($('#total_principal').val());
+                $('#productos_carritoTotal').text($('#total_principal').val());
+                
             } else {
                 // Si no está seleccionado, deseleccionar otros combos
                 $('.selectable-combo').removeClass('selected');
