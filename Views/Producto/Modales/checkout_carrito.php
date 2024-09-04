@@ -247,7 +247,7 @@
                         </div>
                         <div class="custom-summary" id="descuento_carrito" style="display: none;">
                             <div>Descuento</div>
-                            <div><span id="productos_carritoDescuento"></span></div>
+                            <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span></div>
                         </div>
                         <div class="custom-total">
                             <div>Total</div>
