@@ -431,17 +431,17 @@
 
 
                                             comboHTML += `
-                            <div class="custom-product selectable-combo" data-id-combo="${combo.id}">
-                              <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
-                              <div class="custom-product-info">
-                                <span id="nombre_combo_preview">${combo.nombre}</span>
-                                ${ahorro}
-                              </div>
-                              <div class="custom-product-price">
-                                <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
-                                <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
-                              </div>
-                            </div>`;
+                                                <div class="custom-product selectable-combo" data-id-combo="${combo.id}">
+                                                <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
+                                                <div class="custom-product-info">
+                                                    <span id="nombre_combo_preview">${combo.nombre}</span>
+                                                    ${ahorro}
+                                                </div>
+                                                <div class="custom-product-price">
+                                                    <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
+                                                    <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
+                                                </div>
+                                                </div>`;
 
                                             // Actualizamos el contenedor con el contenido generado
                                             $('#combos_carritoContainer').html(comboHTML);

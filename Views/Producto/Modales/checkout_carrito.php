@@ -243,7 +243,7 @@
                         </div>
                         <div class="custom-summary">
                             <div>Envío</div>
-                            <div class="free-shipping">Gratis</div>
+                            <!-- <div class="free-shipping">Gratis</div> -->
                         </div>
                         <div class="custom-total">
                             <div>Total</div>
