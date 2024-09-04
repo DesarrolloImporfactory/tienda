@@ -828,7 +828,7 @@
     .custom-summary {
         display: flex;
         justify-content: space-between;
-        font-size: 16px;
+        font-size: 18px;
         margin-bottom: 5px;
     }
 
