@@ -766,7 +766,7 @@
 
     .custom-discount {
         display: inline-block;
-        background-color: #ff4c4c;
+        background-color: #fe0000;
         /* Color rojo para el descuento */
         color: white;
         padding: 5px 10px;
@@ -824,7 +824,7 @@
     }
 
     .total-price {
-        color: #ff4c4c;
+        color: #007bff;
         /* Color rojo para el precio final */
         font-size: 1.2rem;
     }
