@@ -171,7 +171,7 @@ $primera_seccion = obtenerPrimeraSeccion();
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
-            <a class="navbar-brand d-lg-none ms-auto" href="<?php echo $primera_seccion; ?>">
+            <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
                 <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
