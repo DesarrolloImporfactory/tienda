@@ -711,12 +711,15 @@
     /* fin carrito checkout */
 
     .custom-card {
-        border: 1px solid #ddd;
+        border: 2px solid #ddd;
         border-radius: 8px;
         padding: 15px;
         max-width: 350px;
         margin: auto;
-        font-family: Arial, sans-serif;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        /* Cambia la fuente */
+        font-weight: 400;
+        /* Fuente estándar */
     }
 
     .custom-card-header {
@@ -727,7 +730,8 @@
     }
 
     .custom-card-body {
-        background-color: #f9f9f9;
+        background-color: #f4f6f9;
+        /* Ajuste de color de fondo más claro */
         padding: 10px;
         border-radius: 8px;
     }
@@ -736,7 +740,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 10px;
+        /* Aumenta el espaciado interno */
         margin-bottom: 10px;
+        background-color: white;
+        /* Fondo blanco para las tarjetas */
+        border: 2px solid #f0f0f0;
+        /* Un borde más grueso y más claro */
+        border-radius: 8px;
     }
 
     .custom-product-image {
@@ -749,20 +760,27 @@
     .custom-product-info {
         flex-grow: 1;
         margin-left: 10px;
+        font-weight: 600;
+        /* Aumenta el grosor de la fuente */
     }
 
     .custom-discount {
         display: inline-block;
-        background-color: #007bff;
+        background-color: #ff4c4c;
+        /* Color rojo para el descuento */
         color: white;
         padding: 5px 10px;
         border-radius: 5px;
         font-size: 0.9rem;
+        font-weight: bold;
+        /* Aumenta el grosor */
         margin-top: 5px;
     }
 
     .custom-product-price {
         text-align: right;
+        font-size: 1rem;
+        /* Ajuste del tamaño de fuente */
     }
 
     .old-price {
@@ -773,8 +791,10 @@
 
     .new-price {
         font-weight: bold;
-        font-size: 1.2rem;
-        color: black;
+        font-size: 1.5rem;
+        /* Ajuste de tamaño para el precio nuevo */
+        color: #000;
+        /* Color negro más fuerte */
     }
 
     .custom-card-footer {
@@ -804,7 +824,8 @@
     }
 
     .total-price {
-        color: #007bff;
+        color: #ff4c4c;
+        /* Color rojo para el precio final */
         font-size: 1.2rem;
     }
 </style>

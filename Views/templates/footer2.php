@@ -424,7 +424,7 @@
 
                                             if (estado_combo == 1) {
                                                 precio_total = totalPvp * (1 - valor_combo / 100);
-                                                ahorro = `<span class="custom-discount" id="ahorro_preview">Ahorra ${valor_combo}%</span>`;
+                                                ahorro = `<span class="custom-discount" id="ahorro_preview">${valor_combo}% OFF</span>`;
                                             } else if (estado_combo == 2) {
                                                 precio_total = totalPvp - valor_combo;
                                             }
