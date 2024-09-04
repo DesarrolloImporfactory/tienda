@@ -576,8 +576,8 @@
                 $('#combo_id').val(''); // Limpiar el id del combo
                 $("#descuento_Carrito").hide();
 
-                $('#productos_carritoSubtotal').text($('#total_principal').val());
-                $('#productos_carritoTotal').text($('#total_principal').val());
+                $('#productos_carritoSubtotal').text("$"+$('#total_principal').val());
+                $('#productos_carritoTotal').text("$"+$('#total_principal').val());
                 
             } else {
                 // Si no está seleccionado, deseleccionar otros combos
