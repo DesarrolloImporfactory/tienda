@@ -262,6 +262,8 @@
                     <input type="hidden" id="combo_selected" name="combo_selected" value="0">
                     <input type="hidden" id="combo_id" name="combo_id">
 
+                    <input type="hidden" id="total_principal" name="total_principal">
+
                     <div id="gracias" class="modal-content">
                         <div id="previewContainer" class="p-3">
                             <div id="resultados" class="modal-body" style="padding: 5px">

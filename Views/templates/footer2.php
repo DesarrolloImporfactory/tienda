@@ -484,6 +484,8 @@
                 $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
                 $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
 
+                $('#total_principal').text(`$${subtotal.toFixed(2)}`);
+
 
                 $("#id_productoTmp_carrito").val(data[0].id_producto);
                 $("#total_carrito").val(subtotal.toFixed(2));
