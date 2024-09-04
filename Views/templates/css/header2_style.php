@@ -738,14 +738,14 @@
     .productos_carrito-item .productos_carrito-info {
         flex: 1;
         margin-left: 15px;
-        font-size: 14px;
+        font-size: 18px;
         /* Ajuste del tamaño de fuente */
         font-weight: 600;
         /* Aumentar el grosor de la fuente */
     }
 
     .productos_carrito-item .productos_carrito-info a {
-        font-size: 14px;
+        font-size: 18px;
         color: #007bff;
         text-decoration: none;
         font-weight: bold;
@@ -758,7 +758,7 @@
 
     .productos_carrito-item .productos_carrito-precio {
         margin-right: 10px;
-        font-size: 14px;
+        font-size: 18px;
         /* Ajuste del tamaño de la fuente */
         font-weight: 700;
         /* Aumentar el grosor de la fuente para el precio */
@@ -874,7 +874,7 @@
     .custom-summary {
         display: flex;
         justify-content: space-between;
-        font-size: 0.9rem;
+        font-size: 18px;
         margin-bottom: 5px;
     }
 
