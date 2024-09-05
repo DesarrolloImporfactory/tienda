@@ -110,8 +110,9 @@
     .bx {
         font-size: 1.5rem;
         /* Tamaño del icono */
-        color: #757575;
+        color: black;
         /* Color del icono */
+        margin-right: 10px;
     }
 
     .icon-btn.active i {
@@ -297,7 +298,7 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user' style="color: black; margin-right: 10px;" ></i></span>
+                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user' style="" ></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
                             </div>
