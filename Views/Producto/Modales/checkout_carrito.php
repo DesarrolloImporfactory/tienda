@@ -317,7 +317,10 @@
                             <!-- Calle Principal -->
                             <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal</label>
-                                <input type="text" class="form-control" id="txt_calle_principalPreview" name="txt_calle_principalPreview" placeholder="">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="icono_calle_principalPreview"><i class='bx bx-map'></i></span>
+                                    <input type="text" class="form-control" id="txt_calle_principalPreview" name="txt_calle_principalPreview" placeholder="">
+                                </div>
                             </div>
                             <!-- Fin Calle Principal -->
 
