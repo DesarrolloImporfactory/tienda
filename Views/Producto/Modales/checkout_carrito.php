@@ -128,6 +128,8 @@
         border-radius: 0.8rem;
         padding-right: 25%;
         padding-left: 25%;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 17px;
     }
 
     /* animaciones del boton comprar */
