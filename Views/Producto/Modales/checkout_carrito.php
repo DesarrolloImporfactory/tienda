@@ -125,9 +125,9 @@
     }
 
     .btn_comprar {
-        /* border-radius: 0.5rem; */
-        padding-right: 10px;
-        padding-left: 10px;
+        border-radius: 0.8rem;
+        padding-right: 25%;
+        padding-left: 25%;
     }
 
     /* animaciones del boton comprar */
