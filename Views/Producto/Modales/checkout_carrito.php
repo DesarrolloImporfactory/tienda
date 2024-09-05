@@ -327,14 +327,20 @@
                             <!-- Calle Secundaria -->
                             <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria</label>
-                                <input type="text" class="form-control" id="txt_calle_secundariaPreview" name="txt_calle_secundariaPreview" placeholder="">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="icono_calle_secundariaPreview"><i class='bx bx-map'></i></span>
+                                    <input type="text" class="form-control" id="txt_calle_secundariaPreview" name="txt_calle_secundariaPreview" placeholder="">
+                                </div>
                             </div>
                             <!-- Fin Calle Secundaria -->
 
                             <!-- Barrio o Referencia -->
                             <div class="form-group mb-3" id="barrio_referenciaPreview">
                                 <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o Referencia</label>
-                                <input type="text" class="form-control" id="txt_barrio_referenciaPreview" name="txt_barrio_referenciaPreview" placeholder="">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i class='bx bx-map'></i></span>
+                                    <input type="text" class="form-control" id="txt_barrio_referenciaPreview" name="txt_barrio_referenciaPreview" placeholder="">
+                                </div>
                             </div>
                             <!-- Fin Barrio o Referencia -->
 
@@ -361,7 +367,10 @@
                             <!-- Comentario -->
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
-                                <input type="text" class="form-control" id="txt_comentarioPreview" name="txt_comentarioPreview" placeholder="">
+                                <div class="input-group">
+                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i class='bx bx-message-dots'></i></span>
+                                    <input type="text" class="form-control" id="txt_comentarioPreview" name="txt_comentarioPreview" placeholder="">
+                                </div>
                             </div>
                             <!-- Fin Comentario -->
                         </div>
