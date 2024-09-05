@@ -379,7 +379,7 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark btn_compra" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
+                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>
