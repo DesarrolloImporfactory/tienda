@@ -125,8 +125,9 @@
     }
 
     .btn_comprar {
-        border-radius: 0.5rem;
-        padding: 10px;
+        /* border-radius: 0.5rem; */
+        padding-right: 10px;
+        padding-left: 10px;
     }
 
     /* animaciones del boton comprar */
@@ -378,7 +379,7 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark ms-5 me-5" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
+                                <button class="btn btn-dark btn_compra" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>
