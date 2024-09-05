@@ -298,7 +298,7 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user' style="" ></i></span>
+                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
                             </div>
@@ -308,7 +308,7 @@
                             <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call' style="color: black; margin-right: 10px;"></i></span>
+                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview" name="txt_telefonoPreview" placeholder="Teléfono">
                                 </div>
                             </div>
