@@ -231,7 +231,7 @@ $id_producto = $_GET['id'];
             agregar_carrito(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
           });
 
-          cargarLanding(producto.id_producto);
+          cargarLanding(producto.id_producto_tienda);
         } else {
           console.error('No se encontraron productos.');
         }
