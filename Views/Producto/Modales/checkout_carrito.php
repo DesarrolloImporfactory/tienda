@@ -378,12 +378,12 @@
                             <!-- Fin Comentario -->
                         </div>
 
-                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff;">
+                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;">
                             <div class="d-flex justify-content-start align-items-center">
                                 <input type="checkbox" id="envioPrioritario" class="me-2" onchange="toggleEnvioPrioritario(this)">
                                 <label for="envioPrioritario" class="m-0">
-                                    <strong>Agrega <span style="font-weight:bold;">ENVÍO PRIORITARIO + GARANTÍA</span></strong> por solo
-                                    <strong>$4.99</strong>
+                                    <strong><span style="font-weight:bold;" id="nombre_oferta">ENVÍO PRIORITARIO + GARANTÍA</span></strong> por solo
+                                    <strong><span id="precio_oferta"></span></strong>
                                 </label>
                             </div>
                         </div>

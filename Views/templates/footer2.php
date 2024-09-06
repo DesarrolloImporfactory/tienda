@@ -480,6 +480,26 @@
                     </div>`;
                 });
 
+                /* oferta */
+                let formData = new FormData();
+                formData.append("id_plataforma", ID_PLATAFORMA);
+                $.ajax({
+                    url: SERVERURL + "Tienda/obtener_oferta",
+                    type: "POST",
+                    data: formData,
+                    processData: false, // No procesar los datos
+                    contentType: false, // No establecer ningún tipo de contenido
+                    dataType: "json",
+                    success: function(response) {
+
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    },
+                });
+
+                /* Fin oferta */
+
                 $('#productos_carritoContainer').html(cartHTML);
                 $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
                 $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
