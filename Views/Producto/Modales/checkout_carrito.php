@@ -378,6 +378,16 @@
                             <!-- Fin Comentario -->
                         </div>
 
+                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff;">
+                            <div class="d-flex justify-content-start align-items-center">
+                                <input type="checkbox" id="envioPrioritario" class="me-2" onchange="toggleEnvioPrioritario(this)">
+                                <label for="envioPrioritario" class="m-0">
+                                    <strong>Agrega <span style="font-weight:bold;">ENVÍO PRIORITARIO + GARANTÍA</span></strong> por solo
+                                    <strong>$4.99</strong>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
@@ -387,16 +397,6 @@
                         </div>
                     </div>
                 </form>
-                <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff;">
-                    <div class="d-flex justify-content-start align-items-center">
-                        <input type="checkbox" id="envioPrioritario" class="me-2" onchange="toggleEnvioPrioritario(this)">
-                        <label for="envioPrioritario" class="m-0">
-                            <strong>Agrega <span style="font-weight:bold;">ENVÍO PRIORITARIO + GARANTÍA</span></strong> por solo
-                            <strong>$4.99</strong>
-                        </label>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
