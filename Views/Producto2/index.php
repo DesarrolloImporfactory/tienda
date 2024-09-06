@@ -81,11 +81,11 @@ $id_producto = $_GET['id'];
       if (xhr.status === 200) {
         try {
           var response = JSON.parse(xhr.responseText);
-          console.log("Respuesta de la API:", response);
+          /* console.log("Respuesta de la API:", response); */
 
           // Decodificar entidades HTML
           var decodedHTML = decodeEntities(response.data);
-          console.log("HTML decodificado:", decodedHTML);
+          /* console.log("HTML decodificado:", decodedHTML); */
 
           // Crear un documento temporal para manipular el HTML decodificado
           var parser = new DOMParser();
@@ -95,7 +95,7 @@ $id_producto = $_GET['id'];
           var body = doc.body;
           if (body) {
             var bodyContent = body.innerHTML;
-            console.log("Contenido del body:", bodyContent);
+            /* console.log("Contenido del body:", bodyContent); */
 
             // Insertar el contenido del body en el div con id="landing"
             document.getElementById("landing").innerHTML = bodyContent;
