@@ -485,7 +485,7 @@
                 formData_oferta.append("id_plataforma", ID_PLATAFORMA);
                 $.ajax({
                     url: SERVERURL + "Tienda/obtener_oferta",
-                    type: "formData_oferta",
+                    type: "POST",
                     data: formData,
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
