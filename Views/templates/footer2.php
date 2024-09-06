@@ -483,6 +483,7 @@
                 /* oferta */
                 let formData_oferta = new FormData();
                 formData_oferta.append("id_plataforma", ID_PLATAFORMA);
+
                 $.ajax({
                     url: SERVERURL + "Tienda/obtener_oferta",
                     type: "POST",
@@ -491,11 +492,19 @@
                     contentType: false, // No establecer ningún tipo de contenido
                     dataType: "json",
                     success: function(oferta) {
-                        $('#nombre_oferta').text(oferta.nombre_producto_tienda);
-                        $('#precio_oferta').text(oferta.pvp_tienda);
+                        // Verifica si la oferta existe y si el array tiene al menos un elemento
+                        if (oferta && oferta.length > 0) {
+                            $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
+                            $('#precio_oferta').text(oferta[0].pvp_tienda);
+                            $('#id_producto_oferta').val(oferta.id_producto_tienda);
+
+                            $("#seccion_oferta").show();
+                        } else {
+                            $("#seccion_oferta").hide(); // Si no hay oferta, ocultar la sección
+                        }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
-                        alert(errorThrown);
+                        alert(errorThrown); // Manejo de errores
                     },
                 });
 
