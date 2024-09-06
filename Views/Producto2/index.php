@@ -374,7 +374,7 @@ $id_producto = $_GET['id'];
           $.ajax({
             url: SERVERURL + "Tienda/obtener_oferta",
             type: "POST",
-            data: formData,
+            data: formData_oferta,
             processData: false, // No procesar los datos
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
