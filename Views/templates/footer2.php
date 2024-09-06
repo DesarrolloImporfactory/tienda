@@ -490,8 +490,9 @@
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
                     dataType: "json",
-                    success: function(response) {
-
+                    success: function(oferta) {
+                        $('#nombre_oferta').text(oferta.nombre_producto_tienda);
+                        $('#precio_oferta').text(oferta.pvp_tienda);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert(errorThrown);
