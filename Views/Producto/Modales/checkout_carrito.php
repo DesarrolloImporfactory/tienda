@@ -378,7 +378,7 @@
                             <!-- Fin Comentario -->
                         </div>
 
-                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;">
+                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;" id="seccion_oferta">
                             <div class="d-flex justify-content-start align-items-center">
                                 <input type="checkbox" id="envioPrioritario" class="me-2" onchange="toggleEnvioPrioritario(this)">
                                 <label for="envioPrioritario" class="m-0">

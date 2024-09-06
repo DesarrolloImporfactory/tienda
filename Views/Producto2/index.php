@@ -379,8 +379,14 @@ $id_producto = $_GET['id'];
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
             success: function(oferta) {
-              $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
-              $('#precio_oferta').text(oferta[0].pvp_tienda);
+              if (oferta) {
+                $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
+                $('#precio_oferta').text(oferta[0].pvp_tienda);
+
+                $("#seccion_oferta").show();
+              } else {
+                $("#seccion_oferta").hide();
+              }
             },
             error: function(jqXHR, textStatus, errorThrown) {
               alert(errorThrown);
