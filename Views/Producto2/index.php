@@ -379,8 +379,8 @@ $id_producto = $_GET['id'];
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
             success: function(oferta) {
-              $('#nombre_oferta').text(oferta.nombre_producto_tienda);
-              $('#precio_oferta').text(oferta.pvp_tienda);
+              $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
+              $('#precio_oferta').text(oferta[0].pvp_tienda);
             },
             error: function(jqXHR, textStatus, errorThrown) {
               alert(errorThrown);
