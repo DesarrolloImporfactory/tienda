@@ -480,26 +480,6 @@
                     </div>`;
                 });
 
-                /* oferta */
-                let formData_oferta = new FormData();
-                formData_oferta.append("id_plataforma", ID_PLATAFORMA);
-                $.ajax({
-                    url: SERVERURL + "Tienda/obtener_oferta",
-                    type: "formData_oferta",
-                    data: formData,
-                    processData: false, // No procesar los datos
-                    contentType: false, // No establecer ningún tipo de contenido
-                    dataType: "json",
-                    success: function(response) {
-
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert(errorThrown);
-                    },
-                });
-
-                /* Fin oferta */
-
                 $('#productos_carritoContainer').html(cartHTML);
                 $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
                 $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
@@ -513,6 +493,26 @@
                 alert(errorThrown);
             }
         });
+
+        /* oferta */
+        let formData_oferta = new FormData();
+        formData_oferta.append("id_plataforma", ID_PLATAFORMA);
+        $.ajax({
+            url: SERVERURL + "Tienda/obtener_oferta",
+            type: "formData_oferta",
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            },
+        });
+
+        /* Fin oferta */
 
         // Mostrar el modal del carrito
         $("#checkout_carritoModal").modal("show");
