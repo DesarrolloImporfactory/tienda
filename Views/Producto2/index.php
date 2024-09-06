@@ -368,6 +368,26 @@ $id_producto = $_GET['id'];
                         </div>`;
           });
 
+          /* oferta */
+          let formData_oferta = new FormData();
+          formData_oferta.append("id_plataforma", ID_PLATAFORMA);
+          $.ajax({
+            url: SERVERURL + "Tienda/obtener_oferta",
+            type: "formData_oferta",
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert(errorThrown);
+            },
+          });
+
+          /* Fin oferta */
+
           $('#productos_carritoContainer').html(cartHTML);
           $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
           $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
@@ -420,7 +440,7 @@ $id_producto = $_GET['id'];
             );
             reject("Error al agregar al carrito"); // Rechaza en caso de error lógico
           } else if (response.status == 200) {
-            
+
             llenarCantidad_carrito();
 
             toastr.success("PRODUCTO AGREGADO CORRECTAMENTE", "NOTIFICACIÓN", {
