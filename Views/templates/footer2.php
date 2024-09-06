@@ -481,11 +481,11 @@
                 });
 
                 /* oferta */
-                let formData = new FormData();
-                formData.append("id_plataforma", ID_PLATAFORMA);
+                let formData_oferta = new FormData();
+                formData_oferta.append("id_plataforma", ID_PLATAFORMA);
                 $.ajax({
                     url: SERVERURL + "Tienda/obtener_oferta",
-                    type: "POST",
+                    type: "formData_oferta",
                     data: formData,
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
