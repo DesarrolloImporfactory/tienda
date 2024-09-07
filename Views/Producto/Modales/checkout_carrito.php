@@ -380,9 +380,10 @@
 
                         <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;" id="seccion_oferta">
                             <div class="d-flex justify-content-start align-items-center">
-                                <input type="checkbox" id="envioPrioritario" class="me-2" onchange="toggleEnvioPrioritario(this)">
+                                <input type="checkbox" id="Seleccion_oferta" class="me-2" onchange="toggleSeleccion_oferta(this)">
                                 <input type="hidden" id="id_producto_oferta" name="id_producto_oferta">
-                                <label for="envioPrioritario" class="m-0">
+                                <input type="hidden" id="   " name="oferta_selected">
+                                <label for="Seleccion_oferta" class="m-0">
                                     <strong><span style="font-weight:bold;" id="nombre_oferta"></span></strong> por solo
                                     <strong><span id="precio_oferta"></span></strong>
                                 </label>
@@ -694,4 +695,20 @@
             }
         });
     });
+
+    function toggleSeleccion_oferta(checkbox) {
+        // Obtener el input hidden con el ID 'oferta_selected'
+        const ofertaSelectedInput = document.getElementById('oferta_selected');
+
+        if (checkbox.checked) {
+            // Si el checkbox está seleccionado, asignar el valor "1"
+            console.log("Envío prioritario activado. Se añadirá $4.99.");
+            ofertaSelectedInput.value = 1; // Asignar 1 a oferta_selected
+
+        } else {
+            // Si el checkbox está deseleccionado, asignar el valor "0"
+            console.log("Envío prioritario desactivado. Se restará $4.99.");
+            ofertaSelectedInput.value = 0; // Asignar 0 a oferta_selected
+        }
+    }
 </script>
