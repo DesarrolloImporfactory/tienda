@@ -384,7 +384,7 @@ $id_producto = $_GET['id'];
               if (oferta && oferta.length > 0) {
                 $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
                 $('#precio_oferta').text(oferta[0].pvp_tienda);
-                $('#id_producto_oferta').val(oferta.id_producto_tienda);
+                $('#id_producto_oferta').val(oferta[0].id_producto_tienda);
 
                 $("#seccion_oferta").show();
               } else {
