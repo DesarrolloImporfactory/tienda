@@ -382,7 +382,7 @@
                             <div class="d-flex justify-content-start align-items-center">
                                 <input type="checkbox" id="Seleccion_oferta" class="me-2" onchange="toggleSeleccion_oferta(this)">
                                 <input type="hidden" id="id_producto_oferta" name="id_producto_oferta">
-                                <input type="hidden" id="   " name="oferta_selected">
+                                <input type="hidden" id="oferta_selected" name="oferta_selected" value="0">
                                 <label for="Seleccion_oferta" class="m-0">
                                     <strong><span style="font-weight:bold;" id="nombre_oferta"></span></strong> por solo
                                     <strong><span id="precio_oferta"></span></strong>
@@ -697,18 +697,13 @@
     });
 
     function toggleSeleccion_oferta(checkbox) {
-        // Obtener el input hidden con el ID 'oferta_selected'
-        const ofertaSelectedInput = document.getElementById('oferta_selected');
 
         if (checkbox.checked) {
             // Si el checkbox está seleccionado, asignar el valor "1"
-            console.log("Envío prioritario activado. Se añadirá $4.99.");
-            ofertaSelectedInput.value = 1; // Asignar 1 a oferta_selected
-
+            $("#oferta_selected").val(1);
         } else {
             // Si el checkbox está deseleccionado, asignar el valor "0"
-            console.log("Envío prioritario desactivado. Se restará $4.99.");
-            ofertaSelectedInput.value = 0; // Asignar 0 a oferta_selected
+            $("#oferta_selected").val(0);
         }
     }
 </script>
