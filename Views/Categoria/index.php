@@ -284,6 +284,8 @@
                 productosMostrados = 0; // Reinicia el contador
                 document.getElementById('productosContainer').innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos productos
                 mostrarProductos(); // Llama a la función para mostrar productos
+
+                $('#leftColumnModal').modal('hide');
             })
             .catch(error => console.error('Error:', error));
     }
@@ -317,6 +319,8 @@
                 productosMostrados = 0; // Reinicia el contador
                 document.getElementById('productosContainer').innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos productos
                 mostrarProductos(); // Llama a la función para mostrar productos
+
+                $('#leftColumnModal').modal('hide');
             })
             .catch(error => console.error('Error:', error));
     }
