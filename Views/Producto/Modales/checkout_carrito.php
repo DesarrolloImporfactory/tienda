@@ -554,6 +554,8 @@
         formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
         formData.append("referencia", $('#txt_barrio_referenciaPreview').val());
         formData.append("observacion", $('#txt_comentarioPreview').val());
+        formData.append("oferta_selected", $('#oferta_selected').val());
+        formData.append("id_producto_oferta", $('#id_producto_oferta').val());
         formData.append("tmp", session_id);
 
         $.ajax({
