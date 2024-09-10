@@ -427,6 +427,36 @@ $id_producto = $_GET['id'];
             </div>`;
           });
 
+          /* oferta */
+          let formData_oferta = new FormData();
+          formData_oferta.append("id_plataforma", ID_PLATAFORMA);
+
+          $.ajax({
+            url: SERVERURL + "Tienda/obtener_oferta",
+            type: "POST",
+            data: formData_oferta,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(oferta) {
+              // Verifica si la oferta existe y si el array tiene al menos un elemento
+              if (oferta && oferta.length > 0) {
+                $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
+                $('#precio_oferta').text(oferta[0].pvp_tienda);
+                $('#id_producto_oferta').val(oferta[0].id_producto_tienda);
+
+                $("#seccion_oferta").show();
+              } else {
+                $("#seccion_oferta").hide(); // Si no hay oferta, ocultar la sección
+              }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              alert(errorThrown); // Manejo de errores
+            },
+          });
+
+          /* Fin oferta */
+
           $('#productos_carritoContainer').html(cartHTML);
           $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
           $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
