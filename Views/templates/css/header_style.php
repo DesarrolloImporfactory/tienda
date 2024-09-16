@@ -1,5 +1,25 @@
 <style>
     /* header */
+
+    /* Cambiar el color del ícono de la hamburguesa */
+    .navbar-toggler-icon {
+        background-color: transparent;
+        /* Hacer que el fondo sea transparente */
+        border: none;
+        /* Eliminar el borde */
+        background-image: none;
+        /* Eliminar la imagen de fondo predeterminada */
+    }
+
+    .navbar-toggler-icon::before {
+        content: '\2630';
+        /* Ícono de hamburguesa */
+        font-size: 24px;
+        /* Tamaño del ícono */
+        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        /* Cambiar a tu color preferido */
+    }
+
     .navbar-custom {
         background-color: <?php echo COLOR_BACKGROUND; ?>;
         /* Ajusta el color según sea necesario */
