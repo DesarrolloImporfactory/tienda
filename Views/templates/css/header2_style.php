@@ -1,16 +1,5 @@
 <style>
     /* Navbar Styles */
-
-    /* Cambia el color del ícono de la hamburguesa */
-    .custom-toggler .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='<?php echo COLOR_TEXTO_CABECERA; ?>' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    }
-
-    /* Cambia el color de fondo del botón si es necesario */
-    .custom-toggler {
-        border-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
-    }
-
     .navbar-nav .nav-link {
         color: <?php echo COLOR_TEXTO_CABECERA; ?>;
     }

@@ -190,10 +190,9 @@ $primera_seccion = obtenerPrimeraSeccion();
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
             <div class="container-fluid">
                 <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA; ?>;"><?php echo NOMBRE_TIENDA; ?></a>
-                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <form class="d-flex me-auto">
                         <input class="form-control me-2" id="buscar_input" type="search" placeholder="Buscar..." aria-label="Search">
@@ -204,7 +203,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <li class="nav-item">
                             <a class="nav-link" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
-                                <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;" id="cantidad_carrito">0</span>
+                                <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA;?> !important;" id="cantidad_carrito">0</span>
                             </a>
                         </li>
                     </ul>
@@ -218,7 +217,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         <div id="cartContent" class="cart-sidebar-content">
                             <p>No hay productos en el carrito.</p>
                         </div>
-
+                        
                     </div>
 
                     <!-- Fondo oscuro cuando el panel está abierto -->
