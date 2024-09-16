@@ -177,7 +177,7 @@
                         var iconoItem = `
                         <div class="d-flex flex-row" style="padding: 10px;">
                             <a href="${enlace_icon}" target="_blank" style="text-decoration: none; color: <?php echo COLOR_TEXTO_CABECERA; ?>;">
-                                <i class="fa ${icon_text} fa-2x menu-icon"></i>
+                                <i class="fa ${icon_text} fa-2x menu-icon" style="color: ${icono.color_icono} !important"></i>
                                 <span>${texto}</span>
                             </a>
                         </div>
