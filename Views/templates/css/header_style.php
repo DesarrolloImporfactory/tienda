@@ -422,7 +422,6 @@
     }
 
     .card-body_icon i {
-        color: <?php echo COLOR_BOTONES; ?> !important;
         margin-bottom: 15px !important;
     }
 

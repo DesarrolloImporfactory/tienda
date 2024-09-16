@@ -363,7 +363,7 @@
                                     <div class="card card_icon text-center">
                                         <div class="card-body card-body_icon d-flex flex-row">
                                             <div style="margin-right: 20px;">
-                                                <i class="fa ${icon_text} fa-2x"></i>
+                                                <i class="fa ${icon_text} fa-2x" style="color: ${icono.color_icono} !important"></i>
                                             </div>
                                             <div>
                                                 <h5 class="card-title card-title_icon">${texto}</h5>
