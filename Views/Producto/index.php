@@ -32,7 +32,7 @@ $id_producto = $_GET['id'];
       </div>
 
       <div class="right-column">
-        <div class="caja px-5" style="width:100%;">
+        <div class="caja px-3" style="width:100%;">
           <div class="product-title" id="nombre-producto"></div>
           <br>
           <div class="precios_producto">
