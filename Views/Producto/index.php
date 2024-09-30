@@ -7,6 +7,32 @@
 $id_producto = $_GET['id'];
 
 ?>
+<style>
+/* Estilo general del botón */
+.jump-button {
+  height: 50px;
+  font-size: 26px;
+  width: 100%;
+  border-radius: 15px;
+  position: relative; /* Mantiene el estilo normal en pantallas más grandes */
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .jump-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Se asegura de que el botón cubra el ancho completo */
+    z-index: 1000; /* Se asegura de que el botón esté encima de otros elementos */
+    margin: 0; /* Elimina cualquier margen */
+  }
+
+  .jump-button span {
+    margin-top: 0; /* Ajusta el margen interno si es necesario */
+  }
+}
+</style>
 
 <main style="background-color: #f9f9f9;">
   <div class="container flex-column" style="align-items: center !important;">
