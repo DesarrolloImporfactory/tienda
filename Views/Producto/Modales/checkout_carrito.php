@@ -562,6 +562,22 @@
         });
     }
 
+    function formatearTelefono(telefono) {
+        // Si el número empieza con "0", reemplaza el "0" por "593"
+        if (telefono.startsWith('0')) {
+            return '593' + telefono.slice(1);
+        }
+        // Si el número empieza con "+593", quita el "+"
+        if (telefono.startsWith('+593')) {
+            return telefono.slice(1);
+        }
+        // Si el número ya comienza con "593", lo deja igual
+        if (telefono.startsWith('593')) {
+            return telefono;
+        }
+        // Si no cumple con ninguno de los casos anteriores, retorna el número tal cual
+        return telefono;
+    }
 
     /* boton de comprar */
     async function realizar_pedido() {
@@ -576,7 +592,7 @@
             formData.append("id_producto", $('#id_productoTmp_carrito').val());
             formData.append("total", $('#total_carrito').val());
             formData.append("nombre", $('#txt_nombresApellidosPreview').val());
-            formData.append("telefono", $('#txt_telefonoPreview').val());
+            formData.append("telefono", formatearTelefono($('#txt_telefonoPreview').val()));
             formData.append("provincia", $('#provinica').val());
             formData.append("ciudad", $('#ciudad_entrega').val());
             formData.append("calle_principal", $('#txt_calle_principalPreview').val());
