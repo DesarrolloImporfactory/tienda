@@ -536,8 +536,33 @@
         console.error('Error loading JSON:', textStatus, errorThrown);
     }
 
+    function consultar_configuracion() {
+        let formData = new FormData();
+        formData.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + "pedidos/obtener_configuracion",
+            type: "POST",
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function(response) {
+                id_configuracion = response[0].id;
+
+                return id_configuracion;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            },
+        });
+
+    }
+
     /* boton de comprar */
     function realizar_pedido() {
+        id_configuracion = consultar_configuracion();
+
         session_id = "<?php echo session_id(); ?>";
 
         let formData = new FormData();
@@ -557,6 +582,7 @@
         formData.append("oferta_selected", $('#oferta_selected').val());
         formData.append("id_producto_oferta", $('#id_producto_oferta').val());
         formData.append("tmp", session_id);
+        formData.append("id_configuracion", id_configuracion);
 
         $.ajax({
             url: SERVERURL + 'Tienda/guardar_pedido_carrito',
