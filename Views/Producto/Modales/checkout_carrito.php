@@ -537,89 +537,93 @@
     }
 
     function consultar_configuracion() {
-        let formData = new FormData();
-        formData.append("id_plataforma", ID_PLATAFORMA);
+        return new Promise((resolve, reject) => {
+            let formData = new FormData();
+            formData.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + "Tienda/obtener_configuracion",
-            type: "POST",
-            data: formData,
-            processData: false, // No procesar los datos
-            contentType: false, // No establecer ningún tipo de contenido
-            dataType: "json",
-            success: function(response) {
-                let id_configuracion = response[0].id;
-
-                return id_configuracion;
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-            },
+            $.ajax({
+                url: SERVERURL + "Tienda/obtener_configuracion",
+                type: "POST",
+                data: formData,
+                processData: false, // No procesar los datos
+                contentType: false, // No establecer ningún tipo de contenido
+                dataType: "json",
+                success: function(response) {
+                    if (response && response[0].id) {
+                        resolve(response[0].id); // Resuelve la promesa con el id_configuracion
+                    } else {
+                        reject("No se encontró la configuración");
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    reject(errorThrown); // Rechaza la promesa con el error
+                }
+            });
         });
-
     }
 
+
     /* boton de comprar */
-    function realizar_pedido() {
-        id_configuracion = consultar_configuracion();
+    async function realizar_pedido() {
+        try {
+            const id_configuracion = await consultar_configuracion(); // Espera a que consultar_configuracion se resuelva
+            const session_id = "<?php echo session_id(); ?>";
 
-        session_id = "<?php echo session_id(); ?>";
+            let formData = new FormData();
+            formData.append("combo_selected", $('#combo_selected').val());
+            formData.append("combo_id", $('#combo_id').val());
+            formData.append("id_plataforma", ID_PLATAFORMA);
+            formData.append("id_producto", $('#id_productoTmp_carrito').val());
+            formData.append("total", $('#total_carrito').val());
+            formData.append("nombre", $('#txt_nombresApellidosPreview').val());
+            formData.append("telefono", $('#txt_telefonoPreview').val());
+            formData.append("provincia", $('#provinica').val());
+            formData.append("ciudad", $('#ciudad_entrega').val());
+            formData.append("calle_principal", $('#txt_calle_principalPreview').val());
+            formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
+            formData.append("referencia", $('#txt_barrio_referenciaPreview').val());
+            formData.append("observacion", $('#txt_comentarioPreview').val());
+            formData.append("oferta_selected", $('#oferta_selected').val());
+            formData.append("id_producto_oferta", $('#id_producto_oferta').val());
+            formData.append("tmp", session_id);
+            formData.append("id_configuracion", id_configuracion); // Usa el id_configuracion obtenido
 
-        let formData = new FormData();
-        formData.append("combo_selected", $('#combo_selected').val());
-        formData.append("combo_id", $('#combo_id').val());
-        formData.append("id_plataforma", ID_PLATAFORMA);
-        formData.append("id_producto", $('#id_productoTmp_carrito').val());
-        formData.append("total", $('#total_carrito').val());
-        formData.append("nombre", $('#txt_nombresApellidosPreview').val());
-        formData.append("telefono", $('#txt_telefonoPreview').val());
-        formData.append("provincia", $('#provinica').val());
-        formData.append("ciudad", $('#ciudad_entrega').val());
-        formData.append("calle_principal", $('#txt_calle_principalPreview').val());
-        formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
-        formData.append("referencia", $('#txt_barrio_referenciaPreview').val());
-        formData.append("observacion", $('#txt_comentarioPreview').val());
-        formData.append("oferta_selected", $('#oferta_selected').val());
-        formData.append("id_producto_oferta", $('#id_producto_oferta').val());
-        formData.append("tmp", session_id);
-        formData.append("id_configuracion", id_configuracion);
+            $.ajax({
+                url: SERVERURL + 'Tienda/guardar_pedido_carrito',
+                method: 'POST',
+                data: formData,
+                processData: false, // No procesar los datos
+                contentType: false, // No establecer ningún tipo de contenido
+                success: function(response) {
+                    response = JSON.parse(response);
+                    if (response.status == 400) {
+                        toastr.error(
+                            "NO SE REALIZO LA PETICION  CORRECTAMENTE",
+                            "NOTIFICACIÓN", {
+                                positionClass: "toast-bottom-center"
+                            }
+                        );
+                    } else if (response.status == 200) {
+                        toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
+                            positionClass: "toast-bottom-center",
+                        });
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/guardar_pedido_carrito',
-            method: 'POST',
-            data: formData,
-            processData: false, // No procesar los datos
-            contentType: false, // No establecer ningún tipo de contenido
-            success: function(response) {
-                response = JSON.parse(response);
-                if (response.status == 400) {
-                    toastr.error(
-                        "NO SE REALIZO LA PETICION  CORRECTAMENTE",
-                        "NOTIFICACIÓN", {
-                            positionClass: "toast-bottom-center"
-                        }
-                    );
-                } else if (response.status == 200) {
-                    toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
-                        positionClass: "toast-bottom-center",
-                    });
+                        cerrarCarrito(); // Cerrar carrito
+                        limpiar_carrito(); // Limpiar carrito
+                        $('#cartDropdown').trigger('click'); // Recargar el carrito
 
-                    /* cerrar carrito */
-                    cerrarCarrito();
-
-                    limpiar_carrito();
-                    // Recargar el carrito para actualizar el total
-                    $('#cartDropdown').trigger('click');
-
-                    /* cerrar modal */
-                    $('#checkout_carritoModal').modal('hide');
+                        $('#checkout_carritoModal').modal('hide'); // Cerrar modal
+                    }
+                },
+                error: function(error) {
+                    console.error('Error al solicitar el pago:', error);
+                    alert('Hubo un error al solicitar el pago.');
                 }
-            },
-            error: function(error) {
-                console.error('Error al solicitar el pago:', error);
-                alert('Hubo un error al solicitar el pago.');
-            }
-        });
+            });
+        } catch (error) {
+            console.error("Error al obtener la configuración o realizar el pedido: ", error);
+            alert("Error al obtener la configuración o realizar el pedido");
+        }
     }
     /* Fin boton de comprar */
 
