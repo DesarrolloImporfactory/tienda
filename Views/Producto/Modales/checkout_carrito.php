@@ -548,7 +548,7 @@
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
             success: function(response) {
-                id_configuracion = response[0].id;
+                let id_configuracion = response[0].id;
 
                 return id_configuracion;
             },
