@@ -541,7 +541,7 @@
         formData.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + "pedidos/obtener_configuracion",
+            url: SERVERURL + "Tienda/obtener_configuracion",
             type: "POST",
             data: formData,
             processData: false, // No procesar los datos
