@@ -28,6 +28,8 @@ class Home extends Controller
         } else if ($plantilla == 2) {
             // Renderizar la vista normalmente si hay productos
             $this->views->render($this, "index2");
+        } else if ($plantilla == 3){
+            $this->views->render($this, "index3");
         }
     }
 }
