@@ -612,14 +612,14 @@
                     // Iteramos sobre los iconos obtenidos de la API
                     iconos.forEach(function(icono) {
                         var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-                        var icon_text = icono.icon_text || 'bi-question-circle'; // Icono de Bootstrap o un ícono predeterminado
+                        var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
                         var color_icono = icono.color_icono || '#000000'; // Color del ícono
 
-                        // Generar el HTML de la tarjeta con el diseño proporcionado
+                        // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
                         var tarjetaItem = `
                     <div class="card w-100 shadow border">
                         <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="bi ${icon_text} display-1" style="color: ${color_icono};"></i>
+                            <i class="fas ${icon_text} display-1" style="color: ${color_icono};"></i>
                             <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
                         </div>
                     </div>
