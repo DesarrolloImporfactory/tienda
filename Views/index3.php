@@ -189,29 +189,13 @@
 
             </header>
 
+            <!-- Seccion iconos -->
             <section class="seccion1">
-                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3">
-                    <div class="card w-100 shadow border">
-                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="bi bi-clock display-1 texto-secondary"></i>
-                            <p class="texto-secondary fw-bold mb-0 fs-5">This is some text within.</p>
-                        </div>
-                    </div>
-                    <div class="card w-100 shadow border">
-                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="bi bi-piggy-bank display-1 texto-secondary"></i>
-                            <p class="texto-secondary fw-bold mb-0 fs-5">This is some text within.</p>
-                        </div>
-                    </div>
-                    <div class="card w-100 shadow border">
-                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="bi bi-people display-1 texto-secondary"></i>
-                            <p class="texto-secondary fw-bold mb-0 fs-5">This is some text within.</p>
-                        </div>
-                    </div>
-
+                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3" id="tarjetas-container">
+                    <!-- Las tarjetas se cargarán dinámicamente aquí -->
                 </div>
             </section>
+            <!-- Fin seccion iconos -->
 
             <section id="quienes" class="seccion2 mb-0">
                 <div class="container px-4 d-flex flex-column text-white py-5 text-center">
@@ -577,6 +561,61 @@
     <script src="Views/templates/js/index_header3.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
+    <script>
+        /* seccion iconos */
+        // ID de la plataforma o parámetro necesario
+        let formDataIconos = new FormData();
+        formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/iconostienda', // URL de la API
+            method: 'POST',
+            data: formDataIconos,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                try {
+                    var iconos = JSON.parse(response); // Parsear la respuesta de la API
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
+
+                if (iconos && Array.isArray(iconos)) {
+                    var $tarjetasContainer = $("#tarjetas-container");
+
+                    // Limpiamos el contenedor de tarjetas por si acaso
+                    $tarjetasContainer.empty();
+
+                    // Iteramos sobre los iconos obtenidos de la API
+                    iconos.forEach(function(icono) {
+                        var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
+                        var icon_text = icono.icon_text || 'bi-question-circle'; // Icono de Bootstrap o un ícono predeterminado
+                        var color_icono = icono.color_icono || '#000000'; // Color del ícono
+
+                        // Generar el HTML de la tarjeta con el diseño proporcionado
+                        var tarjetaItem = `
+                    <div class="card w-100 shadow border">
+                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
+                            <i class="bi ${icon_text} display-1" style="color: ${color_icono};"></i>
+                            <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
+                        </div>
+                    </div>
+                `;
+
+                        // Agregar la tarjeta al contenedor
+                        $tarjetasContainer.append(tarjetaItem);
+                    });
+                } else {
+                    console.error('La respuesta no contiene iconos válidos.');
+                }
+            },
+            error: function(error) {
+                console.log('Error al cargar los iconos:', error);
+            }
+        });
+        /* fin seccion iconos */
+    </script>
 </body>
 
 </html>
