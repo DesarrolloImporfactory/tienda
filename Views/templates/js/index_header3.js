@@ -1,4 +1,4 @@
-var typed = new Typed('#element', {
+/* var typed = new Typed('#element', {
     strings: ['Marco', 'Erika', 'Tefy', 'Edu'],
     typeSpeed: 50,      // Velocidad de escritura
     backSpeed: 25,      // Velocidad de borrado
@@ -8,4 +8,4 @@ var typed = new Typed('#element', {
     showCursor: true,   // Muestra el cursor
     cursorChar: '|',    // Personaliza el carácter del cursor
     smartBackspace: true // Borrado inteligente (solo lo que no coincida con la siguiente frase)
-});
+}); */
