@@ -1,3 +1,4 @@
+<?php include 'Views/templates/header3.php'; ?>
 <!doctype html>
 <html lang="en">
 
@@ -572,8 +573,8 @@
         crossorigin="anonymous"></script>
 
 
-    <script src="main.js"></script>
-    <script src="index.js"></script>
+    <script src="Views/templates/js/main_header3.js"></script>
+    <script src="Views/templates/js/index_header3.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 </body>
