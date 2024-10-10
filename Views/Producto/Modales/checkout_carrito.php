@@ -563,6 +563,10 @@
     }
 
     function formatearTelefono(telefono) {
+        // Si el número tiene exactamente 9 dígitos, agrega "593" al inicio
+        if (telefono.length === 9 && /^\d{9}$/.test(telefono)) {
+            return '593' + telefono;
+        }
         // Si el número empieza con "0", reemplaza el "0" por "593"
         if (telefono.startsWith('0')) {
             return '593' + telefono.slice(1);
