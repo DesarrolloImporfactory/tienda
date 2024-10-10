@@ -549,7 +549,7 @@
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
                 success: function(response) {
-                    if (response && response[0].id) {
+                    if (response) {
                         resolve(response[0].id); // Resuelve la promesa con el id_configuracion
                     } else {
                         reject("No se encontró la configuración");
