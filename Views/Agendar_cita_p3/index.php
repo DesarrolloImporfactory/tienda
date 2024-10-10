@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HOLA PUEBA DE AGENDA</h1>
+    <h1>HOLA PRUEBA DE AGENDA</h1>
 </body>
 </html>
