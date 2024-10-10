@@ -549,16 +549,18 @@
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
                 success: function(response) {
-                    if (response) {
+                    // Verifica que la respuesta sea un array y que tenga al menos un elemento
+                    if (Array.isArray(response) && response.length > 0) {
                         resolve(response[0].id); // Resuelve la promesa con el id_configuracion
                     } else {
-                        reject("No se encontró la configuración");
+                        reject("No se encontró la configuración o está vacía");
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     reject(errorThrown); // Rechaza la promesa con el error
                 }
             });
+
         });
     }
 
