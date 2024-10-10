@@ -588,7 +588,15 @@
     /* boton de comprar */
     async function realizar_pedido() {
         try {
-            const id_configuracion = await consultar_configuracion(); // Espera a que consultar_configuracion se resuelva
+            // Obtener la configuración, pero manejar el caso en que no se devuelva nada
+            let id_configuracion;
+            try {
+                id_configuracion = await consultar_configuracion(); // Espera a que consultar_configuracion se resuelva
+            } catch (error) {
+                console.warn("No se pudo obtener la configuración: ", error);
+                id_configuracion = ""; // Asignar valor vacío si no se pudo obtener la configuración
+            }
+
             const session_id = "<?php echo session_id(); ?>";
 
             let formData = new FormData();
@@ -608,7 +616,7 @@
             formData.append("oferta_selected", $('#oferta_selected').val());
             formData.append("id_producto_oferta", $('#id_producto_oferta').val());
             formData.append("tmp", session_id);
-            formData.append("id_configuracion", id_configuracion); // Usa el id_configuracion obtenido
+            formData.append("id_configuracion", id_configuracion); // Usa el id_configuracion, que podría estar vacío
 
             $.ajax({
                 url: SERVERURL + 'Tienda/guardar_pedido_carrito',
@@ -620,7 +628,7 @@
                     response = JSON.parse(response);
                     if (response.status == 400) {
                         toastr.error(
-                            "NO SE REALIZO LA PETICION  CORRECTAMENTE",
+                            "NO SE REALIZO LA PETICION CORRECTAMENTE",
                             "NOTIFICACIÓN", {
                                 positionClass: "toast-bottom-center"
                             }
