@@ -620,7 +620,7 @@
                         var tarjetaItem = `
                     <div class="card w-100 shadow border">
                         <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="fas ${icon_text} display-1" style="color: ${color_icono};"></i>
+                            <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
                             <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
                         </div>
                     </div>
