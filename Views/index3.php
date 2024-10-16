@@ -679,46 +679,35 @@
     });
     /* Fin Sección Banner */
 
-    /* Sección información de la plantilla */
-    let formDataPlantilla = new FormData();
+     /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
+     let formDataPlantilla = new FormData();
     formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
     $.ajax({
-        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', 
-        method: 'GET',  // Mantener GET o cambiarlo según lo requiera el endpoint
-        data: formDataPlantilla, 
+        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', // URL del servicio
+        method: 'POST',
+        data: formDataPlantilla,
         contentType: false,
         processData: false,
-        dataType: "json",  // Esperamos JSON, pero puedes cambiarlo a "text" si ves que no está en este formato
         success: function (response) {
-            // Mostrar la respuesta completa en la consola
             console.log('Respuesta completa de la API (plantilla):', response);
-            
-            // Verificar si la respuesta es un objeto válido
-            if (response && typeof response === 'object') {
-                console.log('La respuesta es un objeto JSON válido.');
 
-                // Desglosar la respuesta para ver todos los datos disponibles
-                console.log('Datos detallados de la respuesta:', response);
+            try {
+                var data = JSON.parse(response); // Parsear la respuesta de la API
+            } catch (e) {
+                console.error('Error al parsear la respuesta:', e);
+                return;
+            }
 
-                // Si la estructura es más compleja, puedes recorrerla o inspeccionar propiedades específicas
-                for (let key in response) {
-                    if (response.hasOwnProperty(key)) {
-                        console.log(`Clave: ${key}, Valor:`, response[key]);
-                    }
-                }
-
-                // Procesar información de la plantilla, si está disponible
-                var plantillaInfo = response.plantilla || {};
-                console.log('Información de la plantilla:', plantillaInfo);
+            if (data && typeof data === 'object') {
+                console.log('Datos de la plantilla obtenidos:', data);
                 
             } else {
-                console.error('La respuesta no contiene datos válidos o no es un objeto.');
+                console.error('La respuesta no contiene datos válidos.');
             }
         },
         error: function (error) {
-            console.error('Error al obtener la información de la plantilla:', error);
-            console.log('Detalles del error:', error.responseText);  // Mostrar detalles del error si están disponibles
+            console.log('Error al cargar la información de la plantilla:', error);
         }
     });
     /* Fin Sección información de la plantilla */
