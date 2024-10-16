@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-
+  
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
@@ -571,154 +571,159 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
-        /* Sección iconos */
-        let formDataIconos = new FormData();
-        formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+    /* Sección iconos */
+    let formDataIconos = new FormData();
+    formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
-            method: 'POST',
-            data: formDataIconos,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log('Respuesta completa de la API (iconos):', response);
+    $.ajax({
+        url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
+        method: 'POST',
+        data: formDataIconos,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log('Respuesta completa de la API (iconos):', response);
 
-                try {
-                    var iconos = JSON.parse(response); // Parsear la respuesta de la API
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
-                }
+            try {
+                var iconos = JSON.parse(response); // Parsear la respuesta de la API
+            } catch (e) {
+                console.error('Error al parsear la respuesta:', e);
+                return;
+            }
 
-                if (iconos && Array.isArray(iconos)) {
-                    var $tarjetasContainer = $("#tarjetas-container");
+            if (iconos && Array.isArray(iconos)) {
+                var $tarjetasContainer = $("#tarjetas-container");
 
-                    // Limpiamos el contenedor de tarjetas por si acaso
-                    $tarjetasContainer.empty();
+                // Limpiamos el contenedor de tarjetas por si acaso
+                $tarjetasContainer.empty();
 
-                    // Iteramos sobre los iconos obtenidos de la API
-                    iconos.forEach(function (icono) {
-                        var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-                        var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
-                        var color_icono = icono.color_icono || '#000000'; // Color del ícono
+                // Iteramos sobre los iconos obtenidos de la API
+                iconos.forEach(function (icono) {
+                    var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
+                    var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
+                    var color_icono = icono.color_icono || '#000000'; // Color del ícono
 
-                        // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
-                        var tarjetaItem = `
-                        <div class="card w-100 shadow border">
-                            <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                                <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
-                                <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
-                            </div>
+                    // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
+                    var tarjetaItem = `
+                    <div class="card w-100 shadow border">
+                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
+                            <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
+                            <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
                         </div>
-                    `;
+                    </div>
+                `;
 
-                        // Agregar la tarjeta al contenedor
-                        $tarjetasContainer.append(tarjetaItem);
-                    });
-                } else {
-                    console.error('La respuesta no contiene iconos válidos.');
-                }
-            },
-            error: function (error) {
-                console.log('Error al cargar los iconos:', error);
+                    // Agregar la tarjeta al contenedor
+                    $tarjetasContainer.append(tarjetaItem);
+                });
+            } else {
+                console.error('La respuesta no contiene iconos válidos.');
             }
-        });
-        /* Fin Sección iconos */
+        },
+        error: function (error) {
+            console.log('Error al cargar los iconos:', error);
+        }
+    });
+    /* Fin Sección iconos */
 
-        /* Sección banner */
-        let formDataSlider = new FormData();
-        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+    /* Sección banner */
+    let formDataSlider = new FormData();
+    formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
-            method: 'POST',
-            data: formDataSlider,
-            contentType: false,
-            processData: false,
-            dataType: "json",
-            success: function (data) {
-                console.log('Respuesta completa de la API (banner):', data);
+    $.ajax({
+        url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
+        method: 'POST',
+        data: formDataSlider,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (data) {
+            console.log('Respuesta completa de la API (banner):', data);
 
-                if (data && data.length > 0) {
-                    let banner = data[0]; // Obtenemos el primer banner
-                    let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
+            if (data && data.length > 0) {
+                let banner = data[0]; // Obtenemos el primer banner
+                let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
 
-                    // Establecemos la imagen como fondo de la sección con ID 'quienes'
-                    $('#quienes').css('background-image', `url(${image_path})`);
-                    $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
-                    $('#quienes').css('background-position', 'center'); // Centrar la imagen
+                // Establecemos la imagen como fondo de la sección con ID 'quienes'
+                $('#quienes').css('background-image', `url(${image_path})`);
+                $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
+                $('#quienes').css('background-position', 'center'); // Centrar la imagen
 
-                    // Mostrar el título y texto del banner
-                    $('#quienes-title').text(banner.titulo);
-                    $('#quienes-text').text(banner.texto_banner);
+                // Mostrar el título y texto del banner
+                $('#quienes-title').text(banner.titulo);
+                $('#quienes-text').text(banner.texto_banner);
 
-                    // Modificar el botón existente
-                    let button = $('#quienes-button');
+                // Modificar el botón existente
+                let button = $('#quienes-button');
 
-                    // Asegurarse de que el enlace tenga el protocolo adecuado
-                    let enlace = banner.enlace_boton;
-                    if (!/^https?:\/\//i.test(enlace)) {
-                        enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                // Asegurarse de que el enlace tenga el protocolo adecuado
+                let enlace = banner.enlace_boton;
+                if (!/^https?:\/\//i.test(enlace)) {
+                    enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                }
+
+                button.attr('href', enlace); // Cambiar el enlace del botón
+                button.css({
+                    'background-color': banner.color_btn_banner,
+                    'color': banner.color_textoBtn_banner
+                }).text(banner.texto_boton); // Cambiar el texto del botón
+
+
+            } else {
+                console.error('No se encontraron banners.');
+            }
+        },
+        error: function (error) {
+            console.error('Error fetching banner data', error);
+        }
+    });
+    /* Fin Sección Banner */
+
+    /* Sección información de la plantilla */
+    let formDataPlantilla = new FormData();
+    formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
+
+    $.ajax({
+        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', 
+        method: 'GET',  // Mantener GET o cambiarlo según lo requiera el endpoint
+        data: formDataPlantilla, 
+        contentType: false,
+        processData: false,
+        dataType: "json",  // Esperamos JSON, pero puedes cambiarlo a "text" si ves que no está en este formato
+        success: function (response) {
+            // Mostrar la respuesta completa en la consola
+            console.log('Respuesta completa de la API (plantilla):', response);
+            
+            // Verificar si la respuesta es un objeto válido
+            if (response && typeof response === 'object') {
+                console.log('La respuesta es un objeto JSON válido.');
+
+                // Desglosar la respuesta para ver todos los datos disponibles
+                console.log('Datos detallados de la respuesta:', response);
+
+                // Si la estructura es más compleja, puedes recorrerla o inspeccionar propiedades específicas
+                for (let key in response) {
+                    if (response.hasOwnProperty(key)) {
+                        console.log(`Clave: ${key}, Valor:`, response[key]);
                     }
-
-                    button.attr('href', enlace); // Cambiar el enlace del botón
-                    button.css({
-                        'background-color': banner.color_btn_banner,
-                        'color': banner.color_textoBtn_banner
-                    }).text(banner.texto_boton); // Cambiar el texto del botón
-
-
-                } else {
-                    console.error('No se encontraron banners.');
                 }
-            },
-            error: function (error) {
-                console.error('Error fetching banner data', error);
+
+                // Procesar información de la plantilla, si está disponible
+                var plantillaInfo = response.plantilla || {};
+                console.log('Información de la plantilla:', plantillaInfo);
+                
+            } else {
+                console.error('La respuesta no contiene datos válidos o no es un objeto.');
             }
-        });
-        /* Fin Sección Banner */
+        },
+        error: function (error) {
+            console.error('Error al obtener la información de la plantilla:', error);
+            console.log('Detalles del error:', error.responseText);  // Mostrar detalles del error si están disponibles
+        }
+    });
+    /* Fin Sección información de la plantilla */
+</script>
 
-        $.ajax({
-            url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3',
-            method: 'GET',  // Mantener GET o cambiarlo según lo requiera el endpoint
-            data: formDataPlantilla,
-            contentType: false,
-            processData: false,
-            dataType: "json",  // Esperamos JSON, pero puedes cambiarlo a "text" si ves que no está en este formato
-            success: function (response) {
-                // Mostrar la respuesta completa en la consola
-                console.log('Respuesta completa de la API (plantilla):', response);
-
-                // Verificar si la respuesta es un objeto válido
-                if (response && typeof response === 'object') {
-                    console.log('La respuesta es un objeto JSON válido.');
-
-                    // Desglosar la respuesta para ver todos los datos disponibles
-                    console.log('Datos detallados de la respuesta:', response);
-
-                    // Si la estructura es más compleja, puedes recorrerla o inspeccionar propiedades específicas
-                    for (let key in response) {
-                        if (response.hasOwnProperty(key)) {
-                            console.log(`Clave: ${key}, Valor:`, response[key]);
-                        }
-                    }
-
-                    // Procesar información de la plantilla, si está disponible
-                    var plantillaInfo = response.plantilla || {};
-                    console.log('Información de la plantilla:', plantillaInfo);
-
-                } else {
-                    console.error('La respuesta no contiene datos válidos o no es un objeto.');
-                }
-            },
-            error: function (error) {
-                console.error('Error al obtener la información de la plantilla:', error);
-                console.log('Detalles del error:', error.responseText);  // Mostrar detalles del error si están disponibles
-            }
-        });
-
-    </script>
 
 
 
