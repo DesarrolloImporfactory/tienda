@@ -678,6 +678,39 @@
             }
         });
         /* Fin Sección Banner */
+
+
+         // Sección para obtener información de la plantilla
+    let formDataPlantilla = new FormData();
+    formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);  // Asegúrate de que ID_PLATAFORMA esté definido
+
+    $.ajax({
+        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', // URL de la API que mencionó tu jefe
+        method: 'POST',  // Método POST para enviar datos
+        data: formDataPlantilla,  // Los datos que se enviarán
+        contentType: false,
+        processData: false,
+        dataType: "json",  // Esperamos una respuesta en formato JSON
+        success: function (response) {
+            console.log('Respuesta completa de la API (plantilla):', response);
+            
+            // Asegúrate de que la respuesta contenga datos válidos
+            if (response && typeof response === 'object') {
+                // Procesar la información de la plantilla recibida
+                var plantillaInfo = response.plantilla || {};
+                console.log('Información de la plantilla:', plantillaInfo);
+
+                // Aquí puedes manejar la información obtenida, por ejemplo:
+                // $('#elemento').text(plantillaInfo.algunDato);
+
+            } else {
+                console.error('La respuesta no contiene datos válidos.');
+            }
+        },
+        error: function (error) {
+            console.error('Error al obtener la información de la plantilla:', error);
+        }
+    });
     </script>
 
 
