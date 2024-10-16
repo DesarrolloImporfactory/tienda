@@ -597,6 +597,8 @@
             contentType: false,
             processData: false,
             success: function(response) {
+                console.log('Respuesta completa de la API:', response);
+
                 try {
                     var iconos = JSON.parse(response); // Parsear la respuesta de la API
                 } catch (e) {
