@@ -226,9 +226,8 @@
             <section id="quienes" class="seccion2 mb-0">
                 <div class="container px-4 d-flex flex-column text-white py-5 text-center">
                     <h3 id="quienes-title" class="display-2 fw-bold"></h3>
-                    <hr>
                     <p id="quienes-text" class="fs-4"></p>
-
+                    <hr>
                     <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
                         <a id="quienes-button" href="#" class="btn">
                             <!-- Este botón se va a modificar -->
