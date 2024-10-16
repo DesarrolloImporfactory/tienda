@@ -142,7 +142,6 @@
         background-repeat: no-repeat;
         background-position: top;
         background-size: cover;
-        background-image: url(https://cdn.pixabay.com/photo/2017/07/23/10/44/dentist-2530990_1280.jpg);
     }
 
     .seccion2>* {

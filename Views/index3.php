@@ -232,7 +232,6 @@
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                 </div>
             </section>
-            <img id="banner-image" src="" alt="Banner" class="d-block w-100">
 
 
             <section id="servicios" class="seccion3 padding">
@@ -588,7 +587,6 @@
 
     <script>
     /* Sección iconos */
-    // ID de la plataforma o parámetro necesario
     let formDataIconos = new FormData();
     formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
@@ -660,8 +658,10 @@
                 let banner = data[0]; // Obtenemos el primer banner
                 let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
                 
-                // Actualizamos el src de la imagen con el banner
-                $('#banner-image').attr('src', image_path);
+                // Establecemos la imagen como fondo de la sección con ID 'quienes'
+                $('#quienes').css('background-image', `url(${image_path})`);
+                $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
+                $('#quienes').css('background-position', 'center'); // Centrar la imagen
             } else {
                 console.error('No se encontraron banners.');
             }
@@ -671,5 +671,6 @@
         }
     });
 </script>
+
 
     <?php include 'Views/templates/footer3.php'; ?>
