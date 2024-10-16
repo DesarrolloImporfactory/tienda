@@ -222,7 +222,11 @@
 
             <section id="quienes" class="seccion2 mb-0">
                 <div class="container px-4 d-flex flex-column text-white py-5 text-center">
-                    <h3 class="display-2 fw-bold">Velamos por su salud</h1>
+                <h1 id="quienes-title" class="text-center"></h1>
+    <p id="quienes-text" class="text-center"></p>
+    <div id="quienes-button-container" class="text-center"></div>
+    <hr>
+                    <h3 class="display-2 fw-bold">Velamos por su salud</h3>
                         <p class="fs-4">Somos expertos en salud oral </p>
                         <p class="">Un consultorio odontológico experto por contar con profesionales altamente
                             capacitados y
@@ -639,6 +643,7 @@
             console.log('Error al cargar los iconos:', error);
         }
     });
+    /* Fin Sección iconos */
 
     /* Sección banner */
     let formDataSlider = new FormData();
@@ -662,6 +667,19 @@
                 $('#quienes').css('background-image', `url(${image_path})`);
                 $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
                 $('#quienes').css('background-position', 'center'); // Centrar la imagen
+                
+                // Mostrar el título y texto del banner
+                $('#quienes-title').text(banner.titulo);
+                $('#quienes-text').text(banner.texto_banner);
+                
+                // Crear y agregar el botón
+                let buttonHTML = `
+                    <a href="${banner.enlace_boton}" class="btn" style="background-color: ${banner.color_btn_banner}; color: ${banner.color_textoBtn_banner};">
+                        ${banner.texto_boton}
+                    </a>
+                `;
+                $('#quienes-button-container').html(buttonHTML); // Agregar el botón al contenedor correspondiente
+
             } else {
                 console.error('No se encontraron banners.');
             }
@@ -670,7 +688,9 @@
             console.error('Error fetching banner data', error);
         }
     });
+    /* Fin Sección Banner */
 </script>
+
 
 
     <?php include 'Views/templates/footer3.php'; ?>
