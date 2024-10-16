@@ -75,7 +75,7 @@
 
     <nav class="navbar bg-white fixed-top shadow-sm">
         <div class="container px-4 d-flex">
-            <a class="navbar-brand texto-primary display-5 fw-bold" href="#">Logo 1</a>
+            <a class="navbar-brand texto-primary display-5 fw-bold" href="#">Logo</a>
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
                 <li class="nav-item">
