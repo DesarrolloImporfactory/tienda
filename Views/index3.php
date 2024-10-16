@@ -679,12 +679,12 @@
     });
     /* Fin Sección Banner */
 
-     /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
-     let formDataPlantilla = new FormData();
+    /* Consumo del servicio Tienda/obtener_informacion_plantilla3 */
+    let formDataPlantilla = new FormData();
     formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
     $.ajax({
-        url: SERVERURL + 'Tienda/usuarios/obtener_informacion_plantilla3', 
+        url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
         method: 'POST',
         data: formDataPlantilla,
         contentType: false,
@@ -699,9 +699,13 @@
                 return;
             }
 
+            // Verificar si la respuesta contiene los datos esperados
             if (data && typeof data === 'object') {
+                // Procesar los datos de la plantilla según lo que devuelva la API
                 console.log('Datos de la plantilla obtenidos:', data);
                 
+                // Aquí puedes realizar las acciones que necesites con los datos de la plantilla
+                // Por ejemplo, mostrar información en el DOM
             } else {
                 console.error('La respuesta no contiene datos válidos.');
             }
