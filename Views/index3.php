@@ -684,7 +684,7 @@
     formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
     $.ajax({
-        url: SERVERURL + 'usuarios/obtener_informacion_plantilla3', 
+        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', 
         method: 'POST',
         data: formDataPlantilla,
         contentType: false,
