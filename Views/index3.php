@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-  
+
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
@@ -542,6 +542,14 @@
         </div>
     </div>
 
+    <div id="parallaxContainer" class="parallax">
+        <h1 id="parallaxTitulo"></h1>
+        <h2 id="parallaxSubtitulo"></h2>
+        <p id="parallaxTexto"></p>
+        <a id="botonParallax" href="#" class="btn btn-primary"></a>
+    </div>
+
+
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
@@ -571,40 +579,40 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
-    /* Sección iconos */
-    let formDataIconos = new FormData();
-    formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+        /* Sección iconos */
+        let formDataIconos = new FormData();
+        formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
-    $.ajax({
-        url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
-        method: 'POST',
-        data: formDataIconos,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            console.log('Respuesta completa de la API (iconos):', response);
+        $.ajax({
+            url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
+            method: 'POST',
+            data: formDataIconos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log('Respuesta completa de la API (iconos):', response);
 
-            try {
-                var iconos = JSON.parse(response); // Parsear la respuesta de la API
-            } catch (e) {
-                console.error('Error al parsear la respuesta:', e);
-                return;
-            }
+                try {
+                    var iconos = JSON.parse(response); // Parsear la respuesta de la API
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
 
-            if (iconos && Array.isArray(iconos)) {
-                var $tarjetasContainer = $("#tarjetas-container");
+                if (iconos && Array.isArray(iconos)) {
+                    var $tarjetasContainer = $("#tarjetas-container");
 
-                // Limpiamos el contenedor de tarjetas por si acaso
-                $tarjetasContainer.empty();
+                    // Limpiamos el contenedor de tarjetas por si acaso
+                    $tarjetasContainer.empty();
 
-                // Iteramos sobre los iconos obtenidos de la API
-                iconos.forEach(function (icono) {
-                    var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-                    var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
-                    var color_icono = icono.color_icono || '#000000'; // Color del ícono
+                    // Iteramos sobre los iconos obtenidos de la API
+                    iconos.forEach(function (icono) {
+                        var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
+                        var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
+                        var color_icono = icono.color_icono || '#000000'; // Color del ícono
 
-                    // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
-                    var tarjetaItem = `
+                        // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
+                        var tarjetaItem = `
                     <div class="card w-100 shadow border">
                         <div class="card-body text-center d-flex flex-column gap-3 p-4">
                             <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
@@ -613,109 +621,122 @@
                     </div>
                 `;
 
-                    // Agregar la tarjeta al contenedor
-                    $tarjetasContainer.append(tarjetaItem);
-                });
-            } else {
-                console.error('La respuesta no contiene iconos válidos.');
+                        // Agregar la tarjeta al contenedor
+                        $tarjetasContainer.append(tarjetaItem);
+                    });
+                } else {
+                    console.error('La respuesta no contiene iconos válidos.');
+                }
+            },
+            error: function (error) {
+                console.log('Error al cargar los iconos:', error);
             }
-        },
-        error: function (error) {
-            console.log('Error al cargar los iconos:', error);
-        }
-    });
-    /* Fin Sección iconos */
+        });
+        /* Fin Sección iconos */
 
-    /* Sección banner */
-    let formDataSlider = new FormData();
-    formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+        /* Sección banner */
+        let formDataSlider = new FormData();
+        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
-    $.ajax({
-        url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
-        method: 'POST',
-        data: formDataSlider,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function (data) {
-            console.log('Respuesta completa de la API (banner):', data);
+        $.ajax({
+            url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
+            method: 'POST',
+            data: formDataSlider,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (data) {
+                console.log('Respuesta completa de la API (banner):', data);
 
-            if (data && data.length > 0) {
-                let banner = data[0]; // Obtenemos el primer banner
-                let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
+                if (data && data.length > 0) {
+                    let banner = data[0]; // Obtenemos el primer banner
+                    let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
 
-                // Establecemos la imagen como fondo de la sección con ID 'quienes'
-                $('#quienes').css('background-image', `url(${image_path})`);
-                $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
-                $('#quienes').css('background-position', 'center'); // Centrar la imagen
+                    // Establecemos la imagen como fondo de la sección con ID 'quienes'
+                    $('#quienes').css('background-image', `url(${image_path})`);
+                    $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
+                    $('#quienes').css('background-position', 'center'); // Centrar la imagen
 
-                // Mostrar el título y texto del banner
-                $('#quienes-title').text(banner.titulo);
-                $('#quienes-text').text(banner.texto_banner);
+                    // Mostrar el título y texto del banner
+                    $('#quienes-title').text(banner.titulo);
+                    $('#quienes-text').text(banner.texto_banner);
 
-                // Modificar el botón existente
-                let button = $('#quienes-button');
+                    // Modificar el botón existente
+                    let button = $('#quienes-button');
 
-                // Asegurarse de que el enlace tenga el protocolo adecuado
-                let enlace = banner.enlace_boton;
-                if (!/^https?:\/\//i.test(enlace)) {
-                    enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                    // Asegurarse de que el enlace tenga el protocolo adecuado
+                    let enlace = banner.enlace_boton;
+                    if (!/^https?:\/\//i.test(enlace)) {
+                        enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                    }
+
+                    button.attr('href', enlace); // Cambiar el enlace del botón
+                    button.css({
+                        'background-color': banner.color_btn_banner,
+                        'color': banner.color_textoBtn_banner
+                    }).text(banner.texto_boton); // Cambiar el texto del botón
+
+
+                } else {
+                    console.error('No se encontraron banners.');
+                }
+            },
+            error: function (error) {
+                console.error('Error fetching banner data', error);
+            }
+        });
+        /* Fin Sección Banner */
+
+        /* Consumo del servicio Tienda/obtener_informacion_plantilla3 */
+        let formDataPlantilla = new FormData();
+        formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
+            method: 'POST',
+            data: formDataPlantilla,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log('Respuesta completa de la API (plantilla):', response);
+
+                try {
+                    var data = JSON.parse(response); // Parsear la respuesta de la API
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
                 }
 
-                button.attr('href', enlace); // Cambiar el enlace del botón
-                button.css({
-                    'background-color': banner.color_btn_banner,
-                    'color': banner.color_textoBtn_banner
-                }).text(banner.texto_boton); // Cambiar el texto del botón
+                // Verificar si hay datos y procesarlos
+                if (data && Array.isArray(data) && data.length > 0) {
+                    var plantilla = data[0]; // Obtener el primer objeto de la respuesta
 
+                    // Mostrar los datos en el DOM
+                    $('#parallaxTitulo').text(plantilla.parallax_titulo); // Título del parallax
+                    $('#parallaxSubtitulo').text(plantilla.parallax_sub); // Subtítulo del parallax
+                    $('#parallaxTexto').text(plantilla.parallax_texto); // Texto del parallax
 
-            } else {
-                console.error('No se encontraron banners.');
+                    // Aplicar estilos
+                    $('#parallaxContainer').css({
+                        'background-color': plantilla.color_filtro,
+                        'opacity': plantilla.parallax_opacidad
+                    });
+
+                    // Manejar el botón si tiene enlace
+                    var botonEnlace = plantilla.boton_parallax_enlace || '#'; // Usar '#' si no hay enlace
+                    $('#botonParallax').attr('href', botonEnlace).text(plantilla.boton_parallax_texto);
+
+                    // También puedes manejar otros elementos de la plantilla aquí
+                } else {
+                    console.error('La respuesta no contiene datos válidos.');
+                }
+            },
+            error: function (error) {
+                console.log('Error al cargar la información de la plantilla:', error);
             }
-        },
-        error: function (error) {
-            console.error('Error fetching banner data', error);
-        }
-    });
-    /* Fin Sección Banner */
-
-    /* Consumo del servicio Tienda/obtener_informacion_plantilla3 */
-    let formDataPlantilla = new FormData();
-    formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
-
-    $.ajax({
-        url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
-        method: 'POST',
-        data: formDataPlantilla,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            console.log('Respuesta completa de la API (plantilla):', response);
-
-            try {
-                var data = JSON.parse(response); // Parsear la respuesta de la API
-            } catch (e) {
-                console.error('Error al parsear la respuesta:', e);
-                return;
-            }
-
-            // Verificar si la respuesta contiene los datos esperados
-            if (data && typeof data === 'object') {
-                // Procesar los datos de la plantilla según lo que devuelva la API
-                console.log('Datos de la plantilla obtenidos:', data);
-                
-                // Aquí puedes realizar las acciones que necesites con los datos de la plantilla
-                // Por ejemplo, mostrar información en el DOM
-            } else {
-                console.error('La respuesta no contiene datos válidos.');
-            }
-        },
-        error: function (error) {
-            console.log('Error al cargar la información de la plantilla:', error);
-        }
-    });
-    /* Fin Sección información de la plantilla */
-</script>
+        });
+        /* Fin Sección información de la plantilla */
+    </script>
 
 
 
