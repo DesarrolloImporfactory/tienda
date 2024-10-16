@@ -541,12 +541,14 @@
 
         </div>
     </div>
-
-    <div id="parallaxContainer" class="parallax">
-        <h1 id="parallaxTitulo"></h1>
-        <h2 id="parallaxSubtitulo"></h2>
-        <p id="parallaxTexto"></p>
-        <a id="botonParallax" href="#" class="btn btn-primary"></a>
+    <div id="parallax-fondo" class="parallax" style="position: relative; overflow: hidden; height: 400px;">
+        <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        <div class="content" style="position: relative; z-index: 1; text-align: center; color: #ffffff;">
+            <h1 id="parallax-titulo" class="display-4"></h1>
+            <h2 id="parallax-subtitulo" class="lead"></h2>
+            <p id="parallax-texto"></p>
+            <a id="boton-parallax" class="btn btn-primary" href="#" role="button"></a>
+        </div>
     </div>
 
 
@@ -687,12 +689,12 @@
         });
         /* Fin Sección Banner */
 
-        /* Consumo del servicio Tienda/obtener_informacion_plantilla3 */
+        /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
         let formDataPlantilla = new FormData();
         formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
+            url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', // URL del servicio
             method: 'POST',
             data: formDataPlantilla,
             contentType: false,
@@ -707,26 +709,46 @@
                     return;
                 }
 
-                // Verificar si hay datos y procesarlos
+                // Verificar si la respuesta contiene los datos esperados
                 if (data && Array.isArray(data) && data.length > 0) {
-                    var plantilla = data[0]; // Obtener el primer objeto de la respuesta
+                    // Obtener los datos de la plantilla
+                    var plantilla = data[0]; // Tomar el primer elemento
 
                     // Mostrar los datos en el DOM
-                    $('#parallaxTitulo').text(plantilla.parallax_titulo); // Título del parallax
-                    $('#parallaxSubtitulo').text(plantilla.parallax_sub); // Subtítulo del parallax
-                    $('#parallaxTexto').text(plantilla.parallax_texto); // Texto del parallax
+                    if (plantilla.parallax_titulo) {
+                        $('#parallax-titulo').text(plantilla.parallax_titulo);
+                    }
 
-                    // Aplicar estilos
-                    $('#parallaxContainer').css({
-                        'background-color': plantilla.color_filtro,
-                        'opacity': plantilla.parallax_opacidad
-                    });
+                    if (plantilla.parallax_sub) {
+                        $('#parallax-subtitulo').text(plantilla.parallax_sub);
+                    }
 
-                    // Manejar el botón si tiene enlace
-                    var botonEnlace = plantilla.boton_parallax_enlace || '#'; // Usar '#' si no hay enlace
-                    $('#botonParallax').attr('href', botonEnlace).text(plantilla.boton_parallax_texto);
+                    if (plantilla.parallax_texto) {
+                        $('#parallax-texto').text(plantilla.parallax_texto);
+                    }
 
-                    // También puedes manejar otros elementos de la plantilla aquí
+                    if (plantilla.color_filtro) {
+                        $('#parallax-fondo').css('background-color', plantilla.color_filtro);
+                    }
+
+                    if (plantilla.parallax_opacidad) {
+                        $('#parallax-fondo').css('opacity', plantilla.parallax_opacidad);
+                    }
+
+                    if (plantilla.boton_parallax_texto) {
+                        $('#boton-parallax').text(plantilla.boton_parallax_texto);
+                    }
+
+                    if (plantilla.boton_parallax_enlace) {
+                        $('#boton-parallax').attr('href', plantilla.boton_parallax_enlace);
+                    }
+
+                    // Si deseas añadir el fondo del parallax, puedes hacerlo de la siguiente manera
+                    if (plantilla.parallax_fondo) {
+                        $('#parallax-fondo').css('background-image', `url(${plantilla.parallax_fondo})`);
+                        $('#parallax-fondo').css('background-size', 'cover');
+                        $('#parallax-fondo').css('background-position', 'center');
+                    }
                 } else {
                     console.error('La respuesta no contiene datos válidos.');
                 }
@@ -736,6 +758,7 @@
             }
         });
         /* Fin Sección información de la plantilla */
+
     </script>
 
 
