@@ -68,11 +68,11 @@
         </div>
     </div>
 
-    <nav class="navbar bg-white fixed-top shadow-sm">
+    <nav class="navbar bg-white fixed-top shadow-sm py-1">
         <div class="container px-4 d-flex">
 
             <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
-                <img style="width: 40px;" class="border ronded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
+                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
