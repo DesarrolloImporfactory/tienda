@@ -542,8 +542,7 @@
         </div>
     </div>
 
-    <div id="plantilla-info" class="text-center mt-5"></div>
-
+    
 
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
@@ -682,12 +681,12 @@
     });
     /* Fin Sección Banner */
 
- /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
- let formDataPlantilla = new FormData();
+    /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
+    let formDataPlantilla = new FormData();
     formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
     $.ajax({
-        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', // URL del servicio
+        url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
         method: 'POST',
         data: formDataPlantilla,
         contentType: false,
@@ -703,28 +702,12 @@
             }
 
             // Verificar si la respuesta contiene los datos esperados
-            if (Array.isArray(data) && data.length > 0) {
-                const plantilla = data[0]; // Obtener el primer objeto de la respuesta
+            if (data && typeof data === 'object') {
+                // Procesar los datos de la plantilla según lo que devuelva la API
+                console.log('Datos de la plantilla obtenidos:', data);
                 
-                let contenidoHTML = '';
-
-                // Verificar y agregar cada dato al contenido HTML
-                if (plantilla.parallax_titulo) {
-                    contenidoHTML += `<h2>${plantilla.parallax_titulo}</h2>`;
-                }
-                if (plantilla.parallax_sub) {
-                    contenidoHTML += `<h3>${plantilla.parallax_sub}</h3>`;
-                }
-                if (plantilla.parallax_texto) {
-                    contenidoHTML += `<p>${plantilla.parallax_texto}</p>`;
-                }
-                if (plantilla.boton_parallax_texto) {
-                    let enlace = plantilla.boton_parallax_enlace || '#'; // Si no hay enlace, poner un enlace por defecto
-                    contenidoHTML += `<a href="${enlace}" class="btn btn-primary">${plantilla.boton_parallax_texto}</a>`;
-                }
-
-                // Insertar el contenido HTML en el div correspondiente
-                $('#plantilla-info').html(contenidoHTML);
+                // Aquí puedes realizar las acciones que necesites con los datos de la plantilla
+                // Por ejemplo, mostrar información en el DOM
             } else {
                 console.error('La respuesta no contiene datos válidos.');
             }
