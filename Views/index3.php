@@ -191,20 +191,21 @@
                     <div
                         class="d-flex w-100 flex-column pb-5 text-start textosHeader align-items-center align-items-md-start">
                         <a class="d-flex logoHeaderLink" href="/">
-                            <h3 class="texto-primary display-6 fw-bold d-flex">Logo</h3>
+                            <h3 id="parallax-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
 
-                        <p class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">Odontología para
-                            ti
-                            y tu familia <span class="texto-primary" id="element"></span>
+                        <p id="parallax-subtitle" class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
+                            
+                        <span class="texto-primary" id="element"></span>
                         </p>
 
-                        <p class="mb-0 text-center text-md-start">En nuestro servicio de odontología, nos enfocamos en
-                            brindar atención personalizada
-                            y de
-                            calidad a nuestros pacientes.</p>
-                        <button type="button" class="btn btn-primary mt-4" data-bs-toggle="offcanvas"
+                        <p id="parallax-text" class="mb-0 text-center text-md-start"></p>
+                        <div class="d-flex gap-2">
+
+                            <a target="_blank" href="#" id="parallax-button" class="btn"></a>
+                            <button  type="button" class="btn btn-primary mt-4" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                        </div>
                     </div>
                     <div class="d-flex w-100">
                         <img src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_1-4440997.png?format=webp"
@@ -545,10 +546,10 @@
     <div id="plantilla-container" class="container mt-5">
         <div class="parallax-section"
             style="background-color: #c7c7c7; opacity: 0.65; padding: 50px; text-align: center;">
-            <h1 id="parallax-title" style="color: #000000;">PARALLAX Titulo</h1>
-            <h3 id="parallax-subtitle" style="color: #000000;">PARALLAX subtitulo</h3>
-            <p id="parallax-text" style="color: #000000;">PARALLAX Texto</p>
-            <a id="parallax-button" href="www.google.com" target="_blank" class="btn btn-primary"
+            <h1 id="" style="color: #000000;">PARALLAX Titulo</h1>
+            <h3 id="" style="color: #000000;">PARALLAX subtitulo</h3>
+            <p id="" style="color: #000000;">PARALLAX Texto</p>
+            <a id="" href="www.google.com"  class="btn btn-primary"
                 style="background-color: #000000; color: #ffffff;">www.google.com</a>
         </div>
     </div>
