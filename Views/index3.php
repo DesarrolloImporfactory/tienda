@@ -8,15 +8,21 @@
     <title><?php echo NOMBRE_TIENDA; ?></title>
     <link rel="icon" href="<?php echo SERVERURL . FAVICON; ?>" type="image/x-icon">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Cargar jQuery antes que cualquier script que lo necesite -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
@@ -26,7 +32,8 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <!-- Enlazar CSS de Swiper -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -214,7 +221,8 @@
 
             <!-- Seccion iconos -->
             <section class="seccion1">
-                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3" id="tarjetas-container">
+                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3"
+                    id="tarjetas-container">
                     <!-- Las tarjetas se cargarán dinámicamente aquí -->
                 </div>
             </section>
@@ -225,17 +233,18 @@
                     <h3 id="quienes-title" class="display-2 fw-bold"></h3>
                     <hr>
                     <p id="quienes-text" class="fs-4"></p>
-                    <div id="quienes-button-container" class="text-center"></div>
-                    
+                    <div id="quienes-button-container" class="text-center">
+                        <a id="quienes-button" href="#" class="btn">
+                            <!-- Este botón se va a modificar -->
+                        </a>
+                    </div>
                     <div class="btnsQuienes d-flex gap-3">
-
-                    <a href="" class="btn"></a>
-
                         <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                            data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                     </div>
                 </div>
             </section>
+
 
 
             <section id="servicios" class="seccion3 padding">
@@ -563,10 +572,13 @@
                 <a class="texto-primary fs-2 fw-bold mb-3" href="#">Logo</a>
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item"><a href="#inicio" class="nav-link px-2 text-body-secondary">Inicio</a></li>
-                    <li class="nav-item"><a href="#quienes" class="nav-link px-2 text-body-secondary">Quienes Somos</a></li>
-                    <li class="nav-item"><a href="#servicios" class="nav-link px-2 text-body-secondary">Servicios</a></li>
+                    <li class="nav-item"><a href="#quienes" class="nav-link px-2 text-body-secondary">Quienes Somos</a>
+                    </li>
+                    <li class="nav-item"><a href="#servicios" class="nav-link px-2 text-body-secondary">Servicios</a>
+                    </li>
                     <li class="nav-item"><a href="#doctores" class="nav-link px-2 text-body-secondary">Doctores</a></li>
-                    <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a></li>
+                    <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a>
+                    </li>
                 </ul>
                 <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
             </div>
@@ -590,40 +602,40 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
-    /* Sección iconos */
-    let formDataIconos = new FormData();
-    formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+        /* Sección iconos */
+        let formDataIconos = new FormData();
+        formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
-    $.ajax({
-        url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
-        method: 'POST',
-        data: formDataIconos,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-            console.log('Respuesta completa de la API (iconos):', response);
+        $.ajax({
+            url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
+            method: 'POST',
+            data: formDataIconos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log('Respuesta completa de la API (iconos):', response);
 
-            try {
-                var iconos = JSON.parse(response); // Parsear la respuesta de la API
-            } catch (e) {
-                console.error('Error al parsear la respuesta:', e);
-                return;
-            }
+                try {
+                    var iconos = JSON.parse(response); // Parsear la respuesta de la API
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
 
-            if (iconos && Array.isArray(iconos)) {
-                var $tarjetasContainer = $("#tarjetas-container");
+                if (iconos && Array.isArray(iconos)) {
+                    var $tarjetasContainer = $("#tarjetas-container");
 
-                // Limpiamos el contenedor de tarjetas por si acaso
-                $tarjetasContainer.empty();
+                    // Limpiamos el contenedor de tarjetas por si acaso
+                    $tarjetasContainer.empty();
 
-                // Iteramos sobre los iconos obtenidos de la API
-                iconos.forEach(function(icono) {
-                    var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-                    var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
-                    var color_icono = icono.color_icono || '#000000'; // Color del ícono
+                    // Iteramos sobre los iconos obtenidos de la API
+                    iconos.forEach(function (icono) {
+                        var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
+                        var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
+                        var color_icono = icono.color_icono || '#000000'; // Color del ícono
 
-                    // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
-                    var tarjetaItem = `
+                        // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
+                        var tarjetaItem = `
                         <div class="card w-100 shadow border">
                             <div class="card-body text-center d-flex flex-column gap-3 p-4">
                                 <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
@@ -632,63 +644,65 @@
                         </div>
                     `;
 
-                    // Agregar la tarjeta al contenedor
-                    $tarjetasContainer.append(tarjetaItem);
-                });
-            } else {
-                console.error('La respuesta no contiene iconos válidos.');
+                        // Agregar la tarjeta al contenedor
+                        $tarjetasContainer.append(tarjetaItem);
+                    });
+                } else {
+                    console.error('La respuesta no contiene iconos válidos.');
+                }
+            },
+            error: function (error) {
+                console.log('Error al cargar los iconos:', error);
             }
-        },
-        error: function(error) {
-            console.log('Error al cargar los iconos:', error);
-        }
-    });
-    /* Fin Sección iconos */
+        });
+        /* Fin Sección iconos */
 
-    /* Sección banner */
-    let formDataSlider = new FormData();
-    formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+        /* Sección banner */
+        let formDataSlider = new FormData();
+        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
-    $.ajax({
-        url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
-        method: 'POST',
-        data: formDataSlider,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(data) {
-            console.log('Respuesta completa de la API (banner):', data);
+        $.ajax({
+            url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
+            method: 'POST',
+            data: formDataSlider,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (data) {
+                console.log('Respuesta completa de la API (banner):', data);
 
-            if (data && data.length > 0) {
-                let banner = data[0]; // Obtenemos el primer banner
-                let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
-                
-                // Establecemos la imagen como fondo de la sección con ID 'quienes'
-                $('#quienes').css('background-image', `url(${image_path})`);
-                $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
-                $('#quienes').css('background-position', 'center'); // Centrar la imagen
-                
-                // Mostrar el título y texto del banner
-                $('#quienes-title').text(banner.titulo);
-                $('#quienes-text').text(banner.texto_banner);
-                
-                // Editar el botón existente en el DOM
-                let $quienesButton = $('#quienes-button');
-                $quienesButton.attr('href', banner.enlace_boton);
-                $quienesButton.text(banner.texto_boton);
-                $quienesButton.css('background-color', banner.color_btn_banner);
-                $quienesButton.css('color', banner.color_textoBtn_banner);
+                if (data && data.length > 0) {
+                    let banner = data[0]; // Obtenemos el primer banner
+                    let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
 
-            } else {
-                console.error('No se encontraron banners.');
+                    // Establecemos la imagen como fondo de la sección con ID 'quienes'
+                    $('#quienes').css('background-image', `url(${image_path})`);
+                    $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
+                    $('#quienes').css('background-position', 'center'); // Centrar la imagen
+
+                    // Mostrar el título y texto del banner
+                    $('#quienes-title').text(banner.titulo);
+                    $('#quienes-text').text(banner.texto_banner);
+
+                    // Modificar el botón existente
+                    let button = $('#quienes-button');
+                    button.attr('href', banner.enlace_boton); // Cambiar el enlace del botón
+                    button.css({
+                        'background-color': banner.color_btn_banner,
+                        'color': banner.color_textoBtn_banner
+                    }).text(banner.texto_boton); // Cambiar el texto del botón
+
+                } else {
+                    console.error('No se encontraron banners.');
+                }
+            },
+            error: function (error) {
+                console.error('Error fetching banner data', error);
             }
-        },
-        error: function(error) {
-            console.error('Error fetching banner data', error);
-        }
-    });
-    /* Fin Sección Banner */
-</script>
+        });
+        /* Fin Sección Banner */
+    </script>
+
 
 
     <?php include 'Views/templates/footer3.php'; ?>
