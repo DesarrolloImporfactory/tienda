@@ -542,14 +542,7 @@
         </div>
     </div>
 
-    <div id="plantilla-container" class="container mt-5">
-    <div class="parallax-section" style="background-color: #c7c7c7; opacity: 0.65; padding: 50px; text-align: center;">
-        <h1 id="parallax-title" style="color: #000000;">PARALLAX Titulo</h1>
-        <h3 id="parallax-subtitle" style="color: #000000;">PARALLAX subtitulo</h3>
-        <p id="parallax-text" style="color: #000000;">PARALLAX Texto</p>
-        <a id="parallax-button" href="www.google.com" target="_blank" class="btn btn-primary" style="background-color: #000000; color: #ffffff;">www.google.com</a>
-    </div>
-</div>
+    <div id="plantilla-info" class="text-center mt-5"></div>
 
 
     <footer class="fondo-tertiary pt-4">
@@ -689,53 +682,58 @@
     });
     /* Fin Sección Banner */
 
-   /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
-let formDataPlantilla = new FormData();
-formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
+ /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
+ let formDataPlantilla = new FormData();
+    formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
-$.ajax({
-    url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
-    method: 'POST',
-    data: formDataPlantilla,
-    contentType: false,
-    processData: false,
-    success: function (response) {
-        console.log('Respuesta completa de la API (plantilla):', response);
+    $.ajax({
+        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', // URL del servicio
+        method: 'POST',
+        data: formDataPlantilla,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log('Respuesta completa de la API (plantilla):', response);
 
-        try {
-            var data = JSON.parse(response); // Parsear la respuesta de la API
-        } catch (e) {
-            console.error('Error al parsear la respuesta:', e);
-            return;
-        }
-
-        // Verificar si la respuesta contiene los datos esperados
-        if (data && Array.isArray(data) && data.length > 0) {
-            var plantilla = data[0]; // Obtener el primer objeto de la respuesta
-            
-            // Mostrar la información en el DOM
-            $('#parallax-title').text(plantilla.parallax_titulo);
-            $('#parallax-subtitle').text(plantilla.parallax_sub);
-            $('#parallax-text').text(plantilla.parallax_texto);
-            $('#parallax-button').attr('href', plantilla.boton_parallax_enlace || '#');
-            $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
-
-            // Configurar el fondo si se necesita
-            if (plantilla.fondo_pagina) {
-                $('.parallax-section').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
-                $('.parallax-section').css('background-size', 'cover');
-                $('.parallax-section').css('background-position', 'center');
+            try {
+                var data = JSON.parse(response); // Parsear la respuesta de la API
+            } catch (e) {
+                console.error('Error al parsear la respuesta:', e);
+                return;
             }
-        } else {
-            console.error('La respuesta no contiene datos válidos.');
-        }
-    },
-    error: function (error) {
-        console.log('Error al cargar la información de la plantilla:', error);
-    }
-});
-/* Fin Sección información de la plantilla */
 
+            // Verificar si la respuesta contiene los datos esperados
+            if (Array.isArray(data) && data.length > 0) {
+                const plantilla = data[0]; // Obtener el primer objeto de la respuesta
+                
+                let contenidoHTML = '';
+
+                // Verificar y agregar cada dato al contenido HTML
+                if (plantilla.parallax_titulo) {
+                    contenidoHTML += `<h2>${plantilla.parallax_titulo}</h2>`;
+                }
+                if (plantilla.parallax_sub) {
+                    contenidoHTML += `<h3>${plantilla.parallax_sub}</h3>`;
+                }
+                if (plantilla.parallax_texto) {
+                    contenidoHTML += `<p>${plantilla.parallax_texto}</p>`;
+                }
+                if (plantilla.boton_parallax_texto) {
+                    let enlace = plantilla.boton_parallax_enlace || '#'; // Si no hay enlace, poner un enlace por defecto
+                    contenidoHTML += `<a href="${enlace}" class="btn btn-primary">${plantilla.boton_parallax_texto}</a>`;
+                }
+
+                // Insertar el contenido HTML en el div correspondiente
+                $('#plantilla-info').html(contenidoHTML);
+            } else {
+                console.error('La respuesta no contiene datos válidos.');
+            }
+        },
+        error: function (error) {
+            console.log('Error al cargar la información de la plantilla:', error);
+        }
+    });
+    /* Fin Sección información de la plantilla */
 </script>
 
 
