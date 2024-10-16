@@ -542,6 +542,16 @@
         </div>
     </div>
 
+    <div id="plantilla-container" class="container mt-5">
+    <div class="parallax-section" style="background-color: #c7c7c7; opacity: 0.65; padding: 50px; text-align: center;">
+        <h1 id="parallax-title" style="color: #000000;">PARALLAX Titulo</h1>
+        <h3 id="parallax-subtitle" style="color: #000000;">PARALLAX subtitulo</h3>
+        <p id="parallax-text" style="color: #000000;">PARALLAX Texto</p>
+        <a id="parallax-button" href="www.google.com" target="_blank" class="btn btn-primary" style="background-color: #000000; color: #ffffff;">www.google.com</a>
+    </div>
+</div>
+
+
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
@@ -679,42 +689,53 @@
     });
     /* Fin Sección Banner */
 
-    /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
-    let formDataPlantilla = new FormData();
-    formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
+   /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
+let formDataPlantilla = new FormData();
+formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
-    $.ajax({
-        url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
-        method: 'POST',
-        data: formDataPlantilla,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            console.log('Respuesta completa de la API (plantilla):', response);
+$.ajax({
+    url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
+    method: 'POST',
+    data: formDataPlantilla,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        console.log('Respuesta completa de la API (plantilla):', response);
 
-            try {
-                var data = JSON.parse(response); // Parsear la respuesta de la API
-            } catch (e) {
-                console.error('Error al parsear la respuesta:', e);
-                return;
-            }
-
-            // Verificar si la respuesta contiene los datos esperados
-            if (data && typeof data === 'object') {
-                // Procesar los datos de la plantilla según lo que devuelva la API
-                console.log('Datos de la plantilla obtenidos:', data);
-                
-                // Aquí puedes realizar las acciones que necesites con los datos de la plantilla
-                // Por ejemplo, mostrar información en el DOM
-            } else {
-                console.error('La respuesta no contiene datos válidos.');
-            }
-        },
-        error: function (error) {
-            console.log('Error al cargar la información de la plantilla:', error);
+        try {
+            var data = JSON.parse(response); // Parsear la respuesta de la API
+        } catch (e) {
+            console.error('Error al parsear la respuesta:', e);
+            return;
         }
-    });
-    /* Fin Sección información de la plantilla */
+
+        // Verificar si la respuesta contiene los datos esperados
+        if (data && Array.isArray(data) && data.length > 0) {
+            var plantilla = data[0]; // Obtener el primer objeto de la respuesta
+            
+            // Mostrar la información en el DOM
+            $('#parallax-title').text(plantilla.parallax_titulo);
+            $('#parallax-subtitle').text(plantilla.parallax_sub);
+            $('#parallax-text').text(plantilla.parallax_texto);
+            $('#parallax-button').attr('href', plantilla.boton_parallax_enlace || '#');
+            $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
+
+            // Configurar el fondo si se necesita
+            if (plantilla.fondo_pagina) {
+                $('.parallax-section').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                $('.parallax-section').css('background-size', 'cover');
+                $('.parallax-section').css('background-position', 'center');
+            }
+        } else {
+            console.error('La respuesta no contiene datos válidos.');
+        }
+    },
+    error: function (error) {
+        console.log('Error al cargar la información de la plantilla:', error);
+    }
+});
+/* Fin Sección información de la plantilla */
+
 </script>
 
 
