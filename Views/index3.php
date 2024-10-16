@@ -229,11 +229,9 @@
                     
                     <div class="btnsQuienes d-flex gap-3">
 
-                    <a href="" class="btn btn-primary">
-                        
-                    </a>
+                    <a href="" class="btn"></a>
 
-                        <button type="button" class="btn btn-light mx-auto mt-4" data-bs-toggle="offcanvas"
+                        <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                     </div>
                 </div>
@@ -591,7 +589,6 @@
     <script src="Views/templates/js/index_header3.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
-
     <script>
     /* Sección iconos */
     let formDataIconos = new FormData();
@@ -675,11 +672,12 @@
                 $('#quienes-title').text(banner.titulo);
                 $('#quienes-text').text(banner.texto_banner);
                 
-                // Actualizar el botón existente
-                $('#quienes-button').attr('href', banner.enlace_boton); // Establecer el enlace del botón
-                $('#quienes-button').text(banner.texto_boton); // Establecer el texto del botón
-                $('#quienes-button').css('background-color', banner.color_btn_banner); // Establecer el color de fondo del botón
-                $('#quienes-button').css('color', banner.color_textoBtn_banner); // Establecer el color del texto del botón
+                // Editar el botón existente en el DOM
+                let $quienesButton = $('#quienes-button');
+                $quienesButton.attr('href', banner.enlace_boton);
+                $quienesButton.text(banner.texto_boton);
+                $quienesButton.css('background-color', banner.color_btn_banner);
+                $quienesButton.css('color', banner.color_textoBtn_banner);
 
             } else {
                 console.error('No se encontraron banners.');
@@ -691,5 +689,6 @@
     });
     /* Fin Sección Banner */
 </script>
+
 
     <?php include 'Views/templates/footer3.php'; ?>
