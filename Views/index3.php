@@ -452,23 +452,6 @@
                     </div>
                 </div>
             </section>
-            <section class="seccion5">
-                <div class="container px-4 d-flex flex-column flex-md-row">
-
-                    <div class="w-100 d-flex p-5 pb-0 pb-md-5 flex-column texto-secondary">
-                        <h5 class="display-6">Urgencias</h5>
-                        <h3 class="display-1 fw-bold texto-primary">24 horas </h3>
-                        <p>Proporcionamos servicio de atención de urgencias durante todo el día en nuestro consultorio
-                            dental.
-                        </p>
-                    </div>
-                    <div class="w-100 d-flex order-first order-md-last">
-                        <img class="mx-auto rounded-3 shadow img2Seccion5"
-                            src="https://images.unsplash.com/photo-1670250721717-889b17349fc4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGRlbnRpc3RhfGVufDB8fDB8fHww"
-                            alt="">
-                    </div>
-                </div>
-            </section>
 
             <section id="doctores" class="seccion6 mb-0 padding">
                 <div class="container px-4 d-flex flex-column">
