@@ -200,10 +200,10 @@
                         </p>
 
                         <p id="parallax-text" class="mb-0 text-center text-md-start"></p>
-                        <div class="d-flex gap-2">
+                        <div class="d-flex gap-2 mt-4">
 
                             <a target="_blank" href="#" id="parallax-button" class="btn"></a>
-                            <button  type="button" class="btn btn-primary mt-4" data-bs-toggle="offcanvas"
+                            <button  type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                         </div>
                     </div>
@@ -543,18 +543,6 @@
         </div>
     </div>
 
-    <div id="plantilla-container" class="container mt-5">
-        <div class="parallax-section"
-            style="background-color: #c7c7c7; opacity: 0.65; padding: 50px; text-align: center;">
-            <h1 id="" style="color: #000000;">PARALLAX Titulo</h1>
-            <h3 id="" style="color: #000000;">PARALLAX subtitulo</h3>
-            <p id="" style="color: #000000;">PARALLAX Texto</p>
-            <a id="" href="www.google.com"  class="btn btn-primary"
-                style="background-color: #000000; color: #ffffff;">www.google.com</a>
-        </div>
-    </div>
-
-
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
@@ -673,7 +661,7 @@
                     let enlace = banner.enlace_boton;
                     if (!/^https?:\/\//i.test(enlace)) {
                         enlace = 'http://' + enlace; // Agrega http:// si no está presente
-                    }
+                    }       
 
                     button.attr('href', enlace); // Cambiar el enlace del botón
                     button.css({
@@ -716,6 +704,7 @@
                 if (data && Array.isArray(data) && data.length > 0) {
                     var plantilla = data[0]; // Obtener el primer objeto de la respuesta
 
+                    var enlace = plantilla.boton_parallax_texto
                     // Mostrar la información en el DOM
                     $('#parallax-title').text(plantilla.parallax_titulo);
                     $('#parallax-subtitle').text(plantilla.parallax_sub);
