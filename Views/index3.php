@@ -685,11 +685,19 @@
 
                     // Modificar el botón existente
                     let button = $('#quienes-button');
-                    button.attr('href', banner.enlace_boton); // Cambiar el enlace del botón
+
+                    // Asegurarse de que el enlace tenga el protocolo adecuado
+                    let enlace = banner.enlace_boton;
+                    if (!/^https?:\/\//i.test(enlace)) {
+                        enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                    }
+
+                    button.attr('href', enlace); // Cambiar el enlace del botón
                     button.css({
                         'background-color': banner.color_btn_banner,
                         'color': banner.color_textoBtn_banner
                     }).text(banner.texto_boton); // Cambiar el texto del botón
+
 
                 } else {
                     console.error('No se encontraron banners.');
