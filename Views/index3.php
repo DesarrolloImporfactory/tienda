@@ -232,6 +232,8 @@
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                 </div>
             </section>
+            <img id="banner-image" src="" alt="Banner" class="d-block w-100">
+
 
             <section id="servicios" class="seccion3 padding">
                 <div class="container px-4 d-flex flex-column">
@@ -640,5 +642,34 @@
             }
         });
         /* fin seccion iconos */
-    </script>
+        
+            /* Sección banner */
+    let formDataSlider = new FormData();
+    formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+
+    $.ajax({
+        url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
+        method: 'POST',
+        data: formDataSlider,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(data) {
+            console.log('Respuesta completa de la API (banner):', data);
+
+            if (data && data.length > 0) {
+                let banner = data[0]; // Obtenemos el primer banner
+                let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
+                
+                // Actualizamos el src de la imagen con el banner
+                $('#banner-image').attr('src', image_path);
+            } else {
+                console.error('No se encontraron banners.');
+            }
+        },
+        error: function(error) {
+            console.error('Error fetching banner data', error);
+        }
+    });
+</script>
     <?php include 'Views/templates/footer3.php'; ?>
