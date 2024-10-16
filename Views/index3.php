@@ -587,62 +587,60 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
-        /* seccion iconos */
-        // ID de la plataforma o parámetro necesario
-        let formDataIconos = new FormData();
-        formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+    /* Sección iconos */
+    // ID de la plataforma o parámetro necesario
+    let formDataIconos = new FormData();
+    formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/iconostienda', // URL de la API
-            method: 'POST',
-            data: formDataIconos,
-            contentType: false,
-            processData: false,
-            success: function(response) {
+    $.ajax({
+        url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
+        method: 'POST',
+        data: formDataIconos,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            console.log('Respuesta completa de la API (iconos):', response);
 
-
-                try {
-                    var iconos = JSON.parse(response); // Parsear la respuesta de la API
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
-                }
-
-                if (iconos && Array.isArray(iconos)) {
-                    var $tarjetasContainer = $("#tarjetas-container");
-
-                    // Limpiamos el contenedor de tarjetas por si acaso
-                    $tarjetasContainer.empty();
-
-                    // Iteramos sobre los iconos obtenidos de la API
-                    iconos.forEach(function(icono) {
-                        var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-                        var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
-                        var color_icono = icono.color_icono || '#000000'; // Color del ícono
-
-                        // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
-                        var tarjetaItem = `
-                    <div class="card w-100 shadow border">
-                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
-                            <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
-                        </div>
-                    </div>
-                `;
-
-                        // Agregar la tarjeta al contenedor
-                        $tarjetasContainer.append(tarjetaItem);
-                    });
-                } else {
-                    console.error('La respuesta no contiene iconos válidos.');
-                }
-            },
-            error: function(error) {
-                console.log('Error al cargar los iconos:', error);
+            try {
+                var iconos = JSON.parse(response); // Parsear la respuesta de la API
+            } catch (e) {
+                console.error('Error al parsear la respuesta:', e);
+                return;
             }
-        });
-        /* fin seccion iconos */
-        
+
+            if (iconos && Array.isArray(iconos)) {
+                var $tarjetasContainer = $("#tarjetas-container");
+
+                // Limpiamos el contenedor de tarjetas por si acaso
+                $tarjetasContainer.empty();
+
+                // Iteramos sobre los iconos obtenidos de la API
+                iconos.forEach(function(icono) {
+                    var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
+                    var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
+                    var color_icono = icono.color_icono || '#000000'; // Color del ícono
+
+                    // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
+                    var tarjetaItem = `
+                        <div class="card w-100 shadow border">
+                            <div class="card-body text-center d-flex flex-column gap-3 p-4">
+                                <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
+                                <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
+                            </div>
+                        </div>
+                    `;
+
+                    // Agregar la tarjeta al contenedor
+                    $tarjetasContainer.append(tarjetaItem);
+                });
+            } else {
+                console.error('La respuesta no contiene iconos válidos.');
+            }
+        },
+        error: function(error) {
+            console.log('Error al cargar los iconos:', error);
+        }
+    });
 
     /* Sección banner */
     let formDataSlider = new FormData();
@@ -660,8 +658,8 @@
 
             if (data && data.length > 0) {
                 let banner = data[0]; // Obtenemos el primer banner
-                let image_path = SERVERURL + banner.fondo_banner; // Construimos la URL de la imagen
-
+                let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
+                
                 // Actualizamos el src de la imagen con el banner
                 $('#banner-image').attr('src', image_path);
             } else {
@@ -673,4 +671,5 @@
         }
     });
 </script>
+
     <?php include 'Views/templates/footer3.php'; ?>
