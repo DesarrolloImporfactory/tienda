@@ -233,12 +233,11 @@
                     <h3 id="quienes-title" class="display-2 fw-bold"></h3>
                     <hr>
                     <p id="quienes-text" class="fs-4"></p>
-                    <div id="quienes-button-container" class="text-center">
+
+                    <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
                         <a id="quienes-button" href="#" class="btn">
                             <!-- Este botón se va a modificar -->
                         </a>
-                    </div>
-                    <div class="btnsQuienes d-flex gap-3">
                         <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                     </div>
