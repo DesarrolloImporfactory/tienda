@@ -685,7 +685,7 @@
     formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);  // Asegúrate de que ID_PLATAFORMA esté definido
 
     $.ajax({
-        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3', // URL de la API que mencionó tu jefe
+        url: SERVERURL + 'Usuarios/obtener_informacion_plantilla3()', // URL de la API que mencionó tu jefe
         method: 'POST',  // Método POST para enviar datos
         data: formDataPlantilla,  // Los datos que se enviarán
         contentType: false,
