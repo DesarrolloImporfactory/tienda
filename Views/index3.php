@@ -222,18 +222,20 @@
 
             <section id="quienes" class="seccion2 mb-0">
                 <div class="container px-4 d-flex flex-column text-white py-5 text-center">
-                <h1 id="quienes-title" class="text-center"></h1>
-    <p id="quienes-text" class="text-center"></p>
-    <div id="quienes-button-container" class="text-center"></div>
-    <hr>
-                    <h3 class="display-2 fw-bold">Velamos por su salud</h3>
-                        <p class="fs-4">Somos expertos en salud oral </p>
-                        <p class="">Un consultorio odontológico experto por contar con profesionales altamente
-                            capacitados y
-                            tecnología de
-                            última generación en sus instalaciones</p>
+                    <h3 id="quienes-title" class="display-2 fw-bold"></h3>
+                    <hr>
+                    <p id="quienes-text" class="fs-4"></p>
+                    <div id="quienes-button-container" class="text-center"></div>
+                    
+                    <div class="btnsQuienes d-flex gap-3">
+
+                    <a href="" class="btn btn-primary">
+                        
+                    </a>
+
                         <button type="button" class="btn btn-light mx-auto mt-4" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                        data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                    </div>
                 </div>
             </section>
 
@@ -589,6 +591,7 @@
     <script src="Views/templates/js/index_header3.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
+
     <script>
     /* Sección iconos */
     let formDataIconos = new FormData();
@@ -672,13 +675,11 @@
                 $('#quienes-title').text(banner.titulo);
                 $('#quienes-text').text(banner.texto_banner);
                 
-                // Crear y agregar el botón
-                let buttonHTML = `
-                    <a href="${banner.enlace_boton}" class="btn" style="background-color: ${banner.color_btn_banner}; color: ${banner.color_textoBtn_banner};">
-                        ${banner.texto_boton}
-                    </a>
-                `;
-                $('#quienes-button-container').html(buttonHTML); // Agregar el botón al contenedor correspondiente
+                // Actualizar el botón existente
+                $('#quienes-button').attr('href', banner.enlace_boton); // Establecer el enlace del botón
+                $('#quienes-button').text(banner.texto_boton); // Establecer el texto del botón
+                $('#quienes-button').css('background-color', banner.color_btn_banner); // Establecer el color de fondo del botón
+                $('#quienes-button').css('color', banner.color_textoBtn_banner); // Establecer el color del texto del botón
 
             } else {
                 console.error('No se encontraron banners.');
@@ -690,7 +691,5 @@
     });
     /* Fin Sección Banner */
 </script>
-
-
 
     <?php include 'Views/templates/footer3.php'; ?>
