@@ -599,7 +599,7 @@
             contentType: false,
             processData: false,
             success: function(response) {
-                console.log('Respuesta completa de la API:', response);
+
 
                 try {
                     var iconos = JSON.parse(response); // Parsear la respuesta de la API
@@ -643,7 +643,8 @@
         });
         /* fin seccion iconos */
         
-            /* Sección banner */
+
+    /* Sección banner */
     let formDataSlider = new FormData();
     formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
@@ -659,8 +660,8 @@
 
             if (data && data.length > 0) {
                 let banner = data[0]; // Obtenemos el primer banner
-                let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
-                
+                let image_path = SERVERURL + banner.fondo_banner; // Construimos la URL de la imagen
+
                 // Actualizamos el src de la imagen con el banner
                 $('#banner-image').attr('src', image_path);
             } else {
