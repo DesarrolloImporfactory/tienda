@@ -505,7 +505,7 @@
                     $('#banner-title').text(banner.titulo);
                     $('#banner-text').text(banner.texto_banner);
                     $('#banner-text').css('color', banner.color_texto_banner); // Centrar la imagen
-                    $('#imagen-banner').attr('src', plantilla.fondo_banner || '#');
+                    $('#imagen-banner').attr('src', banner.fondo_banner || '#');
 
 
                     // Modificar el botón existente
