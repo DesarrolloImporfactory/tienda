@@ -214,7 +214,7 @@
                         <p id="parallax-text" class="mb-0 text-center text-md-start"></p>
                         <div class="d-flex gap-2 mt-4">
 
-                            <a target="_blank" href="#" id="parallax-button" class="btn"></a>
+                            <!-- <a target="_blank" href="#" id="parallax-button" class="btn"></a> -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasNavbarForm"
                                 aria-controls="offcanvasNavbarForm">Consulta</button>
@@ -537,7 +537,7 @@
         });
         /* Fin Sección Banner */
 
-        /* Consumo del servicio Usuarios/obtener_informacion_plantilla3 */
+        /* Seccion paralax */
         let formDataPlantilla = new FormData();
         formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
@@ -583,7 +583,7 @@
                 console.log('Error al cargar la información de la plantilla:', error);
             }
         });
-        /* Fin Sección información de la plantilla */
+        /* Fin Sección paralax */
 
         /* Sección productos destacados */
         let formDataProductos = new FormData();

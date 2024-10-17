@@ -83,7 +83,7 @@
     .card-title {
         display: -webkit-box !important;
         -webkit-box-orient: vertical !important;
-        -webkit-line-clamp: 2 !important;
+        -webkit-line-clamp: 1 !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
     }
