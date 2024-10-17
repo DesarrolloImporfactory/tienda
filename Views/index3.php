@@ -202,19 +202,19 @@
                     <div
                         class="d-flex w-100 flex-column pb-5 text-start textosHeader align-items-center align-items-md-start">
                         <a class="d-flex logoHeaderLink" href="/">
-                            <h3 id="parallax-title" class="texto-primary display-6 fw-bold d-flex"></h3>
+                            <h3 id="" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
 
-                        <p id="parallax-subtitle"
+                        <p id=""
                             class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
 
                             <span class="texto-primary" id="element"></span>
                         </p>
 
-                        <p id="parallax-text" class="mb-0 text-center text-md-start"></p>
+                        <p id="" class="mb-0 text-center text-md-start"></p>
                         <div class="d-flex gap-2 mt-4">
 
-                            <!-- <a target="_blank" href="#" id="parallax-button" class="btn"></a> -->
+                            <!-- <a target="_blank" href="#" id="" class="btn"></a> -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasNavbarForm"
                                 aria-controls="offcanvasNavbarForm">Consulta</button>
@@ -239,11 +239,12 @@
 
             <section id="quienes" class="seccion2 mb-0">
                 <div class="container px-4 d-flex flex-column text-white py-5 text-center">
-                    <h3 id="quienes-title" class="display-2 fw-bold"></h3>
-                    <p id="quienes-text" class="fs-4"></p>
+                    <h3 id="parallax-title" class="display-2 fw-bold"></h3>
+                    <h5 id="parallax-subtitle" class="display-4 fw-bold"></h5>
+                    <p id="parallax-text" class="fs-4"></p>
                     <hr>
                     <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
-                        <a id="quienes-button" href="#" class="btn">
+                        <a id="parallax-button" href="#" class="btn">
                             <!-- Este botón se va a modificar -->
                         </a>
                         <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
