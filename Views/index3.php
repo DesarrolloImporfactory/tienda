@@ -131,8 +131,9 @@
                         Envianos tu consulta
                     </button>
 
-                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?> <?php echo NOMBRE_TIENDA; ?></p>
-                    </div>
+                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
+                        <?php echo NOMBRE_TIENDA; ?></p>
+                </div>
             </div>
 
 
@@ -553,7 +554,7 @@
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
 
-            <a class="navbar-brand mb-3" href="<?php echo $primera_seccion; ?>">
+                <a class="navbar-brand mb-3" href="<?php echo $primera_seccion; ?>">
                     <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
                         alt="IMPORT SHOP">
                 </a>
@@ -567,7 +568,8 @@
                     <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a>
                     </li>
                 </ul>
-                <p class="text-center text-body-secondary">&copy; <?php echo date('Y'); ?> <?php echo NOMBRE_TIENDA; ?></p>
+                <p class="text-center text-body-secondary">&copy; <?php echo date('Y'); ?> <?php echo NOMBRE_TIENDA; ?>
+                </p>
             </div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10074.886852202728!2d-78.55683778728343!3d-0.25860257925138724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598df3ddc65c5%3A0x18203d4f3fa6602c!2sBiloxi%2C%20Quito!5e0!3m2!1ses-419!2sec!4v1728095977382!5m2!1ses-419!2sec"
@@ -737,6 +739,48 @@
             }
         });
         /* Fin Sección información de la plantilla */
+
+        /* Sección productos destacados */
+        let formDataProductos = new FormData();
+        formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/destacadostienda',
+            type: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                // Parsear la respuesta en formato JSON si es necesario
+                let productos = JSON.parse(response);
+                let productosHTML = '';
+
+                productos.forEach(producto => {
+                    productosHTML += `
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card overflow-hidden rounded-3">
+                    <img style="height: 200px; object-fit: cover;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body">
+                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                        <p class="card-text">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                        <p class="card-text"><strong>Precio: $${producto.pvp_tienda}</strong></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agendar Cita</button>
+                    </div>
+                </div>
+            </div>
+            `;
+                });
+
+                // Insertar el contenido dinámico en el contenedor de tarjetas
+                $('#servicios .row').html(productosHTML);
+            },
+            error: function (error) {
+                console.log("Error al obtener productos: ", error);
+            }
+        });
+
+        /* Fin productos destacados */
+
 
     </script>
 
