@@ -269,18 +269,19 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img style="height: 200px; object-fit: contain;" src=""
-                                        class="card-img-top my-4" alt="">
-                                        <p class="descripcionModal"></p>
-                                        <p>Precio <span class="PrecioModal"></span></p>
+                                    <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4"
+                                        alt="">
+                                    <p class="descripcionModal"></p>
+                                    <p>Precio <span class="PrecioModal"></span></p>
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cerrar</button>
                                     <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
-                                    style="background-color: #5dc355 !important; color: white !important;"
-                                    class="btn btn-primary">Solicitar</a>
+                                        style="background-color: #5dc355 !important; color: white !important;"
+                                        class="btn btn-primary"> <i class="bi bi-whatsapp text-white me-2"></i>
+                                        Solicitar</a>
                                 </div>
                             </div>
                         </div>
