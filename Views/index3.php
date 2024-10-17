@@ -552,7 +552,8 @@
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
-                <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
+
+            <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
                     <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
                         alt="IMPORT SHOP">
                 </a>
