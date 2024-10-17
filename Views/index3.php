@@ -278,7 +278,9 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Guardar cambios</button>
+                                    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
+                                    style="background-color: #5dc355 !important; color: white !important;"
+                                    class="btn btn-primary">Solicitar</a>
                                 </div>
                             </div>
                         </div>
