@@ -132,7 +132,8 @@
                     </button>
 
                     <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
-                        <?php echo NOMBRE_TIENDA; ?></p>
+                        <?php echo NOMBRE_TIENDA; ?>
+                    </p>
                 </div>
             </div>
 
@@ -258,28 +259,24 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal servicios
-                                        quemada</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal título</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img style="height: 200px; object-fit: cover;"
-                                        src="https://plus.unsplash.com/premium_photo-1661436643545-732ea5236e59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTczfHx0cmF0YW1pZW50byUyMG9ydG9kb25jaWF8ZW58MHx8MHx8fDA%3D"
-                                        class="card-img-top rounded-3 border my-4" alt="...">
-
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti quas consectetur
-                                    doloribus, totam aliquid illum et at aperiam velit enim reiciendis maiores sit nobis
-                                    magnam.
+                                    <img style="height: 200px; object-fit: cover;" src=""
+                                        class="card-img-top rounded-3 border my-4" alt="">
+                                    <p></p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary">Guardar cambios</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                 </div>
 
@@ -330,7 +327,7 @@
                                 src="https://doctorweb.agency/assets/img/blog/marketing-digital-para-odontologos.jpg"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
-                            <h5 class="card-title">Dr. David Granda</h5>
+                                <h5 class="card-title">Dr. David Granda</h5>
                                 <hr>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
@@ -592,34 +589,45 @@
             contentType: false,
             processData: false,
             success: function (response) {
-                // Parsear la respuesta en formato JSON si es necesario
                 let productos = JSON.parse(response);
                 let productosHTML = '';
 
                 productos.forEach(producto => {
                     productosHTML += `
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card overflow-hidden rounded-3">
-                    <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
-                    <div class="card-body">
-                        <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
-                        <hr class="my-2">
-                        <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
-                        <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Detalles</button>
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card overflow-hidden rounded-3">
+                        <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
+                            <hr class="my-2">
+                            <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                            <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             `;
                 });
 
-                // Insertar el contenido dinámico en el contenedor de tarjetas
                 $('#servicios .row').html(productosHTML);
+
+                $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
+                    let idProducto = $(this).data('id');
+
+                    let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
+
+                    $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+                    $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+                    $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+                    $('.modal-body').find('p').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+                });
+
             },
             error: function (error) {
                 console.log("Error al obtener productos: ", error);
             }
         });
+
 
         /* Fin productos destacados */
 
