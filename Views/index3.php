@@ -37,31 +37,16 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            // Mostrar el overlay cuando la página comience a cargarse
-            $('#overlay').show();
+        // Mostrar el overlay inmediatamente cuando se carga el HTML
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('overlay').style.display = 'flex'; // Mostrar el overlay
+});
 
-            let formDataProductos = new FormData();
-            formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+// Ocultar el overlay cuando todo, incluyendo APIs, imágenes, etc. se haya cargado
+window.onload = function() {
+    document.getElementById('overlay').style.display = 'none'; // Ocultar el overlay
+};
 
-            $.ajax({
-                url: SERVERURL + 'Tienda/destacadostienda',
-                type: 'POST',
-                data: formDataProductos,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    // Lógica para renderizar los productos aquí
-
-                    // Ocultar el overlay una vez que todo esté cargado
-                    $('#overlay').fadeOut();
-                },
-                error: function (error) {
-                    console.error("Error al obtener los productos:", error);
-                    $('#overlay').fadeOut(); // Asegura que se oculte también en caso de error
-                }
-            });
-        });
 
     </script>
 
