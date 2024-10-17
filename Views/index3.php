@@ -206,7 +206,8 @@
                         </a>
                         <!-- <span class="texto-primary" id="element"></span> -->
 
-                        <p id="banner-text" class="mb-0 texto-secondary fw-bold display-4 text-center text-md-start"></p>
+                        <p id="banner-text" class="mb-0 texto-secondary fw-bold display-4 text-center text-md-start">
+                        </p>
                         <div class="d-flex gap-2 mt-4">
                             <a target="_blank" href="#" id="banner-button" class="btn"></a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
@@ -215,8 +216,7 @@
                         </div>
                     </div>
                     <div class="d-flex w-100">
-                        <img id="imagen-banner" src=""
-                            class="w-100 h-auto overflow-hidden rounded-3" alt="">
+                        <img id="imagen-banner" src="" class="w-100 h-auto overflow-hidden rounded-3" alt="">
                     </div>
                 </div>
 
@@ -294,10 +294,11 @@
                             src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_10-4440997.png?format=webp"
                             alt="">
                     </div>
-                    <div class="w-100 d-flex fondo-primary p-5 flex-column text-white rounded-3 shadow">
-                        <h5 class="display-6">Urgencias</h5>
-                        <h3 class="display-1 fw-bold">24 horas </h3>
-                        <p>Proporcionamos servicio de atención de urgencias durante todo el día en nuestro consultorio
+                    <div class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
+                        <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
+                        <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
+                        <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
+                            nuestro consultorio
                             dental.
                         </p>
                     </div>
@@ -534,7 +535,7 @@
         });
         /* Fin Sección Banner */
 
-        /* Seccion paralax */
+        /* Seccion paralax 1 y 2 */
         let formDataPlantilla = new FormData();
         formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
@@ -559,7 +560,7 @@
                     var plantilla = data[0]; // Obtener el primer objeto de la respuesta
 
                     var enlace = plantilla.boton_parallax_texto
-                    // Mostrar la información en el DOM
+                    // renderizar paralax 1
                     $('#parallax-title').text(plantilla.parallax_titulo);
                     $('#parallax-subtitle').text(plantilla.parallax_sub);
                     $('#parallax-text').text(plantilla.parallax_texto);
@@ -572,6 +573,23 @@
                         $('#quienes').css('background-size', 'cover');
                         $('#quienes').css('background-position', 'center');
                     }
+                    
+                    // renderizar paralax 2
+
+                    if (plantilla.titulo_parallax2) {
+
+                        $('#titulo_parallax2').text(plantilla.titulo_parallax2);
+                    }
+                    if (plantilla.subtitulo_parallax2) {
+
+                        $('#subtitulo_parallax2').text(plantilla.subtitulo_parallax2);
+                    }
+                    if (plantilla.texto_parallax2) {
+
+                        $('#texto_parallax2').text(plantilla.texto_parallax2);
+                    }
+
+
                 } else {
                     console.error('La respuesta no contiene datos válidos.');
                 }
