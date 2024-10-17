@@ -204,13 +204,9 @@
                         <a class="d-flex logoHeaderLink" href="/">
                             <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
-                        <p id=""
-                            class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
-
-                        </p>
                         <!-- <span class="texto-primary" id="element"></span> -->
 
-                        <p id="banner-text" class="mb-0 text-center text-md-start"></p>
+                        <p id="banner-text" class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start"></p>
                         <div class="d-flex gap-2 mt-4">
                             <a target="_blank" href="#" id="banner-button" class="btn"></a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
