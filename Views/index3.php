@@ -206,7 +206,7 @@
                         </a>
                         <!-- <span class="texto-primary" id="element"></span> -->
 
-                        <p id="banner-text" class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start"></p>
+                        <p id="banner-text" class="mb-0 texto-secondary fw-bold display-4 text-center text-md-start"></p>
                         <div class="d-flex gap-2 mt-4">
                             <a target="_blank" href="#" id="banner-button" class="btn"></a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
