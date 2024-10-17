@@ -602,7 +602,7 @@
                 <div class="card overflow-hidden rounded-3">
                     <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                     <div class="card-body">
-                        <h5 class="card-title fs-6 my-2">${producto.nombre_producto_tienda}</h5>
+                        <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
                         <hr class="my-2">
                         <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
                         <p class="card-text mb-2"><strong>Precio: $${producto.pvp_tienda}</strong></p>
