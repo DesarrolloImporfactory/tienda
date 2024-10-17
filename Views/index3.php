@@ -132,8 +132,7 @@
                     </button>
 
                     <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
-                        <?php echo NOMBRE_TIENDA; ?>
-                    </p>
+                        <?php echo NOMBRE_TIENDA; ?></p>
                 </div>
             </div>
 
@@ -252,8 +251,7 @@
             <section id="servicios" class="seccion3 padding">
                 <div class="container px-4 d-flex flex-column">
                     <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros servicios </h3>
-                    <div id="servicios-contenedor"></div>
-
+                   <div class="row"></div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -585,56 +583,51 @@
 
         /* Sección productos destacados */
         let formDataProductos = new FormData();
-        formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/destacadostienda',
-            type: 'POST',
-            data: formDataProductos,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                // Asumiendo que response es un array de productos
-                let productos = response; // array de productos desde la API
-                let productosContenedor = $('#servicios-contenedor'); // Contenedor principal
-                let row; // Fila actual
-                let productosPorFila = 4; // Cantidad de productos por fila
-                let contador = 0; // Contador para productos en la fila actual
+$.ajax({
+    url: SERVERURL + 'Tienda/destacadostienda',
+    type: 'POST',
+    data: formDataProductos,
+    processData: false,
+    contentType: false,
+    success: function(response) {
+        let productos = response; // Suponiendo que response ya es un array de productos
+        let container = $('#servicios .container .row');
+        container.empty(); // Limpiar contenido anterior
 
-                productos.forEach((producto, index) => {
-                    // Si el contador es 0 o múltiplo de 4, creamos una nueva fila
-                    if (contador % productosPorFila === 0) {
-                        row = $('<div>').addClass('row'); // Crear nueva fila
-                        productosContenedor.append(row); // Añadir la fila al contenedor
-                    }
+        let row;
+        productos.forEach((producto, index) => {
+            // Crear una nueva fila cada 4 productos
+            if (index % 4 === 0) {
+                row = $('<div class="row mb-4"></div>');
+                container.append(row);
+            }
 
-                    // Crear la tarjeta del producto
-                    let col = $('<div>').addClass('col-lg-3 col-sm-6 mb-4');
-                    let card = `
-                <div class="card overflow-hidden rounded-3">
-                    <img style="height: 200px; object-fit: cover;" src="${SERVERURL}${producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
-                    <div class="card-body">
-                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                        <p class="card-text">${producto.descripcion_tienda || 'Descripción no disponible.'}</p>
-                        <p class="card-text"><strong>Precio: </strong>$${producto.pvp_tienda}</p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Agendar Cita
-                        </button>
+            // Crear tarjeta para el producto
+            let card = `
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card overflow-hidden rounded-3">
+                        <img style="height: 200px; object-fit: cover;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                        <div class="card-body">
+                            <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                            <p class="card-text">${producto.descripcion_tienda || 'Descripción no disponible.'}</p>
+                            <p class="card-text fw-bold">Precio: $${producto.pvp_tienda}</p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Agendar Cita
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
 
-                    col.html(card); // Añadir la tarjeta a la columna
-                    row.append(col); // Añadir la columna a la fila actual
-
-                    contador++; // Incrementar el contador
-                });
-            },
-            error: function (error) {
-                console.error("Error al consumir la API", error);
-            }
+            row.append(card); // Añadir tarjeta a la fila actual
         });
-
+    },
+    error: function(error) {
+        console.error("Error al obtener los productos:", error);
+    }
+});
 
         /* Fin productos destacados */
 
