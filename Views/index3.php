@@ -204,6 +204,10 @@
                         <a class="d-flex logoHeaderLink" href="/">
                             <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
+                        <p id=""
+                            class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
+
+                        </p>
                         <!-- <span class="texto-primary" id="element"></span> -->
 
                         <p id="banner-text" class="mb-0 text-center text-md-start"></p>
@@ -508,6 +512,8 @@
                     // Mostrar el título y texto del banner
                     $('#banner-title').text(banner.titulo);
                     $('#banner-text').text(banner.texto_banner);
+                    $('#banner-text').css('color', banner.color_texto_banner); // Centrar la imagen
+
 
                     // Modificar el botón existente
                     let button = $('#banner-button');
