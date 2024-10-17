@@ -80,7 +80,7 @@
         padding-bottom: 100px;
     }
 
-    .card-text {
+    .card-title {
         display: -webkit-box !important;
         -webkit-box-orient: vertical !important;
         -webkit-line-clamp: 2 !important;
