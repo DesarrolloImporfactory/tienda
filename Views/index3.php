@@ -280,7 +280,7 @@
                                         data-bs-dismiss="modal">Cerrar</button>
                                     <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
                                         style="background-color: #5dc355 !important; color: white !important;"
-                                        class="btn btn-primary"> <i class="bi bi-whatsapp text-white me-2"></i>
+                                        class="btn btn-primary border-0"> <i class="bi bi-whatsapp text-white me-2"></i>
                                         Solicitar</a>
                                 </div>
                             </div>
