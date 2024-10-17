@@ -200,7 +200,7 @@
                 <div
                     class="container px-4 containerHeader d-flex align-items-md-end align-items-center flex-column flex-md-row">
                     <div
-                        class="d-flex w-100 flex-column pb-lg-5 pb-2 text-start textosHeader align-items-center align-items-md-start">
+                        class="d-flex w-100 flex-column pb-lg-2 pb-5 text-start textosHeader align-items-center align-items-md-start">
                         <a class="d-flex logoHeaderLink" href="/">
                             <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
