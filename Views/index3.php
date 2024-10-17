@@ -215,7 +215,7 @@
                         </div>
                     </div>
                     <div class="d-flex w-100">
-                        <img src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_1-4440997.png?format=webp"
+                        <img id="imagen-banner" src=""
                             class="w-100 imgHeader" alt="">
                     </div>
                 </div>
@@ -500,15 +500,12 @@
                     let banner = data[0]; // Obtenemos el primer banner
                     let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
 
-                    // Establecemos la imagen como fondo de la sección con ID 'quienes'
-                    $('#inicio').css('background-image', `url(${image_path})`);
-                    $('#inicio').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
-                    $('#inicio').css('background-position', 'center'); // Centrar la imagen
 
                     // Mostrar el título y texto del banner
                     $('#banner-title').text(banner.titulo);
                     $('#banner-text').text(banner.texto_banner);
                     $('#banner-text').css('color', banner.color_texto_banner); // Centrar la imagen
+                    $('#imagen-banner').attr('src', plantilla.fondo_banner || '#');
 
 
                     // Modificar el botón existente
