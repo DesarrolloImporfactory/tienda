@@ -36,29 +36,9 @@
     <!-- Enlazar JS de Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <script>
-        // Mostrar el overlay inmediatamente cuando se carga el HTML
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('overlay').style.display = 'flex'; // Mostrar el overlay
-});
-
-// Ocultar el overlay cuando todo, incluyendo APIs, imágenes, etc. se haya cargado
-window.onload = function() {
-    document.getElementById('overlay').style.display = 'none'; // Ocultar el overlay
-};
-
-
-    </script>
-
 </head>
 
 <body>
-    <div id="overlay" class="overlay d-flex justify-content-center align-items-center">
-        <div class="spinner-border text-dark" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
-
     <div id="chatOverlay"></div>
 
 
@@ -152,8 +132,7 @@ window.onload = function() {
                     </button>
 
                     <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
-                        <?php echo NOMBRE_TIENDA; ?>
-                    </p>
+                        <?php echo NOMBRE_TIENDA; ?></p>
                 </div>
             </div>
 
@@ -351,7 +330,7 @@ window.onload = function() {
                                 src="https://doctorweb.agency/assets/img/blog/marketing-digital-para-odontologos.jpg"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Dr. David Granda</h5>
+                            <h5 class="card-title">Dr. David Granda</h5>
                                 <hr>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
