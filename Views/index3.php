@@ -131,8 +131,8 @@
                         Envianos tu consulta
                     </button>
 
-                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo NOMBRE_TIENDA; ?></p>
-                </div>
+                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?> <?php echo NOMBRE_TIENDA; ?></p>
+                    </div>
             </div>
 
 
@@ -567,7 +567,7 @@
                     <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a>
                     </li>
                 </ul>
-                <p class="text-center text-body-secondary">&copy; <?php echo NOMBRE_TIENDA; ?></p>
+                <p class="text-center text-body-secondary">&copy; <?php echo date('Y'); ?> <?php echo NOMBRE_TIENDA; ?></p>
             </div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10074.886852202728!2d-78.55683778728343!3d-0.25860257925138724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598df3ddc65c5%3A0x18203d4f3fa6602c!2sBiloxi%2C%20Quito!5e0!3m2!1ses-419!2sec!4v1728095977382!5m2!1ses-419!2sec"
