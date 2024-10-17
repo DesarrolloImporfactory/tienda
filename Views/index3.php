@@ -36,9 +36,44 @@
     <!-- Enlazar JS de Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            // Mostrar el overlay cuando la página comience a cargarse
+            $('#overlay').show();
+
+            let formDataProductos = new FormData();
+            formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+
+            $.ajax({
+                url: SERVERURL + 'Tienda/destacadostienda',
+                type: 'POST',
+                data: formDataProductos,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    // Lógica para renderizar los productos aquí
+
+                    // Ocultar el overlay una vez que todo esté cargado
+                    $('#overlay').fadeOut();
+                },
+                error: function (error) {
+                    console.error("Error al obtener los productos:", error);
+                    $('#overlay').fadeOut(); // Asegura que se oculte también en caso de error
+                }
+            });
+        });
+
+    </script>
+
 </head>
 
 <body>
+    <div id="overlay" class="overlay d-flex justify-content-center align-items-center">
+        <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <div id="chatOverlay"></div>
 
 
@@ -132,7 +167,8 @@
                     </button>
 
                     <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
-                        <?php echo NOMBRE_TIENDA; ?></p>
+                        <?php echo NOMBRE_TIENDA; ?>
+                    </p>
                 </div>
             </div>
 
@@ -330,7 +366,7 @@
                                 src="https://doctorweb.agency/assets/img/blog/marketing-digital-para-odontologos.jpg"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
-                      r       <h5 class="card-title">Dr. David Granda</h5>
+                                <h5 class="card-title">Dr. David Granda</h5>
                                 <hr>
                                 <p class="card-text">Some quick example text to build on the card title and make up the
                                     bulk
