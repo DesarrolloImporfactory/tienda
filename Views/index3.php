@@ -264,9 +264,11 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img style="height: 200px; object-fit: cover;" src=""
-                                        class="card-img-top rounded-3 border my-4" alt="">
-                                    <p></p>
+                                    <img style="height: 200px; object-fit: contain;" src=""
+                                        class="card-img-top my-4" alt="">
+                                    <p class="PrecioModal"></p>
+                                    <p class="descripcionModal"></p>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
@@ -619,7 +621,8 @@
                     $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
                     $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
                     $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
-                    $('.modal-body').find('p').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+                    $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+                    $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
                 });
 
             },
