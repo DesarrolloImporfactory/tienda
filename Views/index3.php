@@ -216,7 +216,7 @@
                     </div>
                     <div class="d-flex w-100">
                         <img id="imagen-banner" src=""
-                            class="w-100 imgHeader" alt="">
+                            class="w-100 h-auto overflow-hidden rounded-3" alt="">
                     </div>
                 </div>
 
