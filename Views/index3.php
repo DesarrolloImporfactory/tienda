@@ -72,7 +72,8 @@
         <div class="container px-4 d-flex">
 
             <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
-                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
+                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                    alt="IMPORT SHOP">
             </a>
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
@@ -197,17 +198,19 @@
                             <h3 id="parallax-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
 
-                        <p id="parallax-subtitle" class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
-                            
-                        <span class="texto-primary" id="element"></span>
+                        <p id="parallax-subtitle"
+                            class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
+
+                            <span class="texto-primary" id="element"></span>
                         </p>
 
                         <p id="parallax-text" class="mb-0 text-center text-md-start"></p>
                         <div class="d-flex gap-2 mt-4">
 
                             <a target="_blank" href="#" id="parallax-button" class="btn"></a>
-                            <button  type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbarForm"
+                                aria-controls="offcanvasNavbarForm">Consulta</button>
                         </div>
                     </div>
                     <div class="d-flex w-100">
@@ -549,7 +552,10 @@
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
-                <a class="texto-primary fs-2 fw-bold mb-3" href="#">Logo</a>
+                <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
+                    <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                        alt="IMPORT SHOP">
+                </a>
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item"><a href="#inicio" class="nav-link px-2 text-body-secondary">Inicio</a></li>
                     <li class="nav-item"><a href="#quienes" class="nav-link px-2 text-body-secondary">Quienes Somos</a>
@@ -664,7 +670,7 @@
                     let enlace = banner.enlace_boton;
                     if (!/^https?:\/\//i.test(enlace)) {
                         enlace = 'http://' + enlace; // Agrega http:// si no está presente
-                    }       
+                    }
 
                     button.attr('href', enlace); // Cambiar el enlace del botón
                     button.css({
