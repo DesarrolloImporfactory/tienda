@@ -603,6 +603,7 @@
                     <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                     <div class="card-body">
                         <h5 class="card-title fs-6">${producto.nombre_producto_tienda}</h5>
+                        <hr>
                         <p class="card-text">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
                         <p class="card-text"><strong>Precio: $${producto.pvp_tienda}</strong></p>
                         <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Agendar Cita</button>
