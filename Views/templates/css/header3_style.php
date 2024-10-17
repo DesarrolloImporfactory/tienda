@@ -125,7 +125,7 @@
     }
 
     /* header ##########################*/
-
+    
     header {
         background-image: url(https://content.app-sources.com/s/53156514013336927/uploads/Images/Funnel_odontolog%C3%ADa-02-4441408.png?format=webp);
         min-height: 80vh;
@@ -305,7 +305,7 @@
         .containerHeader {
             padding-top: 80px;
         }
-
+        
         .imgHeader {
             max-width: 500px;
             margin: auto;
