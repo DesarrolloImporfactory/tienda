@@ -42,11 +42,16 @@
     <div id="chatOverlay"></div>
 
 
-    <button onclick="openChat()"
+    <!-- <button onclick="openChat()"
         class="border-0 shadow d-flex wppFixed justify-content-center align-items-center p-3 position-fixed z-3 rounded-circle"
         style="bottom: 20px; right: 20px; background-color: #5dc355; height: 50px; width: 50px;">
         <i class="bi bi-whatsapp text-white"></i>
-    </button>
+    </button> -->
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" target="_blank"
+        class="border-0 shadow d-flex wppFixed justify-content-center align-items-center p-3 position-fixed z-3 rounded-circle"
+        style="bottom: 20px; right: 20px; background-color: #5dc355; height: 50px; width: 50px;">
+        <i class="bi bi-whatsapp text-white"></i>
+    </a>
 
     <div id="chatWindow" class="chat-window position-fixed rounded-3 p-0 shadow-lg"
         style="display: none; bottom: 80px; right: 20px; background-color: white; width: 300px;">
