@@ -250,7 +250,7 @@
 
             <section id="servicios" class="seccion3 padding">
                 <div class="container px-4 d-flex flex-column">
-                    <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros servicios </h3>
+                    <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros productos destacados </h3>
                     <div class="row"></div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -600,12 +600,12 @@
                     productosHTML += `
             <div class="col-lg-3 col-sm-6 mb-4">
                 <div class="card overflow-hidden rounded-3">
-                    <img style="height: 200px; object-fit: cover;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                    <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                     <div class="card-body">
                         <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                         <p class="card-text">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
                         <p class="card-text"><strong>Precio: $${producto.pvp_tienda}</strong></p>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agendar Cita</button>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Agendar Cita</button>
                     </div>
                 </div>
             </div>
