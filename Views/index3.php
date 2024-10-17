@@ -131,7 +131,7 @@
                         Envianos tu consulta
                     </button>
 
-                    <p class="text-center text-body-secondary mt-auto">&copy; 2024 Company, Inc</p>
+                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo NOMBRE_TIENDA; ?></p>
                 </div>
             </div>
 
@@ -553,7 +553,7 @@
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
 
-            <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
+            <a class="navbar-brand mb-3" href="<?php echo $primera_seccion; ?>">
                     <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
                         alt="IMPORT SHOP">
                 </a>
@@ -567,7 +567,7 @@
                     <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a>
                     </li>
                 </ul>
-                <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
+                <p class="text-center text-body-secondary">&copy; <?php echo NOMBRE_TIENDA; ?></p>
             </div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10074.886852202728!2d-78.55683778728343!3d-0.25860257925138724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598df3ddc65c5%3A0x18203d4f3fa6602c!2sBiloxi%2C%20Quito!5e0!3m2!1ses-419!2sec!4v1728095977382!5m2!1ses-419!2sec"
