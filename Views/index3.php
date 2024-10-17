@@ -259,15 +259,15 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal título</h1>
+                                    <h1 class="modal-title fs-6" id="exampleModalLabel">Modal título</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <img style="height: 200px; object-fit: contain;" src=""
                                         class="card-img-top my-4" alt="">
-                                    <p class="PrecioModal"></p>
-                                    <p class="descripcionModal"></p>
+                                        <p class="descripcionModal"></p>
+                                        <p>Precio <span class="PrecioModal"></span></p>
 
                                 </div>
                                 <div class="modal-footer">
