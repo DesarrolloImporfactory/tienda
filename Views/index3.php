@@ -202,19 +202,13 @@
                     <div
                         class="d-flex w-100 flex-column pb-5 text-start textosHeader align-items-center align-items-md-start">
                         <a class="d-flex logoHeaderLink" href="/">
-                            <h3 id="" class="texto-primary display-6 fw-bold d-flex"></h3>
+                            <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
+                        <!-- <span class="texto-primary" id="element"></span> -->
 
-                        <p id=""
-                            class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">
-
-                            <span class="texto-primary" id="element"></span>
-                        </p>
-
-                        <p id="" class="mb-0 text-center text-md-start"></p>
+                        <p id="banner-text" class="mb-0 text-center text-md-start"></p>
                         <div class="d-flex gap-2 mt-4">
-
-                            <!-- <a target="_blank" href="#" id="" class="btn"></a> -->
+                            <a target="_blank" href="#" id="banner-button" class="btn"></a>
                             <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasNavbarForm"
                                 aria-controls="offcanvasNavbarForm">Consulta</button>
@@ -507,16 +501,16 @@
                     let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
 
                     // Establecemos la imagen como fondo de la sección con ID 'quienes'
-                    $('#quienes').css('background-image', `url(${image_path})`);
-                    $('#quienes').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
-                    $('#quienes').css('background-position', 'center'); // Centrar la imagen
+                    $('#inicio').css('background-image', `url(${image_path})`);
+                    $('#inicio').css('background-size', 'cover'); // Ajustar el tamaño de la imagen para cubrir toda la sección
+                    $('#inicio').css('background-position', 'center'); // Centrar la imagen
 
                     // Mostrar el título y texto del banner
-                    $('#quienes-title').text(banner.titulo);
-                    $('#quienes-text').text(banner.texto_banner);
+                    $('#banner-title').text(banner.titulo);
+                    $('#banner-text').text(banner.texto_banner);
 
                     // Modificar el botón existente
-                    let button = $('#quienes-button');
+                    let button = $('#banner-button');
 
                     // Asegurarse de que el enlace tenga el protocolo adecuado
                     let enlace = banner.enlace_boton;
