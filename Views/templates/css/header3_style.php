@@ -88,7 +88,13 @@
         text-overflow: ellipsis !important;
     }
 
-
+    .modal-title{
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        -webkit-line-clamp: 1 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
 
     /* boton de wpp ################################ */
     #chatOverlay {
