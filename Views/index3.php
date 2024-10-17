@@ -251,7 +251,166 @@
             <section id="servicios" class="seccion3 padding">
                 <div class="container px-4 d-flex flex-column">
                     <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros servicios </h3>
-                   <div class="row"></div>
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://images.unsplash.com/photo-1598531228433-d9f0cb960816?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGVudGlzdGF8ZW58MHx8MHx8fDA%3D"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 1</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRlbnRpc3RhfGVufDB8fDB8fHww"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 2</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://plus.unsplash.com/premium_photo-1674575134867-cb7623d39bdb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRlbnRpc3RhfGVufDB8fDB8fHww"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 3</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://images.unsplash.com/photo-1626736985932-c0df2ae07a2e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGRlbnRpc3RhfGVufDB8fDB8fHww"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 4</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://images.unsplash.com/photo-1667133295352-ef4c83620e8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGRlbnRpc3RhfGVufDB8fDB8fHww"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 5</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://plus.unsplash.com/premium_photo-1681997203595-e45e06abe034?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJyYWNrZXRzfGVufDB8fDB8fHww"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 6</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://plus.unsplash.com/premium_photo-1674179010595-81dff6bb844a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTYxfHx0cmF0YW1pZW50byUyMG9ydG9kb25jaWF8ZW58MHx8MHx8fDA%3D"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 7</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 mb-4">
+
+                            <div class="card overflow-hidden rounded-3">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://plus.unsplash.com/premium_photo-1661436643545-732ea5236e59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTczfHx0cmF0YW1pZW50byUyMG9ydG9kb25jaWF8ZW58MHx8MHx8fDA%3D"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Servicio 8</h5>
+                                    <p class="card-text">This is a longer card with supporting text below as a natural
+                                        lead-in to additional content. This content is a little bit longer.</p>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Agendar Cita
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
@@ -583,51 +742,42 @@
 
         /* Sección productos destacados */
         let formDataProductos = new FormData();
-formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+        formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
-$.ajax({
-    url: SERVERURL + 'Tienda/destacadostienda',
-    type: 'POST',
-    data: formDataProductos,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-        let productos = response; // Suponiendo que response ya es un array de productos
-        let container = $('#servicios .container .row');
-        container.empty(); // Limpiar contenido anterior
+        $.ajax({
+            url: SERVERURL + 'Tienda/destacadostienda',
+            type: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                // Parsear la respuesta en formato JSON si es necesario
+                let productos = JSON.parse(response);
+                let productosHTML = '';
 
-        let row;
-        productos.forEach((producto, index) => {
-            // Crear una nueva fila cada 4 productos
-            if (index % 4 === 0) {
-                row = $('<div class="row mb-4"></div>');
-                container.append(row);
-            }
-
-            // Crear tarjeta para el producto
-            let card = `
-                <div class="col-lg-3 col-sm-6 mb-4">
-                    <div class="card overflow-hidden rounded-3">
-                        <img style="height: 200px; object-fit: cover;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
-                        <div class="card-body">
-                            <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                            <p class="card-text">${producto.descripcion_tienda || 'Descripción no disponible.'}</p>
-                            <p class="card-text fw-bold">Precio: $${producto.pvp_tienda}</p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Agendar Cita
-                            </button>
-                        </div>
+                productos.forEach(producto => {
+                    productosHTML += `
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card overflow-hidden rounded-3">
+                    <img style="height: 200px; object-fit: cover;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body">
+                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                        <p class="card-text">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                        <p class="card-text"><strong>Precio: $${producto.pvp_tienda}</strong></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Agendar Cita</button>
                     </div>
                 </div>
+            </div>
             `;
+                });
 
-            row.append(card); // Añadir tarjeta a la fila actual
+                // Insertar el contenido dinámico en el contenedor de tarjetas
+                $('#servicios .row').html(productosHTML);
+            },
+            error: function (error) {
+                console.log("Error al obtener productos: ", error);
+            }
         });
-    },
-    error: function(error) {
-        console.error("Error al obtener los productos:", error);
-    }
-});
 
         /* Fin productos destacados */
 
