@@ -568,9 +568,9 @@
 
                     // Configurar el fondo si se necesita
                     if (plantilla.fondo_pagina) {
-                        $('.parallax-section').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
-                        $('.parallax-section').css('background-size', 'cover');
-                        $('.parallax-section').css('background-position', 'center');
+                        $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                        $('#quienes').css('background-size', 'cover');
+                        $('#quienes').css('background-position', 'center');
                     }
                 } else {
                     console.error('La respuesta no contiene datos válidos.');
