@@ -307,8 +307,10 @@
 
             <section id="doctores" class="seccion6 mb-0 padding">
                 <div class="container px-4 d-flex flex-column">
-                    <h4 class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad </h4>
-                    <p class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum
+                    <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de
+                        calidad </h4>
+                    <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto"
+                        style="max-width: 700px;">Lorem ipsum
                         dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero!
                         Nemo sit sapiente voluptatem quisquam ea.</p>
                     <div class="d-flex gap-3  flex-column flex-md-row">
@@ -573,7 +575,7 @@
                         $('#quienes').css('background-size', 'cover');
                         $('#quienes').css('background-position', 'center');
                     }
-                    
+
                     // renderizar paralax 2
 
                     if (plantilla.titulo_parallax2) {
@@ -588,6 +590,18 @@
 
                         $('#texto_parallax2').text(plantilla.texto_parallax2);
                     }
+
+                    // renderizar seccion profesionales/testimonios
+
+                    if (plantilla.titulo_profesionales) {
+
+                        $('#subtitulo_parallax2').text(plantilla.titulo_profesionales);
+                    }
+                    if (plantilla.subtitulo_profesionales) {
+
+                        $('#texto_parallax2').text(plantilla.subtitulo_profesionales);
+                    }
+
 
 
                 } else {
