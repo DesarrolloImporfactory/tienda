@@ -576,6 +576,11 @@
                         $('#quienes').css('background-position', 'center');
                     }
 
+                    if (plantilla.parallax_opacidad) {
+                        $('.seccion2::after').css('background-color', `rgba(91, 190, 207, ${plantilla.parallax_opacidad})`);
+                    }
+
+
                     // renderizar paralax 2
 
                     if (plantilla.titulo_parallax2) {
