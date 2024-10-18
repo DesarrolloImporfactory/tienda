@@ -595,11 +595,11 @@
 
                     if (plantilla.titulo_profesionales) {
 
-                        $('#subtitulo_parallax2').text(plantilla.titulo_profesionales);
+                        $('#titulo_profesionales').text(plantilla.titulo_profesionales);
                     }
                     if (plantilla.subtitulo_profesionales) {
 
-                        $('#texto_parallax2').text(plantilla.subtitulo_profesionales);
+                        $('#subtitulo_profesionales').text(plantilla.subtitulo_profesionales);
                     }
 
 
