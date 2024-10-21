@@ -8,14 +8,16 @@
     <title><?php echo NOMBRE_TIENDA; ?></title>
     <link rel="icon" href="<?php echo SERVERURL . FAVICON; ?>" type="image/x-icon">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Cargar jQuery antes que cualquier script que lo necesite -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
@@ -25,7 +27,8 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <!-- Enlazar CSS de Swiper -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -39,11 +42,16 @@
     <div id="chatOverlay"></div>
 
 
-    <button onclick="openChat()"
+    <!-- <button onclick="openChat()"
         class="border-0 shadow d-flex wppFixed justify-content-center align-items-center p-3 position-fixed z-3 rounded-circle"
         style="bottom: 20px; right: 20px; background-color: #5dc355; height: 50px; width: 50px;">
         <i class="bi bi-whatsapp text-white"></i>
-    </button>
+    </button> -->
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" target="_blank"
+        class="border-0 shadow d-flex wppFixed justify-content-center align-items-center p-3 position-fixed z-3 rounded-circle"
+        style="bottom: 20px; right: 20px; background-color: #5dc355; height: 50px; width: 50px;">
+        <i class="bi bi-whatsapp text-white"></i>
+    </a>
 
     <div id="chatWindow" class="chat-window position-fixed rounded-3 p-0 shadow-lg"
         style="display: none; bottom: 80px; right: 20px; background-color: white; width: 300px;">
@@ -65,9 +73,13 @@
         </div>
     </div>
 
-    <nav class="navbar bg-white fixed-top shadow-sm">
+    <nav class="navbar bg-white fixed-top shadow-sm py-1">
         <div class="container px-4 d-flex">
-            <a class="navbar-brand texto-primary display-5 fw-bold" href="#">Logo</a>
+
+            <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
+                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                    alt="IMPORT SHOP">
+            </a>
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
                 <li class="nav-item">
@@ -124,7 +136,9 @@
                         Envianos tu consulta
                     </button>
 
-                    <p class="text-center text-body-secondary mt-auto">&copy; 2024 Company, Inc</p>
+                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
+                        <?php echo NOMBRE_TIENDA; ?>
+                    </p>
                 </div>
             </div>
 
@@ -186,26 +200,23 @@
                 <div
                     class="container px-4 containerHeader d-flex align-items-md-end align-items-center flex-column flex-md-row">
                     <div
-                        class="d-flex w-100 flex-column pb-5 text-start textosHeader align-items-center align-items-md-start">
+                        class="d-flex w-100 flex-column pb-md-2 pb-5 text-start textosHeader align-items-center align-items-md-start">
                         <a class="d-flex logoHeaderLink" href="/">
-                            <h3 class="texto-primary display-6 fw-bold d-flex">Logo</h3>
+                            <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
                         </a>
+                        <!-- <span class="texto-primary" id="element"></span> -->
 
-                        <p class="mb-0 texto-secondary fw-bold texto1Header text-center text-md-start">Odontología para
-                            ti
-                            y tu familia <span class="texto-primary" id="element"></span>
+                        <p id="banner-text" class="mb-0 texto-secondary fw-bold display-4 text-center text-md-start">
                         </p>
-
-                        <p class="mb-0 text-center text-md-start">En nuestro servicio de odontología, nos enfocamos en
-                            brindar atención personalizada
-                            y de
-                            calidad a nuestros pacientes.</p>
-                        <button type="button" class="btn btn-primary mt-4" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                        <div class="d-flex gap-2 mt-4">
+                            <a target="_blank" href="#" id="banner-button" class="btn"></a>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbarForm"
+                                aria-controls="offcanvasNavbarForm">Consulta</button>
+                        </div>
                     </div>
                     <div class="d-flex w-100">
-                        <img src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_1-4440997.png?format=webp"
-                            class="w-100 imgHeader" alt="">
+                        <img id="imagen-banner" src="" class="w-100 h-auto overflow-hidden rounded-3" alt="">
                     </div>
                 </div>
 
@@ -213,7 +224,8 @@
 
             <!-- Seccion iconos -->
             <section class="seccion1">
-                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3" id="tarjetas-container">
+                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3"
+                    id="tarjetas-container">
                     <!-- Las tarjetas se cargarán dinámicamente aquí -->
                 </div>
             </section>
@@ -221,208 +233,55 @@
 
             <section id="quienes" class="seccion2 mb-0">
                 <div class="container px-4 d-flex flex-column text-white py-5 text-center">
-                    <h3 class="display-2 fw-bold">Velamos por su salud</h1>
-                        <p class="fs-4">Somos expertos en salud oral </p>
-                        <p class="">Un consultorio odontológico experto por contar con profesionales altamente
-                            capacitados y
-                            tecnología de
-                            última generación en sus instalaciones</p>
-                        <button type="button" class="btn btn-light mx-auto mt-4" data-bs-toggle="offcanvas"
+                    <h3 id="parallax-title" class="display-2 fw-bold"></h3>
+                    <h5 id="parallax-subtitle" class="display-4 fw-bold"></h5>
+                    <p id="parallax-text" class="fs-4"></p>
+                    <hr>
+                    <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
+                        <a id="parallax-button" href="#" class="btn">
+                            <!-- Este botón se va a modificar -->
+                        </a>
+                        <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                    </div>
                 </div>
             </section>
 
+
+
             <section id="servicios" class="seccion3 padding">
                 <div class="container px-4 d-flex flex-column">
-                    <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros servicios </h3>
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://images.unsplash.com/photo-1598531228433-d9f0cb960816?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGVudGlzdGF8ZW58MHx8MHx8fDA%3D"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 1</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://images.unsplash.com/photo-1571772996211-2f02c9727629?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGRlbnRpc3RhfGVufDB8fDB8fHww"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 2</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://plus.unsplash.com/premium_photo-1674575134867-cb7623d39bdb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGRlbnRpc3RhfGVufDB8fDB8fHww"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 3</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://images.unsplash.com/photo-1626736985932-c0df2ae07a2e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGRlbnRpc3RhfGVufDB8fDB8fHww"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 4</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://images.unsplash.com/photo-1667133295352-ef4c83620e8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fGRlbnRpc3RhfGVufDB8fDB8fHww"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 5</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://plus.unsplash.com/premium_photo-1681997203595-e45e06abe034?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJyYWNrZXRzfGVufDB8fDB8fHww"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 6</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://plus.unsplash.com/premium_photo-1674179010595-81dff6bb844a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTYxfHx0cmF0YW1pZW50byUyMG9ydG9kb25jaWF8ZW58MHx8MHx8fDA%3D"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 7</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-sm-6 mb-4">
-
-                            <div class="card overflow-hidden rounded-3">
-                                <img style="height: 200px; object-fit: cover;"
-                                    src="https://plus.unsplash.com/premium_photo-1661436643545-732ea5236e59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTczfHx0cmF0YW1pZW50byUyMG9ydG9kb25jaWF8ZW58MHx8MHx8fDA%3D"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Servicio 8</h5>
-                                    <p class="card-text">This is a longer card with supporting text below as a natural
-                                        lead-in to additional content. This content is a little bit longer.</p>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Agendar Cita
-                                    </button>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
+                    <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros productos destacados </h3>
+                    <div class="row"></div>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal servicios
-                                        quemada</h1>
+                                    <h1 class="modal-title fs-6" id="exampleModalLabel">Modal título</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <img style="height: 200px; object-fit: cover;"
-                                        src="https://plus.unsplash.com/premium_photo-1661436643545-732ea5236e59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTczfHx0cmF0YW1pZW50byUyMG9ydG9kb25jaWF8ZW58MHx8MHx8fDA%3D"
-                                        class="card-img-top rounded-3 border my-4" alt="...">
+                                    <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4"
+                                        alt="">
+                                    <p class="descripcionModal"></p>
+                                    <p>Precio <span class="PrecioModal"></span></p>
 
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti quas consectetur
-                                    doloribus, totam aliquid illum et at aperiam velit enim reiciendis maiores sit nobis
-                                    magnam.
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
+                                        style="background-color: #5dc355 !important; color: white !important;"
+                                        class="btn btn-primary border-0"> <i class="bi bi-whatsapp text-white me-2"></i>
+                                        Solicitar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+
 
                 </div>
 
@@ -435,37 +294,23 @@
                             src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_10-4440997.png?format=webp"
                             alt="">
                     </div>
-                    <div class="w-100 d-flex fondo-primary p-5 flex-column text-white rounded-3 shadow">
-                        <h5 class="display-6">Urgencias</h5>
-                        <h3 class="display-1 fw-bold">24 horas </h3>
-                        <p>Proporcionamos servicio de atención de urgencias durante todo el día en nuestro consultorio
+                    <div class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
+                        <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
+                        <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
+                        <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
+                            nuestro consultorio
                             dental.
                         </p>
-                    </div>
-                </div>
-            </section>
-            <section class="seccion5">
-                <div class="container px-4 d-flex flex-column flex-md-row">
-
-                    <div class="w-100 d-flex p-5 pb-0 pb-md-5 flex-column texto-secondary">
-                        <h5 class="display-6">Urgencias</h5>
-                        <h3 class="display-1 fw-bold texto-primary">24 horas </h3>
-                        <p>Proporcionamos servicio de atención de urgencias durante todo el día en nuestro consultorio
-                            dental.
-                        </p>
-                    </div>
-                    <div class="w-100 d-flex order-first order-md-last">
-                        <img class="mx-auto rounded-3 shadow img2Seccion5"
-                            src="https://images.unsplash.com/photo-1670250721717-889b17349fc4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODB8fGRlbnRpc3RhfGVufDB8fDB8fHww"
-                            alt="">
                     </div>
                 </div>
             </section>
 
             <section id="doctores" class="seccion6 mb-0 padding">
                 <div class="container px-4 d-flex flex-column">
-                    <h4 class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad </h4>
-                    <p class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum
+                    <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de
+                        calidad </h4>
+                    <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto"
+                        style="max-width: 700px;">Lorem ipsum
                         dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero!
                         Nemo sit sapiente voluptatem quisquam ea.</p>
                     <div class="d-flex gap-3  flex-column flex-md-row">
@@ -554,15 +399,23 @@
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
             <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
-                <a class="texto-primary fs-2 fw-bold mb-3" href="#">Logo</a>
+
+                <a class="navbar-brand mb-3" href="<?php echo $primera_seccion; ?>">
+                    <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                        alt="IMPORT SHOP">
+                </a>
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li class="nav-item"><a href="#inicio" class="nav-link px-2 text-body-secondary">Inicio</a></li>
-                    <li class="nav-item"><a href="#quienes" class="nav-link px-2 text-body-secondary">Quienes Somos</a></li>
-                    <li class="nav-item"><a href="#servicios" class="nav-link px-2 text-body-secondary">Servicios</a></li>
+                    <li class="nav-item"><a href="#quienes" class="nav-link px-2 text-body-secondary">Quienes Somos</a>
+                    </li>
+                    <li class="nav-item"><a href="#servicios" class="nav-link px-2 text-body-secondary">Servicios</a>
+                    </li>
                     <li class="nav-item"><a href="#doctores" class="nav-link px-2 text-body-secondary">Doctores</a></li>
-                    <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a></li>
+                    <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a>
+                    </li>
                 </ul>
-                <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
+                <p class="text-center text-body-secondary">&copy; <?php echo date('Y'); ?> <?php echo NOMBRE_TIENDA; ?>
+                </p>
             </div>
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10074.886852202728!2d-78.55683778728343!3d-0.25860257925138724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598df3ddc65c5%3A0x18203d4f3fa6602c!2sBiloxi%2C%20Quito!5e0!3m2!1ses-419!2sec!4v1728095977382!5m2!1ses-419!2sec"
@@ -571,31 +424,25 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-
 
     <script src="Views/templates/js/main_header3.js"></script>
     <script src="Views/templates/js/index_header3.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
-        /* seccion iconos */
-        // ID de la plataforma o parámetro necesario
+        /* Sección iconos */
         let formDataIconos = new FormData();
         formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + 'Tienda/iconostienda', // URL de la API
+            url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
             method: 'POST',
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
+                console.log('Respuesta completa de la API (iconos):', response);
+
                 try {
                     var iconos = JSON.parse(response); // Parsear la respuesta de la API
                 } catch (e) {
@@ -610,7 +457,7 @@
                     $tarjetasContainer.empty();
 
                     // Iteramos sobre los iconos obtenidos de la API
-                    iconos.forEach(function(icono) {
+                    iconos.forEach(function (icono) {
                         var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
                         var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
                         var color_icono = icono.color_icono || '#000000'; // Color del ícono
@@ -619,7 +466,7 @@
                         var tarjetaItem = `
                     <div class="card w-100 shadow border">
                         <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="fas ${icon_text} display-1" style="color: ${color_icono};"></i>
+                            <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
                             <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
                         </div>
                     </div>
@@ -632,10 +479,205 @@
                     console.error('La respuesta no contiene iconos válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los iconos:', error);
             }
         });
-        /* fin seccion iconos */
+        /* Fin Sección iconos */
+
+        /* Sección banner */
+        let formDataSlider = new FormData();
+        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
+            method: 'POST',
+            data: formDataSlider,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function (data) {
+                console.log('Respuesta completa de la API (banner):', data);
+
+                if (data && data.length > 0) {
+                    let banner = data[0]; // Obtenemos el primer banner
+                    let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
+
+
+                    // Mostrar el título y texto del banner
+                    $('#banner-title').text(banner.titulo);
+                    $('#banner-text').text(banner.texto_banner);
+                    $('#banner-text').css('color', banner.color_texto_banner); // Centrar la imagen
+                    $('#imagen-banner').attr('src', image_path || '#');
+
+
+                    // Modificar el botón existente
+                    let button = $('#banner-button');
+
+                    // Asegurarse de que el enlace tenga el protocolo adecuado
+                    let enlace = banner.enlace_boton;
+                    if (!/^https?:\/\//i.test(enlace)) {
+                        enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                    }
+
+                    button.attr('href', enlace); // Cambiar el enlace del botón
+                    button.css({
+                        'background-color': banner.color_btn_banner,
+                        'color': banner.color_textoBtn_banner
+                    }).text(banner.texto_boton); // Cambiar el texto del botón
+
+
+                } else {
+                    console.error('No se encontraron banners.');
+                }
+            },
+            error: function (error) {
+                console.error('Error fetching banner data', error);
+            }
+        });
+        /* Fin Sección Banner */
+
+        /* Seccion paralax 1 y 2 */
+        let formDataPlantilla = new FormData();
+        formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
+            method: 'POST',
+            data: formDataPlantilla,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log('Respuesta completa de la API (plantilla):', response);
+
+                try {
+                    var data = JSON.parse(response); // Parsear la respuesta de la API
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
+                }
+
+                // Verificar si la respuesta contiene los datos esperados
+                if (data && Array.isArray(data) && data.length > 0) {
+                    var plantilla = data[0]; // Obtener el primer objeto de la respuesta
+
+                    var enlace = plantilla.boton_parallax_texto
+                    // renderizar paralax 1
+                    $('#parallax-title').text(plantilla.parallax_titulo);
+                    $('#parallax-subtitle').text(plantilla.parallax_sub);
+                    $('#parallax-text').text(plantilla.parallax_texto);
+                    $('#parallax-button').attr('href', plantilla.boton_parallax_enlace || '#');
+                    $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
+
+                    // Configurar el fondo si se necesita
+                    if (plantilla.fondo_pagina) {
+                        $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                        $('#quienes').css('background-size', 'cover');
+                        $('#quienes').css('background-position', 'center');
+                    }
+
+                    if (plantilla.parallax_opacidad) {
+                        $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
+                    }
+
+
+
+                    // renderizar paralax 2
+
+                    if (plantilla.titulo_parallax2) {
+
+                        $('#titulo_parallax2').text(plantilla.titulo_parallax2);
+                    }
+                    if (plantilla.subtitulo_parallax2) {
+
+                        $('#subtitulo_parallax2').text(plantilla.subtitulo_parallax2);
+                    }
+                    if (plantilla.texto_parallax2) {
+
+                        $('#texto_parallax2').text(plantilla.texto_parallax2);
+                    }
+
+                    // renderizar seccion profesionales/testimonios
+
+                    if (plantilla.titulo_profesionales) {
+
+                        $('#titulo_profesionales').text(plantilla.titulo_profesionales);
+                    }
+                    if (plantilla.subtitulo_profesionales) {
+
+                        $('#subtitulo_profesionales').text(plantilla.subtitulo_profesionales);
+                    }
+
+
+
+                } else {
+                    console.error('La respuesta no contiene datos válidos.');
+                }
+            },
+            error: function (error) {
+                console.log('Error al cargar la información de la plantilla:', error);
+            }
+        });
+        /* Fin Sección paralax */
+
+        /* Sección productos destacados */
+        let formDataProductos = new FormData();
+        formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+
+        $.ajax({
+            url: SERVERURL + 'Tienda/destacadostienda',
+            type: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                let productos = JSON.parse(response);
+                let productosHTML = '';
+
+                productos.forEach(producto => {
+                    productosHTML += `
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card overflow-hidden rounded-3">
+                        <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
+                        <div class="card-body">
+                            <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
+                            <hr class="my-2">
+                            <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                            <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+                });
+
+                $('#servicios .row').html(productosHTML);
+
+                $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
+                    let idProducto = $(this).data('id');
+
+                    let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
+
+                    $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+                    $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+                    $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+                    $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+                    $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+                });
+
+            },
+            error: function (error) {
+                console.log("Error al obtener productos: ", error);
+            }
+        });
+
+
+        /* Fin productos destacados */
+
+
     </script>
+
+
+
+
     <?php include 'Views/templates/footer3.php'; ?>

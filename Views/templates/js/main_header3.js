@@ -2,38 +2,38 @@
 // boton de wpp
 // ################################
 
-function openChat() {
-    document.getElementById('chatWindow').style.display = 'block';
-    document.getElementById('chatOverlay').style.display = 'block'; 
-}
+// function openChat() {
+//     document.getElementById('chatWindow').style.display = 'block';
+//     document.getElementById('chatOverlay').style.display = 'block'; 
+// }
 
-function closeChat() {
-    document.getElementById('chatWindow').style.display = 'none';
-    document.getElementById('chatOverlay').style.display = 'none'; 
-}
+// function closeChat() {
+//     document.getElementById('chatWindow').style.display = 'none';
+//     document.getElementById('chatOverlay').style.display = 'none'; 
+// }
 
-function sendMessage() {
-    const message = document.getElementById('customerMessage').value;
+// function sendMessage() {
+//     const message = document.getElementById('customerMessage').value;
     
-    if (message.trim() !== "") {
-        const whatsappURL = `https://api.whatsapp.com/send?phone=593995169760&text=${encodeURIComponent(message)}`;
+//     if (message.trim() !== "") {
+//         const whatsappURL = `https://api.whatsapp.com/send?phone=593995169760&text=${encodeURIComponent(message)}`;
         
-        window.open(whatsappURL, '_blank');
+//         window.open(whatsappURL, '_blank');
         
-        closeChat();
-    } else {
-        alert("Por favor, escribe un mensaje.");
-    }
-}
+//         closeChat();
+//     } else {
+//         alert("Por favor, escribe un mensaje.");
+//     }
+// }
 
-window.onclick = function (event) {
-    const chatWindow = document.getElementById('chatWindow');
-    const chatOverlay = document.getElementById('chatOverlay');
+// window.onclick = function (event) {
+//     const chatWindow = document.getElementById('chatWindow');
+//     const chatOverlay = document.getElementById('chatOverlay');
     
-    if (event.target === chatOverlay) {
-        closeChat();
-    }
-};
+//     if (event.target === chatOverlay) {
+//         closeChat();
+//     }
+// };
 
 
 // ############## cerrar offcanvas cuando se da click en un li ##################

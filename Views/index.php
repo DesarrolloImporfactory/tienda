@@ -33,8 +33,6 @@
                 <!-- Aquí se insertarán las categorías dinámicamente -->
             </div>
         </div>
-
-
     </div>
     <!-- fin categorias -->
     <div class="degraded-line"></div>

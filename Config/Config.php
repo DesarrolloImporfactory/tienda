@@ -28,6 +28,8 @@ $url_actual = "https://" . $_SERVER['HTTP_HOST'] . '/';
 $nombre_actual = str_replace("imporsuitpro.com", "", $Ur);
 if (str_contains($Ur, "comprapor")) $url_actual =  str_replace("comprapor.com", "imporsuitpro.com", $url_actual);
 if (str_contains($Ur, "comprapor")) $nombre_actual = str_replace("comprapor.com", "", $nombre_actual);
+if (str_contains($Ur, "merkapro.ec")) $url_actual = str_replace("merkapro.ec", "imporsuitpro.com", $url_actual);
+if (str_contains($Ur, "merkapro.ec")) $nombre_actual = str_replace("merkapro.ec", "", $nombre_actual);
 
 //recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
 
@@ -57,16 +59,18 @@ $hostAntiguo = $_SERVER['HTTP_HOST'];
 $hostNuevo = str_replace("imporsuitpro.com", "", $hostAntiguo);
 
 if (str_contains($hostNuevo, "comprapor.com")) $hostNuevo = str_replace("comprapor.com", "", $hostNuevo);
+if (str_contains($hostNuevo, "merkapro.ec")) $hostNuevo = str_replace("merkapro.ec", "", $hostNuevo);
 
 $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
-if(str_contains($hostAntiguo, "comprapor.com")) $url_actual = str_replace("imporsuitpro.com", "comprapor.com", $url_actual);
+if (str_contains($hostAntiguo, "comprapor.com")) $url_actual = str_replace("imporsuitpro.com", "comprapor.com", $url_actual);
+if (str_contains($hostAntiguo, "merkapro.ec")) $url_actual = str_replace("imporsuitpro.com", "merkapro.ec", $url_actual);
 $id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual' or dominio = '$hostAntiguo'";
 $result = $mysqli->query($id_plataforma);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $id_plataforma = $row['id_plataforma'];
-        
+
         $id_matriz = $row['id_matriz'];
     }
 } else {
@@ -79,9 +83,9 @@ $result = $mysqli->query($url_matriz);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $url_matriz = $row['url_matriz'];
-         $marca = $row['marca'];
+        $marca = $row['marca'];
         //echo $url_matriz;
-       // $id_matriz = $row['id_matriz'];
+        // $id_matriz = $row['id_matriz'];
     }
 } else {
     echo "0 resultss";
@@ -95,4 +99,3 @@ $mysqli->close();
 define("ID_PLATAFORMA", $id_plataforma);
 define("SERVERURL", $url_matriz);
 define("MARCA", $marca);
-

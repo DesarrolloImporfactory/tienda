@@ -80,6 +80,14 @@
         padding-bottom: 100px;
     }
 
+    .card-title {
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        -webkit-line-clamp: 1 !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
 
     /* boton de wpp ################################ */
     #chatOverlay {
@@ -117,7 +125,7 @@
     }
 
     /* header ##########################*/
-
+    
     header {
         background-image: url(https://content.app-sources.com/s/53156514013336927/uploads/Images/Funnel_odontolog%C3%ADa-02-4441408.png?format=webp);
         min-height: 80vh;
@@ -138,11 +146,7 @@
 
     .seccion2 {
         position: relative;
-
         background-repeat: no-repeat;
-        background-position: top;
-        background-size: cover;
-        background-image: url(https://cdn.pixabay.com/photo/2017/07/23/10/44/dentist-2530990_1280.jpg);
     }
 
     .seccion2>* {
@@ -301,7 +305,7 @@
         .containerHeader {
             padding-top: 80px;
         }
-
+        
         .imgHeader {
             max-width: 500px;
             margin: auto;
