@@ -173,6 +173,7 @@
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
+        text-align: justify;
     }
 
     .seccion3 {
