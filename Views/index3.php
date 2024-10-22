@@ -191,9 +191,7 @@
 
         </div>
     </nav>
-    <div data-bs-spy="scroll" data-bs-target="#listaNav1" data-bs-root-margin="0px 0px -40%"
-        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-0 rounded-3" tabindex="0">
-
+   
 
         <header id="inicio" class="d-flex align-items-center">
             <div
@@ -388,7 +386,6 @@
             </div>
         </section>
 
-    </div>
 
     <footer class="fondo-tertiary pt-4">
         <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
