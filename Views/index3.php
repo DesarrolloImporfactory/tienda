@@ -436,44 +436,60 @@
             contentType: false,
             processData: false,
             success: function (response) {
-                console.log('Respuesta completa de la API (iconos):', response);
+                let productos = JSON.parse(response);
+                let productosHTML = '';
+                let rowHTML = '';
 
-                try {
-                    var iconos = JSON.parse(response); // Parsear la respuesta de la API
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
-                }
+                // Limitar a los primeros 8 productos
+                productos.slice(0, 8).forEach((producto, index) => {
+                    // Si el índice es múltiplo de 4, empieza una nueva fila
+                    if (index % 4 === 0) {
+                        if (rowHTML) {
+                            productosHTML += `<div class="row mb-4">${rowHTML}</div>`; // Cierra la fila anterior
+                        }
+                        rowHTML = ''; // Resetea la fila
+                    }
 
-                if (iconos && Array.isArray(iconos)) {
-                    var $tarjetasContainer = $("#tarjetas-container");
-
-                    // Limpiamos el contenedor de tarjetas por si acaso
-                    $tarjetasContainer.empty();
-
-                    // Iteramos sobre los iconos obtenidos de la API
-                    iconos.forEach(function (icono) {
-                        var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-                        var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
-                        var color_icono = icono.color_icono || '#000000'; // Color del ícono
-
-                        // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
-                        var tarjetaItem = `
-                    <div class="card w-100 shadow border">
-                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
-                            <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
-                            <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
-                        </div>
+                    // Añadir producto a la fila actual
+                    rowHTML += `
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card overflow-hidden rounded-3">
+                    <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body">
+                        <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
+                        <hr class="my-2">
+                        <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                        <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
                     </div>
-                `;
+                </div>
+            </div>
+        `;
+                });
 
-                        // Agregar la tarjeta al contenedor
-                        $tarjetasContainer.append(tarjetaItem);
-                    });
-                } else {
-                    console.error('La respuesta no contiene iconos válidos.');
+                // Añadir la última fila
+                if (rowHTML) {
+                    productosHTML += `<div class="row mb-4">${rowHTML}</div>`;
                 }
+
+                // Insertar en el contenedor de productos destacados
+                $('#servicios .container').html(productosHTML);
+
+                // Manejo del modal para los productos
+                $('#servicios .container').off('click', 'button[data-bs-toggle="modal"]').on('click', 'button[data-bs-toggle="modal"]', function () {
+                    let idProducto = $(this).data('id');
+                    let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
+
+                    if (productoSeleccionado) {
+                        $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+                        $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+                        $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+                        $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+                        $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+                    }
+                });
             },
+
             error: function (error) {
                 console.log('Error al cargar los iconos:', error);
             }
