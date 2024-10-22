@@ -83,7 +83,7 @@
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary active" aria-current="page" href="#inicio">Inicio</a>
+                    <a class="nav-link texto-secondary active" aria-current="page" href="#inicio">Inicio1</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="#quienes">Quienes Somos</a>
