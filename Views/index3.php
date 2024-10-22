@@ -287,8 +287,7 @@
                 <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
                 <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
                 <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
-                    nuestro consultorio
-                    dental.
+                    nuestro consultorio dental.
                 </p>
             </div>
         </div>
