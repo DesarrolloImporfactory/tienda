@@ -195,204 +195,200 @@
         data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-0 rounded-3" tabindex="0">
 
 
-            <header id="inicio" class="d-flex align-items-center">
+        <header id="inicio" class="d-flex align-items-center">
+            <div
+                class="container px-4 containerHeader d-flex align-items-md-end align-items-center flex-column flex-md-row">
                 <div
-                    class="container px-4 containerHeader d-flex align-items-md-end align-items-center flex-column flex-md-row">
-                    <div
-                        class="d-flex w-100 flex-column pb-md-2 pb-5 text-start textosHeader align-items-center align-items-md-start">
-                        <a class="d-flex logoHeaderLink" href="/">
-                            <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
-                        </a>
-                        <!-- <span class="texto-primary" id="element"></span> -->
+                    class="d-flex w-100 flex-column pb-md-2 pb-5 text-start textosHeader align-items-center align-items-md-start">
+                    <a class="d-flex logoHeaderLink" href="/">
+                        <h3 id="banner-title" class="texto-primary display-6 fw-bold d-flex"></h3>
+                    </a>
+                    <!-- <span class="texto-primary" id="element"></span> -->
 
-                        <p id="banner-text" class="mb-0 texto-secondary fw-bold display-4 text-center text-md-start">
-                        </p>
-                        <div class="d-flex gap-2 mt-4">
-                            <a target="_blank" href="#" id="banner-button" class="btn"></a>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasNavbarForm"
-                                aria-controls="offcanvasNavbarForm">Consulta</button>
-                        </div>
-                    </div>
-                    <div class="d-flex w-100">
-                        <img id="imagen-banner" src="" class="w-100 h-auto overflow-hidden rounded-3" alt="">
-                    </div>
-                </div>
-
-            </header>
-
-            <!-- Seccion iconos -->
-            <section class="seccion1">
-                <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3"
-                    id="tarjetas-container">
-                    <!-- Las tarjetas se cargarán dinámicamente aquí -->
-                </div>
-            </section>
-            <!-- Fin seccion iconos -->
-
-            <section id="quienes" class="seccion2 mb-0">
-                <div class="container px-4 d-flex flex-column text-white py-5 text-center">
-                    <h3 id="parallax-title" class="display-2 fw-bold"></h3>
-                    <h5 id="parallax-subtitle" class="display-4 fw-bold"></h5>
-                    <p id="parallax-text" class="fs-4"></p>
-                    <hr>
-                    <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
-                        <a id="parallax-button" href="#" class="btn">
-                            <!-- Este botón se va a modificar -->
-                        </a>
-                        <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
+                    <p id="banner-text" class="mb-0 texto-secondary fw-bold display-4 text-center text-md-start">
+                    </p>
+                    <div class="d-flex gap-2 mt-4">
+                        <a target="_blank" href="#" id="banner-button" class="btn"></a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
                     </div>
                 </div>
-            </section>
+                <div class="d-flex w-100">
+                    <img id="imagen-banner" src="" class="w-100 h-auto overflow-hidden rounded-3" alt="">
+                </div>
+            </div>
+
+        </header>
+
+        <!-- Seccion iconos -->
+        <section class="seccion1">
+            <div class="container px-4 containerSeccion1 d-flex flex-column flex-sm-row gap-3" id="tarjetas-container">
+                <!-- Las tarjetas se cargarán dinámicamente aquí -->
+            </div>
+        </section>
+        <!-- Fin seccion iconos -->
+
+        <section id="quienes" class="seccion2 mb-0">
+            <div class="container px-4 d-flex flex-column text-white py-5 text-center">
+                <h3 id="parallax-title" class="display-2 fw-bold"></h3>
+                <h5 id="parallax-subtitle" class="display-4 fw-bold"></h5>
+                <p id="parallax-text" class="fs-4"></p>
+                <hr>
+                <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
+                    <a id="parallax-button" href="#" class="btn">
+                        <!-- Este botón se va a modificar -->
+                    </a>
+                    <button type="button" class="btn btn-light" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbarForm" aria-controls="offcanvasNavbarForm">Consulta</button>
+                </div>
+            </div>
+        </section>
 
 
 
-            <section id="servicios" class="seccion3 padding">
-                <div class="container px-4 d-flex flex-column">
-                    <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros productos destacados </h3>
-                    <div class="row"></div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-6" id="exampleModalLabel">Modal título</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4"
-                                        alt="">
-                                    <p class="descripcionModal"></p>
-                                    <p>Precio <span class="PrecioModal"></span></p>
+        <section id="servicios" class="seccion3 padding">
+            <div class="container px-4 d-flex flex-column">
+                <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros productos destacados </h3>
+                <div class="row"></div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-6" id="exampleModalLabel">Modal título</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4"
+                                    alt="">
+                                <p class="descripcionModal"></p>
+                                <p>Precio <span class="PrecioModal"></span></p>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cerrar</button>
-                                    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
-                                        style="background-color: #5dc355 !important; color: white !important;"
-                                        class="btn btn-primary border-0"> <i class="bi bi-whatsapp text-white me-2"></i>
-                                        Solicitar</a>
-                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
+                                    style="background-color: #5dc355 !important; color: white !important;"
+                                    class="btn btn-primary border-0"> <i class="bi bi-whatsapp text-white me-2"></i>
+                                    Solicitar</a>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
-            </section>
 
-            <section id="urgencias" class="seccion4">
-                <div class="container px-4 d-flex flex-column flex-md-row">
-                    <div class="w-100 d-flex mb-4 mb-md-0">
-                        <img class="mx-auto" style="width: 100%; max-width: 400px;"
-                            src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_10-4440997.png?format=webp"
-                            alt="">
+            </div>
+
+        </section>
+
+        <section id="urgencias" class="seccion4">
+            <div class="container px-4 d-flex flex-column flex-md-row">
+                <div class="w-100 d-flex mb-4 mb-md-0">
+                    <img class="mx-auto" style="width: 100%; max-width: 400px;"
+                        src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_10-4440997.png?format=webp"
+                        alt="">
+                </div>
+                <div class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
+                    <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
+                    <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
+                    <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
+                        nuestro consultorio
+                        dental.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="doctores" class="seccion6 mb-0 padding">
+            <div class="container px-4 d-flex flex-column">
+                <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de
+                    calidad </h4>
+                <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto"
+                    style="max-width: 700px;">Lorem ipsum
+                    dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero!
+                    Nemo sit sapiente voluptatem quisquam ea.</p>
+                <div class="d-flex gap-3  flex-column flex-md-row">
+                    <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+                        <img class="" style="height: 200px; object-fit: cover;"
+                            src="https://www.dentaltix.com/es/sites/default/files/odontologo-clinica-dental.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dra. Angelica Martinez</h5>
+                            <hr>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                data-bs-target="#modalDortores">
+                                Mas sobre el doctor
+                            </button>
+                        </div>
                     </div>
-                    <div class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
-                        <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
-                        <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
-                        <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
-                            nuestro consultorio
-                            dental.
-                        </p>
+                    <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+                        <img class="" style="height: 200px; object-fit: cover;"
+                            src="https://doctorweb.agency/assets/img/blog/marketing-digital-para-odontologos.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr. David Granda</h5>
+                            <hr>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                data-bs-target="#modalDortores">
+                                Mas sobre el doctor
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+                        <img class="" style="height: 200px; object-fit: cover;"
+                            src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Dra. Maria Valencia</h5>
+                            <hr>
+                            <p class="card-text">Some quick example text to build on the card title and make up the
+                                bulk
+                                of the card's content.</p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                                data-bs-target="#modalDortores">
+                                Mas sobre el doctor
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </section>
-
-            <section id="doctores" class="seccion6 mb-0 padding">
-                <div class="container px-4 d-flex flex-column">
-                    <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de
-                        calidad </h4>
-                    <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto"
-                        style="max-width: 700px;">Lorem ipsum
-                        dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero!
-                        Nemo sit sapiente voluptatem quisquam ea.</p>
-                    <div class="d-flex gap-3  flex-column flex-md-row">
-                        <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                            <img class="" style="height: 200px; object-fit: cover;"
-                                src="https://www.dentaltix.com/es/sites/default/files/odontologo-clinica-dental.jpg"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dra. Angelica Martinez</h5>
-                                <hr>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target="#modalDortores">
-                                    Mas sobre el doctor
-                                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="modalDortores" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal doctores</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                        </div>
-                        <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                            <img class="" style="height: 200px; object-fit: cover;"
-                                src="https://doctorweb.agency/assets/img/blog/marketing-digital-para-odontologos.jpg"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dr. David Granda</h5>
-                                <hr>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target="#modalDortores">
-                                    Mas sobre el doctor
-                                </button>
+                            <div class="modal-body">
+                                <img style="height: 200px; object-fit: cover;"
+                                    src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
+                                    class="card-img-top rounded-3 border my-4" alt="...">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam. Iste nemo
+                                architecto voluptates soluta, odit velit at distinctio quis eius laudantium dolores
+                                pariatur facilis impedit reiciendis saepe sed possimus.
                             </div>
-                        </div>
-                        <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                            <img class="" style="height: 200px; object-fit: cover;"
-                                src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dra. Maria Valencia</h5>
-                                <hr>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.</p>
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target="#modalDortores">
-                                    Mas sobre el doctor
-                                </button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="modalDortores" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal doctores</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img style="height: 200px; object-fit: cover;"
-                                        src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
-                                        class="card-img-top rounded-3 border my-4" alt="...">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam. Iste nemo
-                                    architecto voluptates soluta, odit velit at distinctio quis eius laudantium dolores
-                                    pariatur facilis impedit reiciendis saepe sed possimus.
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            </section>
 
-        </div>
+            </div>
+        </section>
+
+    </div>
     </div>
 
     <footer class="fondo-tertiary pt-4">
@@ -618,7 +614,6 @@
             }
         });
         /* Fin Sección paralax */
-
         /* Sección productos destacados */
         let formDataProductos = new FormData();
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
@@ -633,7 +628,18 @@
                 let productos = JSON.parse(response);
                 let productosHTML = '';
 
-                productos.forEach(producto => {
+                // Limitar a 8 productos
+                productos = productos.slice(0, 8);
+
+                productos.forEach((producto, index) => {
+                    // Cada 4 productos, se añade un nuevo .row
+                    if (index % 4 === 0) {
+                        if (index > 0) {
+                            productosHTML += `</div>`; // Cerrar la fila anterior
+                        }
+                        productosHTML += `<div class="row">`; // Nueva fila
+                    }
+
                     productosHTML += `
                 <div class="col-lg-3 col-sm-6 mb-4">
                     <div class="card overflow-hidden rounded-3">
@@ -648,7 +654,11 @@
                     </div>
                 </div>
             `;
+
                 });
+
+                // Cerrar la última fila después de agregar todos los productos
+                productosHTML += `</div>`; // Cerrar la última fila
 
                 $('#servicios .row').html(productosHTML);
 
@@ -669,8 +679,6 @@
                 console.log("Error al obtener productos: ", error);
             }
         });
-
-
         /* Fin productos destacados */
 
 
