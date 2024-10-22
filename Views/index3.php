@@ -619,45 +619,47 @@
             processData: false,
             success: function (response) {
                 let productos = JSON.parse(response);
-
-                // Limitar la cantidad de productos a un máximo de 8
-                productos = productos.slice(0, 8);
-
                 let productosHTML = '';
-                let productosPorFila = 4;
+                let rowHTML = '';
 
-                // Dividir los productos en filas de 4
-                for (let i = 0; i < productos.length; i += productosPorFila) {
-                    productosHTML += '<div class="row mb-4">'; // Abrir una nueva fila
+                // Limitar a los primeros 8 productos
+                productos.slice(0, 8).forEach((producto, index) => {
+                    // Si el índice es múltiplo de 4, empieza una nueva fila
+                    if (index % 4 === 0) {
+                        if (rowHTML) {
+                            productosHTML += `<div class="row mb-4">${rowHTML}</div>`; // Cierra la fila anterior
+                        }
+                        rowHTML = ''; // Resetea la fila
+                    }
 
-                    // Tomar los 4 productos por fila
-                    productos.slice(i, i + productosPorFila).forEach(producto => {
-                        productosHTML += `
-                    <div class="col-lg-3 col-sm-6 mb-4">
-                        <div class="card overflow-hidden rounded-3">
-                            <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
-                            <div class="card-body">
-                                <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
-                                <hr class="my-2">
-                                <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
-                                <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
-                                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
-                            </div>
-                        </div>
+                    // Añadir producto a la fila actual
+                    rowHTML += `
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card overflow-hidden rounded-3">
+                    <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body">
+                        <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
+                        <hr class="my-2">
+                        <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                        <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
                     </div>
-                `;
-                    });
+                </div>
+            </div>
+        `;
+                });
 
-                    productosHTML += '</div>'; // Cerrar la fila
+                // Añadir la última fila
+                if (rowHTML) {
+                    productosHTML += `<div class="row mb-4">${rowHTML}</div>`;
                 }
 
-                // Agregar las filas de productos al contenedor
+                // Insertar en el contenedor de productos destacados
                 $('#servicios .container').html(productosHTML);
 
-                // Evento para mostrar el modal con la información del producto
-                $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
+                // Manejo del modal para los productos
+                $('#servicios .container').on('click', 'button[data-bs-toggle="modal"]', function () {
                     let idProducto = $(this).data('id');
-
                     let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
 
                     $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
@@ -667,6 +669,7 @@
                     $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
                 });
             },
+
             error: function (error) {
                 console.log("Error al obtener productos: ", error);
             }
