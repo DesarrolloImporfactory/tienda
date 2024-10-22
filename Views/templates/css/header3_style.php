@@ -169,7 +169,7 @@
     /* seccion3 ##########################*/
 
 
-    .seccion3 p{
+    .card_body_productos_destacados p{
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
