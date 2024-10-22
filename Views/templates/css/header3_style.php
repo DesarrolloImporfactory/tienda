@@ -169,7 +169,7 @@
     /* seccion3 ##########################*/
 
 
-    .seccion3 .card-text {
+    .seccion3 p{
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
