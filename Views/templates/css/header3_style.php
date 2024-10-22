@@ -170,9 +170,9 @@
 
 
     .seccion3 .card-text {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
     }
 
     .seccion3 {
