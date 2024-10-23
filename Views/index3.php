@@ -95,6 +95,9 @@
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="#doctores">Doctores</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link texto-secondary" href="Productos3.php">Productos</a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="citas.html">Agendar Cita</a>
@@ -635,9 +638,9 @@
                     // Cada 4 productos, se añade un nuevo .row
                     if (index % 4 === 0) {
                         if (index > 0) {
-                            productosHTML += `</div>`; // Cerrar la fila anterior
+                            productosHTML += `</div>`;
                         }
-                        productosHTML += `<div class="row">`; // Nueva fila
+                        productosHTML += `<div class="row">`;
                     }
 
                     productosHTML += `
