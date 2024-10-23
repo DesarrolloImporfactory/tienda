@@ -10,13 +10,21 @@ class Producto3 extends Controller
 
     public function index()
     {
-        $this->views->render($this, "Producto3/index"); // Cambiar según tu estructura de carpetas
+        $this->views->render($this, "index");
     }
 
+    public function producto3()
+    {
+        $this->views->render($this, "Producto3");
+    }
+
+    public function categorias3()
+    {
+        $this->views->render($this, "categorias2");
+    }
 
     public function listar()
     {
-        
 
         $data = $this->model->listar(ID_PLATAFORMA);
         echo json_encode($data);
