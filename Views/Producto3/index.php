@@ -228,6 +228,9 @@
         crossorigin="anonymous"></script>
 
     <script>
+        console.log('ID Plataforma:', ID_PLATAFORMA);
+        console.log('ID Producto:', id_producto);
+
         $(document).ready(function () {
             var id_producto = '<?php echo $_GET['id']; ?>';
             let formData = new FormData();
