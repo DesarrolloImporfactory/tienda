@@ -168,13 +168,11 @@
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
                 </div>
-                <div class="row" id="productos-container">
+                
+            </div>
+            <div class="row" id="productos-container">
 
                 </div>
-            </div>
-            <div class="proContTarjetas">
-
-            </div>
 
         </div>
     </header>
@@ -232,6 +230,8 @@
                 contentType: false,
                 dataType: "json",
                 success: function (response) {
+                    console.log("Response:", response); 
+
                     if (response.length > 0) {
                         var productosHtml = '';
 
