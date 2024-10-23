@@ -169,7 +169,7 @@
     /* seccion3 ##########################*/
 
 
-    .card_body_productos_destacados p{
+    .card_body_productos_destacados p {
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
@@ -272,6 +272,13 @@
         text-decoration: none;
         background-color: var(--bs-list-group-bg);
         border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+    }
+
+
+    /* calendario ##########################*/
+
+    .proHeaderTitulo {
+        padding-top: 80px;
     }
 
     /* Media querys pagina tienda*/
