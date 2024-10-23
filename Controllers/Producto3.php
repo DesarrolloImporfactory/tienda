@@ -13,11 +13,6 @@ class Producto3 extends Controller
         $this->views->render($this, "index");
     }
 
-    public function producto3()
-    {
-        $this->views->render($this, "Producto3");
-    }
-
     public function listar()
     {
 

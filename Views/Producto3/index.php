@@ -167,23 +167,11 @@
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
                 </div>
                 <div class="row">
-            <?php foreach ($productos as $producto) : ?>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <img src="<?php echo $producto['imagen']; ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $producto['nombre']; ?></h5>
-                            <p class="card-text"><?php echo $producto['descripcion']; ?></p>
-                            <p class="card-text">$<?php echo $producto['precio']; ?></p>
-                            <a href="detalles_producto.php?id=<?php echo $producto['id']; ?>" class="btn btn-primary">Ver detalles</a>
-                        </div>
-                    </div>
+
                 </div>
-            <?php endforeach; ?>
-        </div>
             </div>
             <div class="proContTarjetas">
-                
+
             </div>
 
         </div>
@@ -226,6 +214,60 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            var id_producto = '<?php echo $_GET['id']; ?>';
+            let formData = new FormData();
+            formData.append("id_plataforma", ID_PLATAFORMA);
+            formData.append("id_producto_tienda", id_producto);
+
+            $.ajax({
+                url: SERVERURL + 'Tienda/obtener_productos_tienda',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.length > 0) {
+                        // Muestra el primer producto como antes
+                        var producto = response[0];
+                        // (Código existente para mostrar el primer producto)
+
+                        // Ahora vamos a mostrar todos los productos en la <div class="row"></div>
+                        var productosHtml = '';
+                        response.forEach(function (producto) {
+                            productosHtml += `
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="${obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL)}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                                    <p class="card-text">SKU: ${producto.sku}</p>
+                                    <p class="card-text">$${parseFloat(producto.pvp_tienda).toFixed(2)}</p>
+                                    <button class="btn btn-primary" onclick="agregar_carrito(${producto.id_producto}, ${parseFloat(producto.pvp_tienda)}, ${producto.id_inventario})">Agregar al carrito</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                        });
+
+                        // Agregar el HTML generado a la <div class="row"></div>
+                        $('.row').html(productosHtml);
+
+                    } else {
+                        console.error('No se encontraron productos.');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error al obtener los datos:', error);
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+    </script>
 
 </body>
 
