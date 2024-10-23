@@ -1,17 +1,32 @@
 <?php
-class ProductosController3 {
-    // Función que se encargará de cargar la vista de productos
-    public function index() {
-        // Incluir el modelo de productos para obtener la información
-        require_once 'Models/ProductosModel3.php';
-        
-        // Instanciar el modelo
-        $productosModel = new ProductosModel3();
-        
-        // Obtener todos los productos desde el modelo
-        $productos = $productosModel->obtenerProductos();
 
-        // Pasar los productos a la vista
-        require_once 'Views/Productos3.php';
+class ProductosController3 extends Controller
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function index()
+    {
+        $this->views->render($this, "index");
+    }
+
+    public function producto2()
+    {
+        $this->views->render($this, "producto2");
+    }
+
+    public function categorias2()
+    {
+        $this->views->render($this, "categorias2");
+    }
+
+    public function listar()
+    {
+
+        $data = $this->model->listar(ID_PLATAFORMA);
+        echo json_encode($data);
     }
 }
