@@ -245,6 +245,8 @@
                 contentType: false,
                 dataType: "json",
                 success: function (response) {
+                    console.log('Respuesta de la API:', response);
+
                     if (response.length > 0) {
                         // Muestra el primer producto como antes
                         var producto = response[0];
