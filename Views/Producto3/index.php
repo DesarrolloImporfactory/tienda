@@ -10,18 +10,6 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
 </head>
 
@@ -178,7 +166,7 @@
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
                 </div>
-                <div class="row">
+                <div class="row" id="productos-container">
 
                 </div>
             </div>
@@ -228,9 +216,6 @@
         crossorigin="anonymous"></script>
 
     <script>
-        console.log('ID Plataforma:', ID_PLATAFORMA);
-        console.log('ID Producto:', id_producto);
-
         $(document).ready(function () {
             var id_producto = '<?php echo $_GET['id']; ?>';
             let formData = new FormData();
@@ -245,40 +230,50 @@
                 contentType: false,
                 dataType: "json",
                 success: function (response) {
-                    
                     if (response.length > 0) {
-                        // Muestra el primer producto como antes
-                        var producto = response[0];
-                        // (Código existente para mostrar el primer producto)
-
-                        // Ahora vamos a mostrar todos los productos en la <div class="row"></div>
                         var productosHtml = '';
+
                         response.forEach(function (producto) {
-                            productosHtml += `
+                            // Generar HTML para cada producto y agregarlo a la variable productosHtml
+                            var productoItem = `
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <img src="${obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL)}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                                 <div class="card-body">
                                     <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                                     <p class="card-text">SKU: ${producto.sku}</p>
-                                    <p class="card-text">$${parseFloat(producto.pvp_tienda).toFixed(2)}</p>
-                                    <button class="btn btn-primary" onclick="agregar_carrito(${producto.id_producto}, ${parseFloat(producto.pvp_tienda)}, ${producto.id_inventario})">Agregar al carrito</button>
+                                    <p class="card-text">Precio: $${parseFloat(producto.pvp_tienda).toFixed(2)}</p>
+                                    ${producto.pref_tienda > 0 ? `<p class="card-text">Precio Normal: $${parseFloat(producto.pref_tienda).toFixed(2)}</p>` : ''}
+                                    ${producto.pref_tienda > 0 ? `<p class="card-text">Ahorro: ${parseFloat(100 - (producto.pvp_tienda * 100 / producto.pref_tienda)).toFixed(2)}%</p>` : ''}
+                                    <a href="#" class="btn btn-primary" id="comprar-ahora-${producto.id_producto}">Comprar Ahora</a>
+                                    <a href="#" class="btn btn-secondary" id="agregar-al-carrito-${producto.id_producto}">Agregar al Carrito</a>
                                 </div>
                             </div>
                         </div>
                     `;
+                            productosHtml += productoItem;
+
+                            // Asignar eventos de compra y carrito
+                            $('#productos-container').on('click', `#comprar-ahora-${producto.id_producto}`, function () {
+                                agregar_tmp(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
+                            });
+
+                            $('#productos-container').on('click', `#agregar-al-carrito-${producto.id_producto}`, function () {
+                                agregar_carrito(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
+                            });
                         });
 
-                        // Agregar el HTML generado a la <div class="row"></div>
-                        $('.row').html(productosHtml);
+                        // Insertar el HTML generado dentro del contenedor de productos
+                        $('#productos-container').html(productosHtml);
 
                     } else {
                         console.error('No se encontraron productos.');
+                        $('#productos-container').html('<p>No se encontraron productos.</p>');
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error('Error al obtener los datos:', error);
-                    console.log(xhr.responseText);
+                    console.error('Error al obtener los productos:', error);
+                    $('#productos-container').html('<p>Error al cargar los productos.</p>');
                 }
             });
         });
