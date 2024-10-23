@@ -18,11 +18,6 @@ class Producto3 extends Controller
         $this->views->render($this, "Producto3");
     }
 
-    public function categorias3()
-    {
-        $this->views->render($this, "categorias2");
-    }
-
     public function listar()
     {
 
