@@ -96,7 +96,7 @@
                     <a class="nav-link texto-secondary" href="#doctores">Doctores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="Productos3.php">Productos</a>
+                    <a class="nav-link texto-secondary" href="Producto3">Productos</a>
                 </li>
 
                 <li class="nav-item">
