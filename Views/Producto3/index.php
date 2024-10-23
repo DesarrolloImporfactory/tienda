@@ -228,11 +228,14 @@
         crossorigin="anonymous"></script>
 
     <script>
+        console.log('ID Plataforma:', ID_PLATAFORMA);
+        console.log('ID Producto:', id_producto);
+
         $(document).ready(function () {
             var id_producto = '<?php echo $_GET['id']; ?>';
             let formData = new FormData();
-            formData.append('ID Plataforma:', ID_PLATAFORMA);
-            formData.append('ID Producto:', id_producto);
+            formData.append("id_plataforma", ID_PLATAFORMA);
+            formData.append("id_producto_tienda", id_producto);
 
             $.ajax({
                 url: SERVERURL + 'Tienda/obtener_productos_tienda',
@@ -242,8 +245,7 @@
                 contentType: false,
                 dataType: "json",
                 success: function (response) {
-                    console.log('Respuesta de la API:', response);
-
+                    
                     if (response.length > 0) {
                         // Muestra el primer producto como antes
                         var producto = response[0];
