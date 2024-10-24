@@ -339,7 +339,8 @@
             // Mostrar los productos filtrados
             productosFiltrados.forEach((producto, index) => {
                 container.innerHTML += `
-            <div class="card col-4 mb-4"> 
+                <div class="col-4 mb-4 p-2">
+            <div class="card"> 
                 <img src="${producto.imagen_principal_tienda}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
                 <div class="card-body card-body-paginaProductos">
                     <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
@@ -349,6 +350,7 @@
                         Ver Más
                     </button>
                 </div>
+            </div>
             </div>
         `;
             });
