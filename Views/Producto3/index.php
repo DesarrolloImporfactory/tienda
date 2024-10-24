@@ -171,7 +171,8 @@
                 <div class="input-group w-25 mb-4">
                     <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
                         aria-label="Buscar por nombre" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="btnBuscar">Buscar</button>
+                    <button class="btn btn-outline-secondary" type="button"
+                        id="btnBuscarActualizar">Buscar/Actualizar</button>
                 </div>
 
 
@@ -201,7 +202,7 @@
                         <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
                     </div>
 
-                    <button id="btnActualizar" class="btn btn-primary">Actualizar Productos</button>
+                    <button id="btnBuscarActualizar2" class="btn btn-primary">Actualizar Productos</button>
 
                 </div>
                 <div class="row col-9" id="productosContainer">
@@ -283,17 +284,17 @@
         let productosTotales = [];
         let productosMostrados = 0;
 
-        // Agrega un event listener al botón
-        document.getElementById('btnActualizar').addEventListener('click', actualizarProductos);
-        // Agrega un event listener al botón de búsqueda
-        document.getElementById('btnBuscar').addEventListener('click', buscarProductos);
+
+        document.getElementById('btnBuscarActualizar').addEventListener('click', buscarActualizarProductos);
+        document.getElementById('btnBuscarActualizar2').addEventListener('click', buscarActualizarProductos);
 
 
-        // Función para actualizar los productos
-        function actualizarProductos() {
+        // Función para buscar y actualizar productos
+        function buscarActualizarProductos() {
             const valorMinimo = document.getElementById('inputValorMinimo-left').value || 0;
             const valorMaximo = document.getElementById('inputValorMaximo-left').value || 1000;
             const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+            const buscadorInput = document.getElementById('buscador').value.toLowerCase(); // Convierte a minúsculas
             const urlParams = new URLSearchParams(window.location.search);
             const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
 
@@ -318,18 +319,25 @@
                 })
                 .then(data => {
                     productosTotales = data; // Guarda todos los productos
-                    productosMostrados = 0; // Reinicia el contador
-                    document.getElementById('productosContainer').innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos productos
-                    mostrarProductos(); // Llama a la función para mostrar productos
+                    mostrarProductos(buscadorInput, valorMinimo, valorMaximo); // Muestra productos filtrados
                 })
                 .catch(error => console.error('Error:', error));
         }
 
-        function mostrarProductos(productos = productosTotales) {
+        // Función para mostrar productos según búsqueda y filtros
+        function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000) {
             const container = document.getElementById('productosContainer');
             container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
 
-            productos.forEach((producto, index) => {
+            // Filtrar productos según búsqueda y filtros
+            const productosFiltrados = productosTotales.filter(producto => {
+                const nombreCoincide = producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput);
+                const precioCoincide = producto.pvp_tienda >= valorMinimo && producto.pvp_tienda <= valorMaximo;
+                return nombreCoincide && precioCoincide; // Ambos deben coincidir
+            });
+
+            // Mostrar los productos filtrados
+            productosFiltrados.forEach((producto, index) => {
                 container.innerHTML += `
             <div class="card col-4 mb-4"> 
                 <img src="${producto.imagen_principal_tienda}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
@@ -346,14 +354,8 @@
             });
         }
 
-        function buscarProductos() {
-            const buscadorInput = document.getElementById('buscador').value.toLowerCase(); // Convierte a minúsculas
-            const productosFiltrados = productosTotales.filter(producto =>
-                producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput)
-            );
 
-            mostrarProductos(productosFiltrados); // Muestra solo los productos filtrados
-        }
+
 
         function abrirModal(index) {
             const producto = productosTotales[index];
