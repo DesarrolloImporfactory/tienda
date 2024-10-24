@@ -344,7 +344,7 @@
                 container.innerHTML += `
                 <div class="col-4 mb-4 px-2">
             <div class="card"> 
-                <img src="${producto.imagen_principal_tienda}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
+                <img src="${producto.imagen_principal_tienda || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
                 <div class="card-body card-body-paginaProductos">
                     <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                     <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
