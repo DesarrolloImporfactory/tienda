@@ -124,6 +124,19 @@ function obtenerPrimeraSeccion()
 
     return $primera_seccion;
 }
+function obtenerSegunda_seccion()
+{
+    // Obtener el esquema (http o https)
+    $esquema = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') ? 'https' : 'http';
+
+    // Obtener el host (dominio)
+    $host = $_SERVER['HTTP_HOST'];
+
+    // Construir la primera sección de la URL
+    $segunda_seccion = $esquema . '://#quienes' . $host;
+
+    return $segunda_seccion;
+}
 
 function formatPhoneNumber($number)
 {
@@ -145,6 +158,7 @@ function formatPhoneNumber($number)
 
 // Obtener la primera sección de la URL
 $primera_seccion = obtenerPrimeraSeccion();
+$segunda_seccion = obtenerSegunda_seccion();
 
 ?>
 
@@ -237,7 +251,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                         href="<?php echo $primera_seccion; ?>">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="<?php echo $primera_seccion; ?>">Quienes Somos</a>
+                    <a class="nav-link texto-secondary" href="<?php echo $segunda_seccion; ?>">Quienes Somos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="<?php echo $primera_seccion; ?>">Servicios</a>
