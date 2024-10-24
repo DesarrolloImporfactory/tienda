@@ -168,18 +168,18 @@
                 <h3 class="display-6 fw-bold texto-secondary">Productos </h3>
 
                 <!-- Añade este bloque a tu HTML para el buscador -->
-              
+
 
 
             </div>
             <div class="cont2Productos row pt-4">
 
                 <div class="filtro col-6 col-md-3">
-                <div class="input-group w-25 mb-4">
-                    <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
-                        aria-label="Buscar por nombre" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="btnBuscarActualizar">Buscar</button>
-                </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
+                            aria-label="Buscar por nombre" aria-describedby="button-addon2">
+                        <label for="inputValorMinimo-left">buscar por nombre</label>
+                    </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
                         <label for="inputValorMinimo-left">Precio Mínimo</label>
