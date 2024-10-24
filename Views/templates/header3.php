@@ -233,7 +233,7 @@ $primera_seccion = obtenerPrimeraSeccion();
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary active" aria-current="page" href="index3">Inicio</a>
+                    <a class="nav-link texto-secondary active" aria-current="page" href="<?php echo $primera_seccion; ?>">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="index3#quienes">Quienes Somos</a>
