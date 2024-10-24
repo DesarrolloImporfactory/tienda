@@ -216,68 +216,70 @@
         crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function () {
-            let formData = new FormData();
-            formData.append("id_plataforma", ID_PLATAFORMA); // ID_PLATAFORMA debe estar definida en tu entorno
+       
+       $.ajax({
+    url: SERVERURL + 'Tienda/obtener_productos_tienda_filtro',
+    type: 'POST',
+    data: formDataProductos,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        let productos = JSON.parse(response);
+        let productosHTML = '';
 
-            $.ajax({
-                url: SERVERURL + 'Tienda/obtener_productos_tienda_filtro',
-                method: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                dataType: "json",
-                success: function (response) {
-                    if (response.length > 0) {
-                        // El contenedor donde se mostrarán los productos
-                        var $productsContainer = $(".row");
+        // Limitar a 8 productos
+        productos = productos.slice(0, 8);
 
-                        // Limpiamos el contenedor por si ya tiene contenido
-                        $productsContainer.empty();
-
-                        // Iteramos sobre cada producto de la respuesta
-                        response.forEach(function (producto) {
-                            // Generamos el HTML para cada producto
-                            var productoHtml = `
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="card-img-top" src="${SERVERURL}${producto.imagen_principal_tienda}" alt="${producto.nombre_producto_tienda}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                                    <p class="card-text">SKU: ${producto.sku}</p>
-                                    <p class="card-text">Precio: $${parseFloat(producto.pvp_tienda).toFixed(2)}</p>
-                                    <p class="card-text">Antes: $${parseFloat(producto.pref_tienda).toFixed(2)}</p>
-                                    <button class="btn btn-primary comprar" data-id="${producto.id_producto}">Comprar ahora</button>
-                                    <button class="btn btn-secondary agregar-carrito" data-id="${producto.id_producto}">Agregar al carrito</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                            // Agregamos el producto al contenedor
-                            $productsContainer.append(productoHtml);
-                        });
-
-                        // Asignar eventos a los botones de compra
-                        $('.comprar').on('click', function () {
-                            var idProducto = $(this).data('id');
-                            agregar_tmp(idProducto);
-                        });
-
-                        $('.agregar-carrito').on('click', function () {
-                            var idProducto = $(this).data('id');
-                            agregar_carrito(idProducto);
-                        });
-
-                    } else {
-                        console.error('No se encontraron productos.');
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error al obtener los datos:', error);
-                    console.log(xhr.responseText);
+        productos.forEach((producto, index) => {
+            // Cada 4 productos, se añade un nuevo .row
+            if (index % 4 === 0) {
+                if (index > 0) {
+                    productosHTML += `</div>`;
                 }
-            });
+                productosHTML += `<div class="row">`;
+            }
+
+            productosHTML += `
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="card overflow-hidden rounded-3">
+                    <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body card_body_productos_destacados">
+                        <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
+                        <hr class="my-2">
+                        <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                        <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
+                    </div>
+                </div>
+            </div>
+            `;
+
         });
+
+        // Cerrar la última fila después de agregar todos los productos
+        productosHTML += `</div>`; // Cerrar la última fila
+
+        $('#servicios .row').html(productosHTML);
+
+        // Manejar el clic en los botones de detalles
+        $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
+            let idProducto = $(this).data('id');
+
+            let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
+
+            $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+            $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+            $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+            $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+            $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+        });
+
+    },
+    error: function (error) {
+        console.log("Error al obtener productos: ", error);
+    }
+});
+/* Fin productos destacados */
 
 
     </script>
