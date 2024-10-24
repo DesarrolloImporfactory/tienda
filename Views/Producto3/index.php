@@ -172,7 +172,7 @@
                     <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
                         aria-label="Buscar por nombre" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button"
-                        id="btnBuscarActualizar">Buscar/Actualizar</button>
+                        id="btnBuscarActualizar">Buscar</button>
                 </div>
 
 
@@ -202,7 +202,7 @@
                         <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
                     </div>
 
-                    <button id="btnBuscarActualizar2" class="btn btn-primary">Actualizar Productos</button>
+                    <button id="btnBuscarActualizar2" class="btn btn-primary w-100">Actualizar Productos</button>
 
                 </div>
                 <div class="row col-9" id="productosContainer">
@@ -284,113 +284,115 @@
         }
     </style>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            buscarActualizarProductos();
+    document.addEventListener("DOMContentLoaded", () => {
+        buscarActualizarProductos();
+    });
+
+    let productosTotales = [];
+    let productosMostrados = 0;
+
+    document.getElementById('btnBuscarActualizar').addEventListener('click', buscarActualizarProductos);
+    document.getElementById('btnBuscarActualizar2').addEventListener('click', buscarActualizarProductos);
+
+    // Función para buscar y actualizar productos
+    function buscarActualizarProductos() {
+        const valorMinimo = document.getElementById('inputValorMinimo-left').value || 0;
+        const valorMaximo = document.getElementById('inputValorMaximo-left').value || 1000;
+        const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+        const buscadorInput = document.getElementById('buscador').value.toLowerCase(); // Convierte a minúsculas
+        const urlParams = new URLSearchParams(window.location.search);
+        const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
+
+        const idPlataforma = ID_PLATAFORMA;
+
+        const formData = new FormData();
+        formData.append('id_plataforma', idPlataforma);
+        formData.append('id_categoria', idCategoria);
+        formData.append('precio_minimo', valorMinimo);
+        formData.append('precio_maximo', valorMaximo);
+        formData.append('ordenar_por', ordenarPor);
+
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener los productos');
+                }
+                return response.json();
+            })
+            .then(data => {
+                productosTotales = data; // Guarda todos los productos
+                mostrarProductos(buscadorInput, valorMinimo, valorMaximo); // Muestra productos filtrados
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Función para mostrar productos según búsqueda y filtros
+    function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000) {
+        const container = document.getElementById('productosContainer');
+        container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+
+        // Filtrar productos según búsqueda y filtros
+        const productosFiltrados = productosTotales.filter(producto => {
+            const nombreCoincide = producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput);
+            const precioCoincide = producto.pvp_tienda >= valorMinimo && producto.pvp_tienda <= valorMaximo;
+            return nombreCoincide && precioCoincide; // Ambos deben coincidir
         });
 
-        let productosTotales = [];
-        let productosMostrados = 0;
+        // Mostrar los productos filtrados
+        productosFiltrados.forEach((producto, index) => {
+            const imagenUrl = producto.imagen_principal_tienda;
 
-
-        document.getElementById('btnBuscarActualizar').addEventListener('click', buscarActualizarProductos);
-        document.getElementById('btnBuscarActualizar2').addEventListener('click', buscarActualizarProductos);
-
-
-        // Función para buscar y actualizar productos
-        function buscarActualizarProductos() {
-            const valorMinimo = document.getElementById('inputValorMinimo-left').value || 0;
-            const valorMaximo = document.getElementById('inputValorMaximo-left').value || 1000;
-            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-            const buscadorInput = document.getElementById('buscador').value.toLowerCase(); // Convierte a minúsculas
-            const urlParams = new URLSearchParams(window.location.search);
-            const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
-
-            const idPlataforma = ID_PLATAFORMA;
-
-            const formData = new FormData();
-            formData.append('id_plataforma', idPlataforma);
-            formData.append('id_categoria', idCategoria);
-            formData.append('precio_minimo', valorMinimo);
-            formData.append('precio_maximo', valorMaximo);
-            formData.append('ordenar_por', ordenarPor);
-
-            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al obtener los productos');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    productosTotales = data; // Guarda todos los productos
-                    mostrarProductos(buscadorInput, valorMinimo, valorMaximo); // Muestra productos filtrados
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Función para mostrar productos según búsqueda y filtros
-        function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000) {
-            const container = document.getElementById('productosContainer');
-            container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
-
-            // Filtrar productos según búsqueda y filtros
-            const productosFiltrados = productosTotales.filter(producto => {
-                const nombreCoincide = producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput);
-                const precioCoincide = producto.pvp_tienda >= valorMinimo && producto.pvp_tienda <= valorMaximo;
-                return nombreCoincide && precioCoincide; // Ambos deben coincidir
-            });
-
-            // Mostrar los productos filtrados
-            productosFiltrados.forEach((producto, index) => {
-                const imagenUrl = producto.imagen_principal_tienda || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
-
-                container.innerHTML += `
-                <div class="col-4 mb-4 px-2">
-            <div class="card"> 
-                <img src="${imagenUrl}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
-                <div class="card-body card-body-paginaProductos">
-                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                    <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
-                    <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal" onclick="abrirModal(${index})">
-                        Ver Más
-                    </button>
+            container.innerHTML += `
+            <div class="col-4 mb-4 px-2">
+                <div class="card"> 
+                    <img src="${imagenUrl}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}" onerror="this.onerror=null; this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'">
+                    <div class="card-body card-body-paginaProductos">
+                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                        <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
+                        <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal" onclick="abrirModal(${index})">
+                            Ver Más
+                        </button>
+                    </div>
                 </div>
             </div>
-            </div>
-        `;
-            });
+            `;
+        });
+    }
+
+    function abrirModal(index) {
+        const producto = productosTotales[index];
+        if (!producto) return; // Verifica si el producto existe
+
+        const modalTitulo = document.getElementById('productoModalTitulo');
+        const modalDescripcion = document.getElementById('productoModalDescripcion');
+        const modalPrecio = document.getElementById('productoModalPrecio');
+        const modalImagen = document.getElementById('productoModalImagen');
+
+        if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
+            // Actualizar el contenido del modal
+            modalTitulo.innerText = producto.nombre_producto_tienda;
+            modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
+            modalPrecio.innerText = producto.pvp_tienda;
+
+            // Establecer la imagen del modal con un manejo de error
+            modalImagen.src = producto.imagen_principal_tienda;
+            modalImagen.alt = producto.nombre_producto_tienda;
+
+            // Manejo de error para la imagen del modal
+            modalImagen.onerror = function() {
+                this.onerror = null; // Evita bucles infinitos
+                this.src = 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+            };
+        } else {
+            console.error('Elementos del modal no encontrados');
         }
+    }
+</script>
 
-
-
-
-        function abrirModal(index) {
-            const producto = productosTotales[index];
-            if (!producto) return; // Verifica si el producto existe
-
-            const modalTitulo = document.getElementById('productoModalTitulo');
-            const modalDescripcion = document.getElementById('productoModalDescripcion');
-            const modalPrecio = document.getElementById('productoModalPrecio');
-            const modalImagen = document.getElementById('productoModalImagen');
-
-            if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
-                // Actualizar el contenido del modal
-                modalTitulo.innerText = producto.nombre_producto_tienda;
-                modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
-                modalPrecio.innerText = producto.pvp_tienda;
-                modalImagen.src = producto.imagen_principal_tienda;
-                modalImagen.alt = producto.nombre_producto_tienda;
-            } else {
-                console.error('Elementos del modal no encontrados');
-            }
-        }
-
-
-    </script>
 
 </body>
 
