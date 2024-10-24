@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <nav class="navbar bg-white fixed-top shadow-sm">
+    <nav class="navbar bg-white sticky-top shadow-sm">
         <div class="container px-4 d-flex">
             <a class="navbar-brand texto-primary display-5 fw-bold" href="#">Logo</a>
 
