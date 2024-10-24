@@ -178,7 +178,7 @@
             </div>
             <div class="cont2Productos row pt-4">
 
-                <div class="filtro col-3">
+                <div class="filtro col-6 col-md-3">
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
                         <label for="inputValorMinimo-left">Precio Mínimo</label>
@@ -205,7 +205,7 @@
                     <button id="btnLimpiarFiltros" class="btn btn-secondary w-100">Limpiar Filtros</button>
 
                 </div>
-                <div class="row col-9" id="productosContainer">
+                <div class="row col-md-9 col-6" id="productosContainer">
 
 
                 </div>
