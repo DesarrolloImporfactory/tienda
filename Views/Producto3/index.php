@@ -211,7 +211,7 @@
                 <br>
                 <button id="btnActualizar">Actualizar Productos</button>
             </div>
-            <div class="row" id="productos-container">
+            <div class="row" id="productosContainer">
 
             </div>
 
