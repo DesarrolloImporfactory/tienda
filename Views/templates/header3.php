@@ -353,5 +353,4 @@ $primera_seccion = obtenerPrimeraSeccion();
 
         </div>
     </nav>
-    <div data-bs-spy="scroll" data-bs-target="#listaNav1" data-bs-root-margin="0px 0px -40%"
-        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-0 rounded-3" tabindex="0">
+    
