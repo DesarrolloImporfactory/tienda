@@ -300,7 +300,7 @@
         container.innerHTML += `
             <div class="card col-4 mb-4"> 
                 <img src="${producto.imagen_principal_tienda}" class="w-100" alt="${producto.nombre_producto_tienda}">
-                <div class="card-body">
+                <div class="card-body card-body-paginaProductos">
                     <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                     <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
                     <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>

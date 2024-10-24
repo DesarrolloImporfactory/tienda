@@ -275,10 +275,19 @@
     }
 
 
-    /* calendario ##########################*/
+    /* cpagina alendario ##########################*/
 
     .proHeaderTitulo {
         padding-top: 80px;
+    }
+
+    /* pagina productos ##########################*/
+    .card-body-paginaProductos p {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        -webkit-line-clamp: 1 !important;
+        text-align: justify;
     }
 
     /* Media querys pagina tienda*/
