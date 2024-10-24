@@ -206,7 +206,7 @@
                     <button id="btnLimpiarFiltros" class="btn btn-secondary w-100">Limpiar Filtros</button>
                 </div>
 
-                <div class="row col-md-9 col-sm-6 col-12" id="productosContainer">
+                <div class="row col-md-9 col-sm-6 col-12 mx-auto" id="productosContainer">
 
 
                 </div>
