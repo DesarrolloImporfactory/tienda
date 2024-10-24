@@ -281,6 +281,7 @@
     /* pagina productos ##########################*/
     .containerProductos3 {
         padding-top: 80px;
+        padding-bottom: 80px;
     }
     .card-body-paginaProductos p {
         white-space: nowrap !important;
