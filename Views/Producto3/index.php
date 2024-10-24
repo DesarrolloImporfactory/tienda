@@ -165,7 +165,7 @@
     <header class="mt-5">
         <div class="container">
             <div class="proHeaderTitulo d-flex justify-content-between align-items-center border-bottom border-2">
-                <h3 class="display-6 fw-bold texto-secondary">Nuestros servicios </h3>
+                <h3 class="display-6 fw-bold texto-secondary">Productos </h3>
 
                 <!-- Añade este bloque a tu HTML para el buscador -->
                 <div class="input-group w-25 mb-4">
@@ -358,7 +358,7 @@
                 const imagenUrl = producto.imagen_principal_tienda || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
                 container.innerHTML += `
-            <div class="col-4 mb-4 px-2">
+            <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
                 <div class="card"> 
                     <img src="${imagenUrl}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}" onerror="this.onerror=null; this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'">
                     <div class="card-body card-body-paginaProductos">
