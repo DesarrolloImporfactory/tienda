@@ -174,7 +174,7 @@
             </div>
             <div class="cont2Productos row pt-4">
 
-                <div class="filtro col-6 col-md-3">
+                <div class="filtro col-12 col-sm-6 col-md-3">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
                             aria-label="Buscar por nombre" aria-describedby="button-addon2">
@@ -206,7 +206,7 @@
                     <button id="btnLimpiarFiltros" class="btn btn-secondary w-100">Limpiar Filtros</button>
                 </div>
 
-                <div class="row col-md-9 col-6" id="productosContainer">
+                <div class="row col-md-9 col-sm-6 col-12" id="productosContainer">
 
 
                 </div>
