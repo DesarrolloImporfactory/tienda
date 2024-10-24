@@ -174,7 +174,7 @@
                 </div>
 
             </div>
-            <div class="cont2Productos row">
+            <div class="cont2Productos row pt-4">
 
                 <div class="filtro col-3">
                     <div class="form-floating mb-3">
@@ -203,6 +203,30 @@
 
                 </div>
                 <div class="row col-9" id="productosContainer">
+                    <!-- Modal para mostrar detalles del producto -->
+                    <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="productoModalLabel">Detalles del Producto</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="productoModalImagen" src="" class="w-100 mb-3" alt="Imagen del Producto">
+                                    <h5 id="productoModalTitulo"></h5>
+                                    <p id="productoModalDescripcion"></p>
+                                    <p><strong>Precio: $<span id="productoModalPrecio"></span></strong></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary">Comprar Ahora</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -248,7 +272,12 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-
+    <style>
+        .imgCardProductos {
+            padding: 30px;
+            border: 0px;
+        }
+    </style>
     <script>
         let productosTotales = [];
         let productosMostrados = 0;
@@ -279,7 +308,7 @@
             })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        throw new Error('Error al obtener los productos');
                     }
                     return response.json();
                 })
@@ -293,23 +322,36 @@
         }
 
         function mostrarProductos() {
-    const container = document.getElementById('productosContainer');
-    container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+            const container = document.getElementById('productosContainer');
+            container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
 
-    productosTotales.forEach(producto => {
-        container.innerHTML += `
+            productosTotales.forEach((producto, index) => {
+                container.innerHTML += `
             <div class="card col-4 mb-4"> 
-                <img src="${producto.imagen_principal_tienda}" class="w-100" alt="${producto.nombre_producto_tienda}">
+                <img src="${producto.imagen_principal_tienda}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
                 <div class="card-body card-body-paginaProductos">
                     <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                     <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
                     <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                    <a href="#" class="btn btn-primary">Ver Más</a> <!-- Botón de acción -->
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal" onclick="abrirModal(${index})">
+                        Ver Más
+                    </button>
                 </div>
             </div>
         `;
-    });
-}
+            });
+        }
+
+        function abrirModal(index) {
+            const producto = productosTotales[index];
+
+            // Actualizar el contenido del modal con la información del producto
+            document.getElementById('productoModalTitulo').innerText = producto.nombre_producto_tienda;
+            document.getElementById('productoModalDescripcion').innerText = producto.descripcion_tienda || 'No disponible';
+            document.getElementById('productoModalPrecio').innerText = producto.pvp_tienda;
+            document.getElementById('productoModalImagen').src = producto.imagen_principal_tienda;
+            document.getElementById('productoModalImagen').alt = producto.nombre_producto_tienda;
+        }
 
     </script>
 
