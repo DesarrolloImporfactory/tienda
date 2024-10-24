@@ -163,8 +163,8 @@
 
 
     <header class="mt-5">
-        <div class="container">
-            <div class="proHeaderTitulo d-flex justify-content-between align-items-center border-bottom border-2">
+        <div class="container containerProductos3">
+            <div class="d-flex justify-content-between align-items-center border-bottom border-2">
                 <h3 class="display-6 fw-bold texto-secondary">Productos </h3>
 
                 <!-- Añade este bloque a tu HTML para el buscador -->
