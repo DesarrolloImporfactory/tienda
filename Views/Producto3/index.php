@@ -216,30 +216,32 @@
         crossorigin="anonymous"></script>
 
     <script>
-       
-       $.ajax({
-    url: SERVERURL + 'Tienda/obtener_productos_tienda_filtro',
-    type: 'POST',
-    data: formDataProductos,
-    contentType: false,
-    processData: false,
-    success: function (response) {
-        let productos = JSON.parse(response);
-        let productosHTML = '';
+      let formDataProductos = new FormData();
+      formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+      
+        $.ajax({
+            url: SERVERURL + 'Tienda/obtener_productos_tienda_filtro',
+            type: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                let productos = JSON.parse(response);
+                let productosHTML = '';
 
-        // Limitar a 8 productos
-        productos = productos.slice(0, 8);
+                // Limitar a 8 productos
+                productos = productos.slice(0, 8);
 
-        productos.forEach((producto, index) => {
-            // Cada 4 productos, se añade un nuevo .row
-            if (index % 4 === 0) {
-                if (index > 0) {
-                    productosHTML += `</div>`;
-                }
-                productosHTML += `<div class="row">`;
-            }
+                productos.forEach((producto, index) => {
+                    // Cada 4 productos, se añade un nuevo .row
+                    if (index % 4 === 0) {
+                        if (index > 0) {
+                            productosHTML += `</div>`;
+                        }
+                        productosHTML += `<div class="row">`;
+                    }
 
-            productosHTML += `
+                    productosHTML += `
             <div class="col-lg-3 col-sm-6 mb-4">
                 <div class="card overflow-hidden rounded-3">
                     <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
@@ -254,32 +256,32 @@
             </div>
             `;
 
+                });
+
+                // Cerrar la última fila después de agregar todos los productos
+                productosHTML += `</div>`; // Cerrar la última fila
+
+                $('#servicios .row').html(productosHTML);
+
+                // Manejar el clic en los botones de detalles
+                $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
+                    let idProducto = $(this).data('id');
+
+                    let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
+
+                    $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+                    $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+                    $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+                    $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+                    $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+                });
+
+            },
+            error: function (error) {
+                console.log("Error al obtener productos: ", error);
+            }
         });
-
-        // Cerrar la última fila después de agregar todos los productos
-        productosHTML += `</div>`; // Cerrar la última fila
-
-        $('#servicios .row').html(productosHTML);
-
-        // Manejar el clic en los botones de detalles
-        $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
-            let idProducto = $(this).data('id');
-
-            let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
-
-            $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
-            $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
-            $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
-            $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
-            $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
-        });
-
-    },
-    error: function (error) {
-        console.log("Error al obtener productos: ", error);
-    }
-});
-/* Fin productos destacados */
+        /* Fin productos destacados */
 
 
     </script>
