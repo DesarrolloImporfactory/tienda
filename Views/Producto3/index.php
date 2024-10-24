@@ -167,11 +167,13 @@
             <div class="proHeaderTitulo d-flex justify-content-between align-items-center border-bottom border-2">
                 <h3 class="display-6 fw-bold texto-secondary">Nuestros servicios </h3>
 
-                <div class="input-group w-25">
-                    <input type="text" class="form-control" placeholder="Recipient's username"
-                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                <!-- Añade este bloque a tu HTML para el buscador -->
+                <div class="input-group w-25 mb-4">
+                    <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
+                        aria-label="Buscar por nombre" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="btnBuscar">Buscar</button>
                 </div>
+
 
             </div>
             <div class="cont2Productos row pt-4">
@@ -203,36 +205,34 @@
 
                 </div>
                 <div class="row col-9" id="productosContainer">
-                   
+
 
                 </div>
             </div>
 
         </div>
-         <!-- Modal para mostrar detalles del producto -->
-         <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="productoModalLabel">Detalles del Producto</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <img id="productoModalImagen" src="" class="w-100 mb-3" alt="Imagen del Producto">
-                                    <h5 id="productoModalTitulo"></h5>
-                                    <p id="productoModalDescripcion"></p>
-                                    <p><strong>Precio: $<span id="productoModalPrecio"></span></strong></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary">Comprar Ahora</button>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Modal para mostrar detalles del producto -->
+        <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productoModalLabel">Detalles del Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <img id="productoModalImagen" src="" class="w-100 mb-3" alt="Imagen del Producto">
+                        <h5 id="productoModalTitulo"></h5>
+                        <p id="productoModalDescripcion"></p>
+                        <p><strong>Precio: $<span id="productoModalPrecio"></span></strong></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Comprar Ahora</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
 
@@ -285,6 +285,9 @@
 
         // Agrega un event listener al botón
         document.getElementById('btnActualizar').addEventListener('click', actualizarProductos);
+        // Agrega un event listener al botón de búsqueda
+        document.getElementById('btnBuscar').addEventListener('click', buscarProductos);
+
 
         // Función para actualizar los productos
         function actualizarProductos() {
@@ -322,11 +325,11 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        function mostrarProductos() {
+        function mostrarProductos(productos = productosTotales) {
             const container = document.getElementById('productosContainer');
             container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
 
-            productosTotales.forEach((producto, index) => {
+            productos.forEach((producto, index) => {
                 container.innerHTML += `
             <div class="card col-4 mb-4"> 
                 <img src="${producto.imagen_principal_tienda}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
@@ -341,6 +344,15 @@
             </div>
         `;
             });
+        }
+
+        function buscarProductos() {
+            const buscadorInput = document.getElementById('buscador').value.toLowerCase(); // Convierte a minúsculas
+            const productosFiltrados = productosTotales.filter(producto =>
+                producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput)
+            );
+
+            mostrarProductos(productosFiltrados); // Muestra solo los productos filtrados
         }
 
         function abrirModal(index) {
