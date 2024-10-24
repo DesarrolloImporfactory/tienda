@@ -278,6 +278,9 @@
         .imgCardProductos {
             padding: 30px;
             border: 0px;
+            width: 181px;
+            height: 152px;
+            object-fit: cover;
         }
     </style>
     <script>
@@ -339,7 +342,7 @@
             // Mostrar los productos filtrados
             productosFiltrados.forEach((producto, index) => {
                 container.innerHTML += `
-                <div class="col-4 mb-4 p-2">
+                <div class="col-4 mb-4 px-2">
             <div class="card"> 
                 <img src="${producto.imagen_principal_tienda}" class="w-100 imgCardProductos" alt="${producto.nombre_producto_tienda}">
                 <div class="card-body card-body-paginaProductos">
