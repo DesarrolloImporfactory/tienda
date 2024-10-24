@@ -298,15 +298,15 @@
                 const div = document.createElement('div');
                 div.classList.add('producto');
                 div.innerHTML = ` 
-                 <div class="card h-100"> 
-                <img src="${producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
-                <div class="card-body">
-                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                    <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
-                    <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                    <a href="#" class="btn btn-primary">Ver Más</a> <!-- Botón de acción -->
+                 <div class="card col-4"> 
+                    <img src="${producto.imagen_principal_tienda}" class="card-img-top w-100" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body">
+                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                        <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
+                        <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                        <a href="#" class="btn btn-primary">Ver Más</a> <!-- Botón de acción -->
+                    </div>
                 </div>
-            </div>
                 `;
                 container.appendChild(div);
             });
