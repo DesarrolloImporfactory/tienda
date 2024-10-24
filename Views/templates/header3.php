@@ -247,7 +247,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="citas.html">Agendar Cita</a>
+                    <a class="nav-link texto-secondary" href="Agendar_cita_p3">Agendar Cita</a>
                 </li>
 
             </ul>
