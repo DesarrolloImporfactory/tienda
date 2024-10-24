@@ -1,8 +1,8 @@
 <?php include 'Views/templates/header3.php'; ?>
 
 
-    <header class="py-3 py-md-5 mt-4">
-        <div class="container mt-5">
+    <header class="py-3 py-md-5">
+        <div class="container my-3 my-md-4">
             <h2 class="display-4">Reservar una cita</h2>
             <p class="d-inline-flex gap-1">
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
