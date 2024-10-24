@@ -215,75 +215,54 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
+
     <script>
-      let formDataProductos = new FormData();
-      formDataProductos.append("id_plataforma", ID_PLATAFORMA);
-      
-        $.ajax({
-            url: SERVERURL + 'Tienda/obtener_productos_tienda_filtro',
-            type: 'POST',
-            data: formDataProductos,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                let productos = JSON.parse(response);
-                let productosHTML = '';
+        // Suponiendo que productosTotales es el array que obtuviste de la API
+        let productosTotales = []; // Aquí deberías asignar el array de productos obtenido de la API
 
-                // Limitar a 8 productos
-                productos = productos.slice(0, 8);
+        function mostrarProductos() {
+            const container = document.getElementById('productos-container');
+            container.innerHTML = ''; // Limpia el contenedor antes de agregar nuevos productos
 
-                productos.forEach((producto, index) => {
-                    // Cada 4 productos, se añade un nuevo .row
-                    if (index % 4 === 0) {
-                        if (index > 0) {
-                            productosHTML += `</div>`;
-                        }
-                        productosHTML += `<div class="row">`;
-                    }
+            productosTotales.forEach(producto => {
+                // Crea un contenedor para cada producto
+                const productoDiv = document.createElement('div');
+                productoDiv.classList.add('col-md-4'); // Clase de Bootstrap para columnas
 
-                    productosHTML += `
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card overflow-hidden rounded-3">
-                    <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
-                    <div class="card-body card_body_productos_destacados">
-                        <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
-                        <hr class="my-2">
-                        <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
-                        <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
+                // Agrega el contenido del producto
+                productoDiv.innerHTML = `
+                <div class="card">
+                    <img src="${producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                    <div class="card-body">
+                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                        <p class="card-text">Precio: $${producto.pvp_tienda}</p>
+                        <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                        <a href="#" class="btn btn-primary">Ver producto</a>
                     </div>
                 </div>
-            </div>
             `;
 
-                });
+                // Agrega el producto al contenedor
+                container.appendChild(productoDiv);
+            });
+        }
 
-                // Cerrar la última fila después de agregar todos los productos
-                productosHTML += `</div>`; // Cerrar la última fila
-
-                $('#servicios .row').html(productosHTML);
-
-                // Manejar el clic en los botones de detalles
-                $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
-                    let idProducto = $(this).data('id');
-
-                    let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
-
-                    $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
-                    $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
-                    $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
-                    $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
-                    $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
-                });
-
-            },
-            error: function (error) {
-                console.log("Error al obtener productos: ", error);
-            }
-        });
-        /* Fin productos destacados */
-
-
+        // Llama a la función mostrarProductos después de que obtengas los datos de la API
+        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                productosTotales = data; // Guarda todos los productos
+                mostrarProductos(); // Llama a la función para mostrar productos
+            })
+            .catch(error => console.error('Error:', error));
     </script>
 
 </body>
