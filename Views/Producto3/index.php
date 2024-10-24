@@ -177,8 +177,36 @@
 
             </div>
             <div class="cont2Productos row pt-4">
+<style>
+    .filtro {
+    transition: position 0.3s ease; /* Para una transición suave */
+}
 
-                <div class="filtro col-6 col-md-3 sticky-top ">
+.filtro.fixed {
+    position: fixed;
+    top: 60px; /* Ajusta según la altura de tu navbar */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const filtro = document.querySelector('.filtro');
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const navbarBottom = navbar.offsetHeight; // Altura del navbar
+
+        if (window.scrollY > navbarBottom) {
+            filtro.classList.add('fixed');
+        } else {
+            filtro.classList.remove('fixed');
+        }
+    });
+});
+
+</script>
+                <div class="filtro col-6 col-md-3">
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
                         <label for="inputValorMinimo-left">Precio Mínimo</label>
