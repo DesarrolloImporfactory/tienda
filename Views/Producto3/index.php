@@ -168,11 +168,11 @@
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
                 </div>
-                
+
             </div>
             <div class="row" id="productos-container">
 
-                </div>
+            </div>
 
         </div>
     </header>
@@ -217,68 +217,68 @@
 
     <script>
         $(document).ready(function () {
-            var id_producto = '<?php echo $_GET['id']; ?>';
             let formData = new FormData();
-            formData.append("id_plataforma", ID_PLATAFORMA);
-            formData.append("id_producto_tienda", id_producto);
+            formData.append("id_plataforma", ID_PLATAFORMA); // ID_PLATAFORMA debe estar definida en tu entorno
 
             $.ajax({
-                url: SERVERURL + 'Tienda/obtener_productos_tienda',
+                url: SERVERURL + 'Tienda/obtener_productos_tienda_filtro',
                 method: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
                 dataType: "json",
                 success: function (response) {
-                    console.log("Response:", response); 
-
                     if (response.length > 0) {
-                        var productosHtml = '';
+                        // El contenedor donde se mostrarán los productos
+                        var $productsContainer = $(".row");
 
+                        // Limpiamos el contenedor por si ya tiene contenido
+                        $productsContainer.empty();
+
+                        // Iteramos sobre cada producto de la respuesta
                         response.forEach(function (producto) {
-                            // Generar HTML para cada producto y agregarlo a la variable productosHtml
-                            var productoItem = `
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
-                                <img src="${obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL)}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                            // Generamos el HTML para cada producto
+                            var productoHtml = `
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm">
+                                <img class="card-img-top" src="${SERVERURL}${producto.imagen_principal_tienda}" alt="${producto.nombre_producto_tienda}">
                                 <div class="card-body">
                                     <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                                     <p class="card-text">SKU: ${producto.sku}</p>
                                     <p class="card-text">Precio: $${parseFloat(producto.pvp_tienda).toFixed(2)}</p>
-                                    ${producto.pref_tienda > 0 ? `<p class="card-text">Precio Normal: $${parseFloat(producto.pref_tienda).toFixed(2)}</p>` : ''}
-                                    ${producto.pref_tienda > 0 ? `<p class="card-text">Ahorro: ${parseFloat(100 - (producto.pvp_tienda * 100 / producto.pref_tienda)).toFixed(2)}%</p>` : ''}
-                                    <a href="#" class="btn btn-primary" id="comprar-ahora-${producto.id_producto}">Comprar Ahora</a>
-                                    <a href="#" class="btn btn-secondary" id="agregar-al-carrito-${producto.id_producto}">Agregar al Carrito</a>
+                                    <p class="card-text">Antes: $${parseFloat(producto.pref_tienda).toFixed(2)}</p>
+                                    <button class="btn btn-primary comprar" data-id="${producto.id_producto}">Comprar ahora</button>
+                                    <button class="btn btn-secondary agregar-carrito" data-id="${producto.id_producto}">Agregar al carrito</button>
                                 </div>
                             </div>
                         </div>
                     `;
-                            productosHtml += productoItem;
-
-                            // Asignar eventos de compra y carrito
-                            $('#productos-container').on('click', `#comprar-ahora-${producto.id_producto}`, function () {
-                                agregar_tmp(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
-                            });
-
-                            $('#productos-container').on('click', `#agregar-al-carrito-${producto.id_producto}`, function () {
-                                agregar_carrito(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
-                            });
+                            // Agregamos el producto al contenedor
+                            $productsContainer.append(productoHtml);
                         });
 
-                        // Insertar el HTML generado dentro del contenedor de productos
-                        $('#productos-container').html(productosHtml);
+                        // Asignar eventos a los botones de compra
+                        $('.comprar').on('click', function () {
+                            var idProducto = $(this).data('id');
+                            agregar_tmp(idProducto);
+                        });
+
+                        $('.agregar-carrito').on('click', function () {
+                            var idProducto = $(this).data('id');
+                            agregar_carrito(idProducto);
+                        });
 
                     } else {
                         console.error('No se encontraron productos.');
-                        $('#productos-container').html('<p>No se encontraron productos.</p>');
                     }
                 },
                 error: function (xhr, status, error) {
-                    console.error('Error al obtener los productos:', error);
-                    $('#productos-container').html('<p>Error al cargar los productos.</p>');
+                    console.error('Error al obtener los datos:', error);
+                    console.log(xhr.responseText);
                 }
             });
         });
+
 
     </script>
 
