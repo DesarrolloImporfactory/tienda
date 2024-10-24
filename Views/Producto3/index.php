@@ -82,32 +82,6 @@
 
 
 
-
-    <footer class="fondo-tertiary pt-4">
-        <div class="container px-4 border-top d-flex justify-content-between py-3 my-4 flex-column flex-md-row">
-            <div class=" d-flex flex-column accordion-body align-items-center align-items-md-start w-100">
-                <a class="texto-primary fs-2 fw-bold mb-3" href="#">Logo</a>
-                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="index.html#inicio"
-                            class="nav-link px-2 text-body-secondary">Inicio</a></li>
-                    <li class="nav-item"><a href="index.html#quienes" class="nav-link px-2 text-body-secondary">Quienes
-                            Somos</a></li>
-                    <li class="nav-item"><a href="index.html#servicios"
-                            class="nav-link px-2 text-body-secondary">Servicios</a></li>
-                    <li class="nav-item"><a href="index.html#doctores"
-                            class="nav-link px-2 text-body-secondary">Doctores</a></li>
-                    <li class="nav-item"><a href="citas.html" class="nav-link px-2 text-body-secondary">Agendar cita</a>
-                    </li>
-                </ul>
-                <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
-            </div>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10074.886852202728!2d-78.55683778728343!3d-0.25860257925138724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d598df3ddc65c5%3A0x18203d4f3fa6602c!2sBiloxi%2C%20Quito!5e0!3m2!1ses-419!2sec!4v1728095977382!5m2!1ses-419!2sec"
-                allowfullscreen="" loading="lazy" class="w-100 rounded-3 border shadow"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </footer>
-
     <script src="main.js"></script>
     <script src="citas.js"></script>
 
@@ -268,6 +242,4 @@
 
 
 
-</body>
-
-</html>
+<?php include 'Views/templates/footer3.php'; ?>

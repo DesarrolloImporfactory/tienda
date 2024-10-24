@@ -223,7 +223,7 @@ $primera_seccion = obtenerPrimeraSeccion();
         </div>
     </div>
 
-    <nav class="navbar bg-white fixed-top shadow-sm py-1">
+    <nav class="navbar bg-white sticky-top shadow-sm py-1">
         <div class="container px-4 d-flex">
 
             <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
