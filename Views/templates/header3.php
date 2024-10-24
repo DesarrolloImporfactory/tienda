@@ -236,14 +236,14 @@ $primera_seccion = obtenerPrimeraSeccion();
                     <a class="nav-link texto-secondary active" aria-current="page" href="#inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="#quienes">Quienes Somos</a>
+                    <a class="nav-link texto-secondary" href="index3.php#quienes">Quienes Somos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="#servicios">Servicios</a>
+                    <a class="nav-link texto-secondary" href="index3.php#servicios">Servicios</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="#doctores">Doctores</a>
+                    <a class="nav-link texto-secondary" href="index3.php#doctores">Doctores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="Producto3">Productos</a>
