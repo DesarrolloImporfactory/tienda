@@ -276,7 +276,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                             <a class="nav-link texto-secondary" href="Views/index3.php#servicios">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="Views/Producto3/index.php">Productos</a>
+                            <a class="nav-link texto-secondary" href="Producto3">Productos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link texto-secondary" href="Views/index3.php#urgencias">Productos</a>
