@@ -162,7 +162,7 @@
     </nav>
 
 
-    <header class="mt-5">
+    <header class="pt-5">
         <div class="container containerProductos3">
             <div class="d-flex justify-content-between align-items-center border-bottom border-2">
                 <h3 class="display-6 fw-bold texto-secondary">Productos </h3>
