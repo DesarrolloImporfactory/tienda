@@ -194,9 +194,9 @@
                 </div>
 
             </div>
-            <div class="cont2Productos d-flex">
+            <div class="cont2Productos row">
 
-                <div class="filtro">
+                <div class="filtro col-3">
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
                         <label for="inputValorMinimo-left">Precio Mínimo</label>
@@ -222,7 +222,7 @@
                     <button id="btnActualizar" class="btn btn-primary">Actualizar Productos</button>
 
                 </div>
-                <div class="row" id="productosContainer">
+                <div class="row col-9" id="productosContainer">
 
                 </div>
             </div>
@@ -313,18 +313,26 @@
         }
 
         function mostrarProductos() {
-            const container = document.getElementById('productosContainer');
-            productosTotales.forEach(producto => {
-                const div = document.createElement('div');
-                div.classList.add('producto');
-                div.innerHTML = `
-                    <h3>${producto.nombre_producto_tienda}</h3>
-                    <img src="${producto.imagen_principal_tienda}" alt="${producto.nombre_producto_tienda}">
-                    <p>Precio: $${producto.pvp_tienda}</p>
-                    <p>Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                `;
-                container.appendChild(div);
-            });
+    const container = document.getElementById('productosContainer');
+    container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+    productosTotales.forEach(producto => {
+        const div = document.createElement('div');
+        div.classList.add('col-md-4', 'mb-4'); // Clases para hacer columnas responsivas y margen inferior
+        div.innerHTML = `
+            <div class="card h-100"> <!-- Tarjeta que ocupa todo el espacio disponible -->
+                <img src="${producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                    <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
+                    <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                    <a href="#" class="btn btn-primary">Ver Más</a> <!-- Botón de acción -->
+                </div>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
         }
     </script>
 
