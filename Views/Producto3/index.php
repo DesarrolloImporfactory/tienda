@@ -13,6 +13,30 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+
+    <style>
+        /* Estilos básicos para el formulario y los productos */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .filtro {
+            margin-bottom: 20px;
+        }
+
+        .producto {
+            border: 1px solid #ccc;
+            padding: 16px;
+            margin: 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -170,6 +194,23 @@
                 </div>
 
             </div>
+            <div class="filtro">
+                <label for="inputValorMinimo-left">Precio Mínimo:</label>
+                <input type="number" id="inputValorMinimo-left" placeholder="0">
+
+                <label for="inputValorMaximo-left">Precio Máximo:</label>
+                <input type="number" id="inputValorMaximo-left" placeholder="1000">
+
+                <label>Ordenar Por:</label><br>
+                <label>
+                    <input type="radio" name="ordenar_por" value="precio_ascendente"> Precio Ascendente
+                </label>
+                <label>
+                    <input type="radio" name="ordenar_por" value="precio_descendente"> Precio Descendente
+                </label>
+                <br>
+                <button id="btnActualizar">Actualizar Productos</button>
+            </div>
             <div class="row" id="productos-container">
 
             </div>
@@ -217,52 +258,62 @@
 
 
     <script>
-        // Suponiendo que productosTotales es el array que obtuviste de la API
-        let productosTotales = []; // Aquí deberías asignar el array de productos obtenido de la API
+        let productosTotales = []; // Para almacenar los productos
+        let productosMostrados = 0; // Contador de productos mostrados
 
-        function mostrarProductos() {
-            const container = document.getElementById('productos-container');
-            container.innerHTML = ''; // Limpia el contenedor antes de agregar nuevos productos
+        // Agrega un event listener al botón
+        document.getElementById('btnActualizar').addEventListener('click', actualizarProductos);
 
-            productosTotales.forEach(producto => {
-                // Crea un contenedor para cada producto
-                const productoDiv = document.createElement('div');
-                productoDiv.classList.add('col-md-4'); // Clase de Bootstrap para columnas
+        // Función para actualizar los productos
+        function actualizarProductos() {
+            const valorMinimo = document.getElementById('inputValorMinimo-left').value || 0;
+            const valorMaximo = document.getElementById('inputValorMaximo-left').value || 1000;
+            const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
+            const urlParams = new URLSearchParams(window.location.search);
+            const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
 
-                // Agrega el contenido del producto
-                productoDiv.innerHTML = `
-                <div class="card">
-                    <img src="${producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
-                    <div class="card-body">
-                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                        <p class="card-text">Precio: $${producto.pvp_tienda}</p>
-                        <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                        <a href="#" class="btn btn-primary">Ver producto</a>
-                    </div>
-                </div>
-            `;
+            const idPlataforma = ID_PLATAFORMA;
 
-                // Agrega el producto al contenedor
-                container.appendChild(productoDiv);
-            });
+            const formData = new FormData();
+            formData.append('id_plataforma', idPlataforma);
+            formData.append('id_categoria', idCategoria);
+            formData.append('precio_minimo', valorMinimo);
+            formData.append('precio_maximo', valorMaximo);
+            formData.append('ordenar_por', ordenarPor);
+
+            fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    productosTotales = data; // Guarda todos los productos
+                    productosMostrados = 0; // Reinicia el contador
+                    document.getElementById('productosContainer').innerHTML = ''; // Limpia el contenedor antes de mostrar nuevos productos
+                    mostrarProductos(); // Llama a la función para mostrar productos
+                })
+                .catch(error => console.error('Error:', error));
         }
 
-        // Llama a la función mostrarProductos después de que obtengas los datos de la API
-        fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                productosTotales = data; // Guarda todos los productos
-                mostrarProductos(); // Llama a la función para mostrar productos
-            })
-            .catch(error => console.error('Error:', error));
+        function mostrarProductos() {
+            const container = document.getElementById('productosContainer');
+            productosTotales.forEach(producto => {
+                const div = document.createElement('div');
+                div.classList.add('producto');
+                div.innerHTML = `
+                    <h3>${producto.nombre_producto_tienda}</h3>
+                    <img src="${producto.imagen_principal_tienda}" alt="${producto.nombre_producto_tienda}">
+                    <p>Precio: $${producto.pvp_tienda}</p>
+                    <p>Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
     </script>
 
 </body>
