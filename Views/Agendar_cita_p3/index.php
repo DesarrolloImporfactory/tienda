@@ -109,8 +109,8 @@
 
 
 
-    <script src="main.js"></script>
-    <script src="citas.js"></script>
+    <script src="Views/templates/js/main_header3.js"></script>
+    <script src="Views/templates/js/citas_p3.js"></script>
 
 
 <?php include 'Views/templates/footer3.php'; ?>
