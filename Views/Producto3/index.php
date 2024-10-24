@@ -185,7 +185,7 @@
                         Aplicar filtros
                     </a>
 
-                    <div class="collapse" id="collapseExample">
+                    <div class="collapse mb-4" id="collapseExample">
                         <div class="form-floating mb-3">
                             <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
                             <label for="inputValorMinimo-left">Precio Mínimo</label>
