@@ -15,27 +15,7 @@
 
 
     <style>
-        /* Estilos básicos para el formulario y los productos */
-        body {
-            font-family: Arial, sans-serif;
-        }
 
-        .filtro {
-            margin-bottom: 20px;
-        }
-
-        .producto {
-            border: 1px solid #ccc;
-            padding: 16px;
-            margin: 8px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-        }
     </style>
 </head>
 
@@ -317,11 +297,16 @@
             productosTotales.forEach(producto => {
                 const div = document.createElement('div');
                 div.classList.add('producto');
-                div.innerHTML = `
-                    <h3>${producto.nombre_producto_tienda}</h3>
-                    <img src="${producto.imagen_principal_tienda}" alt="${producto.nombre_producto_tienda}">
-                    <p>Precio: $${producto.pvp_tienda}</p>
-                    <p>Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                div.innerHTML = ` 
+                 <div class="card h-100"> 
+                <img src="${producto.imagen_principal_tienda}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                    <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
+                    <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                    <a href="#" class="btn btn-primary">Ver Más</a> <!-- Botón de acción -->
+                </div>
+            </div>
                 `;
                 container.appendChild(div);
             });
