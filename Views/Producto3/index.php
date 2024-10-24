@@ -285,7 +285,7 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000);
+            buscarActualizarProductos();
         });
 
         let productosTotales = [];
