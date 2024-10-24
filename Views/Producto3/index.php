@@ -203,8 +203,14 @@
 
                 </div>
                 <div class="row col-9" id="productosContainer">
-                    <!-- Modal para mostrar detalles del producto -->
-                    <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel"
+                   
+
+                </div>
+            </div>
+
+        </div>
+         <!-- Modal para mostrar detalles del producto -->
+         <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -227,11 +233,6 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
-        </div>
     </header>
 
 
@@ -344,14 +345,25 @@
 
         function abrirModal(index) {
             const producto = productosTotales[index];
+            if (!producto) return; // Verifica si el producto existe
 
-            // Actualizar el contenido del modal con la información del producto
-            document.getElementById('productoModalTitulo').innerText = producto.nombre_producto_tienda;
-            document.getElementById('productoModalDescripcion').innerText = producto.descripcion_tienda || 'No disponible';
-            document.getElementById('productoModalPrecio').innerText = producto.pvp_tienda;
-            document.getElementById('productoModalImagen').src = producto.imagen_principal_tienda;
-            document.getElementById('productoModalImagen').alt = producto.nombre_producto_tienda;
+            const modalTitulo = document.getElementById('productoModalTitulo');
+            const modalDescripcion = document.getElementById('productoModalDescripcion');
+            const modalPrecio = document.getElementById('productoModalPrecio');
+            const modalImagen = document.getElementById('productoModalImagen');
+
+            if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
+                // Actualizar el contenido del modal
+                modalTitulo.innerText = producto.nombre_producto_tienda;
+                modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
+                modalPrecio.innerText = producto.pvp_tienda;
+                modalImagen.src = producto.imagen_principal_tienda;
+                modalImagen.alt = producto.nombre_producto_tienda;
+            } else {
+                console.error('Elementos del modal no encontrados');
+            }
         }
+
 
     </script>
 
