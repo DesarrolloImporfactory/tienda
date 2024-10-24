@@ -284,6 +284,10 @@
         }
     </style>
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarProductos();
+        });
+
         let productosTotales = [];
         let productosMostrados = 0;
 
