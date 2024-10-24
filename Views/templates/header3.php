@@ -149,36 +149,59 @@ $primera_seccion = obtenerPrimeraSeccion();
 ?>
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - <?php echo NOMBRE_TIENDA; ?></title>
+    <title><?php echo NOMBRE_TIENDA; ?></title>
+    <link rel="icon" href="<?php echo SERVERURL . FAVICON; ?>" type="image/x-icon">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Cargar jQuery antes que cualquier script que lo necesite -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 
-    <style>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
-    </style>
+    <!-- Enlazar CSS de Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Enlazar JS de Swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </head>
 
 <body>
-
     <div id="chatOverlay"></div>
 
 
-    <button onclick="openChat()"
+    <!-- <button onclick="openChat()"
         class="border-0 shadow d-flex wppFixed justify-content-center align-items-center p-3 position-fixed z-3 rounded-circle"
         style="bottom: 20px; right: 20px; background-color: #5dc355; height: 50px; width: 50px;">
         <i class="bi bi-whatsapp text-white"></i>
-    </button>
+    </button> -->
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" target="_blank"
+        class="border-0 shadow d-flex wppFixed justify-content-center align-items-center p-3 position-fixed z-3 rounded-circle"
+        style="bottom: 20px; right: 20px; background-color: #5dc355; height: 50px; width: 50px;">
+        <i class="bi bi-whatsapp text-white"></i>
+    </a>
 
     <div id="chatWindow" class="chat-window position-fixed rounded-3 p-0 shadow-lg"
         style="display: none; bottom: 80px; right: 20px; background-color: white; width: 300px;">
@@ -200,26 +223,36 @@ $primera_seccion = obtenerPrimeraSeccion();
         </div>
     </div>
 
-    <nav class="navbar bg-white sticky-top shadow-sm">
+    <nav class="navbar bg-white fixed-top shadow-sm py-1">
         <div class="container px-4 d-flex">
-            <a class="navbar-brand texto-primary display-5 fw-bold" href="#">Logo</a>
+
+            <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
+                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                    alt="IMPORT SHOP">
+            </a>
 
             <ul id="listaNav1" class="navbar-nav d-md-flex d-none  flex-row gap-4 ">
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" aria-current="page" href="index.html#inicio">Inicio</a>
+                    <a class="nav-link texto-secondary active" aria-current="page" href="#inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="index.html#quienes">Quienes Somos</a>
+                    <a class="nav-link texto-secondary" href="#quienes">Quienes Somos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="index.html#servicios">Servicios</a>
+                    <a class="nav-link texto-secondary" href="#servicios">Servicios</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link texto-secondary" href="#doctores">Doctores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="index.html#doctores">Doctores</a>
+                    <a class="nav-link texto-secondary" href="Producto3">Productos</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary active" href="citas.html">Agendar Cita</a>
+                    <a class="nav-link texto-secondary" href="citas.html">Agendar Cita</a>
                 </li>
+
             </ul>
             <button class="navbar-toggler d-block" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -234,20 +267,19 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <div id="listaNav2" class="offcanvas-body p-4 d-flex flex-column">
                     <ul class="navbar-nav flex-row gap-4 d-flex flex-column mb-4">
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary active" aria-current="page"
-                                href="index.html#inicio">Inicio</a>
+                            <a class="nav-link texto-secondary active" aria-current="page" href="#inicio">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="index.html#quienes">Quienes Somos</a>
+                            <a class="nav-link texto-secondary" href="#quienes">Quienes Somos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="index.html#servicios">Servicios</a>
+                            <a class="nav-link texto-secondary" href="#servicios">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="index.html#urgencias">Urgencias</a>
+                            <a class="nav-link texto-secondary" href="#urgencias">Urgencias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="index.html#doctores">Doctores</a>
+                            <a class="nav-link texto-secondary" href="#doctores">Doctores</a>
                         </li>
                     </ul>
 
@@ -257,7 +289,9 @@ $primera_seccion = obtenerPrimeraSeccion();
                         Envianos tu consulta
                     </button>
 
-                    <p class="text-center text-body-secondary mt-auto">&copy; 2024 Company, Inc</p>
+                    <p class="text-center text-body-secondary mt-auto">&copy; <?php echo date('Y'); ?>
+                        <?php echo NOMBRE_TIENDA; ?>
+                    </p>
                 </div>
             </div>
 
@@ -310,3 +344,5 @@ $primera_seccion = obtenerPrimeraSeccion();
 
         </div>
     </nav>
+    <div data-bs-spy="scroll" data-bs-target="#listaNav1" data-bs-root-margin="0px 0px -40%"
+        data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-0 rounded-3" tabindex="0">
