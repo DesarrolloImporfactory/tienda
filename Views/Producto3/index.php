@@ -163,7 +163,7 @@
 
 
     <header class="mt-5">
-        <div class="container">
+        <div class="container containerProductos3">
             <h3 class="display-6 fw-bold texto-secondary border-bottom border-2">Productos </h3>
 
             <div class="cont2Productos row pt-4">
