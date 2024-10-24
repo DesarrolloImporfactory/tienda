@@ -191,18 +191,16 @@
                     </div>
 
                     <label>Ordenar Por:</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ordenar_por" id="precioAscendente"
-                            value="precio_ascendente">
-                        <label class="form-check-label" for="precioAscendente">Precio Ascendente</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ordenar_por" id="precioDescendente"
-                            value="precio_descendente">
-                        <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
-                    </div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="ordenar_por" id="precioAscendente" value="precio_ascendente">
+    <label class="form-check-label" for="precioAscendente">Precio Ascendente</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="ordenar_por" id="precioDescendente" value="precio_descendente">
+    <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
+</div>
 
-                    <button id="btnBuscarActualizar2" class="btn btn-primary w-100">Actualizar Productos</button>
+                    <button id="btnBuscarActualizar2" class="btn btn-primary w-100 mt-3">Actualizar</button>
 
                 </div>
                 <div class="row col-9" id="productosContainer">
@@ -324,13 +322,13 @@
             })
             .then(data => {
                 productosTotales = data; // Guarda todos los productos
-                mostrarProductos(buscadorInput, valorMinimo, valorMaximo); // Muestra productos filtrados
+                mostrarProductos(buscadorInput, valorMinimo, valorMaximo, ordenarPor); // Muestra productos filtrados
             })
             .catch(error => console.error('Error:', error));
     }
 
     // Función para mostrar productos según búsqueda y filtros
-    function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000) {
+    function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000, ordenarPor = null) {
         const container = document.getElementById('productosContainer');
         container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
 
@@ -341,9 +339,21 @@
             return nombreCoincide && precioCoincide; // Ambos deben coincidir
         });
 
-        // Mostrar los productos filtrados
+        // Ordenar productos según la selección
+        if (ordenarPor) {
+            productosFiltrados.sort((a, b) => {
+                if (ordenarPor === 'precio_ascendente') {
+                    return a.pvp_tienda - b.pvp_tienda; // Ordenar de menor a mayor
+                } else if (ordenarPor === 'precio_descendente') {
+                    return b.pvp_tienda - a.pvp_tienda; // Ordenar de mayor a menor
+                }
+                return 0; // Sin ordenación
+            });
+        }
+
+        // Mostrar los productos filtrados y ordenados
         productosFiltrados.forEach((producto, index) => {
-            const imagenUrl = producto.imagen_principal_tienda;
+            const imagenUrl = producto.imagen_principal_tienda || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
             container.innerHTML += `
             <div class="col-4 mb-4 px-2">
@@ -392,6 +402,7 @@
         }
     }
 </script>
+
 
 
 </body>
