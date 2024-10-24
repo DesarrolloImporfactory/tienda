@@ -180,9 +180,9 @@
                             aria-label="Buscar por nombre" aria-describedby="button-addon2">
                         <label for="buscador">Buscar por nombre</label>
                     </div>
-                    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                    <a class="btn btn-primary w-100 mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button"
                         aria-expanded="false" aria-controls="collapseExample">
-                        Link with href
+                        Aplicar filtros
                     </a>
 
                     <div class="collapse" id="collapseExample">
