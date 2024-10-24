@@ -194,25 +194,37 @@
                 </div>
 
             </div>
-            <div class="filtro">
-                <label for="inputValorMinimo-left">Precio Mínimo:</label>
-                <input type="number" id="inputValorMinimo-left" placeholder="0">
+            <div class="cont2Productos d-flex">
 
-                <label for="inputValorMaximo-left">Precio Máximo:</label>
-                <input type="number" id="inputValorMaximo-left" placeholder="1000">
+                <div class="filtro">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
+                        <label for="inputValorMinimo-left">Precio Mínimo</label>
+                    </div>
 
-                <label>Ordenar Por:</label><br>
-                <label>
-                    <input type="radio" name="ordenar_por" value="precio_ascendente"> Precio Ascendente
-                </label>
-                <label>
-                    <input type="radio" name="ordenar_por" value="precio_descendente"> Precio Descendente
-                </label>
-                <br>
-                <button id="btnActualizar">Actualizar Productos</button>
-            </div>
-            <div class="row" id="productosContainer">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="inputValorMaximo-left" placeholder="1000">
+                        <label for="inputValorMaximo-left">Precio Máximo</label>
+                    </div>
 
+                    <label>Ordenar Por:</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ordenar_por" id="precioAscendente"
+                            value="precio_ascendente">
+                        <label class="form-check-label" for="precioAscendente">Precio Ascendente</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ordenar_por" id="precioDescendente"
+                            value="precio_descendente">
+                        <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
+                    </div>
+
+                    <button id="btnActualizar" class="btn btn-primary">Actualizar Productos</button>
+
+                </div>
+                <div class="row" id="productosContainer">
+
+                </div>
             </div>
 
         </div>
@@ -258,8 +270,8 @@
 
 
     <script>
-        let productosTotales = []; // Para almacenar los productos
-        let productosMostrados = 0; // Contador de productos mostrados
+        let productosTotales = [];
+        let productosMostrados = 0;
 
         // Agrega un event listener al botón
         document.getElementById('btnActualizar').addEventListener('click', actualizarProductos);
