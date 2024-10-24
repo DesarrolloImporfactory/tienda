@@ -267,19 +267,22 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <div id="listaNav2" class="offcanvas-body p-4 d-flex flex-column">
                     <ul class="navbar-nav flex-row gap-4 d-flex flex-column mb-4">
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary active" aria-current="page" href="#inicio">Inicio</a>
+                            <a class="nav-link texto-secondary active" aria-current="page" href="Views/index3.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="#quienes">Quienes Somos</a>
+                            <a class="nav-link texto-secondary" href="Views/index3.php#quienes">Quienes Somos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="#servicios">Servicios</a>
+                            <a class="nav-link texto-secondary" href="Views/index3.php#servicios">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="#urgencias">Urgencias</a>
+                            <a class="nav-link texto-secondary" href="Views/Producto3/index.php">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="#doctores">Doctores</a>
+                            <a class="nav-link texto-secondary" href="Views/index3.php#urgencias">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link texto-secondary" href="Views/index3.php#doctores">Testimonios</a>
                         </li>
                     </ul>
 
