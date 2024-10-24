@@ -178,7 +178,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
                             aria-label="Buscar por nombre" aria-describedby="button-addon2">
-                        <label for="inputValorMinimo-left">buscar por nombre</label>
+                        <label for="buscador">Buscar por nombre</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
@@ -204,8 +204,8 @@
 
                     <button id="btnBuscarActualizar2" class="btn btn-primary w-100 my-3">Actualizar</button>
                     <button id="btnLimpiarFiltros" class="btn btn-secondary w-100">Limpiar Filtros</button>
-
                 </div>
+
                 <div class="row col-md-9 col-6" id="productosContainer">
 
 
@@ -287,13 +287,14 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             buscarActualizarProductos();
+            document.getElementById('btnBuscarActualizar2').addEventListener('click', buscarActualizarProductos);
+
+            // Añadir event listener para el campo de búsqueda
+            document.getElementById('buscador').addEventListener('input', buscarActualizarProductos);
         });
 
         let productosTotales = [];
         let productosMostrados = 0;
-
-        document.getElementById('btnBuscarActualizar').addEventListener('click', buscarActualizarProductos);
-        document.getElementById('btnBuscarActualizar2').addEventListener('click', buscarActualizarProductos);
 
         // Función para buscar y actualizar productos
         function buscarActualizarProductos() {
