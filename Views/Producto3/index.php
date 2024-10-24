@@ -164,29 +164,17 @@
 
     <header class="mt-5">
         <div class="container">
-            <div class="proHeaderTitulo d-flex justify-content-between align-items-center border-bottom border-2">
-                <h3 class="display-6 fw-bold texto-secondary">Productos </h3>
+            <h3 class="display-6 fw-bold texto-secondary border-bottom border-2">Productos </h3>
 
-                <!-- Añade este bloque a tu HTML para el buscador -->
-                <div class="input-group w-25 mb-4">
-                    <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
-                        aria-label="Buscar por nombre" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="btnBuscarActualizar">Buscar</button>
-                </div>
-
-
-            </div>
             <div class="cont2Productos row pt-4">
-<style>
-    .filtro {
-    position: -webkit-sticky; /* Para compatibilidad con Safari */
-    position: sticky;
-    top: 80px; /* Ajusta este valor al tamaño de tu navbar (en px) */
-    z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
-}
 
-</style>
                 <div class="filtro col-6 col-md-3">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
+                            aria-label="Buscar por nombre" aria-describedby="button-addon2">
+                        <label for="buscador">Buscar por nombre</label>
+                    </div>
+
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
                         <label for="inputValorMinimo-left">Precio Mínimo</label>
