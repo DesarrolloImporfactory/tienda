@@ -345,8 +345,6 @@
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
                 }
 
-
-
                 // renderizar paralax 2
 
                 if (plantilla.titulo_parallax2) {
@@ -364,8 +362,6 @@
                 if (plantilla.parallax_fondo) {
                     $('#quienes').css('background-image', `url(${plantilla.parallax_fondo})`);
                 }
-
-
 
                 // renderizar seccion profesionales/testimonios
 
