@@ -205,8 +205,6 @@
         data: formDataIconos,
         contentType: false,
         processData: false,
-        dataType: 'json', 
-
         success: function (response) {
             console.log('Respuesta completa de la API (iconos):', response);
 
@@ -314,8 +312,6 @@
         data: formDataPlantilla,
         contentType: false,
         processData: false,
-        dataType: 'json', 
-
         success: function (response) {
             console.log('Respuesta completa de la API (plantilla):', response);
 
@@ -347,10 +343,6 @@
 
                 if (plantilla.parallax_opacidad) {
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
-                }
-
-                if (plantilla.parallax_fondo) {
-                    $('#quienes').css('background-image', `url(${plantilla.parallax_fondo})`);
                 }
 
 
@@ -402,8 +394,6 @@
         data: formDataProductos,
         contentType: false,
         processData: false,
-        dataType: 'json', 
-
         success: function (response) {
             let productos = JSON.parse(response);
             let productosHTML = '';
