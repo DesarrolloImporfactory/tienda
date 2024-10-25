@@ -205,6 +205,8 @@
         data: formDataIconos,
         contentType: false,
         processData: false,
+        dataType: 'json', 
+
         success: function (response) {
             console.log('Respuesta completa de la API (iconos):', response);
 
@@ -312,6 +314,8 @@
         data: formDataPlantilla,
         contentType: false,
         processData: false,
+        dataType: 'json', 
+
         success: function (response) {
             console.log('Respuesta completa de la API (plantilla):', response);
 
@@ -345,6 +349,10 @@
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
                 }
 
+                if (plantilla.parallax_fondo) {
+                    $('#quienes').css('background-image', `url(${plantilla.parallax_fondo})`);
+                }
+
 
 
                 // renderizar paralax 2
@@ -361,8 +369,6 @@
 
                     $('#texto_parallax2').text(plantilla.texto_parallax2);
                 }
-                
-
 
                 // renderizar seccion profesionales/testimonios
 
@@ -396,6 +402,8 @@
         data: formDataProductos,
         contentType: false,
         processData: false,
+        dataType: 'json', 
+
         success: function (response) {
             let productos = JSON.parse(response);
             let productosHTML = '';
