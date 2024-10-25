@@ -361,6 +361,11 @@
 
                     $('#texto_parallax2').text(plantilla.texto_parallax2);
                 }
+                if (plantilla.parallax_fondo) {
+                    $('#quienes').css('background-image', `url(${plantilla.parallax_fondo})`);
+                }
+
+
 
                 // renderizar seccion profesionales/testimonios
 
