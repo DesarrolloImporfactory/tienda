@@ -195,261 +195,261 @@
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 <script>
-    // /* Sección iconos */
-    // let formDataIconos = new FormData();
-    // formDataIconos.append("id_plataforma", ID_PLATAFORMA);
+    /* Sección iconos */
+    let formDataIconos = new FormData();
+    formDataIconos.append("id_plataforma", ID_PLATAFORMA);
 
-    // $.ajax({
-    //     url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
-    //     method: 'POST',
-    //     data: formDataIconos,
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) {
-    //         console.log('Respuesta completa de la API (iconos):', response);
+    $.ajax({
+        url: SERVERURL + 'Tienda/iconostienda', // URL de la API de iconos
+        method: 'POST',
+        data: formDataIconos,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log('Respuesta completa de la API (iconos):', response);
 
-    //         try {
-    //             var iconos = JSON.parse(response); // Parsear la respuesta de la API
-    //         } catch (e) {
-    //             console.error('Error al parsear la respuesta:', e);
-    //             return;
-    //         }
+            try {
+                var iconos = JSON.parse(response); // Parsear la respuesta de la API
+            } catch (e) {
+                console.error('Error al parsear la respuesta:', e);
+                return;
+            }
 
-    //         if (iconos && Array.isArray(iconos)) {
-    //             var $tarjetasContainer = $("#tarjetas-container");
+            if (iconos && Array.isArray(iconos)) {
+                var $tarjetasContainer = $("#tarjetas-container");
 
-    //             // Limpiamos el contenedor de tarjetas por si acaso
-    //             $tarjetasContainer.empty();
+                // Limpiamos el contenedor de tarjetas por si acaso
+                $tarjetasContainer.empty();
 
-    //             // Iteramos sobre los iconos obtenidos de la API
-    //             iconos.forEach(function (icono) {
-    //                 var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
-    //                 var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
-    //                 var color_icono = icono.color_icono || '#000000'; // Color del ícono
+                // Iteramos sobre los iconos obtenidos de la API
+                iconos.forEach(function (icono) {
+                    var texto = icono.texto || 'Texto predeterminado'; // Texto de la tarjeta
+                    var icon_text = icono.icon_text || 'fa-question-circle'; // Clase de Font Awesome, usa "fa" o "fas"
+                    var color_icono = icono.color_icono || '#000000'; // Color del ícono
 
-    //                 // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
-    //                 var tarjetaItem = `
-    //                 <div class="card w-100 shadow border">
-    //                     <div class="card-body text-center d-flex flex-column gap-3 p-4">
-    //                         <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
-    //                         <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
-    //                     </div>
-    //                 </div>
-    //             `;
+                    // Generar el HTML de la tarjeta con el diseño proporcionado, usando Font Awesome
+                    var tarjetaItem = `
+                    <div class="card w-100 shadow border">
+                        <div class="card-body text-center d-flex flex-column gap-3 p-4">
+                            <i class="fas ${icon_text} display-5" style="color: ${color_icono};"></i>
+                            <p class="texto-secondary fw-bold mb-0 fs-5">${texto}</p>
+                        </div>
+                    </div>
+                `;
 
-    //                 // Agregar la tarjeta al contenedor
-    //                 $tarjetasContainer.append(tarjetaItem);
-    //             });
-    //         } else {
-    //             console.error('La respuesta no contiene iconos válidos.');
-    //         }
-    //     },
-    //     error: function (error) {
-    //         console.log('Error al cargar los iconos:', error);
-    //     }
-    // });
-    // /* Fin Sección iconos */
+                    // Agregar la tarjeta al contenedor
+                    $tarjetasContainer.append(tarjetaItem);
+                });
+            } else {
+                console.error('La respuesta no contiene iconos válidos.');
+            }
+        },
+        error: function (error) {
+            console.log('Error al cargar los iconos:', error);
+        }
+    });
+    /* Fin Sección iconos */
 
-    // /* Sección banner */
-    // let formDataSlider = new FormData();
-    // formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+    /* Sección banner */
+    let formDataSlider = new FormData();
+    formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
-    // $.ajax({
-    //     url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
-    //     method: 'POST',
-    //     data: formDataSlider,
-    //     contentType: false,
-    //     processData: false,
-    //     dataType: "json",
-    //     success: function (data) {
-    //         console.log('Respuesta completa de la API (banner):', data);
+    $.ajax({
+        url: SERVERURL + 'Tienda/bannertienda', // URL de la API para el banner
+        method: 'POST',
+        data: formDataSlider,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (data) {
+            console.log('Respuesta completa de la API (banner):', data);
 
-    //         if (data && data.length > 0) {
-    //             let banner = data[0]; // Obtenemos el primer banner
-    //             let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
-
-
-    //             // Mostrar el título y texto del banner
-    //             $('#banner-title').text(banner.titulo);
-    //             $('#banner-text').text(banner.texto_banner);
-    //             $('#banner-text').css('color', banner.color_texto_banner); // Centrar la imagen
-    //             $('#imagen-banner').attr('src', image_path || '#');
+            if (data && data.length > 0) {
+                let banner = data[0]; // Obtenemos el primer banner
+                let image_path = SERVERURL + banner.fondo_banner; // Concatenamos la ruta del servidor con la ruta del banner
 
 
-    //             // Modificar el botón existente
-    //             let button = $('#banner-button');
-
-    //             // Asegurarse de que el enlace tenga el protocolo adecuado
-    //             let enlace = banner.enlace_boton;
-    //             if (!/^https?:\/\//i.test(enlace)) {
-    //                 enlace = 'http://' + enlace; // Agrega http:// si no está presente
-    //             }
-
-    //             button.attr('href', enlace); // Cambiar el enlace del botón
-    //             button.css({
-    //                 'background-color': banner.color_btn_banner,
-    //                 'color': banner.color_textoBtn_banner
-    //             }).text(banner.texto_boton); // Cambiar el texto del botón
+                // Mostrar el título y texto del banner
+                $('#banner-title').text(banner.titulo);
+                $('#banner-text').text(banner.texto_banner);
+                $('#banner-text').css('color', banner.color_texto_banner); // Centrar la imagen
+                $('#imagen-banner').attr('src', image_path || '#');
 
 
-    //         } else {
-    //             console.error('No se encontraron banners.');
-    //         }
-    //     },
-    //     error: function (error) {
-    //         console.error('Error fetching banner data', error);
-    //     }
-    // });
-    // /* Fin Sección Banner */
+                // Modificar el botón existente
+                let button = $('#banner-button');
 
-    // /* Seccion paralax 1 y 2 */
-    // let formDataPlantilla = new FormData();
-    // formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
+                // Asegurarse de que el enlace tenga el protocolo adecuado
+                let enlace = banner.enlace_boton;
+                if (!/^https?:\/\//i.test(enlace)) {
+                    enlace = 'http://' + enlace; // Agrega http:// si no está presente
+                }
 
-    // $.ajax({
-    //     url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
-    //     method: 'POST',
-    //     data: formDataPlantilla,
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) {
-    //         console.log('Respuesta completa de la API (plantilla):', response);
-
-    //         try {
-    //             var data = JSON.parse(response); // Parsear la respuesta de la API
-    //         } catch (e) {
-    //             console.error('Error al parsear la respuesta:', e);
-    //             return;
-    //         }
-
-    //         // Verificar si la respuesta contiene los datos esperados
-    //         if (data && Array.isArray(data) && data.length > 0) {
-    //             var plantilla = data[0]; // Obtener el primer objeto de la respuesta
-
-    //             var enlace = plantilla.boton_parallax_texto
-    //             // renderizar paralax 1
-    //             $('#parallax-title').text(plantilla.parallax_titulo);
-    //             $('#parallax-subtitle').text(plantilla.parallax_sub);
-    //             $('#parallax-text').text(plantilla.parallax_texto);
-    //             $('#parallax-button').attr('href', plantilla.boton_parallax_enlace || '#');
-    //             $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
-
-    //             // Configurar el fondo si se necesita
-    //             if (plantilla.fondo_pagina) {
-    //                 $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
-    //                 $('#quienes').css('background-size', 'cover');
-    //                 $('#quienes').css('background-position', 'center');
-    //             }
-
-    //             if (plantilla.parallax_opacidad) {
-    //                 $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
-    //             }
+                button.attr('href', enlace); // Cambiar el enlace del botón
+                button.css({
+                    'background-color': banner.color_btn_banner,
+                    'color': banner.color_textoBtn_banner
+                }).text(banner.texto_boton); // Cambiar el texto del botón
 
 
+            } else {
+                console.error('No se encontraron banners.');
+            }
+        },
+        error: function (error) {
+            console.error('Error fetching banner data', error);
+        }
+    });
+    /* Fin Sección Banner */
 
-    //             // renderizar paralax 2
+    /* Seccion paralax 1 y 2 */
+    let formDataPlantilla = new FormData();
+    formDataPlantilla.append("id_plataforma", ID_PLATAFORMA);
 
-    //             if (plantilla.titulo_parallax2) {
+    $.ajax({
+        url: SERVERURL + 'Tienda/obtener_informacion_plantilla3', // URL del servicio
+        method: 'POST',
+        data: formDataPlantilla,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log('Respuesta completa de la API (plantilla):', response);
 
-    //                 $('#titulo_parallax2').text(plantilla.titulo_parallax2);
-    //             }
-    //             if (plantilla.subtitulo_parallax2) {
+            try {
+                var data = JSON.parse(response); // Parsear la respuesta de la API
+            } catch (e) {
+                console.error('Error al parsear la respuesta:', e);
+                return;
+            }
 
-    //                 $('#subtitulo_parallax2').text(plantilla.subtitulo_parallax2);
-    //             }
-    //             if (plantilla.texto_parallax2) {
+            // Verificar si la respuesta contiene los datos esperados
+            if (data && Array.isArray(data) && data.length > 0) {
+                var plantilla = data[0]; // Obtener el primer objeto de la respuesta
 
-    //                 $('#texto_parallax2').text(plantilla.texto_parallax2);
-    //             }
+                var enlace = plantilla.boton_parallax_texto
+                // renderizar paralax 1
+                $('#parallax-title').text(plantilla.parallax_titulo);
+                $('#parallax-subtitle').text(plantilla.parallax_sub);
+                $('#parallax-text').text(plantilla.parallax_texto);
+                $('#parallax-button').attr('href', plantilla.boton_parallax_enlace || '#');
+                $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
 
-    //             // renderizar seccion profesionales/testimonios
+                // Configurar el fondo si se necesita
+                if (plantilla.fondo_pagina) {
+                    $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                    $('#quienes').css('background-size', 'cover');
+                    $('#quienes').css('background-position', 'center');
+                }
 
-    //             if (plantilla.titulo_profesionales) {
-
-    //                 $('#titulo_profesionales').text(plantilla.titulo_profesionales);
-    //             }
-    //             if (plantilla.subtitulo_profesionales) {
-
-    //                 $('#subtitulo_profesionales').text(plantilla.subtitulo_profesionales);
-    //             }
+                if (plantilla.parallax_opacidad) {
+                    $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
+                }
 
 
 
-    //         } else {
-    //             console.error('La respuesta no contiene datos válidos.');
-    //         }
-    //     },
-    //     error: function (error) {
-    //         console.log('Error al cargar la información de la plantilla:', error);
-    //     }
-    // });
-    // /* Fin Sección paralax */
-    // /* Sección productos destacados */
-    // let formDataProductos = new FormData();
-    // formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+                // renderizar paralax 2
 
-    // $.ajax({
-    //     url: SERVERURL + 'Tienda/destacadostienda',
-    //     type: 'POST',
-    //     data: formDataProductos,
-    //     contentType: false,
-    //     processData: false,
-    //     success: function (response) {
-    //         let productos = JSON.parse(response);
-    //         let productosHTML = '';
+                if (plantilla.titulo_parallax2) {
 
-    //         // Limitar a 8 productos
-    //         productos = productos.slice(0, 8);
+                    $('#titulo_parallax2').text(plantilla.titulo_parallax2);
+                }
+                if (plantilla.subtitulo_parallax2) {
 
-    //         productos.forEach((producto, index) => {
-    //             // Cada 4 productos, se añade un nuevo .row
-    //             if (index % 4 === 0) {
-    //                 if (index > 0) {
-    //                     productosHTML += `</div>`;
-    //                 }
-    //                 productosHTML += `<div class="row">`;
-    //             }
+                    $('#subtitulo_parallax2').text(plantilla.subtitulo_parallax2);
+                }
+                if (plantilla.texto_parallax2) {
 
-    //             productosHTML += `
-    //             <div class="col-lg-3 col-sm-6 mb-4">
-    //                 <div class="card overflow-hidden rounded-3">
-    //                     <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
-    //                     <div class="card-body card_body_productos_destacados">
-    //                         <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
-    //                         <hr class="my-2">
-    //                         <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
-    //                         <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
-    //                         <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         `;
+                    $('#texto_parallax2').text(plantilla.texto_parallax2);
+                }
 
-    //         });
+                // renderizar seccion profesionales/testimonios
 
-    //         // Cerrar la última fila después de agregar todos los productos
-    //         productosHTML += `</div>`; // Cerrar la última fila
+                if (plantilla.titulo_profesionales) {
 
-    //         $('#servicios .row').html(productosHTML);
+                    $('#titulo_profesionales').text(plantilla.titulo_profesionales);
+                }
+                if (plantilla.subtitulo_profesionales) {
 
-    //         $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
-    //             let idProducto = $(this).data('id');
+                    $('#subtitulo_profesionales').text(plantilla.subtitulo_profesionales);
+                }
 
-    //             let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
 
-    //             $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
-    //             $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
-    //             $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
-    //             $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
-    //             $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
-    //         });
 
-    //     },
-    //     error: function (error) {
-    //         console.log("Error al obtener productos: ", error);
-    //     }
-    // });
-    // /* Fin productos destacados */
+            } else {
+                console.error('La respuesta no contiene datos válidos.');
+            }
+        },
+        error: function (error) {
+            console.log('Error al cargar la información de la plantilla:', error);
+        }
+    });
+    /* Fin Sección paralax */
+    /* Sección productos destacados */
+    let formDataProductos = new FormData();
+    formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+
+    $.ajax({
+        url: SERVERURL + 'Tienda/destacadostienda',
+        type: 'POST',
+        data: formDataProductos,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            let productos = JSON.parse(response);
+            let productosHTML = '';
+
+            // Limitar a 8 productos
+            productos = productos.slice(0, 8);
+
+            productos.forEach((producto, index) => {
+                // Cada 4 productos, se añade un nuevo .row
+                if (index % 4 === 0) {
+                    if (index > 0) {
+                        productosHTML += `</div>`;
+                    }
+                    productosHTML += `<div class="row">`;
+                }
+
+                productosHTML += `
+                <div class="col-lg-3 col-sm-6 mb-4">
+                    <div class="card overflow-hidden rounded-3">
+                        <img style="height: 200px; object-fit: contain;" src="${SERVERURL + producto.imagen_principal_tienda}" class="card-img-top p-3" alt="${producto.nombre_producto_tienda}">
+                        <div class="card-body card_body_productos_destacados">
+                            <h5 class="card-title fs-6 my-3">${producto.nombre_producto_tienda}</h5>
+                            <hr class="my-2">
+                            <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
+                            <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
+                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            });
+
+            // Cerrar la última fila después de agregar todos los productos
+            productosHTML += `</div>`; // Cerrar la última fila
+
+            $('#servicios .row').html(productosHTML);
+
+            $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
+                let idProducto = $(this).data('id');
+
+                let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
+
+                $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+                $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+                $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+                $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+                $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+            });
+
+        },
+        error: function (error) {
+            console.log("Error al obtener productos: ", error);
+        }
+    });
+    /* Fin productos destacados */
 
 
 </script>
