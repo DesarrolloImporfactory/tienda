@@ -346,6 +346,7 @@
                 }
 
 
+
                 // renderizar paralax 2
 
                 if (plantilla.titulo_parallax2) {
@@ -360,6 +361,9 @@
 
                     $('#texto_parallax2').text(plantilla.texto_parallax2);
                 }
+                
+
+
                 // renderizar seccion profesionales/testimonios
 
                 if (plantilla.titulo_profesionales) {
