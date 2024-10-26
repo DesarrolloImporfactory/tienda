@@ -119,90 +119,33 @@
     </div>
 </section>
 
-<section id="doctores" class="seccion6 mb-0 padding">
+<section id="testimonios" class="seccion6 mb-0 padding">
     <div class="container px-4 d-flex flex-column">
-        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de
-            calidad </h4>
-        <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto"
-            style="max-width: 700px;">Lorem ipsum
-            dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero!
-            Nemo sit sapiente voluptatem quisquam ea.</p>
-        <div class="d-flex gap-3  flex-column flex-md-row">
-            <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                <img class="" style="height: 200px; object-fit: cover;"
-                    src="https://www.dentaltix.com/es/sites/default/files/odontologo-clinica-dental.jpg"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Dra. Angelica Martinez</h5>
-                    <hr>
-                    <p class="card-text">Some quick example text to build on the card title and make up the
-                        bulk
-                        of the card's content.</p>
-                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                        data-bs-target="#modalDortores">
-                        Mas sobre el doctor
-                    </button>
-                </div>
-            </div>
-            <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                <img class="" style="height: 200px; object-fit: cover;"
-                    src="https://doctorweb.agency/assets/img/blog/marketing-digital-para-odontologos.jpg"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Dr. David Granda</h5>
-                    <hr>
-                    <p class="card-text">Some quick example text to build on the card title and make up the
-                        bulk
-                        of the card's content.</p>
-                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                        data-bs-target="#modalDortores">
-                        Mas sobre el doctor
-                    </button>
-                </div>
-            </div>
-            <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                <img class="" style="height: 200px; object-fit: cover;"
-                    src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
-                    class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Dra. Maria Valencia</h5>
-                    <hr>
-                    <p class="card-text">Some quick example text to build on the card title and make up the
-                        bulk
-                        of the card's content.</p>
-                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
-                        data-bs-target="#modalDortores">
-                        Mas sobre el doctor
-                    </button>
-                </div>
-            </div>
-        </div>
+        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Testimonios de nuestros clientes</h4>
+        <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Escucha lo que nuestros clientes tienen que decir sobre nosotros.</p>
+        <div class="d-flex gap-3 flex-column flex-md-row" id="testimoniosContainer"></div>
+
         <!-- Modal -->
         <div class="modal fade" id="modalDortores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal doctores</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Testimonio</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img style="height: 200px; object-fit: cover;"
-                            src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
-                            class="card-img-top rounded-3 border my-4" alt="...">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam. Iste nemo
-                        architecto voluptates soluta, odit velit at distinctio quis eius laudantium dolores
-                        pariatur facilis impedit reiciendis saepe sed possimus.
+                        <img style="height: 200px; object-fit: cover;" class="card-img-top rounded-3 border my-4" alt="...">
+                        <p class="descripcionModal">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
+
 
 
 
@@ -479,6 +422,58 @@
     });
     /* Fin productos destacados */
 
+    /* Sección testimonios */
+    let formDataTestimonios = new FormData();
+formDataTestimonios.append("id_plataforma", ID_PLATAFORMA);
+
+$.ajax({
+    url: SERVERURL + 'Tienda/testimoniostienda',
+    type: 'POST',
+    data: formDataTestimonios,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        let testimonios = JSON.parse(response);
+        let testimoniosHTML = '';
+
+        // Limitar a 3 testimonios
+        testimonios = testimonios.slice(0, 3);
+
+        testimonios.forEach(testimonio => {
+            testimoniosHTML += `
+                <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+                    <img style="height: 200px; object-fit: cover;" src="${SERVERURL + testimonio.imagen}" class="card-img-top" alt="${testimonio.nombre}">
+                    <div class="card-body">
+                        <h5 class="card-title">${testimonio.nombre}</h5>
+                        <hr>
+                        <p class="card-text">${testimonio.testimonio}</p>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${testimonio.id_testimonio}">Más sobre el testimonio</button>
+                    </div>
+                </div>
+            `;
+        });
+
+        $('#testimoniosContainer').html(testimoniosHTML);
+
+        // Configuración del modal para mostrar detalles del testimonio
+        $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
+            let idTestimonio = $(this).data('id');
+
+            let testimonioSeleccionado = testimonios.find(testimonio => testimonio.id_testimonio == idTestimonio);
+
+            $('#exampleModalLabel').text(testimonioSeleccionado.nombre);
+            $('.modal-body img').attr('src', SERVERURL + testimonioSeleccionado.imagen);
+            $('.modal-body img').attr('alt', testimonioSeleccionado.nombre);
+            $('.modal-body .descripcionModal').text(testimonioSeleccionado.testimonio);
+        });
+
+    },
+    error: function (error) {
+        console.log("Error al obtener testimonios: ", error);
+    }
+});
+
+    /* Fin Sección testimonios */
 
 </script>
 
