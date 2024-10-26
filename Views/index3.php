@@ -338,6 +338,17 @@
                     $('#texto_parallax2').text(plantilla.texto_parallax2);
                 }
 
+                if (plantilla.color_texto_parallax2) {
+
+                    $('#titulo_parallax2').css('color', plantilla.color_texto_parallax2);
+                    $('#subtitulo_parallax2').css('color', plantilla.color_texto_parallax2);
+                    $('#texto_parallax2').css('color', plantilla.color_texto_parallax2);
+                }
+                if (plantilla.color_fondo_parallax2) {
+
+                    $('#contenedor_parallax2').css('background-color', plantilla.color_fondo_parallax2);
+                }
+
                 // renderizar seccion profesionales/testimonios
 
                 if (plantilla.titulo_profesionales) {
