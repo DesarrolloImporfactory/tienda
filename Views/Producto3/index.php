@@ -66,7 +66,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img id="productoModalImagen" src="" class="w-100 mb-3" alt="Imagen del Producto">
+                        <img style="height: 200px;" id="productoModalImagen" src="" class="w-100 mb-3" alt="Imagen del Producto">
                         <h5 id="productoModalTitulo"></h5>
                         <p id="productoModalDescripcion"></p>
                         <p><strong>Precio: $<span id="productoModalPrecio"></span></strong></p>
