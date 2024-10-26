@@ -257,9 +257,9 @@ $primera_seccion = obtenerPrimeraSeccion();
                     data-bs-target="#carritoCompras" aria-controls="carritoCompras">
                     <i class="bi bi-bag-fill"></i>
                 </button>
-                <button class="navbar-toggler d-block" type="button" data-bs-toggle="offcanvas"
+                <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <i class="bi bi-list"></i>
                 </button>
             </div>
 
