@@ -95,6 +95,8 @@
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            mostrarProductosAdicionales();
+
             buscarActualizarProductos();
             document.getElementById('btnBuscarActualizar2').addEventListener('click', buscarActualizarProductos);
 
@@ -277,7 +279,6 @@
 }
 
 // Llamada a la función para cargar productos adicionales en el contenedor adicional
-mostrarProductosAdicionales();
 
 
     </script>
