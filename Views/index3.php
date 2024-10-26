@@ -159,28 +159,45 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="modalDortores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal doctores</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal fade" id="modalDoctores" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitud de Servicio</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img style="height: 200px; object-fit: cover;"
+                    src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
+                    class="card-img-top rounded-3 border my-4" alt="Doctor">
+
+                <!-- Descripción breve -->
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam. Iste nemo architecto voluptates soluta, odit velit at distinctio quis eius laudantium dolores pariatur facilis impedit reiciendis saepe sed possimus.</p>
+
+                <!-- Formulario de solicitud -->
+                <form>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingName" placeholder="Nombre Completo">
+                        <label for="floatingName">Nombre Completo</label>
                     </div>
-                    <div class="modal-body">
-                        <img style="height: 200px; object-fit: cover;"
-                            src="https://www.clinicasonrisasegura.pe/wp-content/uploads/2023/04/BLOG-DENTISTAS-EN-LIMA.webp"
-                            class="card-img-top rounded-3 border my-4" alt="...">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, totam. Iste nemo
-                        architecto voluptates soluta, odit velit at distinctio quis eius laudantium dolores
-                        pariatur facilis impedit reiciendis saepe sed possimus.
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control" id="floatingPhone" placeholder="Teléfono">
+                        <label for="floatingPhone">Teléfono</label>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                    <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="floatingDate" placeholder="Fecha de Servicio">
+                        <label for="floatingDate">Fecha de Servicio</label>
                     </div>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Solicitar Servicio</button>
             </div>
         </div>
+    </div>
+</div>
+
 
     </div>
 </section>
