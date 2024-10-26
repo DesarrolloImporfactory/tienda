@@ -338,15 +338,17 @@
                 //     $('#quienes').css('background-position', 'center');
                 // }
 
-                console.log(plantilla.parallax_fondo)
+                if (plantilla.color_texto) {
+                    $('#parallax-title').css('color', plantilla.color_texto);
+                    $('#parallax-subtitle').css('color', plantilla.color_texto);
+                    $('#parallax-text').css('color', plantilla.color_texto);
+                }
                 if (plantilla.parallax_opacidad) {
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
                 }
                 if (plantilla.parallax_fondo) {
                     $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
                 }
-
-
 
                 // renderizar paralax 2
 
