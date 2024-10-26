@@ -71,11 +71,11 @@
                         <form>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingName" placeholder="Nombre completo">
-                                <label for="floatingName">Nombre completo</label>
+                                <label for="floatingName">Nombre completo <span class="text-danger"> *</span></label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="tel" class="form-control" id="floatingPhone" placeholder="Teléfono">
-                                <label for="floatingPhone">Teléfono</label>
+                                <label for="floatingPhone">Teléfono <span class="text-danger"> *</span></label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="date" class="form-control" id="floatingDate"
