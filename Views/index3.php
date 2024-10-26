@@ -111,7 +111,7 @@
         <div id="contenedor_parallax2" class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
             <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
             <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
-            <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
+            <p id="texto_parallax2" class="fs-5">Proporcionamos servicio de atención de urgencias durante todo el día en
                 nuestro consultorio
                 dental.
             </p>
@@ -122,7 +122,7 @@
 
 <section id="doctores" class="seccion6 mb-0 padding">
     <div class="container px-4 d-flex flex-column">
-        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad</h4>
+        <h4 id="titulo_profesionales" class="display-4 fs-4 text-center fw-bold texto-secondary">Profesionales de calidad</h4>
         <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero! Nemo sit sapiente voluptatem quisquam ea.</p>
         <div class="d-flex gap-3 flex-column flex-md-row" id="testimoniosContainer"></div>
 
