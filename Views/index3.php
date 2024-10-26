@@ -328,7 +328,13 @@
                 $('#parallax-title').text(plantilla.parallax_titulo);
                 $('#parallax-subtitle').text(plantilla.parallax_sub);
                 $('#parallax-text').text(plantilla.parallax_texto);
-                $('#parallax-button').attr('href', plantilla.boton_parallax_enlace || '#');
+
+                let enlaceParallax2 = plantilla.boton_parallax_enlace;
+                if (!/^https?:\/\//i.test(enlaceParallax2)) {
+                    enlaceParallax2 = 'http://' + enlaceParallax2; // Agrega http:// si no está presente
+                }
+
+                $('#parallax-button').attr('href', enlaceParallax2 || '#');
                 $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
 
                 // Configurar el fondo si se necesita
