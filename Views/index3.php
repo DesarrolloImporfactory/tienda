@@ -119,10 +119,11 @@
     </div>
 </section>
 
-<section id="testimonios" class="seccion6 mb-0 padding">
+
+<section id="doctores" class="seccion6 mb-0 padding">
     <div class="container px-4 d-flex flex-column">
-        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Testimonios de nuestros clientes</h4>
-        <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Escucha lo que nuestros clientes tienen que decir sobre nosotros.</p>
+        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad</h4>
+        <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero! Nemo sit sapiente voluptatem quisquam ea.</p>
         <div class="d-flex gap-3 flex-column flex-md-row" id="testimoniosContainer"></div>
 
         <!-- Modal -->
@@ -130,22 +131,22 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Testimonio</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal profesionales</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img style="height: 200px; object-fit: cover;" class="card-img-top rounded-3 border my-4" alt="...">
-                        <p class="descripcionModal">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <img style="height: 200px; object-fit: cover;" src="default-image-url.jpg" class="card-img-top rounded-3 border my-4" alt="...">
+                        <p class="descripcionModal"></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <div class="redesSociales"></div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 
 
 
@@ -423,55 +424,68 @@
     /* Fin productos destacados */
 
     /* Sección testimonios */
-    let formDataTestimonios = new FormData();
-formDataTestimonios.append("id_plataforma", ID_PLATAFORMA);
+    let formDataProfesionales = new FormData();
+formDataProfesionales.append("id_plataforma", ID_PLATAFORMA);
 
 $.ajax({
-    url: SERVERURL + 'Tienda/testimoniostienda',
+    url: SERVERURL + 'Tienda/profesionales',
     type: 'POST',
-    data: formDataTestimonios,
+    data: formDataProfesionales,
     contentType: false,
     processData: false,
     success: function (response) {
-        let testimonios = JSON.parse(response);
-        let testimoniosHTML = '';
+        let profesionales = JSON.parse(response);
+        let profesionalesHTML = '';
 
-        // Limitar a 3 testimonios
-        testimonios = testimonios.slice(0, 3);
+        // Limitar a un máximo de 8 profesionales
+        profesionales = profesionales.slice(0, 8);
 
-        testimonios.forEach(testimonio => {
-            testimoniosHTML += `
-                <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                    <img style="height: 200px; object-fit: cover;" src="${SERVERURL + testimonio.imagen}" class="card-img-top" alt="${testimonio.nombre}">
-                    <div class="card-body">
-                        <h5 class="card-title">${testimonio.nombre}</h5>
-                        <hr>
-                        <p class="card-text">${testimonio.testimonio}</p>
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${testimonio.id_testimonio}">Más sobre el testimonio</button>
-                    </div>
+        profesionales.forEach((profesional) => {
+            profesionalesHTML += `
+            <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+                <img style="height: 200px; object-fit: cover;" src="${profesional.imagen ? SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
+                <div class="card-body">
+                    <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
+                    <hr>
+                    <p class="card-text">${profesional.descripcion || 'Sin descripción disponible'}</p>
+                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${profesional.id_profesional}">Más sobre el profesional</button>
                 </div>
+            </div>
             `;
         });
 
-        $('#testimoniosContainer').html(testimoniosHTML);
+        $('#testimoniosContainer').html(profesionalesHTML);
 
-        // Configuración del modal para mostrar detalles del testimonio
+        // Configuración del modal para mostrar detalles de un profesional
         $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
-            let idTestimonio = $(this).data('id');
+            let idProfesional = $(this).data('id');
+            let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
 
-            let testimonioSeleccionado = testimonios.find(testimonio => testimonio.id_testimonio == idTestimonio);
+            $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
+            $('.modal-body img').attr('src', profesionalSeleccionado.imagen ? SERVERURL + profesionalSeleccionado.imagen : 'default-image-url.jpg');
+            $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
+            $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
 
-            $('#exampleModalLabel').text(testimonioSeleccionado.nombre);
-            $('.modal-body img').attr('src', SERVERURL + testimonioSeleccionado.imagen);
-            $('.modal-body img').attr('alt', testimonioSeleccionado.nombre);
-            $('.modal-body .descripcionModal').text(testimonioSeleccionado.testimonio);
+            // Agregar iconos de redes sociales en el pie del modal
+            let redesHTML = '';
+            if (profesionalSeleccionado.facebook) {
+                redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
+            }
+            if (profesionalSeleccionado.linkedin) {
+                redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
+            }
+            if (profesionalSeleccionado.instagram) {
+                redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
+            }
+
+            $('.modal-footer .redesSociales').html(redesHTML);
         });
-
     },
     error: function (error) {
-        console.log("Error al obtener testimonios: ", error);
+        console.log("Error al obtener profesionales: ", error);
     }
 });
+
 
     /* Fin Sección testimonios */
 
