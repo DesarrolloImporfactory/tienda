@@ -206,7 +206,6 @@
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log('Respuesta completa de la API (iconos):', response);
 
             try {
                 var iconos = JSON.parse(response); // Parsear la respuesta de la API
@@ -262,7 +261,6 @@
         processData: false,
         dataType: "json",
         success: function (data) {
-            console.log('Respuesta completa de la API (banner):', data);
 
             if (data && data.length > 0) {
                 let banner = data[0]; // Obtenemos el primer banner
@@ -313,7 +311,6 @@
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log('Respuesta completa de la API (plantilla):', response);
 
             try {
                 var data = JSON.parse(response); // Parsear la respuesta de la API
