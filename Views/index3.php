@@ -341,6 +341,7 @@
                 //     $('#quienes').css('background-position', 'center');
                 // }
 
+                console.log(plantilla.parallax_fondo)
                 if (plantilla.parallax_opacidad) {
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
                 }
