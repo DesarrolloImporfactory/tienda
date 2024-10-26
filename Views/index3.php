@@ -335,14 +335,17 @@
                 $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
 
                 // Configurar el fondo si se necesita
-                if (plantilla.fondo_pagina) {
-                    $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
-                    $('#quienes').css('background-size', 'cover');
-                    $('#quienes').css('background-position', 'center');
-                }
+                // if (plantilla.fondo_pagina) {
+                //     $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                //     $('#quienes').css('background-size', 'cover');
+                //     $('#quienes').css('background-position', 'center');
+                // }
 
                 if (plantilla.parallax_opacidad) {
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
+                }
+                if (plantilla.parallax_fondo) {
+                    $('#quienes').css('background-image', `url(${plantilla.parallax_fondo})`);
                 }
 
 
