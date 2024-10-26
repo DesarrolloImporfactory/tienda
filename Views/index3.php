@@ -108,7 +108,7 @@
                 src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_10-4440997.png?format=webp"
                 alt="">
         </div>
-        <div class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
+        <div id="contenedor_parallax2" class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
             <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
             <h3 id="subtitulo_parallax2" class="display-1 fw-bold">24 horas </h3>
             <p id="texto_parallax2">Proporcionamos servicio de atención de urgencias durante todo el día en
