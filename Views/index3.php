@@ -122,8 +122,8 @@
 
 <section id="doctores" class="seccion6 mb-0 padding">
     <div class="container px-4 d-flex flex-column">
-        <h4 id="titulo_profesionales" class="display-4 fs-4 text-center fw-bold texto-secondary">Profesionales de calidad</h4>
-        <p id="subtitulo_profesionales" class="mb-5 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero! Nemo sit sapiente voluptatem quisquam ea.</p>
+        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad</h4>
+        <p id="subtitulo_profesionales" class="mb-5 fs-4 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero! Nemo sit sapiente voluptatem quisquam ea.</p>
         <div class="d-flex gap-3 flex-column flex-md-row" id="testimoniosContainer"></div>
 
         <!-- Modal -->
