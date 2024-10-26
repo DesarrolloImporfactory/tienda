@@ -162,7 +162,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        background-color: #5bbecfba;
+        background-color: #5bbecf; 
         z-index: 1;
     }
 

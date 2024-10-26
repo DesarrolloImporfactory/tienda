@@ -348,7 +348,9 @@
                     $('#parallax-subtitle').css('color', plantilla.color_texto);
                     $('#parallax-text').css('color', plantilla.color_texto);
                 }
+                if (plantilla.parallax_opacidad) {
                     $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
+                }
                 if (plantilla.parallax_fondo) {
                     $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
                 }
