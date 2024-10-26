@@ -316,7 +316,7 @@
                 }
 
                 if (plantilla.parallax_fondo) {
-                    $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                    $('#quienes').css('background-image', `url(${SERVERURL + plantilla.parallax_fondo})`);
                 }
 
                 if (plantilla.color_filtro) {
