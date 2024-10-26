@@ -32,8 +32,9 @@
 </section>
 <!-- Fin seccion iconos -->
 
-<section id="quienes" class="seccion2 mb-0">
-    <div class="container px-4 d-flex flex-column text-white py-5 text-center">
+<section id="quienes" class="seccion2 mb-0 position-relative">
+    <div id="parallax-overlay" class="overlay"></div> <!-- Nuevo div para la opacidad -->
+    <div class="container px-4 d-flex flex-column text-white py-5 text-center position-relative">
         <h3 id="parallax-title" class="display-2 fw-bold"></h3>
         <h5 id="parallax-subtitle" class="display-4 fw-bold"></h5>
         <p id="parallax-text" class="fs-4"></p>
@@ -48,49 +49,51 @@
 
 
 
+
 <section id="servicios" class="seccion3 padding">
     <div class="container px-4 d-flex flex-column">
         <h3 class="display-5 fw-bold texto-secondary mb-4">Nuestros productos destacados </h3>
         <div class="row"></div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-6" id="exampleModalLabel">Modal título</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4" alt="">
-                <p class="descripcionModal"></p>
-                <p>Precio <span class="PrecioModal"></span></p>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-6" id="exampleModalLabel">Modal título</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4" alt="">
+                        <p class="descripcionModal"></p>
+                        <p>Precio <span class="PrecioModal"></span></p>
 
-                <!-- Formulario de solicitud -->
-                <form>
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingName" placeholder="Nombre completo">
-                        <label for="floatingName">Nombre completo</label>
+                        <!-- Formulario de solicitud -->
+                        <form>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingName" placeholder="Nombre completo">
+                                <label for="floatingName">Nombre completo</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="tel" class="form-control" id="floatingPhone" placeholder="Teléfono">
+                                <label for="floatingPhone">Teléfono</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control" id="floatingDate"
+                                    placeholder="Fecha de servicio">
+                                <label for="floatingDate">Fecha de servicio</label>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="tel" class="form-control" id="floatingPhone" placeholder="Teléfono">
-                        <label for="floatingPhone">Teléfono</label>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
+                            style="background-color: #5dc355 !important; color: white !important;"
+                            class="btn btn-primary border-0"> <i class="bi bi-whatsapp text-white me-2"></i>
+                            Solicitar</a>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="floatingDate" placeholder="Fecha de servicio">
-                        <label for="floatingDate">Fecha de servicio</label>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>"
-                    style="background-color: #5dc355 !important; color: white !important;"
-                    class="btn btn-primary border-0"> <i class="bi bi-whatsapp text-white me-2"></i>
-                    Solicitar</a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
 
@@ -365,8 +368,9 @@
                     $('#parallax-text').css('color', plantilla.color_texto);
                 }
                 if (plantilla.parallax_opacidad) {
-                    $('.seccion2::after').css('opacity', plantilla.parallax_opacidad);
+                    $('#parallax-overlay').css('opacity', plantilla.parallax_opacidad);
                 }
+
                 if (plantilla.parallax_fondo) {
                     $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
                 }

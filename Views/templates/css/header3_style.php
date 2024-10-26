@@ -154,17 +154,25 @@
         z-index: 2;
     }
 
-    .seccion2::after {
-        content: " ";
+    #parallax-overlay {
+        position: absolute;
         top: 0;
         left: 0;
-        position: absolute;
-        display: block;
         width: 100%;
         height: 100%;
-        background-color: #5bbecf; 
+        background-color: #5bbecf;
+        /* Color sin opacidad */
         z-index: 1;
+        opacity: 0.3;
+        /* Opacidad inicial que puede ser sobrescrita */
     }
+
+    .seccion2 .container {
+        position: relative;
+        z-index: 2;
+        /* Contenido por encima del overlay */
+    }
+
 
     /* seccion3 ##########################*/
 
