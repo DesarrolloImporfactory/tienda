@@ -319,6 +319,10 @@
                     $('#quienes').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
                 }
 
+                if (plantilla.color_filtro) {
+                    $('#parallax-overlay').css('background-color', plantilla.color_filtro);
+                }
+
                 // renderizar paralax 2
 
                 if (plantilla.titulo_parallax2) {

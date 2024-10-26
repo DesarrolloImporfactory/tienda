@@ -161,10 +161,8 @@
         width: 100%;
         height: 100%;
         background-color: #5bbecf;
-        /* Color sin opacidad */
         z-index: 1;
         opacity: 0.3;
-        /* Opacidad inicial que puede ser sobrescrita */
     }
 
     .seccion2 .container {
