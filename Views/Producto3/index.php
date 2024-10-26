@@ -55,6 +55,10 @@
                 </div>
             </div>
 
+            <div class="row col-md-9 col-sm-6 col-12 mx-auto" id="productosContainerAdicional">
+</div>
+
+
         </div>
         <!-- Modal para mostrar detalles del producto -->
         <div class="modal fade" id="productoModal" tabindex="-1" aria-labelledby="productoModalLabel"
@@ -225,6 +229,56 @@
             // Llamar a buscarActualizarProductos para mostrar todos los productos
             buscarActualizarProductos();
         }
+
+
+
+
+
+        function mostrarProductosAdicionales() {
+    let formDataAdicional = new FormData();
+    formDataAdicional.append("id_plataforma", ID_PLATAFORMA);
+
+    $.ajax({
+        url: SERVERURL + 'Tienda/obtener_productos_tienda',
+        method: 'POST',
+        data: formDataAdicional,
+        processData: false,
+        contentType: false,
+        dataType: "json",
+        success: function(response) {
+            const containerAdicional = document.getElementById('productosContainerAdicional');
+            containerAdicional.innerHTML = ''; // Limpia el contenedor
+
+            // Filtra y ordena los productos en base a la lógica que requieras
+            response.forEach((producto, index) => {
+                const imagenUrl = producto.imagen_principal_tienda || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+
+                containerAdicional.innerHTML += `
+                    <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
+                        <div class="card"> 
+                            <img src="${imagenUrl}" class="w-100 imgCardProductos rounded-3" alt="${producto.nombre_producto_tienda}" onerror="this.onerror=null; this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'">
+                            <div class="card-body card-body-paginaProductos">
+                                <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                                <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
+                                <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal" onclick="abrirModal(${index})">
+                                    Ver Más
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al obtener los productos adicionales:', error);
+        }
+    });
+}
+
+// Llamada a la función para cargar productos adicionales en el contenedor adicional
+mostrarProductosAdicionales();
+
 
     </script>
 
