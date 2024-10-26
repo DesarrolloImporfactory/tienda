@@ -39,9 +39,7 @@
         <p id="parallax-text" class="fs-4"></p>
         <hr>
         <div class="btnsQuienes d-flex gap-3 w-100 justify-content-center">
-            <a id="parallax-button" href="#" class="btn">
-                <!-- Este botón se va a modificar -->
-            </a>
+            <a id="parallax-button" href="#" class="btn"></a>
             <button type="button" class="btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarForm"
                 aria-controls="offcanvasNavbarForm">Consulta</button>
         </div>
@@ -335,6 +333,7 @@
                 }
 
                 $('#parallax-button').attr('href', enlaceParallax2 || '#');
+                $('#parallax-button').css('background-color', plantilla.color_boton);
                 $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
 
                 // Configurar el fondo si se necesita
