@@ -77,11 +77,6 @@
                                 <input type="tel" class="form-control" id="floatingPhone" placeholder="Teléfono">
                                 <label for="floatingPhone">Teléfono <span class="text-danger"> *</span></label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="date" class="form-control" id="floatingDate"
-                                    placeholder="Fecha de servicio">
-                                <label for="floatingDate">Fecha de servicio</label>
-                            </div>
                         </form>
                     </div>
                     <div class="modal-footer">
