@@ -99,9 +99,7 @@
 <section id="urgencias" class="seccion4">
     <div class="container px-4 d-flex flex-column flex-md-row">
         <div class="w-100 d-flex mb-4 mb-md-0">
-            <img id="imgParallax2" class="mx-auto" style="width: 100%; max-width: 400px;"
-                src=""
-                alt="">
+            <img id="imgParallax2" class="mx-auto" style="width: 100%; max-width: 400px;" src="" alt="">
         </div>
         <div id="contenedor_parallax2" class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
             <h5 id="titulo_parallax2" class="display-6">Urgencias</h5>
@@ -117,8 +115,11 @@
 
 <section id="doctores" class="seccion6 mb-0 padding">
     <div class="container px-4 d-flex flex-column">
-        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad</h4>
-        <p id="subtitulo_profesionales" class="mb-5 fs-4 text-center fw-bold texto-secondary mx-auto" style="max-width: 700px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur quas sunt libero vero! Nemo sit sapiente voluptatem quisquam ea.</p>
+        <h4 id="titulo_profesionales" class="display-4 text-center fw-bold texto-secondary">Profesionales de calidad
+        </h4>
+        <p id="subtitulo_profesionales" class="mb-5 fs-4 text-center fw-bold texto-secondary mx-auto"
+            style="max-width: 700px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium consequuntur
+            quas sunt libero vero! Nemo sit sapiente voluptatem quisquam ea.</p>
         <div class="d-flex gap-3 flex-column flex-md-row" id="testimoniosContainer"></div>
 
         <!-- Modal -->
@@ -130,7 +131,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img style="height: 200px; object-fit: cover;" src="default-image-url.jpg" class="card-img-top rounded-3 border my-4" alt="...">
+                        <img style="height: 200px; object-fit: cover;" src="default-image-url.jpg"
+                            class="card-img-top rounded-3 border my-4" alt="...">
                         <p class="descripcionModal"></p>
                     </div>
                     <div class="modal-footer">
@@ -344,10 +346,9 @@
                     $('#contenedor_parallax2').css('background-color', plantilla.color_fondo_parallax2);
                 }
                 if (plantilla.imagen_parallax2) {
-
-                    $('#imgParallax2').attr('src', imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
-
+                    $('#imgParallax2').attr('src', plantilla.imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
                 }
+
 
                 // renderizar seccion profesionales/testimonios
 
@@ -440,23 +441,23 @@
 
     /* Sección testimonios */
     let formDataProfesionales = new FormData();
-formDataProfesionales.append("id_plataforma", ID_PLATAFORMA);
+    formDataProfesionales.append("id_plataforma", ID_PLATAFORMA);
 
-$.ajax({
-    url: SERVERURL + 'Tienda/profesionales',
-    type: 'POST',
-    data: formDataProfesionales,
-    contentType: false,
-    processData: false,
-    success: function (response) {
-        let profesionales = JSON.parse(response);
-        let profesionalesHTML = '';
+    $.ajax({
+        url: SERVERURL + 'Tienda/profesionales',
+        type: 'POST',
+        data: formDataProfesionales,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            let profesionales = JSON.parse(response);
+            let profesionalesHTML = '';
 
-        // Limitar a un máximo de 8 profesionales
-        profesionales = profesionales.slice(0, 8);
+            // Limitar a un máximo de 8 profesionales
+            profesionales = profesionales.slice(0, 8);
 
-        profesionales.forEach((profesional) => {
-            profesionalesHTML += `
+            profesionales.forEach((profesional) => {
+                profesionalesHTML += `
             <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
                 <img style="height: 200px; object-fit: cover;" src="${profesional.imagen ? SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
                 <div class="card-body">
@@ -467,39 +468,39 @@ $.ajax({
                 </div>
             </div>
             `;
-        });
+            });
 
-        $('#testimoniosContainer').html(profesionalesHTML);
+            $('#testimoniosContainer').html(profesionalesHTML);
 
-        // Configuración del modal para mostrar detalles de un profesional
-        $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
-            let idProfesional = $(this).data('id');
-            let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
+            // Configuración del modal para mostrar detalles de un profesional
+            $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
+                let idProfesional = $(this).data('id');
+                let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
 
-            $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
-            $('.modal-body img').attr('src', profesionalSeleccionado.imagen ? SERVERURL + profesionalSeleccionado.imagen : 'default-image-url.jpg');
-            $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
-            $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
+                $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
+                $('.modal-body img').attr('src', profesionalSeleccionado.imagen ? SERVERURL + profesionalSeleccionado.imagen : 'default-image-url.jpg');
+                $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
+                $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
 
-            // Agregar iconos de redes sociales en el pie del modal
-            let redesHTML = '';
-            if (profesionalSeleccionado.facebook) {
-                redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
-            }
-            if (profesionalSeleccionado.linkedin) {
-                redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
-            }
-            if (profesionalSeleccionado.instagram) {
-                redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
-            }
+                // Agregar iconos de redes sociales en el pie del modal
+                let redesHTML = '';
+                if (profesionalSeleccionado.facebook) {
+                    redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
+                }
+                if (profesionalSeleccionado.linkedin) {
+                    redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
+                }
+                if (profesionalSeleccionado.instagram) {
+                    redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
+                }
 
-            $('.modal-footer .redesSociales').html(redesHTML);
-        });
-    },
-    error: function (error) {
-        console.log("Error al obtener profesionales: ", error);
-    }
-});
+                $('.modal-footer .redesSociales').html(redesHTML);
+            });
+        },
+        error: function (error) {
+            console.log("Error al obtener profesionales: ", error);
+        }
+    });
 
 
     /* Fin Sección testimonios */
