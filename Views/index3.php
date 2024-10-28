@@ -346,7 +346,7 @@
                     $('#contenedor_parallax2').css('background-color', plantilla.color_fondo_parallax2);
                 }
                 if (plantilla.imagen_parallax2) {
-                    $('#imgParallax2').attr('src', plantilla.imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
+                    $('#imgParallax2').attr('src', SERVERURL + plantilla.imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
                 }
 
 
@@ -459,7 +459,7 @@
             profesionales.forEach((profesional) => {
                 profesionalesHTML += `
             <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                <img style="height: 200px; object-fit: cover;" src="${profesional.imagen ? SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
+                <img style="height: 200px; object-fit: cover;" src="${SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
                 <div class="card-body">
                     <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
                     <hr>
