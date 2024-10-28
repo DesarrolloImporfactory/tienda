@@ -346,7 +346,7 @@
                     $('#contenedor_parallax2').css('background-color', plantilla.color_fondo_parallax2);
                 }
                 if (plantilla.imagen_parallax2) {
-                    $('#imgParallax2').attr('src', plantilla.imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
+                    $('#imgParallax2').attr('src', SERVERURL + plantilla.imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
                 }
 
 
