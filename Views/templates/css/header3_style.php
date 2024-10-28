@@ -221,6 +221,13 @@
         object-fit: cover;
     }
 
+    .descripcionCardProfesional {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        text-align: justify;
+    }
+
     /* calendario ##########################*/
     .contenedor-calendario {
         background: #fff;
@@ -297,7 +304,7 @@
     @media (max-width: 1200px) {}
 
     @media (max-width: 992px) {
-        
+
         /* header ##########################*/
 
         .containerHeader {

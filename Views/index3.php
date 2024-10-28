@@ -474,7 +474,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
                             <hr>
-                            <p class="card-text">${profesional.descripcion || 'Sin descripción disponible'}</p>
+                            <p class="card-text descripcionCardProfesional">${profesional.descripcion || 'Sin descripción disponible'}</p>
                             <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${profesional.id_profesional}">Más sobre el profesional</button>
                         </div>
                     </div>
