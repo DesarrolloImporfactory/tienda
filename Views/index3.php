@@ -63,7 +63,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4" alt="">
+                        <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4 rounded-3" alt="">
                         <p class="descripcionModal"></p>
                         <p>Precio <span class="PrecioModal"></span></p>
 
@@ -133,6 +133,7 @@
                     <div class="modal-body">
                         <img style="height: 200px; object-fit: cover;" src="" class="card-img-top rounded-3 border my-4"
                             alt="...">
+                        <h5 class="tituloModalProfesional"></h5>
                         <p class="descripcionModal"></p>
                     </div>
                     <div class="modal-footer modal-footer-profesionales">
@@ -495,6 +496,7 @@
                     $(this).attr('src', 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
                 });
                 $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
+                $('.modal-body .tituloModalProfesional').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre || 'Sin descripción disponible');
                 $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
 
                 // Agregar iconos de redes sociales en el pie del modal
