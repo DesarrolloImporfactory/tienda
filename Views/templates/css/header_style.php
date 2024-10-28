@@ -655,10 +655,6 @@
         z-index: 100;
     }
 
-    .whatsapp-float:hover {
-        background-color: #128C7E;
-    }
-
     /* fin footer del anterior sistema */
 
     /* css faltante */
