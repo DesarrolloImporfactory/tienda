@@ -99,8 +99,8 @@
 <section id="urgencias" class="seccion4">
     <div class="container px-4 d-flex flex-column flex-md-row">
         <div class="w-100 d-flex mb-4 mb-md-0">
-            <img class="mx-auto" style="width: 100%; max-width: 400px;"
-                src="https://content.app-sources.com/s/53156514013336927/uploads/Images/Recurso_10-4440997.png?format=webp"
+            <img id="imgParallax2" class="mx-auto" style="width: 100%; max-width: 400px;"
+                src=""
                 alt="">
         </div>
         <div id="contenedor_parallax2" class="contenedor_parallax2 w-100 d-flex p-5 flex-column rounded-3 shadow">
@@ -342,6 +342,11 @@
                 if (plantilla.color_fondo_parallax2) {
 
                     $('#contenedor_parallax2').css('background-color', plantilla.color_fondo_parallax2);
+                }
+                if (plantilla.imagen_parallax2) {
+
+                    $('#imgParallax2').attr('src', imagen_parallax2 || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
+
                 }
 
                 // renderizar seccion profesionales/testimonios
