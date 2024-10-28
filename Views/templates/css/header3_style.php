@@ -233,8 +233,8 @@
     }
 
     .redesSociales i {
-        font-size: 20px;
-        color: #1D2020 !important;
+        font-size: 20px !important;
+        color: #666666 !important;
     }
 
     /* calendario ##########################*/
