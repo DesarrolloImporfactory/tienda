@@ -480,12 +480,29 @@
         color: #24d366 !important;
         background-color: transparent !important;
         font-size: 4em !important;
+        transition: transform 0.3s ease;
+        /* Transición suave */
     }
 
     .ws_flotante:hover {
-        background-color: black !important;
-        font-size: 4em !important;
+        animation: bounce 0.5s ease;
+        /* Aplica la animación en hover */
     }
+
+    /* Definimos la animación de "salto" */
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+            /* Ajusta el valor según la altura que quieras */
+        }
+    }
+
 
     /* Fin Botón flotante para WhatsApp */
 
@@ -551,14 +568,9 @@
         transform: scale(1);
     }
 
-    .ws,
-    .ws_flotante {
+    .ws {
         color: #24d366;
         font-size: 2em;
-    }
-
-    .ws_flotante {
-        font-size: 4em;
     }
 
     .send {
