@@ -65,7 +65,7 @@
                     <div class="modal-body">
                         <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4 rounded-3" alt="">
                         <p class="descripcionModal"></p>
-                        <p>Precio <span class="PrecioModal"></span></p>
+                        <p class="fw-bold">Precio $ <span class="PrecioModal"></span></p>
 
                         <!-- Formulario de solicitud -->
                         <form>
