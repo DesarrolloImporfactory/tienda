@@ -485,8 +485,8 @@
     }
 
     .ws_flotante:hover {
-        animation: bounce 0.5s ease;
-        /* Aplica la animación en hover */
+        animation: bounce 0.5s ease infinite;
+        /* Repetir la animación de forma indefinida */
     }
 
     /* Definimos la animación de "salto" */
@@ -502,7 +502,6 @@
             /* Ajusta el valor según la altura que quieras */
         }
     }
-
 
     /* Fin Botón flotante para WhatsApp */
 
