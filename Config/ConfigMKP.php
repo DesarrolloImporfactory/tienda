@@ -1,7 +1,6 @@
 <?php
 
 require_once '../../vistas/db.php';
-
 const HOST = '77.37.67.232';
 const USER = "imporsuit_marketplace";
 const PASSWORD = "imporsuit_marketplace";

@@ -29,7 +29,7 @@ class Home extends Controller
             // Renderizar la vista normalmente si hay productos
             $this->views->render($this, "index2");
         } else if ($plantilla == 3){
-            $this->views->render($this, "index3");
+            $this->views->render($this, "index4");
         }else if ($plantilla == 4){
             $this->views->render($this, "index4");
         }
