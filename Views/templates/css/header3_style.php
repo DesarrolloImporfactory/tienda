@@ -297,7 +297,12 @@
     @media (max-width: 1200px) {}
 
     @media (max-width: 992px) {
-        .logoHeaderLink {}
+        
+        /* header ##########################*/
+
+        .containerHeader {
+            padding-top: 80px;
+        }
 
         .textosHeader {
             max-width: 400px;
@@ -326,9 +331,7 @@
         }
 
         /* header ##########################*/
-        .containerHeader {
-            padding-top: 80px;
-        }
+
 
         .imgHeader {
             max-width: 500px;
