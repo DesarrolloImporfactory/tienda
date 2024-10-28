@@ -459,7 +459,7 @@
             profesionales.forEach((profesional) => {
                 profesionalesHTML += `
             <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                <img style="height: 200px; object-fit: cover;" src="${SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
+                <img style="height: 200px; object-fit: cover;" src="${profesional.imagen ? SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
                 <div class="card-body">
                     <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
                     <hr>
