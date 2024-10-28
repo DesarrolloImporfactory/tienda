@@ -467,11 +467,6 @@
         /* Asegura que el botón esté sobre otros elementos */
     }
 
-    .whatsapp-float:hover {
-        background-color: #128C7E;
-        /* Color al pasar el ratón */
-    }
-
     @media (max-width: 768px) {
         .whatsapp-float {
             bottom: 20px;
@@ -482,8 +477,8 @@
     }
 
     .ws_flotante {
-        color: #24d366;
-        font-size: 4em;
+        color: #24d366 !important;
+        font-size: 4em !important;
     }
 
     /* Fin Botón flotante para WhatsApp */
