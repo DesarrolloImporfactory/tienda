@@ -135,7 +135,7 @@
                             class="card-img-top rounded-3 border my-4" alt="...">
                         <p class="descripcionModal"></p>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer modal-footer-profesionales">
                         <div class="redesSociales"></div>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>

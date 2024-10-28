@@ -228,6 +228,15 @@
         text-align: justify;
     }
 
+    .modal-footer-profesionales{
+        justify-content: space-between;
+    }
+
+    .redesSociales i {
+        font-size: 25px;
+        color: #171931;
+    }
+
     /* calendario ##########################*/
     .contenedor-calendario {
         background: #fff;
