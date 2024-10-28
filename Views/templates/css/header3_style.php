@@ -147,6 +147,7 @@
     .seccion2 {
         position: relative;
         background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .seccion2>* {
