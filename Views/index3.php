@@ -457,18 +457,24 @@
             profesionales = profesionales.slice(0, 8);
 
             profesionales.forEach((profesional) => {
-                profesionalesHTML += `
-            <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                <img style="height: 200px; object-fit: cover;" src="${profesional.imagen ? SERVERURL + profesional.imagen : 'default-image-url.jpg'}" class="card-img-top" alt="${profesional.nombre}">
-                <div class="card-body">
-                    <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
-                    <hr>
-                    <p class="card-text">${profesional.descripcion || 'Sin descripción disponible'}</p>
-                    <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${profesional.id_profesional}">Más sobre el profesional</button>
-                </div>
+    profesionalesHTML += `
+        <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+            <img style="height: 200px; object-fit: cover;" 
+                 src="${profesional.imagen ? SERVERURL + profesional.imagen : 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'}" 
+                 class="card-img-top" 
+                 alt="${profesional.nombre}"
+                 onerror="this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';"
+            >
+            <div class="card-body">
+                <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
+                <hr>
+                <p class="card-text">${profesional.descripcion || 'Sin descripción disponible'}</p>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${profesional.id_profesional}">Más sobre el profesional</button>
             </div>
-            `;
-            });
+        </div>
+    `;
+});
+
 
             $('#testimoniosContainer').html(profesionalesHTML);
 
