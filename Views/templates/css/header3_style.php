@@ -229,7 +229,7 @@
     }
 
     .modal-footer-profesionales{
-        justify-content: space-between;
+        justify-content: space-between !important;
     }
 
     .redesSociales i {
