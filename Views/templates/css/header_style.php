@@ -478,6 +478,12 @@
 
     .ws_flotante {
         color: #24d366 !important;
+        background-color: transparent !important;
+        font-size: 4em !important;
+    }
+
+    .ws_flotante:hover {
+        background-color: black !important;
         font-size: 4em !important;
     }
 
