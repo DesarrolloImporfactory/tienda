@@ -253,9 +253,9 @@ $primera_seccion = obtenerPrimeraSeccion();
             </ul>
             <div>
 
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                <button class="btn border-0" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#carritoCompras" aria-controls="carritoCompras">
-                    <i class="bi bi-bag-fill fs-5"></i>
+                    <i class="bi bi-bag-fill fs-4 text-dark"></i>
                 </button>
                 <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
