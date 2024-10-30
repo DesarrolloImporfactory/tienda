@@ -177,7 +177,7 @@ $primera_seccion = obtenerPrimeraSeccion();
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav" style="font-size: 20px;">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
@@ -189,7 +189,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="<?php echo $primera_seccion; ?>">
                     <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" id="imagen_logo" alt="IMPORT SHOP">
                 </a>
-                <form class="d-flex ms-auto">
+                <form class="d-flex my-auto">
                     <input class="form-control search-box" type="search" placeholder="Buscar" aria-label="Buscar">
                 </form>
             </div>
