@@ -220,14 +220,6 @@
         /* Fondo azul claro cuando esté seleccionado */
     }
 
-    .productos_carrito-info p{
-        margin-bottom: 0;
-        font-size: 16px;
-    }
-    .productos_carrito-info a{
-        font-size: 16px;
-        margin-bottom: 0;
-    }
 </style>
 
 
@@ -365,7 +357,7 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-3 input-group-text" id="icono_nombresApellidosPreview"><i
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
                                         name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
@@ -377,7 +369,7 @@
                             <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-3 input-group-text" id="icono_telefonoPreview">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
                                         name="txt_telefonoPreview" placeholder="Teléfono">
@@ -389,7 +381,7 @@
                             <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-3 input-group-text" id="icono_calle_principalPreview"><i
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
                                         name="txt_calle_principalPreview" placeholder="">
@@ -401,7 +393,7 @@
                             <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-3 input-group-text" id="icono_calle_secundariaPreview"><i
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
                                         name="txt_calle_secundariaPreview" placeholder="">
@@ -414,7 +406,7 @@
                                 <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
                                     Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-3 input-group-text" id="icono_barrio_referenciaPreview"><i
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
                                         name="txt_barrio_referenciaPreview" placeholder="">
@@ -446,7 +438,7 @@
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
-                                    <span class="p-3 input-group-text" id="icono_barrio_referenciaPreview"><i
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-messa fs-5ge-dots'></i></span>
                                     <input type="text" class="form-control" id="txt_comentarioPreview"
                                         name="txt_comentarioPreview" placeholder="">
