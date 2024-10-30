@@ -188,6 +188,9 @@ $primera_seccion = obtenerPrimeraSeccion();
 
 </head>
 
+<?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
+
+
 <body>
     <div id="chatOverlay"></div>
 
@@ -244,7 +247,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 </li>
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="Producto3">Productos</a>
-                </li> 
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link texto-secondary" href="Agendar_cita_p3">Agendar Cita</a>
