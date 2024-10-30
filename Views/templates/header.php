@@ -170,7 +170,7 @@ $primera_seccion = obtenerPrimeraSeccion();
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
                 <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
