@@ -101,17 +101,28 @@
     let productosTotales = [];
     let productosMostrados = 0;
 
-    // Función para buscar y actualizar productos
+    function obtenerURLImagen(imagePath, serverURL) {
+        if (imagePath) {
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                return imagePath;
+            } else {
+                return `${serverURL}${imagePath}`;
+            }
+        } else {
+            console.error("imagePath es null o undefined");
+            return null;
+        }
+    }
+
     function buscarActualizarProductos() {
         const valorMinimo = document.getElementById('inputValorMinimo-left').value || 0;
         const valorMaximo = document.getElementById('inputValorMaximo-left').value || 1000;
         const ordenarPor = document.querySelector('input[name="ordenar_por"]:checked') ? document.querySelector('input[name="ordenar_por"]:checked').value : null;
-        const buscadorInput = document.getElementById('buscador').value.toLowerCase(); // Convierte a minúsculas
+        const buscadorInput = document.getElementById('buscador').value.toLowerCase();
         const urlParams = new URLSearchParams(window.location.search);
         const idCategoria = urlParams.has('id_cat') ? urlParams.get('id_cat') : '';
 
         const idPlataforma = ID_PLATAFORMA;
-
         const formData = new FormData();
         formData.append('id_plataforma', idPlataforma);
         formData.append('id_categoria', idCategoria);
@@ -130,39 +141,35 @@
                 return response.json();
             })
             .then(data => {
-                productosTotales = data; // Guarda todos los productos
-                mostrarProductos(buscadorInput, valorMinimo, valorMaximo, ordenarPor); // Muestra productos filtrados
+                productosTotales = data;
+                mostrarProductos(buscadorInput, valorMinimo, valorMaximo, ordenarPor);
             })
             .catch(error => console.error('Error:', error));
     }
 
-    // Función para mostrar productos según búsqueda y filtros
     function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000, ordenarPor = null) {
         const container = document.getElementById('productosContainer');
-        container.innerHTML = ''; // Limpiar el contenedor antes de agregar nuevos productos
+        container.innerHTML = '';
 
-        // Filtrar productos según búsqueda y filtros
         const productosFiltrados = productosTotales.filter(producto => {
             const nombreCoincide = producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput);
             const precioCoincide = producto.pvp_tienda >= valorMinimo && producto.pvp_tienda <= valorMaximo;
-            return nombreCoincide && precioCoincide; // Ambos deben coincidir
+            return nombreCoincide && precioCoincide;
         });
 
-        // Ordenar productos según la selección
         if (ordenarPor) {
             productosFiltrados.sort((a, b) => {
                 if (ordenarPor === 'precio_ascendente') {
-                    return a.pvp_tienda - b.pvp_tienda; // Ordenar de menor a mayor
+                    return a.pvp_tienda - b.pvp_tienda;
                 } else if (ordenarPor === 'precio_descendente') {
-                    return b.pvp_tienda - a.pvp_tienda; // Ordenar de mayor a menor
+                    return b.pvp_tienda - a.pvp_tienda;
                 }
-                return 0; // Sin ordenación
+                return 0;
             });
         }
 
-        // Mostrar los productos filtrados y ordenados
         productosFiltrados.forEach((producto, index) => {
-            const imagenUrl = producto.imagen_principal_tienda || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+            const imagenUrl = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
             container.innerHTML += `
                 <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
@@ -178,14 +185,13 @@
                         </div>
                     </div>
                 </div>
-                `;
+            `;
         });
-
     }
 
     function abrirModal(index) {
         const producto = productosTotales[index];
-        if (!producto) return; // Verifica si el producto existe
+        if (!producto) return;
 
         const modalTitulo = document.getElementById('productoModalTitulo');
         const modalDescripcion = document.getElementById('productoModalDescripcion');
@@ -193,18 +199,17 @@
         const modalImagen = document.getElementById('productoModalImagen');
 
         if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
-            // Actualizar el contenido del modal
             modalTitulo.innerText = producto.nombre_producto_tienda;
             modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
             modalPrecio.innerText = producto.pvp_tienda;
 
-            // Establecer la imagen del modal con un manejo de error
-            modalImagen.src = producto.imagen_principal_tienda;
+            const imagenUrlModal = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+
+            modalImagen.src = imagenUrlModal;
             modalImagen.alt = producto.nombre_producto_tienda;
 
-            // Manejo de error para la imagen del modal
             modalImagen.onerror = function () {
-                this.onerror = null; // Evita bucles infinitos
+                this.onerror = null;
                 this.src = 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
             };
         } else {
@@ -214,20 +219,17 @@
 
     document.getElementById('btnLimpiarFiltros').addEventListener('click', limpiarFiltros);
     function limpiarFiltros() {
-        // Limpiar los campos de búsqueda
         document.getElementById('buscador').value = '';
         document.getElementById('inputValorMinimo-left').value = '';
         document.getElementById('inputValorMaximo-left').value = '';
 
-        // Limpiar las opciones de ordenación
         const ordenacionRadios = document.querySelectorAll('input[name="ordenar_por"]');
         ordenacionRadios.forEach(radio => radio.checked = false);
 
-        // Llamar a buscarActualizarProductos para mostrar todos los productos
         buscarActualizarProductos();
     }
-
 </script>
+
 
 
 
