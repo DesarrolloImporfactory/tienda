@@ -255,42 +255,13 @@ $primera_seccion = obtenerPrimeraSeccion();
 
             </ul>
             <div>
-
-                <button class="btn border-0" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#carritoCompras" aria-controls="carritoCompras">
-                    <i class="bi bi-cart2 fs-4 text-gray"></i>
-                </button>
                 <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <i class="bi bi-list fs-4"></i>
                 </button>
             </div>
 
-            <!-- Offcanvas Carrito de Compras -->
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="carritoCompras"
-                aria-labelledby="carritoComprasLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="carritoComprasLabel">Carrito de Compras</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-
-                    <!-- Contenedor para los productos añadidos al carrito -->
-                    <div id="productosCarrito">
-                        <!-- Aquí se agregarán los productos dinámicamente -->
-                    </div>
-
-                    <hr>
-
-                    <!-- Total de la compra -->
-                    <div class="d-flex justify-content-between">
-                        <strong>Total:</strong>
-                        <span id="totalCarrito">$0.00</span>
-                    </div>
-
-                    <button class="btn btn-success w-100 mt-3" onclick="finalizarCompra()">Finalizar Compra</button>
-                </div>
-            </div>
+        
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                 aria-labelledby="offcanvasNavbarLabel">
