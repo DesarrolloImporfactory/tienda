@@ -320,13 +320,11 @@
                                     margin: 0px !important;
                                 }
 
-                                @media (min-width: 576px) {
                                     .modal-dialog {
                                         margin-right: auto;
                                         margin-left: auto;
-                                        max-width: 550px;
+                                        max-width: 550px !important;
                                     }
-                                }
 
                             </style>
 
