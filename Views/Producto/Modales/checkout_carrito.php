@@ -76,8 +76,9 @@
     }
 
     .sub_titulos {
-        font-size: 17px;
+        font-size: 14px;
         font-weight: 700;
+        margin-bottom: 5px;
     }
 
     hr {
@@ -314,6 +315,10 @@
                                     border: 1px solid gray;
                                 }
 
+                                .bx{
+                                    margin: 0px !important;
+                                }
+
                             </style>
 
                             <div id="tarifasEnvioPreview">
@@ -349,9 +354,9 @@
 
                             <!-- Nombre y apellidos -->
                             <div class="form-group mb-3" id="nombresApellidosPreview">
-                                <label class="sub_titulos">Nombres y Apellidos</label>
+                                <label class="sub_titulos">Nombres y Apellidos <span class="text-danger ms-3">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-2 input-group-text" id="icono_nombresApellidosPreview"><i
+                                    <span class="p-3 input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
                                         name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
@@ -361,9 +366,9 @@
 
                             <!-- Teléfono -->
                             <div class="form-group mb-3" id="telefonoPreview">
-                                <label class="sub_titulos">Teléfono</label>
+                                <label class="sub_titulos">Teléfono <span class="text-danger ms-3">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-2 input-group-text" id="icono_telefonoPreview">
+                                    <span class="p-3 input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
                                         name="txt_telefonoPreview" placeholder="Teléfono">
@@ -373,9 +378,9 @@
 
                             <!-- Calle Principal -->
                             <div class="form-group mb-3" id="calle_principalPreview">
-                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal</label>
+                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal <span class="text-danger ms-3">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-2 input-group-text" id="icono_calle_principalPreview"><i
+                                    <span class="p-3 input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
                                         name="txt_calle_principalPreview" placeholder="">
@@ -385,9 +390,9 @@
 
                             <!-- Calle Secundaria -->
                             <div class="form-group mb-3" id="calle_secundariaPreview">
-                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria</label>
+                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria <span class="text-danger ms-3">*</span></label>
                                 <div class="input-group">
-                                    <span class="p-2 input-group-text" id="icono_calle_secundariaPreview"><i
+                                    <span class="p-3 input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
                                         name="txt_calle_secundariaPreview" placeholder="">
@@ -397,10 +402,10 @@
 
                             <!-- Barrio o Referencia -->
                             <div class="form-group mb-3" id="barrio_referenciaPreview">
-                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
+                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview"> <span class="text-danger ms-3">*</span>Barrio o
                                     Referencia</label>
                                 <div class="input-group">
-                                    <span class="p-2 input-group-text" id="icono_barrio_referenciaPreview"><i
+                                    <span class="p-3 input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
                                         name="txt_barrio_referenciaPreview" placeholder="">
@@ -410,7 +415,7 @@
 
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
-                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
+                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger ms-3">*</span></label>
                                 <select class="form-control" id="provinica" name="provinica">
                                     <option value="">Provincia *</option>
                                 </select>
@@ -419,7 +424,7 @@
 
                             <!-- Ciudad -->
                             <div class="form-group mb-3" id="ciudadPreview">
-                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
+                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger ms-3">*</span></label>
                                 <div id="div_ciudad">
                                     <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
                                         <option value="">Ciudad *</option>
@@ -432,7 +437,7 @@
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
-                                    <span class="p-2 input-group-text" id="icono_barrio_referenciaPreview"><i
+                                    <span class="p-3 input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-messa fs-5ge-dots'></i></span>
                                     <input type="text" class="form-control" id="txt_comentarioPreview"
                                         name="txt_comentarioPreview" placeholder="">
