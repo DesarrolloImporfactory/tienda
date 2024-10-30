@@ -336,7 +336,7 @@
                                         Gratis</p>
                                 </div>
 
-                                <h5 class="my-4">Ingrese su dirección de envío</h5>
+                                <h5 class="my-4 text-center fw-bold">Ingrese su dirección de envío</h5>
                             </div>
 
                             <!--  código de descuento -->
@@ -413,6 +413,8 @@
                                 </div>
                             </div>
                             <!-- Fin Barrio o Referencia -->
+
+                            <p class="my-4">Inserta tu dirección bien detallada, caso contrario tendremos dificultades en la entrega.</p>
 
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
