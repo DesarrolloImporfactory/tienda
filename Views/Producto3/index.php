@@ -73,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Comprar Ahora</button>
+                    <button type="button" class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">Comprar Ahora</button>
                 </div>
             </div>
         </div>
