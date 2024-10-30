@@ -30,8 +30,8 @@
     }
 
     .navbar-custom .navbar-brand img {
-        height: 60px;
-        width: 60px;
+        height: 100%;
+        width: auto;
     }
 
     .search-box {
@@ -47,7 +47,7 @@
 
     @media (min-width: 992px) {
         .navbar-nav {
-            flex: 1;
+            gap: 10px;
             display: flex;
             justify-content: flex-start;
             /* Menú alineado a la izquierda en pantallas grandes */
