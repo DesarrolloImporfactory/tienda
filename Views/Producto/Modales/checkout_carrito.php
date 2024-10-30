@@ -278,7 +278,7 @@
                             <div id="tarifasEnvioPreview">
                                 <hr />
                                 <p id="titulo_tarifaPreview" style="font-weight:bold;">Método de envío</p>
-                                <div class="caja_transparente d-flex flex-row">
+                                <div class="caja_transparente d-flex flex-row w-100">
                                     <label for="envioGratisPreview"> Envío gratis</label>
                                     <label id="gratisPreview" style="width: 60%; text-align: end; font-weight:bold;">Gratis</label>
                                 </div>
