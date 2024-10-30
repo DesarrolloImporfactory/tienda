@@ -5,8 +5,9 @@
         flex-direction: column;
         /* Asegura que el contenido fluya de arriba hacia abajo */
     }
-    .input-group, .form-control{
-        max-width: 350px !important;
+    .input-group, .form-control, .div_ciudad{
+        width: 350px !important;
+        justify-content: space-between;
     }
     .edit-section {
         width: 100%;
