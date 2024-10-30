@@ -231,11 +231,11 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4">
                 <div id="combos_carritoContainer">
                     <!-- Aquí se llenará el contenido dinámico con AJAX -->
                 </div>
-                <div class="custom-card-body">
+                <div class="custom-card-body p-0">
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>
@@ -268,8 +268,8 @@
 
                     <input type="hidden" id="total_principal" name="total_principal">
 
-                    <div id="gracias" class="modal-content">
-                        <div id="previewContainer" class="p-3">
+                    <div id="gracias" class="modal-content border-0">
+                        <div id="previewContainer" class="">
                             <div id="resultados" class="modal-body" style="padding: 5px">
                             </div>
 
