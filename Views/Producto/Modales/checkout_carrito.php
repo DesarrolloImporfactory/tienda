@@ -336,7 +336,7 @@
                                         Gratis</p>
                                 </div>
 
-                                <hr />
+                                <h5 class="my-4">Ingrese su dirección de envío</h5>
                             </div>
 
                             <!--  código de descuento -->
