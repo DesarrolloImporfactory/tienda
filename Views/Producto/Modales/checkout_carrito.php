@@ -278,12 +278,20 @@
 
                             <style>
                                 /* Estilos para el radio personalizado */
-                               
+
+                                .radio-custom:checked {
+                                    background-color: white;
+                                    border: 1px solid gray;
+                                }
 
                                 .radio-custom:checked::before {
-                                   
+                                    left: 0;
+                                    right: 0;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
                                     background-color: black;
-                                   
+
                                 }
                             </style>
 
@@ -293,7 +301,7 @@
                                 <div
                                     class="caja_transparente d-flex flex-row justify-content-between align-items-center">
                                     <div class="d-flex">
-                                        <input class="me-3 radio-custom" type="radio" id="envioGratisPreview"
+                                        <input class="me-3 radio-custom my-auto" type="radio" id="envioGratisPreview"
                                             name="opcionEnvio" checked>
                                         <p for="envioGratisPreview" class="mb-0"> Envío gratis</p>
                                     </div>
