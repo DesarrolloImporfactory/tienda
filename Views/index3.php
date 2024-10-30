@@ -297,7 +297,6 @@
                 $('#parallax-button').css('background-color', plantilla.color_boton);
                 $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
 
-                 Configurar el fondo si se necesita
                  if (plantilla.fondo_pagina) {
                      $('#inicio').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
                      $('#inicio').css('background-size', 'cover');
