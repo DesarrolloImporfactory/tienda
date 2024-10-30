@@ -278,21 +278,46 @@
 
                             <style>
                                 /* Estilos para el radio personalizado */
+                                .radio-custom {
+                                    appearance: none;
+                                    -webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    width: 16px;
+                                    height: 16px;
+                                    border: 1px solid black;
+                                    border-radius: 50%;
+                                    outline: none;
+                                    cursor: pointer;
+                                    position: relative;
+                                }
+
+                                .radio-custom:checked {
+                                    background-color: white;
+                                    border: 1px solid gray;                                }
+
+                                .radio-custom:checked::before {
+                                    content: '';
+                                    display: block;
+                                    width: 8px;
+                                    height: 8px;
+                                    background-color: black;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    left: 0;
+                                    right: 0;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
+                                }
+
+
+
 
                                 .radio-custom:checked {
                                     background-color: white;
                                     border: 1px solid gray;
                                 }
 
-                                .radio-custom:checked::before {
-                                    left: 0;
-                                    right: 0;
-                                    top: 0;
-                                    bottom: 0;
-                                    margin: auto;
-                                    background-color: black;
-
-                                }
                             </style>
 
                             <div id="tarifasEnvioPreview">
