@@ -219,6 +219,15 @@
         background-color: #e0f7ff;
         /* Fondo azul claro cuando esté seleccionado */
     }
+
+    .productos_carrito-info p{
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+    .productos_carrito-info a{
+        font-size: 16px;
+        margin-bottom: 0;
+    }
 </style>
 
 
@@ -235,7 +244,7 @@
                 <div id="combos_carritoContainer">
                     <!-- Aquí se llenará el contenido dinámico con AJAX -->
                 </div>
-                <div class="custom-card-body p-0">
+                <div class="custom-card-body p-3">
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>
