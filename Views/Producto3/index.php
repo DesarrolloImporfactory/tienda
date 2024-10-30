@@ -179,15 +179,18 @@
                             <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                             <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
                             <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                            <button class="btn btn-primary" onclick="abrirModal(${index});" data-bs-toggle="modal" data-bs-target="#productoModal">
+                            <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
+                                Comprar
+                            </button>
+                             <button class="btn btn-primary" onclick="abrirModal(${index});" data-bs-toggle="modal" data-bs-target="#productoModal">
                                 Ver Detalles
                             </button>
+                                
                         </div>
                     </div>
                 </div>
             `;
         });
-
     }
 
     function abrirModal(index) {
