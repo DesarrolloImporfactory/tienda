@@ -277,36 +277,11 @@
                             </div>
 
                             <style>
-                                /* Estilos para el radio personalizado */
-.radio-custom {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid black;
-    border-radius: 50%;
-    outline: none;
-    cursor: pointer;
-    position: relative;
-}
+                               
 
-.radio-custom:checked {
-    background-color: black;
-}
-
-.radio-custom:checked::before {
-    content: '';
-    display: block;
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-}
-
+                                .radio-custom:checked {
+                                    background-color: black;
+                                }
                             </style>
 
                             <div id="tarifasEnvioPreview">
@@ -315,10 +290,12 @@
                                 <div
                                     class="caja_transparente d-flex flex-row justify-content-between align-items-center">
                                     <div class="d-flex">
-                                        <input class="me-3 radio-custom" type="radio" id="envioGratisPreview" name="opcionEnvio" checked>
+                                        <input class="me-3 radio-custom" type="radio" id="envioGratisPreview"
+                                            name="opcionEnvio" checked>
                                         <p for="envioGratisPreview" class="mb-0"> Envío gratis</p>
                                     </div>
-                                    <p id="gratisPreview" class="mb-0" style="text-align: end; font-weight: bold;">Gratis</p>
+                                    <p id="gratisPreview" class="mb-0" style="text-align: end; font-weight: bold;">
+                                        Gratis</p>
                                 </div>
 
                                 <hr />
