@@ -9,43 +9,47 @@
         <div class="cont2Productos row pt-4">
 
             <div class="filtro col-12 col-sm-6 col-md-3">
-
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
-                        aria-label="Buscar por nombre" aria-describedby="button-addon2">
-                    <label for="buscador">Buscar por nombre</label>
-                </div>
-                <a class="btn btn-primary w-100 mb-3" data-bs-toggle="collapse" href="#collapseExample" role="button"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Aplicar filtros
-                </a>
-
-                <div class="collapse mb-4" id="collapseExample">
-                    <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
-                        <label for="inputValorMinimo-left">Precio Mínimo</label>
-                    </div>
+                <div class="x">
 
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control" id="inputValorMaximo-left" placeholder="1000">
-                        <label for="inputValorMaximo-left">Precio Máximo</label>
+                        <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
+                            aria-label="Buscar por nombre" aria-describedby="button-addon2">
+                        <label for="buscador">Buscar por nombre</label>
                     </div>
+                    <a class="btn btn-primary w-100 mb-3" data-bs-toggle="collapse" href="#collapseExample"
+                        role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Aplicar filtros
+                    </a>
 
-                    <label>Ordenar Por:</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ordenar_por" id="precioAscendente"
-                            value="precio_ascendente">
-                        <label class="form-check-label" for="precioAscendente">Precio Ascendente</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ordenar_por" id="precioDescendente"
-                            value="precio_descendente">
-                        <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
-                    </div>
+                    <div class="collapse mb-4" id="collapseExample">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="inputValorMinimo-left" placeholder="0">
+                            <label for="inputValorMinimo-left">Precio Mínimo</label>
+                        </div>
 
-                    <button id="btnBuscarActualizar2" class="btn btn-primary w-100 my-3">Actualizar</button>
-                    <button id="btnLimpiarFiltros" class="btn btn-secondary w-100">Limpiar Filtros</button>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" id="inputValorMaximo-left" placeholder="1000">
+                            <label for="inputValorMaximo-left">Precio Máximo</label>
+                        </div>
+
+                        <label>Ordenar Por:</label><br>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ordenar_por" id="precioAscendente"
+                                value="precio_ascendente">
+                            <label class="form-check-label" for="precioAscendente">Precio Ascendente</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="ordenar_por" id="precioDescendente"
+                                value="precio_descendente">
+                            <label class="form-check-label" for="precioDescendente">Precio Descendente</label>
+                        </div>
+
+                        <button id="btnBuscarActualizar2" class="btn btn-primary w-100 my-3">Actualizar</button>
+                        <button id="btnLimpiarFiltros" class="btn btn-secondary w-100">Limpiar Filtros</button>
+                    </div>
                 </div>
+
+
             </div>
 
             <div class="row col-md-9 col-sm-6 col-12 mx-auto" id="productosContainer">
@@ -83,6 +87,12 @@
 </header>
 
 <style>
+    .x {
+    position: sticky;
+    top: 50px;
+    z-index: 1000;
+}
+
     .imgCardProductos {
         padding: 30px;
         border: 0px;
