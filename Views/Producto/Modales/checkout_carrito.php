@@ -281,9 +281,11 @@
                                 <p id="titulo_tarifaPreview" style="font-weight:bold;">Método de envío</p>
                                 <div
                                     class="caja_transparente d-flex flex-row justify-content-between align-items-center">
-                                    <input type="radio" id="envioGratisPreview" name="opcionEnvio" checked>
-                                    <p for="envioGratisPreview"> Envío gratis</p>
-                                    <p id="gratisPreview" style="text-align: end; font-weight: bold;">Gratis</p>
+                                    <div>
+                                        <input type="radio" id="envioGratisPreview" name="opcionEnvio" checked>
+                                        <p for="envioGratisPreview" class="mb-0"> Envío gratis</p>
+                                    </div>
+                                    <p id="gratisPreview" class="mb-0" style="text-align: end; font-weight: bold;">Gratis</p>
                                 </div>
 
                                 <hr />
