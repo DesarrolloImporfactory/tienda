@@ -182,9 +182,8 @@
                             <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
                                 Comprar
                             </button>
-                           <button class="btn btn-primary" onclick="abrirModal(index)" data-bs-toggle="modal" data-bs-target="#productoModal">
-                                Ver Detalles
-                            </button>
+                           <button class="btn btn-info" onclick="abrirModal(INDEX); $('#productoModal').modal('show')">Ver Detalles</button>
+
 
                         </div>
                     </div>
