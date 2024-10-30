@@ -253,7 +253,8 @@
                         </div>
                         <div class="custom-summary" id="descuento_carrito" style="display: none;">
                             <div>Descuento</div>
-                            <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span></div>
+                            <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span>
+                            </div>
                         </div>
                         <div class="custom-total">
                             <div>Total</div>
@@ -278,18 +279,23 @@
                             <div id="tarifasEnvioPreview">
                                 <hr />
                                 <p id="titulo_tarifaPreview" style="font-weight:bold;">Método de envío</p>
-                                <div class="caja_transparente d-flex flex-row justify-content-around">
-                                    <label for="envioGratisPreview"> Envío gratis</label>
-                                    <label id="gratisPreview" style="text-align: end; font-weight:bold;">Gratis</label>
+                                <div
+                                    class="caja_transparente d-flex flex-row justify-content-between align-items-center">
+                                    <input type="radio" id="envioGratisPreview" name="opcionEnvio" checked>
+                                    <p for="envioGratisPreview"> Envío gratis</p>
+                                    <p id="gratisPreview" style="text-align: end; font-weight: bold;">Gratis</p>
                                 </div>
+
                                 <hr />
                             </div>
 
                             <!--  código de descuento -->
                             <div class="discount-code-container" id="codigosDescuentoPreview">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Código de descuento" id="etiqueta_descuentoPreview" aria-label="Código de descuento">
-                                    <button class="btn btn-dark" id="textoBtn_aplicarPreview" type="button">Aplicar</button>
+                                    <input type="text" class="form-control" placeholder="Código de descuento"
+                                        id="etiqueta_descuentoPreview" aria-label="Código de descuento">
+                                    <button class="btn btn-dark" id="textoBtn_aplicarPreview"
+                                        type="button">Aplicar</button>
                                 </div>
                                 <div class="applied-discount">
                                     <span class="discount-tag">4SALE $4.00</span>
@@ -301,8 +307,10 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
-                                    <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
+                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i
+                                            class='bx bxs-user'></i></span>
+                                    <input type="text" class="form-control" id="txt_nombresApellidosPreview"
+                                        name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
                             </div>
                             <!-- Fin Nombre y apellidos -->
@@ -311,8 +319,10 @@
                             <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call'></i></span>
-                                    <input type="text" class="form-control" id="txt_telefonoPreview" name="txt_telefonoPreview" placeholder="Teléfono">
+                                    <span class="input-group-text" id="icono_telefonoPreview"><i
+                                            class='bx bxs-phone-call'></i></span>
+                                    <input type="text" class="form-control" id="txt_telefonoPreview"
+                                        name="txt_telefonoPreview" placeholder="Teléfono">
                                 </div>
                             </div>
                             <!-- Fin Teléfono -->
@@ -321,8 +331,10 @@
                             <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_calle_principalPreview"><i class='bx bx-map'></i></span>
-                                    <input type="text" class="form-control" id="txt_calle_principalPreview" name="txt_calle_principalPreview" placeholder="">
+                                    <span class="input-group-text" id="icono_calle_principalPreview"><i
+                                            class='bx bx-map'></i></span>
+                                    <input type="text" class="form-control" id="txt_calle_principalPreview"
+                                        name="txt_calle_principalPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Calle Principal -->
@@ -331,18 +343,23 @@
                             <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_calle_secundariaPreview"><i class='bx bx-map'></i></span>
-                                    <input type="text" class="form-control" id="txt_calle_secundariaPreview" name="txt_calle_secundariaPreview" placeholder="">
+                                    <span class="input-group-text" id="icono_calle_secundariaPreview"><i
+                                            class='bx bx-map'></i></span>
+                                    <input type="text" class="form-control" id="txt_calle_secundariaPreview"
+                                        name="txt_calle_secundariaPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Calle Secundaria -->
 
                             <!-- Barrio o Referencia -->
                             <div class="form-group mb-3" id="barrio_referenciaPreview">
-                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o Referencia</label>
+                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
+                                    Referencia</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i class='bx bx-map'></i></span>
-                                    <input type="text" class="form-control" id="txt_barrio_referenciaPreview" name="txt_barrio_referenciaPreview" placeholder="">
+                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i
+                                            class='bx bx-map'></i></span>
+                                    <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
+                                        name="txt_barrio_referenciaPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Barrio o Referencia -->
@@ -371,16 +388,21 @@
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i class='bx bx-message-dots'></i></span>
-                                    <input type="text" class="form-control" id="txt_comentarioPreview" name="txt_comentarioPreview" placeholder="">
+                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i
+                                            class='bx bx-message-dots'></i></span>
+                                    <input type="text" class="form-control" id="txt_comentarioPreview"
+                                        name="txt_comentarioPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Comentario -->
                         </div>
 
-                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;" id="seccion_oferta">
+                        <div class="card p-3 mb-3"
+                            style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;"
+                            id="seccion_oferta">
                             <div class="d-flex justify-content-start align-items-center">
-                                <input type="checkbox" id="Seleccion_oferta" class="me-2" onchange="toggleSeleccion_oferta(this)">
+                                <input type="checkbox" id="Seleccion_oferta" class="me-2"
+                                    onchange="toggleSeleccion_oferta(this)">
                                 <input type="hidden" id="id_producto_oferta" name="id_producto_oferta">
                                 <input type="hidden" id="oferta_selected" name="oferta_selected" value="0">
                                 <label for="Seleccion_oferta" class="m-0">
@@ -393,7 +415,8 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
+                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button"
+                                    onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>
@@ -408,14 +431,14 @@
 <script>
     // Funcion para que consuma los datos de checkout.json y los utilice
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         loadAndSetInitialData();
     });
 
     function loadAndSetInitialData() {
         id_plataforma = <?php echo ID_PLATAFORMA; ?>
 
-        $.getJSON(SERVERURL + 'Models/modales/' + id_plataforma + '_modal.json', function(data) {
+        $.getJSON(SERVERURL + 'Models/modales/' + id_plataforma + '_modal.json', function (data) {
             data.forEach(item => {
                 processItem(item);
             });
@@ -548,7 +571,7 @@
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
-                success: function(response) {
+                success: function (response) {
                     // Verifica que la respuesta sea un array y que tenga al menos un elemento
                     if (Array.isArray(response) && response.length > 0) {
                         resolve(response[0].id); // Resuelve la promesa con el id_configuracion
@@ -556,7 +579,7 @@
                         reject("No se encontró la configuración o está vacía");
                     }
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     reject(errorThrown); // Rechaza la promesa con el error
                 }
             });
@@ -624,14 +647,14 @@
                 data: formData,
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
-                success: function(response) {
+                success: function (response) {
                     response = JSON.parse(response);
                     if (response.status == 400) {
                         toastr.error(
                             "NO SE REALIZO LA PETICION CORRECTAMENTE",
                             "NOTIFICACIÓN", {
-                                positionClass: "toast-bottom-center"
-                            }
+                            positionClass: "toast-bottom-center"
+                        }
                         );
                     } else if (response.status == 200) {
                         toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
@@ -645,7 +668,7 @@
                         $('#checkout_carritoModal').modal('hide'); // Cerrar modal
                     }
                 },
-                error: function(error) {
+                error: function (error) {
                     console.error('Error al solicitar el pago:', error);
                     alert('Hubo un error al solicitar el pago.');
                 }
@@ -657,9 +680,9 @@
     }
     /* Fin boton de comprar */
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Escuchar clics en los combos
-        $('#combos_carritoContainer').on('click', '.selectable-combo', function() {
+        $('#combos_carritoContainer').on('click', '.selectable-combo', function () {
             // Verificar si el combo ya está seleccionado
             if ($(this).hasClass('selected')) {
                 // Si está seleccionado, deseleccionarlo
@@ -696,7 +719,7 @@
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
                     dataType: "json",
-                    success: function(response) {
+                    success: function (response) {
 
                         /* detalle combo */
                         let formData_detalle = new FormData();
@@ -716,9 +739,9 @@
                             processData: false, // No procesar los datos
                             contentType: false, // No establecer ningún tipo de contenido
                             dataType: "json",
-                            success: function(response2) {
+                            success: function (response2) {
                                 // Iterar sobre cada elemento en la respuesta
-                                response2.forEach(function(detalle_combo) {
+                                response2.forEach(function (detalle_combo) {
                                     // Sumar el pvp de cada elemento al acumulador
                                     totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
                                 });
@@ -742,13 +765,13 @@
 
                                 $("#descuento_carrito").show();
                             },
-                            error: function(jqXHR, textStatus, errorThrown) {
+                            error: function (jqXHR, textStatus, errorThrown) {
                                 alert(errorThrown);
                             },
                         });
                         /* Fin detalle combo */
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         alert(errorThrown);
                     },
                 });
