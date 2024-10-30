@@ -9,7 +9,7 @@
         <div class="cont2Productos row pt-4">
 
             <div class="filtro col-12 col-sm-6 col-md-3">
-                <div class="x sticky-md-top">
+                <div class="x sticky-sm-top">
 
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="buscador" placeholder="Buscar por nombre"
