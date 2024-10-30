@@ -113,7 +113,9 @@
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
-                              <img src="${image_path}" class="d-block w-100" alt="..." style="width: 100%; height: auto !important; max-width: 100vw;">
+                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: 70vh !important;
+                                    width: 100% !important;
+                                    object-fit: contain;">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                   <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
                                   <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>

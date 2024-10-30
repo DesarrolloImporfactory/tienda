@@ -172,13 +172,13 @@ $primera_seccion = obtenerPrimeraSeccion();
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
             <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
-                <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
+                <img class="rounded-3" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-                <ul class="navbar-nav" style="font-size: 20px;">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
                     </li>
