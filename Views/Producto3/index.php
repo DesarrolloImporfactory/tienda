@@ -84,8 +84,8 @@
     .imgCardProductos {
         padding: 30px;
         border: 0px;
-        width: 181px;
-        height: 160px;
+        width: 188px;
+        height: 180px;
         object-fit: cover;
     }
 </style>
@@ -182,6 +182,10 @@
                             <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
                                 Comprar
                             </button>
+                           <button class="btn btn-primary" onclick="abrirModal(index)" data-bs-toggle="modal" data-bs-target="#productoModal">
+                                Ver Detalles
+                            </button>
+
                         </div>
                     </div>
                 </div>
