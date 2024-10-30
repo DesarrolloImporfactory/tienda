@@ -88,7 +88,7 @@
 
 <style>
     .x {
-    top: 100px;
+    top: 70px;
     z-index: 1000;
 }
 
