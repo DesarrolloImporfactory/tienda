@@ -354,9 +354,9 @@
                             <!--  código de descuento -->
 
                             <!-- Nombre y apellidos -->
-                            <div class="form-group d-flex mb-3" id="nombresApellidosPreview">
-                                <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
-                                <div class="input-group">
+                            <div class="form-group row mb-3" id="nombresApellidosPreview">
+                                <label class="col-4 sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
+                                <div class="input-group col-8">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
@@ -366,9 +366,9 @@
                             <!-- Fin Nombre y apellidos -->
 
                             <!-- Teléfono -->
-                            <div class="form-group d-flex mb-3" id="telefonoPreview">
-                                <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
-                                <div class="input-group">
+                            <div class="form-group row mb-3" id="telefonoPreview">
+                                <label class="col-4 sub_titulos">Teléfono<span class="text-danger">*</span></label>
+                                <div class="input-group col-8">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
@@ -378,9 +378,9 @@
                             <!-- Fin Teléfono -->
 
                             <!-- Calle Principal -->
-                            <div class="form-group d-flex mb-3" id="calle_principalPreview">
-                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
-                                <div class="input-group">
+                            <div class="form-group row mb-3" id="calle_principalPreview">
+                                <label class="col-4 sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
+                                <div class="input-group col-8">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
@@ -390,9 +390,9 @@
                             <!-- Fin Calle Principal -->
 
                             <!-- Calle Secundaria -->
-                            <div class="form-group d-flex mb-3" id="calle_secundariaPreview">
-                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
-                                <div class="input-group">
+                            <div class="form-group row mb-3" id="calle_secundariaPreview">
+                                <label class="col-4 sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
+                                <div class="input-group col-8">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
@@ -402,10 +402,10 @@
                             <!-- Fin Calle Secundaria -->
 
                             <!-- Barrio o Referencia -->
-                            <div class="form-group d-flex mb-3" id="barrio_referenciaPreview">
-                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
+                            <div class="form-group row mb-3" id="barrio_referenciaPreview">
+                                <label class="col-4 sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
                                     Referencia<span class="text-danger">*</span></label>
-                                <div class="input-group">
+                                <div class="input-group col-8">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
@@ -415,18 +415,18 @@
                             <!-- Fin Barrio o Referencia -->
 
                             <!-- Provincia -->
-                            <div class="form-group d-flex mb-3" id="provinciaPreview">
-                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
-                                <select class="form-control" id="provinica" name="provinica">
+                            <div class="form-group row mb-3" id="provinciaPreview">
+                                <label class="col-4 sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
+                                <select class="form-control col-8" id="provinica" name="provinica">
                                     <option value="">Provincia</option>
                                 </select>
                             </div>
                             <!-- Fin Provincia -->
 
                             <!-- Ciudad -->
-                            <div class="form-group d-flex mb-3" id="ciudadPreview">
-                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
-                                <div id="div_ciudad">
+                            <div class="form-group row mb-3" id="ciudadPreview">
+                                <label class="col-4 sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
+                                <div id="div_ciudad col-8">
                                     <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
                                         <option value="">Ciudad</option>
                                     </select>
@@ -435,9 +435,9 @@
                             <!-- Fin Ciudad -->
 
                             <!-- Comentario -->
-                            <div class="form-group d-flex mb-3" id="comentarioPreview">
-                                <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
-                                <div class="input-group">
+                            <div class="form-group row mb-3" id="comentarioPreview">
+                                <label class="col-4 sub_titulos" id="titulo_comentarioPreview">Comentario</label>
+                                <div class="input-group col-8">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-messa fs-5ge-dots'></i></span>
                                     <input type="text" class="form-control" id="txt_comentarioPreview"
