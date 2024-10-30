@@ -354,7 +354,7 @@
 
                             <!-- Nombre y apellidos -->
                             <div class="form-group mb-3" id="nombresApellidosPreview">
-                                <label class="sub_titulos">Nombres y Apellidos <span class="text-danger ms-3">*</span></label>
+                                <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="p-3 input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
@@ -366,7 +366,7 @@
 
                             <!-- Teléfono -->
                             <div class="form-group mb-3" id="telefonoPreview">
-                                <label class="sub_titulos">Teléfono <span class="text-danger ms-3">*</span></label>
+                                <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="p-3 input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
@@ -378,7 +378,7 @@
 
                             <!-- Calle Principal -->
                             <div class="form-group mb-3" id="calle_principalPreview">
-                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal <span class="text-danger ms-3">*</span></label>
+                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="p-3 input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
@@ -390,7 +390,7 @@
 
                             <!-- Calle Secundaria -->
                             <div class="form-group mb-3" id="calle_secundariaPreview">
-                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria <span class="text-danger ms-3">*</span></label>
+                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="p-3 input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
@@ -402,8 +402,8 @@
 
                             <!-- Barrio o Referencia -->
                             <div class="form-group mb-3" id="barrio_referenciaPreview">
-                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview"> <span class="text-danger ms-3">*</span>Barrio o
-                                    Referencia</label>
+                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
+                                    Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span class="p-3 input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'> fs-5</i></span>
@@ -415,19 +415,19 @@
 
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
-                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger ms-3">*</span></label>
+                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
                                 <select class="form-control" id="provinica" name="provinica">
-                                    <option value="">Provincia *</option>
+                                    <option value="">Provincia</option>
                                 </select>
                             </div>
                             <!-- Fin Provincia -->
 
                             <!-- Ciudad -->
                             <div class="form-group mb-3" id="ciudadPreview">
-                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger ms-3">*</span></label>
+                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
                                 <div id="div_ciudad">
                                     <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
-                                        <option value="">Ciudad *</option>
+                                        <option value="">Ciudad</option>
                                     </select>
                                 </div>
                             </div>
