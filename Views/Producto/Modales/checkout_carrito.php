@@ -356,7 +356,7 @@
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
                                         name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
-                            </div>
+                            </div> 
                             <!-- Fin Nombre y apellidos -->
 
                             <!-- Teléfono -->
