@@ -30,7 +30,7 @@
     }
 
     .navbar-custom .navbar-brand img {
-        height: 100%;
+        height: 60px;
         width: auto;
     }
 
