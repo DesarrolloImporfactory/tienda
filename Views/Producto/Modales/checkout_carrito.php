@@ -5,10 +5,7 @@
         flex-direction: column;
         /* Asegura que el contenido fluya de arriba hacia abajo */
     }
-    .input-group, .form-control, .div_ciudad{
-        width: 350px !important;
-        justify-content: space-between;
-    }
+
     .edit-section {
         width: 100%;
         /* Ocupa todo el ancho disponible */
@@ -357,7 +354,7 @@
                             <!--  código de descuento -->
 
                             <!-- Nombre y apellidos -->
-                            <div class="form-group d-flex mb-3" id="nombresApellidosPreview">
+                            <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
@@ -369,7 +366,7 @@
                             <!-- Fin Nombre y apellidos -->
 
                             <!-- Teléfono -->
-                            <div class="form-group d-flex mb-3" id="telefonoPreview">
+                            <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
@@ -381,7 +378,7 @@
                             <!-- Fin Teléfono -->
 
                             <!-- Calle Principal -->
-                            <div class="form-group d-flex mb-3" id="calle_principalPreview">
+                            <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
@@ -393,7 +390,7 @@
                             <!-- Fin Calle Principal -->
 
                             <!-- Calle Secundaria -->
-                            <div class="form-group d-flex mb-3" id="calle_secundariaPreview">
+                            <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
@@ -405,7 +402,7 @@
                             <!-- Fin Calle Secundaria -->
 
                             <!-- Barrio o Referencia -->
-                            <div class="form-group d-flex mb-3" id="barrio_referenciaPreview">
+                            <div class="form-group mb-3" id="barrio_referenciaPreview">
                                 <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
                                     Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
@@ -418,7 +415,7 @@
                             <!-- Fin Barrio o Referencia -->
 
                             <!-- Provincia -->
-                            <div class="form-group d-flex mb-3" id="provinciaPreview">
+                            <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
                                 <select class="form-control" id="provinica" name="provinica">
                                     <option value="">Provincia</option>
@@ -427,7 +424,7 @@
                             <!-- Fin Provincia -->
 
                             <!-- Ciudad -->
-                            <div class="form-group d-flex mb-3" id="ciudadPreview">
+                            <div class="form-group mb-3" id="ciudadPreview">
                                 <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
                                 <div id="div_ciudad">
                                     <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
@@ -438,7 +435,7 @@
                             <!-- Fin Ciudad -->
 
                             <!-- Comentario -->
-                            <div class="form-group d-flex mb-3" id="comentarioPreview">
+                            <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
