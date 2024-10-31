@@ -256,10 +256,10 @@
                         var productItem = `
                         <div class="item">
                         <div class="grid-container">
-                        <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                        <div class="card rounded shadow">
                         <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -50px">
                         <a href="producto?id=${producto.id_producto_tienda}">
-                        <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 70%; height: 70%; margin-top: 10px;">
+                        <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
                         </a>
                         </div>
                         <div class="card-body d-flex flex-column" style="margin-top: 1rem;">
