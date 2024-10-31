@@ -282,13 +282,13 @@
                                         <div class="d-flex flex-row">
                                             <div>
                                                 <span class="texto_precio me-3 fs-4">
-                                                    <strong>$ ${number_format(precioEspecial, 2)}</strong>
+                                                    <p>$ ${number_format(precioEspecial, 2)}</p>
                                                 </span>
                                             </div>
                                             ${precioNormal > 0 ? `
                                             <div>
-                                                <span class="tachado" style="font-size: 12px; padding-right: 10px;">
-                                                    <strong>$ ${number_format(precioNormal, 2)}</strong>
+                                                <span class="tachado fs-4">
+                                                    <p>$ ${number_format(precioNormal, 2)}</p>
                                                 </span>
                                             </div>
                                             
