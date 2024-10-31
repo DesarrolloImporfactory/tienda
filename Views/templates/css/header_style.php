@@ -279,6 +279,12 @@
     }
 
     /* Owl Carousel Customizations */
+
+    .owl-carousel .owl-item img{
+        object-fit: contain;
+        height: 100%;
+    }
+
     .owl-carousel .owl-nav {
         position: absolute;
         top: 50%;
@@ -326,8 +332,7 @@
     }
 
     .img-container {
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
+        height: 250px;
     }
 
     .card-body {
