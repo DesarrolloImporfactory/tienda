@@ -254,7 +254,7 @@
     }
 
     .testimonios-image {
-        background-size: cover;
+        background-size: cover; 
         background-position: center;
         width: 100px;
         height: 100px;
