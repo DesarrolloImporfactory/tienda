@@ -301,11 +301,6 @@
     .card {
         margin: auto;
     }
-
-    @media (max-width: 768px) {
-        
-    }
-
     .card h5 {
         font-size: 1rem !important;
         color: #000 !important;
@@ -370,10 +365,6 @@
         line-height: 1.5;
         border-radius: 0.375rem;
         transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-
-    .item {
-        padding: 15px;
     }
 
     .carousel-item {
