@@ -466,6 +466,7 @@
         right: 30px;
         text-decoration: none;
         z-index: 100;
+        padding: 10px;
     }
 
     .whatsapp-float:hover {
