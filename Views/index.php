@@ -261,7 +261,7 @@
                                     <div class="card rounded shadow" >
                                         <div class="img-container position-relative">
                                             ${precioNormal > 0 ? `
-                                            <div class="px-3 py-2 position-absolute bg-red" style="top: 20px; right: 0px;">
+                                            <div class="px-3 py-1 rounded-start position-absolute bg-primary" style="top: 20px; right: 0px;">
                                                 <span class="ahorro"><i class="bx bxs-purchase-tag"></i>
                                                     <strong>AHORRA UN ${number_format(ahorro)}%</strong>
                                                 </span>
