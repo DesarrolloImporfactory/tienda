@@ -462,8 +462,8 @@
     /* Botón flotante para WhatsApp */
     .whatsapp-float {
         position: fixed;
-        bottom: 40px;
-        right: 40px;
+        bottom: 30px;
+        right: 30px;
         text-decoration: none;
         z-index: 100;
     }
