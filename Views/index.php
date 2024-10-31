@@ -273,14 +273,14 @@
                                             </a>
                                         </div>
                                         <div class="card-body card-body-proDes d-flex flex-column" >
-                                            <p class="card-text flex-grow-1 mt-4" >
+                                            <p class="card-text flex-grow-1 mt-4 fs-5" >
                                                 <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none;" class="text-dark">
                                                     <strong>${producto.nombre_producto_tienda}</strong>
                                                 </a>
                                             </p>
                                         <div class="product-footer mb-2">
                                         <div class="d-flex flex-row">
-                                                <span class="texto_precio me-3 fs-5">
+                                                <span class="texto_precio me-2 fs-5">
                                                     <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
                                                 </span>
                                             ${precioNormal > 0 ? `
