@@ -259,7 +259,15 @@
                             <div class="item">
                                 <div class="grid-container">
                                     <div class="card rounded shadow" >
-                                        <div class="img-container">
+                                        <div class="img-container position-relative">
+                                            ${precioNormal > 0 ? `
+                                            <div class="px-3 py-2 posicion-absolute bg-red" style="top: 20px; right: 0px;">
+                                                <span class="ahorro"><i class="bx bxs-purchase-tag"></i>
+                                                    <strong>AHORRA UN ${number_format(ahorro)}%</strong>
+                                                </span>
+                                            </div>
+                                             ` : ''}
+
                                             <a href="producto?id=${producto.id_producto_tienda}">
                                                 <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
                                             </a>
@@ -283,11 +291,7 @@
                                                     <strong>$ ${number_format(precioNormal, 2)}</strong>
                                                 </span>
                                             </div>
-                                            <div class="px-2" style="background-color: #4464ec; color:white; border-radius: 0.3rem; max-width: 70%;">
-                                                <span class="ahorro"><i class="bx bxs-purchase-tag"></i>
-                                                    <strong>AHORRA UN ${number_format(ahorro)}%</strong>
-                                                </span>
-                                            </div>
+                                            
                                             ` : ''}
                                         </div>
                                     </div>

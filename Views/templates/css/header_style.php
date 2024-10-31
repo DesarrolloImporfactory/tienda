@@ -281,7 +281,7 @@
     /* Owl Carousel Customizations */
 
     .owl-carousel .owl-item img{
-        object-fit: contain;
+        object-fit: cover;
         height: 100%;
     }
 
