@@ -281,13 +281,13 @@
                                         <div class="product-footer mb-2">
                                         <div class="d-flex flex-row">
                                             <div>
-                                                <span class="texto_precio me-3 fs-4">
+                                                <span class="texto_precio me-3 fs-5">
                                                     <p>$ ${number_format(precioEspecial, 2)}</p>
                                                 </span>
                                             </div>
                                             ${precioNormal > 0 ? `
                                             <div>
-                                                <span class="tachado fs-4">
+                                                <span class="tachado fs-6">
                                                     <p>$ ${number_format(precioNormal, 2)}</p>
                                                 </span>
                                             </div> 
