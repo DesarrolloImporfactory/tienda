@@ -299,14 +299,11 @@
     }
 
     .card {
-        width: 80%;
         margin: auto;
     }
 
     @media (max-width: 768px) {
-        .card {
-            width: 100%;
-        }
+        
     }
 
     .card h5 {
