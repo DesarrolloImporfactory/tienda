@@ -254,7 +254,46 @@
                         }
                         image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
                         var productItem = `
-                            
+                            <div class="item">
+                                <div class="grid-container">
+                                    <div class="card rounded shadow">
+                                        <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -50px">
+                                            <a href="producto?id=${producto.id_producto_tienda}">
+                                                <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
+                                            </a>
+                                        </div>
+                                        <div class="card-body d-flex flex-column" style="margin-top: 1rem;">
+                                            <p class="card-text flex-grow-1 mt-4" style="margin-top: 1rem;">
+                                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                                    <strong>${producto.nombre_producto_tienda}</strong>
+                                                </a>
+                                            </p>
+                                        <div class="product-footer mb-2">
+                                    <div class="d-flex flex-row">
+                                            <div>
+                                                <span style="font-size: 12px; padding-right: 10px;" class="texto_precio">
+                                                    <strong>$ ${number_format(precioEspecial, 2)}</strong>
+                                                </span>
+                                            </div>
+                                            ${precioNormal > 0 ? `
+                                            <div>
+                                                <span class="tachado" style="font-size: 12px; padding-right: 10px;">
+                                                    <strong>$ ${number_format(precioNormal, 2)}</strong>
+                                                </span>
+                                            </div>
+                                            <div class="px-2" style="background-color: #4464ec; color:white; border-radius: 0.3rem; max-width: 70%;">
+                                                <span class="ahorro"><i class="bx bxs-purchase-tag"></i>
+                                                    <strong>AHORRA UN ${number_format(ahorro)}%</strong>
+                                                </span>
+                                            </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                    <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                         `;
 
                         // Agregar el producto al carrusel
