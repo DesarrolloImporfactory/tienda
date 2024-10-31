@@ -16,12 +16,16 @@
         /* Ícono de hamburguesa */
         font-size: 24px;
         /* Tamaño del ícono */
-        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        color:
+            <?php echo COLOR_TEXTO_CABECERA; ?>
+        ;
         /* Cambiar a tu color preferido */
     }
 
     .navbar-custom {
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color:
+            <?php echo COLOR_BACKGROUND; ?>
+        ;
         /* Ajusta el color según sea necesario */
     }
 
@@ -93,7 +97,9 @@
     /* Arriba */
     .marquee-containerArriba {
         overflow: hidden;
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color:
+            <?php echo COLOR_BACKGROUND; ?>
+        ;
         color: white;
         width: 100%;
         height: 40px;
@@ -127,7 +133,9 @@
     /* Abajo */
     .marquee-containerAbajo {
         overflow: hidden;
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color:
+            <?php echo COLOR_BACKGROUND; ?>
+        ;
         color: white;
         width: 100%;
         height: 40px;
@@ -255,7 +263,7 @@
     }
 
     .testimonios-image {
-        background-size: cover; 
+        background-size: cover;
         background-position: center;
         width: 100px;
         height: 100px;
@@ -302,6 +310,7 @@
     .card {
         margin: auto;
     }
+
     .card h5 {
         font-size: 1rem !important;
         color: #000 !important;
@@ -395,8 +404,10 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */ ?> !important;
-        opacity: <?php /* echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') */ ?> !important;
+        background-color:
+            <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */ ?> !important;
+        opacity:
+            <?php /* echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') */ ?> !important;
     }
 
     .carousel-caption {
@@ -422,8 +433,17 @@
     }
 
     .texto_precio {
-        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
+        color:
+            <?php echo COLOR_TEXTO_PRECIO; ?>
         ;
+        ;
+    }
+
+    .card-body-proDes a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
     }
 
     .card-title {
@@ -671,8 +691,12 @@
     }
 
     .texto_boton {
-        color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
-        background-color: <?php echo COLOR_BOTONES; ?> !important;
+        color:
+            <?php echo COLOR_TEXTO_BOTON; ?>
+            !important;
+        background-color:
+            <?php echo COLOR_BOTONES; ?>
+            !important;
     }
 
     /* fin css faltante */
