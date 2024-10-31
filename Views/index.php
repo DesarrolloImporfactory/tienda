@@ -218,8 +218,8 @@
             },
             nav: true,
             navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
+                '<i class="fas fa-chevron-left fs-2"></i>',
+                '<i class="fas fa-chevron-right fs-2"></i>'
             ]
         });
 
@@ -408,8 +408,8 @@
             },
             nav: true,
             navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
+                '<i class="fas fa-chevron-left fs-2"></i>',
+                '<i class="fas fa-chevron-right fs-2"></i>'
             ]
         });
 
