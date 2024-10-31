@@ -79,9 +79,8 @@
     <!-- Fin Testimonios -->
 
     <!-- boton whatsapp -->
-    <i class="bi bi-whatsapp"></i>
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float" target="_blank"><i
-            class="bx bxl-whatsapp-square ws_flotante"></i></a>
+    
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float bg-danger" target="_blank"><i class="bi bi-whatsapp rounded p-3 fs-3"></i></a>
     <!-- Fin boton whatsapp-->
 
 </main>

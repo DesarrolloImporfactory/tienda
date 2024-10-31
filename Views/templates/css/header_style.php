@@ -280,7 +280,7 @@
 
     /* Owl Carousel Customizations */
 
-    .owl-carousel .owl-item img{
+    .owl-carousel .owl-item img {
         object-fit: cover;
         height: 100%;
     }
@@ -462,23 +462,10 @@
     /* Botón flotante para WhatsApp */
     .whatsapp-float {
         position: fixed;
-        /* Posición fija en la pantalla */
-        width: auto;
-        /* Ancho automático */
         bottom: 40px;
-        /* Distancia desde el fondo de la pantalla */
         right: 40px;
-        /* Distancia desde el lado derecho de la pantalla */
-        background-color: transparent;
-        /* Color del texto */
-        padding: -5px;
-        /* Relleno interno del botón */
-        border-radius: 5px;
-        /* Bordes redondeados */
         text-decoration: none;
-        /* Sin subrayado del texto */
         z-index: 100;
-        /* Asegura que el botón esté sobre otros elementos */
     }
 
     .whatsapp-float:hover {
@@ -495,10 +482,6 @@
         }
     }
 
-    .ws_flotante {
-        color: #24d366;
-        font-size: 4em;
-    }
 
     /* Fin Botón flotante para WhatsApp */
 
