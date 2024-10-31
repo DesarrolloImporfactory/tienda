@@ -290,7 +290,7 @@
                                                 <span class="tachado fs-4">
                                                     <p>$ ${number_format(precioNormal, 2)}</p>
                                                 </span>
-                                            </div>
+                                            </div> 
                                             
                                             ` : ''}
                                         </div>
