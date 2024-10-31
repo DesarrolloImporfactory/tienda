@@ -272,7 +272,7 @@
                                                 <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
                                             </a>
                                         </div>
-                                        <div class="card-body py-1 card-body-proDes d-flex flex-column" >
+                                        <div class="card-body card-body-proDes d-flex flex-column" >
                                             <p class="card-text flex-grow-1 mt-4" >
                                                 <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none;" class="text-dark">
                                                     <strong>${producto.nombre_producto_tienda}</strong>
@@ -284,7 +284,7 @@
                                                     <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
                                                 </span>
                                             ${precioNormal > 0 ? `
-                                                <span class="tachado fs-6">
+                                                <span class="tachado d-flex align-items-center fs-6">
                                                     <p class="mb-0">$ ${number_format(precioNormal, 2)}</p>
                                                 </span>
                                             
