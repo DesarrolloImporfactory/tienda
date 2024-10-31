@@ -280,17 +280,13 @@
                                             </p>
                                         <div class="product-footer mb-2">
                                         <div class="d-flex flex-row">
-                                            <div>
                                                 <span class="texto_precio me-3 fs-5">
                                                     <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
                                                 </span>
-                                            </div>
                                             ${precioNormal > 0 ? `
-                                            <div>
                                                 <span class="tachado fs-6">
                                                     <p class="mb-0">$ ${number_format(precioNormal, 2)}</p>
                                                 </span>
-                                            </div> 
                                             
                                             ` : ''}
                                         </div>
