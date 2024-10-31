@@ -258,9 +258,11 @@
                         var productItem = `
                             <div class="item">
                                 <div class="grid-container">
-                                    <a class="card rounded shadow" href="producto?id=${producto.id_producto_tienda}">
+                                    <div class="card rounded shadow" >
                                         <div class="img-container">
+                                            <a href="producto?id=${producto.id_producto_tienda}">
                                                 <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
+                                            </a>
                                         </div>
                                         <div class="card-body d-flex flex-column" >
                                             <p class="card-text flex-grow-1 mt-4" >
@@ -288,7 +290,7 @@
                                             </div>
                                             ` : ''}
                                         </div>
-                                    </a>
+                                    </div>
                                     <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
                                 </div>
                             </div>
