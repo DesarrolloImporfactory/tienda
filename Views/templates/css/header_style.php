@@ -674,10 +674,6 @@
         color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
         background-color: <?php echo COLOR_BOTONES; ?> !important;
     }
-    
-    .item{
-        padding: 0px !important;
-    }
 
     /* fin css faltante */
 

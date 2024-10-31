@@ -39,7 +39,6 @@
     <!-- destacados -->
     <div class="container mt-4">
         <h1 class="text-center">Destacados</h1>
-        <br>
         <!-- Productos -->
         <div class="owl-carousel owl-theme mb-5" id="productos-carousel">
             <!-- Los productos se cargarán aquí dinámicamente -->
@@ -257,14 +256,14 @@
                             <div class="item">
                                 <div class="grid-container">
                                     <div class="card rounded shadow">
-                                        <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -50px">
+                                        <div class="img-container">
                                             <a href="producto?id=${producto.id_producto_tienda}">
                                                 <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
                                             </a>
                                         </div>
-                                        <div class="card-body d-flex flex-column" style="margin-top: 1rem;">
-                                            <p class="card-text flex-grow-1 mt-4" style="margin-top: 1rem;">
-                                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
+                                        <div class="card-body d-flex flex-column" >
+                                            <p class="card-text flex-grow-1 mt-4" >
+                                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; class="text-dark">
                                                     <strong>${producto.nombre_producto_tienda}</strong>
                                                 </a>
                                             </p>
