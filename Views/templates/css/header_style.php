@@ -686,7 +686,7 @@
     }
 
     .ahorro {
-        font-size: 10px;
+        font-size: 13px;
     }
 
     @media (max-width: 768px) {

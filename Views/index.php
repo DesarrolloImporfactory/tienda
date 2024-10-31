@@ -261,8 +261,8 @@
                                     <div class="card rounded shadow" >
                                         <div class="img-container position-relative">
                                             ${precioNormal > 0 ? `
-                                            <div class="px-3 py-1 text-white rounded-start position-absolute bg-primary" style="top: 20px; right: 0px;">
-                                                <span class="ahorro"><i class="bi bi-tag-fill me-2" ></i>
+                                            <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start" style="top: 20px; right: 0px;">
+                                                <span class="ahorro"><i class="bi bi-tag-fill me-1" ></i>
                                                     <strong>AHORRA UN ${number_format(ahorro)}%</strong>
                                                 </span>
                                             </div>
@@ -281,7 +281,7 @@
                                         <div class="product-footer mb-2">
                                         <div class="d-flex flex-row">
                                             <div>
-                                                <span style="font-size: 12px; padding-right: 10px;" class="texto_precio">
+                                                <span class="texto_precio me-3 fs-4">
                                                     <strong>$ ${number_format(precioEspecial, 2)}</strong>
                                                 </span>
                                             </div>
