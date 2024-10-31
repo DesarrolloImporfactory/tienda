@@ -5,11 +5,13 @@
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators"></div>
         <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -78,13 +80,14 @@
 
     <!-- boton whatsapp -->
     <i class="bi bi-whatsapp"></i>
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float" target="_blank"><i class="bx bxl-whatsapp-square ws_flotante"></i></a>
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float" target="_blank"><i
+            class="bx bxl-whatsapp-square ws_flotante"></i></a>
     <!-- Fin boton whatsapp-->
 
 </main>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         /* Slider */
         let formDataSlider = new FormData();
         formDataSlider.append("id_plataforma", ID_PLATAFORMA);
@@ -95,12 +98,12 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
 
                 let indicators = '';
                 let inner = '';
                 let alineacion = "";
-                $.each(data, function(index, banner) {
+                $.each(data, function (index, banner) {
 
                     image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     if (banner.alineacion == 1) {
@@ -126,7 +129,7 @@
                 $('.carousel-indicators').html(indicators);
                 $('.carousel-inner').html(inner);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Error fetching banner data', error);
             }
         });
@@ -141,7 +144,7 @@
             data: formDataCategoria,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 let categorias = JSON.parse(response); // Asegúrate de que la respuesta sea un objeto JSON
 
                 // Verifica si la respuesta es un array o un objeto
@@ -188,7 +191,7 @@
                     ]
                 });
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Error al consumir la API:", error);
             }
         });
@@ -232,7 +235,7 @@
             data: formDataProductos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var productos = JSON.parse(response);
                 } catch (e) {
@@ -243,7 +246,7 @@
                 if (productos && Array.isArray(productos)) {
                     var $carousel = $("#productos-carousel");
                     let image_path = "";
-                    productos.forEach(function(producto) {
+                    productos.forEach(function (producto) {
                         var precioEspecial = parseFloat(producto.pvp_tienda);
                         var precioNormal = parseFloat(producto.pref_tienda);
 
@@ -255,11 +258,9 @@
                         var productItem = `
                             <div class="item">
                                 <div class="grid-container">
-                                    <div class="card rounded shadow">
+                                    <a class="card rounded shadow" href="producto?id=${producto.id_producto_tienda}">
                                         <div class="img-container">
-                                            <a href="producto?id=${producto.id_producto_tienda}">
                                                 <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
-                                            </a>
                                         </div>
                                         <div class="card-body d-flex flex-column" >
                                             <p class="card-text flex-grow-1 mt-4" >
@@ -268,7 +269,7 @@
                                                 </a>
                                             </p>
                                         <div class="product-footer mb-2">
-                                    <div class="d-flex flex-row">
+                                        <div class="d-flex flex-row">
                                             <div>
                                                 <span style="font-size: 12px; padding-right: 10px;" class="texto_precio">
                                                     <strong>$ ${number_format(precioEspecial, 2)}</strong>
@@ -287,7 +288,7 @@
                                             </div>
                                             ` : ''}
                                         </div>
-                                    </div>
+                                    </a>
                                     <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
                                 </div>
                             </div>
@@ -305,7 +306,7 @@
                     console.error('La respuesta no contiene productos válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los productos destacados:', error);
             }
         });
@@ -340,7 +341,7 @@
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var iconos = JSON.parse(response);
                 } catch (e) {
@@ -351,7 +352,7 @@
                 if (iconos && Array.isArray(iconos)) {
                     var $iconosContainer = $("#iconos-container");
 
-                    iconos.forEach(function(icono) {
+                    iconos.forEach(function (icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
                         var enlace_icon = icono.enlace_icon || '';
@@ -384,7 +385,7 @@
                     console.error('La respuesta no contiene iconos válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los iconos:', error);
             }
         });
@@ -422,7 +423,7 @@
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var testimonios = JSON.parse(response);
                 } catch (e) {
@@ -433,7 +434,7 @@
                 if (testimonios && Array.isArray(testimonios)) {
                     var $carousel = $("#testimonios-carousel");
 
-                    testimonios.forEach(function(testimonio) {
+                    testimonios.forEach(function (testimonio) {
                         var id_testimonio = testimonio.id_testimonio;
                         var nombre_testimonio = testimonio.nombre || '';
                         var texto_testimonio = testimonio.testimonio || '';
@@ -460,7 +461,7 @@
                     console.error('La respuesta no contiene testimonios válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los testimonios:', error);
             }
         });
@@ -477,7 +478,7 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 const ofertas = response;
 
                 if (Array.isArray(ofertas)) {
@@ -498,7 +499,7 @@
                     console.error('La respuesta no es un array:', ofertas);
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Error al obtener las ofertas:', error);
             }
         });
