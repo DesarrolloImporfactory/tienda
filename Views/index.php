@@ -29,7 +29,7 @@
     <!-- categorias -->
     <section class="container">
         <h1 class="text-center display-4 mb-4">Categorías</h1>
-        <div class="caja">
+        <div class="caja border shadow rounded">
             <div class="owl-carousel owl-theme" id="categories-container">
                 <!-- Aquí se insertarán las categorías dinámicamente -->
             </div>
@@ -68,7 +68,7 @@
     <!-- Testimonios -->
     <section class="container testimonios">
         <h1 class="text-center display-4 mb-4">Testimonios</h1>
-        <div class="caja">
+        <div class="caja rounded border shadow">
             <div class="owl-carousel owl-theme" id="testimonios-carousel">
                 <!-- Los testimonios se cargarán aquí dinámicamente -->
             </div>

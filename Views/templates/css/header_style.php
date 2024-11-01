@@ -223,11 +223,6 @@
     .caja {
         padding-top: 40px !important;
         padding-bottom: 90px !important;
-        border-radius: 25px;
-        -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.23);
-        -moz-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        background-color: white;
     }
 
     .degraded-line {
