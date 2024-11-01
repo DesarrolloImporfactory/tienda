@@ -28,7 +28,7 @@
 
     <!-- categorias -->
     <section class="container">
-        <h1 style="text-align: center">Categorías</h1>
+        <h1 class="text-center display-4 mb-4">Categorías</h1>
         <br>
         <div class="caja">
             <div class="owl-carousel owl-theme" id="categories-container">
@@ -40,7 +40,7 @@
     <div class="degraded-line"></div>
     <!-- destacados -->
     <section class="container" >
-        <h1 class="text-center">Destacados</h1>
+        <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
             <!-- Los productos se cargarán aquí dinámicamente -->
@@ -68,8 +68,7 @@
 
     <!-- Testimonios -->
     <section class="container testimonios">
-        <h1 style="text-align: center">Testimonios</h1>
-        <br>
+        <h1 class="text-center display-4 mb-4">Testimonios</h1>
         <div class="caja">
             <div class="owl-carousel owl-theme" id="testimonios-carousel">
                 <!-- Los testimonios se cargarán aquí dinámicamente -->
