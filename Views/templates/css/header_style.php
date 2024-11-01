@@ -315,11 +315,11 @@
     }
 
     .owl-carousel .owl-nav button.owl-prev {
-        left: -2px;
+        right: 80%;
     }
 
     .owl-carousel .owl-nav button.owl-next {
-        right: -2px;
+        left: 80%;
     }
 
     .owl-carousel .owl-nav button {

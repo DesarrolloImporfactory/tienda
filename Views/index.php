@@ -30,7 +30,7 @@
     <section class="container">
         <h1 style="text-align: center">Categorías</h1>
         <br>
-        <div class="caja" style="margin-bottom: 50px;">
+        <div class="caja" style="padding-bottom: 90px;">
             <div class="owl-carousel owl-theme" id="categories-container">
                 <!-- Aquí se insertarán las categorías dinámicamente -->
             </div>
@@ -70,7 +70,7 @@
     <section class="container testimonios">
         <h1 style="text-align: center">Testimonios</h1>
         <br>
-        <div class="caja" style="margin-bottom: 50px;">
+        <div class="caja" style="padding-bottom: 90px;">
             <div class="owl-carousel owl-theme" id="testimonios-carousel">
                 <!-- Los testimonios se cargarán aquí dinámicamente -->
             </div>
