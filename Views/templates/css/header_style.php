@@ -273,9 +273,8 @@
 .testimonios-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Acomoda el contenido verticalmente */
     height: 100%; /* Asegura que el contenedor ocupe todo el alto */
-    min-height: 300px; /* Altura mínima fija para una apariencia uniforme */
+    min-height: 270px; /* Altura mínima fija para una apariencia uniforme */
     padding: 20px; /* Espaciado interno para un diseño limpio */
     box-sizing: border-box;
 }
