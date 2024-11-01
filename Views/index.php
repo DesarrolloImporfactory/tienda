@@ -78,7 +78,7 @@
 
     <!-- boton whatsapp -->
     
-    <a  href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+    <a  href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
     <!-- Fin boton whatsapp-->
 
 </main>

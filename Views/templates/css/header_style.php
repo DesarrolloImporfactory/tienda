@@ -485,7 +485,6 @@
         right: 40px;
         background-color: transparent;
         padding: -5px;
-        border-radius: 5px;
         text-decoration: none;
         z-index: 100;
         padding: 10px;

@@ -63,7 +63,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4 rounded-3" alt="">
+                        <img style="height: 200px; object-fit: contain;" src="" class="card-img-top my-4 rounded-3"
+                            alt="">
                         <p class="descripcionModal"></p>
                         <p class="fw-bold">Precio $ <span class="PrecioModal"></span></p>
 
@@ -297,11 +298,11 @@
                 $('#parallax-button').css('background-color', plantilla.color_boton);
                 $('#parallax-button').text(plantilla.boton_parallax_texto || 'Botón');
 
-                 if (plantilla.fondo_pagina) {
-                     $('#inicio').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
-                     $('#inicio').css('background-size', 'cover');
-                     $('#inicio').css('background-position', 'center');
-                 }
+                if (plantilla.fondo_pagina) {
+                    $('#inicio').css('background-image', `url(${SERVERURL + plantilla.fondo_pagina})`);
+                    $('#inicio').css('background-size', 'cover');
+                    $('#inicio').css('background-position', 'center');
+                }
 
                 if (plantilla.color_texto) {
                     $('#parallax-title').css('color', plantilla.color_texto);
@@ -463,62 +464,81 @@
             profesionales = profesionales.slice(0, 8);
 
             profesionales.forEach((profesional) => {
+                const imagenUrl = obtenerURLImagen(profesional.imagen, SERVERURL) ||
+                    'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+
                 profesionalesHTML += `
-                    <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
-                        <img style="height: 200px; object-fit: cover;" 
-                            src="${profesional.imagen ? SERVERURL + profesional.imagen : 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'}" 
-                            class="card-img-top" 
-                            alt="${profesional.nombre}"
-                            onerror="this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';"
-                        >
-                        <div class="card-body">
-                            <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
-                            <hr>
-                            <p class="card-text descripcionCardProfesional">${profesional.descripcion || 'Sin descripción disponible'}</p>
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${profesional.id_profesional}">Más sobre el profesional</button>
-                        </div>
+                <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
+                    <img style="height: 200px; object-fit: cover;" 
+                        src="${imagenUrl}" 
+                        class="card-img-top" 
+                        alt="${profesional.nombre}"
+                        onerror="this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';"
+                    >
+                    <div class="card-body">
+                        <h5 class="card-title">${profesional.titulo} ${profesional.nombre}</h5>
+                        <hr>
+                        <p class="card-text descripcionCardProfesional">${profesional.descripcion || 'Sin descripción disponible'}</p>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalDortores" data-id="${profesional.id_profesional}">Más sobre el profesional</button>
                     </div>
-                `;
+                </div>
+            `;
             });
 
-
-            $('#testimoniosContainer').html(profesionalesHTML);
-
-            // Configuración del modal para mostrar detalles de un profesional
-            $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
-                let idProfesional = $(this).data('id');
-                let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
-
-                $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
-                $('.modal-body img').attr('src', profesionalSeleccionado.imagen ? SERVERURL + profesionalSeleccionado.imagen : 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
-                $('.modal-body img').on('error', function () {
-                    $(this).attr('src', 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
-                });
-                $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
-                $('.modal-body .tituloModalProfesional').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre || 'Sin descripción disponible');
-                $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
-
-                // Agregar iconos de redes sociales en el pie del modal
-                let redesHTML = '';
-                if (profesionalSeleccionado.facebook) {
-                    redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
-                }
-                if (profesionalSeleccionado.linkedin) {
-                    redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
-                }
-                if (profesionalSeleccionado.instagram) {
-                    redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
-                }
-
-                $('.modal-footer .redesSociales').html(redesHTML);
-            });
-        },
-        error: function (error) {
-            console.log("Error al obtener profesionales: ", error);
+            // Agregar el contenido al contenedor deseado
+            $('#contenedorProfesionales').html(profesionalesHTML);
         }
     });
 
 
+    $('#testimoniosContainer').html(profesionalesHTML);
+
+    // Configuración del modal para mostrar detalles de un profesional
+    $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
+        let idProfesional = $(this).data('id');
+        let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
+
+        $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
+        $('.modal-body img').attr('src', profesionalSeleccionado.imagen ? SERVERURL + profesionalSeleccionado.imagen : 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
+        $('.modal-body img').on('error', function () {
+            $(this).attr('src', 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
+        });
+        $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
+        $('.modal-body .tituloModalProfesional').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre || 'Sin descripción disponible');
+        $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
+
+        // Agregar iconos de redes sociales en el pie del modal
+        let redesHTML = '';
+        if (profesionalSeleccionado.facebook) {
+            redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
+        }
+        if (profesionalSeleccionado.linkedin) {
+            redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
+        }
+        if (profesionalSeleccionado.instagram) {
+            redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
+        }
+
+        $('.modal-footer .redesSociales').html(redesHTML);
+    });
+        },
+    error: function (error) {
+        console.log("Error al obtener profesionales: ", error);
+    }
+    });
+
+    function obtenerURLImagen(imagePath, serverURL) {
+        if (imagePath) {
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                return imagePath;
+            } else {
+                return `${serverURL}${imagePath}`;
+            }
+        } else {
+            console.error("imagePath es null o undefined");
+            return null;
+        }
+    }
     /* Fin Sección profesionales */
 
 </script>
