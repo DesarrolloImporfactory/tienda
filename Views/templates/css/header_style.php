@@ -265,14 +265,21 @@
         color: inherit;
     }
 
-    .testimonios-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    .testimonios .caja .item {
+    display: flex;
+    align-items: stretch; /* Todos los elementos tendrán la misma altura */
+}
 
-        padding: 20px;
-    }
+.testimonios-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Acomoda el contenido verticalmente */
+    height: 100%; /* Asegura que el contenedor ocupe todo el alto */
+    min-height: 300px; /* Altura mínima fija para una apariencia uniforme */
+    padding: 20px; /* Espaciado interno para un diseño limpio */
+    box-sizing: border-box;
+}
+
 
     .testimonios-image {
         background-size: cover;
