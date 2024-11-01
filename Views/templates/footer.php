@@ -19,7 +19,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <h5>Información de contacto</h5>
+                    <h5 class="mb-0">Información de contacto</h5>
+                    <hr class="my-3">
+
                     <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
