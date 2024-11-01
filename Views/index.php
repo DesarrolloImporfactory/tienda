@@ -51,7 +51,7 @@
 
     <!-- Iconos -->
     <section class="container" >
-        <div class="row" id="iconos-container">
+        <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
     </section>
