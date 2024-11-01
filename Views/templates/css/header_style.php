@@ -474,9 +474,6 @@
         margin-bottom: 0.75rem;
     }
 
-    .card-body_icon i {
-        margin-bottom: 15px !important;
-    }
 
     /* Botón flotante para WhatsApp */
     .whatsapp-float {
