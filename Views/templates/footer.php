@@ -1,4 +1,4 @@
-<footer class="py-5">
+<footer class="py-4">
     <div class="footer mb-4">
         <div class="container">
             <div class="row">
@@ -11,11 +11,11 @@
                 </div>
                 <div class="col-md-3">
                     <h5>Síguenos</h5>
-                    <p>
+                    <div class="d-flex flex-column gap-2">
                         <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a><br>
                         <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
                         <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
-                    </p>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <h5>Información de contacto</h5>
