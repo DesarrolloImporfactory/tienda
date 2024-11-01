@@ -19,14 +19,14 @@
                 </div>
                 <div class="col-md-3">
                     <h5>Información de contacto</h5>
-                    <p class="mb-0"><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
+                    <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>
         </div>
     </div>
     <div class="footer copyright text-center">
-        <p>&copy; 2024 Construye tu tienda online con IMPORSUIT S.A. | Todos los derechos reservados.</p>
+        <p class="mb-0">&copy; 2024 Construye tu tienda online con IMPORSUIT S.A. | Todos los derechos reservados.</p>
     </div>
 </footer>
 <!-- librerias adiconale -->

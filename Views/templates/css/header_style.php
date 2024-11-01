@@ -188,8 +188,10 @@
     /* Fin header */
 
     /* FOOTER TEMPORAL */
-    .footer {
+    footer{
         background-color: #f8f9fa;
+    }
+    .footer {
         color: #6c757d;
     }
 
