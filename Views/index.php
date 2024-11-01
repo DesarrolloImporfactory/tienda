@@ -39,7 +39,7 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <section class="container >
+    <section class="container" >
         <h1 class="text-center">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
