@@ -366,8 +366,8 @@
                                 <a ${enlaceHTML}>
                                     <div class="card card_icon text-center">
                                         <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
-                                            <i class="fa ${icon_text} fa-2x me-4" style="color: ${icono.color_icono} !important"></i>
-                                            <div>
+                                            <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
+                                            <div class="text-end">
                                                 <h5 class="card-title card-title_icon">${texto}</h5>
                                                 <p class="card-text card-text_icon" style="font-size: 12px;">${subtexto_icon}</p>
                                             </div>
