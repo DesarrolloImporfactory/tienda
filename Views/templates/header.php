@@ -172,7 +172,7 @@ $primera_seccion = obtenerPrimeraSeccion();
 <?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-1 py-md-3">
         <div class="container">
             <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
                 <img class="rounded-3" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
