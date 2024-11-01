@@ -266,26 +266,28 @@
     }
 
    
-
     .testimonios-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: fit-content;
+    gap: 20px; /* Separación entre testimonios */
     padding: 20px;
     box-sizing: border-box;
 }
 
-.testimonios-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch; /* Asegura que todos los elementos tengan la misma altura */
-}
-
-.testimonios-container > div {
-    flex-grow: 1;
+.testimonio-card {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%; /* Asegura que todos tengan la misma altura */
+    padding: 20px;
+    box-sizing: border-box;
+    min-width: 200px; /* Ajusta el ancho mínimo según necesites */
+    flex: 1; /* Permite que cada testimonio crezca de manera uniforme */
 }
+
 
 
     .testimonios-image {
