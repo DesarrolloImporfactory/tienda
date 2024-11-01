@@ -1,6 +1,6 @@
 <footer class="pt-5 shadow border-top">
     <div class="footer pb-4 border-bottom">
-        <div class="container px-3 px-md-0">
+        <div class="container">
             <div class="row">
                 <div class="col-md-3">
                     <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
