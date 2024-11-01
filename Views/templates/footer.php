@@ -1,10 +1,10 @@
-<footer class="py-4">
+<footer class="py-5">
     <div class="footer mb-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
                     <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
-                    <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" width="40px" height="40px">
+                    <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="40px">
                 </div>
                 <div class="col-md-3">
 
