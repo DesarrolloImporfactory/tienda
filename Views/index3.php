@@ -376,18 +376,7 @@
     /* Sección productos destacados */
     let formDataProductos = new FormData();
     formDataProductos.append("id_plataforma", ID_PLATAFORMA);
-    function obtenerURLImagen(imagePath, serverURL) {
-        if (imagePath) {
-            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-                return imagePath;
-            } else {
-                return `${serverURL}${imagePath}`;
-            }
-        } else {
-            console.error("imagePath es null o undefined");
-            return null;
-        }
-    }
+
     $.ajax({
         url: SERVERURL + 'Tienda/destacadostienda',
         type: 'POST',
@@ -458,6 +447,20 @@
     /* Fin productos destacados */
 
     /* Sección profesionales */
+    // Función para verificar o construir la URL completa de una imagen
+    function obtenerURLImagen(imagePath, serverURL) {
+        if (imagePath) {
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                return imagePath;
+            } else {
+                return `${serverURL}${imagePath}`;
+            }
+        } else {
+            console.error("imagePath es null o undefined");
+            return null;
+        }
+    }
+
     let formDataProfesionales = new FormData();
     formDataProfesionales.append("id_plataforma", ID_PLATAFORMA);
 
@@ -475,8 +478,7 @@
             profesionales = profesionales.slice(0, 8);
 
             profesionales.forEach((profesional) => {
-                const imagenUrl = obtenerURLImagen(profesional.imagen, SERVERURL) ||
-                    'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+                const imagenUrl = obtenerURLImagen(profesional.imagen, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
                 profesionalesHTML += `
                 <div class="mx-auto card border shadow mb-3" style="width: 18rem;">
@@ -496,49 +498,45 @@
             `;
             });
 
-            // Agregar el contenido al contenedor deseado
-            $('#contenedorProfesionales').html(profesionalesHTML);
-        }
-    });
+            $('#testimoniosContainer').html(profesionalesHTML);
 
+            // Configuración del modal para mostrar detalles de un profesional
+            $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
+                let idProfesional = $(this).data('id');
+                let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
 
-    $('#testimoniosContainer').html(profesionalesHTML);
+                $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
 
-    // Configuración del modal para mostrar detalles de un profesional
-    $('#testimoniosContainer').on('click', 'button[data-bs-toggle="modal"]', function () {
-        let idProfesional = $(this).data('id');
-        let profesionalSeleccionado = profesionales.find(prof => prof.id_profesional == idProfesional);
+                const imagenUrlModal = obtenerURLImagen(profesionalSeleccionado.imagen, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+                $('.modal-body img').attr('src', imagenUrlModal);
+                $('.modal-body img').on('error', function () {
+                    $(this).attr('src', 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
+                });
+                $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
+                $('.modal-body .tituloModalProfesional').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre || 'Sin descripción disponible');
+                $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
 
-        $('#exampleModalLabel').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre);
-        $('.modal-body img').attr('src', profesionalSeleccionado.imagen ? SERVERURL + profesionalSeleccionado.imagen : 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
-        $('.modal-body img').on('error', function () {
-            $(this).attr('src', 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg');
-        });
-        $('.modal-body img').attr('alt', profesionalSeleccionado.nombre);
-        $('.modal-body .tituloModalProfesional').text(profesionalSeleccionado.titulo + ' ' + profesionalSeleccionado.nombre || 'Sin descripción disponible');
-        $('.modal-body .descripcionModal').text(profesionalSeleccionado.descripcion || 'Sin descripción disponible');
+                // Agregar iconos de redes sociales en el pie del modal
+                let redesHTML = '';
+                if (profesionalSeleccionado.facebook) {
+                    redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
+                }
+                if (profesionalSeleccionado.linkedin) {
+                    redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
+                }
+                if (profesionalSeleccionado.instagram) {
+                    redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
+                }
 
-        // Agregar iconos de redes sociales en el pie del modal
-        let redesHTML = '';
-        if (profesionalSeleccionado.facebook) {
-            redesHTML += `<a href="${profesionalSeleccionado.facebook}" target="_blank" class="me-2"><i class="bi bi-facebook"></i></a>`;
-        }
-        if (profesionalSeleccionado.linkedin) {
-            redesHTML += `<a href="${profesionalSeleccionado.linkedin}" target="_blank" class="me-2"><i class="bi bi-linkedin"></i></a>`;
-        }
-        if (profesionalSeleccionado.instagram) {
-            redesHTML += `<a href="${profesionalSeleccionado.instagram}" target="_blank"><i class="bi bi-instagram"></i></a>`;
-        }
-
-        $('.modal-footer .redesSociales').html(redesHTML);
-    });
+                $('.modal-footer .redesSociales').html(redesHTML);
+            });
         },
-    error: function (error) {
-        console.log("Error al obtener profesionales: ", error);
-    }
+        error: function (error) {
+            console.log("Error al obtener profesionales: ", error);
+        }
     });
 
-    
+
     /* Fin Sección profesionales */
 
 </script>
