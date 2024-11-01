@@ -9,7 +9,7 @@
                 <div class="col-md-3">
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 pe-md-4">
                     <h5 class="mb-0">Síguenos</h5> 
                     <hr class="my-3">
                     <div class="d-flex flex-column gap-2">
