@@ -267,13 +267,24 @@
 
    
 
-.testimonios-container {
+    .testimonios-container {
     display: flex;
     flex-direction: column;
-    height: 100%; 
-    min-height: 320px; 
-    padding: 20px; 
+    height: fit-content;
+    padding: 20px;
     box-sizing: border-box;
+}
+
+.testimonios-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch; /* Asegura que todos los elementos tengan la misma altura */
+}
+
+.testimonios-container > div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 
