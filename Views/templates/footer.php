@@ -4,23 +4,23 @@
             <div class="row">
                 <div class="col-md-3">
                     <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
-                    <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="40px">
+                    <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="40px">
                 </div>
                 <div class="col-md-3">
 
                 </div>
-                <div class="col-md-3 pe-md-4">
+                <div class="col-md-3 pe-md-4 mt-4 mt-md-0">
                     <h5 class="mb-0">Síguenos</h5> 
-                    <hr class="my-3">
+                    <hr class="my-2">
                     <div class="d-flex flex-column gap-2">
                         <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
                         <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
                         <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 mt-4 mt-md-0">
                     <h5 class="mb-0">Información de contacto</h5>
-                    <hr class="my-3">
+                    <hr class="my-2">
 
                     <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
