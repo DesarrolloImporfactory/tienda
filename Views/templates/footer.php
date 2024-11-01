@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 mt-5 mt-md-0">
-                    <h5 class="mb-0">Información de contacto</h5>
+                    <h5 class="mb-0 text-nowrap">Información de contacto</h5>
                     <hr class="my-2">
 
                     <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
