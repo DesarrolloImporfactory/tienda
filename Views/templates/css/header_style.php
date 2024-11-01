@@ -287,7 +287,7 @@
 
     .owl-carousel .owl-nav {
         position: absolute;
-        bottom: 25px;
+        bottom: -35px;
         transform: translateY(-50%);
         width: 100%;
     }
