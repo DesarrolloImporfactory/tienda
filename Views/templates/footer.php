@@ -10,7 +10,8 @@
 
                 </div>
                 <div class="col-md-3">
-                    <h5 class="mb-0 pb-3 border-bottom">Síguenos</h5>
+                    <h5 class="mb-0">Síguenos</h5>
+                    <hr class="my-3">
                     <div class="d-flex flex-column gap-2">
                         <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
                         <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
