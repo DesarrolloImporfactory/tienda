@@ -49,7 +49,7 @@
 
     @media (max-width: 768px) {
         .navbar-custom .navbar-brand img {
-            height: 35px;
+            height: 45px;
         }
     }
 
