@@ -1,4 +1,4 @@
-<footer class="pt-5">
+<footer class="pt-5 shadow">
     <div class="footer pb-4 border-bottom">
         <div class="container">
             <div class="row">
@@ -10,7 +10,7 @@
 
                 </div>
                 <div class="col-md-3">
-                    <h5>Síguenos</h5>
+                    <h5 class="mb-0 pb-3 border-bottom">Síguenos</h5>
                     <div class="d-flex flex-column gap-2">
                         <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
                         <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div class="footer py-5 copyright text-center">
+    <div class="footer py-4 copyright text-center">
         <p class="mb-0">&copy; 2024 Construye tu tienda online con IMPORSUIT S.A. | Todos los derechos reservados.</p>
     </div>
 </footer>
