@@ -375,12 +375,7 @@
         align-items: center;
     }
 
-    .bg-primary.text-white {
-        background-color: #0d6efd !important;
-        color: #fff !important;
-        padding: 5px;
-        border-radius: 5px;
-    }
+
 
     .btn-primary {
         background-color: #0d6efd !important;
