@@ -27,7 +27,7 @@
     <!-- fin animacion -->
 
     <!-- categorias -->
-    <div class="container mt-4">
+    <section class="container">
         <h1 style="text-align: center">Categorías</h1>
         <br>
         <div class="caja" style="margin-bottom: 50px;">
@@ -35,27 +35,27 @@
                 <!-- Aquí se insertarán las categorías dinámicamente -->
             </div>
         </div>
-    </div>
+    </section>
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <div class="container mt-4" style="margin-bottom: 100px;">
+    <section class="container >
         <h1 class="text-center">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
             <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
         <!-- Fin Productos -->
-    </div>
+    </section>
 
     <!-- fin destacados -->
 
     <!-- Iconos -->
-    <div class="container" style="margin-bottom: 20px;">
+    <section class="container" >
         <div class="row" id="iconos-container">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
-    </div>
+    </section>
     <!-- Fin Iconos -->
 
     <!-- animacion -->
@@ -67,7 +67,7 @@
     <!-- fin animacion -->
 
     <!-- Testimonios -->
-    <div class="container mt-4 testimonios">
+    <section class="container testimonios">
         <h1 style="text-align: center">Testimonios</h1>
         <br>
         <div class="caja" style="margin-bottom: 50px;">
@@ -75,7 +75,7 @@
                 <!-- Los testimonios se cargarán aquí dinámicamente -->
             </div>
         </div>
-    </div>
+    </section>
     <!-- Fin Testimonios -->
 
     <!-- boton whatsapp -->

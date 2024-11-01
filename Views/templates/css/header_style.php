@@ -1,4 +1,8 @@
 <style>
+
+    section{
+        margin-bottom: 100px;
+    }
     /* header */
 
     /* Cambiar el color del ícono de la hamburguesa */
@@ -290,6 +294,7 @@
         bottom: -35px;
         transform: translateY(-50%);
         width: 100%;
+        z-index: 100;
     }
 
     .owl-dots {
