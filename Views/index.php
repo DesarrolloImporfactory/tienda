@@ -38,7 +38,7 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <section class="container" >
+    <section class="container">
         <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
@@ -50,7 +50,7 @@
     <!-- fin destacados -->
 
     <!-- Iconos -->
-    <section class="container" >
+    <section class="container">
         <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
@@ -77,8 +77,9 @@
     <!-- Fin Testimonios -->
 
     <!-- boton whatsapp -->
-    
-    <a  href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle"
+        style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
     <!-- Fin boton whatsapp-->
 
 </main>
@@ -438,14 +439,18 @@
                         var image_path = obtenerURLImagen(testimonio.imagen, SERVERURL)
 
                         var testimonioItem = `
-                            <div class="item d-flex flex-column">
-                                <div class="testimonios-container border rounded">
-                                    <div class="testimonios-image shadow border rounded-circle" style="background-image: url('${image_path}');">
-                                    </div>
-                                    <p class="card-text"><strong>${nombre_testimonio}</strong></p>
-                                    <p class="card-text testimonio-text">${texto_testimonio}</p>
-                                </div>
-                            </div>
+                           <div class="caja">
+    <div class="item d-flex flex-column">
+        <div class="testimonios-container border rounded">
+            <div class="testimonios-image shadow border rounded-circle" style="background-image: url('${image_path}');">
+            </div>
+            <p class="card-text"><strong>${nombre_testimonio}</strong></p>
+            <p class="card-text testimonio-text">${texto_testimonio}</p>
+        </div>
+    </div>
+    <!-- Puedes añadir más items aquí -->
+</div>
+
                         `;
 
                         // Agregar el testimonio al carrusel

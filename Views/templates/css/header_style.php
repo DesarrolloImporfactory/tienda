@@ -267,17 +267,23 @@
 
     .testimonios .caja .item {
     display: flex;
-    align-items: stretch; /* Todos los elementos tendrán la misma altura */
+    align-items: stretch; 
 }
-
 .testimonios-container {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Asegura que el contenedor ocupe todo el alto */
-    min-height: 270px; /* Altura mínima fija para una apariencia uniforme */
-    padding: 20px; /* Espaciado interno para un diseño limpio */
+    flex: 1; /* Esto permite que todos los elementos crezcan en conjunto */
+    height: 100%; 
+    min-height: 270px; 
+    padding: 20px; 
     box-sizing: border-box;
 }
+
+.testimonios .caja {
+    display: flex;
+    align-items: stretch; /* Esto asegura que todos los elementos tengan la misma altura */
+}
+
 
 
     .testimonios-image {
