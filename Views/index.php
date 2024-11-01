@@ -365,7 +365,7 @@
                             <div class="col-md-4 icon_responsive">
                                 <a ${enlaceHTML}>
                                     <div class="card card_icon text-center">
-                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center">
+                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" style="max-height: 48.8;">
                                             <i class="fa ${icon_text} fa-2x me-4" style="color: ${icono.color_icono} !important"></i>
                                             <div>
                                                 <h5 class="card-title card-title_icon">${texto}</h5>
