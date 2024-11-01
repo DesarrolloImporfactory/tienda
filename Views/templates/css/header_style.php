@@ -287,9 +287,17 @@
 
     .owl-carousel .owl-nav {
         position: absolute;
-        top: 50%;
+        bottom: 25px;
         transform: translateY(-50%);
         width: 100%;
+    }
+
+    .owl-dots {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        margin: auto;
     }
 
     .owl-carousel .owl-nav button.owl-prev,

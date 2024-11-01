@@ -39,10 +39,10 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <div class="container mt-4">
+    <div class="container mt-4" style="margin-bottom: 100px;">
         <h1 class="text-center">Destacados</h1>
         <!-- Productos -->
-        <div class="owl-carousel owl-theme mb-5" id="productos-carousel">
+        <div class="owl-carousel owl-theme" id="productos-carousel">
             <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
         <!-- Fin Productos -->
@@ -117,7 +117,7 @@
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
                               <img src="${image_path}" class="d-block w-100" alt="..." style="height: 70vh !important;
                                     width: 100% !important;
-                                    object-fit: contain;">
+                                    object-fit: cover;">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                   <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
                                   <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
