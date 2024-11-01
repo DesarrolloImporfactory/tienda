@@ -52,7 +52,7 @@
 
     <!-- Iconos -->
     <section class="container" >
-        <div class="row" id="iconos-container">
+        <div class="row gap-3" id="iconos-container">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
     </section>
