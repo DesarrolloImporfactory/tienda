@@ -29,7 +29,6 @@
     <!-- categorias -->
     <section class="container">
         <h1 class="text-center display-4 mb-4">Categorías</h1>
-        <br>
         <div class="caja">
             <div class="owl-carousel owl-theme" id="categories-container">
                 <!-- Aquí se insertarán las categorías dinámicamente -->
