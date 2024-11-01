@@ -47,6 +47,12 @@
         width: auto;
     }
 
+    @media (max-width: 768px) {
+        .navbar-custom .navbar-brand img {
+            height: 35px;
+        }
+    }
+
     .search-box {
         border: none;
         border-radius: 20px;
@@ -188,9 +194,10 @@
     /* Fin header */
 
     /* FOOTER TEMPORAL */
-    footer{
+    footer {
         background-color: #f8f9fa;
     }
+
     .footer {
         color: #6c757d;
     }
@@ -623,7 +630,7 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
-       
+
     }
 
     @media (max-width: 480px) {
