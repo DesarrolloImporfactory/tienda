@@ -1,9 +1,13 @@
 <style>
+    body {
+        background-color: #f9f9f9;
+    }
 
-    section{
+    section {
         margin-top: 100px;
         margin-bottom: 100px;
     }
+
     /* header */
 
     /* Cambiar el color del ícono de la hamburguesa */
@@ -210,7 +214,7 @@
     /* Seccion de css añadido del anteiror sistema */
     .caja {
         padding-top: 40px !important;
-        padding-bottom: 40px !important;
+        padding-bottom: 90px !important;
         border-radius: 25px;
         -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.23);
         -moz-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
