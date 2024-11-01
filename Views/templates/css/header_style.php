@@ -265,10 +265,7 @@
         color: inherit;
     }
 
-    .testimonios .caja .item {
-    display: flex;
-    align-items: stretch; 
-}
+   
 
 .testimonios-container {
     display: flex;
