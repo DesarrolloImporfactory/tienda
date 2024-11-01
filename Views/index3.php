@@ -376,7 +376,18 @@
     /* Sección productos destacados */
     let formDataProductos = new FormData();
     formDataProductos.append("id_plataforma", ID_PLATAFORMA);
-
+    function obtenerURLImagen(imagePath, serverURL) {
+        if (imagePath) {
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                return imagePath;
+            } else {
+                return `${serverURL}${imagePath}`;
+            }
+        } else {
+            console.error("imagePath es null o undefined");
+            return null;
+        }
+    }
     $.ajax({
         url: SERVERURL + 'Tienda/destacadostienda',
         type: 'POST',
@@ -527,18 +538,7 @@
     }
     });
 
-    function obtenerURLImagen(imagePath, serverURL) {
-        if (imagePath) {
-            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-                return imagePath;
-            } else {
-                return `${serverURL}${imagePath}`;
-            }
-        } else {
-            console.error("imagePath es null o undefined");
-            return null;
-        }
-    }
+    
     /* Fin Sección profesionales */
 
 </script>
