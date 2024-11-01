@@ -269,21 +269,15 @@
     display: flex;
     align-items: stretch; 
 }
+
 .testimonios-container {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Esto permite que todos los elementos crezcan en conjunto */
     height: 100%; 
     min-height: 270px; 
     padding: 20px; 
     box-sizing: border-box;
 }
-
-.testimonios .caja {
-    display: flex;
-    align-items: stretch; /* Esto asegura que todos los elementos tengan la misma altura */
-}
-
 
 
     .testimonios-image {
