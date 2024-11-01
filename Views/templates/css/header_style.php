@@ -190,7 +190,6 @@
     /* FOOTER TEMPORAL */
     .footer {
         background-color: #f8f9fa;
-        padding: 20px 0;
         color: #6c757d;
     }
 

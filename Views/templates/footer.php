@@ -1,5 +1,5 @@
-<footer>
-    <div class="footer">
+<footer class="py-5">
+    <div class="footer mb-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-3">
                     <h5>Información de contacto</h5>
-                    <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
+                    <p class="mb-0"><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>
