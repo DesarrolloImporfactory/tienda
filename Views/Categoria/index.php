@@ -85,12 +85,12 @@
                     <div>
                         <form id="form-rango-precios-left" method="post">
                             <div class="filter-header"><strong>Rango de precios</strong></div>
-                            <div id="slider-rango-precios-left"></div>
+                            <div id="slider-rango-precios-left" class="my-3"></div>
                             <p>Valor mínimo: $<span id="valorMinimo-left">0</span></p>
                             <p>Valor máximo: $<span id="valorMaximo-left">0</span></p>
                             <input type="hidden" id="inputValorMinimo-left" name="valorMinimo" value="0">
                             <input type="hidden" id="inputValorMaximo-left" name="valorMaximo" value="0">
-                            <button type="submit" class="btn-filter">Filtrar</button>
+                            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
                         </form>
                     </div>
                 </div>
