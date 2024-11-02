@@ -119,7 +119,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="row" id="productosContainer">
+                <div class="w-100" id="productosContainer">
                     <!-- Productos filtrados se mostrarán aquí -->
                 </div>
                 <div class="text-center">
