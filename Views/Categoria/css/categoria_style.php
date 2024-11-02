@@ -262,13 +262,7 @@
         display: block !important;
     }
 
-    .img-container:hover .hover-img {
-        opacity: 1;
-    }
 
-    .img-container:hover .primary-img {
-        opacity: 0;
-    }
 
     /* Fin estilo imagen doble de producto*/
 
