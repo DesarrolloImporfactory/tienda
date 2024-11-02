@@ -68,10 +68,8 @@
     <!-- Testimonios -->
     <section class="container testimonios">
         <h1 class="text-center display-4 mb-4">Testimonios</h1>
-        <div class="caja">
             <div class="owl-carousel owl-theme card-group" id="testimonios-carousel">
             </div>
-        </div>
     </section>
     <!-- Fin Testimonios -->
 
