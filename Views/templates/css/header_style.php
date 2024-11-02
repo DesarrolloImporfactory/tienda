@@ -265,6 +265,20 @@
         color: inherit;
     }
 
+    .card_body_testimonios {
+        min-height: 135px !important;
+    }
+
+    .card_body_testimonios p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.5em;
+        max-height: 4.5em;
+
+    }
 
 
     .img_card_testimonio {
