@@ -69,8 +69,7 @@
     <section class="container testimonios">
         <h1 class="text-center display-4 mb-4">Testimonios</h1>
         <div class="caja">
-            <div class="owl-carousel owl-theme" id="testimonios-carousel">
-                <!-- Los testimonios se cargarán aquí dinámicamente -->
+            <div class="owl-carousel owl-theme card-group" id="testimonios-carousel">
             </div>
         </div>
     </section>
@@ -439,13 +438,16 @@
 
                         var testimonioItem = `
 
-                                <div class="card">
-                                    <img src="${image_path}" class="card-img-top img_card_testimonio" alt="...">
-                                    <div class="card-body card_body_testimonios">
-                                        <h5 class="card-title">${nombre_testimonio}</h5>
-                                        <p class="card-text">${texto_testimonio}</p>
-                                    </div>
+                            <div class="card">
+                                <img src="${image_path}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">${nombre_testimonio}</h5>
+                                <p class="card-text">${texto_testimonio}</p>
+                                <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                                 </div>
+                            </div>
+
+                               
                         `;
 
                         // Agregar el testimonio al carrusel
