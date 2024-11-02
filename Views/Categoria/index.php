@@ -8,57 +8,7 @@
         <h1 style="text-align: center">Categorías</h1>
         <br>
         <div class="row">
-            <!-- Modal -->
-            <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen">
-                    <div class="modal-content">
-                        <!-- Cabeza del modal con el botón de cerrar -->
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="leftColumnModalLabel">Filtros</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <!-- Contenido del modal -->
-                        <div class="modal-body">
-                            <!-- Aquí incluyes el contenido de tu left-column -->
-                            <div class="filtro_productos caja px-3">
-                                <!-- Acordeón -->
-                                <div class="accordion" id="accordionCategoriasModal">
-                                    <!-- Este es el acordeón padre para la categoría principal -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingCategoriasModal">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategoriasModal" aria-expanded="true" aria-controls="collapseCategoriasModal">
-                                                <strong>Categorías</strong>
-                                            </button>
-                                        </h2>
-                                        <div id="collapseCategoriasModal" class="accordion-collapse collapse show" aria-labelledby="headingCategoriasModal" data-bs-parent="#accordionCategoriasModal">
-                                            <div class="accordion-body">
-                                                <!-- Aquí comienza el acordeón anidado para las subcategorías -->
-                                                <div class="accordion" id="accordionSubcategoriasModal"></div>
-                                                <!-- Fin del acordeón anidado para las subcategorías -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Fin Acordeón -->
-
-                                <div>
-                                    <form id="form-rango-precios-modal" method="post">
-                                        <div class="filter-header"><strong>Rango de precios</strong></div>
-                                        <div id="slider-rango-precios-modal"></div>
-                                        <p>Valor mínimo: $<span id="valorMinimo-modal">0</span></p>
-                                        <p>Valor máximo: $<span id="valorMaximo-modal">0</span></p>
-                                        <input type="hidden" id="inputValorMinimo-modal" name="valorMinimo" value="0">
-                                        <input type="hidden" id="inputValorMaximo-modal" name="valorMaximo" value="0">
-                                        <button type="submit" class="btn-filter">Filtrar</button>
-                                    </form>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Fin Modal -->
+           
 
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="filtro_productos caja">
@@ -127,6 +77,57 @@
                 </div>
             </div>
         </div>
+         <!-- Modal -->
+         <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <!-- Cabeza del modal con el botón de cerrar -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="leftColumnModalLabel">Filtros</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!-- Contenido del modal -->
+                        <div class="modal-body">
+                            <!-- Aquí incluyes el contenido de tu left-column -->
+                            <div class="filtro_productos caja px-3">
+                                <!-- Acordeón -->
+                                <div class="accordion" id="accordionCategoriasModal">
+                                    <!-- Este es el acordeón padre para la categoría principal -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingCategoriasModal">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategoriasModal" aria-expanded="true" aria-controls="collapseCategoriasModal">
+                                                <strong>Categorías</strong>
+                                            </button>
+                                        </h2>
+                                        <div id="collapseCategoriasModal" class="accordion-collapse collapse show" aria-labelledby="headingCategoriasModal" data-bs-parent="#accordionCategoriasModal">
+                                            <div class="accordion-body">
+                                                <!-- Aquí comienza el acordeón anidado para las subcategorías -->
+                                                <div class="accordion" id="accordionSubcategoriasModal"></div>
+                                                <!-- Fin del acordeón anidado para las subcategorías -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fin Acordeón -->
+
+                                <div>
+                                    <form id="form-rango-precios-modal" method="post">
+                                        <div class="filter-header"><strong>Rango de precios</strong></div>
+                                        <div id="slider-rango-precios-modal"></div>
+                                        <p>Valor mínimo: $<span id="valorMinimo-modal">0</span></p>
+                                        <p>Valor máximo: $<span id="valorMaximo-modal">0</span></p>
+                                        <input type="hidden" id="inputValorMinimo-modal" name="valorMinimo" value="0">
+                                        <input type="hidden" id="inputValorMaximo-modal" name="valorMaximo" value="0">
+                                        <button type="submit" class="btn-filter">Filtrar</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fin Modal -->
     </div>
     <!-- Fin área de categorías -->
 </main>
