@@ -25,9 +25,7 @@
     }
 
     .left-column {
-        width: 20%;
-        padding: 20px;
-        padding-top: 60px;
+       
         position: -webkit-sticky;
         /* Para compatibilidad con Safari */
         position: sticky;
