@@ -266,7 +266,7 @@
     }
 
 
-    .item img{
+    .img_card_testimonio{
         height: 300px;
         object-fit: cover;
         width: 100%;
