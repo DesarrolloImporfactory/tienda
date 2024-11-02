@@ -7,7 +7,7 @@
     <div class="container mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
-        <div class="content_left_right">
+        <div class="content_left_right gap-3">
             <!-- Modal -->
             <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel"
                 aria-hidden="true">
