@@ -25,18 +25,29 @@
     }
 
     .left-column {
-       
+        width: 20%;
+        padding: 20px;
+        padding-top: 60px;
         position: -webkit-sticky;
         /* Para compatibilidad con Safari */
         position: sticky;
         top: 0;
+        /* Ajusta esto a la altura de cualquier cabecera o menú que tengas */
+        height: 100%;
+        /* O la altura que quieras que tenga */
     }
 
     .right-column {
-      
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: start;
        
     }
 
+    .content_left_right {
+        display: flex;
+    }
 
     #accordionCategorias .card {
         margin-bottom: 0.5rem;

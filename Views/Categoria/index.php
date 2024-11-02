@@ -7,78 +7,9 @@
     <div class="container-fluid mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
-        <div class="row">
-           
-
-            <div class="col-12 col-sm-6 col-md-3">
-                <div class="filtro_productos caja">
-                    <!-- Acordeón -->
-                    <div class="accordion mb-3" id="accordionCategorias">
-                        <!-- Este es el acordeón padre para la categoría principal -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingCategorias">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategorias" aria-expanded="true" aria-controls="collapseCategorias">
-                                    <strong>Categorías</strong>
-                                </button>
-                            </h2>
-                            <div id="collapseCategorias" class="accordion-collapse collapse show" aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
-                                <div class="accordion-body p-0">
-                                    <!-- Aquí comienza el acordeón anidado para las subcategorías -->
-                                    <div class="accordion" id="accordionSubcategorias"></div>
-                                    <!-- Fin del acordeón anidado para las subcategorías -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Fin Acordeón -->
-
-                    <div>
-                        <form id="form-rango-precios-left" method="post">
-                            <div class="filter-header"><strong>Rango de precios</strong></div>
-                            <div id="slider-rango-precios-left" class="my-3"></div>
-                            <p>Valor mínimo: $<span id="valorMinimo-left">0</span></p>
-                            <p>Valor máximo: $<span id="valorMaximo-left">0</span></p>
-                            <input type="hidden" id="inputValorMinimo-left" name="valorMinimo" value="0">
-                            <input type="hidden" id="inputValorMaximo-left" name="valorMaximo" value="0">
-                            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row col-md-9 col-sm-6 col-12 mx-auto">
-                <div class="caja_categorias">
-                    <form id="ordenarForm" method="post">
-                        <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
-                            <div class="custom-select">
-                                <div class="custom-select-trigger">Ordenar por</div>
-                                <div class="custom-options">
-                                    <button type="submit" class="option" name="ordenar_por" value="Mayor precio">Mayor precio</button>
-                                    <button type="submit" class="option" name="ordenar_por" value="Menor precio">Menor precio</button>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- Campos ocultos para mantener los valores de rango de precios -->
-                        <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
-                        <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
-                    </form>
-                    <!-- Botón que se muestra solo en pantallas pequeñas -->
-                    <div class="d-lg-none filtro-flotante">
-                        <button type="button" class="btn_filtro btn" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
-                            <i class='bx bxs-filter-alt'></i> Filtro
-                        </button>
-                    </div>
-                </div>
-                <div class="row" id="productosContainer" style="padding-top: 15px;">
-                    <!-- Productos filtrados se mostrarán aquí -->
-                </div>
-                <div class="text-center">
-                    <button id="btnVerMas" class="mt-3" onclick="verMasProductos()">Ver Más</button>
-                </div>
-            </div>
-        </div>
-         <!-- Modal -->
-         <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
+        <div class="content_left_right">
+            <!-- Modal -->
+            <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content">
                         <!-- Cabeza del modal con el botón de cerrar -->
@@ -128,6 +59,74 @@
                 </div>
             </div>
             <!-- Fin Modal -->
+
+            <div class="left-column d-none d-md-block col-md-5">
+                <div class="filtro_productos caja">
+                    <!-- Acordeón -->
+                    <div class="accordion mb-3" id="accordionCategorias">
+                        <!-- Este es el acordeón padre para la categoría principal -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCategorias">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategorias" aria-expanded="true" aria-controls="collapseCategorias">
+                                    <strong>Categorías</strong>
+                                </button>
+                            </h2>
+                            <div id="collapseCategorias" class="accordion-collapse collapse show" aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
+                                <div class="accordion-body p-0">
+                                    <!-- Aquí comienza el acordeón anidado para las subcategorías -->
+                                    <div class="accordion" id="accordionSubcategorias"></div>
+                                    <!-- Fin del acordeón anidado para las subcategorías -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin Acordeón -->
+
+                    <div>
+                        <form id="form-rango-precios-left" method="post">
+                            <div class="filter-header"><strong>Rango de precios</strong></div>
+                            <div id="slider-rango-precios-left" class="my-3"></div>
+                            <p>Valor mínimo: $<span id="valorMinimo-left">0</span></p>
+                            <p>Valor máximo: $<span id="valorMaximo-left">0</span></p>
+                            <input type="hidden" id="inputValorMinimo-left" name="valorMinimo" value="0">
+                            <input type="hidden" id="inputValorMaximo-left" name="valorMaximo" value="0">
+                            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="caja_categorias">
+                    <form id="ordenarForm" method="post">
+                        <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
+                            <div class="custom-select">
+                                <div class="custom-select-trigger">Ordenar por</div>
+                                <div class="custom-options">
+                                    <button type="submit" class="option" name="ordenar_por" value="Mayor precio">Mayor precio</button>
+                                    <button type="submit" class="option" name="ordenar_por" value="Menor precio">Menor precio</button>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- Campos ocultos para mantener los valores de rango de precios -->
+                        <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
+                        <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
+                    </form>
+                    <!-- Botón que se muestra solo en pantallas pequeñas -->
+                    <div class="d-lg-none filtro-flotante">
+                        <button type="button" class="btn_filtro btn" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
+                            <i class='bx bxs-filter-alt'></i> Filtro
+                        </button>
+                    </div>
+                </div>
+                <div class="row" id="productosContainer" style="padding-top: 15px;">
+                    <!-- Productos filtrados se mostrarán aquí -->
+                </div>
+                <div class="text-center">
+                    <button id="btnVerMas" class="mt-3" onclick="verMasProductos()">Ver Más</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- Fin área de categorías -->
 </main>
