@@ -180,26 +180,6 @@
         /* Oculta el tooltip por defecto de noUiSlider */
     }
 
-    .caja_categorias {
-        padding-top: 20px !important;
-        padding-bottom: 40px !important;
-        border-radius: 25px;
-        -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.23);
-        -moz-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        background-color: white;
-        position: relative;
-        z-index: 10;
-        /* Asegúrate de que esto sea mayor que el z-index de otros elementos */
-        display: flex;
-        /* Usa flexbox para alinear elementos internos */
-        justify-content: flex-start;
-        /* Alinea el menú a la izquierda */
-        width: 100%;
-        /* O el ancho que desees para esta caja */
-        box-sizing: border-box;
-        /* Asegura que el padding no añada al ancho total */
-    }
 
     .filtro-flotante {
         position: absolute;

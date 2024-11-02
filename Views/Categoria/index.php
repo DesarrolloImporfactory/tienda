@@ -9,7 +9,8 @@
         <br>
         <div class="content_left_right">
             <!-- Modal -->
-            <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
+            <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel"
+                aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
                     <div class="modal-content">
                         <!-- Cabeza del modal con el botón de cerrar -->
@@ -26,11 +27,15 @@
                                     <!-- Este es el acordeón padre para la categoría principal -->
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingCategoriasModal">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategoriasModal" aria-expanded="true" aria-controls="collapseCategoriasModal">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseCategoriasModal" aria-expanded="true"
+                                                aria-controls="collapseCategoriasModal">
                                                 <strong>Categorías</strong>
                                             </button>
                                         </h2>
-                                        <div id="collapseCategoriasModal" class="accordion-collapse collapse show" aria-labelledby="headingCategoriasModal" data-bs-parent="#accordionCategoriasModal">
+                                        <div id="collapseCategoriasModal" class="accordion-collapse collapse show"
+                                            aria-labelledby="headingCategoriasModal"
+                                            data-bs-parent="#accordionCategoriasModal">
                                             <div class="accordion-body">
                                                 <!-- Aquí comienza el acordeón anidado para las subcategorías -->
                                                 <div class="accordion" id="accordionSubcategoriasModal"></div>
@@ -67,11 +72,14 @@
                         <!-- Este es el acordeón padre para la categoría principal -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingCategorias">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCategorias" aria-expanded="true" aria-controls="collapseCategorias">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseCategorias" aria-expanded="true"
+                                    aria-controls="collapseCategorias">
                                     <strong>Categorías</strong>
                                 </button>
                             </h2>
-                            <div id="collapseCategorias" class="accordion-collapse collapse show" aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
+                            <div id="collapseCategorias" class="accordion-collapse collapse show"
+                                aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
                                 <div class="accordion-body p-0">
                                     <!-- Aquí comienza el acordeón anidado para las subcategorías -->
                                     <div class="accordion" id="accordionSubcategorias"></div>
@@ -97,9 +105,8 @@
             </div>
 
             <div class="right-column w-100">
-                <div class="caja_categorias">
-                    <form id="ordenarForm" method="post">
-                        <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
+                <form id="ordenarForm" method="post">
+                    <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
                             <div class="custom-select">
                                 <div class="custom-select-trigger">Ordenar por</div>
                                 <div class="custom-options">
@@ -108,16 +115,16 @@
                                 </div>
                             </div>
                         </div> -->
-                        <!-- Campos ocultos para mantener los valores de rango de precios -->
-                        <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
-                        <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
-                    </form>
-                    <!-- Botón que se muestra solo en pantallas pequeñas -->
-                    <div class="d-lg-none filtro-flotante">
-                        <button type="button" class="btn_filtro btn" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
-                            <i class='bx bxs-filter-alt'></i> Filtro
-                        </button>
-                    </div>
+                    <!-- Campos ocultos para mantener los valores de rango de precios -->
+                    <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
+                    <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
+                </form>
+                <!-- Botón que se muestra solo en pantallas pequeñas -->
+                <div class="d-lg-none filtro-flotante">
+                    <button type="button" class="btn_filtro btn" data-bs-toggle="modal"
+                        data-bs-target="#leftColumnModal">
+                        <i class='bx bxs-filter-alt'></i> Filtro
+                    </button>
                 </div>
                 <div class="row" id="productosContainer">
                     <!-- Productos filtrados se mostrarán aquí -->
@@ -136,7 +143,7 @@
     let productosMostrados = 0; // Contador de productos mostrados
     const productosPorPagina = 30; // Número de productos a mostrar por carga
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Inicializa los sliders
         initSlider('slider-rango-precios-left', 'valorMinimo-left', 'valorMaximo-left', 'inputValorMinimo-left', 'inputValorMaximo-left', actualizarProductos);
         initSlider('slider-rango-precios-modal', 'valorMinimo-modal', 'valorMaximo-modal', 'inputValorMinimo-modal', 'inputValorMaximo-modal', actualizarProductos);
@@ -147,7 +154,7 @@
 
         // Función para sincronizar los sliders
         function sincronizarSliders(sourceSlider, targetSlider) {
-            sourceSlider.on('update', function(values) {
+            sourceSlider.on('update', function (values) {
                 const targetValues = targetSlider.get().map(v => parseFloat(v));
                 if (values[0] != targetValues[0] || values[1] != targetValues[1]) {
                     targetSlider.set(values);
@@ -173,7 +180,7 @@
         }
 
         // Evento scroll para navbar
-        window.onscroll = function() {
+        window.onscroll = function () {
             var nav = document.getElementById('navbarId');
             var logo = document.getElementById("navbarLogo");
             logo.style.maxHeight = "60px";
@@ -188,17 +195,17 @@
         };
 
         // Form submit handlers
-        document.getElementById('form-rango-precios-left').addEventListener('submit', function(event) {
+        document.getElementById('form-rango-precios-left').addEventListener('submit', function (event) {
             event.preventDefault();
             actualizarProductos();
         });
 
-        document.getElementById('form-rango-precios-modal').addEventListener('submit', function(event) {
+        document.getElementById('form-rango-precios-modal').addEventListener('submit', function (event) {
             event.preventDefault();
             actualizarProductos();
         });
 
-        document.getElementById('ordenarForm').addEventListener('submit', function(event) {
+        document.getElementById('ordenarForm').addEventListener('submit', function (event) {
             event.preventDefault();
             actualizarProductos();
         });
@@ -215,7 +222,7 @@
             data: formDataCategoria,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 let categorias = JSON.parse(response);
 
                 if (!Array.isArray(categorias)) {
@@ -249,7 +256,7 @@
                 $('#accordionSubcategorias').html(categoriasHtml);
                 $('#accordionSubcategoriasModal').html(categoriasHtml);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Error al consumir la API:", error);
             }
         });
@@ -270,9 +277,9 @@
         formData.append('ordenar_por', ordenarPor);
 
         fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
+            method: 'POST',
+            body: formData
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -305,9 +312,9 @@
         formData.append('ordenar_por', ordenarPor);
 
         fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
+            method: 'POST',
+            body: formData
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -415,7 +422,7 @@
             }
         });
 
-        slider.noUiSlider.on('update', function(values, handle) {
+        slider.noUiSlider.on('update', function (values, handle) {
             var value = values[handle];
             var valorMinimo = document.getElementById(valorMinimoId);
             var valorMaximo = document.getElementById(valorMaximoId);
@@ -460,9 +467,9 @@
         formData.append('ordenar_por', ordenarPor);
 
         fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
+            method: 'POST',
+            body: formData
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -488,7 +495,7 @@
     }
 
     //cargar select ciudades y provincias
-    $(document).ready(function() {
+    $(document).ready(function () {
         cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
         // Llamar a cargarCiudades cuando se seleccione una provincia
@@ -500,19 +507,19 @@
         $.ajax({
             url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
             method: "GET",
-            success: function(response) {
+            success: function (response) {
                 let provincias = JSON.parse(response);
                 let provinciaSelect = $("#provinica");
                 provinciaSelect.empty();
                 provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
 
-                provincias.forEach(function(provincia) {
+                provincias.forEach(function (provincia) {
                     provinciaSelect.append(
                         `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
                     );
                 });
             },
-            error: function(error) {
+            error: function (error) {
                 console.log("Error al cargar provincias:", error);
             },
         });
@@ -525,13 +532,13 @@
             $.ajax({
                 url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
                 method: "GET",
-                success: function(response) {
+                success: function (response) {
                     let ciudades = JSON.parse(response);
                     let ciudadSelect = $("#ciudad_entrega");
                     ciudadSelect.empty();
                     ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
 
-                    ciudades.forEach(function(ciudad) {
+                    ciudades.forEach(function (ciudad) {
                         ciudadSelect.append(
                             `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
                         );
@@ -539,7 +546,7 @@
 
                     ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log("Error al cargar ciudades:", error);
                 },
             });
