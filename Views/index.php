@@ -440,7 +440,7 @@
                         var testimonioItem = `
 
                             <div class="item d-flex flex-column">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card">
                                     <img src="${image_path}" class="card-img-top img_card_testimonio" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">${nombre_testimonio}</h5>
