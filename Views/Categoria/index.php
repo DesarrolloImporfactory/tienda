@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="right-column">
+            <div class="row col-md-9 col-sm-6 col-12 mx-auto">
                 <div class="caja_categorias">
                     <form id="ordenarForm" method="post">
                         <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
