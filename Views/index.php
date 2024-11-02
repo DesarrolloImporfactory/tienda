@@ -440,10 +440,11 @@
                         var testimonioItem = `
                             <div class="item d-flex flex-column">
                                 <div class="testimonios-container border rounded d-flex flex-column">
-                                    <div class="testimonios-image shadow border rounded-circle" style="background-image: url('${image_path}');">
+                            
+                                    <div class="testimonios-image mx-auto shadow border rounded-circle" style="background-image: url('${image_path}');">
                                     </div>
-                                    <p class="card-text"><strong>${nombre_testimonio}</strong></p>
-                                    <p class="card-text testimonio-text">${texto_testimonio}</p>
+                                    <p class="card-text text-center"><strong>${nombre_testimonio}</strong></p>
+                                    <p class="card-text text-center testimonio-text">${texto_testimonio}</p>
                                 </div>
                             </div>
                         `;
