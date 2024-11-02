@@ -265,8 +265,6 @@
         color: inherit;
     }
 
-    
-    
     .card_body_testimonios {
         min-height: 135px !important;
     }
@@ -283,6 +281,11 @@
     }
 
 
+    .img_card_testimonio {
+        height: 150px !important;
+        width: 150px !important;
+        object-fit: cover !important;
+    }
 
     /* Owl Carousel Customizations */
 
