@@ -60,7 +60,7 @@
             </div>
             <!-- Fin Modal -->
 
-            <div class="left-column col-12 col-sm-6 col-md-3">
+            <div class="d-none d-md-block col-sm-6 col-md-3">
                 <div class="filtro_productos caja">
                     <!-- Acordeón -->
                     <div class="accordion mb-3" id="accordionCategorias">
