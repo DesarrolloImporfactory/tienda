@@ -439,7 +439,6 @@
 
                         var testimonioItem = `
 
-                            <div class="item d-flex flex-column">
                                 <div class="card">
                                     <img src="${image_path}" class="card-img-top img_card_testimonio" alt="...">
                                     <div class="card-body">
@@ -447,7 +446,6 @@
                                         <p class="card-text">${texto_testimonio}</p>
                                     </div>
                                 </div>
-                            </div>
                         `;
 
                         // Agregar el testimonio al carrusel
