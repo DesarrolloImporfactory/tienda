@@ -267,7 +267,7 @@
 
     .testimonios .caja .item {
     display: flex;
-    align-items: stretch; /* Todos los elementos tendrán la misma altura */
+    align-items: stretch;
 }
 
 .testimonios-container {
