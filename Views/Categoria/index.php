@@ -63,7 +63,7 @@
             <div class="left-column d-none d-lg-block">
                 <div class="filtro_productos caja">
                     <!-- Acordeón -->
-                    <div class="accordion" id="accordionCategorias">
+                    <div class="accordion mb-3" id="accordionCategorias">
                         <!-- Este es el acordeón padre para la categoría principal -->
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingCategorias">
@@ -72,7 +72,7 @@
                                 </button>
                             </h2>
                             <div id="collapseCategorias" class="accordion-collapse collapse show" aria-labelledby="headingCategorias" data-bs-parent="#accordionCategorias">
-                                <div class="accordion-body">
+                                <div class="accordion-body p-0">
                                     <!-- Aquí comienza el acordeón anidado para las subcategorías -->
                                     <div class="accordion" id="accordionSubcategorias"></div>
                                     <!-- Fin del acordeón anidado para las subcategorías -->
