@@ -347,7 +347,7 @@
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
             }
             const productoHtml = `
-                    <div class="col-md-4 col-lg-4 col-6 mb-4 px-2">
+                    <div class="col-md-4 col-sm-6 col-12 mb-4 px-2">
                         <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                             <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
                                 <div class="img-container d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
