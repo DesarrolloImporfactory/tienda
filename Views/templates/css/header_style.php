@@ -266,7 +266,11 @@
     }
 
 
-
+    .item img{
+        height: 300px;
+        object-fit: cover;
+        width: 100%;
+    }
 
     /* Owl Carousel Customizations */
 
