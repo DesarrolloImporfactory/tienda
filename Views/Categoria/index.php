@@ -60,7 +60,7 @@
             </div>
             <!-- Fin Modal -->
 
-            <div class="d-none d-sm-block col-sm-6 col-md-3">
+            <div class="left-column d-none d-lg-block">
                 <div class="filtro_productos caja">
                     <!-- Acordeón -->
                     <div class="accordion mb-3" id="accordionCategorias">
@@ -90,13 +90,13 @@
                             <p>Valor máximo: $<span id="valorMaximo-left">0</span></p>
                             <input type="hidden" id="inputValorMinimo-left" name="valorMinimo" value="0">
                             <input type="hidden" id="inputValorMaximo-left" name="valorMaximo" value="0">
-                            <button type="submit" class="btn texto_boton w-100">Filtrar</button>
+                            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <div class="row col-md-9 col-sm-6 col-12 mx-auto">
+            <div class="right-column">
                 <div class="caja_categorias">
                     <form id="ordenarForm" method="post">
                         <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
