@@ -265,34 +265,8 @@
         color: inherit;
     }
 
-    .testimonios .caja .item {
-    display: flex;
-    align-items: stretch;
-}
-
-.testimonios-container {
-    height: 100%; 
-    padding: 20px; 
-    box-sizing: border-box;
-    min-height: 270px !important;
-}
 
 
-    .testimonios-image {
-        background-size: cover;
-        background-position: center;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 15px;
-    }
-
-    .testimonio-text {
-        overflow-wrap: break-word;
-        word-break: break-word;
-        hyphens: auto;
-        font-size: 12px;
-    }
 
     /* Owl Carousel Customizations */
 
