@@ -67,7 +67,7 @@
 
     <!-- Testimonios -->
     <section class=" testimonios">
-        <div class="container">
+        <div class="container mx-auto" style="max-width: 1000px;">
 
             <h1 class="text-center display-4 mb-4">Testimonios</h1>
             <div class="caja">
