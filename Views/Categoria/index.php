@@ -120,7 +120,7 @@
                     <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
                 </form>
                 <!-- Botón que se muestra solo en pantallas pequeñas -->
-                <div class="d-lg-none ms-auto mb-3">
+                <div class="d-md-none ms-auto mb-3">
                     <button type="button" class="texto_boton btn" data-bs-toggle="modal"
                         data-bs-target="#leftColumnModal">
                         <i class='bx bxs-filter-alt text-white'></i> Filtro
