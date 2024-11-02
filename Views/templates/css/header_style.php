@@ -265,13 +265,16 @@
         color: inherit;
     }
 
-   
+    .testimonios .caja .item {
+    display: flex;
+    align-items: stretch; /* Todos los elementos tendrán la misma altura */
+}
 
 .testimonios-container {
     display: flex;
     flex-direction: column;
     height: 100%; 
-    min-height: 320px; 
+    min-height: 270px; 
     padding: 20px; 
     box-sizing: border-box;
 }
