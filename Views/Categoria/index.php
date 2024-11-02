@@ -121,7 +121,7 @@
                 </form>
                 <!-- Botón que se muestra solo en pantallas pequeñas -->
                 <div class="d-lg-none filtro-flotante">
-                    <button type="button" class="btn_filtro btn" data-bs-toggle="modal"
+                    <button type="button" class="btn-primary btn" data-bs-toggle="modal"
                         data-bs-target="#leftColumnModal">
                         <i class='bx bxs-filter-alt'></i> Filtro
                     </button>

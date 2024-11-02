@@ -181,11 +181,6 @@
     }
 
 
-    .filtro-flotante {
-        position: absolute;
-        right: 20;
-    }
-
     .btn_filtro {
         font-size: 20px !important;
         background: transparent;
