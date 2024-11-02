@@ -119,7 +119,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="row" id="productosContainer" style="padding-top: 15px;">
+                <div class="row" id="productosContainer">
                     <!-- Productos filtrados se mostrarán aquí -->
                 </div>
                 <div class="text-center">
