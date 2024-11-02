@@ -41,14 +41,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* Esto centrará sus hijos horizontalmente */
         align-self: start;
-        /* Añade esta línea para alinear la propia .right-column al inicio de su contenedor flex */
-        width: 80%;
-        padding: 20px;
-        padding-top: 60px;
-        min-height: 600px;
-        /* Ajusta esto según la altura mínima que desees */
+       
     }
 
     .content_left_right {
