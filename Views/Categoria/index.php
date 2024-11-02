@@ -4,7 +4,7 @@
 
 <main>
     <!-- área de categorías -->
-    <div class="container-fluid mt-4">
+    <div class="container mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
         <div class="content_left_right">
