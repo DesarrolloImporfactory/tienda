@@ -258,7 +258,7 @@
                         var productItem = `
                             <div class="item">
                                 <div class="grid-container">
-                                    <div class="card rounded shadow" >
+                                    <div class="card rounded " >
                                         <div class="img-container position-relative">
                                             ${precioNormal > 0 ? `
                                             <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start" style="top: 20px; right: 0px;">
