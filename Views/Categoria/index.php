@@ -7,7 +7,7 @@
     <div class="container-fluid mt-4">
         <h1 style="text-align: center">Categorías</h1>
         <br>
-        <div class="content_left_right">
+        <div class="row">
             <!-- Modal -->
             <div class="modal fade" id="leftColumnModal" tabindex="-1" aria-labelledby="leftColumnModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen">
@@ -60,7 +60,7 @@
             </div>
             <!-- Fin Modal -->
 
-            <div class="left-column d-none d-md-block col-md-5">
+            <div class="d-none d-md-block col-3">
                 <div class="filtro_productos caja">
                     <!-- Acordeón -->
                     <div class="accordion mb-3" id="accordionCategorias">

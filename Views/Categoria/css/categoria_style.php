@@ -45,9 +45,6 @@
        
     }
 
-    .content_left_right {
-        display: flex;
-    }
 
     #accordionCategorias .card {
         margin-bottom: 0.5rem;
