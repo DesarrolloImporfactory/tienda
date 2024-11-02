@@ -54,7 +54,7 @@
                                         <p>Valor máximo: $<span id="valorMaximo-modal">0</span></p>
                                         <input type="hidden" id="inputValorMinimo-modal" name="valorMinimo" value="0">
                                         <input type="hidden" id="inputValorMaximo-modal" name="valorMaximo" value="0">
-                                        <button type="submit" class="btn-filter">Filtrar</button>
+                                        <button type="submit" class="texto_boton btn">Filtrar</button>
                                     </form>
                                 </div>
 
@@ -121,7 +121,7 @@
                 </form>
                 <!-- Botón que se muestra solo en pantallas pequeñas -->
                 <div class="d-lg-none ms-auto mb-3">
-                    <button type="button" class="btn-primary btn" data-bs-toggle="modal"
+                    <button type="button" class="texto_boton btn" data-bs-toggle="modal"
                         data-bs-target="#leftColumnModal">
                         <i class='bx bxs-filter-alt text-white'></i> Filtro
                     </button>
