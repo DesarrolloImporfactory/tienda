@@ -439,7 +439,7 @@
                         var testimonioItem = `
 
                             <div class="card">
-                                <img src="${image_path}" class="card-img-top" alt="...">
+                                <img src="${image_path}" class="card-img-top img_card_testimonio" alt="...">
                                 <div class="card-body">
                                 <h5 class="card-title">${nombre_testimonio}</h5>
                                 <p class="card-text">${texto_testimonio}</p>
