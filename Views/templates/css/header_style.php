@@ -266,21 +266,17 @@
     }
 
     .card_body_testimonios {
-        min-height: 150px !important;
+        min-height: 135px !important;
     }
 
     .card_body_testimonios p {
         display: -webkit-box;
         -webkit-line-clamp: 3;
-        /* Limita a 3 líneas */
         -webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
         line-height: 1.5em;
-        /* Ajusta el espacio entre líneas si es necesario */
         max-height: 4.5em;
-        /* Calculado en base a line-height x número de líneas */
-
     }
 
 
