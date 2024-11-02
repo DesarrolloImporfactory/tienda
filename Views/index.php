@@ -66,11 +66,14 @@
     <!-- fin animacion -->
 
     <!-- Testimonios -->
-    <section class="container testimonios">
-        <h1 class="text-center display-4 mb-4">Testimonios</h1>
-        <div class="caja">
-            <div class="owl-carousel owl-theme" id="testimonios-carousel">
-                <!-- Los testimonios se cargarán aquí dinámicamente -->
+    <section class=" testimonios">
+        <div class="container">
+
+            <h1 class="text-center display-4 mb-4">Testimonios</h1>
+            <div class="caja">
+                <div class="owl-carousel owl-theme" id="testimonios-carousel">
+                    <!-- Los testimonios se cargarán aquí dinámicamente -->
+                </div>
             </div>
         </div>
     </section>
