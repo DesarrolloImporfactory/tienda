@@ -441,7 +441,7 @@
 
                                 <div class="card">
                                     <img src="${image_path}" class="card-img-top img_card_testimonio" alt="...">
-                                    <div class="card-body">
+                                    <div class="card-body card_body_testimonios">
                                         <h5 class="card-title">${nombre_testimonio}</h5>
                                         <p class="card-text">${texto_testimonio}</p>
                                     </div>
