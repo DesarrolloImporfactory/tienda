@@ -60,7 +60,7 @@
             </div>
             <!-- Fin Modal -->
 
-            <div class="d-none d-md-block col-3">
+            <div class="col-12 col-sm-6 col-md-3">
                 <div class="filtro_productos caja">
                     <!-- Acordeón -->
                     <div class="accordion mb-3" id="accordionCategorias">
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="right-column">
+            <div class="row col-md-9 col-sm-6 col-12 mx-auto">
                 <div class="caja_categorias">
                     <form id="ordenarForm" method="post">
                         <!-- <div class="custom-select-wrapper" onclick="this.querySelector('.custom-select').classList.toggle('open');">
