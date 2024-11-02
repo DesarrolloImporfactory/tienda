@@ -29,7 +29,7 @@
         position: -webkit-sticky;
         /* Para compatibilidad con Safari */
         position: sticky;
-        top: 0;
+        top: 80px;
         /* Ajusta esto a la altura de cualquier cabecera o menú que tengas */
         height: 100%;
         /* O la altura que quieras que tenga */
