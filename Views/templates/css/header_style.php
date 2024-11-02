@@ -266,35 +266,11 @@
     }
 
 
-    /* Asegura que todos los cards dentro del contenedor tengan la misma altura */
-.caja {
-    display: flex;
-}
-
-.owl-carousel .owl-item {
-    display: flex;
-    align-items: stretch;
-}
-
-.card {
-    display: flex;
-    flex-direction: column;
-    height: 100%; 
-    margin: auto;
-
-}
-
-.card-body {
-    flex-grow: 1; /* Permite que el cuerpo del card se expanda */
-}
-
-/* Asegura que las imágenes también se ajusten a la altura de los cards */
-.img_card_testimonio {
-    height: 300px !important;
-    object-fit: cover !important;
-    width: 100% !important;
-}
-
+    .img_card_testimonio{
+        height: 300px !important;
+        object-fit: cover !important;
+        width: 100% !important;
+    }
 
     /* Owl Carousel Customizations */
 
@@ -338,6 +314,10 @@
     .owl-carousel .owl-nav button {
         font-size: 10em;
         color: #333;
+    }
+
+    .card {
+        margin: auto;
     }
 
     .card h5 {
