@@ -254,9 +254,9 @@
                             <a href="producto2?id=${producto.id_producto_tienda}">
                                 <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
                             </a>
-                            <div class="d-flex flex-column body_card p-3 mt-4 mb-2">
+                            <div class="d-flex flex-column body_card h-100 p-3 mt-4 mb-2">
                                 <h5 class="card-title fs-6">${producto.nombre_producto_tienda}</h5>
-                                <p class="mas_vendidos-price">
+                                <p class="mas_vendidos-price mt-auto">
                                     ${precioNormal > 0 ? `
                                         <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
                                     ` : ''}
