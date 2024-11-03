@@ -1,5 +1,5 @@
 <style>
-    nav{
+    .navbar{
         overflow: hidden !important;
         width: 100% !important;
     }
