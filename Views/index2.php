@@ -212,77 +212,73 @@
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + 'Tienda/destacadostienda',
-            method: 'POST',
-            data: formDataProductos,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                try {
-                    var productos = JSON.parse(response);
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
+    url: SERVERURL + 'Tienda/destacadostienda',
+    method: 'POST',
+    data: formDataProductos,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        try {
+            var productos = JSON.parse(response);
+        } catch (e) {
+            console.error('Error al parsear la respuesta:', e);
+            return;
+        }
+
+        if (productos && Array.isArray(productos)) {
+            var $productosContainer = $("#productos-destacados");
+            $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
+
+            var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
+            var fila = $('<div class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
+            $productosContainer.append(fila); // Agregar la fila al contenedor
+
+            productosAMostrar.forEach(function (producto) {
+                var precioEspecial = parseFloat(producto.pvp_tienda);
+                var precioNormal = parseFloat(producto.pref_tienda);
+                var ahorro = 0;
+
+                if (precioNormal > 0) {
+                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
                 }
 
-                if (productos && Array.isArray(productos)) {
-                    var $productosContainer = $("#productos-destacados");
-                    $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
+                var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
-                    var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
-                    var fila = null;
+                let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
 
-                    productosAMostrar.forEach(function (producto, index) {
-                        if (index % 4 === 0) {
-                            // Crear una nueva fila cada 4 productos
-                            fila = $('<div class="row align-items-stretch g-4 mt-3"></div>');
-                            $productosContainer.append(fila);
-                        }
-
-                        var precioEspecial = parseFloat(producto.pvp_tienda);
-                        var precioNormal = parseFloat(producto.pref_tienda);
-                        var ahorro = 0;
-
-                        if (precioNormal > 0) {
-                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
-                        }
-
-                        var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
-
-                        let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
-
-                        // HTML para cada producto destacado
-                        var productItem = `
-                        <div class=" col-12 col-sm-6 col-md-4 col-lg-3 px-2">
-                            <div class=" overflow-hidden mas_vendidos-card card bg-transparent rounded-4">
-                                ${oferta}
-                                <a href="producto2?id=${producto.id_producto_tienda}">
-                                    <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
-                                </a>
-                                <div class="d-flex justify-content-between p-3 align-items-center mt-4 mb-2">
-                                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                                    <p class="mas_vendidos-price">
-                                        ${precioNormal > 0 ? `
-                                            <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
-                                        ` : ''}
-                                        $${number_format(precioEspecial, 2)}
-                                    </p>
-                                </div>
+                // HTML para cada producto destacado
+                var productItem = `
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
+                        <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4">
+                            ${oferta}
+                            <a href="producto2?id=${producto.id_producto_tienda}">
+                                <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                            </a>
+                            <div class="d-flex justify-content-between p-3 align-items-center mt-4 mb-2">
+                                <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                                <p class="mas_vendidos-price">
+                                    ${precioNormal > 0 ? `
+                                        <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
+                                    ` : ''}
+                                    $${number_format(precioEspecial, 2)}
+                                </p>
                             </div>
                         </div>
-                    `;
+                    </div>
+                `;
 
-                        // Agregar el producto a la fila actual
-                        fila.append(productItem);
-                    });
-                } else {
-                    console.error('La respuesta no contiene productos válidos.');
-                }
-            },
-            error: function (error) {
-                console.log('Error al cargar los productos destacados:', error);
-            }
-        });
+                // Agregar el producto a la única fila
+                fila.append(productItem);
+            });
+        } else {
+            console.error('La respuesta no contiene productos válidos.');
+        }
+    },
+    error: function (error) {
+        console.log('Error al cargar los productos destacados:', error);
+    }
+});
+
 
         /* Fin productos destacados */
     });
