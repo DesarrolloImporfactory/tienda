@@ -47,7 +47,7 @@
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
     <section class="container">
-            <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
+            <div class="row align-items-stretch g-4 mt-5 gap-2" id="iconos-container" style="max-width: 1100px; margin: auto;">
                 <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
     </section>
