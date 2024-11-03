@@ -425,10 +425,6 @@
         padding-right: 30px;
     }
 
-    .mas_vendidos-card {
-        position: relative;
-       
-    }
 
     .mas_vendidos-card:hover .mas_vendidos-image {
         transform: scale(1.1);
