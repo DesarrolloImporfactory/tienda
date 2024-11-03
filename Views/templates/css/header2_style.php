@@ -334,15 +334,7 @@
         border: 1px solid #ccc;
     }
 
-    .seccion_iconos {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        font-weight: bold;
-        font-size: 20px;
-        gap: 10%;
-        justify-content: center;
-    }
+    
 
     /* CSS para carrito de compras */
     /* El panel del carrito deslizante */

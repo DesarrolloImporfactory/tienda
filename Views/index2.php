@@ -48,7 +48,7 @@
     <!-- seccion iconos -->
     <div class="seccion">
         <div class="caja container">
-            <div class="seccion_iconos" id="iconos-container" style="max-width: 1000px; margin: auto;">
+            <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
                 <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
         </div>
