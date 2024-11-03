@@ -88,6 +88,10 @@
         border-radius: 5px;
     }
 
+    .owl-item  {
+        width: fit-content !important;
+    }
+
     /* Estilos específicos para OwlCarousel en pantallas grandes */
     @media (min-width: 992px) {
         .owl-carousel .nav-item {
