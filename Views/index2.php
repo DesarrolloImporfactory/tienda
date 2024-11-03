@@ -48,7 +48,7 @@
     <!-- seccion iconos -->
     <div class="seccion">
         <div class="caja container">
-            <div class="seccion_iconos" id="iconos-container">
+            <div class="seccion_iconos" id="iconos-container" style="max-width: 1000px; margin: auto;">
                 <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
         </div>
@@ -176,15 +176,24 @@
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
                         var enlace_icon = icono.enlace_icon || '#';
+                        var subtexto_icon = icono.subtexto_icon || '';
+                        var color_icono =icono.color_icono
 
                         // Aquí está el HTML para el nuevo diseño con el formato correcto
                         var iconoItem = `
-                        <div class="d-flex flex-row" style="padding: 10px;">
-                            <a href="${enlace_icon}" target="_blank" style="text-decoration: none; color: black;">
-                                <i class="fa ${icon_text} fa-2x menu-icon" style="color: ${icono.color_icono} !important"></i>
-                                <span>${texto}</span>
-                            </a>
-                        </div>
+                       <div class="col-md-4 mb-3 icon_responsive">
+                                <a ${enlace_icon}>
+                                    <div class="card card_icon text-center">
+                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                            <i class="fa ${icon_text} fa-2x me-3" style="color: ${color_icono} !important"></i>
+                                            <div class="text-end">
+                                                <h5 class="card-title card-title_icon">${texto}</h5>
+                                                <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                     `;
 
                         // Agregar el icono al contenedor
@@ -228,7 +237,7 @@
                     productosAMostrar.forEach(function (producto, index) {
                         if (index % 4 === 0) {
                             // Crear una nueva fila cada 4 productos
-                            fila = $('<div class="row align-items-stretch g-4 mt-5 gap-3"></div>');
+                            fila = $('<div class="row align-items-stretch g-4 mt-3 gap-3"></div>');
                             $productosContainer.append(fila);
                         }
 

@@ -357,7 +357,7 @@
                     iconos.forEach(function (icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
-                        var enlace_icon = icono.enlace_icon || '';
+                        var enlace_icon = icono.enlace_icon || '#';
                         var subtexto_icon = icono.subtexto_icon || '';
 
                         var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
