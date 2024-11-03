@@ -247,7 +247,7 @@
                         // HTML para cada producto destacado
                         var productItem = `
                         
-                    <div class="mas_vendidos-card card  bg-transparent p-3 col-12 col-sm-6 col-md-4 col-lg-3 rounded-4">
+                    <div class="mas_vendidos-card card  bg-transparent p-3 col-12 rounded-4">
                         ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
                                 <img src="${image_path}" class="" alt="${producto.nombre_producto_tienda}">
