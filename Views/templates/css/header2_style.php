@@ -1,4 +1,8 @@
 <style>
+    nav{
+        overflow: hidden !important;
+        width: 100% !important;
+    }
     /* Navbar Styles */
     /* Cambiar el color del ícono de la hamburguesa */
     .navbar-toggler-icon {
@@ -86,6 +90,16 @@
         color: <?php echo COLOR_HOVER_CABECERA; ?>;
         background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
         border-radius: 5px;
+    }
+
+    .owl-item  {
+        width: fit-content !important;
+    }
+    .owl-item  a{
+        font-size: 14px !important;
+    }
+    .owl-nav{
+
     }
 
     /* Estilos específicos para OwlCarousel en pantallas grandes */
