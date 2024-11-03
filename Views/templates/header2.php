@@ -188,7 +188,7 @@ $primera_seccion = obtenerPrimeraSeccion();
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA; ?>;"><?php echo NOMBRE_TIENDA; ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -228,7 +228,7 @@ $primera_seccion = obtenerPrimeraSeccion();
         </nav>
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-custom">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="collapse navbar-collapse" id="subNavbar">
                     <ul class="navbar-nav justify-content-center flex-lg-row flex-column w-100" id="categories-menu">
                         <!-- Categorías dinámicas se cargarán aquí -->
