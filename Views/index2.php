@@ -250,7 +250,7 @@
                     <div class="mas_vendidos-card card  bg-transparent p-3 col rounded-4">
                         ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
-                                <img src="${image_path}" class="" alt="${producto.nombre_producto_tienda}">
+                                <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                             </a>
                         <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
                             <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
