@@ -99,7 +99,8 @@
         font-size: 14px !important;
     }
     .owl-nav{
-
+        display: flex;
+        width: fit-content;
     }
 
     /* Estilos específicos para OwlCarousel en pantallas grandes */
