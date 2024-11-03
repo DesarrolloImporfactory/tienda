@@ -246,25 +246,22 @@
 
                         // HTML para cada producto destacado
                         var productItem = `
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
-                    <div class="position-relative overflow-hidden mas_vendidos-card card bg-transparent rounded-4">
-                        ${oferta}
-                            <a href="producto2?id=${producto.id_producto_tienda}">
-                                <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
-                            </a>
-                        <div class="d-flex justify-content-between p-3 align-items-center mt-4 mb-2">
-                            <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                            <p class="mas_vendidos-price">
-                                ${precioNormal > 0 ? `
-                                    <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
-                                ` : ''}
-                                $${number_format(precioEspecial, 2)}
-                            </p>
-                        </div>
-                    </div>
-                                            </div>
-
-                `;
+                            <div class=" overflow-hidden mas_vendidos-card card bg-transparent rounded-4 col-12 col-sm-6 col-md-4 col-lg-3">
+                                ${oferta}
+                                <a href="producto2?id=${producto.id_producto_tienda}">
+                                    <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                </a>
+                                <div class="d-flex justify-content-between p-3 align-items-center mt-4 mb-2">
+                                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                                    <p class="mas_vendidos-price">
+                                        ${precioNormal > 0 ? `
+                                            <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
+                                        ` : ''}
+                                        $${number_format(precioEspecial, 2)}
+                                    </p>
+                                </div>
+                            </div>
+                    `;
 
                         // Agregar el producto a la fila actual
                         fila.append(productItem);
