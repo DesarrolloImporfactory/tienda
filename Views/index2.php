@@ -230,7 +230,7 @@
             $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
 
             var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
-            var fila = $('<div class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
+            var fila = $('<div style="height: fit-content;" class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
             $productosContainer.append(fila); // Agregar la fila al contenedor
 
             productosAMostrar.forEach(function (producto) {
@@ -249,7 +249,7 @@
                 // HTML para cada producto destacado
                 var productItem = `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
-                        <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4">
+                        <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4 h-100">
                             ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
                                 <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
