@@ -246,7 +246,7 @@
 
                         // HTML para cada producto destacado
                         var productItem = `
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-1">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
                     <div class="position-relative card bg-transparent rounded-4">
                         ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
