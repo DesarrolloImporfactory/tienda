@@ -46,13 +46,11 @@
     </div>
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
-    <div class="seccion">
-        <div class="caja container">
+    <section class="container">
             <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
                 <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
-        </div>
-    </div>
+    </section>
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
     <div class="mas_vendidos">
