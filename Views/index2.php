@@ -17,7 +17,7 @@
     <!-- Fin Slider -->
     <!-- Seccion de ofertas y promociones -->
     <div class="seccion">
-        <div class="flex_seccionOfertas">
+        <div class="flex_seccionOfertas container">
             <div class="promotion-card">
                 <img src="<?php echo SERVERURL . "" . IMAGEN_OFERTA1; ?>" class="promotion-image" alt="Smartphone">
                 <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA1; ?>;">
@@ -47,7 +47,7 @@
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
     <div class="seccion">
-        <div class="caja">
+        <div class="caja container">
             <div class="seccion_iconos" id="iconos-container">
                 <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
@@ -56,7 +56,7 @@
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
     <div class="mas_vendidos">
-        <div class="caja">
+        <div class="caja container">
             <h2>Productos destacados</h2>
             <div class="flex_mas_vendidos" id="productos-destacados">
                 <!-- Los productos serán insertados aquí dinámicamente -->
