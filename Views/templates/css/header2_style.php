@@ -335,20 +335,16 @@
     }
 
     .body_card h5 {
-    display: -webkit-box;         /* Usar flexbox en navegadores con -webkit */
-    -webkit-line-clamp: 2;        /* Limitar a un máximo de 2 líneas */
-    -webkit-box-orient: vertical; /* Orientación vertical para el recorte */
-    overflow: hidden;             /* Ocultar contenido extra */
-    text-overflow: ellipsis;      /* Agregar puntos suspensivos (...) */
-    font-weight: bold;            /* Opcional: resaltar el título */
+    display: -webkit-box;         
+    -webkit-line-clamp: 2;        
+    -webkit-box-orient: vertical; 
+    overflow: hidden;            
+    text-overflow: ellipsis;     
+    font-weight: bold; 
 }
 
 
-    
-
-    /* CSS para carrito de compras */
-    /* El panel del carrito deslizante */
-    .cart-sidebar {
+        .cart-sidebar {
         height: 100%;
         width: 0;
         position: fixed;
@@ -362,12 +358,10 @@
         padding-top: 60px;
     }
 
-    /* Contenido del carrito dentro del panel */
     .cart-sidebar-content {
         padding: 20px;
     }
 
-    /* Encabezado del panel deslizante con botón de cerrar */
     .cart-sidebar-header {
         display: flex;
         justify-content: space-between;
