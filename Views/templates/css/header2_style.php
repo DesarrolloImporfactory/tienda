@@ -433,6 +433,10 @@
     .mas_vendidos-card:hover .mas_vendidos-image {
         transform: scale(1.1);
     }
+    .mas_vendidos-image{
+        height: 300px;
+        object-fit: cover;
+    }
 
     .mas_vendidos-tag {
         position: absolute;

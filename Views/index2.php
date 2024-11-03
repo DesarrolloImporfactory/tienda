@@ -250,7 +250,7 @@
                     <div class="position-relative card bg-transparent rounded-4">
                         ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
-                                <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                                <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
                             </a>
                         <div class="d-flex justify-content-between p-3 align-items-center mt-4 mb-2">
                             <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
