@@ -334,6 +334,10 @@
         border: 1px solid #ccc;
     }
 
+    .body_card{
+        
+    }
+
     
 
     /* CSS para carrito de compras */
