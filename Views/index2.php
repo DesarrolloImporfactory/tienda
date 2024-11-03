@@ -246,7 +246,7 @@
 
                         // HTML para cada producto destacado
                         var productItem = `
-                    <div class="col-3 mas_vendidos-card">
+                    <div class="col-3 p-3 mas_vendidos-card">
                         ${oferta}
                         <div class="mas_vendidos-image-wrapper">
                             <a href="producto2?id=${producto.id_producto_tienda}">
