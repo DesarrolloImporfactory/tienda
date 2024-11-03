@@ -246,13 +246,13 @@
 
                         // HTML para cada producto destacado
                         var productItem = `
-                        
-                    <div class="position-relative card px-1 bg-transparent col-12 col-sm-6 col-md-4 col-lg-3 rounded-4">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-1">
+                    <div class="position-relative card bg-transparent rounded-4">
                         ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
                                 <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
                             </a>
-                        <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
+                        <div class="d-flex justify-content-between p-3 align-items-center mt-4 mb-2">
                             <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                             <p class="mas_vendidos-price">
                                 ${precioNormal > 0 ? `
@@ -262,6 +262,8 @@
                             </p>
                         </div>
                     </div>
+                                            </div>
+
                 `;
 
                         // Agregar el producto a la fila actual
