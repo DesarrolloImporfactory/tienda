@@ -427,17 +427,7 @@
 
     .mas_vendidos-card {
         position: relative;
-        flex: 1 1 150px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: transparent;
-        text-align: center;
-        transition: transform 0.3s ease;
-        overflow: hidden;
+       
     }
 
     .mas_vendidos-card:hover .mas_vendidos-image {

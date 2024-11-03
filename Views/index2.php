@@ -228,7 +228,7 @@
                     productosAMostrar.forEach(function (producto, index) {
                         if (index % 4 === 0) {
                             // Crear una nueva fila cada 4 productos
-                            fila = $('<div class="row align-items-stretch g-4"></div>');
+                            fila = $('<div class="row align-items-stretch g-4 mt-5 gap-2"></div>');
                             $productosContainer.append(fila);
                         }
 
@@ -246,17 +246,14 @@
 
                         // HTML para cada producto destacado
                         var productItem = `
-                        <div class="col-3 p-1">
                         
-                    <div class="mas_vendidos-card">
+                    <div class="mas_vendidos-card card  bg-transparent p-3 col rounded-4">
                         ${oferta}
-                        <div class="mas_vendidos-image-wrapper">
                             <a href="producto2?id=${producto.id_producto_tienda}">
-                                <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                <img src="${image_path}" class="" alt="${producto.nombre_producto_tienda}">
                             </a>
-                        </div>
-                        <div class="mas_vendidos-info">
-                            <p>${producto.nombre_producto_tienda}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-4 mb-2">
+                            <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                             <p class="mas_vendidos-price">
                                 ${precioNormal > 0 ? `
                                     <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
@@ -264,7 +261,6 @@
                                 $${number_format(precioEspecial, 2)}
                             </p>
                         </div>
-                    </div>
                     </div>
                 `;
 
