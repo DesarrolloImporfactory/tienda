@@ -187,7 +187,7 @@
                                         <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
                                             <i class="fa ${icon_text} fa-2x me-3" style="color: ${color_icono} !important"></i>
                                             <div class="text-end">
-                                                <h5 class="card-title card-title_icon">${texto}</h5>
+                                                <h5 class="card-title text-nowrap d-flex">${texto}</h5>
                                                 <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
                                             </div>
                                         </div>
