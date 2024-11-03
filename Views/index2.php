@@ -228,7 +228,7 @@
                     productosAMostrar.forEach(function (producto, index) {
                         if (index % 4 === 0) {
                             // Crear una nueva fila cada 4 productos
-                            fila = $('<div class="row align-items-stretch g-4 mt-5"></div>');
+                            fila = $('<div class="row align-items-stretch g-4 mt-5 gap-3"></div>');
                             $productosContainer.append(fila);
                         }
 
