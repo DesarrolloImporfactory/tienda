@@ -334,9 +334,15 @@
         border: 1px solid #ccc;
     }
 
-    .body_card{
-        
-    }
+    .body_card h5 {
+    display: -webkit-box;         /* Usar flexbox en navegadores con -webkit */
+    -webkit-line-clamp: 2;        /* Limitar a un máximo de 2 líneas */
+    -webkit-box-orient: vertical; /* Orientación vertical para el recorte */
+    overflow: hidden;             /* Ocultar contenido extra */
+    text-overflow: ellipsis;      /* Agregar puntos suspensivos (...) */
+    font-weight: bold;            /* Opcional: resaltar el título */
+}
+
 
     
 
