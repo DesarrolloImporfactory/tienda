@@ -228,7 +228,7 @@
                     productosAMostrar.forEach(function (producto, index) {
                         if (index % 4 === 0) {
                             // Crear una nueva fila cada 4 productos
-                            fila = $('<div class="row align-items-stretch g-4 mt-5 gap-2"></div>');
+                            fila = $('<div class="row align-items-stretch g-4 mt-5"></div>');
                             $productosContainer.append(fila);
                         }
 
@@ -247,7 +247,7 @@
                         // HTML para cada producto destacado
                         var productItem = `
                         
-                    <div class="position-relative card  bg-transparent col-12 col-sm-6 col-md-4 col-lg-3 rounded-4">
+                    <div class="position-relative card px-1 bg-transparent col-12 col-sm-6 col-md-4 col-lg-3 rounded-4">
                         ${oferta}
                             <a href="producto2?id=${producto.id_producto_tienda}">
                                 <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
