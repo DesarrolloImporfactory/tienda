@@ -357,7 +357,7 @@
                     <div class="col-md-4 col-sm-6 col-12 mb-4 px-2">
                         <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                             <a href="producto?id=${producto.id_producto_tienda}" class="category-link">
-                                <div class="img-container mx-auto d-flex" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
+                                <div class="img-container mx-auto d-flex w-100" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
                                     <img src="${image_path}" class="card-img-top primary-img w-100 p-4 rounded-2" alt="${producto.nombre_producto_tienda}" style="object-fit: cover;">
                                 </div>
                             </a>

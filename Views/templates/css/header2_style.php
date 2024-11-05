@@ -485,15 +485,10 @@
 
     .hr_vertical {
         width: 1px;
-        /* Grosor de la línea */
         background-color: black;
-        /* Color de la línea */
         height: 40px;
-        /* Altura inicial, puedes editarla */
         margin: 0 10px;
-        /* Margen opcional alrededor de la línea */
         display: inline-block;
-        /* Para asegurarse de que actúe como un bloque en línea */
     }
 
 
@@ -502,21 +497,13 @@
         align-items: center;
         justify-content: center;
         background-color: #dc3545;
-        /* Color de fondo similar a btn-danger */
         border: none;
-        /* Elimina el borde */
         color: #fff;
-        /* Color del texto */
         padding: 6px 12px;
-        /* Espaciado interno similar a btn-sm */
         font-size: 14px;
-        /* Tamaño de fuente similar a btn-sm */
         border-radius: 4px;
-        /* Borde redondeado */
         cursor: pointer;
-        /* Cursor de pointer al pasar el mouse */
         transition: background-color 0.3s ease;
-        /* Transición suave para el color de fondo */
     }
 
     .custom-delete-button i {
