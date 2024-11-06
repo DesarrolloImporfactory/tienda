@@ -166,11 +166,10 @@ $primera_seccion = obtenerPrimeraSeccion();
     </script>
 
 <script>
-    // Oculta el overlay después de 4 segundos
     setTimeout(() => {
       const overlay = document.getElementById('loadingOverlay');
       overlay.style.display = 'none';
-    }, 4000); // 4000 ms = 4 segundos
+    }, 3000); 
   </script>
 
 

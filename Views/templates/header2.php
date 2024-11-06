@@ -182,11 +182,44 @@ $primera_seccion = obtenerPrimeraSeccion();
 
     <!-- Enlazar JS de Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <script>
+    setTimeout(() => {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'none';
+    }, 3000); 
+  </script>
+
+
+
+<style>
+    /* Estilos del overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco con transparencia */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000; /* Mantiene el overlay por encima de otros elementos */
+    }
+
+    
+  </style>
 </head>
 
 <?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
 
 <body>
+<div id="loadingOverlay" class="overlay">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
             <div class="container">
