@@ -183,11 +183,11 @@ $primera_seccion = obtenerPrimeraSeccion();
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+      background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco con transparencia */
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 1000; /* Mantiene el overlay por encima de otros elementos */
+      z-index: 10000; /* Mantiene el overlay por encima de otros elementos */
     }
 
     
