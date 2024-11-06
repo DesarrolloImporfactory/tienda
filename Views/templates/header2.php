@@ -188,7 +188,7 @@ $primera_seccion = obtenerPrimeraSeccion();
     setTimeout(() => {
       const overlay = document.getElementById('loadingOverlay');
       overlay.style.display = 'none';
-    }, 3000); 
+    }, 2500); 
   </script>
 
 
