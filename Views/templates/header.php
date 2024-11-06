@@ -165,13 +165,48 @@ $primera_seccion = obtenerPrimeraSeccion();
         });
     </script>
 
+<style>
+    /* Estilos del overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000; /* Mantiene el overlay por encima de otros elementos */
+    }
 
+    /* Estilos del spinner */
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      border-width: 0.3rem;
+      border-style: solid;
+      border-radius: 50%;
+      border-top-color: #007bff; /* Color del spinner */
+      animation: spin 0.75s linear infinite;
+    }
+
+    /* Animación de giro para el spinner */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 
 </head>
 
 <?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
 
 <body>
+<div id="loadingOverlay" class="overlay">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-1 py-md-3">
         <div class="container">
             <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
