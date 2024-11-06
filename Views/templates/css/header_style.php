@@ -477,17 +477,40 @@
 
     }
 
-    .whatsapp-float:hover {
-        background-color: #128C7E;
-        /* Color al pasar el ratón */
-    }
-
     @media (max-width: 768px) {
         .whatsapp-float {
             bottom: 20px;
             /* Distancia desde el fondo para dispositivos móviles */
             right: 20px;
             /* Distancia desde el lado derecho para dispositivos móviles */
+        }
+    }
+
+
+    .ws_flotante {
+        color: #24d366 !important;
+        background-color: transparent !important;
+        font-size: 4em !important;
+        transition: transform 0.3s ease;
+        /* Transición suave */
+    }
+
+    .ws_flotante:hover {
+        animation: bounce 0.5s ease infinite;
+        /* Repetir la animación de forma indefinida */
+    }
+
+    /* Definimos la animación de "salto" */
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+            /* Ajusta el valor según la altura que quieras */
         }
     }
 
@@ -556,14 +579,9 @@
         transform: scale(1);
     }
 
-    .ws,
-    .ws_flotante {
+    .ws {
         color: #24d366;
         font-size: 2em;
-    }
-
-    .ws_flotante {
-        font-size: 4em;
     }
 
     .send {
@@ -652,9 +670,6 @@
 
 
 
-    /* fin footer del anterior sistema */
-
-    /* css faltante */
     .tachado {
         text-decoration: line-through;
     }
