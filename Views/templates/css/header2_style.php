@@ -1,4 +1,8 @@
 <style>
+    .navbar{
+        overflow: hidden !important;
+        width: 100% !important;
+    }
     /* Navbar Styles */
     /* Cambiar el color del ícono de la hamburguesa */
     .navbar-toggler-icon {
@@ -86,6 +90,17 @@
         color: <?php echo COLOR_HOVER_CABECERA; ?>;
         background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
         border-radius: 5px;
+    }
+
+    .owl-item  {
+        width: fit-content !important;
+    }
+    .owl-item  a{
+        font-size: 14px !important;
+    }
+    .owl-nav{
+        display: flex;
+        width: fit-content;
     }
 
     /* Estilos específicos para OwlCarousel en pantallas grandes */
@@ -319,19 +334,17 @@
         border: 1px solid #ccc;
     }
 
-    .seccion_iconos {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        font-weight: bold;
-        font-size: 20px;
-        gap: 10%;
-        justify-content: center;
-    }
+    .body_card h5 {
+    display: -webkit-box;         
+    -webkit-line-clamp: 2;        
+    -webkit-box-orient: vertical; 
+    overflow: hidden;            
+    text-overflow: ellipsis;     
+    font-weight: bold; 
+}
 
-    /* CSS para carrito de compras */
-    /* El panel del carrito deslizante */
-    .cart-sidebar {
+
+        .cart-sidebar {
         height: 100%;
         width: 0;
         position: fixed;
@@ -345,12 +358,10 @@
         padding-top: 60px;
     }
 
-    /* Contenido del carrito dentro del panel */
     .cart-sidebar-content {
         padding: 20px;
     }
 
-    /* Encabezado del panel deslizante con botón de cerrar */
     .cart-sidebar-header {
         display: flex;
         justify-content: space-between;
@@ -410,23 +421,13 @@
         padding-right: 30px;
     }
 
-    .mas_vendidos-card {
-        position: relative;
-        flex: 1 1 150px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background-color: transparent;
-        text-align: center;
-        transition: transform 0.3s ease;
-        overflow: hidden;
-    }
 
     .mas_vendidos-card:hover .mas_vendidos-image {
         transform: scale(1.1);
+    }
+    .mas_vendidos-image{
+        height: 300px;
+        object-fit: cover;
     }
 
     .mas_vendidos-tag {
@@ -484,15 +485,10 @@
 
     .hr_vertical {
         width: 1px;
-        /* Grosor de la línea */
         background-color: black;
-        /* Color de la línea */
         height: 40px;
-        /* Altura inicial, puedes editarla */
         margin: 0 10px;
-        /* Margen opcional alrededor de la línea */
         display: inline-block;
-        /* Para asegurarse de que actúe como un bloque en línea */
     }
 
 
@@ -501,21 +497,13 @@
         align-items: center;
         justify-content: center;
         background-color: #dc3545;
-        /* Color de fondo similar a btn-danger */
         border: none;
-        /* Elimina el borde */
         color: #fff;
-        /* Color del texto */
         padding: 6px 12px;
-        /* Espaciado interno similar a btn-sm */
         font-size: 14px;
-        /* Tamaño de fuente similar a btn-sm */
         border-radius: 4px;
-        /* Borde redondeado */
         cursor: pointer;
-        /* Cursor de pointer al pasar el mouse */
         transition: background-color 0.3s ease;
-        /* Transición suave para el color de fondo */
     }
 
     .custom-delete-button i {

@@ -17,7 +17,7 @@
     <!-- Fin Slider -->
     <!-- Seccion de ofertas y promociones -->
     <div class="seccion">
-        <div class="flex_seccionOfertas">
+        <div class="flex_seccionOfertas container">
             <div class="promotion-card">
                 <img src="<?php echo SERVERURL . "" . IMAGEN_OFERTA1; ?>" class="promotion-image" alt="Smartphone">
                 <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA1; ?>;">
@@ -25,7 +25,8 @@
                     <h1><?php echo OFERTA1; ?></h1>
                     <p><?php echo DESCRIPCION_OFERTA1; ?></p>
                     <a href="<?php echo ENLACE_OFERTA1; ?>" target="_blank">
-                        <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
+                        <button class="btn btn-light"
+                            style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
                     </a>
                 </div>
             </div>
@@ -36,7 +37,8 @@
                     <h1><?php echo OFERTA2; ?></h1>
                     <p><?php echo DESCRIPCION_OFERTA2; ?></p>
                     <a href="<?php echo ENLACE_OFERTA2; ?>" target="_blank">
-                        <button class="btn btn-light" style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
+                        <button class="btn btn-light"
+                            style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
                     </a>
                 </div>
             </div>
@@ -44,17 +46,15 @@
     </div>
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
-    <div class="seccion">
-        <div class="caja">
-            <div class="seccion_iconos" id="iconos-container">
+    <section class="container">
+            <div class="row" id="iconos-container" style="max-width: 1150px; margin: auto;">
                 <!-- Los iconos serán insertados aquí dinámicamente -->
             </div>
-        </div>
-    </div>
+    </section>
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
     <div class="mas_vendidos">
-        <div class="caja">
+        <div class="caja container">
             <h2>Productos destacados</h2>
             <div class="flex_mas_vendidos" id="productos-destacados">
                 <!-- Los productos serán insertados aquí dinámicamente -->
@@ -65,7 +65,7 @@
     <!-- Sección Ahorra -->
     <div class="ahorro-section">
         <div class="ahorro-image">
-            <img src="<?php echo SERVERURL."".IMAGEN_PROMOCION; ?>" alt="Producto">
+            <img src="<?php echo SERVERURL . "" . IMAGEN_PROMOCION; ?>" alt="Producto">
             <!-- <div class="circle-badge">Mejor precio</div> -->
         </div>
         <div class="ahorro-content" style="background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;">
@@ -74,7 +74,8 @@
                 <h1 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;">$<?php echo PRECIO_PROMOCION; ?></h1>
                 <p style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo DESCRIPCION_PROMOCION; ?></p>
                 <a href="<?php echo ENLACE_BTN_PROMOCION; ?>" target="_blank">
-                    <button class="tienda-btn" style="background-color: <?php echo COLOR_BTN_PROMOCION; ?>; color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;"><?php echo TEXTO_BTN_PROMOCION; ?></button>
+                    <button class="tienda-btn"
+                        style="background-color: <?php echo COLOR_BTN_PROMOCION; ?>; color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;"><?php echo TEXTO_BTN_PROMOCION; ?></button>
                 </a>
             </div>
         </div>
@@ -84,7 +85,8 @@
 </main>
 
 <script>
-    $(document).ready(function() {
+
+    $(document).ready(function () {
         function obtenerURLImagen(imagePath, serverURL) {
             // Verificar si el imagePath no es null
             if (imagePath) {
@@ -114,10 +116,10 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 let inner = '';
                 let alineacion = "";
-                $.each(data, function(index, banner) {
+                $.each(data, function (index, banner) {
 
                     let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     if (banner.alineacion == 1) {
@@ -141,7 +143,7 @@
 
                 $('.carousel-inner').html(inner);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Error fetching banner data', error);
             }
         });
@@ -157,7 +159,7 @@
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var iconos = JSON.parse(response);
                 } catch (e) {
@@ -168,19 +170,28 @@
                 if (iconos && Array.isArray(iconos)) {
                     var $iconosContainer = $("#iconos-container");
 
-                    iconos.forEach(function(icono) {
+                    iconos.forEach(function (icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
                         var enlace_icon = icono.enlace_icon || '#';
+                        var subtexto_icon = icono.subtexto_icon || '';
+                        var color_icono =icono.color_icono
 
                         // Aquí está el HTML para el nuevo diseño con el formato correcto
                         var iconoItem = `
-                        <div class="d-flex flex-row" style="padding: 10px;">
-                            <a href="${enlace_icon}" target="_blank" style="text-decoration: none; color: black;">
-                                <i class="fa ${icon_text} fa-2x menu-icon" style="color: ${icono.color_icono} !important"></i>
-                                <span>${texto}</span>
-                            </a>
-                        </div>
+                       <div class="col-md-4 mb-3 icon_responsive">
+                                <a ${enlace_icon}>
+                                    <div class="card card_icon text-center">
+                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                            <i class="fa ${icon_text} fa-2x me-3" style="color: ${color_icono} !important"></i>
+                                            <div class="text-end">
+                                                <h5 class="card-title">${texto}</h5>
+                                                <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                     `;
 
                         // Agregar el icono al contenedor
@@ -190,7 +201,7 @@
                     console.error('La respuesta no contiene iconos válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los iconos:', error);
             }
         });
@@ -201,51 +212,51 @@
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + 'Tienda/destacadostienda',
-            method: 'POST',
-            data: formDataProductos,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                try {
-                    var productos = JSON.parse(response);
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
+    url: SERVERURL + 'Tienda/destacadostienda',
+    method: 'POST',
+    data: formDataProductos,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        try {
+            var productos = JSON.parse(response);
+        } catch (e) {
+            console.error('Error al parsear la respuesta:', e);
+            return;
+        }
+
+        if (productos && Array.isArray(productos)) {
+            var $productosContainer = $("#productos-destacados");
+            $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
+
+            var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
+            var fila = $('<div style="height: fit-content;" class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
+            $productosContainer.append(fila); // Agregar la fila al contenedor
+
+            productosAMostrar.forEach(function (producto) {
+                var precioEspecial = parseFloat(producto.pvp_tienda);
+                var precioNormal = parseFloat(producto.pref_tienda);
+                var ahorro = 0;
+
+                if (precioNormal > 0) {
+                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
                 }
 
-                if (productos && Array.isArray(productos)) {
-                    var $productosContainer = $("#productos-destacados");
+                var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
-                    productos.forEach(function(producto) {
-                        var precioEspecial = parseFloat(producto.pvp_tienda);
-                        var precioNormal = parseFloat(producto.pref_tienda);
-                        var ahorro = 0;
+                let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
 
-                        if (precioNormal > 0) {
-                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
-                        }
-
-                        var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
-
-                        let oferta="";
-                        
-                        if(precioNormal > 0){
-                            oferta= `<div class="mas_vendidos-tag">OFERTA</div>`;
-                        }
-
-                        // HTML para cada producto destacado
-                        var productItem = `
-                        <div class="mas_vendidos-card">
+                // HTML para cada producto destacado
+                var productItem = `
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
+                        <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4 h-100">
                             ${oferta}
-                            <div class="mas_vendidos-image-wrapper">
-                                <a href="producto2?id=${producto.id_producto_tienda}">
-                                    <img src="${image_path}" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
-                                </a>
-                            </div>
-                            <div class="mas_vendidos-info">
-                                <p>${producto.nombre_producto_tienda}</p>
-                                <p class="mas_vendidos-price">
+                            <a href="producto2?id=${producto.id_producto_tienda}">
+                                <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                            </a>
+                            <div class="d-flex flex-column body_card h-100 p-3 mt-4 mb-2">
+                                <h5 class="card-title fs-6">${producto.nombre_producto_tienda}</h5>
+                                <p class="mas_vendidos-price mt-auto mb-0">
                                     ${precioNormal > 0 ? `
                                         <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
                                     ` : ''}
@@ -253,19 +264,22 @@
                                 </p>
                             </div>
                         </div>
-                    `;
+                    </div>
+                `;
 
-                        // Agregar el producto al contenedor
-                        $productosContainer.append(productItem);
-                    });
-                } else {
-                    console.error('La respuesta no contiene productos válidos.');
-                }
-            },
-            error: function(error) {
-                console.log('Error al cargar los productos destacados:', error);
-            }
-        });
+                // Agregar el producto a la única fila
+                fila.append(productItem);
+            });
+        } else {
+            console.error('La respuesta no contiene productos válidos.');
+        }
+    },
+    error: function (error) {
+        console.log('Error al cargar los productos destacados:', error);
+    }
+});
+
+
         /* Fin productos destacados */
     });
 

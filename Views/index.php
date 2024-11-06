@@ -1,15 +1,17 @@
 <?php include 'Views/templates/header.php'; ?>
 
-<main style="background-color: #f9f9f9;">
+<main>
     <!-- Slider -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators"></div>
         <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -25,36 +27,34 @@
     <!-- fin animacion -->
 
     <!-- categorias -->
-    <div class="container mt-4">
-        <h1 style="text-align: center">Categorías</h1>
-        <br>
-        <div class="caja" style="margin-bottom: 50px;">
+    <section class="container">
+        <h1 class="text-center display-4 mb-4">Categorías</h1>
+        <div class="caja ">
             <div class="owl-carousel owl-theme" id="categories-container">
                 <!-- Aquí se insertarán las categorías dinámicamente -->
             </div>
         </div>
-    </div>
+    </section>
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <div class="container mt-4">
-        <h1 class="text-center">Destacados</h1>
-        <br>
+    <section class="container" >
+        <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
-        <div class="owl-carousel owl-theme mb-5" id="productos-carousel">
+        <div class="owl-carousel owl-theme" id="productos-carousel">
             <!-- Los productos se cargarán aquí dinámicamente -->
         </div>
         <!-- Fin Productos -->
-    </div>
+    </section>
 
     <!-- fin destacados -->
 
     <!-- Iconos -->
-    <div class="container" style="margin-bottom: 20px;">
-        <div class="row" id="iconos-container">
+    <section class="container" >
+        <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
-    </div>
+    </section>
     <!-- Fin Iconos -->
 
     <!-- animacion -->
@@ -66,25 +66,29 @@
     <!-- fin animacion -->
 
     <!-- Testimonios -->
-    <div class="container mt-4 testimonios">
-        <h1 style="text-align: center">Testimonios</h1>
-        <br>
-        <div class="caja" style="margin-bottom: 50px;">
-            <div class="owl-carousel owl-theme" id="testimonios-carousel">
-                <!-- Los testimonios se cargarán aquí dinámicamente -->
+    <section class=" testimonios">
+        <div class="container mx-auto" style="max-width: 1000px;">
+
+            <h1 class="text-center display-4 mb-4">Testimonios</h1>
+            <div class="caja">
+                <div class="owl-carousel owl-theme " id="testimonios-carousel">
+                    <!-- Los testimonios se cargarán aquí dinámicamente -->
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <!-- Fin Testimonios -->
 
     <!-- boton whatsapp -->
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float" target="_blank"><i class="bx bxl-whatsapp-square ws_flotante" style="font-size: 3.5em;"></i></a>
+
+    <a  href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+
     <!-- Fin boton whatsapp-->
 
 </main>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         /* Slider */
         let formDataSlider = new FormData();
         formDataSlider.append("id_plataforma", ID_PLATAFORMA);
@@ -95,12 +99,12 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
 
                 let indicators = '';
                 let inner = '';
                 let alineacion = "";
-                $.each(data, function(index, banner) {
+                $.each(data, function (index, banner) {
 
                     image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     if (banner.alineacion == 1) {
@@ -113,7 +117,9 @@
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
-                              <img src="${image_path}" class="d-block w-100" alt="..." style="width: 100%; height: auto !important; max-width: 100vw;">
+                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: 70vh !important;
+                                    width: 100% !important;
+                                    object-fit: cover;">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                   <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
                                   <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
@@ -124,7 +130,7 @@
                 $('.carousel-indicators').html(indicators);
                 $('.carousel-inner').html(inner);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Error fetching banner data', error);
             }
         });
@@ -139,7 +145,7 @@
             data: formDataCategoria,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 let categorias = JSON.parse(response); // Asegúrate de que la respuesta sea un objeto JSON
 
                 // Verifica si la respuesta es un array o un objeto
@@ -181,12 +187,12 @@
                     },
                     nav: true,
                     navText: [
-                        '<i class="fas fa-chevron-left"></i>',
-                        '<i class="fas fa-chevron-right"></i>'
+                        '<i class="fas fa-chevron-left fs-2"></i>',
+                        '<i class="fas fa-chevron-right fs-2"></i>'
                     ]
                 });
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Error al consumir la API:", error);
             }
         });
@@ -215,8 +221,8 @@
             },
             nav: true,
             navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
+                '<i class="fas fa-chevron-left fs-2"></i>',
+                '<i class="fas fa-chevron-right fs-2"></i>'
             ]
         });
 
@@ -230,7 +236,7 @@
             data: formDataProductos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var productos = JSON.parse(response);
                 } catch (e) {
@@ -241,7 +247,7 @@
                 if (productos && Array.isArray(productos)) {
                     var $carousel = $("#productos-carousel");
                     let image_path = "";
-                    productos.forEach(function(producto) {
+                    productos.forEach(function (producto) {
                         var precioEspecial = parseFloat(producto.pvp_tienda);
                         var precioNormal = parseFloat(producto.pref_tienda);
 
@@ -251,47 +257,47 @@
                         }
                         image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
                         var productItem = `
-                        <div class="item">
-                        <div class="grid-container">
-                        <div class="card" style="border-radius: 1rem; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                        <div class="img-container" style="aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: -50px">
-                        <a href="producto?id=${producto.id_producto_tienda}">
-                        <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" style="object-fit: cover; width: 70%; height: 70%; margin-top: 10px;">
-                        </a>
-                        </div>
-                        <div class="card-body d-flex flex-column" style="margin-top: 1rem;">
-                        <p class="card-text flex-grow-1 mt-4" style="margin-top: 1rem;">
-                        <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none; color:black;">
-                            <strong>${producto.nombre_producto_tienda}</strong>
-                        </a>
-                    </p>
-                    <div class="product-footer mb-2">
-                        <div class="d-flex flex-row">
-                            <div>
-                                <span style="font-size: 12px; padding-right: 10px;" class="texto_precio">
-                                    <strong>$ ${number_format(precioEspecial, 2)}</strong>
-                                </span>
+                            <div class="item">
+                                <div class="grid-container">
+                                    <div class="card rounded " >
+                                        <div class="img-container position-relative">
+                                            ${precioNormal > 0 ? `
+                                            <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start" style="top: 20px; right: 0px;">
+                                                <span class="ahorro"><i class="bi bi-tag-fill me-1" ></i>
+                                                    <strong>AHORRA UN ${number_format(ahorro)}%</strong>
+                                                </span>
+                                            </div>
+                                             ` : ''}
+
+                                            <a href="producto?id=${producto.id_producto_tienda}">
+                                                <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
+                                            </a>
+                                        </div>
+                                        <div class="card-body card-body-proDes d-flex flex-column" >
+                                            <p class="card-text flex-grow-1 mt-4 fs-6" >
+                                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none;" class="text-dark">
+                                                    <strong>${producto.nombre_producto_tienda}</strong>
+                                                </a>
+                                            </p>
+                                        <div class="product-footer mb-2">
+                                        <div class="d-flex flex-row">
+                                                <span class="texto_precio me-2 fs-5">
+                                                    <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
+                                                </span>
+                                            ${precioNormal > 0 ? `
+                                                <span class="tachado d-flex align-items-center fs-6">
+                                                    <p class="mb-0">$ ${number_format(precioNormal, 2)}</p>
+                                                </span>
+                                            
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                    <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
+                                </div>
                             </div>
-                            ${precioNormal > 0 ? `
-                            <div>
-                                <span class="tachado" style="font-size: 12px; padding-right: 10px;">
-                                    <strong>$ ${number_format(precioNormal, 2)}</strong>
-                                </span>
-                            </div>
-                            <div class="px-2" style="background-color: #4464ec; color:white; border-radius: 0.3rem; max-width: 70%;">
-                                <span class="ahorro"><i class="bx bxs-purchase-tag"></i>
-                                    <strong>AHORRA UN ${number_format(ahorro)}%</strong>
-                                </span>
-                            </div>
-                            ` : ''}
                         </div>
                     </div>
-                    <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-`;
+                        `;
 
                         // Agregar el producto al carrusel
                         $carousel.trigger('add.owl.carousel', [$(productItem)]);
@@ -303,7 +309,7 @@
                     console.error('La respuesta no contiene productos válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los productos destacados:', error);
             }
         });
@@ -338,7 +344,7 @@
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var iconos = JSON.parse(response);
                 } catch (e) {
@@ -349,25 +355,23 @@
                 if (iconos && Array.isArray(iconos)) {
                     var $iconosContainer = $("#iconos-container");
 
-                    iconos.forEach(function(icono) {
+                    iconos.forEach(function (icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
-                        var enlace_icon = icono.enlace_icon || '';
+                        var enlace_icon = icono.enlace_icon || '#';
                         var subtexto_icon = icono.subtexto_icon || '';
 
                         var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
 
                         var iconoItem = `
-                            <div class="col-md-4 icon_responsive">
+                            <div class="col-md-4 mb-3 icon_responsive">
                                 <a ${enlaceHTML}>
                                     <div class="card card_icon text-center">
-                                        <div class="card-body card-body_icon d-flex flex-row">
-                                            <div style="margin-right: 20px;">
-                                                <i class="fa ${icon_text} fa-2x" style="color: ${icono.color_icono} !important"></i>
-                                            </div>
-                                            <div>
+                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                            <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
+                                            <div class="text-end">
                                                 <h5 class="card-title card-title_icon">${texto}</h5>
-                                                <p class="card-text card-text_icon" style="font-size: 12px;">${subtexto_icon}</p>
+                                                <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -382,7 +386,7 @@
                     console.error('La respuesta no contiene iconos válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los iconos:', error);
             }
         });
@@ -405,8 +409,8 @@
             },
             nav: true,
             navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
+                '<i class="fas fa-chevron-left fs-2"></i>',
+                '<i class="fas fa-chevron-right fs-2"></i>'
             ]
         });
 
@@ -420,7 +424,7 @@
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 try {
                     var testimonios = JSON.parse(response);
                 } catch (e) {
@@ -431,21 +435,21 @@
                 if (testimonios && Array.isArray(testimonios)) {
                     var $carousel = $("#testimonios-carousel");
 
-                    testimonios.forEach(function(testimonio) {
+                    testimonios.forEach(function (testimonio) {
                         var id_testimonio = testimonio.id_testimonio;
                         var nombre_testimonio = testimonio.nombre || '';
                         var texto_testimonio = testimonio.testimonio || '';
                         var image_path = obtenerURLImagen(testimonio.imagen, SERVERURL)
 
                         var testimonioItem = `
-                            <div class="item d-flex flex-column">
-                                <div class="testimonios-container">
-                                    <div class="testimonios-image rounded-circle" style="background-image: url('${image_path}');">
+
+                                <div class="card p-3 border-0">
+                                    <img src="${image_path}" class="card-img-top rounded-circle img_card_testimonio mx-auto mb-4" alt="...">
+                                    <div class="card-body p-0 card_body_testimonios text-center">
+                                        <h5 class="card-title">${nombre_testimonio}</h5>
+                                        <p class="card-text">${texto_testimonio}</p>
                                     </div>
-                                    <p class="card-text"><strong>${nombre_testimonio}</strong></p>
-                                    <p class="card-text testimonio-text">${texto_testimonio}</p>
                                 </div>
-                            </div>
                         `;
 
                         // Agregar el testimonio al carrusel
@@ -458,7 +462,7 @@
                     console.error('La respuesta no contiene testimonios válidos.');
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.log('Error al cargar los testimonios:', error);
             }
         });
@@ -475,7 +479,7 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 const ofertas = response;
 
                 if (Array.isArray(ofertas)) {
@@ -496,7 +500,7 @@
                     console.error('La respuesta no es un array:', ofertas);
                 }
             },
-            error: function(error) {
+            error: function (error) {
                 console.error('Error al obtener las ofertas:', error);
             }
         });

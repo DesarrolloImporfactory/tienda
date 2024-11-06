@@ -26,12 +26,10 @@
 
     .left-column {
         width: 20%;
-        padding: 20px;
-        padding-top: 60px;
         position: -webkit-sticky;
         /* Para compatibilidad con Safari */
         position: sticky;
-        top: 0;
+        top: 90px;
         /* Ajusta esto a la altura de cualquier cabecera o menú que tengas */
         height: 100%;
         /* O la altura que quieras que tenga */
@@ -41,14 +39,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* Esto centrará sus hijos horizontalmente */
         align-self: start;
-        /* Añade esta línea para alinear la propia .right-column al inicio de su contenedor flex */
-        width: 80%;
-        padding: 20px;
-        padding-top: 60px;
-        min-height: 600px;
-        /* Ajusta esto según la altura mínima que desees */
+       
     }
 
     .content_left_right {
@@ -186,31 +178,6 @@
         /* Oculta el tooltip por defecto de noUiSlider */
     }
 
-    .caja_categorias {
-        padding-top: 20px !important;
-        padding-bottom: 40px !important;
-        border-radius: 25px;
-        -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.23);
-        -moz-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        background-color: white;
-        position: relative;
-        z-index: 10;
-        /* Asegúrate de que esto sea mayor que el z-index de otros elementos */
-        display: flex;
-        /* Usa flexbox para alinear elementos internos */
-        justify-content: flex-start;
-        /* Alinea el menú a la izquierda */
-        width: 100%;
-        /* O el ancho que desees para esta caja */
-        box-sizing: border-box;
-        /* Asegura que el padding no añada al ancho total */
-    }
-
-    .filtro-flotante {
-        position: absolute;
-        right: 20;
-    }
 
     .btn_filtro {
         font-size: 20px !important;
@@ -268,13 +235,7 @@
         display: block !important;
     }
 
-    .img-container:hover .hover-img {
-        opacity: 1;
-    }
 
-    .img-container:hover .primary-img {
-        opacity: 0;
-    }
 
     /* Fin estilo imagen doble de producto*/
 

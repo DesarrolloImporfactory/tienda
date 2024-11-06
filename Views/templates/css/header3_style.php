@@ -125,9 +125,8 @@
     }
 
     /* header ##########################*/
-    
+
     header {
-        background-image: url(https://content.app-sources.com/s/53156514013336927/uploads/Images/Funnel_odontolog%C3%ADa-02-4441408.png?format=webp);
         min-height: 80vh;
     }
 
@@ -147,6 +146,7 @@
     .seccion2 {
         position: relative;
         background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .seccion2>* {
@@ -154,19 +154,33 @@
         z-index: 2;
     }
 
-    .seccion2::after {
-        content: " ";
+    #parallax-overlay {
+        position: absolute;
         top: 0;
         left: 0;
-        position: absolute;
-        display: block;
         width: 100%;
         height: 100%;
-        background-color: #5bbecfba;
+        background-color: #5bbecf;
         z-index: 1;
+        opacity: 0.3;
     }
 
+    .seccion2 .container {
+        position: relative;
+        z-index: 2;
+        /* Contenido por encima del overlay */
+    }
+
+
     /* seccion3 ##########################*/
+
+
+    .card_body_productos_destacados p {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        text-align: justify;
+    }
 
     .seccion3 {
         background-image: url(https://content.app-sources.com/s/53156514013336927/uploads/Images/Funnel_odontolog%C3%ADa-02-4441408.png?format=webp);
@@ -204,6 +218,22 @@
     .seccion6 .card img {
         height: 200px;
         object-fit: cover;
+    }
+
+    .descripcionCardProfesional {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        text-align: justify;
+    }
+
+    .modal-footer-profesionales{
+        justify-content: space-between !important;
+    }
+
+    .redesSociales i {
+        font-size: 20px !important;
+        color: #666666 !important;
     }
 
     /* calendario ##########################*/
@@ -256,7 +286,6 @@
     }
 
     .horas-reservadas li {
-
         position: relative;
         display: block;
         padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
@@ -266,6 +295,16 @@
         border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
     }
 
+    /* pagina productos ##########################*/
+
+    .card-body-paginaProductos p {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        -webkit-line-clamp: 1 !important;
+        text-align: justify;
+    }
+
     /* Media querys pagina tienda*/
 
     @media (max-width: 1400px) {}
@@ -273,7 +312,12 @@
     @media (max-width: 1200px) {}
 
     @media (max-width: 992px) {
-        .logoHeaderLink {}
+
+        /* header ##########################*/
+
+        .containerHeader {
+            padding-top: 80px;
+        }
 
         .textosHeader {
             max-width: 400px;
@@ -302,10 +346,8 @@
         }
 
         /* header ##########################*/
-        .containerHeader {
-            padding-top: 80px;
-        }
-        
+
+
         .imgHeader {
             max-width: 500px;
             margin: auto;

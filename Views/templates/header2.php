@@ -160,6 +160,7 @@ $primera_seccion = obtenerPrimeraSeccion();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Cargar jQuery antes que cualquier script que lo necesite -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -181,27 +182,60 @@ $primera_seccion = obtenerPrimeraSeccion();
 
     <!-- Enlazar JS de Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
+    <script>
+    setTimeout(() => {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'none';
+    }, 2500); 
+  </script>
+
+
+
+<style>
+    /* Estilos del overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco con transparencia */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000; /* Mantiene el overlay por encima de otros elementos */
+    }
+
+    
+  </style>
 </head>
 
 <?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
 
 <body>
+<div id="loadingOverlay" class="overlay">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-custom">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="<?php echo $primera_seccion; ?>" style="color:<?php echo COLOR_TEXTO_CABECERA; ?>;"><?php echo NOMBRE_TIENDA; ?></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
-                    <form class="d-flex me-auto">
+                    <form class="d-flex me-auto mb-0">
                         <input class="form-control me-2" id="buscar_input" type="search" placeholder="Buscar..." aria-label="Search">
                         <button class="btn buscar" type="submit">Buscar</button>
                     </form>
                     <!-- Icono del carrito en el header -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" id="cartDropdown" role="button">
+                            <a class="nav-link d-flex" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
                                 <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;" id="cantidad_carrito">0</span>
                             </a>
@@ -228,7 +262,7 @@ $primera_seccion = obtenerPrimeraSeccion();
         </nav>
         <!-- Sub-Nav -->
         <div class="navbar navbar-expand-lg sub-nav bg-custom">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="collapse navbar-collapse" id="subNavbar">
                     <ul class="navbar-nav justify-content-center flex-lg-row flex-column w-100" id="categories-menu">
                         <!-- Categorías dinámicas se cargarán aquí -->

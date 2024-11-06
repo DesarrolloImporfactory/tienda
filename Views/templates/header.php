@@ -102,6 +102,9 @@ $primera_seccion = obtenerPrimeraSeccion();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
@@ -162,23 +165,53 @@ $primera_seccion = obtenerPrimeraSeccion();
         });
     </script>
 
+<script>
+    setTimeout(() => {
+      const overlay = document.getElementById('loadingOverlay');
+      overlay.style.display = 'none';
+    }, 2500); 
+  </script>
 
+
+
+<style>
+    /* Estilos del overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.95); /* Fondo blanco con transparencia */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000; /* Mantiene el overlay por encima de otros elementos */
+    }
+
+    
+  </style>
 
 </head>
 
 <?php require_once './Views/Producto/Modales/checkout_carrito.php'; ?>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-custom">
-        <div class="container-fluid">
+<div id="loadingOverlay" class="overlay">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top py-1 py-md-3">
+        <div class="container">
             <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
-                <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
+                <img class="rounded-3" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav" style="font-size: 20px;">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
                     </li>
@@ -189,7 +222,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="<?php echo $primera_seccion; ?>">
                     <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" id="imagen_logo" alt="IMPORT SHOP">
                 </a>
-                <form class="d-flex ms-auto">
+                <form class="d-flex my-auto">
                     <input class="form-control search-box" type="search" placeholder="Buscar" aria-label="Buscar">
                 </form>
             </div>

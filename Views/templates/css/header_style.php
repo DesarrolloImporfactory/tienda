@@ -1,4 +1,13 @@
 <style>
+    body {
+        background-color: #f9f9f9;
+    }
+
+    section {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
     /* header */
 
     /* Cambiar el color del ícono de la hamburguesa */
@@ -16,12 +25,16 @@
         /* Ícono de hamburguesa */
         font-size: 24px;
         /* Tamaño del ícono */
-        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        color:
+            <?php echo COLOR_TEXTO_CABECERA; ?>
+        ;
         /* Cambiar a tu color preferido */
     }
 
     .navbar-custom {
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color:
+            <?php echo COLOR_BACKGROUND; ?>
+        ;
         /* Ajusta el color según sea necesario */
     }
 
@@ -31,7 +44,13 @@
 
     .navbar-custom .navbar-brand img {
         height: 60px;
-        width: 60px;
+        width: auto;
+    }
+
+    @media (max-width: 768px) {
+        .navbar-custom .navbar-brand img {
+            height: 45px;
+        }
     }
 
     .search-box {
@@ -47,7 +66,7 @@
 
     @media (min-width: 992px) {
         .navbar-nav {
-            flex: 1;
+            gap: 10px;
             display: flex;
             justify-content: flex-start;
             /* Menú alineado a la izquierda en pantallas grandes */
@@ -93,7 +112,9 @@
     /* Arriba */
     .marquee-containerArriba {
         overflow: hidden;
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color:
+            <?php echo COLOR_BACKGROUND; ?>
+        ;
         color: white;
         width: 100%;
         height: 40px;
@@ -127,7 +148,9 @@
     /* Abajo */
     .marquee-containerAbajo {
         overflow: hidden;
-        background-color: <?php echo COLOR_BACKGROUND; ?>;
+        background-color:
+            <?php echo COLOR_BACKGROUND; ?>
+        ;
         color: white;
         width: 100%;
         height: 40px;
@@ -171,9 +194,11 @@
     /* Fin header */
 
     /* FOOTER TEMPORAL */
-    .footer {
+    footer {
         background-color: #f8f9fa;
-        padding: 20px 0;
+    }
+
+    .footer {
         color: #6c757d;
     }
 
@@ -197,12 +222,7 @@
     /* Seccion de css añadido del anteiror sistema */
     .caja {
         padding-top: 40px !important;
-        padding-bottom: 40px !important;
-        border-radius: 25px;
-        -webkit-box-shadow: -2px 5px 5px 0px rgba(0, 0, 0, 0.23);
-        -moz-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.23);
-        background-color: white;
+        padding-bottom: 90px !important;
     }
 
     .degraded-line {
@@ -245,36 +265,43 @@
         color: inherit;
     }
 
-    .testimonios-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
+    .card_body_testimonios {
+        min-height: 135px !important;
     }
 
-    .testimonios-image {
-        background-size: cover;
-        background-position: center;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 15px;
+    .card_body_testimonios p {
+       max-width: 300px;
+       margin: auto;
     }
 
-    .testimonio-text {
-        overflow-wrap: break-word;
-        word-break: break-word;
-        hyphens: auto;
-        font-size: 12px;
+
+    .img_card_testimonio {
+        height: 150px !important;
+        width: 150px !important;
+        object-fit: cover !important;
     }
 
     /* Owl Carousel Customizations */
+
+    .owl-carousel .owl-item img {
+        object-fit: cover;
+        height: 100%;
+    }
+
     .owl-carousel .owl-nav {
         position: absolute;
-        top: 50%;
+        bottom: -35px;
         transform: translateY(-50%);
         width: 100%;
+        z-index: 100;
+    }
+
+    .owl-dots {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        margin: auto;
     }
 
     .owl-carousel .owl-nav button.owl-prev,
@@ -286,11 +313,11 @@
     }
 
     .owl-carousel .owl-nav button.owl-prev {
-        left: -2px;
+        right: 85%;
     }
 
     .owl-carousel .owl-nav button.owl-next {
-        right: -2px;
+        left: 85%;
     }
 
     .owl-carousel .owl-nav button {
@@ -299,14 +326,7 @@
     }
 
     .card {
-        width: 80%;
         margin: auto;
-    }
-
-    @media (max-width: 768px) {
-        .card {
-            width: 100%;
-        }
     }
 
     .card h5 {
@@ -324,8 +344,7 @@
     }
 
     .img-container {
-        aspect-ratio: 1 / 1;
-        overflow: hidden;
+        height: 250px;
     }
 
     .card-body {
@@ -342,12 +361,7 @@
         align-items: center;
     }
 
-    .bg-primary.text-white {
-        background-color: #0d6efd !important;
-        color: #fff !important;
-        padding: 5px;
-        border-radius: 5px;
-    }
+
 
     .btn-primary {
         background-color: #0d6efd !important;
@@ -373,10 +387,6 @@
         line-height: 1.5;
         border-radius: 0.375rem;
         transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
-
-    .item {
-        padding: 15px;
     }
 
     .carousel-item {
@@ -406,8 +416,10 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */ ?> !important;
-        opacity: <?php /* echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') */ ?> !important;
+        background-color:
+            <?php /* echo get_row('perfil', 'banner_color_filtro', 'id_perfil', '1')  */ ?> !important;
+        opacity:
+            <?php /* echo get_row('perfil', 'banner_opacidad', 'id_perfil', '1') */ ?> !important;
     }
 
     .carousel-caption {
@@ -433,38 +445,36 @@
     }
 
     .texto_precio {
-        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
+        color:
+            <?php echo COLOR_TEXTO_PRECIO; ?>
         ;
+        ;
+    }
+
+    .card-body-proDes a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
     }
 
     .card-title {
         margin-bottom: 0.75rem;
     }
 
-    .card-body_icon i {
-        margin-bottom: 15px !important;
-    }
 
     /* Botón flotante para WhatsApp */
     .whatsapp-float {
         position: fixed;
-        /* Posición fija en la pantalla */
         width: auto;
-        /* Ancho automático */
         bottom: 40px;
-        /* Distancia desde el fondo de la pantalla */
         right: 40px;
-        /* Distancia desde el lado derecho de la pantalla */
         background-color: transparent;
-        /* Color del texto */
         padding: -5px;
-        /* Relleno interno del botón */
-        border-radius: 5px;
-        /* Bordes redondeados */
         text-decoration: none;
-        /* Sin subrayado del texto */
         z-index: 100;
-        /* Asegura que el botón esté sobre otros elementos */
+        padding: 10px;
+
     }
 
     @media (max-width: 768px) {
@@ -475,6 +485,7 @@
             /* Distancia desde el lado derecho para dispositivos móviles */
         }
     }
+
 
     .ws_flotante {
         color: #24d366 !important;
@@ -502,6 +513,7 @@
             /* Ajusta el valor según la altura que quieras */
         }
     }
+
 
     /* Fin Botón flotante para WhatsApp */
 
@@ -616,10 +628,7 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
-        .whatsapp-float {
-            bottom: 20px;
-            right: 20px;
-        }
+
     }
 
     @media (max-width: 480px) {
@@ -659,28 +668,14 @@
         text-decoration: underline;
     }
 
-    /* Botón flotante para WhatsApp */
-    .whatsapp-float {
-        position: fixed;
-        width: auto;
-        bottom: 40px;
-        right: 40px;
-        background-color: transparent;
-        padding: -5px;
-        border-radius: 5px;
-        text-decoration: none;
-        z-index: 100;
-    }
 
-    /* fin footer del anterior sistema */
 
-    /* css faltante */
     .tachado {
         text-decoration: line-through;
     }
 
     .ahorro {
-        font-size: 10px;
+        font-size: 13px;
     }
 
     @media (max-width: 768px) {
@@ -690,8 +685,12 @@
     }
 
     .texto_boton {
-        color: <?php echo COLOR_TEXTO_BOTON; ?> !important;
-        background-color: <?php echo COLOR_BOTONES; ?> !important;
+        color:
+            <?php echo COLOR_TEXTO_BOTON; ?>
+            !important;
+        background-color:
+            <?php echo COLOR_BOTONES; ?>
+            !important;
     }
 
     /* fin css faltante */

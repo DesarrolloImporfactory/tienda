@@ -76,8 +76,9 @@
     }
 
     .sub_titulos {
-        font-size: 17px;
+        font-size: 14px;
         font-weight: 700;
+        margin-bottom: 5px;
     }
 
     hr {
@@ -118,10 +119,6 @@
     .icon-btn.active i {
         color: white;
         /* O puedes usar #FFFFFF */
-    }
-
-    .form-group {
-        margin: 0 !important;
     }
 
     .btn_comprar {
@@ -222,6 +219,7 @@
         background-color: #e0f7ff;
         /* Fondo azul claro cuando esté seleccionado */
     }
+
 </style>
 
 
@@ -234,11 +232,11 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body p-4">
                 <div id="combos_carritoContainer">
                     <!-- Aquí se llenará el contenido dinámico con AJAX -->
                 </div>
-                <div class="custom-card-body">
+                <div class="custom-card-body p-3">
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>
@@ -253,9 +251,10 @@
                         </div>
                         <div class="custom-summary" id="descuento_carrito" style="display: none;">
                             <div>Descuento</div>
-                            <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span></div>
+                            <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span>
+                            </div>
                         </div>
-                        <div class="custom-total">
+                        <div class="custom-total align-items-center">
                             <div>Total</div>
                             <div class="total-price"><span id="productos_carritoTotal"></span></div>
                         </div>
@@ -270,26 +269,89 @@
 
                     <input type="hidden" id="total_principal" name="total_principal">
 
-                    <div id="gracias" class="modal-content">
-                        <div id="previewContainer" class="p-3">
+                    <div id="gracias" class="modal-content border-0">
+                        <div id="previewContainer" class="">
                             <div id="resultados" class="modal-body" style="padding: 5px">
                             </div>
+
+                            <style>
+                                /* Estilos para el radio personalizado */
+                                .radio-custom {
+                                    appearance: none;
+                                    -webkit-appearance: none;
+                                    -moz-appearance: none;
+                                    width: 16px;
+                                    height: 16px;
+                                    border: 1px solid black;
+                                    border-radius: 50%;
+                                    outline: none;
+                                    cursor: pointer;
+                                    position: relative;
+                                }
+
+                                .radio-custom:checked {
+                                    background-color: white;
+                                    border: 1px solid gray;                                }
+
+                                .radio-custom:checked::before {
+                                    content: '';
+                                    display: block;
+                                    width: 8px;
+                                    height: 8px;
+                                    background-color: black;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    left: 0;
+                                    right: 0;
+                                    top: 0;
+                                    bottom: 0;
+                                    margin: auto;
+                                }
+
+
+
+
+                                .radio-custom:checked {
+                                    background-color: white;
+                                    border: 1px solid gray;
+                                }
+
+                                .bx{
+                                    margin: 0px !important;
+                                }
+
+                                    .modal-dialog {
+                                        margin-right: auto;
+                                        margin-left: auto;
+                                        max-width: 550px !important;
+                                    }
+
+                            </style>
 
                             <div id="tarifasEnvioPreview">
                                 <hr />
                                 <p id="titulo_tarifaPreview" style="font-weight:bold;">Método de envío</p>
-                                <div class="caja_transparente d-flex flex-row">
-                                    <label for="envioGratisPreview"> Envío gratis</label>
-                                    <label id="gratisPreview" style="width: 60%; text-align: end; font-weight:bold;">Gratis</label>
+                                <div
+                                    class="caja_transparente d-flex flex-row justify-content-between align-items-center">
+                                    <div class="d-flex">
+                                        <input class="me-3 radio-custom my-auto" type="radio" id="envioGratisPreview"
+                                            name="opcionEnvio" checked>
+                                        <p for="envioGratisPreview" class="mb-0"> Envío gratis</p>
+                                    </div>
+                                    <p id="gratisPreview" class="mb-0" style="text-align: end; font-weight: bold;">
+                                        Gratis</p>
                                 </div>
-                                <hr />
+
+                                <h5 class="my-4 text-center fw-bold">Ingrese su dirección de envío</h5>
                             </div>
 
                             <!--  código de descuento -->
                             <div class="discount-code-container" id="codigosDescuentoPreview">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Código de descuento" id="etiqueta_descuentoPreview" aria-label="Código de descuento">
-                                    <button class="btn btn-dark" id="textoBtn_aplicarPreview" type="button">Aplicar</button>
+                                    <input type="text" class="form-control" placeholder="Código de descuento"
+                                        id="etiqueta_descuentoPreview" aria-label="Código de descuento">
+                                    <button class="btn btn-dark" id="textoBtn_aplicarPreview"
+                                        type="button">Aplicar</button>
                                 </div>
                                 <div class="applied-discount">
                                     <span class="discount-tag">4SALE $4.00</span>
@@ -299,69 +361,80 @@
 
                             <!-- Nombre y apellidos -->
                             <div class="form-group mb-3" id="nombresApellidosPreview">
-                                <label class="sub_titulos">Nombres y Apellidos</label>
+                                <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_nombresApellidosPreview"><i class='bx bxs-user'></i></span>
-                                    <input type="text" class="form-control" id="txt_nombresApellidosPreview" name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
+                                            class='bx fs-5 m-0 bxs-user fs-5'></i></span>
+                                    <input type="text" class="form-control" id="txt_nombresApellidosPreview"
+                                        name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
-                            </div>
+                            </div> 
                             <!-- Fin Nombre y apellidos -->
 
                             <!-- Teléfono -->
                             <div class="form-group mb-3" id="telefonoPreview">
-                                <label class="sub_titulos">Teléfono</label>
+                                <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_telefonoPreview"><i class='bx bxs-phone-call'></i></span>
-                                    <input type="text" class="form-control" id="txt_telefonoPreview" name="txt_telefonoPreview" placeholder="Teléfono">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
+                                        <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
+                                    <input type="text" class="form-control" id="txt_telefonoPreview"
+                                        name="txt_telefonoPreview" placeholder="Teléfono">
                                 </div>
                             </div>
                             <!-- Fin Teléfono -->
 
                             <!-- Calle Principal -->
                             <div class="form-group mb-3" id="calle_principalPreview">
-                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal</label>
+                                <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_calle_principalPreview"><i class='bx bx-map'></i></span>
-                                    <input type="text" class="form-control" id="txt_calle_principalPreview" name="txt_calle_principalPreview" placeholder="">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
+                                            class='bx fs-5 m-0 bx-map'> fs-5</i></span>
+                                    <input type="text" class="form-control" id="txt_calle_principalPreview"
+                                        name="txt_calle_principalPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Calle Principal -->
 
                             <!-- Calle Secundaria -->
                             <div class="form-group mb-3" id="calle_secundariaPreview">
-                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria</label>
+                                <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_calle_secundariaPreview"><i class='bx bx-map'></i></span>
-                                    <input type="text" class="form-control" id="txt_calle_secundariaPreview" name="txt_calle_secundariaPreview" placeholder="">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
+                                            class='bx fs-5 m-0 bx-map'> fs-5</i></span>
+                                    <input type="text" class="form-control" id="txt_calle_secundariaPreview"
+                                        name="txt_calle_secundariaPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Calle Secundaria -->
 
                             <!-- Barrio o Referencia -->
                             <div class="form-group mb-3" id="barrio_referenciaPreview">
-                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o Referencia</label>
+                                <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
+                                    Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i class='bx bx-map'></i></span>
-                                    <input type="text" class="form-control" id="txt_barrio_referenciaPreview" name="txt_barrio_referenciaPreview" placeholder="">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
+                                            class='bx fs-5 m-0 bx-map'> fs-5</i></span>
+                                    <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
+                                        name="txt_barrio_referenciaPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Barrio o Referencia -->
 
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
-                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
+                                <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
                                 <select class="form-control" id="provinica" name="provinica">
-                                    <option value="">Provincia *</option>
+                                    <option value="">Provincia</option>
                                 </select>
                             </div>
                             <!-- Fin Provincia -->
 
                             <!-- Ciudad -->
                             <div class="form-group mb-3" id="ciudadPreview">
-                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad</label>
+                                <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
                                 <div id="div_ciudad">
                                     <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
-                                        <option value="">Ciudad *</option>
+                                        <option value="">Ciudad</option>
                                     </select>
                                 </div>
                             </div>
@@ -371,16 +444,21 @@
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
-                                    <span class="input-group-text" id="icono_barrio_referenciaPreview"><i class='bx bx-message-dots'></i></span>
-                                    <input type="text" class="form-control" id="txt_comentarioPreview" name="txt_comentarioPreview" placeholder="">
+                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
+                                            class='bx fs-5 m-0 bx-messa fs-5ge-dots'></i></span>
+                                    <input type="text" class="form-control" id="txt_comentarioPreview"
+                                        name="txt_comentarioPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Comentario -->
                         </div>
 
-                        <div class="card p-3 mb-3" style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;" id="seccion_oferta">
+                        <div class="card p-3 mb-3"
+                            style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;"
+                            id="seccion_oferta">
                             <div class="d-flex justify-content-start align-items-center">
-                                <input type="checkbox" id="Seleccion_oferta" class="me-2" onchange="toggleSeleccion_oferta(this)">
+                                <input type="checkbox" id="Seleccion_oferta" class="me-2"
+                                    onchange="toggleSeleccion_oferta(this)">
                                 <input type="hidden" id="id_producto_oferta" name="id_producto_oferta">
                                 <input type="hidden" id="oferta_selected" name="oferta_selected" value="0">
                                 <label for="Seleccion_oferta" class="m-0">
@@ -393,7 +471,8 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
+                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button"
+                                    onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>
@@ -408,14 +487,14 @@
 <script>
     // Funcion para que consuma los datos de checkout.json y los utilice
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         loadAndSetInitialData();
     });
 
     function loadAndSetInitialData() {
         id_plataforma = <?php echo ID_PLATAFORMA; ?>
 
-        $.getJSON(SERVERURL + 'Models/modales/' + id_plataforma + '_modal.json', function(data) {
+        $.getJSON(SERVERURL + 'Models/modales/' + id_plataforma + '_modal.json', function (data) {
             data.forEach(item => {
                 processItem(item);
             });
@@ -548,7 +627,7 @@
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
-                success: function(response) {
+                success: function (response) {
                     // Verifica que la respuesta sea un array y que tenga al menos un elemento
                     if (Array.isArray(response) && response.length > 0) {
                         resolve(response[0].id); // Resuelve la promesa con el id_configuracion
@@ -556,7 +635,7 @@
                         reject("No se encontró la configuración o está vacía");
                     }
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     reject(errorThrown); // Rechaza la promesa con el error
                 }
             });
@@ -624,14 +703,14 @@
                 data: formData,
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
-                success: function(response) {
+                success: function (response) {
                     response = JSON.parse(response);
                     if (response.status == 400) {
                         toastr.error(
                             "NO SE REALIZO LA PETICION CORRECTAMENTE",
                             "NOTIFICACIÓN", {
-                                positionClass: "toast-bottom-center"
-                            }
+                            positionClass: "toast-bottom-center"
+                        }
                         );
                     } else if (response.status == 200) {
                         toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
@@ -645,7 +724,7 @@
                         $('#checkout_carritoModal').modal('hide'); // Cerrar modal
                     }
                 },
-                error: function(error) {
+                error: function (error) {
                     console.error('Error al solicitar el pago:', error);
                     alert('Hubo un error al solicitar el pago.');
                 }
@@ -657,9 +736,9 @@
     }
     /* Fin boton de comprar */
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         // Escuchar clics en los combos
-        $('#combos_carritoContainer').on('click', '.selectable-combo', function() {
+        $('#combos_carritoContainer').on('click', '.selectable-combo', function () {
             // Verificar si el combo ya está seleccionado
             if ($(this).hasClass('selected')) {
                 // Si está seleccionado, deseleccionarlo
@@ -696,7 +775,7 @@
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
                     dataType: "json",
-                    success: function(response) {
+                    success: function (response) {
 
                         /* detalle combo */
                         let formData_detalle = new FormData();
@@ -716,9 +795,9 @@
                             processData: false, // No procesar los datos
                             contentType: false, // No establecer ningún tipo de contenido
                             dataType: "json",
-                            success: function(response2) {
+                            success: function (response2) {
                                 // Iterar sobre cada elemento en la respuesta
-                                response2.forEach(function(detalle_combo) {
+                                response2.forEach(function (detalle_combo) {
                                     // Sumar el pvp de cada elemento al acumulador
                                     totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
                                 });
@@ -742,13 +821,13 @@
 
                                 $("#descuento_carrito").show();
                             },
-                            error: function(jqXHR, textStatus, errorThrown) {
+                            error: function (jqXHR, textStatus, errorThrown) {
                                 alert(errorThrown);
                             },
                         });
                         /* Fin detalle combo */
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         alert(errorThrown);
                     },
                 });

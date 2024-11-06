@@ -30,6 +30,8 @@ class Home extends Controller
             $this->views->render($this, "index2");
         } else if ($plantilla == 3){
             $this->views->render($this, "index3");
+        }else if ($plantilla == 4){
+            $this->views->render($this, "index4");
         }
     }
 }

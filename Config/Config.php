@@ -31,7 +31,7 @@ if (str_contains($Ur, "comprapor")) $nombre_actual = str_replace("comprapor.com"
 if (str_contains($Ur, "merkapro.ec")) $url_actual = str_replace("merkapro.ec", "imporsuitpro.com", $url_actual);
 if (str_contains($Ur, "merkapro.ec")) $nombre_actual = str_replace("merkapro.ec", "", $nombre_actual);
 
-//recibe tony.imporsuitpro.com ydebe ser new.imporsuitpro.com
+//recibe pruebad.imporsuitpro.com ydebe ser new.imporsuitpro.com
 
 
 $url_actual = str_replace($nombre_actual, "new.", $url_actual);
@@ -61,11 +61,17 @@ $hostNuevo = str_replace("imporsuitpro.com", "", $hostAntiguo);
 if (str_contains($hostNuevo, "comprapor.com")) $hostNuevo = str_replace("comprapor.com", "", $hostNuevo);
 if (str_contains($hostNuevo, "merkapro.ec")) $hostNuevo = str_replace("merkapro.ec", "", $hostNuevo);
 
+if (str_contains($hostNuevo, "connect-mas.com")) $hostNuevo = str_replace("connect-mas.com", "", $hostNuevo);
+
 $recuperado = str_replace("new.", "", $hostNuevo);
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
 if (str_contains($hostAntiguo, "comprapor.com")) $url_actual = str_replace("imporsuitpro.com", "comprapor.com", $url_actual);
 if (str_contains($hostAntiguo, "merkapro.ec")) $url_actual = str_replace("imporsuitpro.com", "merkapro.ec", $url_actual);
+if (str_contains($hostAntiguo, "connect-mas.com")) $url_actual = str_replace("imporsuitpro.com", "connect-mas.com", $url_actual);
+
+
 $id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual' or dominio = '$hostAntiguo'";
+//echo $id_plataforma;
 $result = $mysqli->query($id_plataforma);
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -77,7 +83,7 @@ if ($result->num_rows > 0) {
     echo "0 resultss";
 }
 
-
+//echo $id_matriz;
 $url_matriz = "SELECT * FROM matriz where idmatriz = '$id_matriz'";
 $result = $mysqli->query($url_matriz);
 if ($result->num_rows > 0) {

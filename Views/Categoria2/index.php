@@ -203,20 +203,24 @@
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
             let texto_precioNormal = precioNormal > 0 ? `<p class="custom-price discounted">$${precioNormal.toFixed(2)}</p>` : '';
+            
+            const urlProducto = producto.funellish === '1' && producto.funnelish_url ? producto.funnelish_url : `producto2?id=${producto.id_producto_tienda}`;
+            
+            // <a href="producto2?id=${producto.id_producto_tienda}" style="text-decoration: none;">
             const productoHtml = `
                 <div class="col-md-4 mb-4">
-                <a href="producto2?id=${producto.id_producto_tienda}" style="text-decoration: none;">
-                    <div class="card custom-product-card">
-                        <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
-                        <div class="custom-card-body">
-                            <h5 class="custom-card-title">${producto.nombre_producto_tienda}</h5>
-                            <div class="custom-price-container">
-                                ${texto_precioNormal}
-                                <p class="custom-price">$${precioEspecial.toFixed(2)}</p>
+                    <a href="${urlProducto}" style="text-decoration: none;">
+                        <div class="card custom-product-card">
+                            <img src="${image_path}" class="card-img-top" alt="${producto.nombre_producto_tienda}">
+                            <div class="custom-card-body">
+                                <h5 class="custom-card-title">${producto.nombre_producto_tienda}</h5>
+                                <div class="custom-price-container">
+                                    ${texto_precioNormal}
+                                    <p class="custom-price">$${precioEspecial.toFixed(2)}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
                 </div>
             `;
             productosContainer.innerHTML += productoHtml;
