@@ -190,21 +190,7 @@ $primera_seccion = obtenerPrimeraSeccion();
       z-index: 1000; /* Mantiene el overlay por encima de otros elementos */
     }
 
-    /* Estilos del spinner */
-    .spinner-border {
-      width: 3rem;
-      height: 3rem;
-      border-width: 0.3rem;
-      border-style: solid;
-      border-radius: 50%;
-      border-top-color: #007bff; /* Color del spinner */
-      animation: spin 0.75s linear infinite;
-    }
-
-    /* Animación de giro para el spinner */
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
+    
   </style>
 
 </head>
