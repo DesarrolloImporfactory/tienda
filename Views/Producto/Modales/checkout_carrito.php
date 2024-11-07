@@ -388,7 +388,7 @@
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
-                                            class='bx fs-5 m-0 bx-map'> fs-5</i></span>
+                                            class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
                                         name="txt_calle_principalPreview" placeholder="">
                                 </div>
@@ -400,7 +400,7 @@
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
-                                            class='bx fs-5 m-0 bx-map'> fs-5</i></span>
+                                            class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
                                         name="txt_calle_secundariaPreview" placeholder="">
                                 </div>
@@ -413,7 +413,7 @@
                                     Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
-                                            class='bx fs-5 m-0 bx-map'> fs-5</i></span>
+                                            class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
                                         name="txt_barrio_referenciaPreview" placeholder="">
                                 </div>
