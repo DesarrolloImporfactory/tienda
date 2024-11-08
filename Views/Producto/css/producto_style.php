@@ -44,22 +44,26 @@
   }
 
   #list-tab .list-group-item img.img-thumbnail {
-    width: 150px;
-    height: 150px;
+    min-width: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    min-height: 150px;
     object-fit: cover;
   }
 
   /* Estilos para miniaturas */
   .list-group-item img.img-thumbnail {
-    width: 100px;
-    height: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
     object-fit: cover;
   }
 
   /* Estilos para imagen principal */
   #main-image {
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     object-fit: cover;
     cursor: pointer;
   }
