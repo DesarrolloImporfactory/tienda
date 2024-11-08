@@ -62,12 +62,11 @@
 
   /* Estilos para imagen principal */
   #main-image {
-    width: 500px;
-    /* Ancho que desees para la imagen principal */
-    height: 500px;
-    /* Altura que desees para la imagen principal */
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 500px;
+    max-height: 500px;
     object-fit: cover;
-    /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
     cursor: pointer;
   }
 

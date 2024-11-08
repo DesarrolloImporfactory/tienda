@@ -40,7 +40,7 @@ $id_producto = $_GET['id'];
 </style>
 
 <main style="background-color: #f9f9f9;">
-    <div class="container flex-column " style="align-items: center !important; margin-top: 200px;">
+    <div class="container flex-column " style="align-items: center !important; padding-top: 6rem;">
         <div class="row">
             <div class="col">
                 <div class="row">
