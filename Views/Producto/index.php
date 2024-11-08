@@ -10,11 +10,8 @@ $id_producto = $_GET['id'];
 <style>
     /* Estilo general del botón */
     .jump-button {
-        height: 50px;
         width: 100%;
-        border-radius: 15px;
         position: relative;
-        /* Mantiene el estilo normal en pantallas más grandes */
     }
 
     
@@ -59,8 +56,8 @@ $id_producto = $_GET['id'];
 
 <main style="background-color: #f9f9f9;">
     <div class="container containerProductos flex-column align-items-center py-5" >
-        <div class="row">
-            <div class="col-12 col-lg-6">
+        <div class="row mb-5">
+            <div class="col-12 col-lg-6 mb-5">
                 <div class="row stickyImagen ">
                    
                     <div class="col-12">
@@ -115,7 +112,6 @@ $id_producto = $_GET['id'];
                     <div id="landing">
 
                     </div>
-                    <br><br>
                 </div>
             </div>
         </div>
@@ -124,10 +120,10 @@ $id_producto = $_GET['id'];
         
         <!-- Inicio de Iconos-->
         <section class="container" >
-        <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
-            <!-- Los iconos se cargarán aquí dinámicamente -->
-        </div>
-    </section>
+            <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
+                <!-- Los iconos se cargarán aquí dinámicamente -->
+            </div>
+        </section>
         <!-- Fin Iconos-->
     </div>
 
