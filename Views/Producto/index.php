@@ -18,6 +18,15 @@ $id_producto = $_GET['id'];
         /* Mantiene el estilo normal en pantallas más grandes */
     }
 
+    .containerProductos{
+        max-width: 500px !important;
+    }
+
+    #landing p{
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
     /* Estilos para dispositivos móviles */
     @media (max-width: 768px) {
         .jump-button {
@@ -40,7 +49,7 @@ $id_producto = $_GET['id'];
 </style>
 
 <main style="background-color: #f9f9f9;">
-    <div class="container flex-column " style="align-items: center !important; padding-top: 6rem;">
+    <div class="container containerProductos flex-column " style="align-items: center !important; padding-top: 6rem;">
         <div class="row">
             <div class="col">
                 <div class="row">
@@ -65,7 +74,7 @@ $id_producto = $_GET['id'];
             </div>
 
             <div class="col">
-                <div class="caja px-3" style="width:100%;">
+                <div class="caja px-3 py-0 w-100 cajaProducto">
                     <div class="product-title" id="nombre-producto"></div>
                     <br>
                     <div class="precios_producto">
@@ -102,10 +111,15 @@ $id_producto = $_GET['id'];
                 </div>
             </div>
         </div>
+
+
+        
         <!-- Inicio de Iconos-->
-        <div id="iconos-container" class="iconos_producto col-md-12" style="padding-bottom: 75px;">
-            <!-- Los iconos se cargarán aquí mediante AJAX -->
+        <section class="container" >
+        <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
+            <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
+    </section>
         <!-- Fin Iconos-->
     </div>
 

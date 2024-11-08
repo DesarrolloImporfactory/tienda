@@ -62,9 +62,7 @@
 
   /* Estilos para imagen principal */
   #main-image {
-    min-width: 500px;
     max-width: 500px;
-    min-height: 500px;
     max-height: 500px;
     object-fit: cover;
     cursor: pointer;
