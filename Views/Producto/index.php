@@ -43,13 +43,9 @@ $id_producto = $_GET['id'];
     <div class="container flex-column" style="align-items: center !important;">
         <div class="row">
             <div class="col">
-                <div class="slider_producto">
-                    <div class="d-flex flex-column" style="width: 100%;">
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <!-- Imágenes dinámicas aquí -->
-                        </div>
-                    </div>
-                    <div class="col-lg-10" style="max-width: 600px !important;">
+                <div class="row">
+                   
+                    <div class="col-12">
                         <!-- Área principal de visualización de imagen -->
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="list-image1" role="tabpanel"
@@ -59,6 +55,11 @@ $id_producto = $_GET['id'];
                             </div>
                         </div>
 
+                    </div>
+                    <div class="d-flex col-12">
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <!-- Imágenes dinámicas aquí -->
+                        </div>
                     </div>
                 </div>
             </div>
