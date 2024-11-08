@@ -40,16 +40,14 @@ $id_producto = $_GET['id'];
             bottom: 0;
             left: 0;
             width: 100%;
-            /* Se asegura de que el botón cubra el ancho completo */
             z-index: 1000;
-            /* Se asegura de que el botón esté encima de otros elementos */
             margin: 0;
-            /* Elimina cualquier margen */
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
         .jump-button span {
             margin-top: 0;
-            /* Ajusta el margen interno si es necesario */
         }
     }
 </style>

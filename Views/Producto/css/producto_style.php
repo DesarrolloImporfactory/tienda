@@ -238,10 +238,8 @@
       padding-top: 10px;
     }
 
-    /* Otros ajustes responsivos */
   }
 
-  /* Para dispositivos con un ancho de 480px o menos */
   @media (max-width: 480px) {
     .navbar-brand img {
       height: 50px;
