@@ -217,9 +217,6 @@
       padding: 10px !important;
     }
 
-    .container {
-      flex-direction: column;
-    }
 
     #navbarLogo {
       height: 60px;
