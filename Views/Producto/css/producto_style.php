@@ -44,10 +44,10 @@
   }
   /* Estilos para miniaturas */
   .list-group-item img.img-thumbnail {
-    min-width: 100px;
-    max-width: 100px;
-    max-height: 100px;
-    min-height: 100px;
+    min-width: 70px;
+    max-width: 70px;
+    max-height: 70px;
+    min-height: 70px;
     object-fit: cover;
   }
 
