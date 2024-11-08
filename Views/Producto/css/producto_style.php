@@ -223,9 +223,6 @@
       width: 60px;
     }
 
-    .container {
-      align-items: flex-end !important;
-    }
 
     .navbar-brand_1 {
       top: 0;
@@ -234,7 +231,6 @@
 
     .left-column {
       position: static !important;
-      /* Para compatibilidad con Safari */
     }
 
     .list-group {
