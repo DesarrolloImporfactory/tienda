@@ -48,9 +48,9 @@ $id_producto = $_GET['id'];
                     <div class="col-12">
                         <!-- Área principal de visualización de imagen -->
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-image1" role="tabpanel"
+                            <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel"
                                 aria-labelledby="list-image1-list">
-                                <img id="main-image" src="" class="img-fluid" alt="Responsive image"
+                                <img id="main-image" src="" class="img-fluid mx-auto" alt="Responsive image"
                                     data-bs-toggle="modal" data-bs-target="#imagenModal">
                             </div>
                         </div>
