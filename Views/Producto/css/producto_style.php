@@ -72,7 +72,8 @@
   @media (max-width: 768px) {
 
     #main-image {
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
       height: 300px;
 
     }
