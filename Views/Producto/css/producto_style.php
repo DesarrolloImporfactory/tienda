@@ -221,11 +221,6 @@
       padding: 10px !important;
     }
 
-
-    .ahorra {
-      font-size: 15px;
-    }
-
     .container {
       flex-direction: column;
     }
