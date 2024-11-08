@@ -96,7 +96,7 @@ $id_producto = $_GET['id'];
                             style="background-color: #4464ec; color:white !important; border-radius: 0.3rem;">
                             <p class="ahorra mb-0 d-flex align-items-center">
                                 <i class="bx bxs-purchase-tag me-3" style="color: white;"></i>
-                                <span id="ahorra"></span>
+                                <span id="ahorra"></span> 
                             </p>
                         </div>
                     </div>
