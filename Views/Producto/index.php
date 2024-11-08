@@ -88,7 +88,7 @@ $id_producto = $_GET['id'];
                             <strong id="precio-especial"></strong>
                         </p>
                         <div id="precio-normal-container">
-                            <p class="tachado fs-4">
+                            <p class="tachado fs-4 mb-0">
                                 <span id="precio-normal"></span>
                             </p>
                         </div>
