@@ -757,21 +757,19 @@ $id_producto = $_GET['id'];
                     var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
 
                     var iconoItem = `
-              <div class="col-md-4 icon_responsive" style="padding-bottom: 20px;">
-                <a ${enlaceHTML}>
-                  <div class="card card_icon text-center">
-                    <div class="card-body card-body_icon d-flex flex-column">
-                      <div>
-                        <i class="fa ${icon_text} fa-2x" style="color: ${icono.color_icono} !important"></i> <!-- Cambia el icono según corresponda -->
-                      </div>
-                      <div>
-                        <h5 class="card-title card-title_icon">${texto}</h5>
-                        <p class="card-text card-text_icon">${subtexto_icon}</p>
-                      </div>
+                    <div class="col-md-4 mb-3 icon_responsive">
+                        <a ${enlaceHTML}>
+                            <div class="card card_icon text-center">
+                                <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                    <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
+                                    <div class="text-end">
+                                        <h5 class="card-title card-title_icon">${texto}</h5>
+                                        <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                  </div>
-                </a>
-              </div>
             `;
 
                     // Agregar el icono al contenedor
