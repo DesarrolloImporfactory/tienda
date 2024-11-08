@@ -26,11 +26,14 @@ $id_producto = $_GET['id'];
     }
 
     /* Estilos para dispositivos móviles */
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
         .containerProductos{
         max-width: 500px !important;
         }
 
+    }
+    @media (max-width: 768px) {
+        
         .jump-button {
             position: fixed;
             bottom: 0;
@@ -56,7 +59,7 @@ $id_producto = $_GET['id'];
             <div class="col">
                 <div class="row">
                    
-                    <div class="col-12">
+                    <div class="col-12 col-lg-6">
                         <!-- Área principal de visualización de imagen -->
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel"
@@ -67,7 +70,7 @@ $id_producto = $_GET['id'];
                         </div>
 
                     </div>
-                    <div class="d-flex col-12 mt-3">
+                    <div class="d-flex col-12 col-lg-6 mt-3">
                         <div class="w-100 d-flex gap-3" id="list-tab" role="tablist">
                             <!-- Imágenes dinámicas aquí -->
                         </div>
