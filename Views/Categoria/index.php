@@ -359,13 +359,13 @@
             const productoHtml = `
                     <div class="col-md-4 col-sm-6 col-12 mb-4 px-2">
                         <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                            <a href="producto?id=${urlProducto}" class="category-link">
+                            <a href="${urlProducto}" class="category-link">
                                 <div class="img-container mx-auto d-flex w-100" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
                                     <img src="${image_path}" class="card-img-top primary-img w-100 p-4 rounded-2" alt="${producto.nombre_producto_tienda}" style="object-fit: cover;">
                                 </div>
                             </a>
                             <div class="card-body d-flex flex-column">
-                                <a href="producto?id=${urlProducto}" style="text-decoration: none; color:black;">
+                                <a href="${urlProducto}" style="text-decoration: none; color:black;">
                                     <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
                                 </a>
                                 <div class="product-footer mb-2">
