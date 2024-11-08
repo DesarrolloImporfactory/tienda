@@ -69,7 +69,7 @@ $id_producto = $_GET['id'];
                         </div>
 
                     </div>
-                    <div class="d-flex col-12 mt-3">
+                    <div class="d-flex col-12 mt-3"> 
                         <div class="w-100 d-flex gap-3" id="list-tab" role="tablist">
                             <!-- Imágenes dinámicas aquí -->
                         </div>
