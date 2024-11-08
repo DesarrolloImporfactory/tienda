@@ -54,7 +54,7 @@ $id_producto = $_GET['id'];
 
 <main style="background-color: #f9f9f9;">
     <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 6rem;" >
-        <div class="row">
+        <div class="row w-100">
             <div class="col-12 col-lg-6 mb-5">
                 <div class="row stickyImagen ">
                    
