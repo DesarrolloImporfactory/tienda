@@ -62,8 +62,8 @@
 
   /* Estilos para imagen principal */
   #main-image {
-    max-width: 500px;
-    max-height: 500px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
     cursor: pointer;
   }
@@ -71,14 +71,10 @@
 
   @media (max-width: 768px) {
 
-    /* Estilos para imagen principal */
     #main-image {
       width: 300px;
-      /* Ancho que desees para la imagen principal */
       height: 300px;
-      /* Altura que desees para la imagen principal */
-      object-fit: cover;
-      /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
+
     }
   }
 
