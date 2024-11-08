@@ -42,8 +42,8 @@ $id_producto = $_GET['id'];
             width: 100%;
             z-index: 1000;
             margin: 0;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
         }
 
         .jump-button span {
@@ -54,7 +54,7 @@ $id_producto = $_GET['id'];
 
 <main style="background-color: #f9f9f9;">
     <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 6rem;" >
-        <div class="row mb-5">
+        <div class="row">
             <div class="col-12 col-lg-6 mb-5">
                 <div class="row stickyImagen ">
                    
