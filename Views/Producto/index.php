@@ -118,7 +118,7 @@ $id_producto = $_GET['id'];
 
         
         <section class="container" >
-            <div class="row mx-auto" id="iconos-container" >
+            <div class="row mx-auto w-100" id="iconos-container" >
                 <!-- Los iconos se cargarán aquí dinámicamente -->
             </div>
         </section>
