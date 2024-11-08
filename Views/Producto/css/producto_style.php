@@ -196,9 +196,6 @@
     display: flex;
   }
 
-  .ahorra {
-    font-size: 20px;
-  }
 
   /* Añade más estilos según sea necesario */
 
