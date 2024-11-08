@@ -84,15 +84,13 @@ $id_producto = $_GET['id'];
                     <div class="product-title" id="nombre-producto"></div>
                     <br>
                     <div class="precios_producto">
-                        <div>
-                            <span style="font-size: 20px; padding-right: 10px;" class="texto_precio">
-                                <strong id="precio-especial"></strong>
-                            </span>
-                        </div>
+                        <p class="display-6">
+                            <strong id="precio-especial"></strong>
+                        </p>
                         <div id="precio-normal-container">
-                            <span class="tachado" style="font-size: 20px; padding-right: 10px;">
-                                <strong id="precio-normal"></strong>
-                            </span>
+                            <p class="tachado fs-4">
+                                <span id="precio-normal"></span>
+                            </p>
                         </div>
                         <div id="ahorra-container" class="px-2"
                             style="background-color: #4464ec; color:white !important; border-radius: 0.3rem;">

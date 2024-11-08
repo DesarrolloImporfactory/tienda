@@ -221,9 +221,6 @@
       padding: 10px !important;
     }
 
-    .precios_producto {
-      flex-direction: column;
-    }
 
     .ahorra {
       font-size: 15px;
