@@ -117,13 +117,12 @@ $id_producto = $_GET['id'];
 
 
         
-        <!-- Inicio de Iconos-->
         <section class="container" >
             <div class="row mx-auto" id="iconos-container" >
                 <!-- Los iconos se cargarán aquí dinámicamente -->
             </div>
         </section>
-        <!-- Fin Iconos-->
+
     </div>
 
     <!-- Modal -->
