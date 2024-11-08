@@ -38,9 +38,8 @@
 
   .list-group-item {
     background-color: white !important;
-    /* Esto hará que el fondo sea transparente */
     border-color: white !important;
-    /* Esto elimina el borde si lo hay */
+    width: fit-content;
   }
   /* Estilos para miniaturas */
   .list-group-item img.img-thumbnail {
