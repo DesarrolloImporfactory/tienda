@@ -46,7 +46,7 @@
   #list-tab .list-group-item img.img-thumbnail {
     width: 150px;
     /* El ancho deseado para las miniaturas */
-    height: 65px;
+    height: 150px;
     /* Para mantener la proporción de aspecto */
   }
 
