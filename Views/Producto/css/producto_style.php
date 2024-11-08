@@ -42,15 +42,6 @@
     border-color: white !important;
     /* Esto elimina el borde si lo hay */
   }
-
-  #list-tab .list-group-item img.img-thumbnail {
-    min-width: 150px;
-    max-width: 150px;
-    max-height: 150px;
-    min-height: 150px;
-    object-fit: cover;
-  }
-
   /* Estilos para miniaturas */
   .list-group-item img.img-thumbnail {
     min-width: 100px;
