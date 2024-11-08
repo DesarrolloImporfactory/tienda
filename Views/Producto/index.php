@@ -100,7 +100,7 @@ $id_producto = $_GET['id'];
                             </p>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3"> 
                         <label for="quantity" class="form-label">Cantidad</label>
                         <input type="number" id="cantidad_producto" class="form-control"
                             style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
