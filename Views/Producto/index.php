@@ -83,8 +83,8 @@ $id_producto = $_GET['id'];
                 <div class="caja px-3 py-0 w-100 cajaProducto">
                     <div class="product-title" id="nombre-producto"></div>
                     <br>
-                    <div class="precios_producto">
-                        <p class="display-6">
+                    <div class="precios_producto align-items-center gap-3">
+                        <p class="display-6 mb-0">
                             <strong id="precio-especial"></strong>
                         </p>
                         <div id="precio-normal-container">
