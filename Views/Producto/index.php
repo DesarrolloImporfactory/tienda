@@ -58,7 +58,7 @@ $id_producto = $_GET['id'];
 </style>
 
 <main style="background-color: #f9f9f9;">
-    <div class="container containerProductos flex-column " style="align-items: center !important; padding-top: 6rem;">
+    <div class="container containerProductos flex-column align-items-center py-5" >
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="row stickyImagen ">
@@ -109,9 +109,8 @@ $id_producto = $_GET['id'];
                         <input type="number" id="cantidad_producto" class="form-control"
                             style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
                     </div>
-                    <a
-                        class="jump-button btn btn-primary texto_boton rounded w-100" href="#" id="comprar-ahora">
-                        <span style="margin-top: 10px">COMPRAR AHORA </span>
+                    <a class="jump-button btn btn-primary texto_boton rounded w-100" href="#" id="comprar-ahora">
+                        COMPRAR AHORA
                     </a>
                     <div id="landing">
 
