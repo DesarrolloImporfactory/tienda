@@ -23,7 +23,7 @@ $id_producto = $_GET['id'];
 
     .stickyImagen{
         position: sticky;
-        top: 100px;
+        top: 130px;
     }
 
     /* Estilos para dispositivos móviles */
@@ -100,7 +100,7 @@ $id_producto = $_GET['id'];
                             </p>
                         </div>
                     </div>
-                    <div class="mb-3"> 
+                    <div class="my-5"> 
                         <label for="quantity" class="form-label">Cantidad</label>
                         <input type="number" id="cantidad_producto" class="form-control"
                             style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
@@ -118,7 +118,7 @@ $id_producto = $_GET['id'];
 
         
         <section class="container" >
-            <div class="row mx-auto w-100" id="iconos-container" >
+            <div class="row mx-auto w-100 mt-5" id="iconos-container" >
                 <!-- Los iconos se cargarán aquí dinámicamente -->
             </div>
         </section>
