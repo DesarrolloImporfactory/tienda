@@ -40,7 +40,7 @@ $id_producto = $_GET['id'];
 </style>
 
 <main style="background-color: #f9f9f9;">
-    <div class="container flex-column" style="align-items: center !important;">
+    <div class="container flex-column " style="align-items: center !important; margin-top: 200px;">
         <div class="row">
             <div class="col">
                 <div class="row">
@@ -56,8 +56,8 @@ $id_producto = $_GET['id'];
                         </div>
 
                     </div>
-                    <div class="d-flex col-12">
-                        <div class="list-group" id="list-tab" role="tablist">
+                    <div class="d-flex col-12 mt-3">
+                        <div class="w-100 d-flex gap-3" id="list-tab" role="tablist">
                             <!-- Imágenes dinámicas aquí -->
                         </div>
                     </div>
