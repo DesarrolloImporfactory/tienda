@@ -11,7 +11,6 @@ $id_producto = $_GET['id'];
     /* Estilo general del botón */
     .jump-button {
         height: 50px;
-        font-size: 26px;
         width: 100%;
         border-radius: 15px;
         position: relative;
@@ -69,7 +68,7 @@ $id_producto = $_GET['id'];
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel"
                                 aria-labelledby="list-image1-list">
-                                <img id="main-image" src="" class="img-fluid mx-auto" alt="Responsive image"
+                                <img id="main-image" src="" class="mx-auto" alt="Responsive image"
                                     data-bs-toggle="modal" data-bs-target="#imagenModal">
                             </div>
                         </div>
@@ -110,8 +109,8 @@ $id_producto = $_GET['id'];
                         <input type="number" id="cantidad_producto" class="form-control"
                             style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
                     </div>
-                    <a style="height: 50px; font-size: 26px; width: 100%; border-radius: 15px"
-                        class="jump-button btn btn-primary texto_boton" href="#" id="comprar-ahora">
+                    <a
+                        class="jump-button btn btn-primary texto_boton rounded w-100" href="#" id="comprar-ahora">
                         <span style="margin-top: 10px">COMPRAR AHORA </span>
                     </a>
                     <div id="landing">
