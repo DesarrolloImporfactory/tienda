@@ -205,7 +205,6 @@
   /* Para dispositivos con un ancho de 768px o menos */
   .precios_producto {
     display: flex;
-    flex-direction: row;
   }
 
   @media (max-width: 768px) {
