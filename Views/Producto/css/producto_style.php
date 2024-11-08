@@ -49,8 +49,18 @@
     min-height: 70px;
     object-fit: cover;
   }
+  #list-tab{
+    overflow-x: auto; 
+  overflow-y: hidden; 
+  white-space: nowrap; 
+  scrollbar-width: none; 
+  }
 
-  /* Estilos para imagen principal */
+
+  #list-tab::-webkit-scrollbar {
+  display: none; 
+}
+
   #main-image {
     width: 400px;
     height: 400px;
