@@ -18,9 +18,7 @@ $id_producto = $_GET['id'];
         /* Mantiene el estilo normal en pantallas más grandes */
     }
 
-    .containerProductos{
-        max-width: 500px !important;
-    }
+    
 
     #landing p{
         margin-top: 15px;
@@ -29,6 +27,10 @@ $id_producto = $_GET['id'];
 
     /* Estilos para dispositivos móviles */
     @media (max-width: 768px) {
+        .containerProductos{
+        max-width: 500px !important;
+        }
+
         .jump-button {
             position: fixed;
             bottom: 0;
