@@ -56,10 +56,10 @@ $id_producto = $_GET['id'];
 <main style="background-color: #f9f9f9;">
     <div class="container containerProductos flex-column " style="align-items: center !important; padding-top: 6rem;">
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-lg-6">
                 <div class="row">
                    
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12">
                         <!-- Área principal de visualización de imagen -->
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel"
@@ -70,7 +70,7 @@ $id_producto = $_GET['id'];
                         </div>
 
                     </div>
-                    <div class="d-flex col-12 col-lg-6 mt-3">
+                    <div class="d-flex col-12 mt-3">
                         <div class="w-100 d-flex gap-3" id="list-tab" role="tablist">
                             <!-- Imágenes dinámicas aquí -->
                         </div>
@@ -78,7 +78,7 @@ $id_producto = $_GET['id'];
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col-12 col-lg-6">
                 <div class="caja px-3 py-0 w-100 cajaProducto">
                     <div class="product-title" id="nombre-producto"></div>
                     <br>
