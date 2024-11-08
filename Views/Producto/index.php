@@ -757,7 +757,7 @@ $id_producto = $_GET['id'];
                     var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
 
                     var iconoItem = `
-                    <div class="col-md-4 mb-3 icon_responsive">
+                    <div class="col-12 col-lg-4 mb-3 ">
                         <a ${enlaceHTML}>
                             <div class="card card_icon text-center">
                                 <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
