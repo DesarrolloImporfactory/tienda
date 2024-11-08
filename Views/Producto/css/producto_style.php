@@ -45,19 +45,15 @@
 
   #list-tab .list-group-item img.img-thumbnail {
     width: 150px;
-    /* El ancho deseado para las miniaturas */
     height: 150px;
-    /* Para mantener la proporción de aspecto */
+    object-fit: cover;
   }
 
   /* Estilos para miniaturas */
   .list-group-item img.img-thumbnail {
     width: 100px;
-    /* Ancho que desees para las miniaturas */
     height: 100px;
-    /* Altura que desees para las miniaturas */
     object-fit: cover;
-    /* cover recortará la imagen para ajustarla al tamaño */
   }
 
   /* Estilos para imagen principal */
