@@ -62,7 +62,7 @@ $id_producto = $_GET['id'];
     <div class="container containerProductos flex-column " style="align-items: center !important; padding-top: 6rem;">
         <div class="row">
             <div class="col-12 col-lg-6">
-                <div class="row stickyImagen">
+                <div class="row stickyImagen ">
                    
                     <div class="col-12">
                         <!-- Área principal de visualización de imagen -->
