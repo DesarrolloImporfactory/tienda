@@ -353,6 +353,9 @@
             if (precioNormal > 0) {
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
             }
+            const urlProducto = producto.funnelish === '1' && producto.funnelish_url
+                ? identificarProtocolo(producto.funnelish_url)
+                : `producto2?id=${producto.id_producto_tienda}`;
             const productoHtml = `
                     <div class="col-md-4 col-sm-6 col-12 mb-4 px-2">
                         <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
@@ -369,7 +372,7 @@
                                     ${texto_precioNormal}
                                     <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
                                 </div>
-                                <a class="btn texto_boton mt-auto" href="${producto.funellish === '1' && producto.funnelish_url ? producto.funnelish_url : 'producto?id=' + producto.id_producto_tienda}">
+                                <a class="btn texto_boton mt-auto" href="${urlProducto}">
                                     Comprar
                                 </a>
                             </div>
@@ -388,6 +391,14 @@
         } else {
             btnVerMas.style.display = 'block'; // Muestra el botón si hay más productos
         }
+    }
+
+    function identificarProtocolo(url) {
+        // Verificar si la URL ya empieza con 'http://' o 'https://'
+        if (!/^https?:\/\//i.test(url)) {
+            return `https://${url}`; // Agregar 'https://' si falta el protocolo
+        }
+        return url; // Devolver la URL sin cambios si ya incluye el protocolo
     }
 
     // Función para ver más productos
