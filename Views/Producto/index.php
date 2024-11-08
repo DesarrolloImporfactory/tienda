@@ -23,7 +23,7 @@ $id_producto = $_GET['id'];
 
     .stickyImagen{
         position: sticky;
-        top: 80px;
+        top: 100px;
     }
 
     /* Estilos para dispositivos móviles */
@@ -95,7 +95,7 @@ $id_producto = $_GET['id'];
                         <div id="ahorra-container" class="text-white rounded p-1 px-3"
                             style="background-color: #4464ec;">
                             <p class="ahorra mb-0 d-flex align-items-center gap-3" style="font-size: 13px;">
-                                <i class="bx bxs-purchase-tag" style="color: white;"></i>
+                                <i class="bx bxs-purchase-tag" style="color: white; font-size: 17px;"></i>
                                 <span id="ahorra"></span> 
                             </p>
                         </div>
@@ -119,7 +119,7 @@ $id_producto = $_GET['id'];
         
         <!-- Inicio de Iconos-->
         <section class="container" >
-            <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
+            <div class="row mx-auto" id="iconos-container" >
                 <!-- Los iconos se cargarán aquí dinámicamente -->
             </div>
         </section>
