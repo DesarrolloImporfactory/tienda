@@ -77,7 +77,7 @@ $id_producto = $_GET['id'];
                             onclick="abrir_modalImagen(this.src)">
                     </div>
                     <!-- Thumbnails -->
-                    <div class="thumbnail-container d-flex w-100 scroll-y-imagenes" id="thumbnailsContainer">
+                    <div class="thumbnail-container d-flex w-100 scroll-y-imagenes mx-auto" id="thumbnailsContainer">
                         <!-- Thumbnails dinámicos aquí -->
                     </div>
                 </div>
