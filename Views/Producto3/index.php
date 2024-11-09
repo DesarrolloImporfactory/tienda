@@ -1,7 +1,11 @@
 <?php include 'Views/templates/header3.php'; ?>
 <?php $id_producto = $_GET['id']; ?>
 
-
+<style>
+    .list-group-item{
+        width: fit-content;
+    }
+</style>
 <main>
     <section style="margin-top: 100px;">
         <div class="container containerProducto3">
