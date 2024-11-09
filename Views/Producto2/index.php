@@ -76,20 +76,25 @@ $id_producto = $_GET['id'];
                 <div class="col-12 col-lg-6">
                     <h2 id="nombre-producto">Nombre del producto</h2>
                     <p class="text-muted" id="sku-producto">SKU: 004</p>
-                    <div class="d-flex flex-row gap-3">
-                        <h3 id="precio-especial">$999.00</h3>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <p class="display-6 mb-0">
+                            <strong id="precio-especial"></strong>
+                        </p>
                         <div id="precio-normal-container">
-                            <span class="mas_vendidos-old-price" style="font-size: 20px; padding-right: 10px;">
-                                <strong id="precio-normal"></strong>
-                            </span>
+                            <p class="fs-4 mb-0">
+                                <span id="precio-normal"></span>
+                            </p>
                         </div>
-                        <div id="ahorra-container" class="p-2"
-                            style="background-color: #4464ec; color:white !important; border-radius: 0.3rem; width: 20%;">
-                            <span class="ahorra"><i class="bx bxs-purchase-tag" style="color: white;"></i>
-                                <strong id="ahorra"></strong>
-                            </span>
+                        <div id="ahorra-container" class="text-white rounded p-1 px-3"
+                            style="background-color: #4464ec;">
+                            <p class="mb-0 d-flex align-items-center gap-3" style="font-size: 13px;">
+                                <i class="bx bxs-purchase-tag" style="color: white; font-size: 17px;"></i>
+                                <span id="ahorra"></span> 
+                            </p>
                         </div>
                     </div>
+
                     <div class="mb-3">
                         <label for="quantity" class="form-label">Cantidad</label>
                         <input type="number" id="cantidad_producto" class="form-control"
