@@ -214,22 +214,21 @@
 }
 
 function ensureProtocol(url) {
-    // Verificar si la URL ya empieza con 'http://' o 'https://'
     if (url && !/^https?:\/\//i.test(url)) {
-        return `https://${url}`; // Agregar 'https://' si falta el protocolo
+        return `https://${url}`;
     }
-    return url; // Devolver la URL sin cambios si ya incluye el protocolo
+    return url;
 }
 
 function verDetalles(funnelishUrl, index, isFunnelish) {
     if (isFunnelish && funnelishUrl) {
-        // Si funnelish es true y existe la URL válida, redirige al usuario
         window.location.href = funnelishUrl;
-    } else if (!isFunnelish) {
-        // Si funnelish es falso, simplemente abre el modal
+    } else {
+        // Abre el modal directamente sin condiciones adicionales
         abrirModal(index);
     }
 }
+
 
 
     function abrirModal(index) {
