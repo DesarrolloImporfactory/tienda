@@ -182,15 +182,10 @@
     productosFiltrados.forEach((producto, index) => {
         const imagenUrl = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
-        // Configurar la URL de funnelish, verificando que tenga el protocolo
-        const funnelishUrl = producto.funnelish === '1' && producto.funnelish_url 
-            ? ensureProtocol(producto.funnelish_url) 
-            : null;
-
-        // Si funnelishUrl existe, el botón "Ver Detalles" llevará a esa URL. De lo contrario, abre el modal.
-        const detallesOnClick = funnelishUrl 
-            ? `verDetalles('${funnelishUrl}', ${index}, true)`  // Evitar abrir modal cuando es funnelish
-            : `verDetalles(null, ${index}, false)`;
+        // Configurar la URL del producto según si tiene funnelish
+        const urlProducto = producto.funnelish === '1' && producto.funnelish_url
+            ? ensureProtocol(producto.funnelish_url)
+            : `producto2?id=${producto.id_producto_tienda}`;
 
         container.innerHTML += `
             <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
@@ -200,10 +195,10 @@
                         <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                         <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
                         <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                        <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
+                        <a class="btn btn-primary" href="${urlProducto}">
                             Comprar
-                        </button>
-                        <button class="btn btn-primary" onclick="${detallesOnClick}">
+                        </a>
+                        <button class="btn btn-primary" onclick="verDetalles('${urlProducto}', ${index})">
                             Ver Detalles
                         </button>
                     </div>
@@ -220,14 +215,10 @@ function ensureProtocol(url) {
     return url;
 }
 
-function verDetalles(funnelishUrl, index, isFunnelish) {
-    if (isFunnelish && funnelishUrl) {
-        window.location.href = funnelishUrl;
-    } else {
-        // Abre el modal directamente sin condiciones adicionales
-        abrirModal(index);
-    }
+function verDetalles(urlProducto, index) {
+    window.location.href = urlProducto;
 }
+
 
 
 

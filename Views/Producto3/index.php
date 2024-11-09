@@ -186,7 +186,7 @@ function obtenerURLImagen(imagePath, serverURL) {
     }
 
 $(document).ready(function () {
-        var id_producto = '12987';
+        var id_producto = '<?php echo $_GET['id']; ?>';
         let formData = new FormData();
         formData.append("id_plataforma", ID_PLATAFORMA);
         formData.append("id_producto_tienda", id_producto);
