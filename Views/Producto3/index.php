@@ -1,5 +1,5 @@
 <?php include 'Views/templates/header3.php'; ?>
-<?php $id_producto = 12987; ?>
+<?php $id_producto = $_GET['id']; ?>
 
 
 <main>
@@ -68,7 +68,7 @@
 <script>
 
 $(document).ready(function () {
-        var id_producto = '<?php echo $_GET['id']; ?>';
+        var id_producto = '12987';
         let formData = new FormData();
         formData.append("id_plataforma", ID_PLATAFORMA);
         formData.append("id_producto_tienda", id_producto);
