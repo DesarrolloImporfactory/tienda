@@ -26,7 +26,7 @@
 
 /* Medium (>=768px y menor a 992px) */
 @media (max-width: 991px) {
-    .container{
+    main .container{
         max-width: 550px !important;
     }
 }
