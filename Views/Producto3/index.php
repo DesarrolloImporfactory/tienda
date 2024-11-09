@@ -65,6 +65,24 @@
 </main>
 <script>
 
+function obtenerURLImagen(imagePath, serverURL) {
+        // Verificar si el imagePath no es null
+        if (imagePath) {
+            // Verificar si el imagePath ya es una URL completa
+            if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
+                // Si ya es una URL completa, retornar solo el imagePath
+                return imagePath;
+            } else {
+                // Si no es una URL completa, agregar el serverURL al inicio
+                return `${serverURL}${imagePath}`;
+            }
+        } else {
+            // Manejar el caso cuando imagePath es null
+            console.error("imagePath es null o undefined");
+            return null; // o un valor por defecto si prefieres
+        }
+    }
+    
 $(document).ready(function () {
         var id_producto = '12987';
         let formData = new FormData();
