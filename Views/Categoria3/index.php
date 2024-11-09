@@ -185,7 +185,7 @@
         // Configurar la URL del producto según si tiene funnelish
         const urlProducto = producto.funnelish === '1' && producto.funnelish_url
             ? ensureProtocol(producto.funnelish_url)
-            : `producto2?id=${producto.id_producto_tienda}`;
+            : `Producto3?id=${producto.id_producto_tienda}`;
 
         container.innerHTML += `
             <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
@@ -195,9 +195,9 @@
                         <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                         <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
                         <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                        <a class="btn btn-primary" href="${urlProducto}">
+                         <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
                             Comprar
-                        </a>
+                        </button>
                         <button class="btn btn-primary" onclick="verDetalles('${urlProducto}', ${index})">
                             Ver Detalles
                         </button>
@@ -222,33 +222,33 @@ function verDetalles(urlProducto, index) {
 
 
 
-    function abrirModal(index) {
-        const producto = productosTotales[index];
-        if (!producto) return;
+    // function abrirModal(index) {
+    //     const producto = productosTotales[index];
+    //     if (!producto) return;
 
-        const modalTitulo = document.getElementById('productoModalTitulo');
-        const modalDescripcion = document.getElementById('productoModalDescripcion');
-        const modalPrecio = document.getElementById('productoModalPrecio');
-        const modalImagen = document.getElementById('productoModalImagen');
+    //     const modalTitulo = document.getElementById('productoModalTitulo');
+    //     const modalDescripcion = document.getElementById('productoModalDescripcion');
+    //     const modalPrecio = document.getElementById('productoModalPrecio');
+    //     const modalImagen = document.getElementById('productoModalImagen');
 
-        if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
-            modalTitulo.innerText = producto.nombre_producto_tienda;
-            modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
-            modalPrecio.innerText = producto.pvp_tienda;
+    //     if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
+    //         modalTitulo.innerText = producto.nombre_producto_tienda;
+    //         modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
+    //         modalPrecio.innerText = producto.pvp_tienda;
 
-            const imagenUrlModal = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+    //         const imagenUrlModal = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
-            modalImagen.src = imagenUrlModal;
-            modalImagen.alt = producto.nombre_producto_tienda;
+    //         modalImagen.src = imagenUrlModal;
+    //         modalImagen.alt = producto.nombre_producto_tienda;
 
-            modalImagen.onerror = function () {
-                this.onerror = null;
-                this.src = 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
-            };
-        } else {
-            console.error('Elementos del modal no encontrados');
-        }
-    }
+    //         modalImagen.onerror = function () {
+    //             this.onerror = null;
+    //             this.src = 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+    //         };
+    //     } else {
+    //         console.error('Elementos del modal no encontrados');
+    //     }
+    // }
 
 
     document.getElementById('btnLimpiarFiltros').addEventListener('click', limpiarFiltros);
