@@ -159,73 +159,77 @@
     }
 
     function mostrarProductos(buscadorInput = '', valorMinimo = 0, valorMaximo = 1000, ordenarPor = null) {
-        const container = document.getElementById('productosContainer');
-        container.innerHTML = '';
+    const container = document.getElementById('productosContainer');
+    container.innerHTML = '';
 
-        const productosFiltrados = productosTotales.filter(producto => {
-            const nombreCoincide = producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput);
-            const precioCoincide = producto.pvp_tienda >= valorMinimo && producto.pvp_tienda <= valorMaximo;
-            return nombreCoincide && precioCoincide;
+    const productosFiltrados = productosTotales.filter(producto => {
+        const nombreCoincide = producto.nombre_producto_tienda.toLowerCase().includes(buscadorInput);
+        const precioCoincide = producto.pvp_tienda >= valorMinimo && producto.pvp_tienda <= valorMaximo;
+        return nombreCoincide && precioCoincide;
+    });
+
+    if (ordenarPor) {
+        productosFiltrados.sort((a, b) => {
+            if (ordenarPor === 'precio_ascendente') {
+                return a.pvp_tienda - b.pvp_tienda;
+            } else if (ordenarPor === 'precio_descendente') {
+                return b.pvp_tienda - a.pvp_tienda;
+            }
+            return 0;
         });
+    }
 
-        if (ordenarPor) {
-            productosFiltrados.sort((a, b) => {
-                if (ordenarPor === 'precio_ascendente') {
-                    return a.pvp_tienda - b.pvp_tienda;
-                } else if (ordenarPor === 'precio_descendente') {
-                    return b.pvp_tienda - a.pvp_tienda;
-                }
-                return 0;
-            });
-        }
+    productosFiltrados.forEach((producto, index) => {
+        const imagenUrl = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
-        productosFiltrados.forEach((producto, index) => {
-    const imagenUrl = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+        // Configurar la URL de funnelish, verificando que tenga el protocolo
+        const funnelishUrl = producto.funnelish === '1' && producto.funnelish_url 
+            ? ensureProtocol(producto.funnelish_url) 
+            : null;
 
-    // Configurar la URL de funnelish, verificando que tenga el protocolo
-    const funnelishUrl = producto.funnelish === '1' && producto.funnelish_url 
-        ? ensureProtocol(producto.funnelish_url) 
-        : null;
+        // Si funnelishUrl existe, el botón "Ver Detalles" llevará a esa URL. De lo contrario, abre el modal.
+        const detallesOnClick = funnelishUrl 
+            ? `verDetalles('${funnelishUrl}', ${index}, true)`  // Evitar abrir modal cuando es funnelish
+            : `verDetalles(null, ${index}, false)`;
 
-    container.innerHTML += `
-        <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
-            <div class="card"> 
-                <img src="${imagenUrl}" class="w-100 imgCardProductos rounded-3" alt="${producto.nombre_producto_tienda}" onerror="this.onerror=null; this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'">
-                <div class="card-body card-body-paginaProductos">
-                    <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
-                    <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
-                    <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                    <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
-                        Comprar
-                    </button>
-                    <button class="btn btn-primary" onclick="verDetalles('${funnelishUrl}', ${index})" data-bs-toggle="modal" data-bs-target="#productoModal">
-                        Ver Detalles
-                    </button>
+        container.innerHTML += `
+            <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
+                <div class="card"> 
+                    <img src="${imagenUrl}" class="w-100 imgCardProductos rounded-3" alt="${producto.nombre_producto_tienda}" onerror="this.onerror=null; this.src='https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg'">
+                    <div class="card-body card-body-paginaProductos">
+                        <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                        <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
+                        <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
+                        <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
+                            Comprar
+                        </button>
+                        <button class="btn btn-primary" onclick="${detallesOnClick}">
+                            Ver Detalles
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
-});
+        `;
+    });
+}
 
+function ensureProtocol(url) {
+    // Verificar si la URL ya empieza con 'http://' o 'https://'
+    if (url && !/^https?:\/\//i.test(url)) {
+        return `https://${url}`; // Agregar 'https://' si falta el protocolo
     }
+    return url; // Devolver la URL sin cambios si ya incluye el protocolo
+}
 
-    function ensureProtocol(url) {
-        // Verificar si la URL ya empieza con 'http://' o 'https://'
-        if (url && !/^https?:\/\//i.test(url)) {
-            return `https://${url}`; // Agregar 'https://' si falta el protocolo
-        }
-        return url; // Devolver la URL sin cambios si ya incluye el protocolo
+function verDetalles(funnelishUrl, index, isFunnelish) {
+    if (isFunnelish && funnelishUrl) {
+        // Si funnelish es true y existe la URL válida, redirige al usuario
+        window.location.href = funnelishUrl;
+    } else if (!isFunnelish) {
+        // Si funnelish es falso, simplemente abre el modal
+        abrirModal(index);
     }
-
-    function verDetalles(funnelishUrl, index) {
-        if (funnelishUrl) {
-            // Si funnelishUrl existe y es válido, redirige al usuario
-            window.location.href = funnelishUrl;
-        } else {
-            // Si no existe funnelishUrl, abre el modal
-            abrirModal(index);
-        }
-    }
+}
 
 
     function abrirModal(index) {
