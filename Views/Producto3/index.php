@@ -187,9 +187,9 @@ $(document).ready(function () {
 
                     // Miniaturas - comenzamos con la imagen principal como primera miniatura
                     var thumbnailsHtml = `
-                        <a id="list-image-extra${index + 1}-list" data-bs-toggle="list" href="#list-image-extra${index + 1}" role="tab" aria-controls="image-extra${index + 1}">
-                                    <img class="rounded border " width="60" height="60" src="${imagePath}" alt="">
-                                </a>
+                        <a class="list-group-item list-group-item-action active" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image0-list" data-bs-toggle="list" href="#list-image0" role="tab" aria-controls="image0">
+                            <img src="${mainImageSrc}" class="img-thumbnail">
+                        </a>
                     `;
 
                     // Suponemos que `producto.imagenes` es un array de URLs de imágenes
@@ -198,9 +198,9 @@ $(document).ready(function () {
                             var imagePath = imagen.url;
                             imagePath = obtenerURLImagen(imagePath, SERVERURL);
                             thumbnailsHtml += `
-                        <a id="list-image-extra${index + 1}-list" data-bs-toggle="list" href="#list-image-extra${index + 1}" role="tab" aria-controls="image-extra${index + 1}">
-                                    <img class="rounded border " width="60" height="60" src="${imagePath}" alt="">
-                                </a>
+                        <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index + 1}-list" data-bs-toggle="list" href="#list-image${index + 1}" role="tab" aria-controls="image${index + 1}">
+                            <img src="${imagePath}" class="img-thumbnail">
+                        </a>
                     `;
                         });
                         $('#list-tab').html(thumbnailsHtml);
