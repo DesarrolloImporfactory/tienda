@@ -55,6 +55,14 @@ $id_producto = $_GET['id'];
     @media (max-width: 1399px) {}
 
     @media (min-width: 1400px) {}
+
+    .scroll-y-imagenes {
+    max-width: 400px;
+    overflow-x: scroll; 
+    overflow-y: hidden; 
+    white-space: nowrap;
+}
+
 </style>
 
 <main>
@@ -69,7 +77,7 @@ $id_producto = $_GET['id'];
                             onclick="abrir_modalImagen(this.src)">
                     </div>
                     <!-- Thumbnails -->
-                    <div class="thumbnail-container d-flex justify-content-center" id="thumbnailsContainer">
+                    <div class="thumbnail-container d-flex w-100 scroll-y-imagenes" id="thumbnailsContainer">
                         <!-- Thumbnails dinámicos aquí -->
                     </div>
                 </div>
