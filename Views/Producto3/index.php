@@ -9,11 +9,11 @@
     border-bottom: 0px !important;
     }
     #landing{
-        padding-top: 20px;
+        padding-top: 30px;
     }
 </style>
 <main>
-    <section style="margin-top: 100px;">
+    <section class="mb-5" style="margin-top: 100px;">
         <div class="container containerProducto3">
             <div class="row rowProducto3">
                 <div class="col">
