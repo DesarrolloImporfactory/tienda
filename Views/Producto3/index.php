@@ -347,6 +347,360 @@ $(document).ready(function () {
         /* Fin carga de landing */
     });
 
+    async function agregar_tmp(id_producto, precio, id_inventario) {
+        try {
+            // Esperar a que se complete agregar_carrito()
+            await agregar_carrito(id_producto, precio, id_inventario);
+
+            let session_id = "<?php echo session_id(); ?>";
+            let formData = new FormData();
+            formData.append("session_id", session_id);
+
+            // Cargar los productos del carrito vía AJAX
+            $.ajax({
+                url: SERVERURL + 'Tienda/buscar_carrito',
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (data) {
+                    let cartHTML = '';
+                    let comboHTML = '';
+                    let subtotal = 0;
+
+                    data.forEach(function (product) {
+                        if (data.length === 1) {
+                            let formData_combo = new FormData();
+                            formData_combo.append("id_producto", product.id_producto);
+                            $.ajax({
+                                url: SERVERURL + "Tienda/obtener_combo_id",
+                                type: "POST",
+                                data: formData_combo,
+                                processData: false, // No procesar los datos
+                                contentType: false, // No establecer ningún tipo de contenido
+                                dataType: "json",
+                                success: function (response) {
+                                    let comboHTML = '';
+
+                                    response.forEach(function (combo) {
+                                        /* detalle combo */
+                                        let formData_detalle = new FormData();
+                                        formData_detalle.append("id_combo", combo.id);
+
+                                        // Inicializar el acumulador
+                                        let totalPvp = 0;
+                                        let precio_total = 0;
+                                        let valor_combo = combo.valor;
+                                        let estado_combo = combo.estado_combo;
+                                        let ahorro = "";
+
+                                        $.ajax({
+                                            url: SERVERURL + "Tienda/obtener_detalle_combo_id",
+                                            type: "POST",
+                                            data: formData_detalle,
+                                            processData: false, // No procesar los datos
+                                            contentType: false, // No establecer ningún tipo de contenido
+                                            dataType: "json",
+                                            success: function (response2) {
+                                                // Iterar sobre cada elemento en la respuesta
+                                                response2.forEach(function (detalle_combo) {
+                                                    // Sumar el pvp de cada elemento al acumulador
+                                                    totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
+                                                });
+
+                                                if (estado_combo == 1) {
+                                                    precio_total = totalPvp * (1 - valor_combo / 100);
+                                                    ahorro = `<span class="custom-discount" id="ahorro_preview">${valor_combo}% OFF</span>`;
+                                                } else if (estado_combo == 2) {
+                                                    precio_total = totalPvp - valor_combo;
+                                                }
+
+
+                                                comboHTML += `
+                            <div class="custom-product selectable-combo" data-id-combo="${combo.id}">
+                              <img src="${SERVERURL}${combo.image_path}" alt="Producto" id="imagen_combo_preview" class="custom-product-image">
+                              <div class="custom-product-info">
+                                <span id="nombre_combo_preview">${combo.nombre}</span>
+                                ${ahorro}
+                              </div>
+                              <div class="custom-product-price">
+                                <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
+                                <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
+                              </div>
+                            </div>`;
+
+                                                // Actualizamos el contenedor con el contenido generado
+                                                $('#combos_carritoContainer').html(comboHTML);
+                                            },
+                                            error: function (jqXHR, textStatus, errorThrown) {
+                                                alert(errorThrown);
+                                            },
+                                        });
+                                        /* Fin detalle combo */
+                                    });
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    alert(errorThrown);
+                                },
+                            });
+                        }
+
+                        const productPrice = parseFloat(product.precio_tmp) * parseInt(product.cantidad_tmp);
+                        subtotal += productPrice;
+
+                        let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
+
+                        cartHTML += `
+            <div class="productos_carrito-item">
+              <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
+              <div class="productos_carrito-info">
+                <a href="#">${product.nombre_producto}</a>
+                <p>
+                  <button class="btn btn-sm btn-outline-secondary cantidad_decremento" data-product-id="${product.id_tmp}">
+                    -
+                  </button>
+                  <span class="cantidad_producto" data-product-id="${product.id_tmp}">${product.cantidad_tmp}</span>
+                  <button class="btn btn-sm btn-outline-secondary cantidad_incremento" data-product-id="${product.id_tmp}">
+                    +
+                  </button>
+                </p>
+                <p id="detalle_precio_${product.id_tmp}" data-precio-unitario="${parseFloat(product.precio_tmp)}">${product.cantidad_tmp} x $${parseFloat(product.precio_tmp).toFixed(2)} = $${productPrice.toFixed(2)}</p>
+              </div>
+              <div class="productos_carrito-precio">
+                <span>$${productPrice.toFixed(2)}</span>
+              </div>
+              <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>`;
+                    });
+
+                    /* oferta */
+                    let formData_oferta = new FormData();
+                    formData_oferta.append("id_plataforma", ID_PLATAFORMA);
+
+                    $.ajax({
+                        url: SERVERURL + "Tienda/obtener_oferta",
+                        type: "POST",
+                        data: formData_oferta,
+                        processData: false, // No procesar los datos
+                        contentType: false, // No establecer ningún tipo de contenido
+                        dataType: "json",
+                        success: function (oferta) {
+                            // Verifica si la oferta existe y si el array tiene al menos un elemento
+                            if (oferta && oferta.length > 0) {
+                                $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
+                                $('#precio_oferta').text(oferta[0].pvp_tienda);
+                                $('#id_producto_oferta').val(oferta[0].id_producto_tienda);
+
+                                $("#seccion_oferta").show();
+                            } else {
+                                $("#seccion_oferta").hide(); // Si no hay oferta, ocultar la sección
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(errorThrown); // Manejo de errores
+                        },
+                    });
+
+                    /* Fin oferta */
+
+                    $('#productos_carritoContainer').html(cartHTML);
+                    $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+                    $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+
+                    $("#total_principal").val(subtotal.toFixed(2));
+
+                    $("#id_productoTmp_carrito").val(data[0].id_producto);
+                    $("#total_carrito").val(subtotal.toFixed(2));
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }
+            });
+
+            // Mostrar el modal del carrito
+            $("#checkout_carritoModal").modal("show");
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    function agregar_carrito(id_producto, precio, id_inventario) {
+        return new Promise((resolve, reject) => {
+            session_id = "<?php echo session_id(); ?>";
+            let formData = new FormData();
+            formData.append("id_producto", id_producto);
+            formData.append("precio", precio);
+            formData.append("id_inventario", id_inventario);
+            formData.append("session_id", session_id);
+            formData.append("cantidad", $('#cantidad_producto').val());
+            formData.append("id_plataforma", ID_PLATAFORMA);
+
+            $.ajax({
+                url: SERVERURL + "Tienda/agregar_carrito",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.status == 500) {
+                        toastr.error(
+                            "NO SE AGREGÓ CORRECTAMENTE",
+                            "NOTIFICACIÓN", {
+                            positionClass: "toast-bottom-center"
+                        }
+                        );
+                        reject("Error al agregar al carrito"); // Rechaza en caso de error lógico
+                    } else if (response.status == 200) {
+                        toastr.success("PRODUCTO AGREGADO CORRECTAMENTE", "NOTIFICACIÓN", {
+                            positionClass: "toast-bottom-center",
+                        });
+                        resolve(response); // Resuelve la promesa cuando se agrega correctamente
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // Rechaza la promesa en caso de error de red o servidor
+                    reject(errorThrown);
+                },
+            });
+        });
+    }
+
+    $(document).on('click', '.productos_checkout_remove', function () {
+        let productId = $(this).data('product-id'); // Obtener el id del producto a eliminar
+        let productElement = $(this).closest('.productos_carrito-item'); // Referencia al contenedor del producto en el DOM
+
+        let formData = new FormData();
+        formData.append("id_tmp", productId);
+
+        $.ajax({
+            url: 'https://new.imporsuitpro.com/Tienda/eliminar_carrito', // URL de la API para eliminar el producto del carrito
+            method: 'POST',
+            data: formData,
+            processData: false, // No procesar los datos
+            contentType: false, // No establecer ningún tipo de contenido
+            dataType: "json",
+            success: function (response) {
+                if (response.status == 200) {
+                    // Eliminar el producto del DOM tras una eliminación exitosa
+                    productElement.remove();
+
+                    // Recalcular el subtotal y total después de la eliminación
+                    actualizarSubtotalYTotal(); // Aquí utilizamos la función existente
+
+                    // Recargar el carrito para actualizar el total
+                    $('#cartDropdown').trigger('click');
+                } else {
+                    alert('Error al eliminar el producto.');
+                }
+            },
+            error: function () {
+                alert('Error al eliminar el producto.');
+            }
+        });
+    });
+
+
+    $(document).on('click', '.cantidad_incremento', function () {
+        const productId = $(this).data('product-id');
+        const cantidadSpan = $(this).siblings('.cantidad_producto');
+        let cantidadActual = parseInt(cantidadSpan.text());
+
+        // Incrementar la cantidad
+        let nuevaCantidad = cantidadActual + 1;
+        cantidadSpan.text(nuevaCantidad);
+
+        // Actualizar el precio y el subtotal
+        actualizarCantidadProducto(productId, nuevaCantidad);
+    });
+
+    $(document).on('click', '.cantidad_decremento', function () {
+        const productId = $(this).data('product-id');
+        const cantidadSpan = $(this).siblings('.cantidad_producto');
+        let cantidadActual = parseInt(cantidadSpan.text());
+
+        // Decrementar la cantidad si es mayor que 1
+        if (cantidadActual > 1) {
+            let nuevaCantidad = cantidadActual - 1;
+            cantidadSpan.text(nuevaCantidad);
+
+            // Actualizar el precio y el subtotal
+            actualizarCantidadProducto(productId, nuevaCantidad);
+        }
+    });
+
+    function actualizarCantidadProducto(productId, newQuantity) {
+        // Obtener el precio unitario del producto
+        const precioUnitario = parseFloat($(`#detalle_precio_${productId}`).data('precio-unitario'));
+
+        // Calcular el nuevo precio total para este producto
+        const nuevoPrecioTotal = (precioUnitario * newQuantity).toFixed(2);
+
+        // Actualizar el texto de la línea de detalle del precio
+        $(`#detalle_precio_${productId}`).text(`${newQuantity} x $${precioUnitario.toFixed(2)} = $${nuevoPrecioTotal}`);
+
+        // Actualizar el subtotal y el total
+        actualizarSubtotalYTotal();
+
+        // Realizar la actualización en el backend
+        let formData = new FormData();
+        formData.append("id_tmp", productId);
+        formData.append("cantidad_nueva", newQuantity);
+
+        $.ajax({
+            url: 'https://new.imporsuitpro.com/Tienda/sumar_carrito', // URL de la API para actualizar la cantidad
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function (response) {
+                if (response.status !== 200) {
+                    alert('Error al actualizar la cantidad');
+                }
+            },
+            error: function () {
+                alert('Error al actualizar la cantidad');
+            }
+        });
+    }
+
+    function actualizarSubtotalYTotal() {
+        let subtotal = 0;
+
+        // Recorrer cada línea de productos en el carrito
+        $('.productos_carrito-item').each(function () {
+            const productId = $(this).find('.cantidad_producto').data('product-id');
+            const cantidad = parseInt($(this).find('.cantidad_producto').text());
+            const precioUnitario = parseFloat($(`#detalle_precio_${productId}`).data('precio-unitario'));
+
+            // Sumar el precio total del producto al subtotal
+            subtotal += precioUnitario * cantidad;
+        });
+
+        // Actualizar el subtotal y el total en el DOM
+        $('#productos_carritoSubtotal').text(`$${subtotal.toFixed(2)}`);
+        $('#productos_carritoTotal').text(`$${subtotal.toFixed(2)}`);
+
+        // También puedes actualizar el campo oculto total_carrito si es necesario
+        $("#total_carrito").val(subtotal.toFixed(2));
+    }
+
+    // Función llamada si la imagen no puede cargarse
+    function imagenError(image) {
+        console.log("La imagen no pudo cargarse.");
+        image.src = 'ruta/a/tu/imagen/por/defecto.jpg';
+    }
+
+    // Función llamada cuando la imagen se ha cargado correctamente
+    function imagenCargada(image) {
+        console.log("La imagen se cargó correctamente.");
+        image.classList.add("cargada-correctamente");
+    }
+
 
     /* Iconos */
     // Cargar iconos mediante AJAX
@@ -407,7 +761,74 @@ $(document).ready(function () {
         }
     });
     /* Fin Iconos */
+ //cargar select ciudades y provincias
+ $(document).ready(function () {
+        cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
+        // Llamar a cargarCiudades cuando se seleccione una provincia
+        $("#provinica").on("change", cargarCiudades);
+    });
+
+    // Función para cargar provincias
+    function cargarProvincias() {
+        $.ajax({
+            url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
+            method: "GET",
+            success: function (response) {
+                let provincias = JSON.parse(response);
+                let provinciaSelect = $("#provinica");
+                provinciaSelect.empty();
+                provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
+
+                provincias.forEach(function (provincia) {
+                    provinciaSelect.append(
+                        `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
+                    );
+                });
+            },
+            error: function (error) {
+                console.log("Error al cargar provincias:", error);
+            },
+        });
+    }
+
+    // Función para cargar ciudades según la provincia seleccionada
+    function cargarCiudades() {
+        let provinciaId = $("#provinica").val();
+        if (provinciaId) {
+            $.ajax({
+                url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
+                method: "GET",
+                success: function (response) {
+                    let ciudades = JSON.parse(response);
+                    let ciudadSelect = $("#ciudad_entrega");
+                    ciudadSelect.empty();
+                    ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
+
+                    ciudades.forEach(function (ciudad) {
+                        ciudadSelect.append(
+                            `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
+                        );
+                    });
+
+                    ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
+                },
+                error: function (error) {
+                    console.log("Error al cargar ciudades:", error);
+                },
+            });
+        } else {
+            $("#ciudad_entrega")
+                .empty()
+                .append('<option value="">Ciudad *</option>')
+                .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
+        }
+    }
+    /* Fin cargar provincia y ciudad*/
+
+    function cerrarCarrito() {
+
+    }
 
 </script>
 
