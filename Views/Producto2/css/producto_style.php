@@ -1,9 +1,8 @@
 <style>
   .main-product-image {
-    width: 100%;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
   }
 
   .thumb-image {
@@ -24,16 +23,6 @@
     margin-top: 10px;
   }
 
-  .main-image-container {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    /* Adjust as necessary for your layout */
-  }
 
   .thumbnail-container img.active-thumb {
     border: 2px solid #000;

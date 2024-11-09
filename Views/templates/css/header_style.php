@@ -696,15 +696,13 @@
     /* fin css faltante */
 
     /* carrito checkout */
-    .productos_carrito-item {
+    /* .productos_carrito-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
         font-family: 'Helvetica Neue', Arial, sans-serif;
-        /* Cambia la fuente */
         font-weight: 400;
-        /* Fuente estándar */
     }
 
     .productos_carrito-item img {
@@ -712,16 +710,13 @@
         height: 50px;
         object-fit: cover;
         border-radius: 5px;
-        /* Para agregar un toque más moderno */
     }
 
     .productos_carrito-item .productos_carrito-info {
         flex: 1;
         margin-left: 15px;
         font-size: 18px;
-        /* Ajuste del tamaño de fuente */
         font-weight: 600;
-        /* Aumentar el grosor de la fuente */
     }
 
     .productos_carrito-item .productos_carrito-info a {
@@ -729,7 +724,6 @@
         color: #007bff;
         text-decoration: none;
         font-weight: bold;
-        /* Aumentar el grosor de los enlaces */
     }
 
     .productos_carrito-item .productos_carrito-info a:hover {
@@ -739,11 +733,8 @@
     .productos_carrito-item .productos_carrito-precio {
         margin-right: 10px;
         font-size: 18px;
-        /* Ajuste del tamaño de la fuente */
         font-weight: 700;
-        /* Aumentar el grosor de la fuente para el precio */
         color: #000;
-        /* Color negro más fuerte para el precio */
     }
 
     .resumen_carrito {
@@ -751,11 +742,7 @@
         padding-top: 15px;
         font-size: 16px;
         font-weight: bold;
-        /* Texto más grueso para el resumen del carrito */
     }
-
-
-    /* fin carrito checkout */
 
     .custom-card {
         border: 2px solid #ddd;
@@ -764,9 +751,7 @@
         max-width: 350px;
         margin: auto;
         font-family: 'Helvetica Neue', Arial, sans-serif;
-        /* Cambia la fuente */
         font-weight: 400;
-        /* Fuente estándar */
     }
 
     .custom-card-header {
@@ -778,7 +763,6 @@
 
     .custom-card-body {
         background-color: #f4f6f9;
-        /* Ajuste de color de fondo más claro */
         padding: 10px;
         border-radius: 8px;
     }
@@ -788,12 +772,9 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px;
-        /* Aumenta el espaciado interno */
         margin-bottom: 10px;
         background-color: white;
-        /* Fondo blanco para las tarjetas */
         border: 2px solid #f0f0f0;
-        /* Un borde más grueso y más claro */
         border-radius: 8px;
     }
 
@@ -808,26 +789,22 @@
         flex-grow: 1;
         margin-left: 10px;
         font-weight: 600;
-        /* Aumenta el grosor de la fuente */
     }
 
     .custom-discount {
         display: inline-block;
         background-color: #fe0000;
-        /* Color rojo para el descuento */
         color: white;
         padding: 5px 10px;
         border-radius: 5px;
         font-size: 0.9rem;
         font-weight: bold;
-        /* Aumenta el grosor */
         margin-top: 5px;
     }
 
     .custom-product-price {
         text-align: right;
         font-size: 1rem;
-        /* Ajuste del tamaño de fuente */
     }
 
     .old-price {
@@ -839,9 +816,7 @@
     .new-price {
         font-weight: bold;
         font-size: 1.5rem;
-        /* Ajuste de tamaño para el precio nuevo */
         color: #000;
-        /* Color negro más fuerte */
     }
 
     .custom-card-footer {
@@ -872,7 +847,8 @@
 
     .total-price {
         color: #007bff;
-        /* Color rojo para el precio final */
         font-size: 1.2rem;
-    }
+    } */
+        /* fin carrito checkout */
+
 </style>
