@@ -88,9 +88,9 @@
 
 <style>
     .x {
-    top: 70px;
-    z-index: 1000;
-}
+        top: 70px;
+        z-index: 1000;
+    }
 
     .imgCardProductos {
         padding: 30px;
@@ -182,8 +182,10 @@
         productosFiltrados.forEach((producto, index) => {
     const imagenUrl = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
-    // Condicional para la URL de funnelish
-    const funnelishUrl = producto.funnelish === '1' && producto.funnelish_url ? producto.funnelish_url : null;
+    // Configurar la URL de funnelish, verificando que tenga el protocolo
+    const funnelishUrl = producto.funnelish === '1' && producto.funnelish_url 
+        ? ensureProtocol(producto.funnelish_url) 
+        : null;
 
     container.innerHTML += `
         <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
@@ -207,9 +209,17 @@
 
     }
 
+    function ensureProtocol(url) {
+        // Verificar si la URL ya empieza con 'http://' o 'https://'
+        if (url && !/^https?:\/\//i.test(url)) {
+            return `https://${url}`; // Agregar 'https://' si falta el protocolo
+        }
+        return url; // Devolver la URL sin cambios si ya incluye el protocolo
+    }
+
     function verDetalles(funnelishUrl, index) {
         if (funnelishUrl) {
-            // Si funnelishUrl existe, redirige al usuario
+            // Si funnelishUrl existe y es válido, redirige al usuario
             window.location.href = funnelishUrl;
         } else {
             // Si no existe funnelishUrl, abre el modal
@@ -218,33 +228,33 @@
     }
 
 
-function abrirModal(index) {
-    const producto = productosTotales[index];
-    if (!producto) return;
+    function abrirModal(index) {
+        const producto = productosTotales[index];
+        if (!producto) return;
 
-    const modalTitulo = document.getElementById('productoModalTitulo');
-    const modalDescripcion = document.getElementById('productoModalDescripcion');
-    const modalPrecio = document.getElementById('productoModalPrecio');
-    const modalImagen = document.getElementById('productoModalImagen');
+        const modalTitulo = document.getElementById('productoModalTitulo');
+        const modalDescripcion = document.getElementById('productoModalDescripcion');
+        const modalPrecio = document.getElementById('productoModalPrecio');
+        const modalImagen = document.getElementById('productoModalImagen');
 
-    if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
-        modalTitulo.innerText = producto.nombre_producto_tienda;
-        modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
-        modalPrecio.innerText = producto.pvp_tienda;
+        if (modalTitulo && modalDescripcion && modalPrecio && modalImagen) {
+            modalTitulo.innerText = producto.nombre_producto_tienda;
+            modalDescripcion.innerText = producto.descripcion_tienda || 'No disponible';
+            modalPrecio.innerText = producto.pvp_tienda;
 
-        const imagenUrlModal = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+            const imagenUrlModal = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
-        modalImagen.src = imagenUrlModal;
-        modalImagen.alt = producto.nombre_producto_tienda;
+            modalImagen.src = imagenUrlModal;
+            modalImagen.alt = producto.nombre_producto_tienda;
 
-        modalImagen.onerror = function () {
-            this.onerror = null;
-            this.src = 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
-        };
-    } else {
-        console.error('Elementos del modal no encontrados');
+            modalImagen.onerror = function () {
+                this.onerror = null;
+                this.src = 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
+            };
+        } else {
+            console.error('Elementos del modal no encontrados');
+        }
     }
-}
 
 
     document.getElementById('btnLimpiarFiltros').addEventListener('click', limpiarFiltros);
