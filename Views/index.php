@@ -231,102 +231,112 @@
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-            url: SERVERURL + 'Tienda/destacadostienda',
-            method: 'POST',
-            data: formDataProductos,
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                try {
-                    var productos = JSON.parse(response);
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
+    url: SERVERURL + 'Tienda/destacadostienda',
+    method: 'POST',
+    data: formDataProductos,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        try {
+            var productos = JSON.parse(response);
+        } catch (e) {
+            console.error('Error al parsear la respuesta:', e);
+            return;
+        }
+
+        if (productos && Array.isArray(productos)) {
+            var $carousel = $("#productos-carousel");
+            let image_path = "";
+
+            productos.forEach(function (producto) {
+                var precioEspecial = parseFloat(producto.pvp_tienda);
+                var precioNormal = parseFloat(producto.pref_tienda);
+
+                var ahorro = 0;
+                if (precioNormal > 0) {
+                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
                 }
+                image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
-                if (productos && Array.isArray(productos)) {
-                    var $carousel = $("#productos-carousel");
-                    let image_path = "";
-                    productos.forEach(function (producto) {
-                        var precioEspecial = parseFloat(producto.pvp_tienda);
-                        var precioNormal = parseFloat(producto.pref_tienda);
+                // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
+                const urlProducto = producto.funnelish === '1' && producto.funnelish_url 
+                    ? ensureProtocol(producto.funnelish_url) 
+                    : `producto?id=${producto.id_producto_tienda}`;
 
-                        var ahorro = 0;
-                        if (precioNormal > 0) {
-                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
-                        }
-                        image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
-                        var productItem = `
-                            <div class="item">
-                                <div class="grid-container">
-                                    <div class="card rounded " >
-                                        <div class="img-container position-relative">
-                                            ${precioNormal > 0 ? `
-                                            <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start" style="top: 20px; right: 0px;">
-                                                <span class="ahorro"><i class="bi bi-tag-fill me-1" ></i>
-                                                    <strong>AHORRA UN ${number_format(ahorro)}%</strong>
-                                                </span>
-                                            </div>
-                                             ` : ''}
+                var productItem = `
+                    <div class="item">
+                        <div class="grid-container">
+                            <div class="card rounded">
+                                <div class="img-container position-relative">
+                                    ${precioNormal > 0 ? `
+                                    <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start" style="top: 20px; right: 0px;">
+                                        <span class="ahorro"><i class="bi bi-tag-fill me-1"></i>
+                                            <strong>AHORRA UN ${number_format(ahorro)}%</strong>
+                                        </span>
+                                    </div>
+                                     ` : ''}
 
-                                            <a href="producto?id=${producto.id_producto_tienda}">
-                                                <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name" >
-                                            </a>
-                                        </div>
-                                        <div class="card-body card-body-proDes d-flex flex-column" >
-                                            <p class="card-text flex-grow-1 mt-4 fs-6" >
-                                                <a href="producto?id=${producto.id_producto_tienda}" style="text-decoration: none;" class="text-dark">
-                                                    <strong>${producto.nombre_producto_tienda}</strong>
-                                                </a>
-                                            </p>
-                                        <div class="product-footer mb-2">
+                                    <a href="${urlProducto}">
+                                        <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name">
+                                    </a>
+                                </div>
+                                <div class="card-body card-body-proDes d-flex flex-column">
+                                    <p class="card-text flex-grow-1 mt-4 fs-6">
+                                        <a href="${urlProducto}" style="text-decoration: none;" class="text-dark">
+                                            <strong>${producto.nombre_producto_tienda}</strong>
+                                        </a>
+                                    </p>
+                                    <div class="product-footer mb-2">
                                         <div class="d-flex flex-row">
-                                                <span class="texto_precio me-2 fs-5">
-                                                    <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
-                                                </span>
+                                            <span class="texto_precio me-2 fs-5">
+                                                <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
+                                            </span>
                                             ${precioNormal > 0 ? `
                                                 <span class="tachado d-flex align-items-center fs-6">
                                                     <p class="mb-0">$ ${number_format(precioNormal, 2)}</p>
                                                 </span>
-                                            
                                             ` : ''}
                                         </div>
                                     </div>
-                                    <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
+                                    <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${urlProducto}">Comprar</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        `;
+                `;
 
-                        // Agregar el producto al carrusel
-                        $carousel.trigger('add.owl.carousel', [$(productItem)]);
-                    });
+                // Agregar el producto al carrusel
+                $carousel.trigger('add.owl.carousel', [$(productItem)]);
+            });
 
-                    // Refrescar el carrusel
-                    $carousel.trigger('refresh.owl.carousel');
-                } else {
-                    console.error('La respuesta no contiene productos válidos.');
-                }
-            },
-            error: function (error) {
-                console.log('Error al cargar los productos destacados:', error);
-            }
-        });
+            // Refrescar el carrusel
+            $carousel.trigger('refresh.owl.carousel');
+        } else {
+            console.error('La respuesta no contiene productos válidos.');
+        }
+    },
+    error: function (error) {
+        console.log('Error al cargar los productos destacados:', error);
+    }
+});
+
+// Función para asegurar que la URL tenga el protocolo
+function ensureProtocol(url) {
+    if (url && !/^https?:\/\//i.test(url)) {
+        return `https://${url}`;
+    }
+    return url;
+}
+
 
         function obtenerURLImagen(imagePath, serverURL) {
-            // Verificar si el imagePath no es null
             if (imagePath) {
-                // Verificar si el imagePath ya es una URL completa
                 if (imagePath.startsWith("http://") || imagePath.startsWith("https://")) {
-                    // Si ya es una URL completa, retornar solo el imagePath
                     return imagePath;
                 } else {
-                    // Si no es una URL completa, agregar el serverURL al inicio
                     return `${serverURL}${imagePath}`;
                 }
             } else {
-                // Manejar el caso cuando imagePath es null
                 console.error("imagePath es null o undefined");
                 return null; // o un valor por defecto si prefieres
             }
