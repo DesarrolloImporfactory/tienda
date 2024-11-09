@@ -1,5 +1,5 @@
 <?php include 'Views/templates/header3.php'; ?>
-<?php $id_producto = $_GET['id']; ?>
+<?php $id_producto = 12987; ?>
 
 
 <main>
@@ -116,10 +116,10 @@ $(document).ready(function () {
 
                     // Miniaturas - comenzamos con la imagen principal como primera miniatura
                     var thumbnailsHtml = `
-                <a class="list-group-item list-group-item-action active" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image0-list" data-bs-toggle="list" href="#list-image0" role="tab" aria-controls="image0">
-                    <img src="${mainImageSrc}" class="img-thumbnail">
-                </a>
-            `;
+                        <a class="list-group-item list-group-item-action active" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image0-list" data-bs-toggle="list" href="#list-image0" role="tab" aria-controls="image0">
+                            <img src="${mainImageSrc}" class="img-thumbnail">
+                        </a>
+                    `;
 
                     // Suponemos que `producto.imagenes` es un array de URLs de imágenes
                     if (producto.imagenes && producto.imagenes.length > 0) {
