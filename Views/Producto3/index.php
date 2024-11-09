@@ -188,7 +188,7 @@ $(document).ready(function () {
                     // Miniaturas - comenzamos con la imagen principal como primera miniatura
                     var thumbnailsHtml = `
                         <a class="list-group-item list-group-item-action active" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image0-list" data-bs-toggle="list" href="#list-image0" role="tab" aria-controls="image0">
-                            <img src="${mainImageSrc}" class="img-thumbnail">
+                            <img src="${mainImageSrc}" class="rounded border " width="60" height="60" >
                         </a>
                     `;
 
@@ -199,7 +199,7 @@ $(document).ready(function () {
                             imagePath = obtenerURLImagen(imagePath, SERVERURL);
                             thumbnailsHtml += `
                         <a class="list-group-item list-group-item-action ${index === 0 ? 'active' : ''}" style="max-width: 100px !important; max-height: 100px !important; padding:0;" id="list-image${index + 1}-list" data-bs-toggle="list" href="#list-image${index + 1}" role="tab" aria-controls="image${index + 1}">
-                            <img src="${imagePath}" class="img-thumbnail">
+                            <img src="${imagePath}" class="rounded border " width="60" height="60" >
                         </a>
                     `;
                         });
