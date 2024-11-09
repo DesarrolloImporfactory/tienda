@@ -93,7 +93,7 @@
     }
 
     .imgCardProductos {
-        padding: 30px;
+        padding: 15px;
         border: 0px;
         width: 180px;
         height: 180px;
