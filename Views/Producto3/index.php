@@ -216,6 +216,7 @@
             `;
         });
 
+
         function verDetalles(funnelishUrl, index) {
             if (funnelishUrl) {
                 // Si funnelishUrl existe y es válido, redirige al usuario
@@ -255,7 +256,7 @@
                 console.error('Elementos del modal no encontrados');
             }
         }
-
+    }
 
         document.getElementById('btnLimpiarFiltros').addEventListener('click', limpiarFiltros);
         function limpiarFiltros() {
