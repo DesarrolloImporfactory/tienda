@@ -47,9 +47,9 @@
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
     <section class="container">
-            <div class="row" id="iconos-container" style="max-width: 1150px; margin: auto;">
-                <!-- Los iconos serán insertados aquí dinámicamente -->
-            </div>
+        <div class="row" id="iconos-container" style="max-width: 1150px; margin: auto;">
+            <!-- Los iconos serán insertados aquí dinámicamente -->
+        </div>
     </section>
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
@@ -175,7 +175,7 @@
                         var icon_text = icono.icon_text || '';
                         var enlace_icon = icono.enlace_icon || '#';
                         var subtexto_icon = icono.subtexto_icon || '';
-                        var color_icono =icono.color_icono
+                        var color_icono = icono.color_icono
 
                         // Aquí está el HTML para el nuevo diseño con el formato correcto
                         var iconoItem = `
@@ -246,12 +246,17 @@
 
                 let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
 
+                // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
+                const urlProducto = producto.funnelish === '1' && producto.funnelish_url 
+                    ? ensureProtocol(producto.funnelish_url) 
+                    : `producto2?id=${producto.id_producto_tienda}`;
+
                 // HTML para cada producto destacado
                 var productItem = `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
                         <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4 h-100">
                             ${oferta}
-                            <a href="producto2?id=${producto.id_producto_tienda}">
+                            <a href="${urlProducto}">
                                 <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
                             </a>
                             <div class="d-flex flex-column body_card h-100 p-3 mt-4 mb-2">
@@ -278,6 +283,15 @@
         console.log('Error al cargar los productos destacados:', error);
     }
 });
+
+// Función para asegurar que la URL tenga el protocolo
+function ensureProtocol(url) {
+    if (url && !/^https?:\/\//i.test(url)) {
+        return `https://${url}`;
+    }
+    return url;
+}
+
 
 
         /* Fin productos destacados */
