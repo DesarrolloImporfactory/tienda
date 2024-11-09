@@ -64,8 +64,8 @@ $id_producto = $_GET['id'];
             <div class="row">
                 <div class="col-md-6">
                     <!-- Main Image -->
-                    <div class="main-image-container mb-3">
-                        <img id="mainProductImage" src="" class="img-fluid main-product-image" alt="Main Product Image"
+                    <div class="mb-3">
+                        <img id="mainProductImage" src="" class="img-fluid main-product-image rounded border shadow" alt="Main Product Image"
                             onclick="abrir_modalImagen(this.src)">
                     </div>
                     <!-- Thumbnails -->
