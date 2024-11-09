@@ -14,37 +14,25 @@
     section{
         margin-bottom: 50px !important;
     }
-    /* Extra small (menor a 576px) - no tiene class infix en Bootstrap */
 @media (max-width: 575px) {
-  /* Estilos para xs (extra small) */
 }
 
-/* Small (>=576px y menor a 768px) */
 @media (max-width: 767px) {
-  /* Estilos para sm (small) */
 }
 
-/* Medium (>=768px y menor a 992px) */
 @media (max-width: 991px) {
     main .container{
         max-width: 550px !important;
     }
 }
 
-/* Large (>=992px y menor a 1200px) */
 @media (max-width: 1199px) {
-  /* Estilos para lg (large) */
 }
 
-/* Extra large (>=1200px y menor a 1400px) */
 @media (max-width: 1399px) {
-  /* Estilos para xl (extra large) */
 }
 
-/* Extra extra large (>=1400px en adelante) */
-/* Aquí se usa min-width porque es el tamaño máximo */
 @media (min-width: 1400px) {
-  /* Estilos para xxl (extra extra large) */
 }
 
     
@@ -54,7 +42,7 @@
         <div class="container containerProducto3">
             <div class="row rowProducto3">
                 <div class="col">
-                    <div class="d-flex flex-column">
+                    <div class="d-flex flex-column mb-5">
                         <img id="main-image" style="width: 400px; height: 400px;" class="border rounded mx-auto" src="" alt="">
                         <div role="tablist" id="list-tab" style="max-width: 400px;" class="d-flex gap-3 mt-3 w-100 mx-auto" >
                        
