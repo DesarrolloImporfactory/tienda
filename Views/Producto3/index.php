@@ -1,11 +1,13 @@
 <?php include 'Views/templates/header3.php'; ?>
+<?php $id_producto = $_GET['id']; ?>
+
 
 <main>
     <section>
         <div class="container">
             <div class="row">
-                <div class="col"></div>
-                <div class="col"></div>
+                <div class="col">ddd</div>
+                <div class="col">sss</div>
             </div>
         </div>
     </section>
