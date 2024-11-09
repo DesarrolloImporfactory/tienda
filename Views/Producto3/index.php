@@ -11,9 +11,46 @@
     #landing{
         padding-top: 30px;
     }
+    section{
+        margin-bottom: 50px !important;
+    }
+    /* Extra small (menor a 576px) - no tiene class infix en Bootstrap */
+@media (max-width: 575px) {
+  /* Estilos para xs (extra small) */
+}
+
+/* Small (>=576px y menor a 768px) */
+@media (max-width: 767px) {
+  /* Estilos para sm (small) */
+}
+
+/* Medium (>=768px y menor a 992px) */
+@media (max-width: 991px) {
+    .container{
+        max-width: 550px !important;
+    }
+}
+
+/* Large (>=992px y menor a 1200px) */
+@media (max-width: 1199px) {
+  /* Estilos para lg (large) */
+}
+
+/* Extra large (>=1200px y menor a 1400px) */
+@media (max-width: 1399px) {
+  /* Estilos para xl (extra large) */
+}
+
+/* Extra extra large (>=1400px en adelante) */
+/* Aquí se usa min-width porque es el tamaño máximo */
+@media (min-width: 1400px) {
+  /* Estilos para xxl (extra extra large) */
+}
+
+    
 </style>
 <main>
-    <section class="mb-5" style="margin-top: 100px;">
+    <section style="margin-top: 100px;">
         <div class="container containerProducto3">
             <div class="row rowProducto3">
                 <div class="col">
