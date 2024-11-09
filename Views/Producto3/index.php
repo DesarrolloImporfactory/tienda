@@ -5,6 +5,9 @@
     .list-group-item{
         width: fit-content;
     }
+    .active {
+    border-bottom: 0px !important;
+    }
 </style>
 <main>
     <section style="margin-top: 100px;">
