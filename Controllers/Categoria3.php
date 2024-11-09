@@ -1,6 +1,6 @@
 <?php
 
-class Producto3 extends Controller
+class Categoria3 extends Controller
 {
 
     public function __construct()
