@@ -38,7 +38,7 @@
     
 </style>
 <main>
-    <section style="margin-top: 100px;">
+    <section class="mt-5">
         <div class="container containerProducto3">
             <div class="row rowProducto3">
                 <div class="col">
@@ -82,8 +82,10 @@
                 </div>
             </div>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+        
+    </section> 
+<!-- Modal -->
+<div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -96,8 +98,6 @@
                 </div>
             </div>
         </div>
-    </section> 
-
     <section>
         <div class="container">
             <div class="row mx-auto w-100 mt-lg-5 mt-2" id="iconos-container" >
