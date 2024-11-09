@@ -62,7 +62,7 @@ $id_producto = $_GET['id'];
 
         <div class="container containerProducto3">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-12 col-lg-6">
                     <!-- Main Image -->
                     <div class="mb-3">
                         <img id="mainProductImage" src="" class="img-fluid main-product-image rounded border shadow" alt="Main Product Image"
@@ -73,7 +73,7 @@ $id_producto = $_GET['id'];
                         <!-- Thumbnails dinámicos aquí -->
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-12 col-lg-6">
                     <h2 id="nombre-producto">Nombre del producto</h2>
                     <p class="text-muted" id="sku-producto">SKU: 004</p>
                     <div class="d-flex flex-row gap-3">

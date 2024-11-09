@@ -2,6 +2,7 @@
   .main-product-image {
     width: 400px;
     height: 400px;
+    object-fit: cover;
   }
 
   .thumb-image {
