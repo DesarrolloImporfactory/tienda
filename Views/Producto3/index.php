@@ -18,7 +18,7 @@
                 </div>
                 <div class="col">
                     <h4 class="" id="nombre-producto"></h4>
-                    <div class="precios_producto align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-3">
                         <p class="display-6 mb-0">
                             <strong id="precio-especial"></strong>
                         </p>
