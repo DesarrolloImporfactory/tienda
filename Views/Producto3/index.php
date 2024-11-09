@@ -43,7 +43,7 @@
             <div class="row rowProducto3">
                 <div class="col">
                     <div class="d-flex flex-column mb-5">
-                        <img id="main-image" style="width: 400px; height: 400px;" class="border rounded mx-auto" src="" alt="">
+                        <img data-bs-toggle="modal" data-bs-target="#imagenModal" id="main-image" style="width: 400px; height: 400px;" class="border rounded mx-auto" src="" alt="">
                         <div role="tablist" id="list-tab" style="max-width: 400px;" class="d-flex gap-3 mt-3 w-100 mx-auto" >
                        
                         </div>
