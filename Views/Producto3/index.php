@@ -49,9 +49,11 @@
 }
 .scroll-y-imagenes {
     max-width: 400px;
-    overflow-y: auto;   /* Activa el desplazamiento vertical */
-    overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+    overflow-x: scroll; 
+    overflow-y: hidden; 
+    white-space: nowrap;
 }
+
 
     
 </style>
