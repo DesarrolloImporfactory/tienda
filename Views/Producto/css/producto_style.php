@@ -38,55 +38,48 @@
 
   .list-group-item {
     background-color: white !important;
-    /* Esto hará que el fondo sea transparente */
     border-color: white !important;
-    /* Esto elimina el borde si lo hay */
+    width: fit-content;
   }
-
-  #list-tab .list-group-item img.img-thumbnail {
-    width: 150px;
-    /* El ancho deseado para las miniaturas */
-    height: 65px;
-    /* Para mantener la proporción de aspecto */
-  }
-
   /* Estilos para miniaturas */
   .list-group-item img.img-thumbnail {
-    width: 100px;
-    /* Ancho que desees para las miniaturas */
-    height: 100px;
-    /* Altura que desees para las miniaturas */
+    min-width: 70px;
+    max-width: 70px;
+    max-height: 70px;
+    min-height: 70px;
     object-fit: cover;
-    /* cover recortará la imagen para ajustarla al tamaño */
+  }
+  #list-tab{
+    overflow-x: auto; 
+  overflow-y: hidden; 
+  white-space: nowrap; 
+  scrollbar-width: none; 
   }
 
-  /* Estilos para imagen principal */
+
+  #list-tab::-webkit-scrollbar {
+  display: none; 
+}
+
   #main-image {
-    width: 500px;
-    /* Ancho que desees para la imagen principal */
-    height: 500px;
-    /* Altura que desees para la imagen principal */
+    width: 400px;
+    height: 400px;
     object-fit: cover;
-    /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
     cursor: pointer;
   }
 
 
   @media (max-width: 768px) {
 
-    /* Estilos para imagen principal */
     #main-image {
-      width: 300px;
-      /* Ancho que desees para la imagen principal */
+      width: 100%;
+      max-width: 300px;
       height: 300px;
-      /* Altura que desees para la imagen principal */
-      object-fit: cover;
-      /* contain asegurará que la imagen se ajuste dentro de este espacio sin recortarse */
+
     }
   }
 
   .container {
-    max-width: 1200px;
     margin: 0 auto;
     display: flex;
   }
@@ -202,16 +195,12 @@
     display: flex;
   }
 
-  .ahorra {
-    font-size: 20px;
-  }
 
   /* Añade más estilos según sea necesario */
 
   /* Para dispositivos con un ancho de 768px o menos */
   .precios_producto {
     display: flex;
-    flex-direction: row;
   }
 
   @media (max-width: 768px) {
@@ -228,26 +217,12 @@
       padding: 10px !important;
     }
 
-    .precios_producto {
-      flex-direction: column;
-    }
-
-    .ahorra {
-      font-size: 15px;
-    }
-
-    .container {
-      flex-direction: column;
-    }
 
     #navbarLogo {
       height: 60px;
       width: 60px;
     }
 
-    .container {
-      align-items: flex-end !important;
-    }
 
     .navbar-brand_1 {
       top: 0;
@@ -256,7 +231,6 @@
 
     .left-column {
       position: static !important;
-      /* Para compatibilidad con Safari */
     }
 
     .list-group {
@@ -264,10 +238,8 @@
       padding-top: 10px;
     }
 
-    /* Otros ajustes responsivos */
   }
 
-  /* Para dispositivos con un ancho de 480px o menos */
   @media (max-width: 480px) {
     .navbar-brand img {
       height: 50px;

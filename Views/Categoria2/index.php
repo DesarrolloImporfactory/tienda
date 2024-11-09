@@ -72,9 +72,9 @@
         formData.append('ordenar_por', ordenarPor);
 
         fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
+            method: 'POST',
+            body: formData
+        })
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -90,7 +90,7 @@
             .catch(error => console.error('Error:', error));
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Inicializa el rango de precios
         initPriceRange();
 
@@ -107,7 +107,7 @@
         }
 
         // Manejo de cambios en la selección de ordenamiento
-        document.getElementById('sortOptions').addEventListener('change', function() {
+        document.getElementById('sortOptions').addEventListener('change', function () {
             actualizarProductos();
         });
     });
@@ -117,7 +117,7 @@
         const valorMinimo = document.getElementById('valorMinimo-range');
         const valorMaximo = document.getElementById('valorMaximo-range');
 
-        priceRange.addEventListener('input', function() {
+        priceRange.addEventListener('input', function () {
             valorMinimo.textContent = this.value;
             actualizarProductos();
         });
@@ -133,7 +133,7 @@
             data: formDataCategoria,
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 let categorias = JSON.parse(response);
                 let categoriasHtml = '';
 
@@ -144,7 +144,7 @@
                 categoriasHtml += `<li class="list-group-item" onclick="verTodasCategorias()">Todos</li>`;
                 $('#categoria-list').html(categoriasHtml);
             },
-            error: function(error) {
+            error: function (error) {
                 console.error("Error al consumir la API:", error);
             }
         });
@@ -167,9 +167,9 @@
         formData.append('ordenar_por', ordenarPor);
 
         fetch(SERVERURL + 'Tienda/obtener_productos_tienda_filtro', {
-                method: 'POST',
-                body: formData
-            })
+            method: 'POST',
+            body: formData
+        })
             .then(response => response.json())
             .then(data => {
                 productosTotales = data; // Guarda todos los productos
@@ -203,9 +203,10 @@
             const image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
             let texto_precioNormal = precioNormal > 0 ? `<p class="custom-price discounted">$${precioNormal.toFixed(2)}</p>` : '';
-            
-            const urlProducto = producto.funellish === '1' && producto.funnelish_url ? producto.funnelish_url : `producto2?id=${producto.id_producto_tienda}`;
-            
+
+            const urlProducto = producto.funnelish === '1' && producto.funnelish_url
+                ? identificarProtocolo(producto.funnelish_url)
+                : `producto2?id=${producto.id_producto_tienda}`;
             // <a href="producto2?id=${producto.id_producto_tienda}" style="text-decoration: none;">
             const productoHtml = `
                 <div class="col-md-4 mb-4">
@@ -232,6 +233,14 @@
         } else {
             btnVerMas.style.display = 'block';
         }
+    }
+
+    function identificarProtocolo(url) {
+        // Verificar si la URL ya empieza con 'http://' o 'https://'
+        if (!/^https?:\/\//i.test(url)) {
+            return `https://${url}`; // Agregar 'https://' si falta el protocolo
+        }
+        return url; // Devolver la URL sin cambios si ya incluye el protocolo
     }
 
     function verMasProductos() {

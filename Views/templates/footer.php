@@ -1,7 +1,7 @@
 <footer class="pt-5 shadow border-top">
     <div class="footer pb-4 border-bottom">
         <div class="container">
-            <div class="row">
+            <div class="row w-100">
                 <div class="col-md-3">
                     <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
                     <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="40px">
