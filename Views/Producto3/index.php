@@ -8,6 +8,9 @@
     .active {
     border-bottom: 0px !important;
     }
+    #landing{
+        padding-top: 20px;
+    }
 </style>
 <main>
     <section style="margin-top: 100px;">
