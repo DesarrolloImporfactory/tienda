@@ -2,6 +2,9 @@
 <?php $id_producto = $_GET['id']; ?>
 
 <style>
+    .section1Producto{
+        margin-top: 80px;
+    }
     .list-group-item{
         width: fit-content;
     }
@@ -24,6 +27,9 @@
 }
 
 @media (max-width: 767px) {
+    .section1Producto{
+        margin-top: 50px;
+    }
 }
 
 @media (max-width: 991px) {
@@ -44,7 +50,7 @@
     
 </style>
 <main>
-    <section class="mt-5">
+    <section class="section1Producto">
         <div class="container containerProducto3">
             <div class="row rowProducto3">
                 <div class="col">
