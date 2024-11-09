@@ -73,6 +73,53 @@
 </main>
 <script>
 
+function cargarLanding(id) {
+        let formData = new FormData();
+        formData.append("id_producto_tienda", id);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://imagenes.imporsuitpro.com/obtenerLandingTienda", true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Respuesta de la API:", response);
+
+                    // Decodificar entidades HTML
+                    var decodedHTML = decodeEntities(response.data);
+                    console.log("HTML decodificado:", decodedHTML);
+
+                    // Crear un documento temporal para manipular el HTML decodificado
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(decodedHTML, 'text/html');
+
+                    // Comprobar si el body está presente en la respuesta
+                    var body = doc.body;
+                    if (body) {
+                        var bodyContent = body.innerHTML;
+                        console.log("Contenido del body:", bodyContent);
+
+                        // Insertar el contenido del body en el div con id="landing"
+                        document.getElementById("landing").innerHTML = bodyContent;
+                    } else {
+                        console.error("No se encontró la etiqueta <body> en la respuesta.");
+                    }
+                } catch (e) {
+                    console.error("Error al decodificar JSON:", e);
+                }
+            } else {
+                console.error("Error en la solicitud AJAX.");
+            }
+        };
+        xhr.send(formData);
+    }
+
+    function decodeEntities(encodedString) {
+        var textArea = document.createElement('textarea');
+        textArea.innerHTML = encodedString;
+        return textArea.value;
+    }
+
 function obtenerURLImagen(imagePath, serverURL) {
         // Verificar si el imagePath no es null
         if (imagePath) {
