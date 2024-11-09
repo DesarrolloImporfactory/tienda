@@ -279,7 +279,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                     <a class="nav-link texto-secondary" href="<?php echo $primera_seccion; ?>">Servicios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link texto-secondary" href="Producto3">Productos</a>
+                    <a class="nav-link texto-secondary" href="Categoria3">Productos</a>
                 </li>
 
                 <li class="nav-item">
