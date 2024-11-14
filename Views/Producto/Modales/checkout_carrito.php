@@ -6,9 +6,8 @@
         align-items: center;
         margin-bottom: 15px;
         font-family: 'Helvetica Neue', Arial, sans-serif;
-        /* Cambia la fuente */
         font-weight: 400;
-        /* Fuente estándar */
+        border-bottom: 1px solid #ddd;
     }
 
     .productos_carrito-item img {
@@ -29,11 +28,12 @@
     }
 
     .productos_carrito-item .productos_carrito-info a {
-        font-size: 18px;
+        font-size: 16px;
         color: #007bff;
         text-decoration: none;
-        font-weight: bold;
-        /* Aumentar el grosor de los enlaces */
+        white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
     }
 
     .productos_carrito-item .productos_carrito-info a:hover {
