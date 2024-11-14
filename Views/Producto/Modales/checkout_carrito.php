@@ -24,6 +24,7 @@
         font-size: 18px;
         font-weight: 600;
         max-width: 230px;
+        gap: 25px;
     }
 
     .productos_carrito-item .productos_carrito-info p button{
