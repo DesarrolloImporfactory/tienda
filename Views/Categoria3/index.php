@@ -195,10 +195,8 @@
                         <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
                         <p class="card-text">Precio: <strong>$${producto.pvp_tienda}</strong></p>
                         <p class="card-text">Descripción: ${producto.descripcion_tienda || 'No disponible'}</p>
-                         <button class="btn btn-primary" onclick="$('#checkout_carritoModal').modal('show')">
-                            Comprar
-                        </button>
-                        <button class="btn btn-primary" onclick="verDetalles('${urlProducto}', ${index})">
+                         
+                        <button class="btn btn-primary w-100" onclick="verDetalles('${urlProducto}', ${index})">
                             Ver Detalles
                         </button>
                     </div>
