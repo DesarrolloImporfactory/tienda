@@ -26,6 +26,10 @@
         max-width: 230px;
     }
 
+    .productos_carrito-item .productos_carrito-info p button{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
     .productos_carrito-item .productos_carrito-info p{
         margin-top: 5px;
         margin-bottom: 5px;
@@ -437,7 +441,7 @@
                             <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span>
                             </div>
                         </div>
-                        <div class="custom-total align-items-center">
+                        <div class="custom-total align-items-center border-top">
                             <div>Total</div>
                             <div class="total-price"><span id="productos_carritoTotal"></span></div>
                         </div>
