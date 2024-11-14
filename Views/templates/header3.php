@@ -318,7 +318,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                             <a class="nav-link texto-secondary" href="<?php echo $primera_seccion; ?>">Testimonios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="Producto3">Productos</a>
+                            <a class="nav-link texto-secondary" href="Categoria3">Productos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link texto-secondary" href="Agendar_cita_p3">Agendar Cita</a>
