@@ -397,11 +397,9 @@
     .selectable-combo {
         border-radius: 0.6rem;
         border: 2px solid grey;
-        /* Borde inicial */
         padding: 10px;
         cursor: pointer;
         transition: all 0.3s ease;
-        /* Transición para suavizar el cambio */
     }
 
     .selectable-combo.selected {
