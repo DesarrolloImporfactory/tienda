@@ -420,6 +420,7 @@
 
         .productos_carrito-info{
             margin-left: 0px;
+            padding-left: 0px;
         }
         .productos_carrito-item{
         }
