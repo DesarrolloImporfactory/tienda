@@ -422,7 +422,6 @@
             margin-left: 0px;
         }
         .productos_carrito-item{
-            padding: 20px;
         }
     }
 
