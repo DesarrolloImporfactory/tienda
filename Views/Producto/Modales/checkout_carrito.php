@@ -411,11 +411,18 @@
         .productos_carrito-item{
             display: flex;
             flex-direction: column;
-            gap: 3;
+            gap: 10px;
             align-items: start;
         }
         .productos_checkout_remove{
             order: -1;
+        }
+
+        .productos_carrito-info{
+            margin-left: 0px;
+        }
+        .productos_carrito-item{
+            padding: 20px;
         }
     }
 
