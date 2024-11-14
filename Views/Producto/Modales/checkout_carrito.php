@@ -22,18 +22,19 @@
         flex: 1;
         margin-left: 15px;
         font-size: 18px;
-        /* Ajuste del tamaño de fuente */
         font-weight: 600;
-        /* Aumentar el grosor de la fuente */
+        max-width: 230px;
     }
 
     .productos_carrito-item .productos_carrito-info a {
         font-size: 16px;
-        color: #007bff;
-        text-decoration: none;
-        white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    color: #007bff;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* Asegúrate de usar display block o inline-block */
+    max-width: 200px; /* Ajusta el ancho a tu preferencia */
     }
 
     .productos_carrito-item .productos_carrito-info a:hover {
