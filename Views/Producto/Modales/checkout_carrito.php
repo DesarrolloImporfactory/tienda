@@ -38,7 +38,6 @@
     }
     #detalle_precio_12805{
         font-size: 16px;
-        font-size: normal;
     }
     .productos_carrito-item .productos_carrito-info a {
         font-size: 16px;
@@ -64,6 +63,7 @@
         color: #000;
         /* Color negro más fuerte para el precio */
     }
+
 
     .resumen_carrito {
         border-top: 1px solid #ddd;
@@ -406,9 +406,19 @@
 
     .selectable-combo.selected {
         border-color: blue;
-        /* Cambiar el borde a azul cuando esté seleccionado */
         background-color: #e0f7ff;
-        /* Fondo azul claro cuando esté seleccionado */
+    }
+
+    @media (max-width: 767px) {
+        .productos_carrito-item{
+            display: flex;
+            flex-direction: column;
+            gap: 3;
+            align-items: start;
+        }
+        .productos_checkout_remove{
+            order: -1;
+        }
     }
 
 </style>
