@@ -15,7 +15,6 @@
         height: 50px;
         object-fit: cover;
         border-radius: 5px;
-        /* Para agregar un toque más moderno */
     }
 
     .productos_carrito-item .productos_carrito-info {
