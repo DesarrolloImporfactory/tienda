@@ -263,7 +263,7 @@ $primera_seccion = obtenerPrimeraSeccion();
         <div class="container px-4 d-flex">
 
             <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
-                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                <img style="width: 55px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
                     alt="IMPORT SHOP">
             </a>
 
