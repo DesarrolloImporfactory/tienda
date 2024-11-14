@@ -29,6 +29,8 @@
     .productos_carrito-item .productos_carrito-info p{
         margin-top: 5px;
         margin-bottom: 5px;
+        display: flex;
+        gap: 10px;
     }
     .productos_carrito-item .productos_carrito-info a {
         font-size: 16px;
