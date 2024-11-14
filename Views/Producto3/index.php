@@ -24,7 +24,16 @@
         top: 80px;
     }
 
+    
+    #main-image{
+        width: 400px; 
+        height: 400px;
+    }
 @media (max-width: 575px) {
+    #main-image{
+        width: 250px; 
+        height: 250px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -63,7 +72,7 @@
             <div class="row rowProducto3">
                 <div class="col">
                     <div class="d-flex flex-column mb-5 colFixImg">
-                        <img data-bs-toggle="modal" data-bs-target="#imagenModal" id="main-image" style="width: 400px; height: 400px;" class="border rounded mx-auto" src="" alt="">
+                        <img data-bs-toggle="modal" data-bs-target="#imagenModal" id="main-image" class="border rounded mx-auto" src="" alt="">
                         <div role="tablist" id="list-tab" class="d-flex gap-3 mt-3 w-100 mx-auto scroll-y-imagenes" >
                        
                         </div>
