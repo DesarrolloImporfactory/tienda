@@ -416,6 +416,7 @@
         }
         .productos_checkout_remove{
             order: -1;
+            margin-left: auto;
         }
 
         .productos_carrito-info{
