@@ -36,6 +36,10 @@
         display: flex;
         gap: 10px;
     }
+    #detalle_precio_12805{
+        font-size: 16px;
+        font-size: medium;
+    }
     .productos_carrito-item .productos_carrito-info a {
         font-size: 16px;
     color: #007bff;
