@@ -19,7 +19,6 @@
 
     .productos_carrito-item .productos_carrito-info {
         flex: 1;
-        margin-left: 15px;
         font-size: 18px;
         font-weight: 600;
         max-width: 230px;
@@ -422,8 +421,6 @@
         .productos_carrito-info{
             margin-left: 0px;
             padding-left: 0px;
-        }
-        .productos_carrito-item{
         }
     }
 
