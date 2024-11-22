@@ -208,7 +208,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                 <img class="rounded-3" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <i class="bi bi-list"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav">

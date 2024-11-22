@@ -1,8 +1,11 @@
 <?php include 'Views/templates/header.php'; ?>
 
 <main>
+    <style>
+        
+    </style>
     <!-- Slider -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators carouselBanner1" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators"></div>
         <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -117,7 +120,7 @@
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
-                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: 70vh !important;
+                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important;
                                     width: 100% !important;
                                     object-fit: cover;">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
