@@ -263,7 +263,7 @@ $primera_seccion = obtenerPrimeraSeccion();
         <div class="container px-4 d-flex">
 
             <a class="navbar-brand" href="<?php echo $primera_seccion; ?>">
-                <img style="width: 40px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
+                <img style="width: 55px;" class="border rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>"
                     alt="IMPORT SHOP">
             </a>
 
@@ -318,7 +318,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                             <a class="nav-link texto-secondary" href="<?php echo $primera_seccion; ?>">Testimonios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link texto-secondary" href="Producto3">Productos</a>
+                            <a class="nav-link texto-secondary" href="Categoria3">Productos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link texto-secondary" href="Agendar_cita_p3">Agendar Cita</a>

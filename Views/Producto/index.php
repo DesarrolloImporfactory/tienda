@@ -50,6 +50,13 @@ $id_producto = $_GET['id'];
             margin-top: 0;
         }
     }
+
+    .scroll-y-imagenes {
+    max-width: 400px;
+    overflow-x: scroll; 
+    overflow-y: hidden; 
+    white-space: nowrap;
+}
 </style>
 
 <main style="background-color: #f9f9f9;">
@@ -70,7 +77,7 @@ $id_producto = $_GET['id'];
 
                     </div>
                     <div class="d-flex col-12 mt-3"> 
-                        <div class="w-100 d-flex gap-3" id="list-tab" role="tablist">
+                        <div class="w-100 d-flex gap-3 scroll-y-imagenes mx-auto" id="list-tab" role="tablist">
                             <!-- Imágenes dinámicas aquí -->
                         </div>
                     </div>

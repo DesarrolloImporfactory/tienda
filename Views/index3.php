@@ -378,28 +378,34 @@
     formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
     $.ajax({
-        url: SERVERURL + 'Tienda/destacadostienda',
-        type: 'POST',
-        data: formDataProductos,
-        contentType: false,
-        processData: false,
-        success: function (response) {
-            let productos = JSON.parse(response);
-            let productosHTML = '';
+    url: SERVERURL + 'Tienda/destacadostienda',
+    type: 'POST',
+    data: formDataProductos,
+    contentType: false,
+    processData: false,
+    success: function (response) {
+        let productos = JSON.parse(response);
+        let productosHTML = '';
 
-            // Limitar a 8 productos
-            productos = productos.slice(0, 8);
+        // Limitar a 8 productos
+        productos = productos.slice(0, 8);
 
-            productos.forEach((producto, index) => {
-                // Cada 4 productos, se añade un nuevo .row
-                if (index % 4 === 0) {
-                    if (index > 0) {
-                        productosHTML += `</div>`;
-                    }
-                    productosHTML += `<div class="row">`;
+        productos.forEach((producto, index) => {
+            // Cada 4 productos, se añade un nuevo .row
+            if (index % 4 === 0) {
+                if (index > 0) {
+                    productosHTML += `</div>`;
                 }
+                productosHTML += `<div class="row">`;
+            }
 
-                productosHTML += `
+            // Determinar el enlace de los detalles (funnelish o modal)
+            const enlaceDetalles = producto.funnelish === '1' && producto.funnelish_url 
+                ? ensureProtocol(producto.funnelish_url) 
+                : '#exampleModal';
+            const atributoEnlace = producto.funnelish === '1' ? '' : 'data-bs-toggle="modal"';
+
+            productosHTML += `
                 <div class="col-lg-3 col-sm-6 mb-4">
                     <div class="card overflow-hidden rounded-3">
                         <img style="height: 200px; object-fit: contain;" 
@@ -413,37 +419,43 @@
                             <hr class="my-2">
                             <p class="card-text mb-2">${producto.descripcion_tienda ? producto.descripcion_tienda : 'Sin descripción disponible'}</p>
                             <p class="card-text mb-2"><strong>Precio: $ ${producto.pvp_tienda}</strong></p>
-                            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${producto.id_producto_tienda}">Detalles</button>
+                            <a href="${enlaceDetalles}" ${atributoEnlace} class="btn btn-primary w-100" data-id="${producto.id_producto_tienda}">Detalles</a>
                         </div>
                     </div>
                 </div>
             `;
+        });
 
+        // Cerrar la última fila después de agregar todos los productos
+        productosHTML += `</div>`; // Cerrar la última fila
 
-            });
+        $('#servicios .row').html(productosHTML);
 
-            // Cerrar la última fila después de agregar todos los productos
-            productosHTML += `</div>`; // Cerrar la última fila
+        // Configuración del evento de clic para abrir el modal (solo si no es funnelish)
+        $('#servicios .row').on('click', 'a[data-bs-toggle="modal"]', function () {
+            let idProducto = $(this).data('id');
+            let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
 
-            $('#servicios .row').html(productosHTML);
+            $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
+            $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
+            $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
+            $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
+            $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
+        });
+    },
+    error: function (error) {
+        console.log("Error al obtener productos: ", error);
+    }
+});
 
-            $('#servicios .row').on('click', 'button[data-bs-toggle="modal"]', function () {
-                let idProducto = $(this).data('id');
+// Función para asegurar que la URL tenga el protocolo
+function ensureProtocol(url) {
+    if (url && !/^https?:\/\//i.test(url)) {
+        return `https://${url}`;
+    }
+    return url;
+}
 
-                let productoSeleccionado = productos.find(producto => producto.id_producto_tienda == idProducto);
-
-                $('#exampleModalLabel').text(productoSeleccionado.nombre_producto_tienda);
-                $('.modal-body img').attr('src', SERVERURL + productoSeleccionado.imagen_principal_tienda);
-                $('.modal-body img').attr('alt', productoSeleccionado.nombre_producto_tienda);
-                $('.PrecioModal').text(productoSeleccionado.pvp_tienda ? productoSeleccionado.pvp_tienda : 'Sin precio disponible');
-                $('.descripcionModal').text(productoSeleccionado.descripcion_tienda ? productoSeleccionado.descripcion_tienda : 'Sin descripción disponible');
-            });
-
-        },
-        error: function (error) {
-            console.log("Error al obtener productos: ", error);
-        }
-    });
     /* Fin productos destacados */
 
     /* Sección profesionales */

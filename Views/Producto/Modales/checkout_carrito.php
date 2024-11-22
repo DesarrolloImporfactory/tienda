@@ -6,9 +6,8 @@
         align-items: center;
         margin-bottom: 15px;
         font-family: 'Helvetica Neue', Arial, sans-serif;
-        /* Cambia la fuente */
         font-weight: 400;
-        /* Fuente estándar */
+        border-bottom: 1px solid #ddd;
     }
 
     .productos_carrito-item img {
@@ -16,24 +15,38 @@
         height: 50px;
         object-fit: cover;
         border-radius: 5px;
-        /* Para agregar un toque más moderno */
     }
 
     .productos_carrito-item .productos_carrito-info {
         flex: 1;
-        margin-left: 15px;
         font-size: 18px;
-        /* Ajuste del tamaño de fuente */
         font-weight: 600;
-        /* Aumentar el grosor de la fuente */
+        max-width: 230px;
+        gap: 25px;
     }
 
+    .productos_carrito-item .productos_carrito-info p button{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .productos_carrito-item .productos_carrito-info p{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        gap: 10px;
+    }
+    #detalle_precio_12805{
+        font-size: 16px;
+    }
     .productos_carrito-item .productos_carrito-info a {
-        font-size: 18px;
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-        /* Aumentar el grosor de los enlaces */
+        font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block; /* Asegúrate de usar display block o inline-block */
+    max-width: 200px; /* Ajusta el ancho a tu preferencia */
     }
 
     .productos_carrito-item .productos_carrito-info a:hover {
@@ -49,6 +62,7 @@
         color: #000;
         /* Color negro más fuerte para el precio */
     }
+
 
     .resumen_carrito {
         border-top: 1px solid #ddd;
@@ -382,18 +396,32 @@
     .selectable-combo {
         border-radius: 0.6rem;
         border: 2px solid grey;
-        /* Borde inicial */
         padding: 10px;
         cursor: pointer;
         transition: all 0.3s ease;
-        /* Transición para suavizar el cambio */
     }
 
     .selectable-combo.selected {
         border-color: blue;
-        /* Cambiar el borde a azul cuando esté seleccionado */
         background-color: #e0f7ff;
-        /* Fondo azul claro cuando esté seleccionado */
+    }
+
+    @media (max-width: 767px) {
+        .productos_carrito-item{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: start;
+        }
+        .productos_checkout_remove{
+            order: -1;
+            margin-left: auto;
+        }
+
+        .productos_carrito-info{
+            margin-left: 0px;
+            padding-left: 0px;
+        }
     }
 
 </style>
@@ -430,7 +458,7 @@
                             <div><span id="productos_carritoDescuento" style="color: red; font-weight: 600"></span>
                             </div>
                         </div>
-                        <div class="custom-total align-items-center">
+                        <div class="custom-total align-items-center border-top">
                             <div>Total</div>
                             <div class="total-price"><span id="productos_carritoTotal"></span></div>
                         </div>
