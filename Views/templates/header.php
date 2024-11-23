@@ -189,6 +189,11 @@ $primera_seccion = obtenerPrimeraSeccion();
       z-index: 10000; /* Mantiene el overlay por encima de otros elementos */
     }
 
+    .bi-list{
+        text-shadow: 
+      0.5px 0.5px 2px rgba(255, 255, 255, 0.5);
+    }
+
     
   </style>
 

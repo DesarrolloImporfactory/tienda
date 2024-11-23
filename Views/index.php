@@ -2,12 +2,16 @@
 
 <main>
     <style>
-        
+        .carousel-inner2 {
+            width: 100%;
+            height: 300px !important;
+            max-width: 100vw;
+        }
     </style>
     <!-- Slider -->
     <div id="carouselExampleIndicators carouselBanner1" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators"></div>
-        <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
+        <div class="carousel-inner carousel-inner2"></div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,7 +45,7 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <section class="container" >
+    <section class="container">
         <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
@@ -53,7 +57,7 @@
     <!-- fin destacados -->
 
     <!-- Iconos -->
-    <section class="container" >
+    <section class="container">
         <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
@@ -84,7 +88,8 @@
 
     <!-- boton whatsapp -->
 
-    <a  href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle"
+        style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
 
     <!-- Fin boton whatsapp-->
 
@@ -119,8 +124,8 @@
                     }
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
-                    inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
-                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important;
+                    inner += `<div class="carousel-item ${isActive} d-flex" style="width: 100%; height: 100% !important; max-width: 100vw;">
+                              <img src="${image_path}" class="d-block w-100 m-auto" alt="..." style="height: auto !important;
                                     width: 100% !important;
                                     object-fit: cover;">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
@@ -234,39 +239,39 @@
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-    url: SERVERURL + 'Tienda/destacadostienda',
-    method: 'POST',
-    data: formDataProductos,
-    contentType: false,
-    processData: false,
-    success: function (response) {
-        try {
-            var productos = JSON.parse(response);
-        } catch (e) {
-            console.error('Error al parsear la respuesta:', e);
-            return;
-        }
-
-        if (productos && Array.isArray(productos)) {
-            var $carousel = $("#productos-carousel");
-            let image_path = "";
-
-            productos.forEach(function (producto) {
-                var precioEspecial = parseFloat(producto.pvp_tienda);
-                var precioNormal = parseFloat(producto.pref_tienda);
-
-                var ahorro = 0;
-                if (precioNormal > 0) {
-                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
+            url: SERVERURL + 'Tienda/destacadostienda',
+            method: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                try {
+                    var productos = JSON.parse(response);
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
                 }
-                image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
-                // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
-                const urlProducto = producto.funnelish === '1' && producto.funnelish_url 
-                    ? ensureProtocol(producto.funnelish_url) 
-                    : `producto?id=${producto.id_producto_tienda}`;
+                if (productos && Array.isArray(productos)) {
+                    var $carousel = $("#productos-carousel");
+                    let image_path = "";
 
-                var productItem = `
+                    productos.forEach(function (producto) {
+                        var precioEspecial = parseFloat(producto.pvp_tienda);
+                        var precioNormal = parseFloat(producto.pref_tienda);
+
+                        var ahorro = 0;
+                        if (precioNormal > 0) {
+                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
+                        }
+                        image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
+
+                        // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
+                        const urlProducto = producto.funnelish === '1' && producto.funnelish_url
+                            ? ensureProtocol(producto.funnelish_url)
+                            : `producto?id=${producto.id_producto_tienda}`;
+
+                        var productItem = `
                     <div class="item">
                         <div class="grid-container">
                             <div class="card rounded">
@@ -308,28 +313,28 @@
                     </div>
                 `;
 
-                // Agregar el producto al carrusel
-                $carousel.trigger('add.owl.carousel', [$(productItem)]);
-            });
+                        // Agregar el producto al carrusel
+                        $carousel.trigger('add.owl.carousel', [$(productItem)]);
+                    });
 
-            // Refrescar el carrusel
-            $carousel.trigger('refresh.owl.carousel');
-        } else {
-            console.error('La respuesta no contiene productos válidos.');
+                    // Refrescar el carrusel
+                    $carousel.trigger('refresh.owl.carousel');
+                } else {
+                    console.error('La respuesta no contiene productos válidos.');
+                }
+            },
+            error: function (error) {
+                console.log('Error al cargar los productos destacados:', error);
+            }
+        });
+
+        // Función para asegurar que la URL tenga el protocolo
+        function ensureProtocol(url) {
+            if (url && !/^https?:\/\//i.test(url)) {
+                return `https://${url}`;
+            }
+            return url;
         }
-    },
-    error: function (error) {
-        console.log('Error al cargar los productos destacados:', error);
-    }
-});
-
-// Función para asegurar que la URL tenga el protocolo
-function ensureProtocol(url) {
-    if (url && !/^https?:\/\//i.test(url)) {
-        return `https://${url}`;
-    }
-    return url;
-}
 
 
         function obtenerURLImagen(imagePath, serverURL) {
