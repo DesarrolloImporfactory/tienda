@@ -189,6 +189,11 @@ $primera_seccion = obtenerPrimeraSeccion();
       z-index: 10000; /* Mantiene el overlay por encima de otros elementos */
     }
 
+    .bi-list{
+        text-shadow: 
+      0.5px 0.5px 2px rgba(255, 255, 255, 1);
+    }
+
     
   </style>
 
@@ -207,7 +212,7 @@ $primera_seccion = obtenerPrimeraSeccion();
             <a class="navbar-brand d-lg-none" href="<?php echo $primera_seccion; ?>">
                 <img class="rounded-3" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="bi bi-list"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
