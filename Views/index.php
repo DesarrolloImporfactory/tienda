@@ -103,34 +103,35 @@
             processData: false,
             dataType: "json",
             success: function(data) {
+
                 let indicators = '';
                 let inner = '';
                 let alineacion = "";
                 $.each(data, function(index, banner) {
-                    let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
+
+                    image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     if (banner.alineacion == 1) {
-                        alineacion = "text-align-last: left;";
+                        alineacion = "text-align-last: left;"
                     } else if (banner.alineacion == 2) {
-                        alineacion = "text-align-last: center;";
+                        alineacion = "text-align-last: center;"
                     } else if (banner.alineacion == 3) {
-                        alineacion = "text-align-last: right;";
+                        alineacion = "text-align-last: right;"
                     }
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
-                          <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important; width: 100% !important; object-fit: cover;">
-                          <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                              <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
-                              <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
-                              <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
-                          </div>
-                      </div>`;
+                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important;
+                                    width: 100% !important;
+                                    object-fit: cover;">
+                              <div class="carousel-caption d-none d-md-block" style="${alineacion}">
+                                  <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
+                                  <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
+                                  <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
+                              </div>
+                          </div>`;
                 });
                 $('.carousel-indicators').html(indicators);
                 $('.carousel-inner').html(inner);
-
-                // Reinicializa el carrusel
-                $('#carouselExampleIndicators').carousel();
             },
             error: function(error) {
                 console.error('Error fetching banner data', error);
