@@ -2,7 +2,7 @@
 
 <main>
     <style>
-        
+
     </style>
     <!-- Slider -->
     <div id="carouselExampleIndicators carouselBanner1" class="carousel slide" data-bs-ride="carousel">
@@ -41,7 +41,7 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <section class="container" >
+    <section class="container">
         <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
@@ -53,7 +53,7 @@
     <!-- fin destacados -->
 
     <!-- Iconos -->
-    <section class="container" >
+    <section class="container">
         <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
             <!-- Los iconos se cargarán aquí dinámicamente -->
         </div>
@@ -84,14 +84,14 @@
 
     <!-- boton whatsapp -->
 
-    <a  href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
 
     <!-- Fin boton whatsapp-->
 
 </main>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         /* Slider */
         let formDataSlider = new FormData();
         formDataSlider.append("id_plataforma", ID_PLATAFORMA);
@@ -102,38 +102,37 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function (data) {
-
+            success: function(data) {
                 let indicators = '';
                 let inner = '';
                 let alineacion = "";
-                $.each(data, function (index, banner) {
-
-                    image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
+                $.each(data, function(index, banner) {
+                    let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     if (banner.alineacion == 1) {
-                        alineacion = "text-align-last: left;"
+                        alineacion = "text-align-last: left;";
                     } else if (banner.alineacion == 2) {
-                        alineacion = "text-align-last: center;"
+                        alineacion = "text-align-last: center;";
                     } else if (banner.alineacion == 3) {
-                        alineacion = "text-align-last: right;"
+                        alineacion = "text-align-last: right;";
                     }
                     const isActive = index === 0 ? 'active' : '';
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
-                              <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important;
-                                    width: 100% !important;
-                                    object-fit: cover;">
-                              <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                                  <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
-                                  <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
-                                  <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
-                              </div>
-                          </div>`;
+                          <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important; width: 100% !important; object-fit: cover;">
+                          <div class="carousel-caption d-none d-md-block" style="${alineacion}">
+                              <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
+                              <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
+                              <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
+                          </div>
+                      </div>`;
                 });
                 $('.carousel-indicators').html(indicators);
                 $('.carousel-inner').html(inner);
+
+                // Reinicializa el carrusel
+                $('#carouselExampleIndicators').carousel();
             },
-            error: function (error) {
+            error: function(error) {
                 console.error('Error fetching banner data', error);
             }
         });
@@ -148,7 +147,7 @@
             data: formDataCategoria,
             contentType: false,
             processData: false,
-            success: function (response) {
+            success: function(response) {
                 let categorias = JSON.parse(response); // Asegúrate de que la respuesta sea un objeto JSON
 
                 // Verifica si la respuesta es un array o un objeto
@@ -195,7 +194,7 @@
                     ]
                 });
             },
-            error: function (error) {
+            error: function(error) {
                 console.error("Error al consumir la API:", error);
             }
         });
@@ -234,39 +233,39 @@
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-    url: SERVERURL + 'Tienda/destacadostienda',
-    method: 'POST',
-    data: formDataProductos,
-    contentType: false,
-    processData: false,
-    success: function (response) {
-        try {
-            var productos = JSON.parse(response);
-        } catch (e) {
-            console.error('Error al parsear la respuesta:', e);
-            return;
-        }
-
-        if (productos && Array.isArray(productos)) {
-            var $carousel = $("#productos-carousel");
-            let image_path = "";
-
-            productos.forEach(function (producto) {
-                var precioEspecial = parseFloat(producto.pvp_tienda);
-                var precioNormal = parseFloat(producto.pref_tienda);
-
-                var ahorro = 0;
-                if (precioNormal > 0) {
-                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
+            url: SERVERURL + 'Tienda/destacadostienda',
+            method: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                try {
+                    var productos = JSON.parse(response);
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
                 }
-                image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
-                // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
-                const urlProducto = producto.funnelish === '1' && producto.funnelish_url 
-                    ? ensureProtocol(producto.funnelish_url) 
-                    : `producto?id=${producto.id_producto_tienda}`;
+                if (productos && Array.isArray(productos)) {
+                    var $carousel = $("#productos-carousel");
+                    let image_path = "";
 
-                var productItem = `
+                    productos.forEach(function(producto) {
+                        var precioEspecial = parseFloat(producto.pvp_tienda);
+                        var precioNormal = parseFloat(producto.pref_tienda);
+
+                        var ahorro = 0;
+                        if (precioNormal > 0) {
+                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
+                        }
+                        image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
+
+                        // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
+                        const urlProducto = producto.funnelish === '1' && producto.funnelish_url ?
+                            ensureProtocol(producto.funnelish_url) :
+                            `producto?id=${producto.id_producto_tienda}`;
+
+                        var productItem = `
                     <div class="item">
                         <div class="grid-container">
                             <div class="card rounded">
@@ -308,28 +307,28 @@
                     </div>
                 `;
 
-                // Agregar el producto al carrusel
-                $carousel.trigger('add.owl.carousel', [$(productItem)]);
-            });
+                        // Agregar el producto al carrusel
+                        $carousel.trigger('add.owl.carousel', [$(productItem)]);
+                    });
 
-            // Refrescar el carrusel
-            $carousel.trigger('refresh.owl.carousel');
-        } else {
-            console.error('La respuesta no contiene productos válidos.');
+                    // Refrescar el carrusel
+                    $carousel.trigger('refresh.owl.carousel');
+                } else {
+                    console.error('La respuesta no contiene productos válidos.');
+                }
+            },
+            error: function(error) {
+                console.log('Error al cargar los productos destacados:', error);
+            }
+        });
+
+        // Función para asegurar que la URL tenga el protocolo
+        function ensureProtocol(url) {
+            if (url && !/^https?:\/\//i.test(url)) {
+                return `https://${url}`;
+            }
+            return url;
         }
-    },
-    error: function (error) {
-        console.log('Error al cargar los productos destacados:', error);
-    }
-});
-
-// Función para asegurar que la URL tenga el protocolo
-function ensureProtocol(url) {
-    if (url && !/^https?:\/\//i.test(url)) {
-        return `https://${url}`;
-    }
-    return url;
-}
 
 
         function obtenerURLImagen(imagePath, serverURL) {
@@ -357,7 +356,7 @@ function ensureProtocol(url) {
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function (response) {
+            success: function(response) {
                 try {
                     var iconos = JSON.parse(response);
                 } catch (e) {
@@ -368,7 +367,7 @@ function ensureProtocol(url) {
                 if (iconos && Array.isArray(iconos)) {
                     var $iconosContainer = $("#iconos-container");
 
-                    iconos.forEach(function (icono) {
+                    iconos.forEach(function(icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
                         var enlace_icon = icono.enlace_icon || '#';
@@ -399,7 +398,7 @@ function ensureProtocol(url) {
                     console.error('La respuesta no contiene iconos válidos.');
                 }
             },
-            error: function (error) {
+            error: function(error) {
                 console.log('Error al cargar los iconos:', error);
             }
         });
@@ -437,7 +436,7 @@ function ensureProtocol(url) {
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function (response) {
+            success: function(response) {
                 try {
                     var testimonios = JSON.parse(response);
                 } catch (e) {
@@ -448,7 +447,7 @@ function ensureProtocol(url) {
                 if (testimonios && Array.isArray(testimonios)) {
                     var $carousel = $("#testimonios-carousel");
 
-                    testimonios.forEach(function (testimonio) {
+                    testimonios.forEach(function(testimonio) {
                         var id_testimonio = testimonio.id_testimonio;
                         var nombre_testimonio = testimonio.nombre || '';
                         var texto_testimonio = testimonio.testimonio || '';
@@ -475,7 +474,7 @@ function ensureProtocol(url) {
                     console.error('La respuesta no contiene testimonios válidos.');
                 }
             },
-            error: function (error) {
+            error: function(error) {
                 console.log('Error al cargar los testimonios:', error);
             }
         });
@@ -492,7 +491,7 @@ function ensureProtocol(url) {
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function (response) {
+            success: function(response) {
                 const ofertas = response;
 
                 if (Array.isArray(ofertas)) {
@@ -513,7 +512,7 @@ function ensureProtocol(url) {
                     console.error('La respuesta no es un array:', ofertas);
                 }
             },
-            error: function (error) {
+            error: function(error) {
                 console.error('Error al obtener las ofertas:', error);
             }
         });
