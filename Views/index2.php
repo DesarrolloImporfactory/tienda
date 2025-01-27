@@ -82,11 +82,15 @@
     </div>
     <!-- Fin Sección Ahorra -->
 
+    <!-- boton whatsapp -->
+
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+
+    <!-- Fin boton whatsapp-->
 </main>
 
 <script>
-
-    $(document).ready(function () {
+    $(document).ready(function() {
         function obtenerURLImagen(imagePath, serverURL) {
             // Verificar si el imagePath no es null
             if (imagePath) {
@@ -116,10 +120,10 @@
             contentType: false,
             processData: false,
             dataType: "json",
-            success: function (data) {
+            success: function(data) {
                 let inner = '';
                 let alineacion = "";
-                $.each(data, function (index, banner) {
+                $.each(data, function(index, banner) {
 
                     let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
                     if (banner.alineacion == 1) {
@@ -143,7 +147,7 @@
 
                 $('.carousel-inner').html(inner);
             },
-            error: function (error) {
+            error: function(error) {
                 console.error('Error fetching banner data', error);
             }
         });
@@ -159,7 +163,7 @@
             data: formDataIconos,
             contentType: false,
             processData: false,
-            success: function (response) {
+            success: function(response) {
                 try {
                     var iconos = JSON.parse(response);
                 } catch (e) {
@@ -170,7 +174,7 @@
                 if (iconos && Array.isArray(iconos)) {
                     var $iconosContainer = $("#iconos-container");
 
-                    iconos.forEach(function (icono) {
+                    iconos.forEach(function(icono) {
                         var texto = icono.texto || '';
                         var icon_text = icono.icon_text || '';
                         var enlace_icon = icono.enlace_icon || '#';
@@ -201,7 +205,7 @@
                     console.error('La respuesta no contiene iconos válidos.');
                 }
             },
-            error: function (error) {
+            error: function(error) {
                 console.log('Error al cargar los iconos:', error);
             }
         });
@@ -212,47 +216,47 @@
         formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
         $.ajax({
-    url: SERVERURL + 'Tienda/destacadostienda',
-    method: 'POST',
-    data: formDataProductos,
-    contentType: false,
-    processData: false,
-    success: function (response) {
-        try {
-            var productos = JSON.parse(response);
-        } catch (e) {
-            console.error('Error al parsear la respuesta:', e);
-            return;
-        }
-
-        if (productos && Array.isArray(productos)) {
-            var $productosContainer = $("#productos-destacados");
-            $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
-
-            var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
-            var fila = $('<div style="height: fit-content;" class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
-            $productosContainer.append(fila); // Agregar la fila al contenedor
-
-            productosAMostrar.forEach(function (producto) {
-                var precioEspecial = parseFloat(producto.pvp_tienda);
-                var precioNormal = parseFloat(producto.pref_tienda);
-                var ahorro = 0;
-
-                if (precioNormal > 0) {
-                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
+            url: SERVERURL + 'Tienda/destacadostienda',
+            method: 'POST',
+            data: formDataProductos,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                try {
+                    var productos = JSON.parse(response);
+                } catch (e) {
+                    console.error('Error al parsear la respuesta:', e);
+                    return;
                 }
 
-                var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
+                if (productos && Array.isArray(productos)) {
+                    var $productosContainer = $("#productos-destacados");
+                    $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
 
-                let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
+                    var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
+                    var fila = $('<div style="height: fit-content;" class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
+                    $productosContainer.append(fila); // Agregar la fila al contenedor
 
-                // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
-                const urlProducto = producto.funnelish === '1' && producto.funnelish_url 
-                    ? ensureProtocol(producto.funnelish_url) 
-                    : `producto2?id=${producto.id_producto_tienda}`;
+                    productosAMostrar.forEach(function(producto) {
+                        var precioEspecial = parseFloat(producto.pvp_tienda);
+                        var precioNormal = parseFloat(producto.pref_tienda);
+                        var ahorro = 0;
 
-                // HTML para cada producto destacado
-                var productItem = `
+                        if (precioNormal > 0) {
+                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
+                        }
+
+                        var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
+
+                        let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
+
+                        // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
+                        const urlProducto = producto.funnelish === '1' && producto.funnelish_url ?
+                            ensureProtocol(producto.funnelish_url) :
+                            `producto2?id=${producto.id_producto_tienda}`;
+
+                        // HTML para cada producto destacado
+                        var productItem = `
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
                         <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4 h-100">
                             ${oferta}
@@ -272,25 +276,25 @@
                     </div>
                 `;
 
-                // Agregar el producto a la única fila
-                fila.append(productItem);
-            });
-        } else {
-            console.error('La respuesta no contiene productos válidos.');
-        }
-    },
-    error: function (error) {
-        console.log('Error al cargar los productos destacados:', error);
-    }
-});
+                        // Agregar el producto a la única fila
+                        fila.append(productItem);
+                    });
+                } else {
+                    console.error('La respuesta no contiene productos válidos.');
+                }
+            },
+            error: function(error) {
+                console.log('Error al cargar los productos destacados:', error);
+            }
+        });
 
-// Función para asegurar que la URL tenga el protocolo
-function ensureProtocol(url) {
-    if (url && !/^https?:\/\//i.test(url)) {
-        return `https://${url}`;
-    }
-    return url;
-}
+        // Función para asegurar que la URL tenga el protocolo
+        function ensureProtocol(url) {
+            if (url && !/^https?:\/\//i.test(url)) {
+                return `https://${url}`;
+            }
+            return url;
+        }
 
 
 

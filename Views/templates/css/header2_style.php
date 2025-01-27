@@ -1,8 +1,9 @@
 <style>
-    .navbar{
+    .navbar {
         overflow: hidden !important;
         width: 100% !important;
     }
+
     /* Navbar Styles */
     /* Cambiar el color del ícono de la hamburguesa */
     .navbar-toggler-icon {
@@ -92,13 +93,15 @@
         border-radius: 5px;
     }
 
-    .owl-item  {
+    .owl-item {
         width: fit-content !important;
     }
-    .owl-item  a{
+
+    .owl-item a {
         font-size: 14px !important;
     }
-    .owl-nav{
+
+    .owl-nav {
         display: flex;
         width: fit-content;
     }
@@ -335,16 +338,16 @@
     }
 
     .body_card h5 {
-    display: -webkit-box;         
-    -webkit-line-clamp: 2;        
-    -webkit-box-orient: vertical; 
-    overflow: hidden;            
-    text-overflow: ellipsis;     
-    font-weight: bold; 
-}
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+    }
 
 
-        .cart-sidebar {
+    .cart-sidebar {
         height: 100%;
         width: 0;
         position: fixed;
@@ -425,7 +428,8 @@
     .mas_vendidos-card:hover .mas_vendidos-image {
         transform: scale(1.1);
     }
-    .mas_vendidos-image{
+
+    .mas_vendidos-image {
         height: 300px;
         object-fit: cover;
     }
@@ -720,10 +724,64 @@
         text-decoration: underline;
     }
 
+    /* Botón flotante para WhatsApp */
+    .whatsapp-float {
+        position: fixed;
+        width: auto;
+        bottom: 40px;
+        right: 40px;
+        background-color: transparent;
+        padding: -5px;
+        text-decoration: none;
+        z-index: 100;
+        padding: 10px;
+
+    }
+
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            /* Distancia desde el fondo para dispositivos móviles */
+            right: 20px;
+            /* Distancia desde el lado derecho para dispositivos móviles */
+        }
+    }
+
+
+    .ws_flotante {
+        color: #24d366 !important;
+        background-color: transparent !important;
+        font-size: 4em !important;
+        transition: transform 0.3s ease;
+        /* Transición suave */
+    }
+
+    .ws_flotante:hover {
+        animation: bounce 0.5s ease infinite;
+        /* Repetir la animación de forma indefinida */
+    }
+
+    /* Definimos la animación de "salto" */
+    @keyframes bounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-10px);
+            /* Ajusta el valor según la altura que quieras */
+        }
+    }
+
+
+    /* Fin Botón flotante para WhatsApp */
+
     /* FIN FOOTER TEMPORAL */
 
     /* carrito checkout */
-    
+
     /* .productos_carrito-item {
         display: flex;
         justify-content: space-between;
@@ -877,6 +935,5 @@
         color: #007bff;
         font-size: 1.2rem;
     } */
-        /* fin carrito checkout */
-
+    /* fin carrito checkout */
 </style>
