@@ -1,6 +1,5 @@
 <style>
-
-.productos_carrito-item {
+    .productos_carrito-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -25,28 +24,33 @@
         gap: 25px;
     }
 
-    .productos_carrito-item .productos_carrito-info p button{
+    .productos_carrito-item .productos_carrito-info p button {
         padding-left: 10px;
         padding-right: 10px;
     }
-    .productos_carrito-item .productos_carrito-info p{
+
+    .productos_carrito-item .productos_carrito-info p {
         margin-top: 5px;
         margin-bottom: 5px;
         display: flex;
         gap: 10px;
     }
-    #detalle_precio_12805{
+
+    #detalle_precio_12805 {
         font-size: 16px;
     }
+
     .productos_carrito-item .productos_carrito-info a {
         font-size: 16px;
-    color: #007bff;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block; /* Asegúrate de usar display block o inline-block */
-    max-width: 200px; /* Ajusta el ancho a tu preferencia */
+        color: #007bff;
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        /* Asegúrate de usar display block o inline-block */
+        max-width: 200px;
+        /* Ajusta el ancho a tu preferencia */
     }
 
     .productos_carrito-item .productos_carrito-info a:hover {
@@ -71,6 +75,7 @@
         font-weight: bold;
         /* Texto más grueso para el resumen del carrito */
     }
+
     .custom-card {
         border: 2px solid #ddd;
         border-radius: 8px;
@@ -189,6 +194,7 @@
         /* Color rojo para el precio final */
         font-size: 1.2rem;
     }
+
     /* Seccion Hidden */
     .list-group-item {
         display: flex;
@@ -407,23 +413,23 @@
     }
 
     @media (max-width: 767px) {
-        .productos_carrito-item{
+        .productos_carrito-item {
             display: flex;
             flex-direction: column;
             gap: 10px;
             align-items: start;
         }
-        .productos_checkout_remove{
+
+        .productos_checkout_remove {
             order: -1;
             margin-left: auto;
         }
 
-        .productos_carrito-info{
+        .productos_carrito-info {
             margin-left: 0px;
             padding-left: 0px;
         }
     }
-
 </style>
 
 
@@ -495,7 +501,8 @@
 
                                 .radio-custom:checked {
                                     background-color: white;
-                                    border: 1px solid gray;                                }
+                                    border: 1px solid gray;
+                                }
 
                                 .radio-custom:checked::before {
                                     content: '';
@@ -520,16 +527,15 @@
                                     border: 1px solid gray;
                                 }
 
-                                .bx{
+                                .bx {
                                     margin: 0px !important;
                                 }
 
-                                    .modal-dialog {
-                                        margin-right: auto;
-                                        margin-left: auto;
-                                        max-width: 550px !important;
-                                    }
-
+                                .modal-dialog {
+                                    margin-right: auto;
+                                    margin-left: auto;
+                                    max-width: 550px !important;
+                                }
                             </style>
 
                             <div id="tarifasEnvioPreview">
@@ -539,7 +545,7 @@
                                     class="caja_transparente d-flex flex-row justify-content-between align-items-center">
                                     <div class="d-flex">
                                         <input class="me-3 radio-custom my-auto" type="radio" id="envioGratisPreview"
-                                            name="opcionEnvio" checked required>
+                                            name="opcionEnvio" checked>
                                         <p for="envioGratisPreview" class="mb-0"> Envío gratis</p>
                                     </div>
                                     <p id="gratisPreview" class="mb-0" style="text-align: end; font-weight: bold;">
@@ -570,9 +576,9 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
-                                        name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido" required>
+                                        name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
                                 </div>
-                            </div> 
+                            </div>
                             <!-- Fin Nombre y apellidos -->
 
                             <!-- Teléfono -->
@@ -582,7 +588,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
-                                        name="txt_telefonoPreview" placeholder="Teléfono" required>
+                                        name="txt_telefonoPreview" placeholder="Teléfono">
                                 </div>
                             </div>
                             <!-- Fin Teléfono -->
@@ -594,7 +600,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
-                                        name="txt_calle_principalPreview" placeholder="" required>
+                                        name="txt_calle_principalPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Calle Principal -->
@@ -606,7 +612,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
-                                        name="txt_calle_secundariaPreview" placeholder="" required>
+                                        name="txt_calle_secundariaPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Calle Secundaria -->
@@ -619,7 +625,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
-                                        name="txt_barrio_referenciaPreview" placeholder="" required>
+                                        name="txt_barrio_referenciaPreview" placeholder="">
                                 </div>
                             </div>
                             <!-- Fin Barrio o Referencia -->
@@ -627,7 +633,7 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
-                                <select class="form-control" id="provinica" name="provinica" required>
+                                <select class="form-control" id="provinica" name="provinica">
                                     <option value="">Provincia</option>
                                 </select>
                             </div>
@@ -637,7 +643,7 @@
                             <div class="form-group mb-3" id="ciudadPreview">
                                 <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
                                 <div id="div_ciudad">
-                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega" required>
+                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
                                         <option value="">Ciudad</option>
                                     </select>
                                 </div>
@@ -691,14 +697,14 @@
 <script>
     // Funcion para que consuma los datos de checkout.json y los utilice
 
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         loadAndSetInitialData();
     });
 
     function loadAndSetInitialData() {
         id_plataforma = <?php echo ID_PLATAFORMA; ?>
 
-        $.getJSON(SERVERURL + 'Models/modales/' + id_plataforma + '_modal.json', function (data) {
+        $.getJSON(SERVERURL + 'Models/modales/' + id_plataforma + '_modal.json', function(data) {
             data.forEach(item => {
                 processItem(item);
             });
@@ -831,7 +837,7 @@
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
-                success: function (response) {
+                success: function(response) {
                     // Verifica que la respuesta sea un array y que tenga al menos un elemento
                     if (Array.isArray(response) && response.length > 0) {
                         resolve(response[0].id); // Resuelve la promesa con el id_configuracion
@@ -839,7 +845,7 @@
                         reject("No se encontró la configuración o está vacía");
                     }
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function(jqXHR, textStatus, errorThrown) {
                     reject(errorThrown); // Rechaza la promesa con el error
                 }
             });
@@ -871,10 +877,10 @@
     /* boton de comprar */
     async function realizar_pedido() {
         try {
-            // Obtener la configuración, pero manejar el caso en que no se devuelva nada
+            // Obtener la configuración
             let id_configuracion;
             try {
-                id_configuracion = await consultar_configuracion(); // Espera a que consultar_configuracion se resuelva
+                id_configuracion = await consultar_configuracion();
             } catch (error) {
                 console.warn("No se pudo obtener la configuración: ", error);
                 id_configuracion = ""; // Asignar valor vacío si no se pudo obtener la configuración
@@ -882,53 +888,86 @@
 
             const session_id = "<?php echo session_id(); ?>";
 
+            // Obtener los valores de los inputs y selects
+            let nombre = $('#txt_nombresApellidosPreview').val().trim();
+            let telefono = $('#txt_telefonoPreview').val().trim();
+            let provincia = $('#provinica').val().trim();
+            let ciudad = $('#ciudad_entrega').val().trim();
+            let calle_principal = $('#txt_calle_principalPreview').val().trim();
+            let calle_secundaria = $('#txt_calle_secundariaPreview').val().trim();
+            let barrio_referencia = $('#txt_barrio_referenciaPreview').val().trim();
+
+            // Validar campos requeridos (excepto comentario)
+            let camposVacios = [];
+
+            if (!nombre) camposVacios.push('#txt_nombresApellidosPreview');
+            if (!telefono) camposVacios.push('#txt_telefonoPreview');
+            if (!provincia) camposVacios.push('#provinica');
+            if (!ciudad) camposVacios.push('#ciudad_entrega');
+            if (!calle_principal) camposVacios.push('#txt_calle_principalPreview');
+            if (!calle_secundaria) camposVacios.push('#txt_calle_secundariaPreview');
+            if (!barrio_referencia) camposVacios.push('#txt_barrio_referenciaPreview');
+
+            if (camposVacios.length > 0) {
+                // Resaltar los campos vacíos
+                camposVacios.forEach(campo => {
+                    $(campo).addClass('is-invalid'); // Agrega una clase de error
+                    setTimeout(() => $(campo).removeClass('is-invalid'), 3000); // Remueve la clase después de 3s
+                });
+
+                // Mostrar mensaje de error con Toastr
+                toastr.error("Por favor, complete todos los campos requeridos.", "Error en el formulario", {
+                    positionClass: "toast-bottom-center",
+                    timeOut: 4000
+                });
+
+                return; // Detener la ejecución si faltan campos
+            }
+
             let formData = new FormData();
             formData.append("combo_selected", $('#combo_selected').val());
             formData.append("combo_id", $('#combo_id').val());
             formData.append("id_plataforma", ID_PLATAFORMA);
             formData.append("id_producto", $('#id_productoTmp_carrito').val());
             formData.append("total", $('#total_carrito').val());
-            formData.append("nombre", $('#txt_nombresApellidosPreview').val());
-            formData.append("telefono", formatearTelefono($('#txt_telefonoPreview').val()));
-            formData.append("provincia", $('#provinica').val());
-            formData.append("ciudad", $('#ciudad_entrega').val());
-            formData.append("calle_principal", $('#txt_calle_principalPreview').val());
-            formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
-            formData.append("referencia", $('#txt_barrio_referenciaPreview').val());
-            formData.append("observacion", $('#txt_comentarioPreview').val());
+            formData.append("nombre", nombre);
+            formData.append("telefono", formatearTelefono(telefono));
+            formData.append("provincia", provincia);
+            formData.append("ciudad", ciudad);
+            formData.append("calle_principal", calle_principal);
+            formData.append("calle_secundaria", calle_secundaria);
+            formData.append("referencia", barrio_referencia);
+            formData.append("observacion", $('#txt_comentarioPreview').val()); // Comentario NO es obligatorio
             formData.append("oferta_selected", $('#oferta_selected').val());
             formData.append("id_producto_oferta", $('#id_producto_oferta').val());
             formData.append("tmp", session_id);
-            formData.append("id_configuracion", id_configuracion); // Usa el id_configuracion, que podría estar vacío
+            formData.append("id_configuracion", id_configuracion);
 
+            // Enviar datos al servidor
             $.ajax({
                 url: SERVERURL + 'Tienda/guardar_pedido_carrito',
                 method: 'POST',
                 data: formData,
-                processData: false, // No procesar los datos
-                contentType: false, // No establecer ningún tipo de contenido
-                success: function (response) {
+                processData: false,
+                contentType: false,
+                success: function(response) {
                     response = JSON.parse(response);
                     if (response.status == 400) {
-                        toastr.error(
-                            "NO SE REALIZO LA PETICION CORRECTAMENTE",
-                            "NOTIFICACIÓN", {
+                        toastr.error("No se realizó la petición correctamente", "Error", {
                             positionClass: "toast-bottom-center"
-                        }
-                        );
+                        });
                     } else if (response.status == 200) {
-                        toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
+                        toastr.success("Pedido realizado con éxito", "Confirmación", {
                             positionClass: "toast-bottom-center",
                         });
 
                         cerrarCarrito(); // Cerrar carrito
                         limpiar_carrito(); // Limpiar carrito
                         $('#cartDropdown').trigger('click'); // Recargar el carrito
-
                         $('#checkout_carritoModal').modal('hide'); // Cerrar modal
                     }
                 },
-                error: function (error) {
+                error: function(error) {
                     console.error('Error al solicitar el pago:', error);
                     alert('Hubo un error al solicitar el pago.');
                 }
@@ -940,9 +979,9 @@
     }
     /* Fin boton de comprar */
 
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Escuchar clics en los combos
-        $('#combos_carritoContainer').on('click', '.selectable-combo', function () {
+        $('#combos_carritoContainer').on('click', '.selectable-combo', function() {
             // Verificar si el combo ya está seleccionado
             if ($(this).hasClass('selected')) {
                 // Si está seleccionado, deseleccionarlo
@@ -979,7 +1018,7 @@
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
 
                         /* detalle combo */
                         let formData_detalle = new FormData();
@@ -999,9 +1038,9 @@
                             processData: false, // No procesar los datos
                             contentType: false, // No establecer ningún tipo de contenido
                             dataType: "json",
-                            success: function (response2) {
+                            success: function(response2) {
                                 // Iterar sobre cada elemento en la respuesta
-                                response2.forEach(function (detalle_combo) {
+                                response2.forEach(function(detalle_combo) {
                                     // Sumar el pvp de cada elemento al acumulador
                                     totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
                                 });
@@ -1025,13 +1064,13 @@
 
                                 $("#descuento_carrito").show();
                             },
-                            error: function (jqXHR, textStatus, errorThrown) {
+                            error: function(jqXHR, textStatus, errorThrown) {
                                 alert(errorThrown);
                             },
                         });
                         /* Fin detalle combo */
                     },
-                    error: function (jqXHR, textStatus, errorThrown) {
+                    error: function(jqXHR, textStatus, errorThrown) {
                         alert(errorThrown);
                     },
                 });
