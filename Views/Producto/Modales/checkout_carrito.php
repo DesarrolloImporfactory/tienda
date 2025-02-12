@@ -539,7 +539,7 @@
                                     class="caja_transparente d-flex flex-row justify-content-between align-items-center">
                                     <div class="d-flex">
                                         <input class="me-3 radio-custom my-auto" type="radio" id="envioGratisPreview"
-                                            name="opcionEnvio" checked>
+                                            name="opcionEnvio" checked required>
                                         <p for="envioGratisPreview" class="mb-0"> Envío gratis</p>
                                     </div>
                                     <p id="gratisPreview" class="mb-0" style="text-align: end; font-weight: bold;">
@@ -570,7 +570,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
-                                        name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
+                                        name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido" required>
                                 </div>
                             </div> 
                             <!-- Fin Nombre y apellidos -->
@@ -582,7 +582,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
-                                        name="txt_telefonoPreview" placeholder="Teléfono">
+                                        name="txt_telefonoPreview" placeholder="Teléfono" required>
                                 </div>
                             </div>
                             <!-- Fin Teléfono -->
@@ -594,7 +594,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
-                                        name="txt_calle_principalPreview" placeholder="">
+                                        name="txt_calle_principalPreview" placeholder="" required>
                                 </div>
                             </div>
                             <!-- Fin Calle Principal -->
@@ -606,7 +606,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
-                                        name="txt_calle_secundariaPreview" placeholder="">
+                                        name="txt_calle_secundariaPreview" placeholder="" required>
                                 </div>
                             </div>
                             <!-- Fin Calle Secundaria -->
@@ -619,7 +619,7 @@
                                     <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
-                                        name="txt_barrio_referenciaPreview" placeholder="">
+                                        name="txt_barrio_referenciaPreview" placeholder="" required>
                                 </div>
                             </div>
                             <!-- Fin Barrio o Referencia -->
@@ -627,7 +627,7 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia <span class="text-danger">*</span></label>
-                                <select class="form-control" id="provinica" name="provinica">
+                                <select class="form-control" id="provinica" name="provinica" required>
                                     <option value="">Provincia</option>
                                 </select>
                             </div>
@@ -637,7 +637,7 @@
                             <div class="form-group mb-3" id="ciudadPreview">
                                 <label class="sub_titulos" id="titulo_ciudadPreview">Ciudad <span class="text-danger">*</span></label>
                                 <div id="div_ciudad">
-                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega">
+                                    <select class="form-control" id="ciudad_entrega" name="ciudad_entrega" required>
                                         <option value="">Ciudad</option>
                                     </select>
                                 </div>
