@@ -12,10 +12,10 @@
                 <div class="col-md-3 pe-md-4 mt-5 mt-md-0">
                     <h5 class="mb-0">Síguenos</h5> 
                     <hr class="my-2">
-                    <div class="d-flex flex-column gap-2">
-                        <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                        <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <div class="d-flex flex-row gap-5">
+                        <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 <div class="col-md-3 mt-5 mt-md-0">

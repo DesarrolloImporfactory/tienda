@@ -84,7 +84,7 @@
 
     <!-- boton whatsapp -->
 
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i></a>
 
     <!-- Fin boton whatsapp-->
 
@@ -118,13 +118,14 @@
                         alineacion = "text-align-last: right;"
                     }
                     const isActive = index === 0 ? 'active' : '';
+                    // banner - textp
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
                               <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important;
                                     width: 100% !important;
                                     object-fit: cover;">
                               <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                                  <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
+                                  <h5 class="fs-1" style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
                                   <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
                                   <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
                               </div>

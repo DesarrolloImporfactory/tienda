@@ -1,4 +1,5 @@
 <style>
+
     .card {
         transition: transform .2s;
         /* Animación para el efecto de hover */

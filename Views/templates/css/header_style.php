@@ -463,20 +463,57 @@
     }
 
 
-    /* Botón flotante para WhatsApp */
-    .whatsapp-float {
-        position: fixed;
-        width: auto;
-        bottom: 40px;
-        right: 40px;
-        background-color: transparent;
-        padding: -5px;
-        text-decoration: none;
-        z-index: 100;
-        padding: 10px;
+    /* Estilos generales de Botón flotante para WhatsApp */
+    /*Estilos generales del boton whatsapp*/
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: breathe 2s ease-in-out infinite;
+}
 
-    }
+/*Estilos solo al icono whatsapp*/
+.whatsapp-btn i {
+  color: #fff;
+  font-size: 24px;
+  animation: beat 2s ease-in-out infinite;
+  text-decoration: none;
+}
 
+/*Estilos con animation contorno respirando*/
+@keyframes breathe {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/*Estilos de animacion del icono latiendo*/
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
     @media (max-width: 768px) {
         .whatsapp-float {
             bottom: 20px;
@@ -487,32 +524,7 @@
     }
 
 
-    .ws_flotante {
-        color: #24d366 !important;
-        background-color: transparent !important;
-        font-size: 4em !important;
-        transition: transform 0.3s ease;
-        /* Transición suave */
-    }
-
-    .ws_flotante:hover {
-        animation: bounce 0.5s ease infinite;
-        /* Repetir la animación de forma indefinida */
-    }
-
-    /* Definimos la animación de "salto" */
-    @keyframes bounce {
-
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-10px);
-            /* Ajusta el valor según la altura que quieras */
-        }
-    }
+    
 
 
     /* Fin Botón flotante para WhatsApp */
