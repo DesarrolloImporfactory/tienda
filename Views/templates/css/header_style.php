@@ -255,10 +255,18 @@
         width: auto;
         padding: 5px 20px;
         margin: 0 auto;
-        border: none;
         cursor: pointer;
         text-align: center;
+
+        position: relative;
+         overflow: hidden;
+        transition: all 0.4s ease-in-out;
+        border: 2px solid transparent;
     }
+    .category-button:hover {
+    border-color: #ff5733; /* Cambia el color del borde */
+    box-shadow: 0px 0px 15px rgba(255, 87, 51, 0.8);
+}
 
     .category-container a {
         text-decoration: none;
@@ -470,8 +478,8 @@
   bottom: 20px;
   right: 20px;
   z-index: 9999;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background-color: #25D366;
   display: flex;
@@ -479,8 +487,30 @@
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   animation: breathe 2s ease-in-out infinite;
+  text-decoration: none;
+  
+}
+.tooltip-text {
+    visibility: visible;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 120%; /* Lo eleva encima del botón */
+    left: 50%;
+    transform: translateX(-100%);
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+    
 }
 
+.whatsapp-btn:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
 /*Estilos solo al icono whatsapp*/
 .whatsapp-btn i {
   color: #fff;
@@ -700,7 +730,13 @@
         background-color:
             <?php echo COLOR_BOTONES; ?>
             !important;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
+    .texto_boton:hover {
+    transform: scale(1.1);
+    background-color: #ff5733; /* Cambia el color al pasar el mouse */
+    color: white;
+}
 
     /* fin css faltante */
 

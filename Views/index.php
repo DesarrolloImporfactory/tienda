@@ -81,8 +81,9 @@
     <!-- Fin Testimonios -->
 
     <!-- boton whatsapp -->
-
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i></a>
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i>
+        <span class="tooltip-text">¿Tienes alguna duda? Escríbenos</span>
+    </a>
 
     <!-- Fin boton whatsapp-->
 
