@@ -2,27 +2,31 @@
     <div class="footer pb-4 border-bottom">
         <div class="container">
             <div class="row w-100">
-                <div class="col-md-3">
-                    <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
+                <div class="text-center col-md-3">
+                    <h5 class="mb-0" style="text-transform: capitalize;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
+                    <hr class="mx-auto my-2">
                     <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="40px">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-1">
 
                 </div>
                 <div class="col-md-3 pe-md-4 mt-5 mt-md-0">
-                    <h5 class="mb-0">Síguenos</h5> 
-                    <hr class="my-2">
-                    <div class="d-flex flex-row gap-5">
-                        <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <h5 class="text-center mb-0">Síguenos</h5> 
+                    <hr class="w-100 mx-auto my-2">
+                    <div class="d-flex flex-row d-flex align-items-center gap-5 d-flex justify-content-center">
+                        <a href="<?php echo FACEBOOK; ?>" target="_blank" class="text-dark fs-2 d-inline-flex align-items-center justify-content-center p-2 rounded-circle bg-light shadow-sm transition-hover"><i class="fab fa-facebook fs-2"></i></a>
+                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank" class="text-dark fs-2 d-inline-flex align-items-center justify-content-center p-2 rounded-circle bg-light shadow-sm transition-hover"><i class="fab fa-instagram fs-2"></i></a>
+                        <a href="<?php echo TIKTOK; ?>" target="_blank" class="text-dark fs-2 d-inline-flex align-items-center justify-content-center p-2 rounded-circle bg-light shadow-sm transition-hover"><i class="fab fa-tiktok fs-2"></i></a>
                     </div>
                 </div>
-                <div class="col-md-3 mt-5 mt-md-0">
-                    <h5 class="mb-0 text-nowrap">Información de contacto</h5>
-                    <hr class="my-2">
+                <div class="col-md-1">
 
-                    <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
+                </div>
+                <div class="col-md-3 mt-5 mt-md-0">
+                    <h5 class="mb-0 text-center text-nowrap">Contacto</h5>
+                    <hr class="w-100 mx-auto my-2">
+
+                    <p class="text-center"><i class="fab fa-whatsapp fs-2 text-dark"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>

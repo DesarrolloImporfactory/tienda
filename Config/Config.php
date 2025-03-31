@@ -7,7 +7,7 @@ const CHARSET = "utf8";
 
 
 
-if ($_SERVER['HTTP_HOST'] == 'localhost') { 
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == "192.168.100.12") { 
     define('ENVIRONMENT', 'development');
 } else {
     define('ENVIRONMENT', 'production');
@@ -69,7 +69,7 @@ if (str_contains($hostAntiguo, "comprapor.com")) $url_actual = str_replace("impo
 if (str_contains($hostAntiguo, "merkapro.ec")) $url_actual = str_replace("imporsuitpro.com", "merkapro.ec", $url_actual);
 if (str_contains($hostAntiguo, "connect-mas.com")) $url_actual = str_replace("imporsuitpro.com", "connect-mas.com", $url_actual);
 
-if($_SERVER["HTTP_HOST"] == "localhost"){
+if($_SERVER["HTTP_HOST"] == "localhost"|| $_SERVER['HTTP_HOST'] == "192.168.100.12"){
     $url_actual = "https://propeldesign.imporsuitpro.com";
 }
 $id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual' or dominio = '$hostAntiguo'";
@@ -84,7 +84,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 resultss";
 }
-if($_SERVER["HTTP_HOST"] == "localhost") $id_matriz = 1;
+if($_SERVER["HTTP_HOST"] == "localhost" || $_SERVER['HTTP_HOST'] == "192.168.100.12") $id_matriz = 1;
 //echo $id_matriz;
 $url_matriz = "SELECT * FROM matriz where idmatriz = '$id_matriz'";
 $result = $mysqli->query($url_matriz);

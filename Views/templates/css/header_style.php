@@ -524,9 +524,6 @@
     }
 
 
-    
-
-
     /* Fin Botón flotante para WhatsApp */
 
     /* Fin seccion de css añadido del anteiror sistema */
