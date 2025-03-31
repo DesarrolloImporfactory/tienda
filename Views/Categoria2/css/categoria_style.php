@@ -20,6 +20,13 @@
     .custom-filter-section .list-group-item:hover {
         background-color: #f1f1f1;
     }
+    .card-img-top {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1);
+}
 
     .custom-product-card {
         border: 1px solid #ddd;
@@ -31,6 +38,7 @@
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
+        
     }
 
     .custom-product-card img {

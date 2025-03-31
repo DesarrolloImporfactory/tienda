@@ -228,7 +228,7 @@
     .degraded-line {
         width: 100%;
         height: 1px;
-        background: radial-gradient(circle, #000000 30%, transparent 90%);
+        background: radial-gradient(circle, #171931 30%, transparent 90%);
     }
 
     .category-container {

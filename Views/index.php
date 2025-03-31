@@ -5,19 +5,17 @@
 
     </style>
     <!-- Slider -->
-    <div id="carouselExampleIndicators carouselBanner1" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators"></div>
-        <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <div id="carouselBanner1" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators"></div>
+    <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
     </div>
     <!-- fin slider -->
 
