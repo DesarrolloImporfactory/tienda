@@ -66,7 +66,8 @@
     }
 
     .search-box:focus {
-        box-shadow: none;
+        border-color: #171931 !important; /* Cambia esto por el color que prefieras */
+        box-shadow: 0 0 5px rgba(23, 25, 49, 0.7); /* Efecto de brillo */
         outline: none;
     }
 
@@ -509,7 +510,7 @@
 
     /* Estilos generales de Botón flotante para WhatsApp */
     /*Estilos generales del boton whatsapp*/
-.whatsapp-btn {
+    .whatsapp-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -524,30 +525,44 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   animation: breathe 2s ease-in-out infinite;
   text-decoration: none;
-  
-}
-.tooltip-text {
-    visibility: visible;
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 5px 10px;
-    border-radius: 5px;
-    position: absolute;
-    bottom: 120%; /* Lo eleva encima del botón */
-    left: 50%;
-    transform: translateX(-100%);
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    white-space: nowrap;
-    
+  cursor: pointer;
 }
 
-.whatsapp-btn:hover .tooltip-text {
-    visibility: visible;
-    opacity: 1;
+.tooltip-text {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  position: absolute;
+  right: 120%; /* Lo mueve a la izquierda del botón */
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  white-space: nowrap;
 }
-/*Estilos solo al icono whatsapp*/
+
+/* Flecha del tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+/* Muestra el tooltip al pasar el cursor */
+.whatsapp-btn:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Estilos solo al icono WhatsApp */
 .whatsapp-btn i {
   color: #fff;
   font-size: 24px;

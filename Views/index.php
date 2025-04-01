@@ -82,8 +82,24 @@
 
     <!-- boton whatsapp -->
     <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i>
-        <span class="tooltip-text">¿Tienes alguna duda? Escríbenos</span>
+        <span class="tooltip-text" id="tooltip">¿Tienes alguna duda? Escríbenos</span>
     </a>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tooltip = document.querySelector(".tooltip-text");
+
+    // Muestra el tooltip al cargar la página
+    tooltip.style.visibility = "visible";
+    tooltip.style.opacity = "1";
+
+    // Lo oculta después de 5 segundos
+    setTimeout(function () {
+      tooltip.style.opacity = "0";
+      tooltip.style.visibility = "hidden";
+    }, 5000);
+  });
+</script>
+
 
     <!-- Fin boton whatsapp-->
 
