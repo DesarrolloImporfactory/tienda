@@ -84,6 +84,26 @@
             transform: translateX(-50%);
         }
     }
+       
+.navbar-custom .nav-link {
+    color: white;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Cuando el usuario hace scroll, los enlaces cambian de color */
+.navbar-custom.scrolled .nav-link {
+    color: #171931; /* Cambia este color según lo que prefieras */
+}
+.navbar-custom {
+    background: rgba(23, 25, 49, 0.8);
+    backdrop-filter: blur(10px);
+    transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+
+.navbar-custom.scrolled {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+}
 
     /* slider */
     .carousel-item {
