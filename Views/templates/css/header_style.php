@@ -7,6 +7,7 @@
 
     body {
         background-color: #f9f9f9;
+        
     }
 
     section {
@@ -281,12 +282,41 @@
     }
 
 
-    .degraded-line {
-        width: 100%;
-        height: 1px;
-        background: radial-gradient(circle, #171931 30%, transparent 90%);
-    }
+   /* Línea inicial */
+.degraded-line {
+    width: 100%;
+    height: 2px;
+    background: radial-gradient(circle, #171931 30%, transparent 90%);
+    transition: transform 0.4s ease-in-out, background 0.4s ease-in-out;
+    transform-origin: center center; /* Establece el centro como punto de zoom */
+}
 
+/* Efecto de zoom al pasar el mouse */
+.degraded-line:hover {
+    background: radial-gradient(circle, #ff5733 30%, transparent 90%); /* Cambia el color del degradado */
+    transform: scaleY(2); /* Hace que la línea haga un "zoom" verticalmente */
+}
+
+/* Efecto de desvanecimiento de bordes para el degradado */
+.degraded-line::before,
+.degraded-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 1;
+}
+
+.degraded-line::before {
+    left: 0;
+    background: linear-gradient(to right, #171931 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.degraded-line::after {
+    right: 0;
+    background: linear-gradient(to left, #171931 0%, rgba(0, 0, 0, 0) 100%);
+}
 
     .category-container {
         display: flex;
@@ -450,7 +480,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* Degradado atractivo */
+    background: linear-gradient(35deg, #1C1F33, #D33E43); /* Degradado atractivo */
     border-radius: 10px; /* Bordes redondeados */
 }
 
@@ -462,12 +492,15 @@
     backdrop-filter: blur(10px); /* Desenfoque de fondo */
     padding: 10px; /* Espaciado interno para mejorar apariencia */
 }
-    .card-body {
-        flex-grow: 1; /* Permite que el contenido se distribuya correctamente */
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start; /* Mantiene el texto arriba */
-    }
+
+
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Mantiene el texto arriba */
+}
+
 
     .text-primary.fs-5.pe-2 {
         font-size: 1rem;
@@ -575,13 +608,7 @@
         ;
     }
 
-    .card-body-proDes a {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block;
-    }
-
+    
     .card-title {
         margin-bottom: 0.75rem;
     }
