@@ -205,8 +205,13 @@
                 });
 
                 $('#categories-container').owlCarousel({
-                    loop: false,
-                    margin: 10,
+                    loop: true,
+                    margin: 20,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
+                    smartSpeed: 700,
                     responsive: {
                         0: {
                             items: 1
@@ -233,8 +238,13 @@
         /* Destacados */
         // Inicializar el carrusel vacío
         $("#productos-carousel").owlCarousel({
-            loop: false,
-            margin: 10,
+            loop: true,
+            margin: 20,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            smartSpeed: 700,
             responsive: {
                 0: {
                     items: 1
@@ -437,8 +447,13 @@
         /* Testimonios */
         // Inicializar el carrusel vacío
         $("#testimonios-carousel").owlCarousel({
-            loop: false,
-            margin: 10,
+            loop: true,
+            margin: 20,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            smartSpeed: 700,
             responsive: {
                 0: {
                     items: 1

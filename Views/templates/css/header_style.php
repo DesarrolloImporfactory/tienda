@@ -86,21 +86,41 @@
         }
     }
        
+/* Estilo normal de los enlaces de navegación antes de hacer scroll */
 .navbar-custom .nav-link {
     color: white;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    padding: 8px 15px; /* Agregamos padding para mejorar la apariencia del sombreado */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Efecto al pasar el mouse antes de hacer scroll */
+.navbar-custom .nav-link:hover {
+    color: white; /* Mantiene el color blanco */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3); /* Sombra blanca */
 }
 
 /* Cuando el usuario hace scroll, los enlaces cambian de color */
 .navbar-custom.scrolled .nav-link {
-    color: #171931; /* Cambia este color según lo que prefieras */
+    color: #171931; /* Color oscuro después del scroll */
 }
+
+/* Efecto al pasar el mouse después de hacer scroll */
+.navbar-custom.scrolled .nav-link:hover {
+    color: #171931; /* Mantiene el color oscuro */
+    background-color: rgba(23, 25, 49, 0.2); /* Fondo semitransparente oscuro */
+    box-shadow: 0px 4px 10px rgba(23, 25, 49, 0.3); /* Sombra oscura */
+}
+
+/* Estilos para la barra de navegación */
 .navbar-custom {
     background: rgba(23, 25, 49, 0.8);
     backdrop-filter: blur(10px);
     transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
 }
 
+/* Cambia el fondo de la barra de navegación al hacer scroll */
 .navbar-custom.scrolled {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(15px);
@@ -271,6 +291,7 @@
         background: radial-gradient(circle, #171931 30%, transparent 90%);
     }
 
+
     .category-container {
         display: flex;
         flex-direction: column;
@@ -301,7 +322,20 @@
         position: relative;
          overflow: hidden;
         box-sizing: border-box;
-        border: 2px solid;
+        
+    }
+    .category-button {
+        display: inline-block;
+        width: auto;
+        padding: 5px 20px;
+        margin: 0 auto;
+        cursor: pointer;
+        text-align: center;
+
+        position: relative;
+         overflow: hidden;
+        box-sizing: border-box;
+        
     }
     .category-button:hover {
     border-color: #ff5733; /* Cambia el color del borde */
@@ -360,6 +394,21 @@
         transform: translateY(-50%);
         font-size: 25px;
     }
+    /* Personalización de los botones de navegación */
+.owl-prev, .owl-next {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    color: white !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+.owl-prev:hover, .owl-next:hover {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
 
     .owl-carousel .owl-nav button.owl-prev {
         right: 85%;
