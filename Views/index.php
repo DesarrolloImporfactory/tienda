@@ -34,8 +34,11 @@
     <!-- fin slider -->
 
     <!-- animacion -->
-    <div class="marquee-containerArriba">
-        <div class="marqueeArriba">
+    <div class="marquee-container">
+        <div class="marquee">
+        <span class="marquee-content">🎉 ¡Aprovecha nuestras ofertas exclusivas! 🚀</span>
+        <span class="marquee-content">🔥 Envío gratis en compras mayores a $50 💰</span>
+        <span class="marquee-content">🌟 Nueva colección disponible ahora mismo 🎨</span>
             <!-- Los contenidos se llenarán aquí -->
         </div>
     </div>

@@ -165,77 +165,73 @@
         }
     }
 
-    /* Arriba */
-    .marquee-containerArriba {
-        overflow: hidden;
-        background-color:
-            <?php echo COLOR_BACKGROUND; ?>
-        ;
-        color: white;
-        width: 100%;
-        height: 40px;
-        position: relative;
+/* Estilos generales para ambas marquesinas */
+.marquee-container {
+    overflow: hidden;
+    background-color: <?php echo COLOR_BACKGROUND; ?>;
+    color: white;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Efecto de desvanecimiento en los extremos */
+.marquee-container::before,
+.marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 1;
+}
+
+.marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, <?php echo COLOR_BACKGROUND; ?> 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, <?php echo COLOR_BACKGROUND; ?> 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* Marquesina */
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    animation: marqueeAnimation 30s linear infinite;
+}
+
+/* Contenido dentro de la marquesina con mayor separación */
+.marquee-content {
+    display: inline-block;
+    text-align: center;
+    padding-right: 100px; /* Aumenta la separación entre mensajes */
+    font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+/* Separador entre mensajes */
+.marquee-content::after {
+    content: " • ";
+    margin-left: 100px; /* Mayor separación entre el mensaje y el separador */
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Animación */
+@keyframes marqueeAnimation {
+    from {
+        transform: translateX(100%);
     }
-
-    .marqueeArriba {
-        display: flex;
-        white-space: nowrap;
-        animation: marqueeAnimationArriba 20s linear infinite;
+    to {
+        transform: translateX(-100%);
     }
-
-    .marquee-contentArriba {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        padding-right: 100% !important;
-    }
-
-    @keyframes marqueeAnimationArriba {
-        0% {
-            transform: translateX(100%);
-        }
-
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-
-    /* fin arriba */
-    /* Abajo */
-    .marquee-containerAbajo {
-        overflow: hidden;
-        background-color:
-            <?php echo COLOR_BACKGROUND; ?>
-        ;
-        color: white;
-        width: 100%;
-        height: 40px;
-        position: relative;
-    }
-
-    .marqueeAbajo {
-        display: flex;
-        white-space: nowrap;
-        animation: marqueeAnimationAbajo 20s linear infinite;
-    }
-
-    .marquee-contentAbajo {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        padding-right: 100% !important;
-    }
-
-    @keyframes marqueeAnimationAbajo {
-        0% {
-            transform: translateX(100%);
-        }
-
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-
+}
     /* Fin abajo */
 
     /* fin slider */
