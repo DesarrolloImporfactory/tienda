@@ -1,4 +1,10 @@
 <style>
+    #productos-carousel {
+    max-width: 600px; /* Ajusta según lo necesario */
+    margin: auto; /* Centrar el carrusel */
+}
+
+
     body {
         background-color: #f9f9f9;
     }
@@ -82,17 +88,26 @@
     /* slider */
     .carousel-item {
         height: 452px !important;
+        transition: transform 0.5s ease-in-out !important;  /* Suaviza la transición */
     }
 
     .carousel-inner {
         height: 452px !important;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.5s ease-in-out; /* Agrega suavizado */
     }
 
     .carousel-item img {
         height: 100%;
         width: 100%;
-        object-fit: fill;
+        object-fit: contain;
         /* Ajusta la imagen sin distorsionarla */
+    }
+    .carousel-item-next,
+    .carousel-item-prev,
+    .carousel-item.active {
+        transition: transform 0.5s ease !important;  /* Transición de las imágenes */
     }
 
     @media (max-width: 768px) {
@@ -260,12 +275,12 @@
 
         position: relative;
          overflow: hidden;
-        transition: all 0.4s ease-in-out;
-        border: 2px solid transparent;
+        box-sizing: border-box;
+        border: 2px solid;
     }
     .category-button:hover {
     border-color: #ff5733; /* Cambia el color del borde */
-    box-shadow: 0px 0px 15px rgba(255, 87, 51, 0.8);
+    box-shadow: 0px 0px 10px rgba(255, 87, 51, 0.8);
 }
 
     .category-container a {
@@ -294,6 +309,7 @@
     .owl-carousel .owl-item img {
         object-fit: cover;
         height: 100%;
+        width: auto;
     }
 
     .owl-carousel .owl-nav {
@@ -730,7 +746,7 @@
         background-color:
             <?php echo COLOR_BOTONES; ?>
             !important;
-        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        background-color 0.3s ease-in-out;
     }
     .texto_boton:hover {
     transform: scale(1.1);

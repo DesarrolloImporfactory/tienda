@@ -7,7 +7,7 @@
     <!-- Slider -->
     <div id="carouselBanner1" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators"></div>
-    <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
+    <div class="carousel-inner" style="width: auto; height: auto !important;"></div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner1" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -182,16 +182,16 @@
                             items: 1
                         },
                         768: {
-                            items: 2
+                            items: 1
                         },
                         992: {
-                            items: 3
+                            items: 1
                         }
                     },
                     nav: true,
                     navText: [
-                        '<i class="fas fa-chevron-left fs-2"></i>',
-                        '<i class="fas fa-chevron-right fs-2"></i>'
+                        '<buttom><i class="bi bi-chevron-left fs-2"></i><buttom>',
+                        '<i class="bi bi-chevron-right fs-2"></i>'
                     ]
                 });
             },
@@ -210,22 +210,22 @@
                     items: 1
                 },
                 576: {
-                    items: 2
+                    items: 1
                 },
                 768: {
-                    items: 2
+                    items: 1
                 },
                 992: {
-                    items: 3
+                    items: 1
                 },
                 1200: {
-                    items: 4
+                    items: 1
                 }
             },
             nav: true,
             navText: [
-                '<i class="fas fa-chevron-left fs-2"></i>',
-                '<i class="fas fa-chevron-right fs-2"></i>'
+                '<i class="bi bi-chevron-left fs-2"></i>',
+                '<i class="bi bi-chevron-right fs-2"></i>'
             ]
         });
 
@@ -414,10 +414,10 @@
                     items: 1
                 },
                 768: {
-                    items: 2
+                    items: 1
                 },
                 992: {
-                    items: 3
+                    items: 1
                 }
             },
             nav: true,
