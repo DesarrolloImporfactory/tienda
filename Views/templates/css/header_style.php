@@ -420,17 +420,23 @@
     }
 
     .card {
-        margin: auto;
+        
+        position: relative; /* Necesario para que el texto se posicione correctamente */
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Asegura que la card ocupe toda la altura disponible */
     }
 
     .card h5 {
         font-size: 1rem !important;
         color: #000 !important;
+        
     }
 
     .card-text {
         font-size: 0.9rem !important;
         color: #6c757d !important;
+        margin-top: 0; /* Asegura que no tenga margen superior innecesario */
     }
 
     .text-muted.text-decoration-line-through {
@@ -438,12 +444,29 @@
     }
 
     .img-container {
-        height: 250px;
-    }
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4); /* Degradado atractivo */
+    border-radius: 10px; /* Bordes redondeados */
+}
 
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Evita recortar la imagen */
+    background: rgba(255, 255, 255, 0.1); /* Sutil fondo detrás de la imagen */
+    backdrop-filter: blur(10px); /* Desenfoque de fondo */
+    padding: 10px; /* Espaciado interno para mejorar apariencia */
+}
     .card-body {
+        flex-grow: 1; /* Permite que el contenido se distribuya correctamente */
         display: flex;
         flex-direction: column;
+        justify-content: flex-start; /* Mantiene el texto arriba */
     }
 
     .text-primary.fs-5.pe-2 {
@@ -468,20 +491,27 @@
     }
 
     .btn {
-        display: inline-block;
-        font-weight: 400;
-        color: #fff;
-        text-align: center;
-        vertical-align: middle;
-        user-select: none;
-        background-color: transparent;
-        border: 1px solid transparent;
-        padding: 0.375rem 0.75rem;
-        font-size: 1rem;
-        line-height: 1.5;
-        border-radius: 0.375rem;
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    }
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.375rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/*  Evita que el botón cambie de tamaño al pasar el mouse */
+.btn:hover {
+    transform: none !important; /* Evita cualquier escala */
+    padding: 0.375rem 0.75rem !important; /* Mantiene el tamaño fijo */
+    border-width: 1px !important; /* Evita que el borde se agrande */
+}
 
     .carousel-item {
         min-height: 300px;
