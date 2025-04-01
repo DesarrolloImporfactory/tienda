@@ -26,7 +26,10 @@
                     <h5 class="mb-0 text-center text-nowrap">Contacto</h5>
                     <hr class="w-100 mx-auto my-2">
 
-                    <p class="text-center"><i class="fab fa-whatsapp fs-2 text-dark"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
+                    <p class="text-center" style="display: flex; align-items: center; justify-content: center;">
+                    <i class="fab fa-whatsapp fs-2 text-dark" style="margin-right: 8px;"></i> 
+                    <?php echo formatPhoneNumber(TELEFONO); ?>
+                    </p>
                     <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>
