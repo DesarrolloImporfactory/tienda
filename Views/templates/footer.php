@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="footer py-4 copyright text-center">
-        <p style="font-size: 13px;" class="mb-0">&copy; 2024 Construye tu tienda online con IMPORSUIT S.A. | Todos los derechos reservados.</p>
+        <p style="font-size: 13px;" class="mb-0">&copy; 2025 Construye tu tienda online con IMPORSUIT S.A. | Todos los derechos reservados.</p>
     </div>
 </footer>
 <!-- librerias adiconale -->

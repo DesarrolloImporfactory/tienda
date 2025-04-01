@@ -17,6 +17,20 @@
         <span class="visually-hidden">Next</span>
     </button>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const carouselElement = document.getElementById('carouselBanner1');
+    const carousel = new bootstrap.Carousel(carouselElement, {
+        interval: 5000,  // 5 segundos
+        ride: 'carousel' // Hace que el carrusel se deslice automáticamente
+    });
+
+    // Iniciar el carrusel de forma automática
+    setInterval(function () {
+        carousel.next();  // Desliza al siguiente item cada 5 segundos
+    }, 5000);
+    });
+    </script>
     <!-- fin slider -->
 
     <!-- animacion -->

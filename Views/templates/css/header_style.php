@@ -259,7 +259,11 @@
     .caja {
         padding-top: 40px !important;
         padding-bottom: 90px !important;
+        display: flex;
+        justify-content: center; /* Centra los testimonios horizontalmente */
+        align-items: start; 
     }
+
 
     .degraded-line {
         width: 100%;
@@ -510,7 +514,7 @@
 
     /* Estilos generales de Botón flotante para WhatsApp */
     /*Estilos generales del boton whatsapp*/
-    .whatsapp-btn {
+.whatsapp-btn {
   position: fixed;
   bottom: 20px;
   right: 20px;
