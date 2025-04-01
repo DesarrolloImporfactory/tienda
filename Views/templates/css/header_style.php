@@ -413,15 +413,18 @@
         margin: auto;
     }
 
-    .owl-carousel .owl-nav button.owl-prev,
-    .owl-carousel .owl-nav button.owl-next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 25px;
-    }
-    /* Personalización de los botones de navegación */
-.owl-prev, .owl-next {
+
+    /* Estilos generales para el contenedor del carrusel */
+.testimonios .caja {
+    position: relative; /* Establecemos la posición relativa para los botones dentro de esta sección */
+}
+
+/* Los botones de navegación prev y next */
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next {
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    transform: translateY(-50%); /* Mantenerlos centrados verticalmente */
     background-color: rgba(0, 0, 0, 0.5) !important;
     color: white !important;
     border-radius: 50% !important;
@@ -432,22 +435,32 @@
     justify-content: center;
     transition: background-color 0.3s ease;
 }
+
+/* Estilo de hover para los botones */
 .owl-prev:hover, .owl-next:hover {
     background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-    .owl-carousel .owl-nav button.owl-prev {
-        right: 85%;
-    }
+/* Alineación de los botones */
+.owl-carousel .owl-nav button.owl-prev {
+    left: 10px; /* Ajusta la distancia desde el borde izquierdo */
+}
 
-    .owl-carousel .owl-nav button.owl-next {
-        left: 85%;
-    }
+.owl-carousel .owl-nav button.owl-next {
+    right: 10px; /* Ajusta la distancia desde el borde derecho */
+}
 
-    .owl-carousel .owl-nav button {
-        font-size: 10em;
-        color: #333;
-    }
+/* Para evitar que el contenido se sobreponga con los botones */
+.owl-carousel .owl-nav button {
+    font-size: 1.5em; /* Ajuste al tamaño del icono */
+}
+
+/* Estilos generales para el carrusel */
+.owl-carousel .owl-item {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra los items dentro del carrusel */
+}
 
     .card {
         
