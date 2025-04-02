@@ -1,17 +1,20 @@
-<footer class="pt-5 shadow border-top">
+<footer class="pt-5 shadow border-top bg-light">
     <div class="footer pb-4 border-bottom">
         <div class="container">
-            <div class="row w-100">
-                <div class="text-center col-md-3">
-                    <h5 class="text-dark mb-0" style="text-transform: capitalize;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
-                    <hr class="mx-auto my-2">
-                    <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="40px">
+        <div class="row w-100 text-center text-md-start d-flex justify-content-center align-items-start">
+                
+                <!-- Acerca de la tienda -->
+                <div class="col-md-3 text-center">
+                    <h5 class="text-dark mb-2 text-uppercase">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
+                    <hr class="mx-auto my-2 w-50">
+                    <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="50px">
                 </div>
-                <div class="col-md-1">
+                <!-- Espaciado entre columnas -->
+                <div class="col-md-1 d-none d-md-block"></div>
 
-                </div>
-                <div class="col-md-3 pe-md-4 mt-5 mt-md-0">
-                    <h5 class="text-center text-dark mb-0">Síguenos</h5> 
+
+                <div class="col-md-3 pe-md-4 mt-4 mt-md-0">
+                    <h5 class="text-dark mb-2 text-uppercase text-center">Síguenos</h5> 
                     <hr class="w-100 mx-auto my-2">
                     <div class="d-flex flex-row align-items-center gap-5 justify-content-center">
                         <a href="<?php echo FACEBOOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#1877F2';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
@@ -25,26 +28,32 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <!-- Espacio entre columnas -->
+                <div class="col-md-1 d-none d-md-block"></div>
 
-                </div>
-                <div class="col-md-3 mt-5 mt-md-0">
-                    <h5 class="mb-0 text-center text-dark text-nowrap">Contacto</h5>
-                    <hr class="w-100 mx-auto my-2">
-
-                    <p class="text-center text-dark" style="display: flex; align-items: center; justify-content: center;">
-                    <i class="fab fa-whatsapp fs-2 text-dark" style="margin-right: 8px;"></i> 
-                    <?php echo formatPhoneNumber(TELEFONO); ?>
+                <div class="col-md-3 mt-4 mt-md-0">
+                    <h5 class="text-dark mb-2 text-uppercase text-center">Contacto</h5>
+                    <hr class="w-50 mx-auto my-2">
+                    <p class="d-flex align-items-center justify-content-center text-dark">
+                        <i class="fab fa-whatsapp fs-2 me-2 text-success"></i> 
+                        <?php echo formatPhoneNumber(TELEFONO); ?>
                     </p>
-                    <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer py-4 copyright text-center">
-        <p style="font-size: 13px;" class="mb-0">&copy; 2025 Construye tu tienda online con IMPORSUIT S.A. | Todos los derechos reservados.</p>
+    <!-- Copyright -->
+    <div class="footer py-3 text-center text-white cp">
+        <p class="mb-0" style="font-size: 13px;">
+            &copy; 2025 Construye tu tienda online con <strong>IMPORSUIT S.A.</strong> | Todos los derechos reservados.
+        </p>
     </div>
 </footer>
+<style>
+    .cp{
+        background-color: <?php echo COLOR_BACKGROUND; ?>;
+    }
+</style>
 <!-- librerias adiconale -->
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
