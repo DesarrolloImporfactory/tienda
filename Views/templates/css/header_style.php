@@ -109,14 +109,14 @@
 
 /* Efecto al pasar el mouse después de hacer scroll */
 .navbar-custom.scrolled .nav-link:hover {
-    color: #171931; /* Mantiene el color oscuro */
-    background-color: rgba(23, 25, 49, 0.2); /* Fondo semitransparente oscuro */
+    color: <?php echo COLOR_BACKGROUND; ?>; /* Mantiene el color oscuro */
+    background-color: <?php echo COLOR_BACKGROUND; ?>, rgba(0, 0, 0, 0.2); /* Fondo semitransparente oscuro */
     box-shadow: 0px 4px 10px rgba(23, 25, 49, 0.3); /* Sombra oscura */
 }
 
 /* Estilos para la barra de navegación */
 .navbar-custom {
-    background: rgba(23, 25, 49, 0.8);
+    background: <?php echo COLOR_BACKGROUND; ?>, rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
 }
