@@ -416,6 +416,7 @@
     /* Estilos generales para el contenedor del carrusel */
     /* Asegura que el contenedor del carrusel tenga posición relativa */
 /* Asegura que el contenedor del carrusel tenga posición relativa */
+/* cambios en el owl-next y owl-prev del carousel */
 .testimonios {
     position: relative !important;
     display: flex !important;
@@ -476,37 +477,60 @@
         height: 35px !important;
     }
 }
-
+/* TESTIMONIOS */
 /* Asegura que los elementos dentro del carrusel estén centrados */
+/* Asegura que las cards se estiren y se alineen correctamente */
+/* Asegura que las cards se estiren correctamente */
 .owl-carousel .owl-item {
     display: flex !important;
-    align-items: center !important;
-    justify-content: center !important; /* Centra los items dentro del carrusel */
+    align-items: stretch !important; /* Mantiene la altura uniforme */
+    justify-content: center !important;
 }
 
-    .card {
-        
-        position: relative; /* Necesario para que el texto se posicione correctamente */
-        display: flex;
-        flex-direction: column;
-        height: 100%; /* Asegura que la card ocupe toda la altura disponible */
-    }
+/* Asegura que la card ocupe toda la altura disponible */
+.card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
 
-    .card h5 {
-        font-size: 1rem !important;
-        color: #000 !important;
-        
-    }
+/* Contenedor del texto: Ahora centrado */
+.card-body {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* Centra el contenido verticalmente */
+    align-items: center !important; /* Centra el contenido horizontalmente */
+    text-align: center !important; /* Asegura que el texto esté centrado */
+    padding: 0 !important;
+    margin: 0 !important;
+}
 
-    .card-text {
-        font-size: 0.9rem !important;
-        color: #6c757d !important;
-        margin-top: 0; /* Asegura que no tenga margen superior innecesario */
-    }
+/* Título de la card */
+.card h5 {
+    font-size: 1rem !important;
+    color: #000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
-    .text-muted.text-decoration-line-through {
-        font-size: 14px;
-    }
+/* Asegura que el texto esté centrado sin espacios adicionales */
+.card-text {
+    font-size: 0.9rem !important;
+    color: #6c757d !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ajusta cualquier otro texto dentro de la card */
+.text-muted.text-decoration-line-through {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
     .img-container {
     width: 100%;
@@ -529,12 +553,7 @@
 }
 
 
-.card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Mantiene el texto arriba */
-}
+
 
 
     .text-primary.fs-5.pe-2 {
