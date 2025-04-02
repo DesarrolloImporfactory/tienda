@@ -274,8 +274,7 @@
 
     /* Seccion de css añadido del anteiror sistema */
     .caja {
-        padding-top: 40px !important;
-        padding-bottom: 90px !important;
+        
         display: flex;
         justify-content: center; /* Centra los testimonios horizontalmente */
         align-items: start; 
@@ -415,51 +414,74 @@
 
 
     /* Estilos generales para el contenedor del carrusel */
-.testimonios .caja {
-    position: relative; /* Establecemos la posición relativa para los botones dentro de esta sección */
+    /* Asegura que el contenedor del carrusel tenga posición relativa */
+/* Asegura que el contenedor del carrusel tenga posición relativa */
+.testimonios {
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
 }
 
-/* Los botones de navegación prev y next */
+/* Asegura que el carrusel se ajuste bien */
+.owl-carousel {
+    position: relative !important;
+    width: 100% !important;
+}
+
+/* Asegura que los botones estén alineados correctamente */
+.owl-carousel .owl-nav {
+    position: absolute !important;
+    width: 100% !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    pointer-events: none !important; /* Evita que interfieran con el contenido */
+}
+
+/* Botones de navegación alineados a los lados */
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next {
-    position: absolute;
-    top: 50%; /* Centrado vertical */
-    transform: translateY(-50%); /* Mantenerlos centrados verticalmente */
+    pointer-events: all !important; /* Permite interacción */
     background-color: rgba(0, 0, 0, 0.5) !important;
     color: white !important;
     border-radius: 50% !important;
-    width: 40px !important;
-    height: 40px !important;
+    width: 50px !important;
+    height: 50px !important;
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background-color 0.3s ease !important;
+    z-index: 1000 !important; /* Asegura que estén sobre el contenido */
 }
 
-/* Estilo de hover para los botones */
+/* Ajuste de hover */
 .owl-prev:hover, .owl-next:hover {
     background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
-/* Alineación de los botones */
-.owl-carousel .owl-nav button.owl-prev {
-    left: 10px; /* Ajusta la distancia desde el borde izquierdo */
+/* Ajuste en pantallas pequeñas */
+@media (max-width: 768px) {
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+        width: 40px !important;
+        height: 40px !important;
+    }
 }
 
-.owl-carousel .owl-nav button.owl-next {
-    right: 10px; /* Ajusta la distancia desde el borde derecho */
+@media (max-width: 480px) {
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+        width: 35px !important;
+        height: 35px !important;
+    }
 }
 
-/* Para evitar que el contenido se sobreponga con los botones */
-.owl-carousel .owl-nav button {
-    font-size: 1.5em; /* Ajuste al tamaño del icono */
-}
-
-/* Estilos generales para el carrusel */
+/* Asegura que los elementos dentro del carrusel estén centrados */
 .owl-carousel .owl-item {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra los items dentro del carrusel */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; /* Centra los items dentro del carrusel */
 }
 
     .card {
