@@ -201,7 +201,7 @@
 
 /* Marquesina */
 .marquee {
-    
+
     display: flex;
     white-space: nowrap;
     animation: marqueeAnimation 30s linear infinite;
@@ -222,7 +222,7 @@
 .marquee-content::after {
     content: " • ";
     margin-left: 100px; /* Mayor separación entre el mensaje y el separador */
-    color: #fff;
+    color: ;<?php echo COLOR_TEXTO_CABECERA; ?>;
     font-weight: bold;
 }
 
