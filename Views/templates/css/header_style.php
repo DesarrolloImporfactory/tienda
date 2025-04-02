@@ -307,8 +307,16 @@
     height: 100%;
     z-index: 1;
 }
+/*
+.degraded-line::before {
+    left: 0;
+    background: linear-gradient(to right, #171931 0%, rgba(0, 0, 0, 0) 100%);
+}
 
-
+.degraded-line::after {
+    right: 0;
+    background: linear-gradient(to left, #171931 0%, rgba(0, 0, 0, 0) 100%);
+} */
 
     .category-container {
         display: flex;

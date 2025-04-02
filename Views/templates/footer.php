@@ -13,10 +13,16 @@
                 <div class="col-md-3 pe-md-4 mt-5 mt-md-0">
                     <h5 class="text-center text-dark mb-0">Síguenos</h5> 
                     <hr class="w-100 mx-auto my-2">
-                    <div class="d-flex flex-row d-flex align-items-center gap-5 d-flex justify-content-center">
-                        <a href="<?php echo FACEBOOK; ?>" target="_blank" class="text-dark fs-2 d-inline-flex align-items-center justify-content-center p-2 rounded-circle bg-light shadow-sm transition-hover"><i class="fab fa-facebook fs-2"></i></a>
-                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank" class="text-dark fs-2 d-inline-flex align-items-center justify-content-center p-2 rounded-circle bg-light shadow-sm transition-hover"><i class="fab fa-instagram fs-2"></i></a>
-                        <a href="<?php echo TIKTOK; ?>" target="_blank" class="text-dark fs-2 d-inline-flex align-items-center justify-content-center p-2 rounded-circle bg-light shadow-sm transition-hover"><i class="fab fa-tiktok fs-2"></i></a>
+                    <div class="d-flex flex-row align-items-center gap-5 justify-content-center">
+                        <a href="<?php echo FACEBOOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#1877F2';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                            <i class="fab fa-facebook fs-2"></i>
+                        </a>
+                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#E4405F';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                            <i class="fab fa-instagram fs-2"></i>
+                        </a>
+                        <a href="<?php echo TIKTOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#30D5C8';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                            <i class="fab fa-tiktok fs-2"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-1">
