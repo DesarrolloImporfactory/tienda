@@ -496,7 +496,7 @@
 /* Asegura que los elementos dentro del carrusel estén centrados */
 /* Asegura que las cards se estiren y se alineen correctamente */
 /* Asegura que las cards se estiren correctamente */
-.owl-carousel .owl-item {
+.owl-carousel .owl-item { 
     display: flex !important;
     align-items: stretch !important; /* Mantiene la altura uniforme */
     justify-content: center !important;
@@ -522,42 +522,7 @@
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important; /* Sombra más pronunciada */
 }
 
-/* Contenedor del texto centrado */
-.card-body {
-    flex-grow: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important; /* Centra el contenido verticalmente */
-    align-items: center !important; /* Centra el contenido horizontalmente */
-    text-align: center !important; /* Asegura que el texto esté centrado */
-    padding: 20px !important; /* Espaciado interno refinado */
-    margin: 0 !important;
-}
-
-/* Título de la card con más presencia */
-.card h5 {
-    font-size: 1.2rem !important;
-    color: #333 !important;
-    font-weight: 600 !important; /* Más presencia */
-    letter-spacing: 0.5px !important; /* Separación ligera */
-    margin-bottom: 10px !important;
-}
-
-/* Texto con mejor legibilidad */
-.card-text {
-    font-size: 1rem !important;
-    color: #555 !important;
-    line-height: 1.5 !important; /* Espaciado más cómodo */
-    max-width: 90% !important; /* Mantiene el texto en una buena proporción */
-}
-
-/* Ajusta cualquier otro texto dentro de la card */
-.text-muted.text-decoration-line-through {
-    font-size: 14px !important;
-    color: #888 !important;
-}
-
-/* Contenedor de la imagen con un diseño atractivo */
+/* Contenedor de la imagen */
 .img-container {
     width: 100%;
     height: 250px;
@@ -583,6 +548,42 @@
 
 .card:hover .img-container img {
     transform: scale(1.05) !important; /* Pequeño zoom en hover */
+}
+
+/* Contenedor del texto alineado arriba */
+.card-body {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; /* Alinea el contenido en la parte superior */
+    align-items: center !important; /* Mantiene el contenido centrado horizontalmente */
+    text-align: center !important;
+    padding: 20px !important;
+    margin: 0 !important;
+}
+
+/* Título de la card con más presencia */
+.card h5 {
+    font-size: 1.2rem !important;
+    color: #333 !important;
+    font-weight: 600 !important; /* Más presencia */
+    letter-spacing: 0.5px !important; /* Separación ligera */
+    margin-bottom: 10px !important;
+}
+
+/* Texto con mejor legibilidad */
+.card-text {
+    font-size: 1rem !important;
+    color: #555 !important;
+    line-height: 1.5 !important; /* Espaciado más cómodo */
+    max-width: 90% !important;
+    margin-top: 10px !important; /* Espacio entre la imagen y el texto */
+}
+
+/* Ajusta cualquier otro texto dentro de la card */
+.text-muted.text-decoration-line-through {
+    font-size: 14px !important;
+    color: #888 !important;
 }
 
 
