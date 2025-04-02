@@ -437,13 +437,14 @@
     transform: translateY(-50%) !important;
     display: flex !important;
     justify-content: space-between !important;
-    pointer-events: none !important; /* Evita que interfieran con el contenido */
+    align-items: center !important;
+    pointer-events: none !important;
 }
 
-/* Botones de navegación alineados a los lados */
+/* Ajuste dinámico de los botones según el tamaño del contenido */
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next {
-    pointer-events: all !important; /* Permite interacción */
+    pointer-events: all !important;
     background-color: rgba(0, 0, 0, 0.5) !important;
     color: white !important;
     border-radius: 50% !important;
@@ -452,29 +453,43 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    transition: background-color 0.3s ease !important;
-    z-index: 1000 !important; /* Asegura que estén sobre el contenido */
+    transition: background-color 0.3s ease, transform 0.3s ease !important;
+    z-index: 1000 !important;
+    position: absolute !important;
 }
 
-/* Ajuste de hover */
-.owl-prev:hover, .owl-next:hover {
+/* Posicionamiento dinámico */
+.owl-carousel .owl-nav button.owl-prev {
+    left: -60px !important;
+}
+
+.owl-carousel .owl-nav button.owl-next {
+    right: -60px !important;
+}
+
+/* Efecto de hover */
+.owl-carousel .owl-nav button.owl-prev:hover,
+.owl-carousel .owl-nav button.owl-next:hover {
     background-color: rgba(0, 0, 0, 0.8) !important;
+    transform: scale(1.1) !important;
 }
 
-/* Ajuste en pantallas pequeñas */
-@media (max-width: 768px) {
-    .owl-carousel .owl-nav button.owl-prev,
+/* Ajuste en pantallas medianas */
+@media (max-width: 1024px) {
+    .owl-carousel .owl-nav button.owl-prev {
+        left: -40px !important;
+    }
+    
     .owl-carousel .owl-nav button.owl-next {
-        width: 40px !important;
-        height: 40px !important;
+        right: -40px !important;
     }
 }
 
-@media (max-width: 480px) {
+/* Oculta los botones en pantallas pequeñas */
+@media (max-width: 768px) {
     .owl-carousel .owl-nav button.owl-prev,
     .owl-carousel .owl-nav button.owl-next {
-        width: 35px !important;
-        height: 35px !important;
+        display: none !important;
     }
 }
 /* TESTIMONIOS */
