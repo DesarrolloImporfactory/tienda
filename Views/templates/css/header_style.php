@@ -201,6 +201,7 @@
 
 /* Marquesina */
 .marquee {
+    
     display: flex;
     white-space: nowrap;
     animation: marqueeAnimation 30s linear infinite;
@@ -208,7 +209,7 @@
 
 /* Contenido dentro de la marquesina con mayor separación */
 .marquee-content {
-    color: <?php echo COLOR_BACKGROUND; ?>, #eaeaea;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?>;
     display: inline-block;
     text-align: center;
     padding-right: 100px; /* Aumenta la separación entre mensajes */
