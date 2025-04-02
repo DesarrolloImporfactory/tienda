@@ -495,9 +495,19 @@
     height: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
+    background: #ffffff !important; /* Fondo limpio */
+    border-radius: 12px !important; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-/* Contenedor del texto: Ahora centrado */
+.card:hover {
+    transform: translateY(-5px) !important; /* Efecto de elevación */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important; /* Sombra más pronunciada */
+}
+
+/* Contenedor del texto centrado */
 .card-body {
     flex-grow: 1 !important;
     display: flex !important;
@@ -505,34 +515,35 @@
     justify-content: center !important; /* Centra el contenido verticalmente */
     align-items: center !important; /* Centra el contenido horizontalmente */
     text-align: center !important; /* Asegura que el texto esté centrado */
-    padding: 0 !important;
+    padding: 20px !important; /* Espaciado interno refinado */
     margin: 0 !important;
 }
 
-/* Título de la card */
+/* Título de la card con más presencia */
 .card h5 {
-    font-size: 1rem !important;
-    color: #000 !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    font-size: 1.2rem !important;
+    color: #333 !important;
+    font-weight: 600 !important; /* Más presencia */
+    letter-spacing: 0.5px !important; /* Separación ligera */
+    margin-bottom: 10px !important;
 }
 
-/* Asegura que el texto esté centrado sin espacios adicionales */
+/* Texto con mejor legibilidad */
 .card-text {
-    font-size: 0.9rem !important;
-    color: #6c757d !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    font-size: 1rem !important;
+    color: #555 !important;
+    line-height: 1.5 !important; /* Espaciado más cómodo */
+    max-width: 90% !important; /* Mantiene el texto en una buena proporción */
 }
 
 /* Ajusta cualquier otro texto dentro de la card */
 .text-muted.text-decoration-line-through {
     font-size: 14px !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    color: #888 !important;
 }
 
-    .img-container {
+/* Contenedor de la imagen con un diseño atractivo */
+.img-container {
     width: 100%;
     height: 250px;
     display: flex;
@@ -540,16 +551,23 @@
     align-items: center;
     overflow: hidden;
     background: linear-gradient(35deg, #1C1F33, #D33E43); /* Degradado atractivo */
-    border-radius: 10px; /* Bordes redondeados */
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
 }
 
+/* Imagen con efecto visual mejorado */
 .img-container img {
     width: 100%;
     height: 100%;
     object-fit: contain; /* Evita recortar la imagen */
     background: rgba(255, 255, 255, 0.1); /* Sutil fondo detrás de la imagen */
-    backdrop-filter: blur(10px); /* Desenfoque de fondo */
-    padding: 10px; /* Espaciado interno para mejorar apariencia */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque más sutil */
+    padding: 10px; /* Espaciado interno */
+    transition: transform 0.3s ease !important;
+}
+
+.card:hover .img-container img {
+    transform: scale(1.05) !important; /* Pequeño zoom en hover */
 }
 
 
