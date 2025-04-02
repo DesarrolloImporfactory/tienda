@@ -208,6 +208,7 @@
 
 /* Contenido dentro de la marquesina con mayor separación */
 .marquee-content {
+    color: <?php echo COLOR_BACKGROUND; ?>, #eaeaea;
     display: inline-block;
     text-align: center;
     padding-right: 100px; /* Aumenta la separación entre mensajes */
