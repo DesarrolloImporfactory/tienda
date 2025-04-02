@@ -82,7 +82,7 @@
         </div>
     </div>
     <!-- fin animacion -->
-
+    <div class="degraded-line"></div>
     <!-- Testimonios -->
     <section class=" testimonios">
         <div class="container mx-auto" style="max-width: 1000px;">
