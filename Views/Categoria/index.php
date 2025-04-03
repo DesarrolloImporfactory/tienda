@@ -66,7 +66,7 @@
             <!-- Fin Modal -->
 
             <div class="left-column d-none d-md-block col-md-5">
-                <div class="filtro_productos caja pt-0">
+                <div class="filtro_productos caja d-block d-md-block pt-0">
                     <!-- Acordeón -->
                     <div class="accordion mb-3" id="accordionCategorias">
                         <!-- Este es el acordeón padre para la categoría principal -->

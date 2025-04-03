@@ -1,4 +1,15 @@
 <style>
+    @media (max-width: 768px) {
+    .filtro_productos {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #form-rango-precios-left {
+        display: block !important;
+        width: 100% !important;
+    }
+}
 
     .card {
         transition: transform 0.3s ease-in-out;
