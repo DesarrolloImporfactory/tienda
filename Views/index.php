@@ -210,7 +210,7 @@
                 $('#categories-container').owlCarousel({
                     loop: true,
                     margin: 20,
-                    dots: false,
+                    dots: true,
                     autoplay: true,
                     autoplayTimeout: 5000,
                     autoplayHoverPause: true,
@@ -243,7 +243,7 @@
         $("#productos-carousel").owlCarousel({
             loop: true,
             margin: 20,
-            dots: false,
+            dots: true,
             autoplay: true,
             autoplayTimeout: 5000,
             autoplayHoverPause: true,
@@ -452,7 +452,7 @@
         $("#testimonios-carousel").owlCarousel({
             loop: true,
             margin: 20,
-            dots: false,
+            dots: true,
             autoplay: true,
             autoplayTimeout: 5000,
             autoplayHoverPause: true,
