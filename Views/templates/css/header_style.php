@@ -7,12 +7,13 @@
 
     body {
         background-color: #f9f9f9;
-        
+        font-family: 'Montserrat';
+        font-weight: 400; /* Puedes cambiarlo a 100, 200, 300, 500, etc. */
     }
 
     section {
-        margin-top: 100px;
-        margin-bottom: 100px;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
     /* header */
