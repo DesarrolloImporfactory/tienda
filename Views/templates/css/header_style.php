@@ -24,6 +24,13 @@
         font-weight: var(--font-body-weight);
         font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
     }
+    .testi{
+        background-color: #f9f9f9;
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+    }
     .spanpan{
         font-family: var(--font-heading-family);
         font-style: var(--font-heading-style);
