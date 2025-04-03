@@ -496,7 +496,7 @@
         display: none !important;
     }
 }
-/* TESTIMONIOS */
+/* TESTIMONIOS/CARDS EN GENERAL */
 /* Asegura que los elementos dentro del carrusel estén centrados */
 /* Asegura que las cards se estiren y se alineen correctamente */
 /* Asegura que las cards se estiren correctamente */
@@ -505,9 +505,91 @@
     align-items: stretch !important; /* Mantiene la altura uniforme */
     justify-content: center !important;
 }
-
-/* Asegura que la card ocupe toda la altura disponible */
+/* Asegura que todas las cards tengan la misma altura y tamaño fijo */
 .card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 400px !important; /* Ajusta según el diseño */
+    width: 280px !important; /* Ajusta el tamaño fijo de la card */
+    padding: 0 !important;
+    margin: 0 10px !important; /* Agrega margen entre cards */
+    background: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Contenedor de la imagen con altura fija */
+.img-container {
+    width: 100% !important;
+    height: 180px !important; /* Mantiene una altura fija */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(35deg, #1C1F33, #D33E43);
+    border-top-left-radius: 12px !important;
+    border-top-right-radius: 12px !important;
+}
+
+.img-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s ease !important;
+}
+
+.card:hover .img-container img {
+    transform: scale(1.05) !important;
+}
+
+/* Contenido de la card con altura adaptable */
+.card-body {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 15px !important;
+    overflow: hidden !important;
+}
+
+/* Ajuste del título */
+.card h5 {
+    font-size: 1.1rem !important;
+    color: #333 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Ajuste del texto */
+.card-text {
+    font-size: 0.95rem !important;
+    color: #555 !important;
+    line-height: 1.4 !important;
+    max-width: 90% !important;
+    flex-grow: 1 !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important; /* Limita a 3 líneas */
+    -webkit-box-orient: vertical !important;
+    text-overflow: ellipsis !important;
+}
+/* CARDS DE LOS ICONOS */
+/* Asegura que la card ocupe toda la altura disponible */
+.card1 {
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
@@ -521,41 +603,19 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.card:hover {
+.card1:hover {
     transform: translateY(-5px) !important; /* Efecto de elevación */
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important; /* Sombra más pronunciada */
 }
 
-/* Contenedor de la imagen */
-.img-container {
-    width: 100%;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background: linear-gradient(35deg, #1C1F33, #D33E43); /* Degradado atractivo */
-    border-top-left-radius: 12px !important;
-    border-top-right-radius: 12px !important;
-}
 
-/* Imagen con efecto visual mejorado */
-.img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Evita recortar la imagen */
-    background: rgba(255, 255, 255, 0.1); /* Sutil fondo detrás de la imagen */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque más sutil */
-    padding: 10px; /* Espaciado interno */
-    transition: transform 0.3s ease !important;
-}
 
-.card:hover .img-container img {
+.card1:hover .img-container img {
     transform: scale(1.05) !important; /* Pequeño zoom en hover */
 }
 
 /* Contenedor del texto alineado arriba */
-.card-body {
+.card-body1 {
     flex-grow: 1 !important;
     display: flex !important;
     flex-direction: column !important;
@@ -567,7 +627,7 @@
 }
 
 /* Título de la card con más presencia */
-.card h5 {
+.card1 h5 {
     font-size: 1.2rem !important;
     color: #333 !important;
     font-weight: 600 !important; /* Más presencia */
@@ -576,7 +636,7 @@
 }
 
 /* Texto con mejor legibilidad */
-.card-text {
+.card-text1 {
     font-size: 1rem !important;
     color: #555 !important;
     line-height: 1.5 !important; /* Espaciado más cómodo */
