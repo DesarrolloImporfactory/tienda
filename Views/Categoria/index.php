@@ -355,14 +355,15 @@
             }
             const urlProducto = producto.funnelish === '1' && producto.funnelish_url
                 ? identificarProtocolo(producto.funnelish_url)
-                : `producto2?id=${producto.id_producto_tienda}`;
+                : `producto?id=${producto.id_producto_tienda}`;
             const productoHtml = `
-                    <div class="col-md-4 col-sm-6 col-12 mb-4 px-2">
+                    <div class="col-md-6 col-sm-6 col-12 mb-4 px-3">
                         <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                             <a href="${urlProducto}" class="category-link">
                                 <div class="img-container mx-auto d-flex w-100" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
                                     <img src="${image_path}" class="card-img-top primary-img w-100 p-4 rounded-2" alt="${producto.nombre_producto_tienda}" style="object-fit: cover;">
                                 </div>
+                                
                             </a>
                             <div class="card-body d-flex flex-column">
                                 <a href="${urlProducto}" style="text-decoration: none; color:black;">
