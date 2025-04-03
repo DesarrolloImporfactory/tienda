@@ -5,12 +5,41 @@
     margin: auto; /* Centrar el carrusel */
 }
 
+:root {
+    --font-body-family: Montserrat, sans-serif;
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-body-weight-bold: 700;
+    --font-heading-family: Montserrat, sans-serif;
+    --font-heading-style: normal;
+    --font-heading-weight: 700;
+    --font-body-scale: 1.0;
+    --font-heading-scale: 1.3;
+}
 
     body {
         background-color: #f9f9f9;
-        font-family: 'Montserrat' !important;
-        font-weight: 400; /* Puedes cambiarlo a 100, 200, 300, 500, etc. */
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
     }
+    h1, h2, h3 {
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(20px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+}
+    h5 {
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(20px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+    }
+strong, b {
+    font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+}
     /* ESPACIO ENTRE SECCIONES */
     section {
         margin-top: 50px;
