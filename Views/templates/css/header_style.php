@@ -4,7 +4,7 @@
     max-width: 600px; /* Ajusta según lo necesario */
     margin: auto; /* Centrar el carrusel */
 }
-
+ /*variables que se definieron para las fuentes */
 :root {
     --font-body-family: Montserrat, sans-serif;
     --font-body-style: normal;
@@ -16,7 +16,7 @@
     --font-body-scale: 1.0;
     --font-heading-scale: 1.3;
 }
-
+/*aplicacion de fuentes en varias etiquetas dependiendo de la sentencia */
     body {
         background-color: #f9f9f9;
         font-family: var(--font-body-family);
@@ -24,12 +24,43 @@
         font-weight: var(--font-body-weight);
         font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
     }
+    .spanpan{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(20px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+
+    }
+    .seccion h1{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(48px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+    }
+    .testimonios h1{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(48px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+    }
     h1, h2, h3 {
         font-family: var(--font-heading-family);
         font-style: var(--font-heading-style);
         font-weight: var(--font-heading-weight);
         font-size: calc(20px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
 }
+
+    div h5{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(15px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+
+    }
     h5 {
         font-family: var(--font-heading-family);
         font-style: var(--font-heading-style);
@@ -40,6 +71,9 @@
 strong, b {
     font-weight: var(--font-body-weight-bold); /* Texto en negrita */
 }
+
+/*FIN de aplicacion de fuentes en varias etiquetas dependiendo de la sentencia */
+
     /* ESPACIO ENTRE SECCIONES */
     section {
         margin-top: 50px;

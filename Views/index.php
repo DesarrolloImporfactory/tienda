@@ -35,7 +35,7 @@
 
     <!-- animacion -->
     <div class="marquee-container">
-        <div class="marquee">
+        <div class="spanpan marquee">
         <span class="marquee-content">🎉 ¡Aprovecha nuestras ofertas exclusivas! 🚀</span>
         <span class="marquee-content">🔥 Envío gratis en compras mayores a $50 💰</span>
         <span class="marquee-content">🌟 Nueva colección disponible ahora mismo 🎨</span>
@@ -45,7 +45,7 @@
     <!-- fin animacion -->
 
     <!-- categorias -->
-    <section class="container">
+    <section class="seccion container">
         <h1 class="text-center display-4 mb-4">Categorías</h1>
         <div class="caja ">
             <div class="owl-carousel owl-theme" id="categories-container">
@@ -56,7 +56,7 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <section class="container">
+    <section class="seccion container">
         <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
