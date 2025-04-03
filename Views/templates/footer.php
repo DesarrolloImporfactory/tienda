@@ -34,7 +34,7 @@
                 <div class="col-md-3 mt-4 mt-md-0">
                     <h5 class="text-dark mb-2 text-center">Contacto</h5>
                     <hr class="w-50 mx-auto my-2">
-                    <p class="d-flex align-items-center justify-content-center text-dark">
+                    <p class="testi d-flex align-items-center justify-content-center text-dark">
                         <i class="fab fa-whatsapp fs-2 me-2 text-success"></i> 
                         <?php echo formatPhoneNumber(TELEFONO); ?>
                     </p>

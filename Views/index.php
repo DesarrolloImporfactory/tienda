@@ -193,7 +193,7 @@
                     let imagePath = obtenerURLImagen(categoria.imagen, SERVERURL);
                     let categoriaHtml = `
                         <div class="item">
-                            <div class="category-container d-flex flex-column align-items-center">
+                            <div class="category-container d-flex flex-column align-items-center cat">
                                 <a href="categoria?id_cat=${categoria.id_linea}" class="category-link">
                                     <div class="category-image rounded-circle" style="background-image: url('${imagePath}');"></div>
                                 </a>
@@ -327,12 +327,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body card-body-proDes d-flex flex-column">
-                                    <p class="card-text flex-grow-1 mt-4 fs-6">
+                                    <p class="cat card-text flex-grow-1 mt-4 fs-6">
                                         <a href="${urlProducto}" style="text-decoration: none;" class="text-dark">
                                             <strong>${producto.nombre_producto_tienda}</strong>
                                         </a>
                                     </p>
-                                    <div class="product-footer mb-2">
+                                    <div class="cat product-footer mb-2">
                                         <div class="d-flex flex-row">
                                             <span class="texto_precio me-2 fs-5">
                                                 <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
@@ -344,7 +344,9 @@
                                             ` : ''}
                                         </div>
                                     </div>
+                                    <div class="cat">
                                     <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${urlProducto}">Comprar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -427,7 +429,7 @@
                                             <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
                                             <div class="text-end">
                                                 <h5 class="card-title card-title_icon">${texto}</h5>
-                                                <p class="card-text1 card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                                <p class="card-text1 card-text_icon" style="font-size: 12px;">${subtexto_icon}</p>
                                             </div>
                                         </div>
                                     </div>
