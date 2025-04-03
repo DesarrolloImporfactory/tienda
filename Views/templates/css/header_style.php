@@ -1,4 +1,5 @@
 <style>
+    
     #productos-carousel {
     max-width: 600px; /* Ajusta según lo necesario */
     margin: auto; /* Centrar el carrusel */
@@ -7,10 +8,10 @@
 
     body {
         background-color: #f9f9f9;
-        font-family: 'Montserrat';
+        font-family: 'Montserrat' !important;
         font-weight: 400; /* Puedes cambiarlo a 100, 200, 300, 500, etc. */
     }
-
+    /* ESPACIO ENTRE SECCIONES */
     section {
         margin-top: 50px;
         margin-bottom: 50px;
@@ -216,7 +217,7 @@
     padding-right: 100px; /* Aumenta la separación entre mensajes */
     font-size: 16px;
     font-weight: bold;
-    font-family: sans-serif;
+    
 }
 
 /* Separador entre mensajes */

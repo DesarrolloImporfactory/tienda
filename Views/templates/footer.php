@@ -5,7 +5,7 @@
                 
                 <!-- Acerca de la tienda -->
                 <div class="col-md-3 text-center">
-                    <h5 class="text-dark mb-2 text-uppercase">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
+                    <h5 class="text-dark mb-2">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
                     <hr class="mx-auto my-2 w-50">
                     <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="50px">
                 </div>
@@ -14,7 +14,7 @@
 
 
                 <div class="col-md-3 pe-md-4 mt-4 mt-md-0">
-                    <h5 class="text-dark mb-2 text-uppercase text-center">Síguenos</h5> 
+                    <h5 class="text-dark mb-2 text-center">Síguenos</h5> 
                     <hr class="w-100 mx-auto my-2">
                     <div class="d-flex flex-row align-items-center gap-5 justify-content-center">
                         <a href="<?php echo FACEBOOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#1877F2';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
@@ -32,7 +32,7 @@
                 <div class="col-md-1 d-none d-md-block"></div>
 
                 <div class="col-md-3 mt-4 mt-md-0">
-                    <h5 class="text-dark mb-2 text-uppercase text-center">Contacto</h5>
+                    <h5 class="text-dark mb-2 text-center">Contacto</h5>
                     <hr class="w-50 mx-auto my-2">
                     <p class="d-flex align-items-center justify-content-center text-dark">
                         <i class="fab fa-whatsapp fs-2 me-2 text-success"></i> 
