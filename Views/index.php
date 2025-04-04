@@ -101,6 +101,7 @@
     <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i>
         <span class="testi tooltip-text" id="tooltip">¿Tienes alguna duda? Escríbenos</span>
     </a>
+    <!-- tiempo de muestra de mensaje flotante Whatsapp -->
     <script>
   window.addEventListener('load', () => {
     const tooltip = document.querySelector('.tooltip-text');
