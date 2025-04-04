@@ -32,8 +32,8 @@
   .list-group-item.active img {
     opacity: 1;
     /* Esto hará que la miniatura seleccionada sea completamente opaca */
-    border: 2px solid grey;
-    /* Esto añadirá un borde gris alrededor de la miniatura seleccionada */
+    
+    
   }
 
   .list-group-item {
