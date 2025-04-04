@@ -102,18 +102,20 @@
         <span class="testi tooltip-text" id="tooltip">¿Tienes alguna duda? Escríbenos</span>
     </a>
     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const tooltip = document.querySelector(".tooltip-text");
+  window.addEventListener('load', () => {
+    const tooltip = document.querySelector('.tooltip-text');
 
-    // Muestra el tooltip al cargar la página
-    tooltip.style.visibility = "visible";
-    tooltip.style.opacity = "1";
+    // Espera 3 segundos, luego muestra el tooltip
+    setTimeout(() => {
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
 
-    // Lo oculta después de 5 segundos
-    setTimeout(function () {
-      tooltip.style.opacity = "0";
-      tooltip.style.visibility = "hidden";
-    }, 5000);
+      // Luego de 3 segundos más, lo oculta
+      setTimeout(() => {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+      }, 3000);
+    }, 3000);
   });
 </script>
 
