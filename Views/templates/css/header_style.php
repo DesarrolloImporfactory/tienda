@@ -890,7 +890,7 @@ strong, b {
   padding: 8px 12px;
   border-radius: 5px;
   position: absolute;
-  right: 120%; /* Lo mueve a la izquierda del botón */
+  right: 110%; /* Lo mueve a la izquierda del botón */
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
