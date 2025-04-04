@@ -364,18 +364,21 @@
         <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}">
       </div>
     </a>
-    <div class="card-body">
-      <a href="${urlProducto}" style="text-decoration: none; color:black;">
-        <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
-      </a>
-      <div class="product-footer mb-2">
-        ${texto_precioNormal}
-        <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
-      </div>
-      <a class="btn texto_boton mt-auto" href="${urlProducto}">
-        Comprar
-      </a>
+    <div class="card-body d-flex flex-column">
+  <a href="${urlProducto}" style="text-decoration: none; color:black;">
+    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
+  </a>
+
+  <div class="card-footer mt-auto">
+    <div class="product-footer mb-2">
+      ${texto_precioNormal}
+      <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
     </div>
+    <a class="btn texto_boton w-100" href="${urlProducto}">
+      Comprar
+    </a>
+  </div>
+</div>
   </div>
 
   <!-- Repite la card según lo necesites -->
