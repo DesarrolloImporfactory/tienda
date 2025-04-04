@@ -663,6 +663,8 @@ strong, b {
     -webkit-line-clamp: 3 !important; /* Limita a 3 líneas */
     -webkit-box-orient: vertical !important;
     text-overflow: ellipsis !important;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 /* CARDS DE LOS ICONOS */
 /* Asegura que la card ocupe toda la altura disponible */
@@ -719,6 +721,8 @@ strong, b {
     line-height: 1.5 !important; /* Espaciado más cómodo */
     max-width: 90% !important;
     margin-top: 10px !important; /* Espacio entre la imagen y el texto */
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 /* Ajusta cualquier otro texto dentro de la card */
@@ -825,7 +829,10 @@ strong, b {
     .text-decoration-none {
         text-decoration: none !important;
     }
-
+    .somb{
+        background: transparent !important;
+        box-shadow: none !important;
+    }
     .text-dark {
         color: #343a40 !important;
     }

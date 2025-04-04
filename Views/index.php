@@ -196,7 +196,7 @@
                     let imagePath = obtenerURLImagen(categoria.imagen, SERVERURL);
                     let categoriaHtml = `
                         <div class="item">
-                            <div class="category-container d-flex flex-column align-items-center cat">
+                            <div class="category-container d-flex flex-column align-items-center cat somb">
                                 <a href="categoria?id_cat=${categoria.id_linea}" class="category-link">
                                     <div class="category-image rounded-circle" style="background-image: url('${imagePath}');"></div>
                                 </a>
@@ -335,7 +335,7 @@
                                             <strong>${producto.nombre_producto_tienda}</strong>
                                         </a>
                                     </p>
-                                    <div class="cat product-footer mb-2">
+                                    <div class="cat product-footer mb-2 somb">
                                         <div class="d-flex flex-row">
                                             <span class="texto_precio me-2 fs-5">
                                                 <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
@@ -347,7 +347,7 @@
                                             ` : ''}
                                         </div>
                                     </div>
-                                    <div class="cat">
+                                    <div class="cat somb">
                                     <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${urlProducto}">Comprar</a>
                                     </div>
                                 </div>
