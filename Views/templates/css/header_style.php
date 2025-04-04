@@ -94,6 +94,15 @@
         font-size: calc(20px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
         font-weight: var(--font-body-weight-bold); /* Texto en negrita */
     }
+    div p a strong{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-body-spacing: var(--font-body-spacing);
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+
+    }
 strong, b {
     font-weight: var(--font-body-weight-bold); /* Texto en negrita */
 }
