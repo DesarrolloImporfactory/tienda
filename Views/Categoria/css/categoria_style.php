@@ -1,4 +1,46 @@
 <style>
+     /*variables que se definieron para las fuentes */
+:root {
+    --font-body-family: Montserrat, sans-serif;
+    --font-body-style: normal;
+    --font-body-weight: 400;
+    --font-body-weight-bold: 700;
+    --font-heading-family: Montserrat, sans-serif;
+    --font-heading-style: normal;
+    --font-heading-weight: 700;
+    --font-body-scale: 1.0;
+    --font-heading-scale: 1.3;
+
+    /* Agregando espaciado entre letras */
+    --font-body-spacing: 0.5px; /* Espaciado leve en el cuerpo del texto */
+    --font-heading-spacing: 1px; /* Espaciado mayor en los títulos */
+}
+main {
+        background-color: #f9f9f9;
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-body-spacing: var(--font-body-spacing);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+    }
+    div h1{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(48px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-heading-spacing: var(--font-heading-spacing);
+
+    }
+    div a h6{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-body-spacing: var(--font-body-spacing);
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+
+    }
     @media (max-width: 768px) {
     .filtro_productos {
         display: block !important;
