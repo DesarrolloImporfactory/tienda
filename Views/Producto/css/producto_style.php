@@ -1,4 +1,9 @@
 <style>
+  .stt {
+  font-style: italic;
+  font-size: 16px;
+  color: white;
+}
   .btn {
     display: flex;
     font-weight: 400;

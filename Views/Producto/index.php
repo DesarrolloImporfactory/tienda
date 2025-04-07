@@ -75,11 +75,11 @@ $id_producto = $_GET['id'];
             <img id="main-image" src="" class="img-fluid" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
           </div>
         </div>
-        <div class="d-flex col-12 mt-3">
-          <div class="w-100 d-flex gap-3 scroll-y-imagenes mx-auto" id="list-tab" role="tablist">
-            <!-- Miniaturas -->
-          </div>
-        </div>
+        <div class="d-flex justify-content-center col-12 mt-3">
+  <div class="d-flex gap-3 scroll-y-imagenes" id="list-tab" role="tablist">
+    <!-- Miniaturas -->
+  </div>
+</div>
       </div>
 
       <!-- Columna derecha: Info del producto -->
@@ -87,17 +87,17 @@ $id_producto = $_GET['id'];
         <div class="caja px-3 py-0 w-100 cajaProducto">
 
           <!-- Sección de precios -->
-          <div class="bg-light p-3 rounded mb-4 shadow-sm">
+          <div class="p-3 rounded mb-4">
             <div class="d-flex align-items-baseline gap-3 flex-wrap">
               <h2 class="text-primary fw-bold m-0" id="precio-especial">$99.99</h2>
               <span class="text-muted text-decoration-line-through fs-5" id="precio-normal">$129.99</span>
-              <span class="badge bg-success px-3 py-2" id="ahorra-container">Ahorras $30.00</span>
+              <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-2" id="ahorra">%50</i>
             </div>
           </div>
 
           <!-- Cantidad + botón -->
-          <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
-            <label for="cantidad_producto" class="form-label mb-0">Cantidad:</label>
+          <div class="d-flex align-items-center gap-3 mt-2 mb-4 flex-wrap">
+            <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
             <input type="number" id="cantidad_producto" class="form-control" value="1" min="1" style="width: 80px; border-radius: 0.3rem !important;">
             <a class="btn btn-primary texto_boton rounded" href="#" id="comprar-ahora">COMPRAR AHORA</a>
           </div>
