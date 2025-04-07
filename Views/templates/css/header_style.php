@@ -29,6 +29,22 @@
         font-body-spacing: var(--font-body-spacing);
         font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
     }
+    .nrml{
+        background-color: #f9f9f9;
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-body-spacing: var(--font-body-spacing);
+    }
+    .cattt{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(48px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-heading-spacing: var(--font-heading-spacing);
+    }
     .cat{
         background-color: #f9f9f9;
         font-family: var(--font-body-family);

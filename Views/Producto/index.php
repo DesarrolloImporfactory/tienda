@@ -61,7 +61,7 @@ $id_producto = $_GET['id'];
 
 <!-- Título centrado -->
 <div class="text-center mb-4 mt-4">
-  <h1 id="nombre-producto" class="product-title fw-bold"></h1>
+  <h1 id="nombre-producto" class="cattt product-title fw-bold"></h1>
 </div>
 
 <main style="background-color: rgb(255, 255, 255);">
@@ -99,7 +99,7 @@ $id_producto = $_GET['id'];
           <div class="d-flex align-items-center gap-3 mt-2 mb-4 flex-wrap">
             <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
             <input type="number" id="cantidad_producto" class="form-control" value="1" min="1" style="width: 80px; border-radius: 0.3rem !important;">
-            <a class="btn btn-primary texto_boton rounded" href="#" id="comprar-ahora">COMPRAR AHORA</a>
+            <a class="nrml btn btn-primary texto_boton rounded" href="#" id="comprar-ahora">COMPRAR AHORA</a>
           </div>
 
         </div>
@@ -456,8 +456,8 @@ $id_producto = $_GET['id'];
                                 ${ahorro}
                               </div>
                               <div class="custom-product-price">
-                                <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
-                                <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
+                                <span class="nrml old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
+                                <span class="spanpan new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
                               </div>
                             </div>`;
 
@@ -788,8 +788,8 @@ $id_producto = $_GET['id'];
       <div class="card-body1 card-body_icon d-flex flex-row justify-content-between align-items-center">
         <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
         <div class="text-end">
-          <h5 class="card-title card-title_icon">${texto}</h5>
-          <p class="card-text1 card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+          <h5 class=" spanpan card-title card-title_icon">${texto}</h5>
+          <p class="nrml card-text1 card-text_icon">${subtexto_icon}</p>
         </div>
       </div>
     </div>
