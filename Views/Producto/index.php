@@ -59,66 +59,89 @@ $id_producto = $_GET['id'];
 }
 </style>
 
-<main style="background-color: #f9f9f9;">
-    <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 6rem;" >
-        <div class="row w-100">
-            <div class="col-12 col-lg-6 mb-5">
-                <div class="row stickyImagen ">
-                   
-                    <div class="col-12">
-                        <!-- Área principal de visualización de imagen -->
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel"
-                                aria-labelledby="list-image1-list">
-                                <img id="main-image" src="" class="mx-auto" alt="Responsive image"
-                                    data-bs-toggle="modal" data-bs-target="#imagenModal">
-                            </div>
-                        </div>
+<!-- Título centrado -->
+<div class="text-center mb-4 mt-4">
+  <h1 id="nombre-producto" class="product-title fw-bold"></h1>
+</div>
 
-                    </div>
-                    <div class="d-flex col-12 mt-3"> 
-                        <div class="w-100 d-flex gap-3 scroll-y-imagenes mx-auto" id="list-tab" role="tablist">
-                            <!-- Imágenes dinámicas aquí -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-lg-6">
-                <div class="caja px-3 py-0 w-100 cajaProducto">
-                    <div class="product-title" id="nombre-producto"></div>
-                    <br>
-                    <div class="precios_producto align-items-center gap-3">
-                        <p class="display-6 mb-0">
-                            <strong id="precio-especial"></strong>
-                        </p>
-                        <div id="precio-normal-container">
-                            <p class="tachado fs-4 mb-0">
-                                <span id="precio-normal"></span>
-                            </p>
-                        </div>
-                        <div id="ahorra-container" class="text-white rounded p-1 px-3"
-                            style="background-color: #4464ec;">
-                            <p class="ahorra mb-0 d-flex align-items-center gap-3" style="font-size: 13px;">
-                                <i class="bx bxs-purchase-tag" style="color: white; font-size: 17px;"></i>
-                                <span id="ahorra"></span> 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="my-4"> 
-                        <label for="quantity" class="form-label">Cantidad</label>
-                        <input type="number" id="cantidad_producto" class="form-control"
-                            style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
-                    </div>
-                    <a class="jump-button btn btn-primary texto_boton rounded w-100" href="#" id="comprar-ahora">
-                        COMPRAR AHORA
-                    </a>
-                    <div id="landing">
-
-                    </div>
-                </div>
-            </div>
+<main style="background-color: rgb(255, 255, 255);">
+  <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 6rem;">
+    <div class="row w-100">
+      
+      <!-- Columna izquierda: Imagen -->
+      <div class="col-12 col-lg-6 mb-5 d-flex flex-column align-items-center">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
+            <img id="main-image" src="" class="img-fluid" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
+          </div>
         </div>
+        <div class="d-flex col-12 mt-3">
+          <div class="w-100 d-flex gap-3 scroll-y-imagenes mx-auto" id="list-tab" role="tablist">
+            <!-- Miniaturas -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Info del producto -->
+      <div class="col-12 col-lg-6">
+        <div class="caja px-3 py-0 w-100 cajaProducto">
+
+          <!-- Sección de precios -->
+          <div class="bg-light p-3 rounded mb-4 shadow-sm">
+            <div class="d-flex align-items-baseline gap-3 flex-wrap">
+              <h2 class="text-primary fw-bold m-0" id="precio-especial">$99.99</h2>
+              <span class="text-muted text-decoration-line-through fs-5" id="precio-normal">$129.99</span>
+              <span class="badge bg-success px-3 py-2" id="ahorra-container">Ahorras $30.00</span>
+            </div>
+          </div>
+
+          <!-- Cantidad + botón -->
+          <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+            <label for="cantidad_producto" class="form-label mb-0">Cantidad:</label>
+            <input type="number" id="cantidad_producto" class="form-control" value="1" min="1" style="width: 80px; border-radius: 0.3rem !important;">
+            <a class="btn btn-primary texto_boton rounded" href="#" id="comprar-ahora">COMPRAR AHORA</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Descripción debajo de los productos, arriba de los iconos -->
+    <div class="row w-100 mt-4">
+      <div class="col-12">
+        <div id="landing" class="bg-white p-3 rounded shadow-sm">
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- Iconos dinámicos -->
+    <section class="container mt-5">
+      <div class="row mx-auto w-100" id="iconos-container">
+        <!-- Iconos aquí -->
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal imagen -->
+  <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imagenModalLabel">Visualización de Imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="" id="imagenEnModal" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 
         
