@@ -120,7 +120,7 @@
                     <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
                 </form>
                 <!-- Botón flotante que se muestra solo en pantallas pequeñas -->
-                <div class="d-md-none ms-auto mb-3 position-fixed bottom-0 end-0 m-3" style="z-index: 1050;">
+                <div class="boton-flotante-filtro d-md-block d-lg-none ms-auto mb-3 position-fixed bottom-0 end-0 m-3" style="z-index: 1050;">
                     <button type="button" class="texto_boton btn btn-primary rounded-circle p-3 shadow" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
                         <i class='bx bxs-filter-alt text-white fs-4'></i>
                     </button>

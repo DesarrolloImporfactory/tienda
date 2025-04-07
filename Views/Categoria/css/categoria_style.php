@@ -52,6 +52,27 @@ main {
         width: 100% !important;
     }
 }
+/* BOTON FLOTANTE FILTRO (ARREGLO DEFORMIDAD) */
+.boton-flotante-filtro {
+  display: block !important; /* aseguramos que se vea en md y menores */
+}
+
+@media (min-width: 992px) {
+  .boton-flotante-filtro {
+    display: none !important; /* ocultamos en pantallas grandes */
+  }
+}
+
+/* Evita la deformación del botón */
+.boton-flotante-filtro button {
+  width: 60px !important;
+  height: 60px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+/* FIN BOTON FILTRO */
 
 /* Estilo imagen doble de producto*/
 .img-container {
