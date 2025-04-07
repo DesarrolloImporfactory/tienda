@@ -123,7 +123,7 @@ $id_producto = $_GET['id'];
 
         
         <section class="container" >
-            <div class="row mx-auto w-100 mt-lg-5 mt-2" id="iconos-container" >
+            <div class="row w-100 mt-lg-5 mt-2" id="iconos-container" >
                 <!-- Los iconos se cargarán aquí dinámicamente -->
             </div>
         </section>
@@ -761,12 +761,12 @@ $id_producto = $_GET['id'];
                     var iconoItem = `
                     <div class="col-12 col-lg-4 mb-3 ">
                         <a ${enlaceHTML}>
-                            <div class="card card_icon text-center">
-                                <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                            <div class="card1 card_icon text-center">
+                                <div class="card-body1 card-body_icon d-flex flex-row justify-content-between align-items-center" >
                                     <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
                                     <div class="text-end">
                                         <h5 class="card-title card-title_icon">${texto}</h5>
-                                        <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                        <p class="card-text1 card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
                                     </div>
                                 </div>
                             </div>
