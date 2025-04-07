@@ -69,7 +69,7 @@ $id_producto = $_GET['id'];
     <div class="row w-100">
       
       <!-- Columna izquierda: Imagen -->
-      <div class="col-12 col-lg-6 mb-5 d-flex flex-column align-items-center">
+      <div class="col-12 col-lg-6 mb-1 d-flex flex-column align-items-center">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
             <img id="main-image" src="" class="img-fluid" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
