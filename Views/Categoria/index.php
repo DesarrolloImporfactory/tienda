@@ -119,11 +119,10 @@
                     <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
                     <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
                 </form>
-                <!-- Botón que se muestra solo en pantallas pequeñas -->
-                <div class="d-md-none ms-auto mb-3">
-                    <button type="button" class="texto_boton btn" data-bs-toggle="modal"
-                        data-bs-target="#leftColumnModal">
-                        <i class='bx bxs-filter-alt text-white'></i> Filtro
+                <!-- Botón flotante que se muestra solo en pantallas pequeñas -->
+                <div class="d-md-none ms-auto mb-3 position-fixed bottom-0 end-0 m-3" style="z-index: 1050;">
+                    <button type="button" class="texto_boton btn btn-primary rounded-circle p-3 shadow" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
+                        <i class='bx bxs-filter-alt text-white fs-4'></i>
                     </button>
                 </div>
                 <div class="row" id="productosContainer">
