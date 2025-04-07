@@ -58,6 +58,28 @@ $id_producto = $_GET['id'];
     white-space: nowrap;
 }
 </style>
+<!-- ZOOM QUE SIGUE AL MOUSE SOBRE LA IMAGEN -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const image = document.getElementById("main-image");
+
+    image.addEventListener("mouseenter", () => {
+      image.classList.add("zoomed");
+    });
+
+    image.addEventListener("mousemove", (e) => {
+      const rect = image.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      image.style.transformOrigin = `${x}% ${y}%`;
+    });
+
+    image.addEventListener("mouseleave", () => {
+      image.classList.remove("zoomed");
+      image.style.transformOrigin = "center center";
+    });
+  });
+</script>
 
 <!-- Título centrado -->
 <div class="text-center mb-4 mt-4">
@@ -71,8 +93,8 @@ $id_producto = $_GET['id'];
       <!-- Columna izquierda: Imagen -->
       <div class="col-12 col-lg-6 mb-1 d-flex flex-column align-items-center">
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
-            <img id="main-image" src="" class="img-fluid" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
+          <div class="tab-pane fade show active d-flex img-zoom-container" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
+            <img id="main-image" src="" class="img-fluid zoom-on-hover" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
           </div>
         </div>
         <div class="d-flex justify-content-center col-12 mt-3">

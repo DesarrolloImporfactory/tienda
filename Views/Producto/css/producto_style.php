@@ -1,4 +1,30 @@
 <style>
+  /* ESTILOS DEL ZOOM APLICADO A LA IMAGEN PRINCIPAL */
+  .img-zoom-container {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.zoom-on-hover {
+  transition: transform 0.3s ease;
+  will-change: transform;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.zoom-on-hover.zoomed {
+  transform: scale(3);
+  cursor: zoom-in;
+}
+ /* FIN DE ESTILOS DEL ZOOM APLICADO A LA IMAGEN PRINCIPAL */
+
   .stt {
   font-style: italic;
   font-size: 16px;
