@@ -87,7 +87,7 @@ $id_producto = $_GET['id'];
 </div>
 
 <main style="background-color: rgb(255, 255, 255);">
-  <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 6rem;">
+  <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 1rem;">
     <div class="row w-100">
       
       <!-- Columna izquierda: Imagen -->
@@ -136,14 +136,6 @@ $id_producto = $_GET['id'];
       </div>
       
     </div>
-
-
-    <!-- Iconos dinámicos -->
-    <section class="container mt-5">
-      <div class="row" style="max-width= 1000px; margin: auto;" id="iconos-container">
-        <!-- Iconos aquí -->
-      </div>
-    </section>
   </div>
 
   <!-- Modal imagen -->
@@ -168,11 +160,11 @@ $id_producto = $_GET['id'];
 
 
         
-        <section class="container" >
-            <div class="row w-100 mt-lg-5 mt-2" id="iconos-container" >
-                <!-- Los iconos se cargarán aquí dinámicamente -->
-            </div>
-        </section>
+        <section class="container">
+        <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
+            <!-- Los iconos se cargarán aquí dinámicamente -->
+        </div>
+    </section>
 
     </div>
 
@@ -805,19 +797,19 @@ $id_producto = $_GET['id'];
                     var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
 
                     var iconoItem = `
-                    <div class="col-12 col-sm-6 col-md-4 mb-3 d-flex justify-content-center">
-  <a ${enlaceHTML} style="width: 100%; max-width: 320px;">
-    <div class="card1 card_icon text-center w-100">
-      <div class="card-body1 card-body_icon d-flex flex-row justify-content-between align-items-center">
-        <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
-        <div class="text-end">
-          <h5 class=" spanpan card-title card-title_icon">${texto}</h5>
-          <p class="nrml card-text1 card-text_icon">${subtexto_icon}</p>
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
+                    <div class="col-md-4 mb-3 icon_responsive">
+                                <a ${enlaceHTML}>
+                                    <div class="card1 card_icon text-center">
+                                        <div class="card-body1 card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                            <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
+                                            <div class="text-end">
+                                                <h5 class="card-title card-title_icon">${texto}</h5>
+                                                <p class="card-text1 card-text_icon" style="font-size: 12px;">${subtexto_icon}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
 
             `;
 
