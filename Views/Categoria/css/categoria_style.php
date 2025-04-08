@@ -27,7 +27,7 @@ main {
         font-family: var(--font-heading-family);
         font-style: var(--font-heading-style);
         font-weight: var(--font-heading-weight);
-        font-size: calc(48px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-size: calc(28px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
         font-weight: var(--font-body-weight-bold); /* Texto en negrita */
         font-heading-spacing: var(--font-heading-spacing);
 
