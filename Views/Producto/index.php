@@ -128,7 +128,7 @@ $id_producto = $_GET['id'];
         <!-- Descripción debajo de los productos, arriba de los iconos -->
         <div class="row w-100 mt-4">
       <div class="col-12">
-        <div id="landing" class="bg-white p-3 rounded shadow-sm">
+        <div id="landing" class="bg-white p-3 rounded">
           
         </div>
       </div>
