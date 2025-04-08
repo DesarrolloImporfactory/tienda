@@ -111,9 +111,9 @@ $id_producto = $_GET['id'];
           <!-- Sección de precios -->
           <div class="p-3 rounded mb-4">
             <div class="d-flex align-items-baseline gap-3 flex-wrap">
-              <h2 class="text-primary fw-bold m-0" id="precio-especial">$99.99</h2>
-              <span class="text-muted text-decoration-line-through fs-5" id="precio-normal">$129.99</span>
-              <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-2" id="ahorra">%50</i>
+              <h2 class="text-primary fw-bold m-0" id="precio-especial"></h2>
+              <span class="text-muted text-decoration-line-through fs-5" id="precio-normal"></span>
+              <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-2" id="ahorra"></i>
             </div>
           </div>
 
@@ -125,21 +125,22 @@ $id_producto = $_GET['id'];
           </div>
 
         </div>
-      </div>
-    </div>
-
-    <!-- Descripción debajo de los productos, arriba de los iconos -->
-    <div class="row w-100 mt-4">
+        <!-- Descripción debajo de los productos, arriba de los iconos -->
+        <div class="row w-100 mt-4">
       <div class="col-12">
         <div id="landing" class="bg-white p-3 rounded shadow-sm">
           
         </div>
       </div>
     </div>
+      </div>
+      
+    </div>
+
 
     <!-- Iconos dinámicos -->
     <section class="container mt-5">
-      <div class="row mx-auto w-100" id="iconos-container">
+      <div class="row" style="max-width= 1000px; margin: auto;" id="iconos-container">
         <!-- Iconos aquí -->
       </div>
     </section>

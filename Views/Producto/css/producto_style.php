@@ -127,11 +127,7 @@
     }
   }
 
-  .container {
-    margin: 0 auto;
-    display: flex;
-  }
-
+  
   .left-column {
     width: 50%;
     padding: 20px;
@@ -536,7 +532,19 @@
   }
 
   /* fin checkout */
+  #landing {
+  width: 100%;
+  margin: 0 auto; /* Centrado por defecto */
+}
 
+@media (min-width: 992px) {
+  #landing {
+    width: 100%;
+    margin-left: auto;
+    margin-right: 0;  /* Alineado a la derecha */
+    margin-top: 2rem !important; /* Ajuste hacia arriba en pantallas grandes */
+  }
+}
   #landing img {
     width: 100%;
     /* La imagen ocupará el 100% del ancho del contenedor */
