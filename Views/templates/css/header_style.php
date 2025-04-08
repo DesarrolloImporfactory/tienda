@@ -19,6 +19,11 @@
     /* Agregando espaciado entre letras */
     --font-body-spacing: 0.5px; /* Espaciado leve en el cuerpo del texto */
     --font-heading-spacing: 1px; /* Espaciado mayor en los títulos */
+    /* Alinea el contenido si es necesario */
+    --text-align-justified: justify;
+    --text-align-centered: center;
+    --text-align-left: left;
+    --text-align-right: right; 
 }
 /*aplicacion de fuentes en varias etiquetas dependiendo de la sentencia */
     body {
@@ -28,6 +33,41 @@
         font-weight: var(--font-body-weight);
         font-body-spacing: var(--font-body-spacing);
         font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+    }
+    #landing{
+        background-color: #f9f9f9;
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-body-spacing: var(--font-body-spacing);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        text-align: var(--text-align-justified);
+    }
+    #landing strong {
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-size: calc(30px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-heading-spacing: var(--font-heading-spacing);
+    }
+    #landing li strong{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(12px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-body-spacing: var(--font-body-spacing);
+        text-align: var(--text-align-justified);
+    }
+    #landing p strong{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(12px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-body-spacing: var(--font-body-spacing);
+        text-align: var(--text-align-justified);
     }
     .nrml{
         background-color: #f9f9f9;
