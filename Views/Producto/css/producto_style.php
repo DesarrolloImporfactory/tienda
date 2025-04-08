@@ -157,8 +157,12 @@
   }
 
   .product-title {
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 25px);
+    text-align: center;           /* Centra el texto */
+    max-width: 600px;             /* Limita el ancho máximo */
+    margin: 0 auto;               /* Centra el contenedor horizontalmente */
   }
+
 
   .color-options {
     list-style: none;
