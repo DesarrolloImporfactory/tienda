@@ -45,7 +45,7 @@
     <!-- Copyright -->
     <div class="footer py-3 text-center text-white cp spanpan">
         <p class="mb-0" style="font-size: 13px;">
-            &copy; 2025 Construye tu tienda online con <strong>IMPORSUIT S.A.</strong> | Todos los derechos reservados.
+            &copy; 2025 Hecho con mucho &#x2764; por <strong>IMPORSUIT S.A.</strong> | Todos los derechos reservados.
         </p>
     </div>
 </footer>
