@@ -121,10 +121,18 @@ $id_producto = $_GET['id'];
           <div class="d-flex align-items-center gap-3 mt-2 mb-4 flex-wrap">
             <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
             <input type="number" id="cantidad_producto" class="form-control" value="1" min="1" style="width: 80px; border-radius: 0.3rem !important;">
-            <a class="nrml btn btn-primary texto_boton rounded" href="#" id="comprar-ahora">COMPRAR AHORA</a>
+            
+            
           </div>
+          
 
         </div>
+        <div class="col-12 col-lg-6 w-100">
+          <div class="nrml promo-button mt-4 w-100" id="comprar-ahora">
+                <span class="main-text">PAGA CONTRA ENTREGA</span>
+                <span class="sub-text">Stock Limitado ¡Ordena Ahora!</span>
+            </div>
+            </div>
         <!-- Descripción debajo de los productos, arriba de los iconos -->
         <div class="row w-100 mt-4">
       <div class="col-12">

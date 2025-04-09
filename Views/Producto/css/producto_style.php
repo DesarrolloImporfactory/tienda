@@ -1,4 +1,58 @@
 <style>
+  .promo-button {
+      background: linear-gradient(to bottom, #e60000, #b30000);
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+      max-width: 90%;
+      width: 100%;
+      margin: 20px auto;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .promo-button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.35);
+    }
+
+    .promo-button .main-text {
+      display: block;
+      font-size: clamp(16px, 5vw, 24px);
+      text-transform: uppercase;
+    }
+
+    .promo-button .sub-text {
+      display: block;
+      margin-top: 6px;
+      font-size: clamp(12px, 3.5vw, 16px);
+      color: #ffdada;
+    }
+
+    .promo-button .sub-text::before {
+      content: "⚡ ";
+    }
+
+    .promo-button .sub-text::after {
+      content: " ⚡";
+    }
+
+    @media screen and (max-width: 480px) {
+      .promo-button {
+        font-size: 16px;
+        padding: 12px;
+      }
+
+      .promo-button .main-text {
+        font-size: 18px;
+      }
+
+      .promo-button .sub-text {
+        font-size: 13px;
+      }
+    }
   /* ESTILOS DEL ZOOM APLICADO A LA IMAGEN PRINCIPAL */
   .img-zoom-container {
   width: 100%;
@@ -461,80 +515,8 @@
     /* Cambia la opacidad para mostrar que están desactivados */
   }
 
-  /* animaciones del boton comprar */
-  /* Animación Bounce */
-  .bounce {
-    animation: bounce 1.2s ease-in-out infinite;
-  }
 
-  @keyframes bounce {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  /* Animación Shake */
-  .shake {
-    animation: shake 6s linear infinite;
-  }
-
-  @keyframes shake {
-
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-
-    10%,
-    20%,
-    30%,
-    40%,
-    50%,
-    60%,
-    70%,
-    80%,
-    90% {
-      transform: translateX(5px);
-    }
-
-    15%,
-    25%,
-    35%,
-    45%,
-    55%,
-    65%,
-    75%,
-    85%,
-    95% {
-      transform: translateX(-5px);
-    }
-  }
-
-  /* Animación Pulse */
-  .pulse {
-    animation: pulse 1s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-    }
-
-    50% {
-      transform: scale(1.1);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
-
+  
   /* fin checkout */
   #landing {
   width: 100%;
