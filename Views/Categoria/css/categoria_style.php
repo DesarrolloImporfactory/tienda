@@ -88,18 +88,33 @@ main {
         display: block !important;
     }
 
+    .btn {
+    display: inline-flex;
+    font-weight: 400;
+    color: #fff;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.375rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
-    .card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px; /* Espacio amplio entre todas las cards */
-  padding: 40px; /* Padding alrededor del grid */
-  box-sizing: border-box;
-  justify-content: center;
+/*  Evita que el botón cambie de tamaño al pasar el mouse */
+.btn:hover {
+    transform: none !important; /* Evita cualquier escala */
+    padding: 0.375rem 0.75rem !important; /* Mantiene el tamaño fijo */
+    border-width: 1px !important; /* Evita que el borde se agrande */
 }
 
 .card {
-  height: 100px;
+  height: 300px;
+  width: 300px;
   max-width: 100%;
   background: #fff;
   border-radius: 12px;
@@ -107,6 +122,7 @@ main {
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px !important;
 }
 
 .card:hover {
@@ -136,8 +152,9 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center !important;
-  flex-grow: 1;
-  padding: 16px;
+  flex-grow: 0;
+  padding: 16px; 
+  margin-bottom: auto;
 }
 
 .card-footer {
@@ -173,18 +190,18 @@ main {
     padding: 20px;
     gap: 30px;
   }
-}
-@media (max-width: 1024px) {
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px; /* Espacio amplio entre todas las cards */
-    padding: 40px; /* Padding alrededor del grid */
-    box-sizing: border-box;
-    justify-content: center;
-  }
+
 }
 
+.card-title {
+    margin-bottom: 0.75rem;
+    flex-grow: 0 !important; /* No permite que el texto se expanda */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita el texto a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Oculta el texto que se excede */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es más largo de lo permitido */
+}
 
 
 /* Ajuste del título */
@@ -201,7 +218,7 @@ main {
 
 /* Ajuste del texto */
 .card-text {
-    font-size: 0.95rem !important;
+    font-size: 0.85rem !important;
     color: #555 !important;
     line-height: 1.4 !important;
     max-width: 90% !important;
