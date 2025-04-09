@@ -1,22 +1,60 @@
 <style>
-  .promo-button {
-      background: linear-gradient(to bottom, #e60000, #b30000);
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-      max-width: 90%;
-      width: 100%;
-      margin: 20px auto;
-      padding: 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+@keyframes shakeXY {
+  0%   { transform: rotate(0deg); }
+  2%  { transform: translateX(-3px) rotate(-2deg); } /* Mover ligeramente a la izquierda */
+  4%  { transform: translateX(3px) rotate(2deg); }   /* Mover ligeramente a la derecha */
+  6%  { transform: translateX(-3px) rotate(-2deg); } /* Mover ligeramente a la izquierda */
+  8%  { transform: translateX(3px) rotate(2deg); }   /* Mover ligeramente a la derecha */
+  10% { transform: translateX(0) rotate(0deg); }                    /* Regresar a la posición original */
+  100% { transform: translateX(0) rotate(0deg); }                    /* Regresar a la posición original */
+}
 
-    .promo-button:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.35);
-    }
+
+/* Asigna la animación al botón */
+.promo-button {
+  animation-name: shakeXY;
+  animation: shakeXY 3s ease-in-out infinite;
+  animation-fill-mode: forwards;
+  
+  position: relative;
+  background: linear-gradient(to bottom, #ff3d3d, #c90000);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px 26px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 280px;
+  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+}
+.promo-button:hover {
+            background-color: #3e8e41;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .promo-button:active {
+            background-color: #3e8e41;
+            transform: scale(0.95);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .promo-button:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3e8e41, 0 0 0 4px rgba(62, 142, 65, 0.5);
+        }
+
+        .promo-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+   
 
     .promo-button .main-text {
       display: block;
