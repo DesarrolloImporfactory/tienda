@@ -82,9 +82,7 @@ $id_producto = $_GET['id'];
 </script>
 
 <!-- Título centrado -->
-<div class="text-center mb-4 mt-4">
-  <h1 id="nombre-producto" class="cattt product-title fw-bold"></h1>
-</div>
+
 
 <main style="background-color: rgb(255, 255, 255);">
   <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 1rem;">
@@ -106,6 +104,9 @@ $id_producto = $_GET['id'];
 
       <!-- Columna derecha: Info del producto -->
       <div class="col-12 col-lg-6">
+      <div class="text-center mb-4 mt-4">
+  <h1 id="nombre-producto" class="cattt product-title fw-bold"></h1>
+</div>
       <div class="caja px-3 py-0 w-100 cajaProducto">
   <!-- Sección de precios -->
   <div class="p-3 rounded mb-4">
@@ -135,14 +136,14 @@ $id_producto = $_GET['id'];
   </div>
 </div>
 
-        <div class="col-12 col-lg-6 w-100 ms-2">
-          <div class="nrml promo-button mt-4 w-100" id="comprar-ahora">
+        <div class="col-12 col-lg-6 w-100 ms-2 mt-0">
+          <div class="nrml promo-button w-100" id="comprar-ahora">
                 <span class="main-text">PAGA CONTRA ENTREGA</span>
                 <span class="sub-text">Stock Limitado ¡Ordena Ahora!</span>
             </div>
             </div>
         <!-- Descripción debajo de los productos, arriba de los iconos -->
-        <div class="row w-100 mt-1 ms-1 me-1">
+        <div class="row w-100 mt-0 ms-1 me-1">
       <div class="col-12">
         <div id="landing" class="bg-white p-3 rounded">
           
