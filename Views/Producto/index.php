@@ -111,7 +111,7 @@ $id_producto = $_GET['id'];
           <!-- Sección de precios -->
           <div class="p-3 rounded mb-4">
             <div class="d-flex align-items-baseline gap-3 flex-wrap">
-              <h2 class="text-primary fw-bold m-0" id="precio-especial"></h2>
+              <h2 class="fw-bold m-0" id="precio-especial"></h2>
               <span class="text-muted text-decoration-line-through fs-5" id="precio-normal"></span>
               <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-2" id="ahorra"></i>
             </div>
