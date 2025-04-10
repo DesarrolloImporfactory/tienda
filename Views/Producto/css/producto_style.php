@@ -27,7 +27,7 @@
   font-weight: bold;
   text-align: center;
   border-radius: 12px;
-  padding: 20px 26px;
+  padding: 14px 26px;
   cursor: pointer;
   overflow: hidden;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -63,14 +63,14 @@
 
     .promo-button .main-text {
       display: block;
-      font-size: clamp(16px, 5vw, 24px);
+      font-size: clamp(14px, 5vw, 20px);
       text-transform: uppercase;
     }
 
     .promo-button .sub-text {
       display: block;
-      margin-top: 6px;
-      font-size: clamp(12px, 3.5vw, 16px);
+      margin-top: 4px;
+      font-size: clamp(10px, 3.5vw, 14px);
       color: #ffdada;
     }
 

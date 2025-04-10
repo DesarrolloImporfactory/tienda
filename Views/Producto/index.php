@@ -128,14 +128,14 @@ $id_producto = $_GET['id'];
           
 
         </div>
-        <div class="col-12 col-lg-6 w-100">
+        <div class="col-12 col-lg-6 w-100 ms-2">
           <div class="nrml promo-button mt-4 w-100" id="comprar-ahora">
                 <span class="main-text">PAGA CONTRA ENTREGA</span>
                 <span class="sub-text">Stock Limitado ¡Ordena Ahora!</span>
             </div>
             </div>
         <!-- Descripción debajo de los productos, arriba de los iconos -->
-        <div class="row w-100 mt-4">
+        <div class="row w-100 mt-1 ms-1 me-1">
       <div class="col-12">
         <div id="landing" class="bg-white p-3 rounded">
           
