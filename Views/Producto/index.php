@@ -106,28 +106,35 @@ $id_producto = $_GET['id'];
 
       <!-- Columna derecha: Info del producto -->
       <div class="col-12 col-lg-6">
-        <div class="caja px-3 py-0 w-100 cajaProducto">
+      <div class="caja px-3 py-0 w-100 cajaProducto">
+  <!-- Sección de precios -->
+  <div class="p-3 rounded mb-4">
+    <div class="d-flex align-items-center gap-3 flex-wrap">
+      <h2 class="fw-bold m-0" id="precio-especial"></h2>
 
-          <!-- Sección de precios -->
-          <div class="p-3 rounded mb-4">
-            <div class="d-flex align-items-baseline gap-3 flex-wrap">
-              <h2 class="fw-bold m-0" id="precio-especial"></h2>
-              
-              <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-2" id="ahorra"></i>
-            </div>
-            <span class="text-center text-muted text-decoration-line-through px-4 fs-5" id="precio-normal"></span>
-          </div>
+      <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-1 d-flex align-items-center" id="ahorra">
+        ¡Ahorra!
+      </i>
+    </div>
 
-          <!-- Cantidad + botón -->
-          <div class="d-flex align-items-center gap-3 mt-2 mb-4 flex-wrap">
-            <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
-            <input type="number" id="cantidad_producto" class="form-control" value="1" min="1" style="width: 80px; border-radius: 0.3rem !important;">
-            
-            
-          </div>
-          
+    <span class="text-center text-muted text-decoration-line-through px-4 fs-5" id="precio-normal"></span>
 
-        </div>
+    <!-- Cantidad SOLO visible en pantallas md y grandes -->
+    <div class="d-none d-md-flex align-items-center gap-3 mt-3 ms-4 flex-wrap">
+      <label for="cantidad_producto_desktop" class="form-label mt-1 mb-0">Cantidad:</label>
+      <input type="number" id="cantidad_producto_desktop" class="form-control" value="1" min="1"
+        style="width: 80px; border-radius: 0.3rem !important;">
+    </div>
+  </div>
+
+  <!-- Cantidad SOLO visible en pantallas pequeñas -->
+  <div class="d-flex d-md-none align-items-center gap-3 mt-2 mb-4 flex-wrap">
+    <label for="cantidad_producto_mobile" class="form-label mt-1 mb-0">Cantidad:</label>
+    <input type="number" id="cantidad_producto_mobile" class="form-control" value="1" min="1"
+      style="width: 80px; border-radius: 0.3rem !important;">
+  </div>
+</div>
+
         <div class="col-12 col-lg-6 w-100 ms-2">
           <div class="nrml promo-button mt-4 w-100" id="comprar-ahora">
                 <span class="main-text">PAGA CONTRA ENTREGA</span>
