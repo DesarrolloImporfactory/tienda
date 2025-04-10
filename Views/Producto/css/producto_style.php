@@ -1,4 +1,9 @@
 <style>
+
+.text-muted.text-decoration-line-through {
+    font-size: 18px !important;
+    color: #888 !important;
+}
 @keyframes shakeXY {
   0%   { transform: rotate(0deg); }
   2%  { transform: translateX(-3px) rotate(-2deg); } /* Mover ligeramente a la izquierda */

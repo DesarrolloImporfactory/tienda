@@ -115,7 +115,7 @@ $id_producto = $_GET['id'];
               
               <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-2" id="ahorra"></i>
             </div>
-            <span class="text-center text-muted text-decoration-line-through fs-5" id="precio-normal"></span>
+            <span class="text-center text-muted text-decoration-line-through px-4 fs-5" id="precio-normal"></span>
           </div>
 
           <!-- Cantidad + botón -->
