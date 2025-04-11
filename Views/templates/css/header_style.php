@@ -443,7 +443,7 @@ strong, b {
 .degraded-line {
     width: 100%;
     height: 2px;
-    background: radial-gradient(circle, #171931 30%, transparent 90%);
+    background: radial-gradient(circle, <?php echo COLOR_BACKGROUND; ?>  30%, transparent 90%);
     transition: transform 0.4s ease-in-out, background 0.4s ease-in-out;
     transform-origin: center center; /* Establece el centro como punto de zoom */
 }
