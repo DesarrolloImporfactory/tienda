@@ -590,9 +590,10 @@ strong, b {
 /* Asegura que los botones estén alineados correctamente */
 .owl-carousel .owl-nav {
     position: absolute !important;
-    width: 100% !important;
+    width: 100vw !important;
+    left: 50%;
     top: 50% !important;
-    transform: translateY(-50%) !important;
+    transform: translateX(-50%) translateY(-50%) !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
@@ -603,8 +604,10 @@ strong, b {
 .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next {
     pointer-events: all !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    color: white !important;
+    background-color: transparent !important;
+    color: <?php echo COLOR_BACKGROUND; ?> !important;
+    border: none !important;
+    box-shadow: none !important;
     border-radius: 50% !important;
     width: 50px !important;
     height: 50px !important;
@@ -618,17 +621,17 @@ strong, b {
 
 /* Posicionamiento dinámico */
 .owl-carousel .owl-nav button.owl-prev {
-    left: -60px !important;
+    left: 0 !important;
 }
 
 .owl-carousel .owl-nav button.owl-next {
-    right: -60px !important;
+    right: 0 !important;
 }
 
 /* Efecto de hover */
 .owl-carousel .owl-nav button.owl-prev:hover,
 .owl-carousel .owl-nav button.owl-next:hover {
-    background-color: rgba(0, 0, 0, 0.8) !important;
+    
     transform: scale(1.1) !important;
 }
 
