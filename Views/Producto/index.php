@@ -122,16 +122,16 @@ $id_producto = $_GET['id'];
 
     <!-- Cantidad SOLO visible en pantallas md y grandes -->
     <div class="d-none d-md-flex align-items-center gap-3 mt-3 ms-4 flex-wrap">
-      <label for="cantidad_producto_desktop" class="form-label mt-1 mb-0">Cantidad:</label>
-      <input type="number" id="cantidad_producto_desktop" class="form-control" value="1" min="1"
+      <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
+      <input type="number" id="cantidad_producto" class="form-control" value="1" min="1"
         style="width: 80px; border-radius: 0.3rem !important;">
     </div>
   </div>
 
   <!-- Cantidad SOLO visible en pantallas pequeñas -->
   <div class="d-flex d-md-none align-items-center gap-3 mt-2 mb-4 flex-wrap">
-    <label for="cantidad_producto_mobile" class="form-label mt-1 mb-0">Cantidad:</label>
-    <input type="number" id="cantidad_producto_mobile" class="form-control" value="1" min="1"
+    <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
+    <input type="number" id="cantidad_producto" class="form-control" value="1" min="1"
       style="width: 80px; border-radius: 0.3rem !important;">
   </div>
 </div>
