@@ -1,4 +1,24 @@
 <style>
+#comprar-ahora {
+  position: fixed;
+  bottom: 20px; /* Ajusta la distancia desde abajo */
+  left: 20px;   /* Espacio desde el lado izquierdo */
+  right: 20px;  /* Espacio desde el lado derecho */
+  z-index: 9999; /* Asegura que esté por encima de otros elementos */
+  max-width: 400px; /* Limita el ancho máximo */
+  margin: 0 auto;   /* Centrado si hay espacio */
+}
+
+/* Centrado total en móviles */
+@media (max-width: 768px) {
+  #comprar-ahora {
+    left: 20px;
+    right: 20px;
+    transform: translateX(-50%);
+    width: calc(100% - 40px); /* Deja 20px de espacio a cada lado */
+    max-width: 90%;
+  }
+}
 
 .text-muted.text-decoration-line-through {
     font-size: 18px !important;
