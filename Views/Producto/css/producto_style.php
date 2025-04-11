@@ -1,4 +1,14 @@
 <style>
+  /* Se añade espacio en titulo del producto (solo moviles) */
+  @media (max-width: 768px) {
+  #nombre-producto {
+    margin-left: 30px;
+    margin-right: auto;
+    text-align: center;
+    max-width: 90%;
+  }
+}
+/* Hace el boton comprar flotante */
 #comprar-ahora {
   position: fixed;
   bottom: 20px; /* Ajusta la distancia desde abajo */
@@ -9,7 +19,7 @@
   margin: 0 auto;   /* Centrado si hay espacio */
 }
 
-/* Centrado total en móviles */
+/* Centrado total boton flotante comprar en móviles */
 @media (max-width: 768px) {
   #comprar-ahora {
     left: 20px;
@@ -24,6 +34,7 @@
     font-size: 18px !important;
     color: #888 !important;
 }
+/* Inicio de animacion boton comprar */
 @keyframes shakeXY {
   0%   { transform: rotate(0deg); }
   2%  { transform: translateX(-3px) rotate(-2deg); } /* Mover ligeramente a la izquierda */
@@ -35,7 +46,7 @@
 }
 
 
-/* Asigna la animación al botón */
+/* Boton comprar */
 .promo-button {
   animation-name: shakeXY;
   animation: shakeXY 3s ease-in-out infinite;
@@ -116,6 +127,8 @@
         font-size: 13px;
       }
     }
+    /* Fin de animacion boton comprar */
+    
   /* ESTILOS DEL ZOOM APLICADO A LA IMAGEN PRINCIPAL */
   .img-zoom-container {
   width: 100%;
