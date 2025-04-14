@@ -151,6 +151,7 @@ $id_producto = $_GET['id'];
       </div>
     </div>
       </div>
+      <!-- animacion de carro de entrega -->
       <div class="loop-wrapper">
         <div class="mountain"></div>
         <div class="hill"></div>
@@ -158,6 +159,7 @@ $id_producto = $_GET['id'];
         <div class="truck"></div>
         <div class="wheels"></div>
         </div>
+        <!-- fin de animacion de carro de entrega -->
     </div>
   </div>
 

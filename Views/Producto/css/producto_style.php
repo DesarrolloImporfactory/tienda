@@ -1,4 +1,5 @@
 <style>
+  /* animacion de carro de entrega */
   .loop-wrapper {
   margin: 0 auto;
   position: relative;
@@ -116,6 +117,8 @@
     transform: translateX(-2000px);
   }
 }
+/* fin de animacion de carro de entrega */
+
   /* Se añade espacio en titulo del producto (solo moviles) */
   @media (max-width: 768px) {
   #nombre-producto {
