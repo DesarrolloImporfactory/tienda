@@ -682,6 +682,20 @@ strong, b {
     transform: translateY(-5px) !important;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important;
 }
+.card:hover .ahorro {
+  display: none !important;
+}
+.card:hover .ahorro-container {
+  display: none !important;
+  opacity: 0;
+}
+.img-container:hover .ahorro {
+  display: none !important;
+}
+.ahorro-container{
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
 
 /* Contenedor de la imagen con altura fija */
 .img-container {
