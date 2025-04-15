@@ -81,6 +81,27 @@ $id_producto = $_GET['id'];
   });
 </script>
 
+<!-- hace que el boton de compra sea flotante al hacer scroll -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const promoBtn = document.querySelector('.promo-button');
+
+  window.addEventListener('scroll', function () {
+    const scrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 768;
+
+    // Valor de scroll diferente según el dispositivo
+    const scrollThreshold = isMobile ? 800 : 400;
+
+    if (scrollY > scrollThreshold) {
+      promoBtn.classList.add('floating');
+    } else {
+      promoBtn.classList.remove('floating');
+    }
+  });
+});
+</script>
+
 <!-- Título centrado -->
 
 
@@ -140,6 +161,7 @@ $id_producto = $_GET['id'];
           <div class="nrml promo-button w-100" id="comprar-ahora">
                 <span class="main-text">PAGA CONTRA ENTREGA</span>
                 <span class="sub-text">Stock Limitado ¡Ordena Ahora!</span>
+                <i class="bx bx-cart cart-icon"></i>
             </div>
             </div>
         <!-- Descripción debajo de los productos, arriba de los iconos -->

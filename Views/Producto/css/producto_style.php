@@ -134,16 +134,7 @@
     max-width: 90%;
   }
 }
-/* Hace el boton comprar flotante */
-#comprar-ahora {
-  position: fixed;
-  bottom: 20px; /* Ajusta la distancia desde abajo */
-  left: 20px;   /* Espacio desde el lado izquierdo */
-  right: 20px;  /* Espacio desde el lado derecho */
-  z-index: 9999; /* Asegura que esté por encima de otros elementos */
-  max-width: 400px; /* Limita el ancho máximo */
-  margin: 0 auto;   /* Centrado si hay espacio */
-}
+
 
 /* Centrado total boton flotante comprar en móviles */
 @media (max-width: 768px) {
@@ -192,6 +183,78 @@
   transition: background-color 0.3s, transform 0.3s;
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   display: inline-block;
+}
+@media screen and (max-width: 768px){
+  .promo-button{
+    position: relative !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    
+  }
+}
+.promo-button.floating{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 50px;
+  max-height: 50px;
+  margin: 0 auto;
+  z-index: 9999;
+  padding: 0;
+  min-width: unset;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  font-size: 0; /* oculta texto sin quitarlo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.promo-button .cart-icon{
+  display: none;
+  font-size: 30px;
+  color: white;
+}
+.promo-button.floating .main-text,
+.promo-button.floating .sub-text{
+  display: none;
+}
+.promo-button.floating .cart-icon{
+  display: inline-block;
+  
+}
+@media screen and (max-width: 768px) {
+  .promo-button.floating {
+    position: fixed !important;
+    width: 50px !important;
+    height: 50px !important;
+    right: 15px !important;
+    bottom: 15px !important;
+    padding: 0 !important;
+    margin-right: 10px !important;
+    border-radius: 8px !important;
+    background: #c90000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+    z-index: 9999 !important;
+  }
+
+  .promo-button.floating .main-text,
+  .promo-button.floating .sub-text {
+    display: none !important; /* Oculta los textos */
+  }
+
+  .promo-button.floating .cart-icon {
+    font-size: 24px !important;
+    color: white !important;
+    display: block !important;
+  }
 }
 .promo-button:hover {
             background-color: #3e8e41;
