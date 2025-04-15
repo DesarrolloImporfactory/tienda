@@ -10,6 +10,12 @@
   border-bottom: 3px solid #fff;
   color: #fff;
 }
+@media  (max-width:768px) {
+  .loop-wrapper{
+    width: 400px;
+    margin: 10px;
+  }
+}
 .mountain {
   position: absolute;
   right: -900px;
