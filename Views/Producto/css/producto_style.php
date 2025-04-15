@@ -231,33 +231,40 @@
 }
 /* boton flotante de comprar en dispositivos moviles */
 @media screen and (max-width: 768px) {
-  .promo-button.floating {
-    position: fixed !important;
-    width: 50px !important;
-    height: 50px !important;
-    right: 15px !important;
-    bottom: 15px !important;
-    padding: 0 !important;
-    margin-right: 10px !important;
-    border-radius: 8px !important;
-    background: #c90000 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
-    z-index: 9999 !important;
-  }
-
-  .promo-button.floating .main-text,
-  .promo-button.floating .sub-text {
-    display: none !important; /* Oculta los textos */
-  }
-
-  .promo-button.floating .cart-icon {
-    font-size: 24px !important;
-    color: white !important;
-    display: block !important;
-  }
+    .promo-button.floating{
+      position: fixed !important;
+      bottom: 10px !important;
+      left: 10px !important;
+      right: 10px !important;
+      width: auto !important;
+      max-width: none !important;
+      height: auto !important;
+      padding: 12px 20px !important;
+      border-radius: 12px !important;
+      background: #c90000 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+      z-index: 9999 !important;
+      font-size: inherit !important;
+    }
+    .promo-button.floating .cart-icon{
+      display: none !important;
+    }
+    .promo-button.floating .main-text,
+    .promo-button.floating .sub-text{
+      display: block !important;
+      text-align: center !important;
+    }
+    .promo-button.floating .main-text{
+      font-size: clamp(16px,5vw,20px);
+    }
+    .promo-button.floating .sub-text{
+      font-size: clamp(12px,4vw,14px);
+      color: #ffdada;
+      margin-top: 2px;
+    }
 }
 /* animacion de boton comprar */
 .promo-button:hover {
