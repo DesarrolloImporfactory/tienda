@@ -621,11 +621,11 @@ strong, b {
 
 /* Posicionamiento dinámico */
 .owl-carousel .owl-nav button.owl-prev {
-    left: 0 !important;
+    left: 60px !important;
 }
 
 .owl-carousel .owl-nav button.owl-next {
-    right: 0 !important;
+    right: 60px !important;
 }
 
 /* Efecto de hover */
