@@ -184,6 +184,7 @@
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   display: inline-block;
 }
+/* boton de comprar en dispositivos moviles */
 @media screen and (max-width: 768px){
   .promo-button{
     position: relative !important;
@@ -194,6 +195,7 @@
     
   }
 }
+/* boton de comprar flotante */
 .promo-button.floating{
   position: fixed;
   bottom: 20px;
@@ -227,6 +229,7 @@
   display: inline-block;
   
 }
+/* boton flotante de comprar en dispositivos moviles */
 @media screen and (max-width: 768px) {
   .promo-button.floating {
     position: fixed !important;
@@ -256,6 +259,7 @@
     display: block !important;
   }
 }
+/* animacion de boton comprar */
 .promo-button:hover {
             background-color: #3e8e41;
             transform: scale(1.05);
