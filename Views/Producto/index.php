@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         </div>
     </div>
-    <div id="floatingMessage">¡Compra ya!</div>
+    
 </main>
 
 <script>
