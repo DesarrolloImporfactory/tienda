@@ -663,20 +663,7 @@
                             <!-- Fin Comentario -->
                         </div>
 
-                        <div class="card p-3 mb-3"
-                            style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;"
-                            id="seccion_oferta">
-                            <div class="d-flex justify-content-start align-items-center">
-                                <input type="checkbox" id="Seleccion_oferta" class="me-2"
-                                    onchange="toggleSeleccion_oferta(this)">
-                                <input type="hidden" id="id_producto_oferta" name="id_producto_oferta">
-                                <input type="hidden" id="oferta_selected" name="oferta_selected" value="0">
-                                <label for="Seleccion_oferta" class="m-0">
-                                    <strong><span style="font-weight:bold;" id="nombre_oferta"></span></strong> por solo
-                                    <strong><span id="precio_oferta"></span></strong>
-                                </label>
-                            </div>
-                        </div>
+                        
 
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
