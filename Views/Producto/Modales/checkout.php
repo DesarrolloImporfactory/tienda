@@ -467,7 +467,7 @@
         formData.append("precio_producto", $('#precio_productoTmp').val());
         formData.append("nombre", $('#txt_nombresApellidosPreview').val());
         formData.append("telefono", $('#txt_telefonoPreview').val());
-        formData.append("provincia", $('#provinica').val());
+        formData.append("provincia", $('#provincia').val());
         formData.append("ciudad", $('#ciudad_entrega').val());
         formData.append("calle_principal", $('#txt_calle_principalPreview').val());
         formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());
