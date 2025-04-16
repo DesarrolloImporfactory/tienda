@@ -368,17 +368,22 @@
     <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
   </a>
 
-  <div class="card-footer mt-auto">
-    <div class="product-footer mb-2">
-      ${texto_precioNormal}
-      <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
+  <!-- Precio más arriba -->
+  <div class="product-footer price-flip mt-2 mb-2">
+    ${texto_precioNormal}
+    <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
+  </div>
+
+  <!-- Solo el botón en el card-footer -->
+  <div class="card-footer">
+    <div class="buy-button-footer">
+      <a class="btn texto_boton w-100" href="${urlProducto}">
+        Comprar
+      </a>
     </div>
-    <a class="btn texto_boton w-100" href="${urlProducto}">
-      Comprar
-    </a>
   </div>
 </div>
-  </div>
+
 
   <!-- Repite la card según lo necesites -->
 </div>

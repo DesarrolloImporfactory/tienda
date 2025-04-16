@@ -113,7 +113,7 @@ main {
 }
 
 .card {
-  height: 300px;
+  height: 250px;
   width: 300px;
   max-width: 100%;
   background: #fff;
@@ -129,7 +129,49 @@ main {
   transform: translateY(-5px);
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
 }
+.price-flip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* Espacio entre los dos precios */
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
 
+.price-flip .text-muted,
+.price-flip .text-price {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  white-space: nowrap;
+  font-size: 1.2rem;
+}
+
+/* Precio original (tachado) */
+.price-flip .text-muted {
+  color: #999 !important;
+  text-decoration: line-through !important;
+  opacity: 1;
+}
+
+/* Precio especial */
+.price-flip .text-price {
+  color: #FF5722 !important;
+  font-weight: bold !important;
+  opacity: 0.85;
+  transform: scale(1);
+}
+
+/* Al hacer hover en la card, se aplica animación */
+.card:hover .price-flip .text-muted {
+  opacity: 0.3;
+  transform: scale(0.95);
+}
+
+.card:hover .price-flip .text-price {
+  opacity: 1;
+  transform: scale(1.1);
+}
 .img-container {
   height: 180px;
   overflow: hidden;
@@ -162,7 +204,7 @@ main {
   box-shadow: none !important;
   border-top: none !important;
   padding: 0 !important;
-  margin-top: auto;
+  
   display: flex;
   flex-direction: column;
   align-items: center !important;
@@ -175,12 +217,15 @@ main {
   align-items: center !important;
   margin-bottom: 8px;
 }
-
-.text-price {
-  font-weight: bold;
-  display: block;
-  margin-top: 4px;
+.buy-button-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: center !important;
 }
+
 
 
 /* Responsive para pantallas pequeñas */
@@ -201,6 +246,8 @@ main {
     -webkit-box-orient: vertical;
     overflow: hidden; /* Oculta el texto que se excede */
     text-overflow: ellipsis; /* Muestra "..." si el texto es más largo de lo permitido */
+    min-height: 2.8em; /* Reserva espacio para 2 lineas aproximadamente */
+    line-height: 1.4em; /* Asegura un interlineado consistente */
 }
 
 
@@ -229,10 +276,7 @@ main {
     -webkit-box-orient: vertical !important;
     text-overflow: ellipsis !important;
 }
-    .text-muted {
-        text-decoration: line-through;
-        /* Efecto tachado para el precio anterior */
-    }
+   
 
    
 
