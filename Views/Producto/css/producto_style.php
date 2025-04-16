@@ -190,7 +190,7 @@
     position: relative !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    left: 0 !important;
+    left: 15px !important;
     right: 0 !important;
     
   }
@@ -216,6 +216,7 @@
   justify-content: center;
   
 }
+
 .promo-button .cart-icon{
   display: none;
   font-size: 30px;

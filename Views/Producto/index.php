@@ -81,26 +81,92 @@ $id_producto = $_GET['id'];
   });
 </script>
 
-<!-- hace que el boton de compra sea flotante al hacer scroll -->
+<!-- hace que el boton de compra sea flotante al hacer scroll y tambien esta el mensaje flotante -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", function () {
   const promoBtn = document.querySelector('.promo-button');
+  let hasShownMessage = false;
 
   window.addEventListener('scroll', function () {
     const scrollY = window.scrollY;
     const isMobile = window.innerWidth <= 768;
-
-    // Valor de scroll diferente según el dispositivo
     const scrollThreshold = isMobile ? 800 : 400;
 
     if (scrollY > scrollThreshold) {
       promoBtn.classList.add('floating');
+
+      if (!hasShownMessage) {
+        hasShownMessage = true;
+
+        // Crear el mensaje flotante
+        const msg = document.createElement('div');
+        msg.classList.add('floating-msg');
+        msg.textContent = '¡Compra ya!';
+
+        // Obtener posición del botón
+        const btnRect = promoBtn.getBoundingClientRect();
+
+        // Estilos del mensaje (centrado verticalmente con el botón)
+        Object.assign(msg.style, {
+          position: 'fixed',
+          top: `${btnRect.top + btnRect.height / 2}px`,
+          right: `${window.innerWidth - btnRect.left + 10}px`,
+          backgroundColor: '#000000',
+          color: 'white',
+          padding: '8px 14px',
+          borderRadius: '6px',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+          opacity: '0',
+          pointerEvents: 'none',
+          transition: 'opacity 0.5s ease',
+          zIndex: '9999',
+          transform: 'translateY(-50%)',
+          whiteSpace: 'nowrap'
+        });
+
+        // Flecha
+        const arrow = document.createElement('div');
+        Object.assign(arrow.style, {
+          position: 'absolute',
+          top: '50%',
+          left: '100%',
+          transform: 'translateY(-50%)',
+          width: '0',
+          height: '0',
+          borderTop: '8px solid transparent',
+          borderBottom: '8px solid transparent',
+          borderLeft: '10px solid #000000'
+        });
+
+        msg.appendChild(arrow);
+        document.body.appendChild(msg);
+
+        // Mostrar después de 1 segundo
+        setTimeout(() => {
+          msg.style.opacity = '1';
+        }, 1000);
+
+        // Ocultar después de 3 segundos
+        setTimeout(() => {
+          msg.style.opacity = '0';
+          setTimeout(() => {
+            msg.remove();
+          }, 500);
+        }, 4000);
+      }
+
     } else {
       promoBtn.classList.remove('floating');
     }
   });
 });
+
+
 </script>
+
+
 
 <!-- Título centrado -->
 
@@ -229,6 +295,7 @@ $id_producto = $_GET['id'];
             </div>
         </div>
     </div>
+    <div id="floatingMessage">¡Compra ya!</div>
 </main>
 
 <script>
