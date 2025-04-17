@@ -893,7 +893,7 @@
 
             if (!nombre) camposVacios.push('#txt_nombresApellidosPreview');
             if (!telefono) camposVacios.push('#txt_telefonoPreview');
-            if (!provincia) camposVacios.push('#provinica');
+            if (!provincia) camposVacios.push('#provincia');
             if (!ciudad) camposVacios.push('#ciudad_entrega');
             if (!calle_principal) camposVacios.push('#txt_calle_principalPreview');
             if (!calle_secundaria) camposVacios.push('#txt_calle_secundariaPreview');
