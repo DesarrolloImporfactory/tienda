@@ -942,17 +942,17 @@ strong, b {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .boton-estable{
-    min-width: 220px;
-    padding: 12px 24px;
-    height: auto;
-    display: inline-block;
-    box-sizing: border-box;
+    min-width: 220px !important;
+    padding: 12px 24px !important;
+    height: auto !important;
+    display: inline-block !important;
+    box-sizing: border-box !important;
 }
 /* evita que el boton cambie de tamaño al hacer hover */
 .boton-estable:hover{
-    padding: 12px 24px;
-    min-width: 220px;
-    transform: none; /*si quieres que no crezca ni con transform */
+    padding: 12px 24px !important;
+    min-width: 220px !important;
+    transform: none !important; /*si quieres que no crezca ni con transform */
 }
 
     .carousel-item {
