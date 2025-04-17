@@ -615,13 +615,13 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="productos_carrito-item">
               <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
               <div class="productos_carrito-info">
-                <a href="#">${product.nombre_producto}</a>
+                <a class="link-no-style" href="#">${product.nombre_producto}</a>
                 <p>
-                  <button class="btn btn-sm btn-outline-secondary cantidad_decremento" data-product-id="${product.id_tmp}">
+                  <button class="btn btn-sm btn-outline-secondary cantidad_decremento btn-cantidad" data-product-id="${product.id_tmp}">
                     -
                   </button>
                   <span class="cantidad_producto" data-product-id="${product.id_tmp}">${product.cantidad_tmp}</span>
-                  <button class="btn btn-sm btn-outline-secondary cantidad_incremento" data-product-id="${product.id_tmp}">
+                  <button class="btn btn-sm btn-outline-secondary cantidad_incremento btn-cantidad" data-product-id="${product.id_tmp}">
                     +
                   </button>
                 </p>
@@ -630,7 +630,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="productos_carrito-precio">
                 <span>$${productPrice.toFixed(2)}</span>
               </div>
-              <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
+              <button class="btn btn-danger btn-sm productos_checkout_remove btn-eliminar" data-product-id="${product.id_tmp}">
                 <i class="fas fa-times"></i>
               </button>
             </div>`;

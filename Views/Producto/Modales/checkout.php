@@ -199,6 +199,7 @@
             transform: scale(1);
         }
     }
+
 </style>
 
 
@@ -287,7 +288,7 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <select class="form-control" id="provinica" name="provinica">
+                                <select class="form-control" id="provincia" name="provincia">
                                     <option value="">Provincia *</option>
                                 </select>
                             </div>
@@ -315,7 +316,7 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
+                                <button class="btn btn-dark boton-estable" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>

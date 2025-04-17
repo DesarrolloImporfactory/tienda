@@ -754,10 +754,9 @@
   }
 
   .form-group .input-group .form-control {
-    border: 1px solid #ced4da;
+    border: 2px solid #000000;
     /* Ajusta al color de borde deseado */
-    border-left: none;
-    /* Remueve el borde izquierdo donde se unen el ícono y el input */
+    
     border-radius: 0 0.25rem 0.25rem 0;
     /* Ajusta el radio del borde */
     padding-left: 10px;

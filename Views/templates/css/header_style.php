@@ -872,6 +872,88 @@ strong, b {
     padding: 0.375rem 0.75rem !important; /* Mantiene el tamaño fijo */
     border-width: 1px !important; /* Evita que el borde se agrande */
 }
+.btn-cantidad{
+    background-color: #f8f9fa !important;
+    border: 1px solid #6c757d !important;
+    color: #000 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    box-shadow: none !important;
+    transition: none !important; /* evita animacion */
+}
+.btn-cantidad:hover{
+    background-color: #e2e6ea !important;
+    border: 1px solid #6c757d !important;
+    color: #000 !important;
+    width: 32px !important; /* evita agrandamiento */
+    height: 32px !important;
+    padding: 0 !important;
+    font-size: 18px;
+}
+.btn-eliminar{
+    background-color: #dc3545 !important;
+    color: #fff !important;
+    width: 32px;
+    height: 32px;
+    padding: 0 !important;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none !important;
+    transition: none !important;
+}
+.btn-eliminar:hover{
+    background-color: #bb2d3b !important;
+    color: #fff !important;
+    width: 32px;
+    height: 32px;
+}
+.link-no-style{
+    color: inherit !important;
+    text-decoration: none !important;
+    cursor: pointer; /* opcional, si no quieres que se vea como link */
+}
+.link-no-style:hover{
+    color:inherit !important;
+    text-decoration: none !important;
+}
+.btn-buy-check{
+    background-color: #ff0000 !important;
+    color: white !important;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    display: inline-block;
+    text-align: center;
+    min-width: 200px;
+    transition: none !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.boton-estable{
+    min-width: 220px;
+    padding: 12px 24px;
+    height: auto;
+    display: inline-block;
+    box-sizing: border-box;
+}
+/* evita que el boton cambie de tamaño al hacer hover */
+.boton-estable:hover{
+    padding: 12px 24px;
+    min-width: 220px;
+    transform: none; /*si quieres que no crezca ni con transform */
+}
 
     .carousel-item {
         min-height: 300px;

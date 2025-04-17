@@ -1,4 +1,7 @@
 <style>
+    .iconbckgrnd{
+        background-color:rgba(119, 97, 97, 0.38);
+    }
     .productos_carrito-item {
         display: flex;
         justify-content: space-between;
@@ -450,6 +453,8 @@
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
                     </div>
+                    
+                    </div>
                     <div class="custom-card-footer">
                         <div class="custom-summary">
                             <div>Subtotal</div>
@@ -468,7 +473,6 @@
                             <div>Total</div>
                             <div class="total-price"><span id="productos_carritoTotal"></span></div>
                         </div>
-                    </div>
                 </div>
 
                 <form class="form-horizontal" id="formulario">
@@ -480,7 +484,7 @@
                     <input type="hidden" id="total_principal" name="total_principal">
 
                     <div id="gracias" class="modal-content border-0">
-                        <div id="previewContainer" class="">
+                        <div id="previewContainer">
                             <div id="resultados" class="modal-body" style="padding: 5px">
                             </div>
 
@@ -573,7 +577,7 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class="iconbckgrnd input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
                                         name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
@@ -585,7 +589,7 @@
                             <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
                                         name="txt_telefonoPreview" placeholder="Teléfono">
@@ -597,7 +601,7 @@
                             <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
                                         name="txt_calle_principalPreview" placeholder="">
@@ -609,7 +613,7 @@
                             <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
                                         name="txt_calle_secundariaPreview" placeholder="">
@@ -622,7 +626,7 @@
                                 <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
                                     Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
                                         name="txt_barrio_referenciaPreview" placeholder="">
@@ -654,8 +658,8 @@
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
-                                            class='bx fs-5 m-0 bx-messa fs-5ge-dots'></i></span>
+                                    <span style="border: 2px solid #c2c2c2; padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
+                                            class='fs-5 m-0 bx bx-message fs-5-dots'></i></span>
                                     <input type="text" class="form-control" id="txt_comentarioPreview"
                                         name="txt_comentarioPreview" placeholder="">
                                 </div>
@@ -668,7 +672,7 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button"
+                                <button class="btn btn-dark btn_comprar boton-estable" id="textoBtn_comprarPreview" type="button"
                                     onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
