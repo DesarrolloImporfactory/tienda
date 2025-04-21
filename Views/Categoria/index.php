@@ -360,7 +360,7 @@
   <div class="card">
     <a href="${urlProducto}" class="category-link">
       <div class="img-container">
-        <img src="${image_path}" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}">
+        <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}">
       </div>
     </a>
     <div class="card-body d-flex flex-column">
