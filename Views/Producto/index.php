@@ -170,27 +170,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const boton = document.getElementById("comprar-ahora");
     const footer = document.querySelector("footer");
 
+    let ultimaPosicionScroll = window.scrollY;
+
     function ajustarBotonFlotante() {
       if (!boton.classList.contains('floating')) return;
 
       const botonRect = boton.getBoundingClientRect();
       const footerRect = footer.getBoundingClientRect();
-
-      // Detectamos si el botón se está acercando a la parte inferior del footer
       const ventanaAltura = window.innerHeight;
-      const distanciaAlFinalDelFooter = footerRect.bottom - ventanaAltura;
 
-      if (botonRect.bottom > footerRect.bottom - 10) {
+      const seAcercaAlFinalDelFooter = botonRect.bottom > footerRect.bottom - 10;
+      const scrollActual = window.scrollY;
+
+      // Detecta si se acerca al final del footer
+      if (seAcercaAlFinalDelFooter) {
         boton.classList.add("subido");
-      } else {
+      } else if (scrollActual < ultimaPosicionScroll) {
+        // Scroll hacia arriba
         boton.classList.remove("subido");
       }
+
+      ultimaPosicionScroll = scrollActual;
     }
 
     window.addEventListener("scroll", ajustarBotonFlotante);
     window.addEventListener("resize", ajustarBotonFlotante);
   });
 </script>
+
 
 
 

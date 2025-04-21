@@ -272,6 +272,9 @@
     bottom: 450px !important; /* Altura para subir el botón cuando esté muy cerca del final del footer */
     transition: bottom 0.3s ease-in-out;
   }
+  .promo-button.floating {
+    transition: bottom 0.3s ease-in-out !important;
+  }
 }
 
 /* animacion de boton comprar */
