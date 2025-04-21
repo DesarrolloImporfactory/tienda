@@ -450,6 +450,16 @@
             padding-left: 0px;
         }
     }
+    /* Estilo para que el texto no se descuadre en moviles */
+    @media screen and (max-width: 768px) {
+        #checkout_carritoModal .modal-header h4,
+        #checkout_carritoModal .modal-header #texto_tituloPreview{
+            text-align: center !important;
+            line-height: 1.3 !important;
+            letter-spacing: normal !important;
+            word-spacing: normal !important;
+        }
+    }
 </style>
 
 
