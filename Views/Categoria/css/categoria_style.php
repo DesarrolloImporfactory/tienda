@@ -16,7 +16,7 @@
     --font-heading-spacing: 1px; /* Espaciado mayor en los títulos */
 }
 main {
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         font-family: var(--font-body-family);
         font-style: var(--font-body-style);
         font-weight: var(--font-body-weight);
