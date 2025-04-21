@@ -698,6 +698,7 @@ strong, b {
 .ahorro-container{
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
+    z-index: 999;
 }
 
 /* Contenedor de la imagen con altura fija */
