@@ -1,4 +1,21 @@
 <style>
+    .tit{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(12px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-body-spacing: var(--font-body-spacing);
+        text-align: var(--text-align-justified);
+    }
+    .txtnormal{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-body-spacing: var(--font-body-spacing);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        text-align: var(--text-align-justified);
+    }
     .iconbckgrnd{
         background-color:rgba(119, 97, 97, 0.38);
     }
@@ -7,7 +24,7 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         border-bottom: 1px solid #ddd;
     }
@@ -85,7 +102,7 @@
         padding: 15px;
         max-width: 350px;
         margin: auto;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         /* Cambia la fuente */
         font-weight: 400;
         /* Fuente estándar */
@@ -436,7 +453,7 @@
 </style>
 
 
-<div id="checkout_carritoModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="checkout_carritoModal" class="modal fade txtnormal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
