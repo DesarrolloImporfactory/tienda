@@ -510,7 +510,7 @@
                         var testimonioItem = `
 
                                 <div class="card p-3 border-0">
-                                    <img src="${image_path}" class="card-img-top rounded-circle img_card_testimonio mx-auto mb-4" alt="...">
+                                    <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top rounded-circle img_card_testimonio mx-auto mb-4" alt="...">
                                     <div class="card-body p-0 card_body_testimonios text-center">
                                         <h5 class="card-title">${nombre_testimonio}</h5>
                                         <p class="testi card-text">${texto_testimonio}</p>
