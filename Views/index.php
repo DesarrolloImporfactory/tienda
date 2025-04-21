@@ -326,7 +326,7 @@
                                      ` : ''}
 
                                     <a href="${urlProducto}">
-                                        <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name">
+                                        <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top mx-auto d-block" alt="Product Name">
                                     </a>
                                 </div>
                                 <div class="card-body card-body-proDes d-flex flex-column">
