@@ -267,6 +267,13 @@
       margin-top: 2px;
     }
 }
+@media screen and (max-width: 768px) {
+  .promo-button.floating.subido {
+    bottom: 450px !important; /* Altura para subir el botón cuando esté muy cerca del final del footer */
+    transition: bottom 0.3s ease-in-out;
+  }
+}
+
 /* animacion de boton comprar */
 .promo-button:hover {
             background-color: #3e8e41;
