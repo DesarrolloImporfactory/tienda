@@ -159,6 +159,9 @@
         font-weight: var(--font-body-weight-bold); /* Texto en negrita */
 
     }
+    .chcktittle{
+        font-weight: var(--font-body-weight-bold);
+    }
 strong, b {
     font-weight: var(--font-body-weight-bold); /* Texto en negrita */
 }

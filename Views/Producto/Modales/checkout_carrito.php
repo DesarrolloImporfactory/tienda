@@ -468,7 +468,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div id="tituloFormularioPreview">
-                    <h4 id="texto_tituloPreview">PAGA AL RECIBIR EN CASA!</h4>
+                    <h4 class="chcktittle" id="texto_tituloPreview">PAGA AL RECIBIR EN CASA!</h4>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
