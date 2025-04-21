@@ -841,8 +841,10 @@ strong, b {
 
 
     .btn-primary {
-        background-color: #0d6efd !important;
-        border-color: #0d6efd !important;
+        background-color: <?php echo COLOR_BACKGROUND; ?> !important;
+        border-color:<?php echo COLOR_BACKGROUND; ?> !important;
+        text-align: center !important;
+        justify-content: center !important;
     }
 
     .btn-primary:hover {
