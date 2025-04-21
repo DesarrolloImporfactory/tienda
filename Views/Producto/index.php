@@ -197,15 +197,16 @@ document.addEventListener("DOMContentLoaded", function () {
       <div class="caja px-3 py-0 w-100 cajaProducto">
   <!-- Sección de precios -->
   <div class="p-3 rounded mb-4">
-    <div class="d-flex align-items-center gap-3 flex-wrap">
+    <div class="d-flex align-items-center gap-1 flex-wrap">
       <h2 class="fw-bold m-0" id="precio-especial"></h2>
+      <span class="text-center text-muted text-decoration-line-through px-0 fs-5" id="precio-normal"></span>
 
       <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-1 d-flex align-items-center" id="ahorra">
         ¡Ahorra!
       </i>
     </div>
 
-    <span class="text-center text-muted text-decoration-line-through px-4 fs-5" id="precio-normal"></span>
+    
 
     <!-- Cantidad SOLO visible en pantallas md y grandes -->
     <div class="d-none d-md-flex align-items-center gap-3 mt-3 ms-4 flex-wrap">
