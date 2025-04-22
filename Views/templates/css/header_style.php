@@ -213,39 +213,48 @@ strong, b {
         width: auto;
     }
 
-    @media (max-width: 768px) {
-        .navbar-custom .navbar-brand img {
-            height: 45px;
+    @media(max-width: 768px){
+        /* Adaptaciones para el logo en moviles */
+        .navbar-custom .navbar-brand{
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            width: auto;
+            text-align: center;
+            flex-grow: 1; /* Esto asegura que el logo ocupe el espacio disponible y se mantenga centrado */
         }
-    }
-
-    .search-box {
-        border: none;
-        border-radius: 20px;
-        padding: 5px 15px;
-    }
-
-    .search-box:focus {
-        border-color: #171931 !important; /* Cambia esto por el color que prefieras */
-        box-shadow: 0 0 5px rgba(23, 25, 49, 0.7); /* Efecto de brillo */
-        outline: none;
-    }
-
-    @media (min-width: 992px) {
-        .navbar-nav {
-            gap: 10px;
+        .navbar-custom .navbar-brand img{
+            height: 45px; /* Ajusta el tamaño del logo en moviles */
+            width: auto;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            top: 0;
+            left: 0;
+            transform: none;
+        }
+        /* Ajustes para el toggle en moviles */
+        .navbar-toggler{
+            position: fixed; /* Cambie a 'fixed' para que se quede fijo en la esquina */
+            right: 10px; /* Ajusta el espacio del toggle respecto al borde */
+            top: 15px; /* Asegura que no se mueva cuando se expanda el menu */
+            z-index: 1000; /* Asegura que el toggle este por encima del contenido */ 
+        }
+        /* Ajustes en la caja de busqueda */
+        .search-box{
+            width: 90%; /* El searchbox ocupa el 80% del anoche disponible en moviles */
+            max-width: 400px; /* Ajustamos el maximo a 300px para que no sea tan grande */
+            margin: 0 auto; /* Centra el searchbox */
+        }
+        .navbar-custom{
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
             display: flex;
-            justify-content: flex-start;
-            /* Menú alineado a la izquierda en pantallas grandes */
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .navbar-brand {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
     }
-       
 /* Estilo normal de los enlaces de navegación antes de hacer scroll */
 .navbar-custom .nav-link {
     color: white;
