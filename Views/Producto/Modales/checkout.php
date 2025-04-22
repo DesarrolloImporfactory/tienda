@@ -199,10 +199,11 @@
             transform: scale(1);
         }
     }
+
 </style>
 
 
-<div id="checkoutModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="checkoutModal" class="modal fade txtnormal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -287,7 +288,7 @@
                             <!-- Provincia -->
                             <div class="form-group mb-3" id="provinciaPreview">
                                 <label class="sub_titulos" id="titulo_provinciaPreview">Provincia</label>
-                                <select class="form-control" id="provinica" name="provinica">
+                                <select class="form-control" id="provincia" name="provincia">
                                     <option value="">Provincia *</option>
                                 </select>
                             </div>
@@ -315,7 +316,7 @@
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
+                                <button class="btn btn-dark boton-estable" id="textoBtn_comprarPreview" type="button" onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
                         </div>
@@ -467,7 +468,7 @@
         formData.append("precio_producto", $('#precio_productoTmp').val());
         formData.append("nombre", $('#txt_nombresApellidosPreview').val());
         formData.append("telefono", $('#txt_telefonoPreview').val());
-        formData.append("provincia", $('#provinica').val());
+        formData.append("provincia", $('#provincia').val());
         formData.append("ciudad", $('#ciudad_entrega').val());
         formData.append("calle_principal", $('#txt_calle_principalPreview').val());
         formData.append("calle_secundaria", $('#txt_calle_secundariaPreview').val());

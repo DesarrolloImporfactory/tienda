@@ -94,6 +94,9 @@ $primera_seccion = obtenerPrimeraSeccion();
     <title><?php echo TITLE_PAGE;?></title>
     <link rel="icon" href="<?php echo SERVERURL . FAVICON; ?>" type="image/x-icon">
 
+    <!-- icono de carrito de compra -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -103,7 +106,11 @@ $primera_seccion = obtenerPrimeraSeccion();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- estilo boton whatsapp -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- fuente de la pagina -->
     
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- <link rel="stylesheet" href="/Views/templates/css/header_style.php"> -->
@@ -172,7 +179,16 @@ $primera_seccion = obtenerPrimeraSeccion();
       overlay.style.display = 'none';
     }, 2500); 
   </script>
-
+<script>
+    window.addEventListener("scroll", function() {
+    let navbar = document.querySelector(".navbar-custom");
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+</script>
 
 
 <style>
@@ -219,10 +235,10 @@ $primera_seccion = obtenerPrimeraSeccion();
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
+                        <a class="testi nav-link" href="<?php echo $primera_seccion; ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="categoria">Catálogo</a>
+                        <a class="testi nav-link" href="categoria">Catálogo</a>
                     </li>
                 </ul>
                 <a class="navbar-brand d-none d-lg-block mx-auto" href="<?php echo $primera_seccion; ?>">

@@ -66,7 +66,7 @@
             <!-- Fin Modal -->
 
             <div class="left-column d-none d-md-block col-md-5">
-                <div class="filtro_productos caja pt-0">
+                <div class="filtro_productos caja d-block d-md-block pt-0">
                     <!-- Acordeón -->
                     <div class="accordion mb-3" id="accordionCategorias">
                         <!-- Este es el acordeón padre para la categoría principal -->
@@ -119,11 +119,10 @@
                     <input type="hidden" name="valorMinimo" id="hiddenValorMinimo">
                     <input type="hidden" name="valorMaximo" id="hiddenValorMaximo">
                 </form>
-                <!-- Botón que se muestra solo en pantallas pequeñas -->
-                <div class="d-md-none ms-auto mb-3">
-                    <button type="button" class="texto_boton btn" data-bs-toggle="modal"
-                        data-bs-target="#leftColumnModal">
-                        <i class='bx bxs-filter-alt text-white'></i> Filtro
+                <!-- Botón flotante que se muestra solo en pantallas pequeñas -->
+                <div class="boton-flotante-filtro d-md-block d-lg-none ms-auto mb-3 position-fixed bottom-0 end-0 m-3" style="z-index: 1050;">
+                    <button type="button" class="texto_boton btn btn-primary rounded-circle p-3 shadow" data-bs-toggle="modal" data-bs-target="#leftColumnModal">
+                        <i class='bx bxs-filter-alt text-white fs-4'></i>
                     </button>
                 </div>
                 <div class="row" id="productosContainer">
@@ -355,29 +354,40 @@
             }
             const urlProducto = producto.funnelish === '1' && producto.funnelish_url
                 ? identificarProtocolo(producto.funnelish_url)
-                : `producto2?id=${producto.id_producto_tienda}`;
+                : `producto?id=${producto.id_producto_tienda}`;
             const productoHtml = `
-                    <div class="col-md-4 col-sm-6 col-12 mb-4 px-2">
-                        <div class="card h-100" style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                            <a href="${urlProducto}" class="category-link">
-                                <div class="img-container mx-auto d-flex w-100" style="aspect-ratio: 1 / 1; overflow: hidden; justify-content: center; align-items: center;">
-                                    <img src="${image_path}" class="card-img-top primary-img w-100 p-4 rounded-2" alt="${producto.nombre_producto_tienda}" style="object-fit: cover;">
-                                </div>
-                            </a>
-                            <div class="card-body d-flex flex-column">
-                                <a href="${urlProducto}" style="text-decoration: none; color:black;">
-                                    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
-                                </a>
-                                <div class="product-footer mb-2">
-                                    ${texto_precioNormal}
-                                    <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
-                                </div>
-                                <a class="btn texto_boton mt-auto" href="${urlProducto}">
-                                    Comprar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card-grid col-12 col-sm-6 col-md-4">
+  <div class="card">
+    <a href="${urlProducto}" class="category-link">
+      <div class="img-container">
+        <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top primary-img" alt="${producto.nombre_producto_tienda}">
+      </div>
+    </a>
+    <div class="card-body d-flex flex-column">
+  <a href="${urlProducto}" style="text-decoration: none; color:black;">
+    <h6 class="card-title titulo_producto">${producto.nombre_producto_tienda}</h6>
+  </a>
+
+  <!-- Precio más arriba -->
+  <div class="product-footer price-flip mt-2 mb-2">
+    ${texto_precioNormal}
+    <span class="text-price texto_precio">$${precioEspecial.toFixed(2)}</span>
+  </div>
+
+  <!-- Solo el botón en el card-footer -->
+  <div class="card-footer">
+    <div class="buy-button-footer">
+      <a class="btn texto_boton w-100" href="${urlProducto}">
+        Comprar
+      </a>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Repite la card según lo necesites -->
+</div>
+
                 `;
                 // <a class="btn texto_boton mt-auto" href="producto?id=${producto.id_producto_tienda}">Comprar</a>
 

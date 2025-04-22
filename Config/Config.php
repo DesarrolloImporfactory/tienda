@@ -7,7 +7,7 @@ const CHARSET = "utf8";
 
 
 
-if ($_SERVER['HTTP_HOST'] == 'localhost') {
+if ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == "192.168.100.12") { 
     define('ENVIRONMENT', 'development');
 } else {
     define('ENVIRONMENT', 'production');
@@ -16,7 +16,7 @@ if (ENVIRONMENT == 'development') {
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
-    define("SERVERURL", "http://localhost/imporsutipro/");
+    define("SERVERURL", "https://new.imporsuitpro.com/");
 } else {
 }
 
@@ -63,13 +63,15 @@ if (str_contains($hostNuevo, "merkapro.ec")) $hostNuevo = str_replace("merkapro.
 
 if (str_contains($hostNuevo, "connect-mas.com")) $hostNuevo = str_replace("connect-mas.com", "", $hostNuevo);
 
-$recuperado = str_replace("new.", "", $hostNuevo);
+$recuperado = str_replace("new.", "", $hostNuevo); 
 $url_actual = "https://" . $recuperado . "imporsuitpro.com";
 if (str_contains($hostAntiguo, "comprapor.com")) $url_actual = str_replace("imporsuitpro.com", "comprapor.com", $url_actual);
 if (str_contains($hostAntiguo, "merkapro.ec")) $url_actual = str_replace("imporsuitpro.com", "merkapro.ec", $url_actual);
 if (str_contains($hostAntiguo, "connect-mas.com")) $url_actual = str_replace("imporsuitpro.com", "connect-mas.com", $url_actual);
 
-
+if($_SERVER["HTTP_HOST"] == "localhost"|| $_SERVER['HTTP_HOST'] == "192.168.100.12"){
+    $url_actual = "https://propeldesign.imporsuitpro.com";
+}
 $id_plataforma = "SELECT * FROM plataformas where url_imporsuit = '$url_actual' or dominio = '$hostAntiguo'";
 //echo $id_plataforma;
 $result = $mysqli->query($id_plataforma);
@@ -82,7 +84,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 resultss";
 }
-
+if($_SERVER["HTTP_HOST"] == "localhost" || $_SERVER['HTTP_HOST'] == "192.168.100.12") $id_matriz = 1;
 //echo $id_matriz;
 $url_matriz = "SELECT * FROM matriz where idmatriz = '$id_matriz'";
 $result = $mysqli->query($url_matriz);
@@ -103,5 +105,5 @@ $mysqli->close();
 
 
 define("ID_PLATAFORMA", $id_plataforma);
-define("SERVERURL", 'https://new.imporsuitpro.com/');
-define("MARCA", $marca);
+/* define("SERVERURL", 'https://new.imporsuitpro.com/');
+ */define("MARCA", $marca);

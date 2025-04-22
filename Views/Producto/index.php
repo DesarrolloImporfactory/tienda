@@ -58,75 +58,261 @@ $id_producto = $_GET['id'];
     white-space: nowrap;
 }
 </style>
+<!-- ZOOM QUE SIGUE AL MOUSE SOBRE LA IMAGEN -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const image = document.getElementById("main-image");
 
-<main style="background-color: #f9f9f9;">
-    <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 6rem;" >
-        <div class="row w-100">
-            <div class="col-12 col-lg-6 mb-5">
-                <div class="row stickyImagen ">
-                   
-                    <div class="col-12">
-                        <!-- Área principal de visualización de imagen -->
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active d-flex" id="list-image1" role="tabpanel"
-                                aria-labelledby="list-image1-list">
-                                <img id="main-image" src="" class="mx-auto" alt="Responsive image"
-                                    data-bs-toggle="modal" data-bs-target="#imagenModal">
-                            </div>
-                        </div>
+    image.addEventListener("mouseenter", () => {
+      image.classList.add("zoomed");
+    });
 
-                    </div>
-                    <div class="d-flex col-12 mt-3"> 
-                        <div class="w-100 d-flex gap-3 scroll-y-imagenes mx-auto" id="list-tab" role="tablist">
-                            <!-- Imágenes dinámicas aquí -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+    image.addEventListener("mousemove", (e) => {
+      const rect = image.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      image.style.transformOrigin = `${x}% ${y}%`;
+    });
 
-            <div class="col-12 col-lg-6">
-                <div class="caja px-3 py-0 w-100 cajaProducto">
-                    <div class="product-title" id="nombre-producto"></div>
-                    <br>
-                    <div class="precios_producto align-items-center gap-3">
-                        <p class="display-6 mb-0">
-                            <strong id="precio-especial"></strong>
-                        </p>
-                        <div id="precio-normal-container">
-                            <p class="tachado fs-4 mb-0">
-                                <span id="precio-normal"></span>
-                            </p>
-                        </div>
-                        <div id="ahorra-container" class="text-white rounded p-1 px-3"
-                            style="background-color: #4464ec;">
-                            <p class="ahorra mb-0 d-flex align-items-center gap-3" style="font-size: 13px;">
-                                <i class="bx bxs-purchase-tag" style="color: white; font-size: 17px;"></i>
-                                <span id="ahorra"></span> 
-                            </p>
-                        </div>
-                    </div>
-                    <div class="my-4"> 
-                        <label for="quantity" class="form-label">Cantidad</label>
-                        <input type="number" id="cantidad_producto" class="form-control"
-                            style="border-radius:0.3rem !important;width: 20%;" id="quantity" value="1" min="1">
-                    </div>
-                    <a class="jump-button btn btn-primary texto_boton rounded w-100" href="#" id="comprar-ahora">
-                        COMPRAR AHORA
-                    </a>
-                    <div id="landing">
+    image.addEventListener("mouseleave", () => {
+      image.classList.remove("zoomed");
+      image.style.transformOrigin = "center center";
+    });
+  });
+</script>
 
-                    </div>
-                </div>
-            </div>
+<!-- hace que el boton de compra sea flotante al hacer scroll y tambien esta el mensaje flotante -->
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const promoBtn = document.querySelector('.promo-button');
+  let hasShownMessage = false;
+
+  window.addEventListener('scroll', function () {
+    const scrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 768;
+    const scrollThreshold = isMobile ? 800 : 400;
+
+    if (scrollY > scrollThreshold) {
+      promoBtn.classList.add('floating');
+
+      if (!hasShownMessage) {
+        hasShownMessage = true;
+
+        // Crear el mensaje flotante
+        const msg = document.createElement('div');
+        msg.classList.add('floating-msg');
+        msg.textContent = '¡Compra ya!';
+
+        // Obtener posición del botón
+        const btnRect = promoBtn.getBoundingClientRect();
+
+        // Estilos del mensaje (centrado verticalmente con el botón)
+        Object.assign(msg.style, {
+          position: 'fixed',
+          top: `${btnRect.top + btnRect.height / 2}px`,
+          right: `${window.innerWidth - btnRect.left + 10}px`,
+          backgroundColor: '#000000',
+          color: 'white',
+          padding: '8px 14px',
+          borderRadius: '6px',
+          fontWeight: 'bold',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+          opacity: '0',
+          pointerEvents: 'none',
+          transition: 'opacity 0.5s ease',
+          zIndex: '9999',
+          transform: 'translateY(-50%)',
+          whiteSpace: 'nowrap'
+        });
+
+        // Flecha
+        const arrow = document.createElement('div');
+        Object.assign(arrow.style, {
+          position: 'absolute',
+          top: '50%',
+          left: '100%',
+          transform: 'translateY(-50%)',
+          width: '0',
+          height: '0',
+          borderTop: '8px solid transparent',
+          borderBottom: '8px solid transparent',
+          borderLeft: '10px solid #000000'
+        });
+
+        msg.appendChild(arrow);
+        document.body.appendChild(msg);
+
+        // Mostrar después de 1 segundo
+        setTimeout(() => {
+          msg.style.opacity = '1';
+        }, 1000);
+
+        // Ocultar después de 3 segundos
+        setTimeout(() => {
+          msg.style.opacity = '0';
+          setTimeout(() => {
+            msg.remove();
+          }, 500);
+        }, 4000);
+      }
+
+    } else {
+      promoBtn.classList.remove('floating');
+    }
+  });
+});
+
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const boton = document.getElementById("comprar-ahora");
+    const footer = document.querySelector("footer");
+
+    let ultimaPosicionScroll = window.scrollY;
+
+    function ajustarBotonFlotante() {
+      if (!boton.classList.contains('floating')) return;
+
+      const botonRect = boton.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect();
+      const ventanaAltura = window.innerHeight;
+
+      const seAcercaAlFinalDelFooter = botonRect.bottom > footerRect.bottom - 10;
+      const scrollActual = window.scrollY;
+
+      // Detecta si se acerca al final del footer
+      if (seAcercaAlFinalDelFooter) {
+        boton.classList.add("subido");
+      } else if (scrollActual < ultimaPosicionScroll) {
+        // Scroll hacia arriba
+        boton.classList.remove("subido");
+      }
+
+      ultimaPosicionScroll = scrollActual;
+    }
+
+    window.addEventListener("scroll", ajustarBotonFlotante);
+    window.addEventListener("resize", ajustarBotonFlotante);
+  });
+</script>
+
+
+
+
+
+<!-- Título centrado -->
+
+
+<main style="background-color: rgb(255, 255, 255);">
+  <div class="container containerProductos flex-column align-items-center" style="padding-top: 6rem; padding-bottom: 1rem;">
+    <div class="row w-100">
+      
+      <!-- Columna izquierda: Imagen -->
+      <div class="col-12 col-lg-6 mb-1 d-flex flex-column align-items-center">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active d-flex img-zoom-container" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
+            <img id="main-image" src="" class="img-fluid zoom-on-hover" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
+          </div>
         </div>
+        <div class="d-flex justify-content-center col-12 mt-3">
+  <div class="d-flex gap-3 scroll-y-imagenes" id="list-tab" role="tablist">
+    <!-- Miniaturas -->
+  </div>
+</div>
+      </div>
+
+      <!-- Columna derecha: Info del producto -->
+      <div class="col-12 col-lg-6">
+      <div class="text-center mb-4 mt-4">
+  <h1 id="nombre-producto" class="cattt product-title fw-bold"></h1>
+</div>
+      <div class="caja px-3 py-0 w-100 cajaProducto">
+  <!-- Sección de precios -->
+  <div class="p-3 rounded mb-4">
+    <div class="d-flex align-items-center gap-1 flex-wrap">
+      <h2 class="fw-bold m-0" id="precio-especial"></h2>
+      <span class="text-center text-muted text-decoration-line-through px-0 fs-5" id="precio-normal"></span>
+
+      <i class="stt badge bg-success bx bxs-purchase-tag px-3 py-1 d-flex align-items-center" id="ahorra">
+        ¡Ahorra!
+      </i>
+    </div>
+
+    
+
+    <!-- Cantidad SOLO visible en pantallas md y grandes -->
+    <div class="d-none d-md-flex align-items-center gap-3 mt-3 ms-4 flex-wrap">
+      <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
+      <input type="number" id="cantidad_producto" class="form-control" value="1" min="1"
+        style="width: 80px; border-radius: 0.3rem !important;">
+    </div>
+  </div>
+
+  <!-- Cantidad SOLO visible en pantallas pequeñas -->
+  <div class="d-flex d-md-none align-items-center gap-3 mt-2 mb-4 flex-wrap">
+    <label for="cantidad_producto" class="form-label mt-1 mb-0">Cantidad:</label>
+    <input type="number" id="cantidad_producto" class="form-control" value="1" min="1"
+      style="width: 80px; border-radius: 0.3rem !important;">
+  </div>
+</div>
+
+        <div class="col-12 col-lg-6 w-100 ms-2 mt-0">
+          <div class="nrml promo-button w-100" id="comprar-ahora">
+                <span class="main-text">PAGA CONTRA ENTREGA</span>
+                <span class="sub-text">Stock Limitado ¡Ordena Ahora!</span>
+                <i class="bx bx-cart cart-icon"></i>
+            </div>
+            </div>
+        <!-- Descripción debajo de los productos, arriba de los iconos -->
+        <div class="row w-100 mt-0 ms-1 me-1">
+      <div class="col-12">
+        <div id="landing" class="bg-white p-3 rounded">
+          
+        </div>
+      </div>
+    </div>
+      </div>
+      <!-- animacion de carro de entrega -->
+      <div class="loop-wrapper">
+        <div class="mountain"></div>
+        <div class="hill"></div>
+        <div class="rock"></div>
+        <div class="truck"></div>
+        <div class="wheels"></div>
+        </div>
+        <!-- fin de animacion de carro de entrega -->
+    </div>
+  </div>
+
+  <!-- Modal imagen -->
+  <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imagenModalLabel">Visualización de Imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="" id="imagenEnModal" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 
         
-        <section class="container" >
-            <div class="row mx-auto w-100 mt-lg-5 mt-2" id="iconos-container" >
-                <!-- Los iconos se cargarán aquí dinámicamente -->
-            </div>
-        </section>
+        <section class="container">
+        <div class="row" id="iconos-container" style="max-width: 1000px; margin: auto;">
+            <!-- Los iconos se cargarán aquí dinámicamente -->
+        </div>
+    </section>
 
     </div>
 
@@ -144,6 +330,7 @@ $id_producto = $_GET['id'];
             </div>
         </div>
     </div>
+    
 </main>
 
 <script>
@@ -433,8 +620,8 @@ $id_producto = $_GET['id'];
                                 ${ahorro}
                               </div>
                               <div class="custom-product-price">
-                                <span class="old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
-                                <span class="new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
+                                <span class="nrml old-price" id="precio_normal_preview">$${totalPvp.toFixed(2)}</span>
+                                <span class="spanpan new-price" id="precio_especial_preview">$${precio_total.toFixed(2)}</span>
                               </div>
                             </div>`;
 
@@ -463,13 +650,13 @@ $id_producto = $_GET['id'];
             <div class="productos_carrito-item">
               <img src="${enlace_imagen}" alt="${product.nombre_producto}" />
               <div class="productos_carrito-info">
-                <a href="#">${product.nombre_producto}</a>
+                <a class="link-no-style" href="#">${product.nombre_producto}</a>
                 <p>
-                  <button class="btn btn-sm btn-outline-secondary cantidad_decremento" data-product-id="${product.id_tmp}">
+                  <button class="btn btn-sm btn-outline-secondary cantidad_decremento btn-cantidad" data-product-id="${product.id_tmp}">
                     -
                   </button>
                   <span class="cantidad_producto" data-product-id="${product.id_tmp}">${product.cantidad_tmp}</span>
-                  <button class="btn btn-sm btn-outline-secondary cantidad_incremento" data-product-id="${product.id_tmp}">
+                  <button class="btn btn-sm btn-outline-secondary cantidad_incremento btn-cantidad" data-product-id="${product.id_tmp}">
                     +
                   </button>
                 </p>
@@ -478,7 +665,7 @@ $id_producto = $_GET['id'];
               <div class="productos_carrito-precio">
                 <span>$${productPrice.toFixed(2)}</span>
               </div>
-              <button class="btn btn-danger btn-sm productos_checkout_remove" data-product-id="${product.id_tmp}">
+              <button class="btn btn-danger btn-sm productos_checkout_remove btn-eliminar" data-product-id="${product.id_tmp}">
                 <i class="fas fa-times"></i>
               </button>
             </div>`;
@@ -759,19 +946,20 @@ $id_producto = $_GET['id'];
                     var enlaceHTML = enlace_icon ? `href="${enlace_icon}" target="_blank" style="text-decoration: none; color: inherit;"` : '';
 
                     var iconoItem = `
-                    <div class="col-12 col-lg-4 mb-3 ">
-                        <a ${enlaceHTML}>
-                            <div class="card card_icon text-center">
-                                <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
-                                    <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
-                                    <div class="text-end">
-                                        <h5 class="card-title card-title_icon">${texto}</h5>
-                                        <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                    <div class="col-md-4 mb-3 icon_responsive">
+                                <a ${enlaceHTML}>
+                                    <div class="card1 card_icon text-center">
+                                        <div class="card-body1 card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                            <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
+                                            <div class="text-end">
+                                                <h5 class="card-title card-title_icon">${texto}</h5>
+                                                <p class="card-text1 card-text_icon" style="font-size: 12px;">${subtexto_icon}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
+
             `;
 
                     // Agregar el icono al contenedor

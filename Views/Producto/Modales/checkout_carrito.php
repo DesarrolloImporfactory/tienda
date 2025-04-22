@@ -1,10 +1,30 @@
 <style>
+    .tit{
+        font-family: var(--font-heading-family);
+        font-style: var(--font-heading-style);
+        font-weight: var(--font-heading-weight);
+        font-size: calc(12px * var(--font-heading-scale)); /* Ajusta el tamaño de los encabezados */
+        font-weight: var(--font-body-weight-bold); /* Texto en negrita */
+        font-body-spacing: var(--font-body-spacing);
+        text-align: var(--text-align-justified);
+    }
+    .txtnormal{
+        font-family: var(--font-body-family);
+        font-style: var(--font-body-style);
+        font-weight: var(--font-body-weight);
+        font-body-spacing: var(--font-body-spacing);
+        font-size: calc(16px * var(--font-body-scale)); /* Ajusta el tamaño de fuente */
+        text-align: var(--text-align-justified);
+    }
+    .iconbckgrnd{
+        background-color:rgba(119, 97, 97, 0.38);
+    }
     .productos_carrito-item {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 15px;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-weight: 400;
         border-bottom: 1px solid #ddd;
     }
@@ -82,7 +102,7 @@
         padding: 15px;
         max-width: 350px;
         margin: auto;
-        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         /* Cambia la fuente */
         font-weight: 400;
         /* Fuente estándar */
@@ -430,15 +450,25 @@
             padding-left: 0px;
         }
     }
+    /* Estilo para que el texto no se descuadre en moviles */
+    @media screen and (max-width: 768px) {
+        #checkout_carritoModal .modal-header h4,
+        #checkout_carritoModal .modal-header #texto_tituloPreview{
+            text-align: center !important;
+            line-height: 1.3 !important;
+            letter-spacing: normal !important;
+            word-spacing: normal !important;
+        }
+    }
 </style>
 
 
-<div id="checkout_carritoModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="checkout_carritoModal" class="modal fade txtnormal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <div id="tituloFormularioPreview">
-                    <h4 id="texto_tituloPreview">PAGA AL RECIBIR EN CASA!</h4>
+                    <h4 class="chcktittle" id="texto_tituloPreview">PAGA AL RECIBIR EN CASA!</h4>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -449,6 +479,8 @@
                 <div class="custom-card-body p-3">
                     <div id="productos_carritoContainer">
                         <!-- Aquí se llenará el contenido dinámico con AJAX -->
+                    </div>
+                    
                     </div>
                     <div class="custom-card-footer">
                         <div class="custom-summary">
@@ -468,7 +500,6 @@
                             <div>Total</div>
                             <div class="total-price"><span id="productos_carritoTotal"></span></div>
                         </div>
-                    </div>
                 </div>
 
                 <form class="form-horizontal" id="formulario">
@@ -480,7 +511,7 @@
                     <input type="hidden" id="total_principal" name="total_principal">
 
                     <div id="gracias" class="modal-content border-0">
-                        <div id="previewContainer" class="">
+                        <div id="previewContainer">
                             <div id="resultados" class="modal-body" style="padding: 5px">
                             </div>
 
@@ -573,7 +604,7 @@
                             <div class="form-group mb-3" id="nombresApellidosPreview">
                                 <label class="sub_titulos">Nombres y Apellidos <span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_nombresApellidosPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class="iconbckgrnd input-group-text" id="icono_nombresApellidosPreview"><i
                                             class='bx fs-5 m-0 bxs-user fs-5'></i></span>
                                     <input type="text" class="form-control" id="txt_nombresApellidosPreview"
                                         name="txt_nombresApellidosPreview" placeholder="Nombre y Apellido">
@@ -585,7 +616,7 @@
                             <div class="form-group mb-3" id="telefonoPreview">
                                 <label class="sub_titulos">Teléfono<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_telefonoPreview">
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_telefonoPreview">
                                         <i class='bx fs-5 m-0 bxs-phon fs-5e-call'></i></span>
                                     <input type="text" class="form-control" id="txt_telefonoPreview"
                                         name="txt_telefonoPreview" placeholder="Teléfono">
@@ -597,7 +628,7 @@
                             <div class="form-group mb-3" id="calle_principalPreview">
                                 <label class="sub_titulos" id="titulo_calle_principalPreview">Calle Principal<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_principalPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_calle_principalPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_principalPreview"
                                         name="txt_calle_principalPreview" placeholder="">
@@ -609,7 +640,7 @@
                             <div class="form-group mb-3" id="calle_secundariaPreview">
                                 <label class="sub_titulos" id="titulo_calle_secundariaPreview">Calle Secundaria<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_calle_secundariaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_calle_secundariaPreview"
                                         name="txt_calle_secundariaPreview" placeholder="">
@@ -622,7 +653,7 @@
                                 <label class="sub_titulos" id="titulo_barrio_referenciaPreview">Barrio o
                                     Referencia<span class="text-danger">*</span></label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
+                                    <span style="padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
                                             class='bx fs-5 m-0 bx-map'></i></span>
                                     <input type="text" class="form-control" id="txt_barrio_referenciaPreview"
                                         name="txt_barrio_referenciaPreview" placeholder="">
@@ -654,8 +685,8 @@
                             <div class="form-group mb-3" id="comentarioPreview">
                                 <label class="sub_titulos" id="titulo_comentarioPreview">Comentario</label>
                                 <div class="input-group">
-                                    <span style="padding: 0.8rem !important;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
-                                            class='bx fs-5 m-0 bx-messa fs-5ge-dots'></i></span>
+                                    <span style="border: 2px solid #c2c2c2; padding: 0.8rem !important; background-color: #c2c2c2;" class=" input-group-text" id="icono_barrio_referenciaPreview"><i
+                                            class='fs-5 m-0 bx bx-message fs-5-dots'></i></span>
                                     <input type="text" class="form-control" id="txt_comentarioPreview"
                                         name="txt_comentarioPreview" placeholder="">
                                 </div>
@@ -663,25 +694,12 @@
                             <!-- Fin Comentario -->
                         </div>
 
-                        <div class="card p-3 mb-3"
-                            style="border: 1px solid #007bff; background-color: #e9f4ff; width: 90%; align-self: center;"
-                            id="seccion_oferta">
-                            <div class="d-flex justify-content-start align-items-center">
-                                <input type="checkbox" id="Seleccion_oferta" class="me-2"
-                                    onchange="toggleSeleccion_oferta(this)">
-                                <input type="hidden" id="id_producto_oferta" name="id_producto_oferta">
-                                <input type="hidden" id="oferta_selected" name="oferta_selected" value="0">
-                                <label for="Seleccion_oferta" class="m-0">
-                                    <strong><span style="font-weight:bold;" id="nombre_oferta"></span></strong> por solo
-                                    <strong><span id="precio_oferta"></span></strong>
-                                </label>
-                            </div>
-                        </div>
+                        
 
                         <div class="modal-footer">
                             <!-- Botón Comprar -->
                             <div id="btn_comprarPreview" class="d-flex justify-content-center" style="padding: 20px;">
-                                <button class="btn btn-dark btn_comprar" id="textoBtn_comprarPreview" type="button"
+                                <button class="btn btn-dark btn_comprar boton-estable" id="textoBtn_comprarPreview" type="button"
                                     onclick="realizar_pedido()">COMPRAR AHORA</button>
                             </div>
                             <!-- Fin Botón Comprar -->
@@ -891,7 +909,7 @@
             // Obtener los valores de los inputs y selects
             let nombre = $('#txt_nombresApellidosPreview').val().trim();
             let telefono = $('#txt_telefonoPreview').val().trim();
-            let provincia = $('#provinica').val().trim();
+            let provincia = $('#provincia').val().trim();
             let ciudad = $('#ciudad_entrega').val().trim();
             let calle_principal = $('#txt_calle_principalPreview').val().trim();
             let calle_secundaria = $('#txt_calle_secundariaPreview').val().trim();
@@ -902,7 +920,7 @@
 
             if (!nombre) camposVacios.push('#txt_nombresApellidosPreview');
             if (!telefono) camposVacios.push('#txt_telefonoPreview');
-            if (!provincia) camposVacios.push('#provinica');
+            if (!provincia) camposVacios.push('#provincia');
             if (!ciudad) camposVacios.push('#ciudad_entrega');
             if (!calle_principal) camposVacios.push('#txt_calle_principalPreview');
             if (!calle_secundaria) camposVacios.push('#txt_calle_secundariaPreview');

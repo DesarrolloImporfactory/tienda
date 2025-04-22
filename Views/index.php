@@ -5,32 +5,47 @@
 
     </style>
     <!-- Slider -->
-    <div id="carouselExampleIndicators carouselBanner1" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators"></div>
-        <div class="carousel-inner" style="width: 100%; height: auto !important; max-width: 100vw;"></div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <div id="carouselBanner1" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators"></div>
+    <div class="carousel-inner" style="width: auto; height: auto !important;"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner1" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner1" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const carouselElement = document.getElementById('carouselBanner1');
+    const carousel = new bootstrap.Carousel(carouselElement, {
+        interval: 5000,  // 5 segundos
+        ride: 'carousel' // Hace que el carrusel se deslice automáticamente
+    });
+
+    // Iniciar el carrusel de forma automática
+    setInterval(function () {
+        carousel.next();  // Desliza al siguiente item cada 5 segundos
+    }, 5000);
+    });
+    </script>
     <!-- fin slider -->
 
     <!-- animacion -->
-    <div class="marquee-containerArriba">
-        <div class="marqueeArriba">
+    <div class="marquee-container">
+        <div class="spanpan marquee">
+        <span class="marquee-content">🎉 ¡Aprovecha nuestras ofertas exclusivas! 🚀</span>
+        <span class="marquee-content">🔥 Envío gratis en compras mayores a $50 💰</span>
+        <span class="marquee-content">🌟 Nueva colección disponible ahora mismo 🎨</span>
             <!-- Los contenidos se llenarán aquí -->
         </div>
     </div>
     <!-- fin animacion -->
 
     <!-- categorias -->
-    <section class="container">
+    <section class="seccion container">
         <h1 class="text-center display-4 mb-4">Categorías</h1>
         <div class="caja ">
             <div class="owl-carousel owl-theme" id="categories-container">
@@ -41,7 +56,7 @@
     <!-- fin categorias -->
     <div class="degraded-line"></div>
     <!-- destacados -->
-    <section class="container">
+    <section class="seccion container">
         <h1 class="text-center display-4 mb-4">Destacados</h1>
         <!-- Productos -->
         <div class="owl-carousel owl-theme" id="productos-carousel">
@@ -67,7 +82,7 @@
         </div>
     </div>
     <!-- fin animacion -->
-
+    <div class="degraded-line"></div>
     <!-- Testimonios -->
     <section class=" testimonios">
         <div class="container mx-auto" style="max-width: 1000px;">
@@ -83,8 +98,28 @@
     <!-- Fin Testimonios -->
 
     <!-- boton whatsapp -->
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i>
+        <span class="testi tooltip-text" id="tooltip">¿Tienes alguna duda? Escríbenos</span>
+    </a>
+    <!-- tiempo de muestra de mensaje flotante Whatsapp -->
+    <script>
+  window.addEventListener('load', () => {
+    const tooltip = document.querySelector('.tooltip-text');
 
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
+    // Espera 3 segundos, luego muestra el tooltip
+    setTimeout(() => {
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+
+      // Luego de 3 segundos más, lo oculta
+      setTimeout(() => {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+      }, 3000);
+    }, 3000);
+  });
+</script>
+
 
     <!-- Fin boton whatsapp-->
 
@@ -118,13 +153,14 @@
                         alineacion = "text-align-last: right;"
                     }
                     const isActive = index === 0 ? 'active' : '';
+                    // banner - textp
                     indicators += `<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${index}" class="${isActive}" aria-current="true" aria-label="Slide ${index + 1}"></button>`;
                     inner += `<div class="carousel-item ${isActive}" style="width: 100%; height: auto !important; max-width: 100vw;">
                               <img src="${image_path}" class="d-block w-100" alt="..." style="height: auto !important;
                                     width: 100% !important;
                                     object-fit: cover;">
-                              <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                                  <h5 style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
+                              <div class="spanpan carousel-caption d-none d-md-block" style="${alineacion}">
+                                  <h5 class="fs-1" style="color:${banner.color_texto_banner};">${banner.titulo}</h5>
                                   <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
                                   <a class="btn texto_boton" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
                               </div>
@@ -160,7 +196,7 @@
                     let imagePath = obtenerURLImagen(categoria.imagen, SERVERURL);
                     let categoriaHtml = `
                         <div class="item">
-                            <div class="category-container d-flex flex-column align-items-center">
+                            <div class="category-container d-flex flex-column align-items-center cat somb">
                                 <a href="categoria?id_cat=${categoria.id_linea}" class="category-link">
                                     <div class="category-image rounded-circle" style="background-image: url('${imagePath}');"></div>
                                 </a>
@@ -175,23 +211,28 @@
                 });
 
                 $('#categories-container').owlCarousel({
-                    loop: false,
-                    margin: 10,
+                    loop: true,
+                    margin: 20,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 5000,
+                    autoplayHoverPause: true,
+                    smartSpeed: 700,
                     responsive: {
                         0: {
                             items: 1
                         },
                         768: {
-                            items: 2
+                            items: 1
                         },
                         992: {
-                            items: 3
+                            items: 1
                         }
                     },
                     nav: true,
                     navText: [
-                        '<i class="fas fa-chevron-left fs-2"></i>',
-                        '<i class="fas fa-chevron-right fs-2"></i>'
+                        '<buttom><i class="bi bi-chevron-left fs-2"></i><buttom>',
+                        '<i class="bi bi-chevron-right fs-2"></i>'
                     ]
                 });
             },
@@ -203,29 +244,34 @@
         /* Destacados */
         // Inicializar el carrusel vacío
         $("#productos-carousel").owlCarousel({
-            loop: false,
-            margin: 10,
+            loop: true,
+            margin: 20,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            smartSpeed: 700,
             responsive: {
                 0: {
                     items: 1
                 },
                 576: {
-                    items: 2
+                    items: 1
                 },
                 768: {
-                    items: 2
+                    items: 1
                 },
                 992: {
-                    items: 3
+                    items: 1
                 },
                 1200: {
-                    items: 4
+                    items: 1
                 }
             },
             nav: true,
             navText: [
-                '<i class="fas fa-chevron-left fs-2"></i>',
-                '<i class="fas fa-chevron-right fs-2"></i>'
+                '<i class="bi bi-chevron-left fs-2"></i>',
+                '<i class="bi bi-chevron-right fs-2"></i>'
             ]
         });
 
@@ -272,7 +318,7 @@
                             <div class="card rounded">
                                 <div class="img-container position-relative">
                                     ${precioNormal > 0 ? `
-                                    <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start" style="top: 20px; right: 0px;">
+                                    <div class="px-3 py-1 text-white position-absolute bg-primary rounded-start ahorro-container" style="top: 20px; right: 0px;">
                                         <span class="ahorro"><i class="bi bi-tag-fill me-1"></i>
                                             <strong>AHORRA UN ${number_format(ahorro)}%</strong>
                                         </span>
@@ -280,16 +326,16 @@
                                      ` : ''}
 
                                     <a href="${urlProducto}">
-                                        <img src="${image_path}" class="card-img-top mx-auto d-block" alt="Product Name">
+                                        <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top mx-auto d-block" alt="Product Name">
                                     </a>
                                 </div>
                                 <div class="card-body card-body-proDes d-flex flex-column">
-                                    <p class="card-text flex-grow-1 mt-4 fs-6">
+                                    <p class="cat card-text flex-grow-1 mt-4 fs-6">
                                         <a href="${urlProducto}" style="text-decoration: none;" class="text-dark">
                                             <strong>${producto.nombre_producto_tienda}</strong>
                                         </a>
                                     </p>
-                                    <div class="product-footer mb-2">
+                                    <div class="cat product-footer mb-2 somb">
                                         <div class="d-flex flex-row">
                                             <span class="texto_precio me-2 fs-5">
                                                 <p class="mb-0">$ ${number_format(precioEspecial, 2)}</p>
@@ -301,7 +347,9 @@
                                             ` : ''}
                                         </div>
                                     </div>
+                                    <div class="cat somb">
                                     <a style="z-index:2; height: 40px; font-size: 16px" class="btn boton texto_boton mt-2" href="${urlProducto}">Comprar</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -379,12 +427,12 @@
                         var iconoItem = `
                             <div class="col-md-4 mb-3 icon_responsive">
                                 <a ${enlaceHTML}>
-                                    <div class="card card_icon text-center">
-                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                    <div class="card1 card_icon text-center">
+                                        <div class="card-body1 card-body_icon d-flex flex-row justify-content-between align-items-center" >
                                             <i class="fa ${icon_text} fa-2x me-3" style="color: ${icono.color_icono} !important"></i>
                                             <div class="text-end">
                                                 <h5 class="card-title card-title_icon">${texto}</h5>
-                                                <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                                <p class="card-text1 card-text_icon" style="font-size: 12px;">${subtexto_icon}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -407,17 +455,22 @@
         /* Testimonios */
         // Inicializar el carrusel vacío
         $("#testimonios-carousel").owlCarousel({
-            loop: false,
-            margin: 10,
+            loop: true,
+            margin: 20,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            smartSpeed: 700,
             responsive: {
                 0: {
                     items: 1
                 },
                 768: {
-                    items: 2
+                    items: 1
                 },
                 992: {
-                    items: 3
+                    items: 1
                 }
             },
             nav: true,
@@ -457,10 +510,10 @@
                         var testimonioItem = `
 
                                 <div class="card p-3 border-0">
-                                    <img src="${image_path}" class="card-img-top rounded-circle img_card_testimonio mx-auto mb-4" alt="...">
+                                    <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top rounded-circle img_card_testimonio mx-auto mb-4" alt="...">
                                     <div class="card-body p-0 card_body_testimonios text-center">
                                         <h5 class="card-title">${nombre_testimonio}</h5>
-                                        <p class="card-text">${texto_testimonio}</p>
+                                        <p class="testi card-text">${texto_testimonio}</p>
                                     </div>
                                 </div>
                         `;
