@@ -1,4 +1,66 @@
 <style>
+    .card1 {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important; /* Fondo limpio */
+    border-radius: 12px !important; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card1:hover {
+    transform: translateY(-5px) !important; /* Efecto de elevación */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important; /* Sombra más pronunciada */
+}
+
+
+
+.card1:hover .img-container img {
+    transform: scale(1.05) !important; /* Pequeño zoom en hover */
+}
+
+/* Contenedor del texto alineado arriba */
+.card-body1 {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; /* Alinea el contenido en la parte superior */
+    align-items: center !important; /* Mantiene el contenido centrado horizontalmente */
+    text-align: center !important;
+    padding: 20px !important;
+    margin: 0 !important;
+}
+
+/* Título de la card con más presencia */
+.card1 h5 {
+    font-size: 1.2rem !important;
+    color: #333 !important;
+    font-weight: 600 !important; /* Más presencia */
+    letter-spacing: 0.5px !important; /* Separación ligera */
+    margin-bottom: 10px !important;
+}
+
+/* Texto con mejor legibilidad */
+.card-text1 {
+    font-size: 1rem !important;
+    color: #555 !important;
+    line-height: 1.5 !important; /* Espaciado más cómodo */
+    max-width: 90% !important;
+    margin-top: 10px !important; /* Espacio entre la imagen y el texto */
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Ajusta cualquier otro texto dentro de la card */
+.text-muted.text-decoration-line-through {
+    font-size: 14px !important;
+    color: #888 !important;
+}
     .navbar {
         overflow: hidden !important;
         width: 100% !important;

@@ -185,12 +185,12 @@
                         var iconoItem = `
                        <div class="col-md-4 mb-3 icon_responsive">
                                 <a ${enlace_icon}>
-                                    <div class="card card_icon text-center">
-                                        <div class="card-body card-body_icon d-flex flex-row justify-content-between align-items-center" >
+                                    <div class="card1 card_icon1 text-center">
+                                        <div class="card-body1 d-flex flex-row justify-content-between align-items-center" >
                                             <i class="fa ${icon_text} fa-2x me-3" style="color: ${color_icono} !important"></i>
                                             <div class="text-end">
                                                 <h5 class="card-title">${texto}</h5>
-                                                <p class="card-text card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
+                                                <p class="card-text1 card-text_icon" style="font-size: 12px !important;">${subtexto_icon}</p>
                                             </div>
                                         </div>
                                     </div>
