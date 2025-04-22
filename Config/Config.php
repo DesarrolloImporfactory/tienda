@@ -105,5 +105,5 @@ $mysqli->close();
 
 
 define("ID_PLATAFORMA", $id_plataforma);
-/* define("SERVERURL", 'https://new.imporsuitpro.com/');
- */define("MARCA", $marca);
+define("SERVERURL", 'https://new.imporsuitpro.com/');
+define("MARCA", $marca);
