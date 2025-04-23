@@ -1,4 +1,102 @@
 <style>
+    /* ESTILOS GENERALES BOTON FLOTANTE WHATSAPP */
+    /* ESTILOS GENERALES BOTON WHATSAPP */
+    .whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: breathe 2s ease-in-out infinite;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  position: absolute;
+  right: 110%; /* Lo mueve a la izquierda del botón */
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+/* Flecha del tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+/* Muestra el tooltip al pasar el cursor */
+.whatsapp-btn:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Estilos solo al icono WhatsApp */
+.whatsapp-btn i {
+  color: #fff;
+  font-size: 24px;
+  animation: beat 2s ease-in-out infinite;
+  text-decoration: none;
+}
+
+/*Estilos con animation contorno respirando*/
+@keyframes breathe {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/*Estilos de animacion del icono latiendo*/
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            /* Distancia desde el fondo para dispositivos móviles */
+            right: 20px;
+            /* Distancia desde el lado derecho para dispositivos móviles */
+        }
+    }
+/* FIN ESTILOS GENERALES BOTON FLOTANTE WHATSAPP */
+/* FIN ESTILOS BOTON WHATSAPP */
+
     /* ESTILOS DE CARDS DE LOS ICONS */
     .card1 {
     position: relative !important;

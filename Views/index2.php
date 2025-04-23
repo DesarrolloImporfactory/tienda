@@ -84,10 +84,31 @@
 
     <!-- boton whatsapp -->
 
-    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-float shadow rounded-circle" style="background-color: #5ABD43;" target="_blank"><i class="bi bi-whatsapp rounded fs-3 text-white"></i></a>
-
+    <a href="https://wa.me/<?php echo formatPhoneNumber(TELEFONO); ?>" class="whatsapp-btn" target="_blank"><i class="bi bi-whatsapp"></i>
+        <span class="testi tooltip-text" id="tooltip">¿Tienes alguna duda? Escríbenos</span>
+    </a>
     <!-- Fin boton whatsapp-->
 </main>
+
+<!-- boton whatsapp-->
+<script>
+  window.addEventListener('load', () => {
+    const tooltip = document.querySelector('.tooltip-text');
+
+    // Espera 3 segundos, luego muestra el tooltip
+    setTimeout(() => {
+      tooltip.style.visibility = 'visible';
+      tooltip.style.opacity = '1';
+
+      // Luego de 3 segundos más, lo oculta
+      setTimeout(() => {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+      }, 3000);
+    }, 3000);
+  });
+</script>
+<!-- Fin boton whatsapp-->
 
 <script>
     $(document).ready(function() {
