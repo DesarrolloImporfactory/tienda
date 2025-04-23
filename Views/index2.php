@@ -24,7 +24,7 @@
             // Ruta de la imagen para la oferta 1
             $imagenOferta1 = SERVERURL . "" . IMAGEN_OFERTA1;
             // Comprobamos si la imagen existe o si es la de error
-            $imagenOferta1Exists = @getimagesize($imagenOferta1) ? $imagenOferta1 : 'https://new.imporsuitpro.com/public/img/imgntfound.png';
+            $imagenOferta1Exists = @getimagesize($imagenOferta1) ? $imagenOferta1 : 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png';
             ?>
             <img src="<?php echo $imagenOferta1Exists; ?>" class="promotion-image" alt="Smartphone">
             
@@ -32,7 +32,7 @@
                 <h2><?php echo TITULO_OFERTA1; ?></h2>
                 <h1><?php echo OFERTA1; ?></h1>
                 <p><?php echo DESCRIPCION_OFERTA1; ?></p>
-                <?php if ($imagenOferta1Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound.png') : ?>
+                <?php if ($imagenOferta1Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png') : ?>
                     <a href="<?php echo ENLACE_OFERTA1; ?>" target="_blank">
                         <button class="btn btn-light"
                             style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
@@ -47,7 +47,7 @@
             // Ruta de la imagen para la oferta 2
             $imagenOferta2 = SERVERURL . "" . IMAGEN_OFERTA2;
             // Comprobamos si la imagen existe o si es la de error
-            $imagenOferta2Exists = @getimagesize($imagenOferta2) ? $imagenOferta2 : 'https://new.imporsuitpro.com/public/img/imgntfound.png';
+            $imagenOferta2Exists = @getimagesize($imagenOferta2) ? $imagenOferta2 : 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png';
             ?>
             <img src="<?php echo $imagenOferta2Exists; ?>" class="promotion-image" alt="Headphones">
             
@@ -55,7 +55,7 @@
                 <h2><?php echo TITULO_OFERTA2; ?></h2>
                 <h1><?php echo OFERTA2; ?></h1>
                 <p><?php echo DESCRIPCION_OFERTA2; ?></p>
-                <?php if ($imagenOferta2Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound.png') : ?>
+                <?php if ($imagenOferta2Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png') : ?>
                     <a href="<?php echo ENLACE_OFERTA2; ?>" target="_blank">
                         <button class="btn btn-light"
                             style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
@@ -93,7 +93,7 @@
 <div class="ahorro-section">
     <div class="ahorro-image">
         <img src="<?php echo $imagen_promocion; ?>" 
-             onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" 
+             onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound1825x600.png';" 
              alt="Producto">
     </div>
     <div class="ahorro-content" style="background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;">
