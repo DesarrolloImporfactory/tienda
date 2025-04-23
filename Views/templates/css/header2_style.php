@@ -1,4 +1,5 @@
 <style>
+    /* ESTILOS DE CARDS DE LOS ICONS */
     .card1 {
     position: relative !important;
     display: flex !important;
@@ -61,6 +62,8 @@
     font-size: 14px !important;
     color: #888 !important;
 }
+/* FIN ESTILOS CARDS DE LOS ICONS */
+
     .navbar {
         overflow: hidden !important;
         width: 100% !important;
