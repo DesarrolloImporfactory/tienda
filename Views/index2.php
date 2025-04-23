@@ -17,33 +17,55 @@
     <!-- Fin Slider -->
     <!-- Seccion de ofertas y promociones -->
     <div class="seccion">
-        <div class="flex_seccionOfertas container">
-            <div class="promotion-card">
-                <img src="<?php echo SERVERURL . "" . IMAGEN_OFERTA1; ?>" class="promotion-image" alt="Smartphone">
-                <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA1; ?>;">
-                    <h2><?php echo TITULO_OFERTA1; ?></h2>
-                    <h1><?php echo OFERTA1; ?></h1>
-                    <p><?php echo DESCRIPCION_OFERTA1; ?></p>
+    <div class="flex_seccionOfertas container">
+        <!-- OFERTA 1 -->
+        <div class="promotion-card">
+            <?php 
+            // Ruta de la imagen para la oferta 1
+            $imagenOferta1 = SERVERURL . "" . IMAGEN_OFERTA1;
+            // Comprobamos si la imagen existe o si es la de error
+            $imagenOferta1Exists = @getimagesize($imagenOferta1) ? $imagenOferta1 : 'https://new.imporsuitpro.com/public/img/imgntfound.png';
+            ?>
+            <img src="<?php echo $imagenOferta1Exists; ?>" class="promotion-image" alt="Smartphone">
+            
+            <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA1; ?>;">
+                <h2><?php echo TITULO_OFERTA1; ?></h2>
+                <h1><?php echo OFERTA1; ?></h1>
+                <p><?php echo DESCRIPCION_OFERTA1; ?></p>
+                <?php if ($imagenOferta1Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound.png') : ?>
                     <a href="<?php echo ENLACE_OFERTA1; ?>" target="_blank">
                         <button class="btn btn-light"
                             style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
                     </a>
-                </div>
+                <?php endif; ?>
             </div>
-            <div class="promotion-card">
-                <img src="<?php echo SERVERURL . "" . IMAGEN_OFERTA2; ?>" class="promotion-image" alt="Headphones">
-                <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA2; ?>" ;>
-                    <h2><?php echo TITULO_OFERTA2; ?></h2>
-                    <h1><?php echo OFERTA2; ?></h1>
-                    <p><?php echo DESCRIPCION_OFERTA2; ?></p>
+        </div>
+
+        <!-- OFERTA 2 -->
+        <div class="promotion-card">
+            <?php 
+            // Ruta de la imagen para la oferta 2
+            $imagenOferta2 = SERVERURL . "" . IMAGEN_OFERTA2;
+            // Comprobamos si la imagen existe o si es la de error
+            $imagenOferta2Exists = @getimagesize($imagenOferta2) ? $imagenOferta2 : 'https://new.imporsuitpro.com/public/img/imgntfound.png';
+            ?>
+            <img src="<?php echo $imagenOferta2Exists; ?>" class="promotion-image" alt="Headphones">
+            
+            <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA2; ?>;">
+                <h2><?php echo TITULO_OFERTA2; ?></h2>
+                <h1><?php echo OFERTA2; ?></h1>
+                <p><?php echo DESCRIPCION_OFERTA2; ?></p>
+                <?php if ($imagenOferta2Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound.png') : ?>
                     <a href="<?php echo ENLACE_OFERTA2; ?>" target="_blank">
                         <button class="btn btn-light"
                             style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
                     </a>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
+</div>
+
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
     <section class="container">
@@ -64,22 +86,33 @@
     <!-- Fin Productos destacados -->
     <!-- Sección Ahorra -->
     <div class="ahorro-section">
-        <div class="ahorro-image">
-            <img src="<?php echo SERVERURL . "" . IMAGEN_PROMOCION; ?>" alt="Producto">
-            <!-- <div class="circle-badge">Mejor precio</div> -->
-        </div>
-        <div class="ahorro-content" style="background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;">
-            <div class="text-content  d-flex flex-column">
-                <h2 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo TITULO_PROMOCION; ?></h2>
-                <h1 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;">$<?php echo PRECIO_PROMOCION; ?></h1>
-                <p style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo DESCRIPCION_PROMOCION; ?></p>
+    <?php
+    $imagen_promocion = SERVERURL . IMAGEN_PROMOCION;
+    $es_imagen_valida = !empty(IMAGEN_PROMOCION) && IMAGEN_PROMOCION !== 'public/img/imgntfound.png';
+?>
+<div class="ahorro-section">
+    <div class="ahorro-image">
+        <img src="<?php echo $imagen_promocion; ?>" 
+             onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" 
+             alt="Producto">
+    </div>
+    <div class="ahorro-content" style="background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;">
+        <div class="text-content d-flex flex-column">
+            <h2 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo TITULO_PROMOCION; ?></h2>
+            <h1 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;">$<?php echo PRECIO_PROMOCION; ?></h1>
+            <p style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo DESCRIPCION_PROMOCION; ?></p>
+
+            <?php if ($es_imagen_valida): ?>
                 <a href="<?php echo ENLACE_BTN_PROMOCION; ?>" target="_blank">
                     <button class="tienda-btn"
-                        style="background-color: <?php echo COLOR_BTN_PROMOCION; ?>; color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;"><?php echo TEXTO_BTN_PROMOCION; ?></button>
+                        style="background-color: <?php echo COLOR_BTN_PROMOCION; ?>; color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;">
+                        <?php echo TEXTO_BTN_PROMOCION; ?>
+                    </button>
                 </a>
-            </div>
+            <?php endif; ?>
         </div>
     </div>
+</div>
     <!-- Fin Sección Ahorra -->
 
     <!-- boton whatsapp -->
@@ -157,7 +190,7 @@
 
                     const isActive = index === 0 ? 'active' : '';
                     inner += `<div class="carousel-item ${isActive}">
-                                <img src="${image_path}" class="d-block w-100" alt="...">
+                                <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block" style="${alineacion}">
                                     <h1 style="color:${banner.color_texto_banner};">${banner.titulo}</h1>
                                     <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
@@ -282,7 +315,7 @@
                         <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4 h-100">
                             ${oferta}
                             <a href="${urlProducto}">
-                                <img src="${image_path}" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
                             </a>
                             <div class="d-flex flex-column body_card h-100 p-3 mt-4 mb-2">
                                 <h5 class="card-title fs-6">${producto.nombre_producto_tienda}</h5>
