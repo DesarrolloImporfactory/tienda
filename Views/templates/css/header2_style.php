@@ -186,6 +186,9 @@
         color: <?php echo COLOR_TEXTO_CABECERA; ?>;
         /* Cambiar a tu color preferido */
     }
+    .buscar {
+        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+  }
 
     /* Estilo de header adaptado en dispositivos moviles */
     @media (max-width: 992px) {
@@ -229,7 +232,7 @@
     border-radius: 20px;
     margin-bottom: 0.5rem;
   }
-
+  
   .search-button {
     width: 100%;
     border-radius: 20px;
