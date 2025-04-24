@@ -985,27 +985,74 @@
 
     /* Responsivo */
     @media (max-width: 768px) {
-        .ahorro-section {
-            flex-direction: column;
-        }
-
-        .circle-badge {
-            top: -25px;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
-
-        .ahorro-content {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            margin-left: 0;
-        }
-
-        .ahorro-image,
-        .ahorro-content {
-            flex: 1 0 auto;
-            /* Full width in responsive mode */
-        }
+    .ahorro-section {
+        display: flex;
+        flex-direction: column;
+        margin: 1rem;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
+    .ahorro-image {
+        width: 100%;
+    }
+
+    .ahorro-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-bottom: 4px solid <?php echo COLOR_BTN_PROMOCION; ?>;
+    }
+
+    .ahorro-content {
+        background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;
+        padding: 1rem;
+        text-align: center;
+        margin-left: 0;
+        clip-path: none; /* Quitamos el clip-path para un diseño limpio en móviles */
+    }
+
+    .ahorro-content h2 {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+    }
+
+    .ahorro-content h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+    }
+
+    .ahorro-content p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+    }
+
+    .ahorro-content .tienda-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: none;
+        background-color: <?php echo COLOR_BTN_PROMOCION; ?>;
+        color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;
+        transition: background-color 0.3s ease;
+    }
+
+    .ahorro-content .tienda-btn:hover {
+        filter: brightness(1.1);
+    }
+
+    .circle-badge {
+        top: -25px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
 
     /* fin seccion ahorra 1 */
 
