@@ -109,10 +109,10 @@
             $('#categories-menu').html(categoriasHtml);
 
             // Inicializar OwlCarousel para pantallas grandes
-            if (window.innerWidth >= 992) {
+            if (window.innerWidth <= 768) {
                 $('#categories-menu').addClass('owl-carousel');
                 $('#categories-menu').owlCarousel({
-                    loop: false,
+                    loop: true,
                     margin: 10,
                     responsive: {
                         0: {
@@ -120,9 +120,6 @@
                         },
                         768: {
                             items: 2
-                        },
-                        992: {
-                            items: 5 // Muestra 5 ítems en pantallas grandes
                         }
                     },
                     nav: true,

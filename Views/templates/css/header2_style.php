@@ -187,6 +187,116 @@
         /* Cambiar a tu color preferido */
     }
 
+    /* Estilo de header adaptado en dispositivos moviles */
+    @media (max-width: 992px) {
+        .navbar {
+        position: relative; /* Asegura que el contenedor tenga un contexto de posicionamiento */
+        
+    }
+    .navbar-toggler {
+        position: absolute; /* El botón se coloca de forma absoluta dentro del navbar */
+        top: 10px; /* Ajusta la distancia desde la parte superior */
+        right: 10px; /* Alinea al borde derecho */
+        z-index: 1050; /* Mantiene el botón por encima del contenido */
+        background: transparent;
+        border: none;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .navbar-toggler-icon {
+        background-color: transparent;
+        border: none;
+        background-image: none;
+    }
+
+    .navbar-toggler-icon::before {
+        content: '\2630'; /* Ícono de hamburguesa */
+        font-size: 24px;
+        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+    }
+    /* barra de busqueda en moviles */
+    .search-form {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 0.5rem;
+    max-width: 100%;
+    border: none;
+    background-color: <?php echo COLOR_CABECERA; ?>; /* ligero fondo translúcido opcional */
+  }
+
+  .search-input {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-button {
+    width: 100%;
+    border-radius: 20px;
+    padding: 0.5rem;
+  }
+  /* Animacion al expandirse el header */
+  .navbar-collapse {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease;
+  }
+
+  .navbar-collapse.collapsing {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease;
+  }
+
+  .navbar-collapse.show {
+    height: auto;
+    transition: height 0.4s ease;
+  }
+  
+    /* ESTILO DE CART EN MOVILES */
+  .navbar-nav {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  #cartDropdown {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Asegura que el contenido se alinee desde la izquierda */
+    gap: 0.5rem;
+    padding-left: 1rem; /* Añade más espacio a la izquierda */
+    padding-right: 1rem; /* Añade más espacio a la derecha */
+    border: 1px solid <?php echo COLOR_TEXTO_CABECERA; ?>; /* Borde alrededor del carrito */
+    border-radius: 25px; /* Bordes redondeados */
+    width: 90%; /* Hace que el borde cubra el 90% del ancho de la página */
+    max-width: 100%; /* Evita que se sobrepase el ancho */
+    margin: 0 auto; /* Centra el carrito horizontalmente */
+    background-color: <?php echo COLOR_CABECERA; ?>; /* Fondo para mejor visibilidad */
+}
+
+#cartDropdown .menu-icon {
+    font-size: 50px;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+    transform: translateY(10px) !important; /* Lo sube ligeramente */
+}
+#cantidad_carrito {
+    margin-left: 60px !important; /* Empuja el badge a la derecha */
+    display: inline-block !important;
+    vertical-align: middle !important;
+    transform: translateY(-50px) !important; /* Lo sube ligeramente */
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+}
+/* FIN ESTILO DE CART EN MOVILES */
+}
+
     .navbar-nav .nav-link {
         color: <?php echo COLOR_TEXTO_CABECERA; ?>;
     }
@@ -203,22 +313,35 @@
         background-color: <?php echo COLOR_CABECERA; ?> !important;
     }
 
-    .buscar {
-        border-radius: 0 20px 20px 0 !important;
-        border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        background-color: transparent;
-        padding: 0.375rem 0.75rem;
-        font-size: 1rem;
-        text-align: center;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+    .search-form {
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid <?php echo COLOR_TEXTO_CABECERA; ?>;
+    border-radius: 30px;
+    overflow: hidden;
+  }
 
-    .buscar:hover {
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
-    }
+  .search-input {
+    border: none;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+  }
+
+  .search-button {
+    background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 30px 30px 0;
+    transition: background 0.3s ease;
+  }
+
+  .search-button:hover {
+    background-color: white;
+    color: white;
+  }
 
     .navbar-brand {
         font-weight: bold;
@@ -282,34 +405,52 @@
     }
 
     /* Responsive Styles para pantallas pequeñas */
-    @media (max-width: 992px) {
-        .navbar-brand {
-            font-size: 20px;
-        }
-
-        #buscar_input {
-            margin-right: 0;
-        }
-
-        .buscar {
-            width: 100%;
-            margin-top: 0.5rem;
-        }
-
-        .sub-nav .navbar-nav {
-            flex-direction: column;
-            align-items: flex-start;
-            overflow-x: visible;
-        }
-
-        .sub-nav .nav-link {
-            margin-right: 0;
-            width: 100%;
-            font-size: 1rem;
-            padding: 0.5rem 0.75rem;
-            text-align: left;
-        }
+@media (max-width: 992px) {
+    .navbar-brand {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
     }
+
+    .navbar .d-flex {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 10px;
+    }
+
+    #buscar_input {
+        border-radius: 20px !important;
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    /* Sub navegación vertical y con mejor espacio */
+    .sub-nav .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        overflow-x: visible;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .sub-nav .nav-link {
+        margin-right: 0;
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+
+    .cart-sidebar {
+        width: 90vw; /* más adecuado para móviles */
+    }
+}
 
 
     .custom-carousel {
