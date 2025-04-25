@@ -377,8 +377,8 @@
     }
 
     .sub-nav .nav-link:hover {
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        color: <?php echo COLOR_HOVER_CABECERA; ?>; /* Color del texto de las categorias al pasar el mouse */
+        background-color: rgb(230, 230, 230); /* colores de las categorias al pasar el mouse encima */ 
         border-radius: 5px;
     }
 

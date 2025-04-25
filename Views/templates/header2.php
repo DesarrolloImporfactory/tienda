@@ -229,7 +229,7 @@ $primera_seccion = obtenerPrimeraSeccion();
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
-                    <form class="search-form d-flex mx-auto my-2">
+                    <form class="search-form d-flex mx-auto my-3">
                         <input class="form-control search-input" id="buscar_input" type="search" placeholder="Buscar...">
                             <button class="btn buscar search-button" type="submit">Buscar</button>
                     </form>
