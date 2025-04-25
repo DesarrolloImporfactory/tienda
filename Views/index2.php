@@ -99,7 +99,11 @@
     <div class="ahorro-content" style="background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;">
         <div class="text-content d-flex flex-column">
             <h2 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo TITULO_PROMOCION; ?></h2>
-            <h1 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;">$<?php echo PRECIO_PROMOCION; ?></h1>
+
+            <?php if ($es_imagen_valida): ?>
+                <h1 style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;">$<?php echo PRECIO_PROMOCION; ?></h1>
+            <?php endif; ?>
+
             <p style="color: <?php echo COLOR_LETRA_PROMOCION; ?>;"><?php echo DESCRIPCION_PROMOCION; ?></p>
 
             <?php if ($es_imagen_valida): ?>
