@@ -23,20 +23,24 @@
             <?php 
             // Ruta de la imagen para la oferta 1
             $imagenOferta1 = SERVERURL . "" . IMAGEN_OFERTA1;
-            // Comprobamos si la imagen existe o si es la de error
-            $imagenOferta1Exists = @getimagesize($imagenOferta1) ? $imagenOferta1 : 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png';
             ?>
-            <img src="<?php echo $imagenOferta1Exists; ?>" class="promotion-image" alt="Smartphone">
+            <img src="<?php echo $imagenOferta1; ?>" 
+                 onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound1825x600.png';" 
+                 class="promotion-image" alt="Smartphone">
             
             <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA1; ?>;">
                 <h2><?php echo TITULO_OFERTA1; ?></h2>
                 <h1><?php echo OFERTA1; ?></h1>
                 <p><?php echo DESCRIPCION_OFERTA1; ?></p>
-                <?php if ($imagenOferta1Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png') : ?>
+
+                <?php if ($imagenOferta1 !== 'https://new.imporsuitpro.com/public/img/imgntfound1825x600.png') : ?>
                     <a href="<?php echo ENLACE_OFERTA1; ?>" target="_blank">
                         <button class="btn btn-light"
                             style="background-color: <?php echo COLOR_BTN_OFERTA1; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA1; ?>;"><?php echo TEXTO_BTN_OFERTA1; ?></button>
                     </a>
+                <?php else: ?>
+                    <!-- Si la imagen no existe, no mostramos el botón -->
+                    <p class="no-image">Imagen no disponible</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -46,25 +50,30 @@
             <?php 
             // Ruta de la imagen para la oferta 2
             $imagenOferta2 = SERVERURL . "" . IMAGEN_OFERTA2;
-            // Comprobamos si la imagen existe o si es la de error
-            $imagenOferta2Exists = @getimagesize($imagenOferta2) ? $imagenOferta2 : 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png';
             ?>
-            <img src="<?php echo $imagenOferta2Exists; ?>" class="promotion-image" alt="Headphones">
+            <img src="<?php echo $imagenOferta2; ?>" 
+                 onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound1825x600.png';" 
+                 class="promotion-image" alt="Headphones">
             
             <div class="promotion-content" style="color: <?php echo COLOR_TEXTO_OFERTA2; ?>;">
                 <h2><?php echo TITULO_OFERTA2; ?></h2>
                 <h1><?php echo OFERTA2; ?></h1>
                 <p><?php echo DESCRIPCION_OFERTA2; ?></p>
-                <?php if ($imagenOferta2Exists !== 'https://new.imporsuitpro.com/public/img/imgntfound893x468.png') : ?>
+
+                <?php if ($imagenOferta2 !== 'https://new.imporsuitpro.com/public/img/imgntfound1825x600.png') : ?>
                     <a href="<?php echo ENLACE_OFERTA2; ?>" target="_blank">
                         <button class="btn btn-light"
                             style="background-color: <?php echo COLOR_BTN_OFERTA2; ?>; color: <?php echo COLOR_TEXTOBTN_OFERTA2; ?>;"><?php echo TEXTO_BTN_OFERTA2; ?></button>
                     </a>
+                <?php else: ?>
+                    <!-- Si la imagen no existe, no mostramos el botón -->
+                    <p class="no-image">Imagen no disponible</p>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 </div>
+
 
     <!-- Fin Seccion ofertas y promociones -->
     <!-- seccion iconos -->
