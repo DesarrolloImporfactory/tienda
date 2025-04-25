@@ -986,72 +986,86 @@
     /* Responsivo */
     @media (max-width: 768px) {
     .ahorro-section {
+        position: relative;
         display: flex;
         flex-direction: column;
-        margin: 1rem;
-        border-radius: 15px;
+        margin: 1.5rem 1rem;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        animation: slideUpFade 0.8s ease-out;
+        background: #fefefe;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.1);
     }
 
     .ahorro-image {
+        position: relative;
         width: 100%;
+        height: 200px;
+        overflow: hidden;
     }
 
     .ahorro-image img {
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
-        border-bottom: 4px solid <?php echo COLOR_BTN_PROMOCION; ?>;
+        filter: brightness(0.85);
     }
 
     .ahorro-content {
-        background-color: <?php echo COLOR_FONDO_PROMOCION; ?>;
-        padding: 1rem;
+        background: linear-gradient(to bottom, <?php echo COLOR_FONDO_PROMOCION; ?>, #ffffff);
+        padding: 2rem 1.25rem;
         text-align: center;
-        margin-left: 0;
-        clip-path: none; /* Quitamos el clip-path para un diseño limpio en móviles */
+        margin: 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
     }
 
     .ahorro-content h2 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
         color: <?php echo COLOR_LETRA_PROMOCION; ?>;
     }
 
     .ahorro-content h1 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
+        font-size: 2.2rem;
+        margin: 0.5rem 0;
+        font-weight: 700;
         color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .ahorro-content p {
         font-size: 1rem;
-        margin-bottom: 1rem;
         color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+        margin-bottom: 1.2rem;
     }
 
     .ahorro-content .tienda-btn {
-        width: 100%;
-        padding: 0.75rem;
+        padding: 0.85rem 1.5rem;
         font-size: 1rem;
-        border-radius: 8px;
         border: none;
-        background-color: <?php echo COLOR_BTN_PROMOCION; ?>;
+        border-radius: 999px;
+        background: linear-gradient(135deg, <?php echo COLOR_BTN_PROMOCION; ?>, #000000);
         color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;
-        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        
     }
 
-    .ahorro-content .tienda-btn:hover {
-        filter: brightness(1.1);
+    
+    @keyframes slideUpFade {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
-    .circle-badge {
-        top: -25px;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
+    
 }
 
     /* fin seccion ahorra 1 */
