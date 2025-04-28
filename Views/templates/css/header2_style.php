@@ -792,80 +792,193 @@
     }
 
     /* Fin CSS para carrito de compras */
-    /* seccion mas vendidos */
-    .mas_vendidos {
-        padding: 20px;
-    }
+    /* Sección productos destacados */
+/* Sección productos destacados */
+#productos-destacados {
+    margin: 0 auto;
+    padding: 20px 0;
+}
 
-    .mas_vendidos h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+.mas_vendidos {
+    padding: 20px;
+}
 
-    .flex_mas_vendidos {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
+.mas_vendidos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Cada item del carrusel */
+.productos-carousel .item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+@media (max-width: 768px) {
+  .mas_vendidos-card {
+    width: 90%;        /* ✅ Ocupa el 90% del ancho de pantalla */
+    max-width: 200px;  /* ✅ Máximo 300px para que no se vea gigante */
+    height: 400px;     /* ✅ Un poco más alto si quieres mejorar proporción */
+    margin: 0 auto;    /* ✅ Centrar la card */
+  }
+
+  .mas_vendidos-card a {
+    flex: 0 0 60%;
+  }
+
+  .mas_vendidos-card .body_card {
+    flex: 0 0 40%;
+    padding: 10px;
+  }
+}
+
+/* Card general */
+.mas_vendidos-card {
+    background: #fff;
+    border-radius: 10px;
+    width: 250px;        /* Ancho fijo */
+    height: 350px;       /* Alto fijo */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: space-between; /*  Distribuir contenido para ocupar siempre toda la altura */
+    transition: transform 0.3s ease;
+    position: relative; /* ✅ Necesario para el tag de oferta */
+}
+/* Hover efecto */
+.mas_vendidos-card:hover {
+    transform: scale(1.05);
+}
+
+/* Envoltura imagen */
+.mas_vendidos-image-wrapper {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 
-    .mas_vendidos-card:hover .mas_vendidos-image {
-        transform: scale(1.1);
-    }
+/* Imagen */
+.mas_vendidos-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+}
+.img-container {
+  height: 180px;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .mas_vendidos-image {
-        height: 300px;
-        object-fit: cover;
-    }
+/* Efecto hover en imagen */
+.mas_vendidos-card:hover .mas_vendidos-image {
+    transform: scale(1.1);
+}
 
-    .mas_vendidos-tag {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: #e74c3c;
-        color: white;
-        padding: 5px 10px;
-        font-weight: bold;
-        border-radius: 3px;
-        z-index: 2;
-    }
+/* Información del producto */
+.mas_vendidos-info {
+    height: 40%;    /* ✅ el contenido ocupa el 40% restante */
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    flex-grow: 0 !important; /* No permite que el texto se expanda */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita el texto a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Oculta el texto que se excede */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es más largo de lo permitido */
+    min-height: 2.8em; /* Reserva espacio para 2 lineas aproximadamente */
+    line-height: 1.4em; /* Asegura un interlineado consistente */
+}
 
-    .mas_vendidos-image-wrapper {
-        overflow: hidden;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
-    }
+/* Título */
+.mas_vendidos-info h5 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    flex-grow: 0 !important; /* No permite que el texto se expanda */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita el texto a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Oculta el texto que se excede */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es más largo de lo permitido */
+    min-height: 2.8em; /* Reserva espacio para 2 lineas aproximadamente */
+    line-height: 1.4em; /* Asegura un interlineado consistente */
+}
 
-    .mas_vendidos-image {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-        margin-bottom: 10px;
-        transition: transform 0.3s ease;
-    }
+/* Precios */
+.mas_vendidos-price {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.1rem;
+}
 
-    .mas_vendidos-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.mas_vendidos-old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
 
-    .mas_vendidos-info p {
-        margin: 5px 0;
-    }
+/* Tag de oferta */
+.mas_vendidos-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    z-index: 2;
+}
 
-    .mas_vendidos-price {
-        font-weight: bold;
-        color: #333;
-    }
+/* Estilos de navegación Carousel */
+.owl-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+.owl-dot {
+    background: #ccc;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.owl-dot.active {
+    background: #e74c3c;
+}
 
-    .mas_vendidos-old-price {
-        text-decoration: line-through;
-        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
-    }
+.owl-nav .owl-prev,
+.owl-nav .owl-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e74c3c;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+}
+.owl-nav .owl-prev {
+    left: -25px;
+}
+.owl-nav .owl-next {
+    right: -25px;
+}
+
+
 
     hr {
         height: 3px;

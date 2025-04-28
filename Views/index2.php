@@ -87,7 +87,7 @@
     <div class="mas_vendidos">
         <div class="caja container">
             <h2>Productos destacados</h2>
-            <div class="flex_mas_vendidos" id="productos-destacados">
+            <div class="productos-carousel owl-carousel owl-theme" id="productos-destacados">
                 <!-- Los productos serán insertados aquí dinámicamente -->
             </div>
         </div>
@@ -301,62 +301,57 @@ $.ajax({
         /* Productos Destacados */
         // Cargar productos destacados mediante AJAX
         let formDataProductos = new FormData();
-        formDataProductos.append("id_plataforma", ID_PLATAFORMA);
+formDataProductos.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/destacadostienda',
-            method: 'POST',
-            data: formDataProductos,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                try {
-                    var productos = JSON.parse(response);
-                } catch (e) {
-                    console.error('Error al parsear la respuesta:', e);
-                    return;
+$.ajax({
+    url: SERVERURL + 'Tienda/destacadostienda',
+    method: 'POST',
+    data: formDataProductos,
+    contentType: false,
+    processData: false,
+    success: function(response) {
+        try {
+            var productos = JSON.parse(response);
+        } catch (e) {
+            console.error('Error al parsear la respuesta:', e);
+            return;
+        }
+
+        if (productos && Array.isArray(productos)) {
+            var $productosContainer = $("#productos-destacados");
+            $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
+
+            var productosAMostrar = productos.slice(0, 12); // Limita el número de productos a 12
+            productosAMostrar.forEach(function(producto) {
+                var precioEspecial = parseFloat(producto.pvp_tienda);
+                var precioNormal = parseFloat(producto.pref_tienda);
+                var ahorro = 0;
+
+                if (precioNormal > 0) {
+                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
                 }
 
-                if (productos && Array.isArray(productos)) {
-                    var $productosContainer = $("#productos-destacados");
-                    $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
+                var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
-                    var productosAMostrar = productos.slice(0, 8); // Limita el número de productos a 8
-                    var fila = $('<div style="height: fit-content;" class="row align-items-stretch g-4 mt-3"></div>'); // Crear una única fila
-                    $productosContainer.append(fila); // Agregar la fila al contenedor
+                let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
 
-                    productosAMostrar.forEach(function(producto) {
-                        var precioEspecial = parseFloat(producto.pvp_tienda);
-                        var precioNormal = parseFloat(producto.pref_tienda);
-                        var ahorro = 0;
+                const urlProducto = producto.funnelish === '1' && producto.funnelish_url ? 
+                    ensureProtocol(producto.funnelish_url) : 
+                    `producto2?id=${producto.id_producto_tienda}`;
 
-                        if (precioNormal > 0) {
-                            ahorro = 100 - (precioEspecial * 100 / precioNormal);
-                        }
-
-                        var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
-
-                        let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
-
-                        // Verificar si el producto tiene funnelish habilitado y construir la URL en consecuencia
-                        const urlProducto = producto.funnelish === '1' && producto.funnelish_url ?
-                            ensureProtocol(producto.funnelish_url) :
-                            `producto2?id=${producto.id_producto_tienda}`;
-
-                        // HTML para cada producto destacado
-                        var productItem = `
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 px-2">
-                        <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4 h-100">
+                var productItem = `
+                    <div class="item">
+                        <div class="overflow-hidden mas_vendidos-card card bg-transparent rounded-4">
                             ${oferta}
                             <a href="${urlProducto}">
-                                <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="card-img-top mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                <div class="mas_vendidos-image-wrapper img-container">
+                                    <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="mas_vendidos-image" alt="${producto.nombre_producto_tienda}">
+                                </div>
                             </a>
-                            <div class="d-flex flex-column body_card h-100 p-3 mt-4 mb-2">
-                                <h5 class="card-title fs-6">${producto.nombre_producto_tienda}</h5>
-                                <p class="mas_vendidos-price mt-auto mb-0">
-                                    ${precioNormal > 0 ? `
-                                        <span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>
-                                    ` : ''}
+                            <div class="mas_vendidos-info">
+                                <h5 class="card-title">${producto.nombre_producto_tienda}</h5>
+                                <p class="mas_vendidos-price">
+                                    ${precioNormal > 0 ? `<span class="mas_vendidos-old-price">$${number_format(precioNormal, 2)}</span>` : ''}
                                     $${number_format(precioEspecial, 2)}
                                 </p>
                             </div>
@@ -364,25 +359,59 @@ $.ajax({
                     </div>
                 `;
 
-                        // Agregar el producto a la única fila
-                        fila.append(productItem);
-                    });
-                } else {
-                    console.error('La respuesta no contiene productos válidos.');
-                }
-            },
-            error: function(error) {
-                console.log('Error al cargar los productos destacados:', error);
-            }
-        });
+                $productosContainer.append(productItem);
+            });
 
-        // Función para asegurar que la URL tenga el protocolo
-        function ensureProtocol(url) {
-            if (url && !/^https?:\/\//i.test(url)) {
-                return `https://${url}`;
+            // Inicializa Owl Carousel
+            $(".productos-carousel").owlCarousel({
+                items: 3,
+                margin: 30,
+                nav: true,
+                dots: true,
+                slideBy: 3, 
+                loop: productosAMostrar.length > 3,   // Solo hace loop si hay más de 3
+                smartSpeed: 600,
+                responsive: {
+                    0: {
+                        items: 1,
+                        slideBy: 1
+                    },
+                    600: {
+                        items: 2,
+                        slideBy: 2
+                    },
+                    1000: {
+                        items: 3,
+                        slideBy: 3
+                    }
+                }
+            });
+
+            // Corrección para los dots si hay 2 sobrantes
+            let totalSlides = Math.ceil(productosAMostrar.length / 3);
+            let $dots = $(".productos-carousel .owl-dots .owl-dot");
+            if ($dots.length !== totalSlides) {
+                $(".productos-carousel").trigger('refresh.owl.carousel');
             }
-            return url;
+        } else {
+            console.error('La respuesta no contiene productos válidos.');
         }
+    },
+    error: function(error) {
+        console.log('Error al cargar los productos destacados:', error);
+    }
+});
+
+function ensureProtocol(url) {
+    if (url && !/^https?:\/\//i.test(url)) {
+        return `https://${url}`;
+    }
+    return url;
+}
+
+
+
+
 
 
 
