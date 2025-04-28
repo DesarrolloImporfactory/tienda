@@ -178,46 +178,67 @@
 
         /* Slider */
         let formDataSlider = new FormData();
-        formDataSlider.append("id_plataforma", ID_PLATAFORMA);
+formDataSlider.append("id_plataforma", ID_PLATAFORMA);
 
-        $.ajax({
-            url: SERVERURL + 'Tienda/bannertienda',
-            method: 'POST',
-            data: formDataSlider,
-            contentType: false,
-            processData: false,
-            dataType: "json",
-            success: function(data) {
-                let inner = '';
-                let alineacion = "";
-                $.each(data, function(index, banner) {
+$.ajax({
+    url: SERVERURL + 'Tienda/bannertienda',
+    method: 'POST',
+    data: formDataSlider,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function(data) {
+        let inner = '';
+        let alineacion = "";
 
-                    let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
-                    if (banner.alineacion == 1) {
-                        alineacion = "text-align-last: left;";
-                    } else if (banner.alineacion == 2) {
-                        alineacion = "text-align-last: center;";
-                    } else if (banner.alineacion == 3) {
-                        alineacion = "text-align-last: right;";
-                    }
+        $.each(data, function(index, banner) {
+            let image_path = obtenerURLImagen(banner.fondo_banner, SERVERURL);
 
-                    const isActive = index === 0 ? 'active' : '';
-                    inner += `<div class="carousel-item ${isActive}">
-                                <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block" style="${alineacion}">
-                                    <h1 style="color:${banner.color_texto_banner};">${banner.titulo}</h1>
-                                    <p style="color:${banner.color_texto_banner};">${banner.texto_banner}</p>
-                                    <a class="btn btn-primary" href="${banner.enlace_boton}" style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" target="_blank">${banner.texto_boton}</a>
-                                </div>
-                              </div>`;
-                });
-
-                $('.carousel-inner').html(inner);
-            },
-            error: function(error) {
-                console.error('Error fetching banner data', error);
+            if (banner.alineacion == 1) {
+                alineacion = "text-align: left;";
+            } else if (banner.alineacion == 2) {
+                alineacion = "text-align: center;";
+            } else if (banner.alineacion == 3) {
+                alineacion = "text-align: right;";
             }
+
+            const isActive = index === 0 ? 'active' : '';
+
+            inner += `
+                <div class="carousel-item ${isActive}">
+                    <img src="${image_path}" onerror="this.onerror=null; this.src='https://new.imporsuitpro.com/public/img/imgntfound.png';" 
+                         class="d-block w-100" style="object-fit: cover; height: 400px;" alt="Banner">
+                    <div class="carousel-caption d-none d-md-block" style="${alineacion}">
+                        <h1 style="color:${banner.color_texto_banner}; font-weight: bold;">${banner.titulo}</h1>
+                        <p style="color:${banner.color_texto_banner}; font-size: 18px;">${banner.texto_banner}</p>
+                        <a class="btn btn-primary" 
+                           href="${banner.enlace_boton}" 
+                           style="color:${banner.color_textoBtn_banner} !important; background-color:${banner.color_btn_banner} !important;" 
+                           target="_blank">
+                            ${banner.texto_boton}
+                        </a>
+                    </div>
+                </div>`;
         });
+
+        $('.carousel-inner').html(inner);
+
+        // Activar el primer item manualmente por seguridad
+        $('#carouselExampleFade .carousel-item').first().addClass('active');
+
+        // Iniciar el carousel manualmente para asegurar transiciones suaves
+        $('#carouselExampleFade').carousel({
+            interval: 5000, // 5 segundos por slide
+            ride: 'carousel',
+            pause: false,
+            wrap: true
+        });
+    },
+    error: function(error) {
+        console.error('Error fetching banner data', error);
+    }
+});
+
         /* Fin Slider */
         /* iconos */
         // Cargar iconos mediante AJAX
