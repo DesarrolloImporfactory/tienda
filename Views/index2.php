@@ -85,13 +85,17 @@
     <!-- fin seccion iconos -->
     <!-- Productos Destacados -->
     <div class="mas_vendidos">
-        <div class="caja container">
-            <h2>Productos destacados</h2>
-            <div class="productos-carousel owl-carousel owl-theme" id="productos-destacados">
-                <!-- Los productos serán insertados aquí dinámicamente -->
+    <div class="caja container">
+        <h2>Productos destacados</h2>
+        <div class="carousel-wrapper">
+            <button class="carousel-btn prev">&#10094;</button>
+            <div class="carousel-track" id="productos-destacados">
+                <!-- Las cards se insertarán aquí dinámicamente -->
             </div>
+            <button class="carousel-btn next">&#10095;</button>
         </div>
     </div>
+</div>
     <!-- Fin Productos destacados -->
     <!-- Sección Ahorra -->
     <div class="ahorro-section">
@@ -319,22 +323,16 @@ $.ajax({
 
         if (productos && Array.isArray(productos)) {
             var $productosContainer = $("#productos-destacados");
-            $productosContainer.empty(); // Limpiar el contenedor antes de agregar nuevos productos
+            $productosContainer.empty();
 
-            var productosAMostrar = productos.slice(0, 12); // Limita el número de productos a 12
+            var productosAMostrar = productos.slice(0, 12);
             productosAMostrar.forEach(function(producto) {
                 var precioEspecial = parseFloat(producto.pvp_tienda);
                 var precioNormal = parseFloat(producto.pref_tienda);
-                var ahorro = 0;
-
-                if (precioNormal > 0) {
-                    ahorro = 100 - (precioEspecial * 100 / precioNormal);
-                }
 
                 var image_path = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL);
 
                 let oferta = precioNormal > 0 ? `<div class="mas_vendidos-tag">OFERTA</div>` : '';
-
                 const urlProducto = producto.funnelish === '1' && producto.funnelish_url ? 
                     ensureProtocol(producto.funnelish_url) : 
                     `producto2?id=${producto.id_producto_tienda}`;
@@ -362,37 +360,7 @@ $.ajax({
                 $productosContainer.append(productItem);
             });
 
-            // Inicializa Owl Carousel
-            $(".productos-carousel").owlCarousel({
-                items: 3,
-                margin: 30,
-                nav: true,
-                dots: true,
-                slideBy: 3, 
-                loop: productosAMostrar.length > 3,   // Solo hace loop si hay más de 3
-                smartSpeed: 600,
-                responsive: {
-                    0: {
-                        items: 1,
-                        slideBy: 1
-                    },
-                    600: {
-                        items: 2,
-                        slideBy: 2
-                    },
-                    1000: {
-                        items: 3,
-                        slideBy: 3
-                    }
-                }
-            });
-
-            // Corrección para los dots si hay 2 sobrantes
-            let totalSlides = Math.ceil(productosAMostrar.length / 3);
-            let $dots = $(".productos-carousel .owl-dots .owl-dot");
-            if ($dots.length !== totalSlides) {
-                $(".productos-carousel").trigger('refresh.owl.carousel');
-            }
+            iniciarCarruselPersonalizado();
         } else {
             console.error('La respuesta no contiene productos válidos.');
         }
@@ -401,6 +369,42 @@ $.ajax({
         console.log('Error al cargar los productos destacados:', error);
     }
 });
+
+function iniciarCarruselPersonalizado() {
+    const track = document.querySelector('.carousel-track');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    const items = document.querySelectorAll('.carousel-track .item');
+
+    let currentIndex = 0;
+
+    function updateCarousel() {
+        const itemWidth = items[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+        // Deshabilitar botones si está en los extremos
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= items.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < items.length - 1) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    updateCarousel();
+}
+
+
 
 function ensureProtocol(url) {
     if (url && !/^https?:\/\//i.test(url)) {

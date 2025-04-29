@@ -944,39 +944,65 @@
     z-index: 2;
 }
 
-/* Estilos de navegación Carousel */
-.owl-dots {
-    text-align: center;
-    margin-top: 15px;
-}
-.owl-dot {
-    background: #ccc;
-    width: 10px;
-    height: 10px;
-    margin: 5px;
-    border-radius: 50%;
-    display: inline-block;
-}
-.owl-dot.active {
-    background: #e74c3c;
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
-.owl-nav .owl-prev,
-.owl-nav .owl-next {
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.carousel-track .item {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .carousel-track .item {
+    flex: 0 0 33.3333%; /* ✅ 3 items visibles por slide en pantallas grandes */
+  }
+}
+
+
+.carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: #e74c3c;
-    color: #fff;
-    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 5;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.owl-nav .owl-prev {
-    left: -25px;
+
+
+.carousel-btn.prev {
+    left: 10px;
 }
-.owl-nav .owl-next {
-    right: -25px;
+
+.carousel-btn.next {
+    right: 10px;
 }
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
 
 
 
