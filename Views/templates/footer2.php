@@ -1,34 +1,59 @@
-<footer>
-    <div class="footer">
+<footer class="pt-5 shadow border-top bg-light">
+    <div class="footer pb-4 border-bottom">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h5 style="text-transform: uppercase;">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
-                    <img src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" width="40px" height="40px">
+        <div class="row w-100 text-center text-md-start d-flex justify-content-center align-items-start">
+                
+                <!-- Acerca de la tienda -->
+                <div class="col-md-3 text-center">
+                    <h5 class="text-dark mb-2">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
+                    <hr class="mx-auto my-2 w-50">
+                    <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="50px">
                 </div>
-                <div class="col-md-3">
+                <!-- Espaciado entre columnas -->
+                <div class="col-md-1 d-none d-md-block"></div>
 
+
+                <div class="col-md-3 pe-md-4 mt-4 mt-md-0">
+                    <h5 class="text-dark mb-2 text-center">Síguenos</h5> 
+                    <hr class="w-100 mx-auto my-2">
+                    <div class="d-flex flex-row align-items-center gap-5 justify-content-center">
+                        <a href="<?php echo FACEBOOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#1877F2';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                            <i class="fab fa-facebook fs-2"></i>
+                        </a>
+                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#E4405F';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                            <i class="fab fa-instagram fs-2"></i>
+                        </a>
+                        <a href="<?php echo TIKTOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#30D5C8';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                            <i class="fab fa-tiktok fs-2"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <h5>Síguenos</h5>
-                    <p>
-                        <a href="<?php echo FACEBOOK; ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook</a><br>
-                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
-                        <a href="<?php echo TIKTOK; ?>" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+                <!-- Espacio entre columnas -->
+                <div class="col-md-1 d-none d-md-block"></div>
+
+                <div class="col-md-3 mt-4 mt-md-0">
+                    <h5 class="text-dark mb-2 text-center">Contacto</h5>
+                    <hr class="w-50 mx-auto my-2">
+                    <p class="testi d-flex align-items-center justify-content-center text-dark">
+                        <i class="fab fa-whatsapp fs-2 me-2 text-success"></i> 
+                        <?php echo formatPhoneNumber(TELEFONO); ?>
                     </p>
-                </div>
-                <div class="col-md-3">
-                    <h5>Información de contacto</h5>
-                    <p><i class="fab fa-whatsapp"></i> <?php echo formatPhoneNumber(TELEFONO); ?></p>
-                    <!-- <p><i class="fas fa-envelope"></i> ventas@imporshop.app</p> -->
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer copyright text-center">
-        <p>&copy; 2024 Construye tu tienda online con IMPORSUIT S.A.| Todos los derechos reservados.</p>
+    <!-- Copyright -->
+    <div class="footer py-3 text-center text-white cp spanpan">
+        <p class="mb-0" style="font-size: 13px;">
+            &copy; 2025 Hecho con mucho &#x2764; por <strong>IMPORSUIT S.A.</strong> | Todos los derechos reservados.
+        </p>
     </div>
 </footer>
+<style>
+    .cp{
+        background-color: <?php echo COLOR_CABECERA; ?>;
+    }
+</style>
 <!-- No repetir la carga de jQuery -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet">
@@ -84,10 +109,10 @@
             $('#categories-menu').html(categoriasHtml);
 
             // Inicializar OwlCarousel para pantallas grandes
-            if (window.innerWidth >= 992) {
+            if (window.innerWidth <= 768) {
                 $('#categories-menu').addClass('owl-carousel');
                 $('#categories-menu').owlCarousel({
-                    loop: false,
+                    loop: true,
                     margin: 10,
                     responsive: {
                         0: {
@@ -95,9 +120,6 @@
                         },
                         768: {
                             items: 2
-                        },
-                        992: {
-                            items: 5 // Muestra 5 ítems en pantallas grandes
                         }
                     },
                     nav: true,

@@ -229,16 +229,17 @@ $primera_seccion = obtenerPrimeraSeccion();
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
-                    <form class="d-flex me-auto mb-0">
-                        <input class="form-control me-2" id="buscar_input" type="search" placeholder="Buscar..." aria-label="Search">
-                        <button class="btn buscar" type="submit">Buscar</button>
+                    <form class="search-form d-flex mx-auto my-3">
+                        <input class="form-control search-input" id="buscar_input" type="search" placeholder="Buscar...">
+                            <button class="btn buscar search-button" type="submit">Buscar</button>
                     </form>
+
                     <!-- Icono del carrito en el header -->
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link d-flex" href="#" id="cartDropdown" role="button">
                                 <i class='bx bx-cart-download menu-icon' style="color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;"></i>
-                                <span class="badge bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;" id="cantidad_carrito">0</span>
+                                <span class="badge cart-badge-mobile bg-primary" style="background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important; color:<?php echo COLOR_TEXTO_CABECERA; ?> !important;" id="cantidad_carrito">0</span>
                             </a>
                         </li>
                     </ul>

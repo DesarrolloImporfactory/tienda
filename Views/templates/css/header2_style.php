@@ -1,4 +1,167 @@
 <style>
+    /* ESTILOS GENERALES BOTON FLOTANTE WHATSAPP */
+    /* ESTILOS GENERALES BOTON WHATSAPP */
+    .whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: breathe 2s ease-in-out infinite;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  position: absolute;
+  right: 110%; /* Lo mueve a la izquierda del botón */
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  white-space: nowrap;
+}
+
+/* Flecha del tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+/* Muestra el tooltip al pasar el cursor */
+.whatsapp-btn:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Estilos solo al icono WhatsApp */
+.whatsapp-btn i {
+  color: #fff;
+  font-size: 24px;
+  animation: beat 2s ease-in-out infinite;
+  text-decoration: none;
+}
+
+/*Estilos con animation contorno respirando*/
+@keyframes breathe {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/*Estilos de animacion del icono latiendo*/
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 20px;
+            /* Distancia desde el fondo para dispositivos móviles */
+            right: 20px;
+            /* Distancia desde el lado derecho para dispositivos móviles */
+        }
+    }
+/* FIN ESTILOS GENERALES BOTON FLOTANTE WHATSAPP */
+/* FIN ESTILOS BOTON WHATSAPP */
+
+    /* ESTILOS DE CARDS DE LOS ICONS */
+    .card1 {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important; /* Fondo limpio */
+    border-radius: 12px !important; /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important; /* Sombra ligera */
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card1:hover {
+    transform: translateY(-5px) !important; /* Efecto de elevación */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15) !important; /* Sombra más pronunciada */
+}
+
+
+
+.card1:hover .img-container img {
+    transform: scale(1.05) !important; /* Pequeño zoom en hover */
+}
+
+/* Contenedor del texto alineado arriba */
+.card-body1 {
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; /* Alinea el contenido en la parte superior */
+    align-items: center !important; /* Mantiene el contenido centrado horizontalmente */
+    text-align: center !important;
+    padding: 20px !important;
+    margin: 0 !important;
+}
+
+/* Título de la card con más presencia */
+.card1 h5 {
+    font-size: 1.2rem !important;
+    color: #333 !important;
+    font-weight: 600 !important; /* Más presencia */
+    letter-spacing: 0.5px !important; /* Separación ligera */
+    margin-bottom: 10px !important;
+}
+
+/* Texto con mejor legibilidad */
+.card-text1 {
+    font-size: 1rem !important;
+    color: #555 !important;
+    line-height: 1.5 !important; /* Espaciado más cómodo */
+    max-width: 90% !important;
+    margin-top: 10px !important; /* Espacio entre la imagen y el texto */
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Ajusta cualquier otro texto dentro de la card */
+.text-muted.text-decoration-line-through {
+    font-size: 14px !important;
+    color: #888 !important;
+}
+/* FIN ESTILOS CARDS DE LOS ICONS */
+
     .navbar {
         overflow: hidden !important;
         width: 100% !important;
@@ -23,6 +186,119 @@
         color: <?php echo COLOR_TEXTO_CABECERA; ?>;
         /* Cambiar a tu color preferido */
     }
+    .buscar {
+        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+  }
+
+    /* Estilo de header adaptado en dispositivos moviles */
+    @media (max-width: 992px) {
+        .navbar {
+        position: relative; /* Asegura que el contenedor tenga un contexto de posicionamiento */
+        
+    }
+    .navbar-toggler {
+        position: absolute; /* El botón se coloca de forma absoluta dentro del navbar */
+        top: 10px; /* Ajusta la distancia desde la parte superior */
+        right: 10px; /* Alinea al borde derecho */
+        z-index: 1050; /* Mantiene el botón por encima del contenido */
+        background: transparent;
+        border: none;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .navbar-toggler-icon {
+        background-color: transparent;
+        border: none;
+        background-image: none;
+    }
+
+    .navbar-toggler-icon::before {
+        content: '\2630'; /* Ícono de hamburguesa */
+        font-size: 24px;
+        color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+    }
+    /* barra de busqueda en moviles */
+    .search-form {
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 0.5rem;
+    max-width: 100%;
+    border: none;
+    background-color: <?php echo COLOR_CABECERA; ?>; /* ligero fondo translúcido opcional */
+  }
+
+  .search-input {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-button {
+    width: 100%;
+    border-radius: 20px;
+    padding: 0.5rem;
+  }
+  /* Animacion al expandirse el header */
+  .navbar-collapse {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease;
+  }
+
+  .navbar-collapse.collapsing {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease;
+  }
+
+  .navbar-collapse.show {
+    height: auto;
+    transition: height 0.4s ease;
+  }
+  
+    /* ESTILO DE CART EN MOVILES */
+  .navbar-nav {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  #cartDropdown {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Asegura que el contenido se alinee desde la izquierda */
+    gap: 0.5rem;
+    padding-left: 1rem; /* Añade más espacio a la izquierda */
+    padding-right: 1rem; /* Añade más espacio a la derecha */
+    border: 1px solid <?php echo COLOR_TEXTO_CABECERA; ?>; /* Borde alrededor del carrito */
+    border-radius: 25px; /* Bordes redondeados */
+    width: 90%; /* Hace que el borde cubra el 90% del ancho de la página */
+    max-width: 100%; /* Evita que se sobrepase el ancho */
+    margin: 0 auto; /* Centra el carrito horizontalmente */
+    background-color: <?php echo COLOR_CABECERA; ?>; /* Fondo para mejor visibilidad */
+}
+
+#cartDropdown .menu-icon {
+    font-size: 50px;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+    transform: translateY(10px) !important; /* Lo sube ligeramente */
+}
+#cantidad_carrito {
+    margin-left: 60px !important; /* Empuja el badge a la derecha */
+    display: inline-block !important;
+    vertical-align: middle !important;
+    transform: translateY(-50px) !important; /* Lo sube ligeramente */
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    background-color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
+    border-radius: 50%;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+}
+/* FIN ESTILO DE CART EN MOVILES */
+}
 
     .navbar-nav .nav-link {
         color: <?php echo COLOR_TEXTO_CABECERA; ?>;
@@ -40,22 +316,35 @@
         background-color: <?php echo COLOR_CABECERA; ?> !important;
     }
 
-    .buscar {
-        border-radius: 0 20px 20px 0 !important;
-        border: 2px solid <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        background-color: transparent;
-        padding: 0.375rem 0.75rem;
-        font-size: 1rem;
-        text-align: center;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+    .search-form {
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid <?php echo COLOR_TEXTO_CABECERA; ?>;
+    border-radius: 30px;
+    overflow: hidden;
+  }
 
-    .buscar:hover {
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?> !important;
-        color: <?php echo COLOR_HOVER_CABECERA; ?> !important;
-    }
+  .search-input {
+    border: none;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+  }
+
+  .search-button {
+    background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+    color: white;
+    border: none;
+    padding: 0 1rem;
+    border-radius: 0 30px 30px 0;
+    transition: background 0.3s ease;
+  }
+
+  .search-button:hover {
+    background-color: white;
+    color: white;
+  }
 
     .navbar-brand {
         font-weight: bold;
@@ -88,8 +377,8 @@
     }
 
     .sub-nav .nav-link:hover {
-        color: <?php echo COLOR_HOVER_CABECERA; ?>;
-        background-color: <?php echo COLOR_TEXTO_CABECERA; ?>;
+        color: <?php echo COLOR_HOVER_CABECERA; ?>; /* Color del texto de las categorias al pasar el mouse */
+        background-color: rgb(230, 230, 230); /* colores de las categorias al pasar el mouse encima */ 
         border-radius: 5px;
     }
 
@@ -111,6 +400,9 @@
         .owl-carousel .nav-item {
             width: auto !important;
         }
+        .carousel-fade .carousel-item {
+    transition: opacity 1s ease-in-out;
+}
 
         .sub-nav .navbar-nav {
             flex-wrap: nowrap;
@@ -119,101 +411,183 @@
     }
 
     /* Responsive Styles para pantallas pequeñas */
-    @media (max-width: 992px) {
-        .navbar-brand {
-            font-size: 20px;
-        }
-
-        #buscar_input {
-            margin-right: 0;
-        }
-
-        .buscar {
-            width: 100%;
-            margin-top: 0.5rem;
-        }
-
-        .sub-nav .navbar-nav {
-            flex-direction: column;
-            align-items: flex-start;
-            overflow-x: visible;
-        }
-
-        .sub-nav .nav-link {
-            margin-right: 0;
-            width: 100%;
-            font-size: 1rem;
-            padding: 0.5rem 0.75rem;
-            text-align: left;
-        }
+@media (max-width: 992px) {
+    .navbar-brand {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
     }
 
+    .navbar .d-flex {
+        flex-direction: column;
+        align-items: stretch;
+        margin-top: 10px;
+    }
 
+    #buscar_input {
+        border-radius: 20px !important;
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .search-form {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    /* Sub navegación vertical y con mejor espacio */
+    .sub-nav .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        overflow-x: visible;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .sub-nav .nav-link {
+        margin-right: 0;
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+
+    .cart-sidebar {
+        width: 90vw; /* más adecuado para móviles */
+    }
+}
+
+
+.custom-carousel { 
+    height: 60vh;
+    min-height: 400px;
+    overflow: hidden;
+}
+
+.custom-carousel .carousel-inner {
+    height: 100%;
+}
+
+.custom-carousel .carousel-item {
+    height: 100%;
+}
+
+.custom-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 1s ease-in-out;
+    border-radius: 10px;
+}
+
+.custom-carousel .carousel-item.active img {
+    transform: scale(1);
+}
+
+.custom-carousel .carousel-item-next img,
+.custom-carousel .carousel-item-prev img {
+    transform: scale(1.03);
+}
+
+
+
+
+
+.carousel-caption {
+    text-align: left;
+    left: 10%;
+    right: auto;
+    bottom: 20%;
+}
+
+.carousel-caption .tag {
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.carousel-caption h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+    color: #000;
+}
+
+.carousel-caption .btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.carousel-caption .btn-primary:hover {
+    background-color: #563d7c;
+    border-color: #563d7c;
+}
+
+/* 📱 SOLO en móviles */
+@media (max-width: 768px) {
     .custom-carousel {
-        height: 60vh;
-        /* Ajusta esto a 30vh o 40vh según prefieras */
+        height: 200px;
+        min-height: 200px;
     }
 
     .custom-carousel .carousel-inner {
-        height: 60vh;
+        height: 200px;
     }
-
     .custom-carousel .carousel-item img {
-        height: 60vh;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        max-height: 200px;
     }
 
     .carousel-caption {
-        text-align: left;
-        left: 10%;
-        right: 50%;
-        bottom: 20%;
-    }
-
-    .carousel-caption .tag {
-        background-color: #e74c3c;
-        color: white;
-        padding: 0.5rem 1rem;
-        font-weight: bold;
-        display: inline-block;
-        margin-bottom: 1rem;
+        left: 5%;
+        right: 5%;
+        bottom: 10%;
+        text-align: center;
     }
 
     .carousel-caption h1 {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #000;
+        font-size: 1.5rem;
     }
 
     .carousel-caption p {
-        font-size: 1.25rem;
-        color: #000;
+        font-size: 1rem;
     }
 
     .carousel-caption .btn-primary {
-        background-color: #6f42c1;
-        border-color: #6f42c1;
-        font-size: 1.25rem;
-        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
     }
+    .custom-carousel .carousel-item {
+    transition: opacity 1s ease-in-out;
+}
 
-    .carousel-caption .btn-primary:hover {
-        background-color: #563d7c;
-        border-color: #563d7c;
-    }
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+}
 
-    @media (max-width: 768px) {
-        .custom-carousel {
-            height: 200px;
-            /* Ajusta esto a 30vh o 40vh según prefieras */
-        }
-
-        .custom-carousel .carousel-inner {
-            height: 200px;
-        }
-
-        .custom-carousel .carousel-item img {
-            height: 200px;
-        }
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-left,
+.carousel-fade .carousel-item-prev.carousel-item-right {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
     }
 
     .menu-icon {
@@ -348,31 +722,44 @@
 
 
     .cart-sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: #fff;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-        overflow-x: hidden;
-        transition: 0.5s;
-        z-index: 1001;
-        padding-top: 60px;
-    }
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0; /* Mantiene la misma posición */
+    background-color: #fff;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    transition: width 0.4s ease;
+    z-index: 1001;
+    padding-top: 60px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-right: 1px solid #e0e0e0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
-    .cart-sidebar-content {
-        padding: 20px;
-    }
+.cart-sidebar-content {
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
 
-    .cart-sidebar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #f5f5f5;
-        border-bottom: 1px solid #ddd;
-    }
+.cart-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #343a40;
+}
+
 
     /* Botón de cerrar el panel */
     .close-btn {
@@ -405,80 +792,219 @@
     }
 
     /* Fin CSS para carrito de compras */
-    /* seccion mas vendidos */
-    .mas_vendidos {
-        padding: 20px;
-    }
+    /* Sección productos destacados */
+/* Sección productos destacados */
+#productos-destacados {
+    margin: 0 auto;
+    padding: 20px 0;
+}
 
-    .mas_vendidos h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+.mas_vendidos {
+    padding: 20px;
+}
 
-    .flex_mas_vendidos {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        padding-left: 30px;
-        padding-right: 30px;
-    }
+.mas_vendidos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Cada item del carrusel */
+.productos-carousel .item {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+@media (max-width: 768px) {
+  .mas_vendidos-card {
+    width: 90%;        /* ✅ Ocupa el 90% del ancho de pantalla */
+    max-width: 200px;  /* ✅ Máximo 300px para que no se vea gigante */
+    height: 400px;     /* ✅ Un poco más alto si quieres mejorar proporción */
+    margin: 0 auto;    /* ✅ Centrar la card */
+  }
+
+  .mas_vendidos-card a {
+    flex: 0 0 60%;
+  }
+
+  .mas_vendidos-card .body_card {
+    flex: 0 0 40%;
+    padding: 10px;
+  }
+}
+
+/* Card general */
+.mas_vendidos-card {
+    background: #fff;
+    border-radius: 10px;
+    width: 250px;        /* Ancho fijo */
+    height: 350px;       /* Alto fijo */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: space-between; /*  Distribuir contenido para ocupar siempre toda la altura */
+    transition: transform 0.3s ease;
+    position: relative; /* ✅ Necesario para el tag de oferta */
+}
+/* Hover efecto */
+.mas_vendidos-card:hover {
+    transform: scale(1.05);
+}
+
+/* Envoltura imagen */
+.mas_vendidos-image-wrapper {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
 
 
-    .mas_vendidos-card:hover .mas_vendidos-image {
-        transform: scale(1.1);
-    }
+/* Imagen */
+.mas_vendidos-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+}
+.img-container {
+  height: 180px;
+  overflow: hidden;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  background: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .mas_vendidos-image {
-        height: 300px;
-        object-fit: cover;
-    }
+/* Efecto hover en imagen */
+.mas_vendidos-card:hover .mas_vendidos-image {
+    transform: scale(1.1);
+}
 
-    .mas_vendidos-tag {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: #e74c3c;
-        color: white;
-        padding: 5px 10px;
-        font-weight: bold;
-        border-radius: 3px;
-        z-index: 2;
-    }
+/* Información del producto */
+.mas_vendidos-info {
+    height: 40%;    /* ✅ el contenido ocupa el 40% restante */
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    flex-grow: 0 !important; /* No permite que el texto se expanda */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita el texto a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Oculta el texto que se excede */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es más largo de lo permitido */
+    min-height: 2.8em; /* Reserva espacio para 2 lineas aproximadamente */
+    line-height: 1.4em; /* Asegura un interlineado consistente */
+}
 
-    .mas_vendidos-image-wrapper {
-        overflow: hidden;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
-    }
+/* Título */
+.mas_vendidos-info h5 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    flex-grow: 0 !important; /* No permite que el texto se expanda */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limita el texto a 2 líneas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Oculta el texto que se excede */
+    text-overflow: ellipsis; /* Muestra "..." si el texto es más largo de lo permitido */
+    min-height: 2.8em; /* Reserva espacio para 2 lineas aproximadamente */
+    line-height: 1.4em; /* Asegura un interlineado consistente */
+}
 
-    .mas_vendidos-image {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-        margin-bottom: 10px;
-        transition: transform 0.3s ease;
-    }
+/* Precios */
+.mas_vendidos-price {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.1rem;
+}
 
-    .mas_vendidos-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.mas_vendidos-old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
 
-    .mas_vendidos-info p {
-        margin: 5px 0;
-    }
+/* Tag de oferta */
+.mas_vendidos-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    z-index: 2;
+}
 
-    .mas_vendidos-price {
-        font-weight: bold;
-        color: #333;
-    }
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
 
-    .mas_vendidos-old-price {
-        text-decoration: line-through;
-        color: <?php echo COLOR_TEXTO_PRECIO; ?>;
-    }
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.carousel-track .item {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .carousel-track .item {
+    flex: 0 0 33.3333%; /* ✅ 3 items visibles por slide en pantallas grandes */
+  }
+}
+
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+
+
 
     hr {
         height: 3px;
@@ -678,27 +1204,88 @@
 
     /* Responsivo */
     @media (max-width: 768px) {
-        .ahorro-section {
-            flex-direction: column;
-        }
+    .ahorro-section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin: 1.5rem 1rem;
+        border-radius: 20px;
+        overflow: hidden;
+        animation: slideUpFade 0.8s ease-out;
+        background: #fefefe;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    }
 
-        .circle-badge {
-            top: -25px;
-            left: 50%;
-            transform: translate(-50%, 0);
-        }
+    .ahorro-image {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
 
-        .ahorro-content {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            margin-left: 0;
-        }
+    .ahorro-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.85);
+    }
 
-        .ahorro-image,
-        .ahorro-content {
-            flex: 1 0 auto;
-            /* Full width in responsive mode */
+    .ahorro-content {
+        background: linear-gradient(to bottom, <?php echo COLOR_FONDO_PROMOCION; ?>, #ffffff);
+        padding: 2rem 1.25rem;
+        text-align: center;
+        margin: 0;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    .ahorro-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.25rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+    }
+
+    .ahorro-content h1 {
+        font-size: 2.2rem;
+        margin: 0.5rem 0;
+        font-weight: 700;
+        color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .ahorro-content p {
+        font-size: 1rem;
+        color: <?php echo COLOR_LETRA_PROMOCION; ?>;
+        margin-bottom: 1.2rem;
+    }
+
+    .ahorro-content .tienda-btn {
+        padding: 0.85rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, <?php echo COLOR_BTN_PROMOCION; ?>, #000000);
+        color: <?php echo COLOR_LETRABTN_PROMOCION; ?>;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        
+    }
+
+    
+    @keyframes slideUpFade {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
+
+    
+}
 
     /* fin seccion ahorra 1 */
 
