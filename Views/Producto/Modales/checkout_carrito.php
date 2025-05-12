@@ -909,7 +909,7 @@
             // Obtener los valores de los inputs y selects
             let nombre = $('#txt_nombresApellidosPreview').val().trim();
             let telefono = $('#txt_telefonoPreview').val().trim();
-            let provincia = $('#provincia').val().trim();
+            let provincia = $('#provinica').val().trim();
             let ciudad = $('#ciudad_entrega').val().trim();
             let calle_principal = $('#txt_calle_principalPreview').val().trim();
             let calle_secundaria = $('#txt_calle_secundariaPreview').val().trim();
@@ -920,7 +920,7 @@
 
             if (!nombre) camposVacios.push('#txt_nombresApellidosPreview');
             if (!telefono) camposVacios.push('#txt_telefonoPreview');
-            if (!provincia) camposVacios.push('#provincia');
+            if (!provincia) camposVacios.push('#provinica');
             if (!ciudad) camposVacios.push('#ciudad_entrega');
             if (!calle_principal) camposVacios.push('#txt_calle_principalPreview');
             if (!calle_secundaria) camposVacios.push('#txt_calle_secundariaPreview');
