@@ -34,12 +34,10 @@
     <!-- fin slider -->
 
     <!-- animacion -->
+    <!-- Contenedor superior para ofertas en posicion 1 -->
     <div class="marquee-container">
-        <div class="spanpan marquee">
-        <span class="marquee-content">🎉 ¡Aprovecha nuestras ofertas exclusivas! 🚀</span>
-        <span class="marquee-content">🔥 Envío gratis en compras mayores a $50 💰</span>
-        <span class="marquee-content">🌟 Nueva colección disponible ahora mismo 🎨</span>
-            <!-- Los contenidos se llenarán aquí -->
+        <div class="marquee marqueeArriba">
+            <!-- Contenido dinámico para ofertas de posición 1 -->
         </div>
     </div>
     <!-- fin animacion -->
