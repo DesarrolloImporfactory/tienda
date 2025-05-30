@@ -344,9 +344,9 @@ strong, b {
     position: relative;
     display: flex;
     align-items: center;
+    
 }
 
-/* Efecto de desvanecimiento en los extremos */
 .marquee-container::before,
 .marquee-container::after {
     content: "";
@@ -367,34 +367,33 @@ strong, b {
     background: linear-gradient(to left, <?php echo COLOR_BACKGROUND; ?> 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-/* Marquesina */
 .marquee {
-
     display: flex;
     white-space: nowrap;
     animation: marqueeAnimation 30s linear infinite;
 }
 
-/* Contenido dentro de la marquesina con mayor separación */
-.marquee-content {
+.marquee-contentArriba,
+.marquee-contentAbajo {
     color: <?php echo COLOR_TEXTO_CABECERA; ?>;
     display: inline-block;
     text-align: center;
-    padding-right: 100px; /* Aumenta la separación entre mensajes */
+    padding-right: 300px;
     font-size: 16px;
     font-weight: bold;
-    
+    line-height: 40px; /* Igual a la altura del contenedor */
+    margin: 0; /* Elimina margen vertical por defecto de <p> */
 }
 
-/* Separador entre mensajes */
-.marquee-content::after {
+
+.marquee-contentArriba::after,
+.marquee-contentAbajo::after {
     content: " • ";
-    margin-left: 100px; /* Mayor separación entre el mensaje y el separador */
-    color: ;<?php echo COLOR_TEXTO_CABECERA; ?>;
+    margin-left: 300px;
+    color: <?php echo COLOR_TEXTO_CABECERA; ?>;
     font-weight: bold;
 }
 
-/* Animación */
 @keyframes marqueeAnimation {
     from {
         transform: translateX(100%);
@@ -403,6 +402,7 @@ strong, b {
         transform: translateX(-100%);
     }
 }
+
     /* Fin abajo */
 
     /* fin slider */
