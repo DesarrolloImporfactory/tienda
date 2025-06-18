@@ -62,24 +62,28 @@ $id_producto = $_GET['id'];
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const image = document.getElementById("main-image");
+    let isZoomed = false;
 
-    image.addEventListener("mouseenter", () => {
-      image.classList.add("zoomed");
+    image.addEventListener("click", () => {
+      isZoomed = !isZoomed;
+      if (isZoomed) {
+        image.classList.add("zoomed");
+      } else {
+        image.classList.remove("zoomed");
+        image.style.transformOrigin = "center center";
+      }
     });
 
     image.addEventListener("mousemove", (e) => {
+      if (!isZoomed) return;
       const rect = image.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
       image.style.transformOrigin = `${x}% ${y}%`;
     });
-
-    image.addEventListener("mouseleave", () => {
-      image.classList.remove("zoomed");
-      image.style.transformOrigin = "center center";
-    });
   });
 </script>
+
 
 <!-- hace que el boton de compra sea flotante al hacer scroll y tambien esta el mensaje flotante -->
 <script>
@@ -212,8 +216,12 @@ document.addEventListener("DOMContentLoaded", function () {
       <!-- Columna izquierda: Imagen -->
       <div class="col-12 col-lg-6 mb-1 d-flex flex-column align-items-center">
         <div class="tab-content" id="nav-tabContent">
+            <button type="button" class="btn btn-primary" id="abrirModalBtn">
+              Ver imagen ampliada
+            </button>
+
           <div class="tab-pane fade show active d-flex img-zoom-container" id="list-image1" role="tabpanel" aria-labelledby="list-image1-list">
-            <img id="main-image" src="" class="img-fluid zoom-on-hover" style="max-height: 400px;" alt="Responsive image" data-bs-toggle="modal" data-bs-target="#imagenModal">
+            <img id="main-image" src="" class="img-fluid zoom-on-hover" style="max-height: 400px;" alt="Responsive image">
           </div>
         </div>
         <div class="d-flex justify-content-center col-12 mt-3">
@@ -286,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   </div>
 
-  <!-- Modal imagen -->
+  <!-- Modal imagen 
   <div class="modal fade" id="imagenModal" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -299,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
 
 
@@ -332,6 +340,41 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
     
 </main>
+<!-- Imagen ampliada -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const image = document.getElementById("main-image");
+    const imagenEnModal = document.getElementById("imagenEnModal");
+    const abrirModalBtn = document.getElementById("abrirModalBtn");
+
+    // Zoom solo con clic
+    let isZoomed = false;
+    image.addEventListener("click", () => {
+      isZoomed = !isZoomed;
+      if (isZoomed) {
+        image.classList.add("zoomed");
+      } else {
+        image.classList.remove("zoomed");
+        image.style.transformOrigin = "center center";
+      }
+    });
+
+    image.addEventListener("mousemove", (e) => {
+      if (!isZoomed) return;
+      const rect = image.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      image.style.transformOrigin = `${x}% ${y}%`;
+    });
+
+    // Abrir modal con botón
+    abrirModalBtn.addEventListener("click", () => {
+      imagenEnModal.src = image.src;
+      const modal = new bootstrap.Modal(document.getElementById("imagenModal"));
+      modal.show();
+    });
+  });
+</script>
 
 <script>
     function cargarLanding(id) {
@@ -492,11 +535,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     });
 
-                    // Modal para la imagen principal
+                    /* Modal para la imagen principal
                     $('#main-image').on('click', function () {
                         var modalImageSrc = $(this).attr('src');
                         $('#imagenEnModal').attr('src', modalImageSrc);
-                    });
+                    }); */
 
                     // Botón de comprar
                     $('#comprar-ahora').on('click', function () {
@@ -531,11 +574,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        // Evento para mostrar el modal de imagen
+        /* Evento para mostrar el modal de imagen
         $('#imagenModal').on('show.bs.modal', function (event) {
             var imageSrc = $('#main-image').attr('src');
             $('#imagenEnModal').attr('src', imageSrc);
-        });
+        }); */
 
         /* Carga de landing */
         /* cargarLanding(id_productoPrincipal); */
