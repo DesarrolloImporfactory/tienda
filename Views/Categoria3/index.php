@@ -184,7 +184,7 @@
 
 
         const urlProducto = producto.prod_url
-                ? identificarProtocolo(producto.prod_url)
+                ? ensureProtocol(producto.prod_url)
                 : `producto3?id=${producto.id_producto_tienda}`;
 
         container.innerHTML += `
