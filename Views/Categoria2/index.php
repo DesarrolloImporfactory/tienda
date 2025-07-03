@@ -206,7 +206,7 @@
 
             const urlProducto = producto.prod_url
                 ? identificarProtocolo(producto.prod_url)
-                : `producto?id=${producto.id_producto_tienda}`;
+                : `producto2?id=${producto.id_producto_tienda}`;
             // <a href="producto2?id=${producto.id_producto_tienda}" style="text-decoration: none;">
             const productoHtml = `
                 <div class="col-md-4 mb-4">

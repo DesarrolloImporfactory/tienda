@@ -182,10 +182,10 @@
     productosFiltrados.forEach((producto, index) => {
         const imagenUrl = obtenerURLImagen(producto.imagen_principal_tienda, SERVERURL) || 'https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg';
 
-        // Configurar la URL del producto según si tiene funnelish
+
         const urlProducto = producto.prod_url
                 ? identificarProtocolo(producto.prod_url)
-                : `producto?id=${producto.id_producto_tienda}`;
+                : `producto3?id=${producto.id_producto_tienda}`;
 
         container.innerHTML += `
             <div class="col-16 col-md-6 col-lg-4 mb-4 px-2">
