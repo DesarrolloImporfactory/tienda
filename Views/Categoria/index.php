@@ -380,6 +380,9 @@
       <a class="btn texto_boton w-100" href="${urlProducto}">
         Comprar
       </a>
+      <a class="btn texto_boton w-100" href="${prod_url}">
+        url
+      </a>
     </div>
   </div>
 </div>
