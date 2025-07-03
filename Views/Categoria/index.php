@@ -352,6 +352,9 @@
             if (precioNormal > 0) {
                 texto_precioNormal = `<span class="text-muted">${precioNormal.toFixed(2)}</span>`;
             }
+            const urlProducto = producto.prod_url
+                ? identificarProtocolo(producto.prod_url)
+                : `producto?id=${producto.id_producto_tienda}`;
             const productoHtml = `
                     <div class="card-grid col-12 col-sm-6 col-md-4">
   <div class="card">
@@ -376,9 +379,6 @@
     <div class="buy-button-footer">
       <a class="btn texto_boton w-100" href="${urlProducto}">
         Comprar
-      </a>
-      <a class="btn texto_boton w-100" href="${prod_url}">
-        url
       </a>
     </div>
   </div>
