@@ -978,7 +978,14 @@
                         toastr.success("Pedido realizado con éxito", "Confirmación", {
                             positionClass: "toast-bottom-center",
                         });
-
+                        if(isMeta){
+                            fbq('track', 'Purchase', {
+                                value: $('#precio_productoTmp').val(),
+                                currency: 'USD',
+                                content_ids: [$('#id_productoTmp').val()],
+                                content_type: 'product'
+                            });
+                        }
                         cerrarCarrito(); // Cerrar carrito
                         limpiar_carrito(); // Limpiar carrito
                         $('#cartDropdown').trigger('click'); // Recargar el carrito
