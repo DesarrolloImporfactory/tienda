@@ -316,7 +316,6 @@ $id_producto = $_GET['id'];
 
                         // Eventos para la compra
                         $('#agregar-al-carrito').on('click', function () {
-                            console.log(producto)
                             agregar_carrito(producto.id_producto, parseFloat(producto.pvp_tienda), producto.id_inventario);
                             if (isMeta) {
                                 fbq('track', 'AddToCart', {

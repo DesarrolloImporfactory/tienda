@@ -494,7 +494,14 @@
                     toastr.success("SE REALIZO LA PETICION CORRECTAMENTE", "NOTIFICACIÓN", {
                         positionClass: "toast-bottom-center",
                     });
-
+                    if(isMeta){
+                        fbq('track', 'Purchase', {
+                            value: $('#precio_productoTmp').val(),
+                            currency: 'USD',
+                            content_ids: [$('#id_productoTmp').val()],
+                            content_type: 'product'
+                        });
+                    }
                     $('#checkoutModal').modal('hide');
                 }
             },
