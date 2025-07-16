@@ -7,7 +7,7 @@
                 <div class="col-md-3 text-center">
                     <h5 class="text-dark mb-2">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
                     <hr class="mx-auto my-2 w-50">
-                    <img class="rounded" src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="50px">
+                    <img class="rounded" style="cursor: pointer;"src="<?php echo SERVERURL . LOGO_TIENDA; ?>" alt="IMPORT SHOP" height="50px">
                 </div>
                 <!-- Espaciado entre columnas -->
                 <div class="col-md-1 d-none d-md-block"></div>

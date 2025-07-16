@@ -350,6 +350,8 @@
   align-items: center;
   overflow: hidden;
   margin: 0 auto;
+  padding-bottom: 40px;
+  margin-top: 10px;
 }
 
 .zoom-on-hover {
@@ -394,6 +396,17 @@
     border-radius: 1rem;
     /* Ejemplo de sombra */
   }
+  #main-image.zoomed {
+  transform: scale(2); /* O el valor de zoom que desees */
+  transition: transform 0.2s ease;
+  cursor: zoom-out;
+}
+
+#main-image {
+  transition: transform 0.2s ease;
+  cursor: zoom-in;
+}
+
 
   .iconos_producto {
     display: flex;
@@ -443,6 +456,7 @@
   overflow-y: hidden; 
   white-space: nowrap; 
   scrollbar-width: none; 
+  padding-top: 40px;
   }
 
 

@@ -204,8 +204,8 @@
 
             let texto_precioNormal = precioNormal > 0 ? `<p class="custom-price discounted">$${precioNormal.toFixed(2)}</p>` : '';
 
-            const urlProducto = producto.funnelish === '1' && producto.funnelish_url
-                ? identificarProtocolo(producto.funnelish_url)
+            const urlProducto = producto.prod_url
+                ? identificarProtocolo(producto.prod_url)
                 : `producto2?id=${producto.id_producto_tienda}`;
             // <a href="producto2?id=${producto.id_producto_tienda}" style="text-decoration: none;">
             const productoHtml = `

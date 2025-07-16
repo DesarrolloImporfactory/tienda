@@ -38,6 +38,8 @@ define('INSTRAGRAM', $data[0]['instagram']);
 define('TIKTOK', $data[0]['tiktok']);
 define('TELEFONO', $data[0]['whatsapp']);
 define('TITLE_PAGE', $data[0]['title_page']);
+define("META_PIXEL", $data[0]['meta_pixel']);
+define("TIKTOK_PIXEL", $data[0]['tiktok_pixel']);
 
 // Inicializa cURL consulta de api plantilla2
 $ch = curl_init();
