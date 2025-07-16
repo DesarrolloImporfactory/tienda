@@ -38,6 +38,9 @@ define('INSTRAGRAM', $data[0]['instagram']);
 define('TIKTOK', $data[0]['tiktok']);
 define('TELEFONO', $data[0]['whatsapp']);
 define('TITLE_PAGE', $data[0]['title_page']);
+define("META_PIXEL", $data[0]['meta_pixel']);
+define("TIKTOK_PIXEL", $data[0]['tiktok_pixel']);
+
 ?>
 
 <?php include 'Views/templates/css/header_style.php'; ?>
@@ -171,8 +174,17 @@ $primera_seccion = obtenerPrimeraSeccion();
                 }
             });
         });
-    </script>
 
+
+    </script>
+    <script>
+        let isMeta =  <?php if (META_PIXEL != null) {
+            echo "false";
+        } else {
+            echo "false";
+        } ?>;
+
+    </script>
 <script>
     setTimeout(() => {
       const overlay = document.getElementById('loadingOverlay');
