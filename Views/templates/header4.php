@@ -37,7 +37,8 @@ define('FACEBOOK', $data[0]['facebook']);
 define('INSTRAGRAM', $data[0]['instagram']);
 define('TIKTOK', $data[0]['tiktok']);
 define('TELEFONO', $data[0]['whatsapp']);
-
+define("META_PIXEL", $data[0]['meta_pixel']);
+define("TIKTOK_PIXEL", $data[0]['tiktok_pixel']);
 // Inicializa cURL consulta de api plantilla2
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, SERVERURL . 'Tienda/obtener_ofertas_plantilla2'); // Cambia esta URL según la API que necesites
@@ -189,7 +190,14 @@ $primera_seccion = obtenerPrimeraSeccion();
 
     <!-- Enlazar JS de Swiper -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        let isMeta =  <?php if (META_PIXEL != null) {
+            echo "false";
+        } else {
+            echo "false";
+        } ?>;
 
+    </script>
 </head>
 
 <body class="">
