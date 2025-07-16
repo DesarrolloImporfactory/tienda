@@ -960,8 +960,8 @@
             formData.append("id_producto_oferta", $('#id_producto_oferta').val());
             formData.append("tmp", session_id);
             formData.append("id_configuracion", id_configuracion);
-            let precio_producto = $('#precio_productoTmp').val();
-            let id_producto = $('#id_productoTmp').val();
+            let precio_producto = $('#total_carrito').val();
+            let id_producto = $('#id_productoTmp_carrito').val();
             // Enviar datos al servidor
             $.ajax({
                 url: SERVERURL + 'Tienda/guardar_pedido_carrito',
