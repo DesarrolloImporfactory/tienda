@@ -1,8 +1,8 @@
 <footer class="pt-5 shadow border-top bg-light">
     <div class="footer pb-4 border-bottom">
         <div class="container">
-        <div class="row w-100 text-center text-md-start d-flex justify-content-center align-items-start">
-                
+            <div class="row w-100 text-center text-md-start d-flex justify-content-center align-items-start">
+
                 <!-- Acerca de la tienda -->
                 <div class="col-md-3 text-center">
                     <h5 class="text-dark mb-2">Acerca de <?php echo NOMBRE_TIENDA; ?></h5>
@@ -14,16 +14,28 @@
 
 
                 <div class="col-md-3 pe-md-4 mt-4 mt-md-0">
-                    <h5 class="text-dark mb-2 text-center">Síguenos</h5> 
+                    <h5 class="text-dark mb-2 text-center">Síguenos</h5>
                     <hr class="w-100 mx-auto my-2">
                     <div class="d-flex flex-row align-items-center gap-5 justify-content-center">
-                        <a href="<?php echo FACEBOOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#1877F2';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                        <a href="<?php echo FACEBOOK; ?>" target="_blank"
+                           class="align-items-center justify-content-center p-2 rounded-circle bg-light"
+                           style="transition: transform 0.3s ease-in-out;"
+                           onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#1877F2';"
+                           onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
                             <i class="fab fa-facebook fs-2"></i>
                         </a>
-                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#E4405F';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                        <a href="<?php echo INSTRAGRAM; ?>" target="_blank"
+                           class="align-items-center justify-content-center p-2 rounded-circle bg-light"
+                           style="transition: transform 0.3s ease-in-out;"
+                           onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#E4405F';"
+                           onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
                             <i class="fab fa-instagram fs-2"></i>
                         </a>
-                        <a href="<?php echo TIKTOK; ?>" target="_blank" class="align-items-center justify-content-center p-2 rounded-circle bg-light" style="transition: transform 0.3s ease-in-out;" onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#30D5C8';" onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
+                        <a href="<?php echo TIKTOK; ?>" target="_blank"
+                           class="align-items-center justify-content-center p-2 rounded-circle bg-light"
+                           style="transition: transform 0.3s ease-in-out;"
+                           onmouseover="this.style.transform='scale(1.3)'; this.querySelector('i').style.color='#30D5C8';"
+                           onmouseout="this.style.transform='scale(1)'; this.querySelector('i').style.color='black';">
                             <i class="fab fa-tiktok fs-2"></i>
                         </a>
                     </div>
@@ -35,7 +47,7 @@
                     <h5 class="text-dark mb-2 text-center">Contacto</h5>
                     <hr class="w-50 mx-auto my-2">
                     <p class="testi d-flex align-items-center justify-content-center text-dark">
-                        <i class="fab fa-whatsapp fs-2 me-2 text-success"></i> 
+                        <i class="fab fa-whatsapp fs-2 me-2 text-success"></i>
                         <?php echo formatPhoneNumber(TELEFONO); ?>
                     </p>
                 </div>
@@ -50,7 +62,7 @@
     </div>
 </footer>
 <style>
-    .cp{
+    .cp {
         background-color: <?php echo COLOR_CABECERA; ?>;
     }
 </style>
@@ -75,6 +87,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.1.0/wNumb.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+<?php if (!empty(META_PIXEL)) echo META_PIXEL; ?>
+
 
 <script>
     // Cargar categorías y construir el menú de navegación
@@ -87,7 +101,7 @@
         data: formDataCategoria,
         contentType: false,
         processData: false,
-        success: function(response) {
+        success: function (response) {
             let categorias = JSON.parse(response);
 
             // Verifica si la respuesta es un array o un objeto
@@ -132,22 +146,22 @@
                 $('#categories-menu').removeClass('owl-carousel');
             }
         },
-        error: function(error) {
+        error: function (error) {
             console.error("Error al consumir la API:", error);
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const navbarToggler = document.querySelector('.navbar-toggler');
         const subNavbar = document.getElementById('subNavbar');
 
-        navbarToggler.addEventListener('click', function() {
+        navbarToggler.addEventListener('click', function () {
             subNavbar.classList.toggle('show');
         });
     });
 
     // Abrir el panel del carrito cuando se haga clic en el icono
-    $('#cartDropdown').on('click', function(event) {
+    $('#cartDropdown').on('click', function (event) {
         event.preventDefault();
 
         // Mostrar el panel del carrito y el overlay
@@ -166,12 +180,12 @@
             processData: false, // No procesar los datos
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 if (data.length > 0) {
                     let cartHTML = '';
                     let total = 0; // Variable para almacenar el total
 
-                    data.forEach(function(product) {
+                    data.forEach(function (product) {
                         let enlace_imagen = obtenerURLImagen(product.image_path, "https://new.imporsuitpro.com/");
                         let precioProducto = parseFloat(product.precio_tmp).toFixed(2);
                         let cantidadProducto = parseInt(product.cantidad_tmp);
@@ -206,14 +220,14 @@
                     $('#cartContent').html('<p>No hay productos en el carrito.</p>');
                 }
             },
-            error: function() {
+            error: function () {
                 $('#cartContent').html('<p>Error al cargar el carrito.</p>');
             }
         });
     });
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
-    $(document).on('click', '#closeCart', function() {
+    $(document).on('click', '#closeCart', function () {
         cerrarCarrito();
     });
 
@@ -224,19 +238,19 @@
 
 
     // Cerrar el panel del carrito cuando se haga clic en el botón de cerrar
-    $('#closeCart').on('click', function() {
+    $('#closeCart').on('click', function () {
         $('#cartSidebar').removeClass('open');
         $('#cartOverlay').removeClass('show');
     });
 
     // Cerrar el panel del carrito cuando se haga clic fuera del mismo (en el overlay)
-    $('#cartOverlay').on('click', function() {
+    $('#cartOverlay').on('click', function () {
         $('#cartSidebar').removeClass('open');
         $('#cartOverlay').removeClass('show');
     });
 
     // Aumentar o disminuir la cantidad de productos
-    $(document).on('click', '.increase-quantity', function() {
+    $(document).on('click', '.increase-quantity', function () {
         let productId = $(this).closest('.cart-product').data('product-id');
         let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
         let currentQuantity = parseInt(quantityElement.text());
@@ -253,7 +267,7 @@
             processData: false, // No procesar los datos
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 if (response.status == 200) {
                     quantityElement.text(newQuantity);
                     // Recargar el carrito para actualizar el total
@@ -262,13 +276,13 @@
                     alert('Error al actualizar la cantidad');
                 }
             },
-            error: function() {
+            error: function () {
                 alert('Error al actualizar la cantidad');
             }
         });
     });
 
-    $(document).on('click', '.eliminar_producto_carrito', function() {
+    $(document).on('click', '.eliminar_producto_carrito', function () {
         let productId = $(this).closest('.cart-product').data('product-id');
         let productElement = $(this).closest('.cart-product'); // Referencia al contenedor del producto en el DOM
 
@@ -282,7 +296,7 @@
             processData: false, // No procesar los datos
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 if (response.status == 200) {
                     // Eliminar el producto del DOM tras una eliminación exitosa
                     productElement.remove();
@@ -292,13 +306,13 @@
                     alert('Error al eliminar el producto.');
                 }
             },
-            error: function() {
+            error: function () {
                 alert('Error al eliminar el producto.');
             }
         });
     });
 
-    $(document).on('click', '.decrease-quantity', function() {
+    $(document).on('click', '.decrease-quantity', function () {
         let productId = $(this).closest('.cart-product').data('product-id');
         let quantityElement = $(`.cart-product[data-product-id="${productId}"] .product-quantity`);
         let currentQuantity = parseInt(quantityElement.text());
@@ -318,7 +332,7 @@
                 processData: false, // No procesar los datos
                 contentType: false, // No establecer ningún tipo de contenido
                 dataType: "json",
-                success: function(response) {
+                success: function (response) {
                     if (response.status == 200) {
                         quantityElement.text(newQuantity);
                         // Recargar el carrito para actualizar el total
@@ -327,7 +341,7 @@
                         alert('Error al actualizar la cantidad');
                     }
                 },
-                error: function() {
+                error: function () {
                     alert('Error al actualizar la cantidad');
                 }
             });
@@ -367,7 +381,7 @@
             processData: false,
             contentType: false,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 let cantidad = 0;
 
                 data.forEach((datos, index) => {
@@ -376,7 +390,7 @@
 
                 $("#cantidad_carrito").text(cantidad);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error("Error en la solicitud AJAX:", error);
                 alert("Hubo un problema al obtener la información de la categoría");
             },
@@ -385,7 +399,7 @@
     }
 
     // Función para realizar la compra
-    $(document).on('click', '#realizarCompra_carritoBtn', function() {
+    $(document).on('click', '#realizarCompra_carritoBtn', function () {
 
         session_id = "<?php echo session_id(); ?>";
         let formData = new FormData();
@@ -399,12 +413,12 @@
             processData: false,
             contentType: false,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 let cartHTML = '';
                 let comboHTML = '';
                 let subtotal = 0;
 
-                data.forEach(function(product) {
+                data.forEach(function (product) {
                     if (data.length === 1) {
                         let formData_combo = new FormData();
                         formData_combo.append("id_producto", product.id_producto);
@@ -415,10 +429,10 @@
                             processData: false, // No procesar los datos
                             contentType: false, // No establecer ningún tipo de contenido
                             dataType: "json",
-                            success: function(response) {
+                            success: function (response) {
                                 let comboHTML = '';
 
-                                response.forEach(function(combo) {
+                                response.forEach(function (combo) {
                                     /* detalle combo */
                                     let formData_detalle = new FormData();
                                     formData_detalle.append("id_combo", combo.id);
@@ -437,9 +451,9 @@
                                         processData: false, // No procesar los datos
                                         contentType: false, // No establecer ningún tipo de contenido
                                         dataType: "json",
-                                        success: function(response2) {
+                                        success: function (response2) {
                                             // Iterar sobre cada elemento en la respuesta
-                                            response2.forEach(function(detalle_combo) {
+                                            response2.forEach(function (detalle_combo) {
                                                 // Sumar el pvp de cada elemento al acumulador
                                                 totalPvp += parseFloat(detalle_combo.pvp) * detalle_combo.cantidad; // Asegúrate de convertir a número
                                             });
@@ -468,14 +482,14 @@
                                             // Actualizamos el contenedor con el contenido generado
                                             $('#combos_carritoContainer').html(comboHTML);
                                         },
-                                        error: function(jqXHR, textStatus, errorThrown) {
+                                        error: function (jqXHR, textStatus, errorThrown) {
                                             alert(errorThrown);
                                         },
                                     });
                                     /* Fin detalle combo */
                                 });
                             },
-                            error: function(jqXHR, textStatus, errorThrown) {
+                            error: function (jqXHR, textStatus, errorThrown) {
                                 alert(errorThrown);
                             },
                         });
@@ -513,7 +527,7 @@
                     processData: false, // No procesar los datos
                     contentType: false, // No establecer ningún tipo de contenido
                     dataType: "json",
-                    success: function(oferta) {
+                    success: function (oferta) {
                         // Verifica si la oferta existe y si el array tiene al menos un elemento
                         if (oferta && oferta.length > 0) {
                             $('#nombre_oferta').text(oferta[0].nombre_producto_tienda);
@@ -525,7 +539,7 @@
                             $("#seccion_oferta").hide(); // Si no hay oferta, ocultar la sección
                         }
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         alert(errorThrown); // Manejo de errores
                     },
                 });
@@ -541,7 +555,7 @@
                 $("#id_productoTmp_carrito").val(data[0].id_producto);
                 $("#total_carrito").val(subtotal.toFixed(2));
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 alert(errorThrown);
             }
         });
@@ -551,7 +565,7 @@
     });
 
     // Función para manejar la eliminación de productos dentro del modal del carrito
-    $(document).on('click', '.productos_checkout_remove', function() {
+    $(document).on('click', '.productos_checkout_remove', function () {
         let productId = $(this).data('product-id'); // Obtener el id del producto a eliminar
         let productElement = $(this).closest('.productos_carrito-item'); // Referencia al contenedor del producto en el DOM
 
@@ -565,7 +579,7 @@
             processData: false, // No procesar los datos
             contentType: false, // No establecer ningún tipo de contenido
             dataType: "json",
-            success: function(response) {
+            success: function (response) {
                 if (response.status == 200) {
                     // Eliminar el producto del DOM tras una eliminación exitosa
                     productElement.remove();
@@ -580,7 +594,7 @@
                     alert('Error al eliminar el producto.');
                 }
             },
-            error: function() {
+            error: function () {
                 alert('Error al eliminar el producto.');
             }
         });
@@ -591,7 +605,7 @@
         let subtotal = 0;
 
         // Recorre todos los productos restantes y recalcula el subtotal
-        $('.productos_carrito-item').each(function() {
+        $('.productos_carrito-item').each(function () {
             let priceText = $(this).find('.productos_carrito-precio span').text().replace('$', '');
             let productPrice = parseFloat(priceText);
             subtotal += productPrice;
@@ -615,11 +629,11 @@
                 processData: false,
                 contentType: false,
                 dataType: "json",
-                success: function(data) {
+                success: function (data) {
                     // Resuelve la promesa cuando la limpieza del carrito se completa
                     resolve(data);
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     // Rechaza la promesa en caso de error
                     reject(errorThrown);
                 },
@@ -628,7 +642,7 @@
     }
 
     //cargar select ciudades y provincias
-    $(document).ready(function() {
+    $(document).ready(function () {
         cargarProvincias(); // Llamar a cargarProvincias cuando la página esté lista
 
         // Llamar a cargarCiudades cuando se seleccione una provincia
@@ -642,19 +656,19 @@
         $.ajax({
             url: SERVERURL + "Ubicaciones/obtenerProvincias", // Reemplaza con la ruta correcta a tu controlador
             method: "GET",
-            success: function(response) {
+            success: function (response) {
                 let provincias = JSON.parse(response);
                 let provinciaSelect = $("#provinica");
                 provinciaSelect.empty();
                 provinciaSelect.append('<option value="">Provincia *</option>'); // Añadir opción por defecto
 
-                provincias.forEach(function(provincia) {
+                provincias.forEach(function (provincia) {
                     provinciaSelect.append(
                         `<option value="${provincia.codigo_provincia}">${provincia.provincia}</option>`
                     );
                 });
             },
-            error: function(error) {
+            error: function (error) {
                 console.log("Error al cargar provincias:", error);
             },
         });
@@ -667,13 +681,13 @@
             $.ajax({
                 url: SERVERURL + "Ubicaciones/obtenerCiudades/" + provinciaId, // Reemplaza con la ruta correcta a tu controlador
                 method: "GET",
-                success: function(response) {
+                success: function (response) {
                     let ciudades = JSON.parse(response);
                     let ciudadSelect = $("#ciudad_entrega");
                     ciudadSelect.empty();
                     ciudadSelect.append('<option value="">Ciudad *</option>'); // Añadir opción por defecto
 
-                    ciudades.forEach(function(ciudad) {
+                    ciudades.forEach(function (ciudad) {
                         ciudadSelect.append(
                             `<option value="${ciudad.id_cotizacion}">${ciudad.ciudad}</option>`
                         );
@@ -681,7 +695,7 @@
 
                     ciudadSelect.prop("disabled", false); // Habilitar el select de ciudades
                 },
-                error: function(error) {
+                error: function (error) {
                     console.log("Error al cargar ciudades:", error);
                 },
             });
@@ -692,6 +706,7 @@
                 .prop("disabled", true); // Deshabilitar el select de ciudades si no hay provincia seleccionada
         }
     }
+
     /* Fin cargar provincia y ciudad*/
 </script>
 </body>
