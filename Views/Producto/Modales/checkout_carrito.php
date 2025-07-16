@@ -960,7 +960,8 @@
             formData.append("id_producto_oferta", $('#id_producto_oferta').val());
             formData.append("tmp", session_id);
             formData.append("id_configuracion", id_configuracion);
-
+            let precio_producto = $('#precio_productoTmp').val();
+            let id_producto = $('#id_productoTmp').val();
             // Enviar datos al servidor
             $.ajax({
                 url: SERVERURL + 'Tienda/guardar_pedido_carrito',
@@ -980,9 +981,9 @@
                         });
                         if(isMeta){
                             fbq('track', 'Purchase', {
-                                value: $('#precio_productoTmp').val(),
+                                value:  precio_producto,
                                 currency: 'USD',
-                                content_ids: [$('#id_productoTmp').val()],
+                                content_ids: [id_producto],
                                 content_type: 'product'
                             });
                         }
